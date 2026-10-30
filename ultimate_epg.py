@@ -46,7 +46,7 @@ DEFAULT_SETTINGS = {
     "auto_match": True,        # after each download, match guide-less channels by name
     "public_url": "",          # GitHub Pages address once put online
     "auto_discover": True,     # search the internet for guides covering guide-less channels
-    "discover_per_run": 15,    # how many new guides to try per update
+    "discover_per_run": 30,    # how many new guides to try per update
     "discover_max_mb": 80,     # skip guides bigger than this download size
     "health_minutes": 10,      # how often every source is checked to see if it still answers
     "priority_countries": "US,GB,CA",  # most important first; their sources are added and ranked first
@@ -643,13 +643,18 @@ def rank_candidates(todo, wanted, sources):
         m = re.search(r"\.([a-z]{2})(?:@|$)", cid.lower())
         if m:
             counts[m[1]] = counts.get(m[1], 0) + 1
+    for c in CFG.get("provider_channels") or []:  # "AMC RO", "Canal 5 MX" -> look for RO / MX guides
+        if not c.get("guide") and c.get("how") != "event":
+            cc = entry_country(c["name"], c.get("group", ""), c.get("id", ""))
+            if cc and cc not in ("us", "uk", "ca"):
+                counts[cc] = counts.get(cc, 0) + 1
     weights = {}  # your priority countries first, then your most common channel countries
     for i, cc in enumerate(priority_list()):
         for w in COUNTRY_TOKENS.get(cc, cc.lower()).split():
             weights.setdefault(w, 10 - 2 * i)
-    for i, cc in enumerate(sorted(counts, key=counts.get, reverse=True)[:5]):
+    for i, cc in enumerate(sorted(counts, key=counts.get, reverse=True)[:8]):
         for w in [cc] + COUNTRY_WORDS.get(cc, "").split():
-            weights.setdefault(w, 5 - i)
+            weights.setdefault(w, max(1, 6 - i))
 
     def score(item):
         url, label = item
@@ -838,7 +843,17 @@ CC_ALIAS = {"usa": "us", "united states": "us", "gb": "uk", "united kingdom": "u
 
 
 TRAILING_CC_RE = re.compile(r"[\s\-|:(]*\b(us|usa|uk|gb|ca|can|cdn)\b\)?\.?\s*$", re.I)
-GENERIC_RE = re.compile(r"\b(the|network|channel|tv|television|hd|east|eastern)\b")
+GENERIC_RE = re.compile(r"\b(the|network|networks|channel|tv|television|hd|east|eastern|and)\b")
+# channels that changed their name - providers often still use the old one
+RENAMES = {"EPIX": "MGM+", "EPIX 2": "MGM+ Hits", "EPIX Hits": "MGM+ Hits", "EPIX Drive-In": "MGM+ Drive-In",
+           "EPIX DriveIn": "MGM+ Drive-In", "EPIX Marquee": "MGM+ Marquee", "Decades": "Catchy Comedy",
+           "Court TV Mystery": "ION Mystery", "Escape": "ION Mystery", "NBC Sports Network": "NBCSN",
+           "Fox Sports 1": "FS1", "Fox Sports 2": "FS2", "Universal Kids": "Universal Kids",
+           "AT&T SportsNet Pittsburgh": "SportsNet Pittsburgh", "AT&T SportsNet Rocky Mountain": "Altitude",
+           "Bally Sports": "FanDuel Sports", "HLN TV": "HLN", "Starz Kids Family": "Starz Kids & Family",
+           "Hallmark Movies Mysteries": "Hallmark Movies & Mysteries", "Hallmark Drama": "Hallmark Family",
+           "DIY Network": "Magnolia Network", "Esquire": "Esquire Network", "Discovery Life": "Discovery Life Channel",
+           "Science": "Science Channel", "Sundance": "SundanceTV", "Ovation": "Ovation TV", "Nat Geo": "National Geographic"}
 
 
 def pkey(name):
@@ -846,6 +861,8 @@ def pkey(name):
     n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
     n = TRAILING_CC_RE.sub("", n)
     n = re.sub(r"\(x\d+\)", " ", n)
+    n = re.sub(r"\b(us|uk|ca)\b", " ", n)  # "Showtime Next US (East) US"
+    n = re.sub(r"(?<=\S)\s+usa\b", " ", n)  # "MTV USA" - but not "USA Network"
     return norm(FEED_RE.sub(" ", n))
 
 
@@ -854,8 +871,21 @@ def pkey_loose(name):
     n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
     n = TRAILING_CC_RE.sub("", n)
     n = re.sub(r"\(x\d+\)", " ", n)
+    n = re.sub(r"\b(us|uk|ca)\b", " ", n)
+    n = re.sub(r"(?<=\S)\s+usa\b", " ", n)  # "MTV USA" - but not "USA Network"
+    n = n.replace("&", " ")
     n = GENERIC_RE.sub(" ", FEED_RE.sub(" ", n))
-    return norm(n)
+    return re.sub(r"[^a-z0-9+]", "", n)
+
+
+RENAME_LOOKUP = None
+
+
+def renamed_name(name):
+    global RENAME_LOOKUP
+    if RENAME_LOOKUP is None:
+        RENAME_LOOKUP = {pkey_loose(k): v for k, v in RENAMES.items()}
+    return RENAME_LOOKUP.get(pkey_loose(name))
 
 
 EVENT_RE = re.compile(r"\bevents?\b|\bppv\b|pay.?per.?view", re.I)
@@ -866,7 +896,16 @@ def is_event_channel(c):
     return bool(EVENT_RE.search(c.get("group", "")) or re.match(r"^\s*(event|ppv)\s*\d", c.get("name", ""), re.I))
 
 
+ISO2_SET = None
+
+
 def entry_country(name, group, tid):
+    global ISO2_SET
+    if ISO2_SET is None:
+        ISO2_SET = {c.lower() for c in ISO2} | {"uk"}
+    t = re.search(r"\s([A-Z]{2})\s*\)?\s*$", name or "")  # trailing upper-case country code: "AMC RO"
+    if t and t[1].lower() in ISO2_SET:
+        return CC_ALIAS.get(t[1].lower(), t[1].lower())
     m = re.search(r"\.(us|uk|gb|ca)\d?(?:@|$)", (tid or "").lower())
     if not m:
         m = (re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\b", (name or "").lower())
@@ -896,7 +935,7 @@ def provider_index():
             if k and cid not in by_name.setdefault(k, []):
                 by_name[k].append(cid)
             k = pkey_loose(n)
-            if len(k) >= 3 and cid not in by_loose.setdefault(k, []):
+            if len(k) >= 2 and cid not in by_loose.setdefault(k, []):
                 by_loose[k].append(cid)
         for call in callsigns(" ".join(ns) + " " + cid.replace(".", " ")):
             if cid not in by_call.setdefault(call, []):
@@ -959,7 +998,25 @@ def pick_best(cands, c, idx):
     return sorted(cands, key=score)[0]
 
 
+def wants_west(c):
+    return bool(re.search(r"\b(pacific|west)\b", (c.get("name", "") + " " + re.sub(r"[._]", " ", c.get("id") or "")).lower()))
+
+
+def is_west_feed(cid, idx):
+    return bool(re.search(r"pacific|west|\(p\)", (" ".join(idx["names"].get(cid, [])) + " " + cid).lower()))
+
+
 def match_provider_channel(c, idx):
+    """Find the guide channel; a West Coast channel with only an East listing gets it shifted 3 hours."""
+    guide, how = _match_provider_channel(c, idx)
+    c["shift"] = 0
+    if guide and wants_west(c) and not is_west_feed(guide, idx):
+        c["shift"] = 180
+        how += " (East +3h)"
+    return guide, how
+
+
+def _match_provider_channel(c, idx):
     """Find the guide channel for one provider channel: exact code, then name (+ country)."""
     tid = (c.get("id") or "").strip()
     if tid:
@@ -982,8 +1039,15 @@ def match_provider_channel(c, idx):
     if cands:
         return pick_best(cands, c, idx), "name"
     key = pkey_loose(c["name"])
-    if len(key) >= 5 and key not in LOOSE_STOP:
+    renamed = renamed_name(c["name"])
+    if renamed:
+        cands = [x for x in idx["by_name"].get(pkey(renamed), []) + idx["by_loose"].get(pkey_loose(renamed), []) if ok(x)]
+        if cands:
+            return pick_best(cands, c, idx), "renamed channel"
+    if key and key not in LOOSE_STOP:
         cands = [x for x in idx["by_loose"].get(key, []) if ok(x)]
+        if len(key) < 4:  # short names like "FX": only when the country is certain
+            cands = [x for x in cands if want and idx["cc"](x) == want]
         if cands:
             return pick_best(cands, c, idx), "similar name"
     return "", ""
@@ -1249,9 +1313,14 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     n_pri = len(pri)
     # codes and names learned from your providers and playlists
     learned = {}  # their code -> (matched guide code, [their channel names])
+    shifts, events = {}, []
     for c in CFG.get("provider_channels") or []:
         if c.get("guide"):
             learned.setdefault(c["id"], (c["guide"], []))[1].append(c["name"])
+            if c.get("shift"):
+                shifts[c["id"]] = c["shift"]
+        elif c.get("how") == "event":
+            events.append(c)
     for ch in CFG["channels"].values():
         up, e = ch["up"], effective(ch)
         if up.get("epg_id") and e.get("epg_id") and up["epg_id"] != e["epg_id"]:
@@ -1318,7 +1387,13 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 group["seen"].add(n.lower())
                 group["names"].append(n)
         if code not in out:
-            out[code] = {"from": g if chans[g]["n"] else group["best"], "group": group}
+            out[code] = {"from": g if chans[g]["n"] else group["best"], "group": group,
+                         "shift": shifts.get(code, 0)}
+    for c in events:  # game/PPV slots: show the event name from the channel name instead of "No information"
+        if c["id"] not in out:
+            title = re.sub(r"\s*\|\s*\(?\d{4}-\d\d-\d\d.*$", "", c["name"]).strip() or c["name"]
+            out[c["id"]] = {"from": None, "group": {"names": [c["name"]], "icon": "", "cc": "", "best": c["id"]},
+                            "placeholder": {"name": title, "desc": f"Live event on {c['group'] or 'this channel'}"}}
     for cid, e in wanted.items():  # your own playlist's channels are always in it too
         if cid not in out:
             out[cid] = {"from": cid if cid in chans else None,
@@ -1372,7 +1447,14 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 el.tail = "\n"
                 for code in fill[cid]:
                     el.set("channel", code)
+                    shift = out[code].get("shift")
+                    if shift and st and sp:
+                        el.set("start", fmt_xmltv_time(st + timedelta(minutes=shift)))
+                        el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
                     write(code, ET.tostring(el, encoding="unicode"))
+                    if shift and st and sp:
+                        el.set("start", fmt_xmltv_time(st))
+                        el.set("stop", fmt_xmltv_time(sp))
                     shows += 1
                 live_from.add(cid)
         except ET.ParseError:
