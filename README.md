@@ -27,6 +27,17 @@ says what happened.
    - Press **Save changes**. Your edits survive every re-download of the sources.
 3. **Links & Settings tab** â€“ copy your links.
 
+## The universal guide (any player, any provider)
+`https://ampo3d.github.io/ultimate-epg/epg-full.xml.gz` (or `epg-us` / `epg-uk` / `epg-ca`.xml.gz)
+
+- Every copy of a real channel (ESPN listed on five guide sites under five codes) is grouped into one channel
+  that answers to **every known channel code** and **every common way of writing its name**
+  (`ESPN`, `ESPN HD`, `US: ESPN`, `US| ESPN HD`...), so players match it by code *or* by name.
+- English listings are preferred for US/UK/Canada; East/West feeds and local stations (call letters) are kept apart.
+- Junk listings ("Channel No Longer Available") are ignored.
+- **Sources tab -> My providers:** add every provider you use (as many as you like). Their channel lists are read
+  on this PC only and **teach the universal guide** their codes and names. Links with passwords are never uploaded.
+
 ## It finds guides by itself
 Every time your sources update (every 12 hours at home, every 6 hours on GitHub), Ultimate EPG:
 1. Checks every guide you have still works and has upcoming shows. Broken or out-of-date
