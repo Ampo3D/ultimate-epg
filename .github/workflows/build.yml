@@ -27,8 +27,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Download sources, find new guides, build
@@ -36,13 +36,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Save newly found guides
+        continue-on-error: true   # never let this block publishing your links
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add data/auto_sources.json
           if ! git diff --cached --quiet; then
             git commit -m "Auto-found guides update"
-            git pull --rebase origin main && git push
+            git pull --rebase --autostash origin main && git push
           fi
       - uses: actions/upload-pages-artifact@v3
         with:
