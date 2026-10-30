@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate EPG</title>
+<style>
+:root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--text:#e6e8ec;--dim:#8b93a3;--acc:#4f8cff;--ok:#2fbf71;--warn:#e0a526;--bad:#e5484d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Roboto,sans-serif}
+header{display:flex;align-items:center;gap:16px;padding:12px 20px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+h1{font-size:18px;margin:0;white-space:nowrap}
+h1 span{color:var(--acc)}
+nav{display:flex;gap:4px}
+nav button{background:none;border:0;color:var(--dim);padding:8px 14px;border-radius:6px;cursor:pointer;font:inherit}
+nav button.on{background:var(--panel2);color:var(--text)}
+#status{margin-left:auto;color:var(--dim);font-size:13px;display:flex;align-items:center;gap:8px}
+.spin{width:12px;height:12px;border:2px solid var(--acc);border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite;display:inline-block}
+@keyframes s{to{transform:rotate(360deg)}}
+main{padding:16px 20px;max-width:1500px;margin:0 auto}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+input,select,textarea{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit;min-width:0}
+input:focus,select:focus,textarea:focus{outline:1px solid var(--acc);border-color:var(--acc)}
+button.b{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font:inherit;white-space:nowrap}
+button.b:hover{border-color:var(--acc)}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}
+button.d{color:var(--bad)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.card h2{font-size:15px;margin:0 0 10px}
+.muted{color:var(--dim)}
+.small{font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--panel)}
+th,td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{font-weight:600;color:var(--dim);font-size:12px;background:var(--panel2);position:sticky;top:var(--hh,57px);z-index:2}
+tr.off td{opacity:.45}
+tr.dirty td:first-child{box-shadow:inset 3px 0 var(--warn)}
+td input{width:100%;padding:4px 6px}
+td.num input{width:58px}
+img.logo{width:36px;height:24px;object-fit:contain;background:#0003;border-radius:3px;display:block}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;flex:none}
+.dot.real{background:var(--ok)}.dot.dummy{background:var(--warn)}.dot.none{background:var(--bad)}
+.epg{display:flex;align-items:center;gap:4px}
+.epg input{flex:1}
+.tag{font-size:11px;padding:1px 6px;border-radius:9px;background:var(--panel2);color:var(--dim);white-space:nowrap}
+.tag.bad{color:var(--bad)}
+.hl{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:2px 10px;border-radius:12px;white-space:nowrap;border:0;font-family:inherit}
+.hl::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.hl.healthy{background:#2fbf7122;color:var(--ok)}
+.hl.stale{background:#e0a52622;color:var(--warn)}
+.hl.dead{background:#e5484d26;color:var(--bad)}
+.hl.dead::before{animation:pulse 1.2s ease-in-out infinite}
+.hl.checking{background:var(--panel2);color:var(--dim)}
+@keyframes pulse{50%{opacity:.25}}
+button.hl{cursor:pointer}
+.banner{background:#e5484d1f;border:1px solid var(--bad);color:var(--text);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.banner b{color:var(--bad)}
+.hdetail{font-size:12px;color:var(--dim)}
+.events div{font-size:12px;padding:4px 0;border-bottom:1px solid var(--line);display:flex;gap:8px}
+.src-row{display:grid;grid-template-columns:90px 220px 1fr 70px auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.src-row .st{grid-column:2/-1;font-size:12px}
+.links .row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.links input{flex:1;font-family:ui-monospace,Consolas,monospace}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--dim)}
+label.f input,label.f select,label.f textarea{font-size:14px;color:var(--text)}
+label.c{display:flex;align-items:center;gap:6px;cursor:pointer}
+#log{background:#0008;border-radius:6px;padding:8px;font:12px ui-monospace,Consolas,monospace;max-height:260px;overflow:auto;white-space:pre-wrap;color:var(--dim)}
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:20px;width:min(640px,94vw)}
+dialog::backdrop{background:#0009}
+dialog h2{margin:0 0 14px;font-size:16px}
+.res{max-height:340px;overflow:auto;margin-top:10px}
+.res div{display:flex;gap:10px;align-items:center;padding:6px;border-radius:6px;cursor:pointer}
+.res div:hover{background:var(--panel2)}
+.res code{color:var(--dim);font-size:12px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--dim)}
+.hide{display:none!important}
+.quick{display:flex;gap:6px;flex-wrap:wrap}
+@media(max-width:800px){.src-row{grid-template-columns:1fr 1fr}.src-row .url{grid-column:1/-1}th{top:0}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Ultimate <span>EPG</span></h1>
+  <nav>
+    <button data-tab="channels" class="on">Channels</button>
+    <button data-tab="sources">Sources</button>
+    <button data-tab="links">Links &amp; Settings</button>
+  </nav>
+  <div id="status"></div>
+  <button class="hl checking" id="healthChip" title="Source health - click to see your sources">Checking sources…</button>
+  <button class="b p hide" id="pubBtn" onclick="publishOnline()" title="Send your sources and edits to GitHub so the online links update">☁ Publish online</button>
+</header>
+
+<main>
+<div id="healthBanner" class="banner hide"></div>
+<!-- CHANNELS -->
+<section id="tab-channels">
+  <div class="bar">
+    <input id="q" placeholder="Search channels…" style="flex:1;min-width:180px">
+    <select id="fGroup"></select>
+    <select id="fSource"></select>
+    <select id="fView">
+      <option value="all">All channels</option>
+      <option value="on">Enabled only</option>
+      <option value="off">Disabled only</option>
+      <option value="noguide">No real guide</option>
+      <option value="edited">Edited by me</option>
+      <option value="missing">Gone from source</option>
+      <option value="dupes">Duplicates (hidden)</option>
+    </select>
+    <button class="b" onclick="openAdd()">+ Add 24/7 / custom channel</button>
+    <button class="b" onclick="autoMatch()">Auto-match guide</button>
+    <button class="b p" id="saveBtn" onclick="saveChanges()" disabled>Save changes</button>
+  </div>
+  <div class="bar" id="bulk">
+    <span class="muted small" id="count"></span>
+    <span class="legend"><span><i class="dot real"></i>real guide</span><span><i class="dot dummy"></i>placeholder guide</span><span><i class="dot none"></i>no guide</span></span>
+    <span style="flex:1"></span>
+    <span id="selTools" class="bar hide" style="margin:0">
+      <b id="selCount"></b>
+      <button class="b" onclick="bulk('enabled',true)">Enable</button>
+      <button class="b" onclick="bulk('enabled',false)">Disable</button>
+      <button class="b" onclick="bulkGroup()">Set group…</button>
+      <button class="b" onclick="bulkNumber()">Number from…</button>
+      <button class="b d" onclick="bulkDelete()">Delete</button>
+      <button class="b" onclick="sel.clear();renderTable()">Clear</button>
+    </span>
+  </div>
+  <table>
+    <thead><tr>
+      <th style="width:28px"><input type="checkbox" id="selAll" title="Select all shown"></th>
+      <th style="width:34px">On</th><th style="width:70px">#</th><th style="width:44px"></th>
+      <th>Name</th><th style="width:18%">Group</th><th style="width:24%">Guide (EPG id)</th>
+      <th style="width:120px">Source</th><th style="width:50px"></th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="bar" style="justify-content:center;margin-top:10px"><button class="b hide" id="more" onclick="shown+=300;renderTable()">Show more</button></div>
+</section>
+
+<!-- SOURCES -->
+<section id="tab-sources" class="hide">
+  <div class="card">
+    <h2>Source health</h2>
+    <div class="bar"><span id="healthSummary" class="muted small"></span><span style="flex:1"></span>
+      <button class="b" id="notifyBtn" onclick="enableAlerts()">🔔 Pop-up alerts</button>
+      <button class="b" onclick="checkNow()">Check all now</button></div>
+    <p class="muted small" style="margin:0 0 8px">
+      <span class="hl healthy">Working</span> answers and has data ·
+      <span class="hl stale">Out of date</span> answers but its guide has no upcoming shows ·
+      <span class="hl dead">Dead</span> not answering or broken ·
+      checked automatically every few minutes</p>
+    <details><summary class="muted small" style="cursor:pointer">Recent changes</summary><div id="healthEvents" class="events"></div></details>
+  </div>
+  <div class="card">
+    <h2>Your sources</h2>
+    <p class="muted small" style="margin-top:0">Add as many playlists (M3U) and guides (XMLTV, .xml or .xml.gz) as you like. A URL or a file path on this PC both work. Higher sources win when two guides cover the same channel — use ▲▼ to set priority.</p>
+    <div id="srcList"></div>
+    <div class="bar" style="margin-top:12px">
+      <button class="b" onclick="addSource('m3u')">+ Playlist (M3U)</button>
+      <button class="b" onclick="addSource('xmltv')">+ Guide (XMLTV)</button>
+      <span style="flex:1"></span>
+      <button class="b p" onclick="saveSources()">Save sources</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>🔎 Auto-found guides</h2>
+    <p class="muted small" style="margin-top:0">Every time the sources update, Ultimate EPG searches the internet (guide websites and GitHub) for guides covering any channel that still has no guide, tests them, and adds the ones that work. Guides that stop working are removed automatically.</p>
+    <div class="bar"><span class="muted small" id="autoInfo"></span><span style="flex:1"></span>
+      <button class="b" onclick="post('/api/discover',{}).then(poll)">Search for guides now</button></div>
+    <div id="autoList"></div>
+    <details style="margin-top:10px"><summary class="muted small" style="cursor:pointer">Recently checked guides</summary><div id="autoRecent" class="res"></div></details>
+  </div>
+  <div class="card">
+    <h2>Free source library</h2>
+    <p class="muted small" style="margin-top:0">Free, legal playlists and guides that were checked to work. Click + to add one, then press Save sources. Big guides take longer to download, so only add the countries you watch.</p>
+    <div class="bar">
+      <input id="libQ" placeholder="Search library…" style="flex:1;min-width:160px">
+      <select id="libCountry"></select>
+      <select id="libType"><option value="*">Playlists &amp; guides</option><option value="m3u">Playlists only</option><option value="xmltv">Guides only</option></select>
+    </div>
+    <div id="lib" class="res" style="max-height:420px"></div>
+  </div>
+</section>
+
+<!-- LINKS & SETTINGS -->
+<section id="tab-links" class="hide">
+  <div class="card links" id="onlineCard">
+    <h2>☁ Online links — work even when this PC is off</h2>
+    <div id="onlineRows"></div>
+    <p class="muted small" id="onlineHelp"></p>
+    <button class="b p hide" id="setupBtn" onclick="post('/api/setup-github',{});alert('A setup window opened. Follow the steps there (it asks you to sign in to GitHub). When it says Done, come back and refresh this page.')">☁ Put it online (free GitHub account)</button>
+  </div>
+  <div class="card links">
+    <h2>Home links — paste these into any IPTV player</h2>
+    <div id="linkRows"></div>
+    <p class="muted small">Works on any device on your home Wi-Fi while this PC is on. Most players only need the playlist link (the guide link is embedded), but players like TiviMate, IPTV Smarters, Kodi PVR and Plex also let you paste the guide link separately.</p>
+  </div>
+  <div class="card">
+    <h2>Settings</h2>
+    <div class="grid2">
+      <label class="f">Re-download sources every (hours, 0 = never)<input type="number" min="0" id="s_refresh_hours"></label>
+      <label class="f">Priority countries, most important first (their sources are added automatically)<input id="s_priority_countries" placeholder="US,GB,CA"></label>
+      <label class="f">Days of guide to keep<input type="number" min="1" max="14" id="s_days"></label>
+      <label class="f">Placeholder guide block length (hours)<input type="number" min="1" max="24" id="s_dummy_hours"></label>
+      <label class="f">Guides to test per search<input type="number" min="1" max="200" id="s_discover_per_run"></label>
+      <label class="f">Skip guides bigger than (MB download)<input type="number" min="5" max="500" id="s_discover_max_mb"></label>
+      <div style="display:flex;flex-direction:column;gap:8px;justify-content:center">
+        <label class="c"><input type="checkbox" id="s_dummy_epg"> Placeholder guide for channels without one (24/7)</label>
+        <label class="c"><input type="checkbox" id="s_new_enabled"> Newly found channels start enabled</label>
+        <label class="c"><input type="checkbox" id="s_auto_match"> Auto-match guides after every download</label>
+        <label class="c"><input type="checkbox" id="s_auto_discover"> Search the internet for missing guides</label>
+        <label class="c"><input type="checkbox" id="s_hide_duplicates"> Hide duplicate channels (best source wins)</label>
+      </div>
+    </div>
+    <div class="bar" style="margin-top:14px">
+      <button class="b p" onclick="saveSettings()">Save settings</button>
+      <button class="b" onclick="refreshAll()">Re-download all sources now</button>
+      <button class="b" onclick="post('/api/build',{}).then(poll)">Rebuild output</button>
+      <span style="flex:1"></span>
+      <button class="b d" onclick="if(confirm('Stop Ultimate EPG? Your home links stop working until you open it again from the desktop icon.')){post('/api/quit',{});document.body.innerHTML='<p style=&quot;padding:40px&quot;>Ultimate EPG is stopped. Open it again from the Ultimate EPG icon on your desktop.</p>'}">Stop Ultimate EPG</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Activity</h2>
+    <div id="log"></div>
+  </div>
+</section>
+</main>
+
+<dialog id="dlg">
+  <h2 id="dlgTitle">Edit channel</h2>
+  <div class="grid2">
+    <label class="f">Name<input id="e_name"></label>
+    <label class="f">Channel number<input id="e_number"></label>
+    <label class="f">Group<input id="e_group" list="groupList"></label>
+    <label class="f">Logo URL<input id="e_logo"></label>
+  </div>
+  <label class="f" style="margin-top:12px">Stream URL<input id="e_url"></label>
+  <label class="f" style="margin-top:12px">Guide (EPG id)
+    <span class="epg"><input id="e_epg_id" placeholder="leave empty for placeholder guide"><button class="b" type="button" onclick="openSearch('e_epg_id')">Find…</button></span>
+  </label>
+  <label class="f" style="margin-top:12px">Placeholder guide description (used when no real guide)<textarea id="e_desc" rows="2"></textarea></label>
+  <div class="bar" style="margin-top:16px">
+    <button class="b d hide" id="e_reset" onclick="resetChannel()">Undo my edits</button>
+    <span style="flex:1"></span>
+    <button class="b" onclick="dlg.close()">Cancel</button>
+    <button class="b p" id="e_ok">Apply</button>
+  </div>
+</dialog>
+
+<dialog id="srch">
+  <h2>Find guide for <span id="srchFor"></span></h2>
+  <input id="srchQ" placeholder="Type a channel name or id…" style="width:100%">
+  <div class="res" id="srchRes"></div>
+  <div class="bar" style="margin-top:12px">
+    <button class="b" onclick="pickEpg('')">Use placeholder guide</button>
+    <span style="flex:1"></span>
+    <button class="b" onclick="srch.close()">Close</button>
+  </div>
+</dialog>
+<datalist id="groupList"></datalist>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let S = null, byKey = {}, dirty = {}, sel = new Set(), shown = 300, srcDraft = null, filtered = [];
+
+async function post(path, body) {
+  const r = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  return r.json();
+}
+async function load() {
+  S = await (await fetch('/api/state')).json();
+  byKey = {};
+  for (const c of S.channels) {
+    if (dirty[c.key]) Object.assign(c, dirty[c.key]);
+    byKey[c.key] = c;
+  }
+  if (!srcDraft) srcDraft = JSON.parse(JSON.stringify(S.sources));
+  renderAll();
+}
+let pollT = null;
+/* source health - updates live without redrawing the page */
+const H_WORD = {healthy: 'Working', stale: 'Out of date', dead: 'Dead', checking: 'Checking…'};
+function ago(t) {
+  const m = Math.round((Date.now() / 1000 - t) / 60);
+  return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`;
+}
+function renderHealth() {
+  const H = S.health || {}, all = [...S.sources, ...S.auto];
+  document.querySelectorAll('[data-h]').forEach(el => {
+    const h = H[el.dataset.h];
+    if (!h) { el.innerHTML = '<span class="hl checking">Checking…</span>'; return; }
+    const since = h.state === 'dead' ? ` · dead since ${ago(h.since)}` : h.state === 'stale' ? ` · since ${ago(h.since)}` : '';
+    el.innerHTML = `<span class="hl ${h.state}">${H_WORD[h.state]}</span> <span class="hdetail">${esc(h.detail)}${since} · checked ${ago(h.checked)}${h.ms ? ` · ${h.ms} ms` : ''}</span>`;
+  });
+  const c = S.health_counts || {}, dead = all.filter(s => H[s.id]?.state === 'dead'), stale = all.filter(s => H[s.id]?.state === 'stale');
+  const total = Object.values(c).reduce((a, b) => a + b, 0);
+  const chip = $('healthChip');
+  chip.className = 'hl ' + (dead.length ? 'dead' : stale.length ? 'stale' : total ? 'healthy' : 'checking');
+  chip.textContent = !total ? 'Checking sources…' : dead.length ? `${dead.length} dead source${dead.length > 1 ? 's' : ''}`
+    : stale.length ? `${stale.length} out of date` : `All ${total} sources working`;
+  $('healthSummary').textContent = total ? `${c.healthy || 0} working · ${c.stale || 0} out of date · ${c.dead || 0} dead` : 'Checking…';
+  const b = $('healthBanner');
+  b.classList.toggle('hide', !dead.length);
+  if (dead.length) b.innerHTML = `<span><b>⚠ ${dead.length} dead source${dead.length > 1 ? 's' : ''}:</b> ` +
+      dead.slice(0, 4).map(s => `${esc(s.name)} <span class="hdetail">(${esc(H[s.id].detail)}, since ${ago(H[s.id].since)})</span>`).join(', ') +
+      (dead.length > 4 ? ` and ${dead.length - 4} more` : '') + `</span><span style="flex:1"></span>
+      <button class="b" onclick="document.querySelector('[data-tab=sources]').click()">Show sources</button><button class="b" onclick="checkNow()">Check again</button>`;
+  document.title = (dead.length ? `⚠ ${dead.length} dead · ` : '') + 'Ultimate EPG';
+  $('healthEvents').innerHTML = (S.health_events || []).slice().reverse().map(e =>
+    `<div><span class="hl ${e.state}">${H_WORD[e.state] || e.state}</span><span style="flex:1">${esc(e.text)}</span><span class="muted">${ago(e.t)}</span></div>`).join('') ||
+    '<p class="muted small">No changes yet.</p>';
+  alertNew();
+}
+let lastAlertT = Date.now() / 1000;
+function alertNew() {
+  const fresh = (S.health_events || []).filter(e => e.t > lastAlertT);
+  if (!fresh.length) return;
+  lastAlertT = Math.max(...fresh.map(e => e.t));
+  if (window.Notification && Notification.permission === 'granted')
+    fresh.forEach(e => new Notification(e.state === 'healthy' ? 'Source working again' : 'Source problem', {body: e.text}));
+}
+async function enableAlerts() {
+  if (!window.Notification) return alert('This browser does not support pop-up alerts.');
+  const r = await Notification.requestPermission();
+  $('notifyBtn').textContent = r === 'granted' ? '🔔 Alerts on' : '🔕 Alerts blocked';
+}
+async function checkNow() {
+  await post('/api/health-check', {});
+  $('healthChip').className = 'hl checking'; $('healthChip').textContent = 'Checking sources…';
+  setTimeout(live, 4000);
+}
+async function live() {
+  try {
+    const r = await (await fetch('/api/state?lite=1')).json();
+    Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events, status: r.status});
+    renderHealth();
+    if (r.busy && !S.busy) poll();
+  } catch (e) {
+    $('healthChip').className = 'hl dead'; $('healthChip').textContent = 'Ultimate EPG is not running';
+  }
+}
+setInterval(live, 10000);
+$('healthChip').onclick = () => document.querySelector('[data-tab=sources]').click();
+
+async function poll() {
+  clearTimeout(pollT);
+  const r = await (await fetch('/api/state?lite=1')).json();
+  S.busy = r.busy; S.log = r.log; S.status = r.status; S.last_build = r.last_build;
+  Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events});
+  renderStatus(); renderLog(); renderHealth();
+  if (r.busy) pollT = setTimeout(poll, 1500);
+  else { srcDraft = null; await load(); }
+}
+
+function renderAll() { renderStatus(); renderFilters(); renderTable(); renderSources(); renderAuto(); renderLinks(); renderLog(); renderHealth(); }
+
+function renderStatus() {
+  const n = S.channels.filter(c => c.enabled && !c.missing && !c.duplicate).length;
+  $('status').innerHTML = S.busy
+    ? '<span class="spin"></span> ' + esc((S.log.at(-1) || 'Working…').slice(9))
+    : `${n} channels in your lineup · ${S.epg_count} guide channels available` +
+      (S.last_build ? ` · built ${new Date(S.last_build * 1000).toLocaleTimeString()}` : '');
+}
+
+function renderFilters() {
+  const groups = [...new Set(S.channels.map(c => c.group || ''))].sort();
+  const keep = (id, html) => { const v = $(id).value; $(id).innerHTML = html; $(id).value = v || $(id).options[0].value; };
+  keep('fGroup', '<option value="*">All groups</option>' + groups.map(g => `<option value="${esc(g)}">${esc(g || '(no group)')}</option>`).join(''));
+  const srcs = [...S.sources.filter(s => s.type === 'm3u'), {id: 'custom', name: 'Custom'}];
+  keep('fSource', '<option value="*">All sources</option>' + srcs.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join(''));
+  $('groupList').innerHTML = groups.map(g => `<option value="${esc(g)}">`).join('');
+}
+
+function matches(c) {
+  const q = $('q').value.toLowerCase().trim(), g = $('fGroup').value, s = $('fSource').value, v = $('fView').value;
+  if (q && !(c.name + ' ' + c.epg_id + ' ' + c.group).toLowerCase().includes(q)) return false;
+  if (g !== '*' && (c.group || '') !== g) return false;
+  if (s !== '*' && c.source !== s) return false;
+  if (v === 'on' && (!c.enabled || c.missing)) return false;
+  if (v === 'off' && c.enabled) return false;
+  if (v === 'noguide' && c.guide === 'real') return false;
+  if (v === 'edited' && !c.edited.length && !dirty[c.key]) return false;
+  if (v === 'missing' && !c.missing) return false;
+  if (v === 'dupes' && !c.duplicate) return false;
+  if (v !== 'missing' && c.missing && v !== 'all') return false;
+  return true;
+}
+
+function renderTable() {
+  filtered = S.channels.filter(matches);
+  const list = filtered.slice(0, shown);
+  $('rows').innerHTML = list.map(c => `
+    <tr data-k="${c.key}" class="${c.enabled ? '' : 'off'} ${dirty[c.key] ? 'dirty' : ''}">
+      <td><input type="checkbox" class="sel" ${sel.has(c.key) ? 'checked' : ''}></td>
+      <td><input type="checkbox" data-f="enabled" ${c.enabled ? 'checked' : ''}></td>
+      <td class="num"><input data-f="number" value="${esc(c.number)}"></td>
+      <td>${c.logo ? `<img class="logo" loading="lazy" src="${esc(c.logo)}" onerror="this.style.visibility='hidden'">` : ''}</td>
+      <td><input data-f="name" value="${esc(c.name)}"></td>
+      <td><input data-f="group" list="groupList" value="${esc(c.group)}"></td>
+      <td><span class="epg"><i class="dot ${c.guide}" title="${c.guide === 'real' ? 'Real guide found' : c.guide === 'dummy' ? 'Placeholder guide' : 'No guide'}"></i>
+        <input data-f="epg_id" value="${esc(c.epg_id)}" placeholder="—"><button class="b" data-find title="Find guide">🔍</button></span></td>
+      <td><span class="tag ${c.missing ? 'bad' : ''}" title="${c.missing ? 'No longer in this source' : ''}">${esc(c.source_name)}${c.missing ? ' (gone)' : ''}</span>${c.duplicate ? '<br><span class="tag" title="Same channel exists in a higher-priority source, so this copy is left out of your playlist">duplicate</span>' : ''}</td>
+      <td><button class="b" data-edit title="All fields">✎</button></td>
+    </tr>`).join('');
+  $('more').classList.toggle('hide', filtered.length <= shown);
+  $('count').textContent = `Showing ${list.length} of ${filtered.length}` + (filtered.length !== S.channels.length ? ` (filtered from ${S.channels.length})` : '');
+  const nd = Object.keys(dirty).length;
+  $('saveBtn').disabled = !nd; $('saveBtn').textContent = nd ? `Save ${nd} change${nd > 1 ? 's' : ''}` : 'Save changes';
+  $('selTools').classList.toggle('hide', !sel.size);
+  $('selCount').textContent = `${sel.size} selected`;
+  $('selAll').checked = list.length && list.every(c => sel.has(c.key));
+}
+
+function setField(key, f, v) {
+  const c = byKey[key];
+  if (c[f] === v) return;
+  c[f] = v;
+  (dirty[key] ||= {key})[f] = v;
+  if (f === 'epg_id') c.guide = v ? 'pending' : (S.settings.dummy_epg ? 'dummy' : 'none');
+}
+
+$('rows').addEventListener('change', e => {
+  const tr = e.target.closest('tr'), k = tr.dataset.k, f = e.target.dataset.f;
+  if (e.target.classList.contains('sel')) { e.target.checked ? sel.add(k) : sel.delete(k); }
+  else if (f) setField(k, f, e.target.type === 'checkbox' ? e.target.checked : e.target.value.trim());
+  renderTable();
+});
+$('rows').addEventListener('click', e => {
+  const tr = e.target.closest('tr'); if (!tr) return;
+  if (e.target.closest('[data-edit]')) openEdit(tr.dataset.k);
+  if (e.target.closest('[data-find]')) { searchTarget = {key: tr.dataset.k}; openSearch(null, byKey[tr.dataset.k].name); }
+});
+$('selAll').addEventListener('change', e => {
+  for (const c of filtered.slice(0, shown)) e.target.checked ? sel.add(c.key) : sel.delete(c.key);
+  renderTable();
+});
+let qT; ['q', 'fGroup', 'fSource', 'fView'].forEach(id => $(id).addEventListener('input', () => { clearTimeout(qT); qT = setTimeout(() => { shown = 300; renderTable(); }, 150); }));
+
+function bulk(f, v) { for (const k of sel) setField(k, f, v); renderTable(); }
+function bulkGroup() { const g = prompt('Group name for the selected channels:'); if (g !== null) bulk('group', g.trim()); }
+function bulkNumber() {
+  const n = parseInt(prompt('Start numbering the selected channels (in the order shown) from:', '1'));
+  if (isNaN(n)) return;
+  let i = n; for (const c of filtered) if (sel.has(c.key)) setField(c.key, 'number', String(i++));
+  renderTable();
+}
+async function bulkDelete() {
+  const keys = [...sel].filter(k => byKey[k].source === 'custom' || byKey[k].missing);
+  if (!keys.length) return alert('Only custom channels or channels gone from their source can be deleted. To hide a playlist channel, disable it instead.');
+  if (!confirm(`Delete ${keys.length} channel(s)?`)) return;
+  await post('/api/channels/delete', {keys}); keys.forEach(k => { sel.delete(k); delete dirty[k]; }); poll();
+}
+
+async function saveChanges() {
+  await post('/api/channels', {channels: Object.values(dirty)});
+  dirty = {}; poll();
+}
+async function autoMatch() {
+  if (Object.keys(dirty).length) await saveChanges();
+  const r = await post('/api/automatch', {only_unmatched: true});
+  alert(`Matched ${r.matched} channel(s) to a guide by name.`); poll();
+}
+
+/* edit dialog */
+const dlg = $('dlg'); let editKey = null;
+const EF = ['name', 'number', 'group', 'logo', 'url', 'epg_id', 'desc'];
+function openEdit(key) {
+  editKey = key; const c = byKey[key];
+  $('dlgTitle').textContent = 'Edit channel';
+  EF.forEach(f => $('e_' + f).value = c[f] ?? '');
+  $('e_reset').classList.toggle('hide', !c.edited.length || c.source === 'custom');
+  $('e_ok').onclick = () => { EF.forEach(f => setField(key, f, $('e_' + f).value.trim())); dlg.close(); renderTable(); };
+  dlg.showModal();
+}
+function openAdd() {
+  editKey = null;
+  $('dlgTitle').textContent = 'Add a 24/7 or custom channel';
+  EF.forEach(f => $('e_' + f).value = '');
+  $('e_group').value = '24/7';
+  $('e_reset').classList.add('hide');
+  $('e_ok').onclick = async () => {
+    const it = {}; EF.forEach(f => it[f] = $('e_' + f).value.trim());
+    if (!it.name || !it.url) return alert('Name and stream URL are required.');
+    await post('/api/channels/add', it); dlg.close(); poll();
+  };
+  dlg.showModal();
+}
+async function resetChannel() {
+  await post('/api/channels', {channels: [{key: editKey, reset: true}]});
+  delete dirty[editKey]; dlg.close(); poll();
+}
+
+/* guide search */
+const srch = $('srch'); let searchTarget = null, sT;
+function openSearch(inputId, name) {
+  if (inputId) searchTarget = {input: inputId};
+  const nm = name || $('e_name').value;
+  $('srchFor').textContent = nm; $('srchQ').value = nm; srch.showModal(); doSearch();
+}
+async function doSearch() {
+  const r = await (await fetch('/api/epg-search?q=' + encodeURIComponent($('srchQ').value))).json();
+  $('srchRes').innerHTML = r.length ? r.map(x => `<div data-id="${esc(x.id)}">
+      ${x.icon ? `<img class="logo" src="${esc(x.icon)}" onerror="this.style.visibility='hidden'">` : '<span class="logo"></span>'}
+      <span style="flex:1">${esc(x.name)}<br><code>${esc(x.id)}</code></span><span class="tag">${esc(x.source)}</span></div>`).join('')
+    : `<p class="muted">${S.epg_count ? 'No matches. Try a shorter name.' : 'No guides loaded yet — add an XMLTV source on the Sources tab.'}</p>`;
+}
+$('srchQ').addEventListener('input', () => { clearTimeout(sT); sT = setTimeout(doSearch, 200); });
+$('srchRes').addEventListener('click', e => { const d = e.target.closest('[data-id]'); if (d) pickEpg(d.dataset.id); });
+function pickEpg(id) {
+  if (searchTarget.input) $(searchTarget.input).value = id;
+  else { setField(searchTarget.key, 'epg_id', id); renderTable(); }
+  srch.close();
+}
+
+/* sources */
+function renderSources() {
+  $('srcList').innerHTML = srcDraft.length ? srcDraft.map((s, i) => {
+    const st = S.status[s.id];
+    return `<div class="src-row" data-i="${i}">
+      <select data-f="type"><option value="m3u" ${s.type === 'm3u' ? 'selected' : ''}>Playlist</option><option value="xmltv" ${s.type === 'xmltv' ? 'selected' : ''}>Guide</option></select>
+      <span style="display:flex;gap:6px;align-items:center"><input data-f="name" value="${esc(s.name)}" placeholder="Name" style="flex:1;min-width:0">${s.country ? `<span class="tag" title="Country">${esc(s.country === 'GB' ? 'UK' : s.country)}</span>` : ''}</span>
+      <input class="url" data-f="url" value="${esc(s.url)}" placeholder="https://… or C:\\path\\file.m3u">
+      <label class="c"><input type="checkbox" data-f="enabled" ${s.enabled !== false ? 'checked' : ''}> On</label>
+      <span style="display:flex;gap:4px"><button class="b" data-mv="-1">▲</button><button class="b" data-mv="1">▼</button>
+        ${s.id ? `<button class="b" data-rf title="Download now">⟳</button>` : ''}<button class="b d" data-del>✕</button></span>
+      <span class="st">${s.id ? `<span data-h="${s.id}"></span>` : '<span class="muted">New — press Save sources</span>'}</span>
+    </div>`;
+  }).join('') : '<p class="muted">No sources yet. Add your provider\'s M3U link and an XMLTV guide, or pick a free one below.</p>';
+  renderLib();
+  if (S.health) renderHealth();
+}
+$('srcList').addEventListener('input', e => {
+  const i = e.target.closest('[data-i]').dataset.i, f = e.target.dataset.f; if (!f) return;
+  srcDraft[i][f] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+});
+$('srcList').addEventListener('click', async e => {
+  const row = e.target.closest('[data-i]'); if (!row) return; const i = +row.dataset.i;
+  const mv = e.target.dataset.mv;
+  if (mv) { const j = i + +mv; if (j >= 0 && j < srcDraft.length) [srcDraft[i], srcDraft[j]] = [srcDraft[j], srcDraft[i]]; renderSources(); }
+  if (e.target.hasAttribute('data-del') && confirm('Remove this source? Its channels and your edits to them are removed too.')) { srcDraft.splice(i, 1); renderSources(); }
+  if (e.target.hasAttribute('data-rf')) { await post('/api/refresh', {source: srcDraft[i].id}); poll(); }
+});
+let LIB = [];
+fetch('/api/catalog').then(r => r.ok ? r.json() : []).then(j => {
+  LIB = j;
+  const cs = [...new Set(LIB.map(x => x.country))].sort((a, b) => a === 'ALL' ? -1 : b === 'ALL' ? 1 : a.localeCompare(b));
+  $('libCountry').innerHTML = '<option value="*">All countries</option>' + cs.map(c => `<option>${esc(c)}</option>`).join('');
+  renderLib();
+});
+function renderLib() {
+  if (!S) return;
+  const q = $('libQ').value.toLowerCase(), c = $('libCountry').value || '*', t = $('libType').value;
+  const have = new Set(srcDraft.map(s => s.url));
+  const list = LIB.filter(x => (c === '*' || x.country === c) && (t === '*' || x.type === t) &&
+    (!q || (x.name + ' ' + x.provider + ' ' + x.country + ' ' + (x.notes || '')).toLowerCase().includes(q)));
+  $('lib').innerHTML = list.length ? list.map(x => `<div data-u="${esc(x.url)}">
+      <span class="tag">${x.type === 'm3u' ? 'Playlist' : 'Guide'}</span>
+      <span style="flex:1">${esc(x.name)} <span class="muted small">· ${esc(x.provider)} · ${esc(x.country)}${x.size_mb ? ' · ' + x.size_mb + ' MB' : ''}</span>
+        ${x.notes ? `<br><span class="muted small">${esc(x.notes)}</span>` : ''}</span>
+      ${have.has(x.url) ? '<span class="muted small">Added ✓</span>' : '<button class="b">+ Add</button>'}</div>`).join('')
+    : '<p class="muted">Nothing found.</p>';
+}
+['libQ', 'libCountry', 'libType'].forEach(id => $(id).addEventListener('input', renderLib));
+$('lib').addEventListener('click', e => {
+  if (!e.target.closest('button')) return;
+  const x = LIB.find(l => l.url === e.target.closest('[data-u]').dataset.u);
+  srcDraft.push({type: x.type, name: x.name, url: x.url, enabled: true}); renderSources();
+});
+function addSource(type) { srcDraft.push({type, name: type === 'm3u' ? 'My playlist' : 'My guide', url: '', enabled: true}); renderSources(); }
+async function saveSources() {
+  if (Object.keys(dirty).length) await saveChanges();
+  await post('/api/sources', {sources: srcDraft}); srcDraft = null; poll();
+}
+
+function renderAuto() {
+  const ai = S.auto_info;
+  const ago = ai.last ? new Date(ai.last * 1000).toLocaleString() : 'not yet';
+  $('autoInfo').textContent = `${ai.known} guides found on the internet · ${ai.checked} tested · last search: ${ago}`;
+  $('autoList').innerHTML = S.auto.length ? S.auto.map(a => `<div class="src-row" style="grid-template-columns:1fr auto">
+      <span><b>${esc(a.name)}</b> <span class="tag">+${a.gain} channels</span><br><span class="muted small">${esc(a.url)}</span><br>
+        <span data-h="${a.id}"></span></span>
+      <span style="display:flex;gap:4px"><button class="b" data-keep="${a.id}" title="Make it one of your own sources">Keep</button>
+        <button class="b d" data-drop="${a.id}" title="Remove and never add again">Remove</button></span></div>`).join('')
+    : '<p class="muted small">Nothing auto-added yet.</p>';
+  $('autoRecent').innerHTML = ai.recent.map(c => `<div style="cursor:default"><span class="tag ${c.why === 'added' ? '' : 'bad'}">${esc(c.why || '')}</span>
+      <span style="flex:1">${esc(c.name)}<br><code>${esc(c.url)}</code></span></div>`).join('') || '<p class="muted small">Nothing checked yet.</p>';
+}
+$('autoList').addEventListener('click', async e => {
+  const k = e.target.dataset.keep, d = e.target.dataset.drop;
+  if (k) await post('/api/auto/keep', {id: k});
+  if (d && confirm('Remove this guide? It will not be added again.')) await post('/api/auto/remove', {id: d});
+  if (k || d) { srcDraft = null; poll(); }
+});
+
+/* links & settings */
+function renderLinks() {
+  const pu = S.settings.public_url;
+  $('pubBtn').classList.toggle('hide', !pu);
+  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide (XMLTV)', pu + '/epg.xml'], ['Guide, compressed', pu + '/epg.xml.gz']]
+    .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
+  $('onlineHelp').textContent = pu
+    ? 'GitHub rebuilds these every 6 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update a few minutes later.'
+    : 'Not set up yet. Press the button below once (you need a free GitHub account). After that you get links that work anywhere, even with this PC off.';
+  $('setupBtn').classList.toggle('hide', !!pu);
+  const bases = [...new Set([S.lan, location.origin])];
+  const rows = [];
+  for (const b of bases) {
+    const label = b.includes('localhost') || b.includes('127.0.0.1') ? ' (this PC only)' : '';
+    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide (XMLTV)' + label, b + '/epg.xml'], ['Guide, compressed' + label, b + '/epg.xml.gz']);
+  }
+  $('linkRows').innerHTML = rows.map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('');
+  for (const k of Object.keys(S.settings)) {
+    const el = $('s_' + k); if (!el) continue;
+    el.type === 'checkbox' ? el.checked = S.settings[k] : el.value = S.settings[k];
+  }
+}
+function renderLog() { $('log').textContent = (S.log || []).join('\n') || 'Nothing yet.'; $('log').scrollTop = 1e9; }
+async function saveSettings() {
+  const body = {};
+  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? +el.value : el.value.trim(); }
+  await post('/api/settings', body); poll();
+}
+async function publishOnline() {
+  if (Object.keys(dirty).length) await saveChanges();
+  if (srcDraft && JSON.stringify(srcDraft) !== JSON.stringify(S.sources) && confirm('Save your source changes first?')) await saveSources();
+  $('pubBtn').textContent = 'Publishing…';
+  const r = await post('/api/publish', {});
+  $('pubBtn').textContent = '☁ Publish online';
+  alert(r.ok ? 'Published! Your online links update in about 2-5 minutes.' : 'Could not publish: ' + r.error);
+  poll();
+}
+async function refreshAll() { await post('/api/refresh', {}); poll(); }
+
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('main > section').forEach(s => s.classList.toggle('hide', s.id !== 'tab-' + b.dataset.tab));
+});
+window.addEventListener('beforeunload', e => { if (Object.keys(dirty).length) e.preventDefault(); });
+const setHH = () => document.documentElement.style.setProperty('--hh', document.querySelector('header').offsetHeight + 'px');
+window.addEventListener('resize', setHH); setHH();
+load().then(() => { if (S.busy) poll(); if (!S.sources.length) document.querySelector('[data-tab=sources]').click(); });
+</script>
+</body>
+</html>

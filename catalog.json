@@ -1,0 +1,2329 @@
+[
+ {
+  "type": "m3u",
+  "name": "Free-TV all countries",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
+  "country": "ALL",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.54,
+  "notes": "2053 entries; Curated free/official streams"
+ },
+ {
+  "type": "m3u",
+  "name": "i.mjh.nz everything combined TV playlist",
+  "url": "https://i.mjh.nz/all/raw-tv.m3u8",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.12,
+  "notes": "283 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org all channels",
+  "url": "https://iptv-org.github.io/iptv/index.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 2.59,
+  "notes": "11379 entries"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org all, grouped by category",
+  "url": "https://iptv-org.github.io/iptv/index.category.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 2.75,
+  "notes": "12077 entries"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org all, grouped by country",
+  "url": "https://iptv-org.github.io/iptv/index.country.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 3.01,
+  "notes": "12883 entries"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org all, grouped by language",
+  "url": "https://iptv-org.github.io/iptv/index.language.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 2.91,
+  "notes": "12818 entries"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: documentary",
+  "url": "https://iptv-org.github.io/iptv/categories/documentary.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.07,
+  "notes": "253 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: entertainment",
+  "url": "https://iptv-org.github.io/iptv/categories/entertainment.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.21,
+  "notes": "903 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: kids",
+  "url": "https://iptv-org.github.io/iptv/categories/kids.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.1,
+  "notes": "431 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: movies",
+  "url": "https://iptv-org.github.io/iptv/categories/movies.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.2,
+  "notes": "770 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: music",
+  "url": "https://iptv-org.github.io/iptv/categories/music.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.16,
+  "notes": "783 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: news",
+  "url": "https://iptv-org.github.io/iptv/categories/news.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.24,
+  "notes": "1051 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org category: sports",
+  "url": "https://iptv-org.github.io/iptv/categories/sports.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.12,
+  "notes": "461 entries; Pattern /categories/<slug>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: deu",
+  "url": "https://iptv-org.github.io/iptv/languages/deu.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.07,
+  "notes": "324 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: eng",
+  "url": "https://iptv-org.github.io/iptv/languages/eng.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.7,
+  "notes": "3016 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: fra",
+  "url": "https://iptv-org.github.io/iptv/languages/fra.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.1,
+  "notes": "447 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: hin",
+  "url": "https://iptv-org.github.io/iptv/languages/hin.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.1,
+  "notes": "375 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: ita",
+  "url": "https://iptv-org.github.io/iptv/languages/ita.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.08,
+  "notes": "338 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: por",
+  "url": "https://iptv-org.github.io/iptv/languages/por.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.11,
+  "notes": "482 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org language: spa",
+  "url": "https://iptv-org.github.io/iptv/languages/spa.m3u",
+  "country": "ALL",
+  "provider": "iptv-org",
+  "size_mb": 0.52,
+  "notes": "2424 entries; Pattern /languages/<ISO 639-3>.m3u"
+ },
+ {
+  "type": "m3u",
+  "name": "NZ + AU combined TV playlist",
+  "url": "https://i.mjh.nz/nzau/raw-tv.m3u8",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.09,
+  "notes": "209 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV ALL",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_all.m3u",
+  "country": "ALL",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 1.36,
+  "notes": "2884 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV ALL",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_all.m3u",
+  "country": "ALL",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.93,
+  "notes": "3007 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus ALL",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_all.m3u",
+  "country": "ALL",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.8,
+  "notes": "2658 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Whale TV+ (all)",
+  "url": "https://www.apsattv.com/whaletvplus_all.m3u",
+  "country": "ALL",
+  "provider": "apsattv.com",
+  "size_mb": 0.32,
+  "notes": "360 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "World free channels TV playlist",
+  "url": "https://i.mjh.nz/world/raw-tv.m3u8",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.0,
+  "notes": "4 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "10 FAST",
+  "url": "https://www.apsattv.com/10fast.m3u",
+  "country": "AU",
+  "provider": "apsattv.com",
+  "size_mb": 0.02,
+  "notes": "55 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "9Now FAST",
+  "url": "https://www.apsattv.com/9fast.m3u",
+  "country": "AU",
+  "provider": "apsattv.com",
+  "size_mb": 0.01,
+  "notes": "30 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "AU Adelaide TV playlist",
+  "url": "https://i.mjh.nz/au/Adelaide/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "172 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "AU Brisbane TV playlist",
+  "url": "https://i.mjh.nz/au/Brisbane/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "181 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "AU free-to-air (all cities) TV playlist",
+  "url": "https://i.mjh.nz/au/all/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.1,
+  "notes": "248 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "AU Melbourne TV playlist",
+  "url": "https://i.mjh.nz/au/Melbourne/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "172 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "AU Perth TV playlist",
+  "url": "https://i.mjh.nz/au/Perth/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "171 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "AU Sydney TV playlist",
+  "url": "https://i.mjh.nz/au/Sydney/raw-tv.m3u8",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "174 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Australia",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_australia.m3u8",
+  "country": "AU",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "26 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org AU",
+  "url": "https://iptv-org.github.io/iptv/countries/au.m3u",
+  "country": "AU",
+  "provider": "iptv-org",
+  "size_mb": 0.02,
+  "notes": "76 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "Kogan TV+",
+  "url": "https://www.apsattv.com/kogantvplus.m3u",
+  "country": "AU",
+  "provider": "apsattv.com",
+  "size_mb": 0.06,
+  "notes": "82 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels AU",
+  "url": "https://www.apsattv.com/aulg.m3u",
+  "country": "AU",
+  "provider": "apsattv.com",
+  "size_mb": 0.11,
+  "notes": "171 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV AU",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_au.m3u",
+  "country": "AU",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.14,
+  "notes": "294 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus AU",
+  "url": "https://www.apsattv.com/ssungaus.m3u",
+  "country": "AU",
+  "provider": "apsattv.com",
+  "size_mb": 0.02,
+  "notes": "140 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Brazil",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_brazil.m3u8",
+  "country": "BR",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "11 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org BR",
+  "url": "https://iptv-org.github.io/iptv/countries/br.m3u",
+  "country": "BR",
+  "provider": "iptv-org",
+  "size_mb": 0.08,
+  "notes": "398 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels BR",
+  "url": "https://www.apsattv.com/brlg.m3u",
+  "country": "BR",
+  "provider": "apsattv.com",
+  "size_mb": 0.14,
+  "notes": "223 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV BR",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_br.m3u",
+  "country": "BR",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "179 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus BR",
+  "url": "https://www.apsattv.com/ssungbra.m3u",
+  "country": "BR",
+  "provider": "apsattv.com",
+  "size_mb": 0.02,
+  "notes": "159 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Canada",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_canada.m3u8",
+  "country": "CA",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "20 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org CA",
+  "url": "https://iptv-org.github.io/iptv/countries/ca.m3u",
+  "country": "CA",
+  "provider": "iptv-org",
+  "size_mb": 0.06,
+  "notes": "265 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels CA",
+  "url": "https://www.apsattv.com/calg.m3u",
+  "country": "CA",
+  "provider": "apsattv.com",
+  "size_mb": 0.16,
+  "notes": "234 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV CA",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_ca.m3u",
+  "country": "CA",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.22,
+  "notes": "468 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV CA",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_ca.m3u",
+  "country": "CA",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.07,
+  "notes": "235 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus CA",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_ca.m3u",
+  "country": "CA",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.09,
+  "notes": "292 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Germany",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_germany.m3u8",
+  "country": "DE",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.02,
+  "notes": "35 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org DE",
+  "url": "https://iptv-org.github.io/iptv/countries/de.m3u",
+  "country": "DE",
+  "provider": "iptv-org",
+  "size_mb": 0.07,
+  "notes": "285 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels DE",
+  "url": "https://www.apsattv.com/delg.m3u",
+  "country": "DE",
+  "provider": "apsattv.com",
+  "size_mb": 0.16,
+  "notes": "231 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV DE",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_de.m3u",
+  "country": "DE",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "199 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV DE",
+  "url": "https://www.apsattv.com/rakuten_de.m3u",
+  "country": "DE",
+  "provider": "apsattv.com",
+  "size_mb": 0.2,
+  "notes": "157 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus DE",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_de.m3u",
+  "country": "DE",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "217 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Spain",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_spain.m3u8",
+  "country": "ES",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.02,
+  "notes": "48 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org ES",
+  "url": "https://iptv-org.github.io/iptv/countries/es.m3u",
+  "country": "ES",
+  "provider": "iptv-org",
+  "size_mb": 0.08,
+  "notes": "325 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels ES",
+  "url": "https://www.apsattv.com/eslg.m3u",
+  "country": "ES",
+  "provider": "apsattv.com",
+  "size_mb": 0.15,
+  "notes": "209 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV ES",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_es.m3u",
+  "country": "ES",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.13,
+  "notes": "268 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV ES",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_es.m3u",
+  "country": "ES",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.05,
+  "notes": "146 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV ES",
+  "url": "https://www.apsattv.com/rakuten_es.m3u",
+  "country": "ES",
+  "provider": "apsattv.com",
+  "size_mb": 0.16,
+  "notes": "125 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus ES",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_es.m3u",
+  "country": "ES",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "189 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV France",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_france.m3u8",
+  "country": "FR",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "33 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org FR",
+  "url": "https://iptv-org.github.io/iptv/countries/fr.m3u",
+  "country": "FR",
+  "provider": "iptv-org",
+  "size_mb": 0.05,
+  "notes": "198 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels FR",
+  "url": "https://www.apsattv.com/frlg.m3u",
+  "country": "FR",
+  "provider": "apsattv.com",
+  "size_mb": 0.14,
+  "notes": "198 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV FR",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_fr.m3u",
+  "country": "FR",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.11,
+  "notes": "238 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV FR",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_fr.m3u",
+  "country": "FR",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.05,
+  "notes": "146 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV FR",
+  "url": "https://www.apsattv.com/rakuten_fr.m3u",
+  "country": "FR",
+  "provider": "apsattv.com",
+  "size_mb": 0.16,
+  "notes": "127 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus FR",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_fr.m3u",
+  "country": "FR",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.05,
+  "notes": "182 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Uk",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_uk.m3u8",
+  "country": "GB",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.02,
+  "notes": "55 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org UK",
+  "url": "https://iptv-org.github.io/iptv/countries/uk.m3u",
+  "country": "GB",
+  "provider": "iptv-org",
+  "size_mb": 0.07,
+  "notes": "295 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels UK",
+  "url": "https://www.apsattv.com/gblg.m3u",
+  "country": "GB",
+  "provider": "apsattv.com",
+  "size_mb": 0.24,
+  "notes": "340 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV GB",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_gb.m3u",
+  "country": "GB",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.18,
+  "notes": "369 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV GB",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_gb.m3u",
+  "country": "GB",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "186 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV UK",
+  "url": "https://www.apsattv.com/rakuten_uk.m3u",
+  "country": "GB",
+  "provider": "apsattv.com",
+  "size_mb": 0.26,
+  "notes": "197 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus GB",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_gb.m3u",
+  "country": "GB",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.08,
+  "notes": "277 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV India",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_india.m3u8",
+  "country": "IN",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "32 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org IN",
+  "url": "https://iptv-org.github.io/iptv/countries/in.m3u",
+  "country": "IN",
+  "provider": "iptv-org",
+  "size_mb": 0.22,
+  "notes": "847 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels IN",
+  "url": "https://www.apsattv.com/inlg.m3u",
+  "country": "IN",
+  "provider": "apsattv.com",
+  "size_mb": 0.15,
+  "notes": "177 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus IN",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_in.m3u",
+  "country": "IN",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "206 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Italy",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_italy.m3u8",
+  "country": "IT",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.1,
+  "notes": "443 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org IT",
+  "url": "https://iptv-org.github.io/iptv/countries/it.m3u",
+  "country": "IT",
+  "provider": "iptv-org",
+  "size_mb": 0.08,
+  "notes": "336 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels IT",
+  "url": "https://www.apsattv.com/itlg.m3u",
+  "country": "IT",
+  "provider": "apsattv.com",
+  "size_mb": 0.13,
+  "notes": "203 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV IT",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_it.m3u",
+  "country": "IT",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.04,
+  "notes": "128 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV IT",
+  "url": "https://www.apsattv.com/rakuten_it.m3u",
+  "country": "IT",
+  "provider": "apsattv.com",
+  "size_mb": 0.15,
+  "notes": "114 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus IT",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_it.m3u",
+  "country": "IT",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "191 entries; url-tvg = i.mjh.nz SamsungTVPlus guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Mexico",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_mexico.m3u8",
+  "country": "MX",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "14 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org MX",
+  "url": "https://iptv-org.github.io/iptv/countries/mx.m3u",
+  "country": "MX",
+  "provider": "iptv-org",
+  "size_mb": 0.04,
+  "notes": "177 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels MX",
+  "url": "https://www.apsattv.com/mxlg.m3u",
+  "country": "MX",
+  "provider": "apsattv.com",
+  "size_mb": 0.13,
+  "notes": "207 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV MX",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_mx.m3u",
+  "country": "MX",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.13,
+  "notes": "280 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV MX",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_mx.m3u",
+  "country": "MX",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.06,
+  "notes": "197 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus MX",
+  "url": "https://www.apsattv.com/ssungmex.m3u",
+  "country": "MX",
+  "provider": "apsattv.com",
+  "size_mb": 0.0,
+  "notes": "31 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Netherlands",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_netherlands.m3u8",
+  "country": "NL",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "13 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org NL",
+  "url": "https://iptv-org.github.io/iptv/countries/nl.m3u",
+  "country": "NL",
+  "provider": "iptv-org",
+  "size_mb": 0.04,
+  "notes": "176 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels NL",
+  "url": "https://www.apsattv.com/nllg.m3u",
+  "country": "NL",
+  "provider": "apsattv.com",
+  "size_mb": 0.14,
+  "notes": "198 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Rakuten TV NL",
+  "url": "https://www.apsattv.com/rakuten_nl.m3u",
+  "country": "NL",
+  "provider": "apsattv.com",
+  "size_mb": 0.23,
+  "notes": "173 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus NL",
+  "url": "https://www.apsattv.com/ssungneth.m3u",
+  "country": "NL",
+  "provider": "apsattv.com",
+  "size_mb": 0.01,
+  "notes": "52 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org NZ",
+  "url": "https://iptv-org.github.io/iptv/countries/nz.m3u",
+  "country": "NZ",
+  "provider": "iptv-org",
+  "size_mb": 0.01,
+  "notes": "27 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels NZ",
+  "url": "https://www.apsattv.com/nzlg.m3u",
+  "country": "NZ",
+  "provider": "apsattv.com",
+  "size_mb": 0.08,
+  "notes": "120 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "NZ Freeview TV playlist",
+  "url": "https://i.mjh.nz/nz/raw-tv.m3u8",
+  "country": "NZ",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.02,
+  "notes": "39 entries; Also kodi-tv.m3u8, tvh-tv.m3u8, raw-radio.m3u8, raw.m3u8 (tv+radio) in same folder; x-tvg-url points at epg.xml.gz"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV NZ",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_nz.m3u",
+  "country": "NZ",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.13,
+  "notes": "272 entries; url-tvg = i.mjh.nz Plex guide"
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus NZ",
+  "url": "https://www.apsattv.com/ssungnz.m3u",
+  "country": "NZ",
+  "provider": "apsattv.com",
+  "size_mb": 0.02,
+  "notes": "119 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "M3UPT Portugal TV+radio",
+  "url": "https://raw.githubusercontent.com/LITUATUI/M3UPT/main/M3U/M3UPT.m3u",
+  "country": "PT",
+  "provider": "M3UPT (LITUATUI)",
+  "size_mb": 0.26,
+  "notes": "966 entries; Public/official PT streams"
+ },
+ {
+  "type": "m3u",
+  "name": "Amazon Fire TV free channels",
+  "url": "https://www.apsattv.com/firetv.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.01,
+  "notes": "67 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "DistroTV",
+  "url": "https://www.apsattv.com/distro.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.23,
+  "notes": "336 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Free Live Sports",
+  "url": "https://www.apsattv.com/freelivesports.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.08,
+  "notes": "125 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Free-TV Usa",
+  "url": "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlists/playlist_usa.m3u8",
+  "country": "US",
+  "provider": "Free-TV/IPTV",
+  "size_mb": 0.01,
+  "notes": "28 entries; Pattern /playlists/playlist_<country_name>.m3u8"
+ },
+ {
+  "type": "m3u",
+  "name": "iptv-org US",
+  "url": "https://iptv-org.github.io/iptv/countries/us.m3u",
+  "country": "US",
+  "provider": "iptv-org",
+  "size_mb": 0.33,
+  "notes": "1494 entries; Pattern /countries/<iso2 lowercase>.m3u (UK is uk.m3u, not gb)"
+ },
+ {
+  "type": "m3u",
+  "name": "LG Channels US",
+  "url": "https://www.apsattv.com/uslg.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.33,
+  "notes": "459 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Local Now",
+  "url": "https://www.apsattv.com/localnow.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 1.04,
+  "notes": "447 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Plex Live TV US",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plex_us.m3u",
+  "country": "US",
+  "provider": "Plex (BuddyChewChew generator)",
+  "size_mb": 0.33,
+  "notes": "695 entries; url-tvg = i.mjh.nz Plex guide",
+  "default": true
+ },
+ {
+  "type": "m3u",
+  "name": "Pluto TV US",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/plutotv_us.m3u",
+  "country": "US",
+  "provider": "Pluto TV (BuddyChewChew generator)",
+  "size_mb": 0.13,
+  "notes": "432 entries; Streams via jmp2.uk redirects; url-tvg = i.mjh.nz PlutoTV guide",
+  "default": true
+ },
+ {
+  "type": "m3u",
+  "name": "Roku Channel (all)",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/roku_all.m3u",
+  "country": "US",
+  "provider": "Roku (BuddyChewChew generator)",
+  "size_mb": 0.12,
+  "notes": "255 entries; url-tvg = i.mjh.nz Roku guide",
+  "default": true
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus US",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/samsungtvplus_us.m3u",
+  "country": "US",
+  "provider": "Samsung TV Plus (BuddyChewChew generator)",
+  "size_mb": 0.18,
+  "notes": "588 entries; url-tvg = i.mjh.nz SamsungTVPlus guide",
+  "default": true
+ },
+ {
+  "type": "m3u",
+  "name": "Samsung TV Plus US",
+  "url": "https://www.apsattv.com/ssungusa.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.16,
+  "notes": "539 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Tablo FAST",
+  "url": "https://www.apsattv.com/tablo.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.02,
+  "notes": "166 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "TCLtv+",
+  "url": "https://www.apsattv.com/tcl.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.07,
+  "notes": "593 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Tubi live (all)",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/tubi_all.m3u",
+  "country": "US",
+  "provider": "Tubi (BuddyChewChew generator)",
+  "size_mb": 0.05,
+  "notes": "181 entries; Pairs with tubi_epg.xml",
+  "default": true
+ },
+ {
+  "type": "m3u",
+  "name": "Vizio WatchFree+",
+  "url": "https://www.apsattv.com/vizio.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.32,
+  "notes": "433 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Xumo",
+  "url": "https://www.apsattv.com/xumo.m3u",
+  "country": "US",
+  "provider": "apsattv.com",
+  "size_mb": 0.44,
+  "notes": "389 entries; Pattern https://www.apsattv.com/<name>.m3u; full index at https://www.apsattv.com/streams.html (~120 lists)"
+ },
+ {
+  "type": "m3u",
+  "name": "Xumo Play",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/xumo-playlist-generator/main/playlists/xumo_playlist.m3u",
+  "country": "US",
+  "provider": "Xumo (BuddyChewChew generator)",
+  "size_mb": 0.42,
+  "notes": "435 entries; Pairs with xumo_epg.xml.gz",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw all countries",
+  "url": "https://epg.pw/xmltv/epg.xml.gz",
+  "country": "ALL",
+  "provider": "epg.pw",
+  "size_mb": 50.44,
+  "notes": "15966 channels, 1442642 programmes, data to 2026-11-05; gzip, ~489.2 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 ALL_SOURCES1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz",
+  "country": "ALL",
+  "provider": "epgshare01",
+  "size_mb": 204.16,
+  "notes": "28529 channels, 2965781 programmes, data to 2027-04-10; gzip, ~1950.8 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 PLEX1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
+  "country": "ALL",
+  "provider": "epgshare01",
+  "size_mb": 4.63,
+  "notes": "693 channels, 76102 programmes, data to 2026-11-01; gzip, ~50.0 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 RAKUTEN1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz",
+  "country": "ALL",
+  "provider": "epgshare01",
+  "size_mb": 8.86,
+  "notes": "1640 channels, 176409 programmes, data to 2026-11-01; gzip, ~74.9 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk FreeTV_guide",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/FreeTV_guide.xml.gz",
+  "country": "ALL",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 6.81,
+  "notes": "1171 channels, 98397 programmes, data to 2026-11-01; gzip, ~80.0 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk guide",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/guide.xml.gz",
+  "country": "ALL",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 4.98,
+  "notes": "1707 channels, 63431 programmes, data to 2026-11-01; gzip, ~47.9 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "i.mjh.nz everything combined guide",
+  "url": "https://i.mjh.nz/all/epg.xml.gz",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 3.31,
+  "notes": "289 channels, 36980 programmes, data to 2026-11-27; gzip, ~29.4 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "NZ + AU combined guide",
+  "url": "https://i.mjh.nz/nzau/epg.xml.gz",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 2.12,
+  "notes": "215 channels, 23907 programmes, data to 2026-11-27; gzip, ~20.3 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV ALL guide",
+  "url": "https://i.mjh.nz/Plex/all.xml.gz",
+  "country": "ALL",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 8.19,
+  "notes": "2885 channels, 162655 programmes, data to 2026-10-31; gzip, ~54.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV ALL guide",
+  "url": "https://i.mjh.nz/PlutoTV/all.xml.gz",
+  "country": "ALL",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 7.54,
+  "notes": "3007 channels, 73105 programmes, data to 2026-10-30; gzip, ~64.3 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus ALL guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/all.xml.gz",
+  "country": "ALL",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 2.73,
+  "notes": "2658 channels, 23180 programmes, data to 2026-10-30; gzip, ~14.4 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "World free channels guide",
+  "url": "https://i.mjh.nz/world/epg.xml.gz",
+  "country": "ALL",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.07,
+  "notes": "4 channels, 910 programmes, data to 2026-11-22; gzip, ~1.0 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV AR guide",
+  "url": "https://i.mjh.nz/PlutoTV/ar.xml.gz",
+  "country": "AR",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.5,
+  "notes": "192 channels, 4652 programmes, data to 2026-10-30; gzip, ~4.1 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus AT guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/at.xml.gz",
+  "country": "AT",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.22,
+  "notes": "177 channels, 1525 programmes, data to 2026-10-30; gzip, ~1.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU Adelaide guide",
+  "url": "https://i.mjh.nz/au/Adelaide/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.73,
+  "notes": "172 channels, 13606 programmes, data to 2026-11-22; gzip, ~7.3 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU Brisbane guide",
+  "url": "https://i.mjh.nz/au/Brisbane/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.83,
+  "notes": "181 channels, 14748 programmes, data to 2026-11-22; gzip, ~8.1 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU free-to-air (all cities) guide",
+  "url": "https://i.mjh.nz/au/all/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 1.93,
+  "notes": "248 channels, 26739 programmes, data to 2026-11-22; gzip, ~16.4 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU Melbourne guide",
+  "url": "https://i.mjh.nz/au/Melbourne/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.72,
+  "notes": "172 channels, 13427 programmes, data to 2026-11-22; gzip, ~7.2 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU Perth guide",
+  "url": "https://i.mjh.nz/au/Perth/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.71,
+  "notes": "171 channels, 13366 programmes, data to 2026-11-22; gzip, ~7.2 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "AU Sydney guide",
+  "url": "https://i.mjh.nz/au/Sydney/epg.xml.gz",
+  "country": "AU",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 0.74,
+  "notes": "174 channels, 13666 programmes, data to 2026-11-22; gzip, ~7.4 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw AU",
+  "url": "https://epg.pw/xmltv/epg_AU.xml.gz",
+  "country": "AU",
+  "provider": "epg.pw",
+  "size_mb": 0.47,
+  "notes": "205 channels, 13546 programmes, data to 2026-11-04; gzip, ~4.4 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 AU1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz",
+  "country": "AU",
+  "provider": "epgshare01",
+  "size_mb": 3.94,
+  "notes": "345 channels, 55224 programmes, data to 2026-11-02; gzip, ~35.7 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org AU",
+  "url": "https://iptv-epg.org/files/epg-au.xml.gz",
+  "country": "AU",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 6.81,
+  "notes": "490 channels, 60064 programmes, data to 2026-11-15; gzip, ~40.8 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Kayo Sports guide",
+  "url": "https://i.mjh.nz/Kayo/epg.xml.gz",
+  "country": "AU",
+  "provider": "Kayo Sports (i.mjh.nz)",
+  "size_mb": 0.01,
+  "notes": "12 channels, 1062 programmes, data to 2026-11-04; gzip, ~0.3 MB uncompressed; Guide data only; channels require a subscription"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG australia1",
+  "url": "https://www.open-epg.com/files/australia1.xml.gz",
+  "country": "AU",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.04,
+  "notes": "68 channels, 2847 programmes, data to 2026-10-31; gzip, ~0.5 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV AU guide",
+  "url": "https://i.mjh.nz/Plex/au.xml.gz",
+  "country": "AU",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 0.72,
+  "notes": "295 channels, 13687 programmes, data to 2026-10-31; gzip, ~4.5 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "xmltv.net Adelaide",
+  "url": "https://xmltv.net/xml_files/Adelaide.xml",
+  "country": "AU",
+  "provider": "xmltv.net",
+  "size_mb": 9.17,
+  "notes": "48 channels, 11247 programmes, data to 2026-11-06; Pattern /xml_files/<Region>.xml (~50 AU regions)"
+ },
+ {
+  "type": "xmltv",
+  "name": "xmltv.net Brisbane",
+  "url": "https://xmltv.net/xml_files/Brisbane.xml",
+  "country": "AU",
+  "provider": "xmltv.net",
+  "size_mb": 8.94,
+  "notes": "47 channels, 10929 programmes, data to 2026-11-06; Pattern /xml_files/<Region>.xml (~50 AU regions)"
+ },
+ {
+  "type": "xmltv",
+  "name": "xmltv.net Melbourne",
+  "url": "https://xmltv.net/xml_files/Melbourne.xml",
+  "country": "AU",
+  "provider": "xmltv.net",
+  "size_mb": 8.99,
+  "notes": "47 channels, 10995 programmes, data to 2026-11-06; Pattern /xml_files/<Region>.xml (~50 AU regions)"
+ },
+ {
+  "type": "xmltv",
+  "name": "xmltv.net Perth",
+  "url": "https://xmltv.net/xml_files/Perth.xml",
+  "country": "AU",
+  "provider": "xmltv.net",
+  "size_mb": 8.8,
+  "notes": "47 channels, 10741 programmes, data to 2026-11-06; Pattern /xml_files/<Region>.xml (~50 AU regions)"
+ },
+ {
+  "type": "xmltv",
+  "name": "xmltv.net Sydney",
+  "url": "https://xmltv.net/xml_files/Sydney.xml",
+  "country": "AU",
+  "provider": "xmltv.net",
+  "size_mb": 8.89,
+  "notes": "47 channels, 10882 programmes, data to 2026-11-06; Pattern /xml_files/<Region>.xml (~50 AU regions)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw BR",
+  "url": "https://epg.pw/xmltv/epg_BR.xml.gz",
+  "country": "BR",
+  "provider": "epg.pw",
+  "size_mb": 0.86,
+  "notes": "335 channels, 34086 programmes, data to 2026-11-01; gzip, ~10.4 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 BR1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz",
+  "country": "BR",
+  "provider": "epgshare01",
+  "size_mb": 1.1,
+  "notes": "266 channels, 27675 programmes, data to 2026-11-02; gzip, ~11.0 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org BR",
+  "url": "https://iptv-epg.org/files/epg-br.xml.gz",
+  "country": "BR",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 3.36,
+  "notes": "182 channels, 28599 programmes, data to 2026-11-03; gzip, ~15.7 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG brazil1",
+  "url": "https://www.open-epg.com/files/brazil1.xml.gz",
+  "country": "BR",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.91,
+  "notes": "801 channels, 26008 programmes, data to 2026-10-31; gzip, ~8.4 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV BR guide",
+  "url": "https://i.mjh.nz/PlutoTV/br.xml.gz",
+  "country": "BR",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.46,
+  "notes": "179 channels, 4299 programmes, data to 2026-10-30; gzip, ~3.8 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw CA",
+  "url": "https://epg.pw/xmltv/epg_CA.xml.gz",
+  "country": "CA",
+  "provider": "epg.pw",
+  "size_mb": 2.46,
+  "notes": "696 channels, 50383 programmes, data to 2026-11-01; gzip, ~19.3 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 CA2",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz",
+  "country": "CA",
+  "provider": "epgshare01",
+  "size_mb": 6.63,
+  "notes": "696 channels, 68727 programmes, data to 2026-11-02; gzip, ~70.2 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org CA",
+  "url": "https://iptv-epg.org/files/epg-ca.xml.gz",
+  "country": "CA",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 9.8,
+  "notes": "808 channels, 119219 programmes, data to 2026-11-13; gzip, ~76.8 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG canada1",
+  "url": "https://www.open-epg.com/files/canada1.xml.gz",
+  "country": "CA",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.4,
+  "notes": "127 channels, 7269 programmes, data to 2026-10-31; gzip, ~2.4 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV CA guide",
+  "url": "https://i.mjh.nz/Plex/ca.xml.gz",
+  "country": "CA",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 1.61,
+  "notes": "468 channels, 34857 programmes, data to 2026-10-31; gzip, ~11.2 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV CA guide",
+  "url": "https://i.mjh.nz/PlutoTV/ca.xml.gz",
+  "country": "CA",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.55,
+  "notes": "235 channels, 6075 programmes, data to 2026-10-30; gzip, ~5.1 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus CA guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/ca.xml.gz",
+  "country": "CA",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.24,
+  "notes": "292 channels, 2531 programmes, data to 2026-10-30; gzip, ~1.5 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus CH guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/ch.xml.gz",
+  "country": "CH",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.23,
+  "notes": "188 channels, 1596 programmes, data to 2026-10-30; gzip, ~1.1 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "TV7 / Init7 Switzerland",
+  "url": "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_epg.xml.gz",
+  "country": "CH",
+  "provider": "mathewmeconry/TV7_EPG_Data",
+  "size_mb": 11.42,
+  "notes": "241 channels, 111743 programmes, data to 2026-11-06; gzip, ~49.5 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV CL guide",
+  "url": "https://i.mjh.nz/PlutoTV/cl.xml.gz",
+  "country": "CL",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.55,
+  "notes": "235 channels, 6075 programmes, data to 2026-10-30; gzip, ~5.1 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw DE",
+  "url": "https://epg.pw/xmltv/epg_DE.xml.gz",
+  "country": "DE",
+  "provider": "epg.pw",
+  "size_mb": 1.69,
+  "notes": "250 channels, 23248 programmes, data to 2026-11-02; gzip, ~11.3 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 DE1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz",
+  "country": "DE",
+  "provider": "epgshare01",
+  "size_mb": 4.29,
+  "notes": "266 channels, 26536 programmes, data to 2026-11-02; gzip, ~25.9 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org DE",
+  "url": "https://iptv-epg.org/files/epg-de.xml.gz",
+  "country": "DE",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 6.65,
+  "notes": "439 channels, 53613 programmes, data to 2026-11-07; gzip, ~35.3 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG germany1",
+  "url": "https://www.open-epg.com/files/germany1.xml.gz",
+  "country": "DE",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.01,
+  "notes": "181 channels, 507 programmes, data to 2026-10-30; gzip, ~0.1 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV DE guide",
+  "url": "https://i.mjh.nz/PlutoTV/de.xml.gz",
+  "country": "DE",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.55,
+  "notes": "199 channels, 5014 programmes, data to 2026-10-30; gzip, ~4.6 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus DE guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
+  "country": "DE",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.28,
+  "notes": "217 channels, 1915 programmes, data to 2026-10-30; gzip, ~1.3 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV DK guide",
+  "url": "https://i.mjh.nz/PlutoTV/dk.xml.gz",
+  "country": "DK",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.72,
+  "notes": "277 channels, 6903 programmes, data to 2026-10-30; gzip, ~6.2 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPG dobleM Spain",
+  "url": "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/EPG_dobleM.xml.gz",
+  "country": "ES",
+  "provider": "davidmuma/EPG_dobleM",
+  "size_mb": 5.79,
+  "notes": "641 channels, 83539 programmes, data to 2026-12-07; gzip, ~56.1 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 ES1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz",
+  "country": "ES",
+  "provider": "epgshare01",
+  "size_mb": 3.16,
+  "notes": "373 channels, 33830 programmes, data to 2026-10-31; gzip, ~24.4 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org ES",
+  "url": "https://iptv-epg.org/files/epg-es.xml.gz",
+  "country": "ES",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 3.78,
+  "notes": "300 channels, 32522 programmes, data to 2026-11-09; gzip, ~22.8 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG spain1",
+  "url": "https://www.open-epg.com/files/spain1.xml.gz",
+  "country": "ES",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.13,
+  "notes": "187 channels, 9488 programmes, data to 2026-10-31; gzip, ~1.7 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV ES guide",
+  "url": "https://i.mjh.nz/Plex/es.xml.gz",
+  "country": "ES",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 0.5,
+  "notes": "268 channels, 8076 programmes, data to 2026-10-31; gzip, ~3.2 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV ES guide",
+  "url": "https://i.mjh.nz/PlutoTV/es.xml.gz",
+  "country": "ES",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.37,
+  "notes": "146 channels, 3514 programmes, data to 2026-10-30; gzip, ~3.2 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus ES guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/es.xml.gz",
+  "country": "ES",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.17,
+  "notes": "189 channels, 1619 programmes, data to 2026-10-30; gzip, ~0.9 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw FR",
+  "url": "https://epg.pw/xmltv/epg_FR.xml.gz",
+  "country": "FR",
+  "provider": "epg.pw",
+  "size_mb": 1.86,
+  "notes": "515 channels, 41512 programmes, data to 2026-11-01; gzip, ~15.9 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 FR1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
+  "country": "FR",
+  "provider": "epgshare01",
+  "size_mb": 5.66,
+  "notes": "574 channels, 70722 programmes, data to 2026-11-02; gzip, ~47.3 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org FR",
+  "url": "https://iptv-epg.org/files/epg-fr.xml.gz",
+  "country": "FR",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 3.42,
+  "notes": "485 channels, 49549 programmes, data to 2026-11-07; gzip, ~24.2 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG france1",
+  "url": "https://www.open-epg.com/files/france1.xml.gz",
+  "country": "FR",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.58,
+  "notes": "325 channels, 30299 programmes, data to 2026-10-31; gzip, ~6.6 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV FR guide",
+  "url": "https://i.mjh.nz/Plex/fr.xml.gz",
+  "country": "FR",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 0.44,
+  "notes": "238 channels, 7490 programmes, data to 2026-10-31; gzip, ~2.8 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV FR guide",
+  "url": "https://i.mjh.nz/PlutoTV/fr.xml.gz",
+  "country": "FR",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.38,
+  "notes": "146 channels, 3852 programmes, data to 2026-10-30; gzip, ~3.5 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus FR guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
+  "country": "FR",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.2,
+  "notes": "182 channels, 1604 programmes, data to 2026-10-30; gzip, ~1.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "XMLTV France (full)",
+  "url": "https://xmltvfr.fr/xmltv/xmltv.xml.gz",
+  "country": "FR",
+  "provider": "xmltvfr.fr",
+  "size_mb": 17.53,
+  "notes": "782 channels, 213087 programmes, data to 2026-11-07; gzip, ~144.0 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "XMLTV France (TNT only)",
+  "url": "https://xmltvfr.fr/xmltv/xmltv_tnt.xml.gz",
+  "country": "FR",
+  "provider": "xmltvfr.fr",
+  "size_mb": 0.94,
+  "notes": "30 channels, 8107 programmes, data to 2026-11-06; gzip, ~6.3 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw GB",
+  "url": "https://epg.pw/xmltv/epg_GB.xml.gz",
+  "country": "GB",
+  "provider": "epg.pw",
+  "size_mb": 2.48,
+  "notes": "754 channels, 54253 programmes, data to 2026-10-31; gzip, ~20.6 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 UK1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz",
+  "country": "GB",
+  "provider": "epgshare01",
+  "size_mb": 2.94,
+  "notes": "486 channels, 42304 programmes, data to 2026-11-02; gzip, ~22.6 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk UK_guide",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/UK_guide.xml.gz",
+  "country": "GB",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 10.63,
+  "notes": "560 channels, 99597 programmes, data to 2026-11-15; gzip, ~97.2 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "Freeview UK (dp247)",
+  "url": "https://raw.githubusercontent.com/dp247/Freeview-EPG/master/epg.xml",
+  "country": "GB",
+  "provider": "dp247/Freeview-EPG",
+  "size_mb": 21.45,
+  "notes": "284 channels, 47773 programmes, data to 2026-11-04; UK Freeview TV + radio"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org GB",
+  "url": "https://iptv-epg.org/files/epg-gb.xml.gz",
+  "country": "GB",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 18.56,
+  "notes": "933 channels, 114273 programmes, data to 2026-11-30; gzip, ~70.7 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG unitedkingdom",
+  "url": "https://www.open-epg.com/files/unitedkingdom.xml.gz",
+  "country": "GB",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 1.23,
+  "notes": "566 channels, 32674 programmes, data to 2026-10-31; gzip, ~9.6 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG unitedkingdom1",
+  "url": "https://www.open-epg.com/files/unitedkingdom1.xml.gz",
+  "country": "GB",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.1,
+  "notes": "272 channels, 1649 programmes, data to 2026-10-31; gzip, ~0.5 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV GB guide",
+  "url": "https://i.mjh.nz/Plex/gb.xml.gz",
+  "country": "GB",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 1.03,
+  "notes": "370 channels, 19437 programmes, data to 2026-10-31; gzip, ~6.5 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV GB guide",
+  "url": "https://i.mjh.nz/PlutoTV/gb.xml.gz",
+  "country": "GB",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.52,
+  "notes": "186 channels, 4450 programmes, data to 2026-10-30; gzip, ~4.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus GB guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/gb.xml.gz",
+  "country": "GB",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.25,
+  "notes": "277 channels, 2464 programmes, data to 2026-10-30; gzip, ~1.4 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 IE1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_IE1.xml.gz",
+  "country": "IE",
+  "provider": "epgshare01",
+  "size_mb": 2.51,
+  "notes": "175 channels, 17913 programmes, data to 2026-11-01; gzip, ~15.8 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw IN",
+  "url": "https://epg.pw/xmltv/epg_IN.xml.gz",
+  "country": "IN",
+  "provider": "epg.pw",
+  "size_mb": 0.67,
+  "notes": "528 channels, 19743 programmes, data to 2026-11-01; gzip, ~7.5 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 IN1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_IN1.xml.gz",
+  "country": "IN",
+  "provider": "epgshare01",
+  "size_mb": 3.85,
+  "notes": "946 channels, 100525 programmes, data to 2026-11-01; gzip, ~64.3 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org IN",
+  "url": "https://iptv-epg.org/files/epg-in.xml.gz",
+  "country": "IN",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 2.96,
+  "notes": "419 channels, 67075 programmes, data to 2026-11-03; gzip, ~39.4 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG india1",
+  "url": "https://www.open-epg.com/files/india1.xml.gz",
+  "country": "IN",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.27,
+  "notes": "434 channels, 14128 programmes, data to 2026-10-31; gzip, ~3.4 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus IN guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/in.xml.gz",
+  "country": "IN",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.16,
+  "notes": "206 channels, 2118 programmes, data to 2026-10-30; gzip, ~1.1 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 IT1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_IT1.xml.gz",
+  "country": "IT",
+  "provider": "epgshare01",
+  "size_mb": 1.49,
+  "notes": "195 channels, 19877 programmes, data to 2026-11-02; gzip, ~12.5 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org IT",
+  "url": "https://iptv-epg.org/files/epg-it.xml.gz",
+  "country": "IT",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 1.72,
+  "notes": "306 channels, 37589 programmes, data to 2026-11-07; gzip, ~15.8 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG italy1",
+  "url": "https://www.open-epg.com/files/italy1.xml.gz",
+  "country": "IT",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.01,
+  "notes": "145 channels, 92 programmes, data to 2026-10-30; gzip, ~0.0 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV IT guide",
+  "url": "https://i.mjh.nz/PlutoTV/it.xml.gz",
+  "country": "IT",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.31,
+  "notes": "128 channels, 3027 programmes, data to 2026-10-30; gzip, ~2.7 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus IT guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/it.xml.gz",
+  "country": "IT",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.19,
+  "notes": "191 channels, 1618 programmes, data to 2026-10-30; gzip, ~1.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "TV Italia guide",
+  "url": "https://tvit.leicaflorianrobert.dev/epg/list.xml",
+  "country": "IT",
+  "provider": "tvit.leicaflorianrobert.dev",
+  "size_mb": 0.17,
+  "notes": "46 channels, 486 programmes, data to 2026-11-04"
+ },
+ {
+  "type": "xmltv",
+  "name": "Japan terrestrial",
+  "url": "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/guide.xml",
+  "country": "JP",
+  "provider": "japanterebi-xmltv",
+  "size_mb": 7.71,
+  "notes": "235 channels, 24038 programmes, data to 2026-11-05"
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus KR guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/kr.xml.gz",
+  "country": "KR",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.27,
+  "notes": "151 channels, 1231 programmes, data to 2026-10-30; gzip, ~1.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 MX1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_MX1.xml.gz",
+  "country": "MX",
+  "provider": "epgshare01",
+  "size_mb": 0.43,
+  "notes": "178 channels, 16407 programmes, data to 2026-11-02; gzip, ~5.3 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk Latino_guide",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz",
+  "country": "MX",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 10.33,
+  "notes": "603 channels, 104038 programmes, data to 2026-11-04; gzip, ~108.3 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org MX",
+  "url": "https://iptv-epg.org/files/epg-mx.xml.gz",
+  "country": "MX",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 1.72,
+  "notes": "175 channels, 19028 programmes, data to 2026-11-03; gzip, ~10.3 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG mexico1",
+  "url": "https://www.open-epg.com/files/mexico1.xml.gz",
+  "country": "MX",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.25,
+  "notes": "121 channels, 4055 programmes, data to 2026-10-31; gzip, ~1.5 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV MX guide",
+  "url": "https://i.mjh.nz/Plex/mx.xml.gz",
+  "country": "MX",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 0.71,
+  "notes": "280 channels, 13525 programmes, data to 2026-10-31; gzip, ~4.7 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV MX guide",
+  "url": "https://i.mjh.nz/PlutoTV/mx.xml.gz",
+  "country": "MX",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.5,
+  "notes": "197 channels, 4717 programmes, data to 2026-10-30; gzip, ~4.2 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Malaysia (all)",
+  "url": "https://raw.githubusercontent.com/AqFad2811/epg/main/epg.xml",
+  "country": "MY",
+  "provider": "AqFad2811/epg",
+  "size_mb": 17.84,
+  "notes": "226 channels, 41287 programmes, data to 2026-11-12"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 NL1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_NL1.xml.gz",
+  "country": "NL",
+  "provider": "epgshare01",
+  "size_mb": 1.94,
+  "notes": "159 channels, 23036 programmes, data to 2026-11-02; gzip, ~18.6 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org NL",
+  "url": "https://iptv-epg.org/files/epg-nl.xml.gz",
+  "country": "NL",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 12.76,
+  "notes": "184 channels, 41001 programmes, data to 2026-11-04; gzip, ~37.2 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG netherlands1",
+  "url": "https://www.open-epg.com/files/netherlands1.xml.gz",
+  "country": "NL",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.17,
+  "notes": "243 channels, 16864 programmes, data to 2026-10-31; gzip, ~2.3 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV NO guide",
+  "url": "https://i.mjh.nz/PlutoTV/no.xml.gz",
+  "country": "NO",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.55,
+  "notes": "217 channels, 5557 programmes, data to 2026-10-30; gzip, ~5.0 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw NZ",
+  "url": "https://epg.pw/xmltv/epg_NZ.xml.gz",
+  "country": "NZ",
+  "provider": "epg.pw",
+  "size_mb": 0.22,
+  "notes": "37 channels, 5086 programmes, data to 2026-11-05; gzip, ~1.9 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 NZ1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_NZ1.xml.gz",
+  "country": "NZ",
+  "provider": "epgshare01",
+  "size_mb": 0.45,
+  "notes": "100 channels, 9083 programmes, data to 2026-11-01; gzip, ~4.4 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org NZ",
+  "url": "https://iptv-epg.org/files/epg-nz.xml.gz",
+  "country": "NZ",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 0.62,
+  "notes": "100 channels, 15319 programmes, data to 2026-11-08; gzip, ~6.1 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "NZ Freeview guide",
+  "url": "https://i.mjh.nz/nz/epg.xml.gz",
+  "country": "NZ",
+  "provider": "Matt Huisman (i.mjh.nz)",
+  "size_mb": 1.45,
+  "notes": "45 channels, 11151 programmes, data to 2026-11-27; gzip, ~14.0 MB uncompressed; Pairs with raw-tv.m3u8 in same folder"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG newzealand1",
+  "url": "https://www.open-epg.com/files/newzealand1.xml.gz",
+  "country": "NZ",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.1,
+  "notes": "44 channels, 2995 programmes, data to 2026-10-31; gzip, ~1.0 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV NZ guide",
+  "url": "https://i.mjh.nz/Plex/nz.xml.gz",
+  "country": "NZ",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 0.52,
+  "notes": "273 channels, 10841 programmes, data to 2026-10-31; gzip, ~3.5 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Sky Go NZ guide",
+  "url": "https://i.mjh.nz/SkyGo/epg.xml.gz",
+  "country": "NZ",
+  "provider": "Sky Go NZ (i.mjh.nz)",
+  "size_mb": 5.76,
+  "notes": "83 channels, 53408 programmes, data to 2026-10-30; gzip, ~66.7 MB uncompressed; Guide data only; channels require a subscription"
+ },
+ {
+  "type": "xmltv",
+  "name": "Sky Sport Now guide",
+  "url": "https://i.mjh.nz/SkySportNow/epg.xml.gz",
+  "country": "NZ",
+  "provider": "Sky Sport Now (i.mjh.nz)",
+  "size_mb": 0.12,
+  "notes": "13 channels, 1915 programmes, data to 2026-11-04; gzip, ~1.0 MB uncompressed; Guide data only; channels require a subscription"
+ },
+ {
+  "type": "xmltv",
+  "name": "M3UPT Portugal guide",
+  "url": "https://raw.githubusercontent.com/LITUATUI/M3UPT/main/EPG/epg-m3upt.xml.gz",
+  "country": "PT",
+  "provider": "M3UPT (LITUATUI)",
+  "size_mb": 3.22,
+  "notes": "292 channels, 50300 programmes, data to 2026-11-05; gzip, ~36.7 MB uncompressed; Other grabs in /EPG/ are .xml.xz (meo-pt, nos-pt, sky-uk, sky-it, freeview-uk, mitv-br)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV SE guide",
+  "url": "https://i.mjh.nz/PlutoTV/se.xml.gz",
+  "country": "SE",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.61,
+  "notes": "238 channels, 6015 programmes, data to 2026-10-30; gzip, ~5.4 MB uncompressed; Uncompressed .xml also available"
+ },
+ {
+  "type": "xmltv",
+  "name": "Singapore",
+  "url": "https://raw.githubusercontent.com/AqFad2811/epg/main/singapore.xml",
+  "country": "SG",
+  "provider": "AqFad2811/epg",
+  "size_mb": 0.63,
+  "notes": "7 channels, 1190 programmes, data to 2026-11-03"
+ },
+ {
+  "type": "xmltv",
+  "name": "epg.pw US",
+  "url": "https://epg.pw/xmltv/epg_US.xml.gz",
+  "country": "US",
+  "provider": "epg.pw",
+  "size_mb": 21.1,
+  "notes": "5540 channels, 431151 programmes, data to 2026-11-05; gzip, ~162.0 MB uncompressed; Pattern /xmltv/epg_<ISO2>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 US2",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz",
+  "country": "US",
+  "provider": "epgshare01",
+  "size_mb": 6.68,
+  "notes": "786 channels, 81804 programmes, data to 2026-11-02; gzip, ~77.5 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 US_LOCALS1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz",
+  "country": "US",
+  "provider": "epgshare01",
+  "size_mb": 59.89,
+  "notes": "4471 channels, 561470 programmes, data to 2026-11-02; gzip, ~544.8 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "epgshare01 US_SPORTS1",
+  "url": "https://epgshare01.online/epgshare01/epg_ripper_US_SPORTS1.xml.gz",
+  "country": "US",
+  "provider": "epgshare01",
+  "size_mb": 0.8,
+  "notes": "298 channels, 94344 programmes, data to 2027-04-10; gzip, ~46.3 MB uncompressed; Pattern epg_ripper_<CODE>.xml.gz; channel list at same name .txt; full listing at /epgshare01/; if blocked try http://"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk US_guide",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/US_guide.xml.gz",
+  "country": "US",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 14.55,
+  "notes": "739 channels, 126528 programmes, data to 2026-11-13; gzip, ~131.4 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "EPGTalk US_lite",
+  "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/US_lite.xml.gz",
+  "country": "US",
+  "provider": "EPGTalk (acidjesuz)",
+  "size_mb": 3.04,
+  "notes": "739 channels, 36819 programmes, data to 2026-11-04; gzip, ~30.3 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "HGTV GO guide",
+  "url": "https://i.mjh.nz/hgtv_go/epg.xml.gz",
+  "country": "US",
+  "provider": "HGTV GO (i.mjh.nz)",
+  "size_mb": 0.1,
+  "notes": "15 channels, 2468 programmes, data to 2026-11-04; gzip, ~0.9 MB uncompressed; Guide for subscription service"
+ },
+ {
+  "type": "xmltv",
+  "name": "IPTV-EPG.org US",
+  "url": "https://iptv-epg.org/files/epg-us.xml.gz",
+  "country": "US",
+  "provider": "IPTV-EPG.org",
+  "size_mb": 61.31,
+  "notes": "12842 channels, 1134012 programmes, data to 2026-12-07; gzip, ~513.7 MB uncompressed; Pattern /files/epg-<iso2>.xml(.gz); ~70 countries"
+ },
+ {
+  "type": "xmltv",
+  "name": "MeTV guide",
+  "url": "https://i.mjh.nz/MeTV/epg.xml.gz",
+  "country": "US",
+  "provider": "MeTV (i.mjh.nz)",
+  "size_mb": 0.03,
+  "notes": "1 channels, 223 programmes, data to 2026-11-05; gzip, ~0.1 MB uncompressed"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG unitedstates1",
+  "url": "https://www.open-epg.com/files/unitedstates1.xml.gz",
+  "country": "US",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.46,
+  "notes": "663 channels, 36688 programmes, data to 2026-10-31; gzip, ~6.3 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "Open-EPG unitedstates2",
+  "url": "https://www.open-epg.com/files/unitedstates2.xml.gz",
+  "country": "US",
+  "provider": "Open-EPG (Bevy Software)",
+  "size_mb": 0.44,
+  "notes": "547 channels, 31390 programmes, data to 2026-10-31; gzip, ~5.4 MB uncompressed; Pattern /files/<countryname><N>.xml(.gz)"
+ },
+ {
+  "type": "xmltv",
+  "name": "PBS guide (all stations)",
+  "url": "https://i.mjh.nz/PBS/all.xml.gz",
+  "country": "US",
+  "provider": "PBS (i.mjh.nz)",
+  "size_mb": 0.38,
+  "notes": "146 channels, 5585 programmes, data to 2026-10-30; gzip, ~3.4 MB uncompressed",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Plex Live TV US guide",
+  "url": "https://i.mjh.nz/Plex/us.xml.gz",
+  "country": "US",
+  "provider": "Plex (i.mjh.nz)",
+  "size_mb": 2.66,
+  "notes": "693 channels, 54742 programmes, data to 2026-10-31; gzip, ~17.6 MB uncompressed; Uncompressed .xml also available",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Pluto TV US guide",
+  "url": "https://i.mjh.nz/PlutoTV/us.xml.gz",
+  "country": "US",
+  "provider": "Pluto TV (i.mjh.nz)",
+  "size_mb": 0.97,
+  "notes": "432 channels, 8955 programmes, data to 2026-10-30; gzip, ~7.5 MB uncompressed; Uncompressed .xml also available",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Roku Channel guide (all)",
+  "url": "https://i.mjh.nz/Roku/all.xml.gz",
+  "country": "US",
+  "provider": "Roku (i.mjh.nz)",
+  "size_mb": 3.37,
+  "notes": "717 channels, 65727 programmes, data to 2026-11-01; gzip, ~36.9 MB uncompressed; Mostly US",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Samsung TV Plus US guide",
+  "url": "https://i.mjh.nz/SamsungTVPlus/us.xml.gz",
+  "country": "US",
+  "provider": "Samsung TV Plus (i.mjh.nz)",
+  "size_mb": 0.51,
+  "notes": "588 channels, 4959 programmes, data to 2026-10-30; gzip, ~3.0 MB uncompressed; Uncompressed .xml also available",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Tubi live guide",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/main/playlists/tubi_epg.xml",
+  "country": "US",
+  "provider": "Tubi (BuddyChewChew generator)",
+  "size_mb": 2.69,
+  "notes": "205 channels, 10076 programmes, data to 2026-10-30",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "Xumo Play guide",
+  "url": "https://raw.githubusercontent.com/BuddyChewChew/xumo-playlist-generator/main/playlists/xumo_epg.xml.gz",
+  "country": "US",
+  "provider": "Xumo (BuddyChewChew generator)",
+  "size_mb": 1.61,
+  "notes": "435 channels, 22785 programmes, data to 2026-10-30; gzip, ~9.4 MB uncompressed",
+  "default": true
+ },
+ {
+  "type": "xmltv",
+  "name": "DStv guide",
+  "url": "https://i.mjh.nz/DStv/za.xml.gz",
+  "country": "ZA",
+  "provider": "DStv (i.mjh.nz)",
+  "size_mb": 0.98,
+  "notes": "159 channels, 14695 programmes, data to 2026-10-31; gzip, ~8.8 MB uncompressed; Guide data only; channels require a subscription"
+ }
+]

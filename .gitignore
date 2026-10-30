@@ -1,0 +1,6 @@
+data/cache/
+data/output/
+data/*.tmp
+data/log.txt
+site/
+__pycache__/

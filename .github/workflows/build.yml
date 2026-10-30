@@ -1,0 +1,51 @@
+# Rebuilds your playlist + guide on GitHub's servers every 6 hours, searches the
+# internet for new guides, and publishes everything on GitHub Pages - so your
+# links work even when your PC is off.
+name: Build EPG
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write     # to save newly found guides back to the repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download sources, find new guides, build
+        run: python ultimate_epg.py --build-site site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Save newly found guides
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/auto_sources.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-found guides update"
+            git pull --rebase origin main && git push
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
