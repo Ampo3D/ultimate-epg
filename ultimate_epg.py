@@ -67,6 +67,10 @@ os.makedirs(OUT, exist_ok=True)
 
 # ---------------------------------------------------------------- config
 
+MUST_BE_POSITIVE = {"refresh_hours", "days", "dummy_hours", "full_guide_days", "health_minutes", "discover_per_run",
+                    "discover_max_mb"}
+
+
 def load_config():
     if os.path.exists(CONFIG_PATH):
         with open(CONFIG_PATH, encoding="utf-8") as f:
@@ -221,7 +225,9 @@ def parse_m3u(path):
         if not line:
             continue
         if line.upper().startswith("#EXTINF"):
-            head, _, title = line.partition(",")
+            line = clean_text(line)
+            m = re.match(r'((?:[^,"]|"[^"]*")*),(.*)$', line)
+            head, title = (m[1], m[2]) if m else (line, "")
             attrs = {k: unescape_all(v) for k, v in ATTR_RE.findall(head)}
             cur = {"attrs": attrs, "title": unescape_all(title.strip())}
             extra = []
@@ -277,8 +283,37 @@ def merge_m3u_source(src, entries):
 
 # ---------------------------------------------------------------- XMLTV
 
+BAD_XML_BYTES = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\ufffe\uffff]")
+
+
+class CleanReader:
+    """Reads a file with the control characters that break XML parsers taken out."""
+
+    def __init__(self, path):
+        self.f = open(path, "rb")
+
+    def read(self, n=-1):
+        return BAD_XML_BYTES.sub(b"", self.f.read(n))
+
+    def close(self):
+        self.f.close()
+
+
+def clean_text(t):
+    return CTRL_RE.sub("", t or "")
+
+
 def iter_xmltv(path, tags):
     """Stream top-level <channel>/<programme> elements without loading the file."""
+    reader = CleanReader(path)
+    try:
+        yield from _iter_xmltv(reader, tags)
+    finally:
+        reader.close()
+
+
+def _iter_xmltv(path, tags):
     ctx = ET.iterparse(path, events=("start", "end"))
     _, root = next(ctx)
     for ev, el in ctx:
@@ -294,6 +329,36 @@ JUNK_TITLE_RE = re.compile(r"no longer available|no (programme |program )?inform
 
 def is_junk(el):
     return bool(JUNK_TITLE_RE.search((el.findtext("title") or "").strip()))
+
+
+class ShowCleaner:
+    """Keeps each channel's shows clean for every player: no duplicates, no overlaps, no empty or 0-minute shows."""
+
+    def __init__(self):
+        self.last = {}  # channel -> (start, stop) of the last show kept
+        self.starts = {}  # channel -> start times already kept
+        self.dropped = 0
+
+    def check(self, cid, el, st, sp):
+        """Returns the (start, stop) to write, or None to skip the show."""
+        if not st or (sp and sp <= st) or not (el.findtext("title") or "").strip():
+            self.dropped += 1
+            return None
+        seen = self.starts.setdefault(cid, set())
+        key = int(st.timestamp())
+        if key in seen:
+            self.dropped += 1
+            return None
+        last = self.last.get(cid)
+        if last and last[1] and last[0] <= st < last[1]:  # starts while the previous show is still on
+            if not sp or sp <= last[1]:
+                self.dropped += 1
+                return None
+            st = last[1]
+        seen.add(key)
+        if not last or st >= last[0]:
+            self.last[cid] = (st, sp)
+        return st, sp
 
 
 def scan_xmltv(path):
@@ -318,8 +383,8 @@ def scan_xmltv(path):
                     if lang:
                         langs.setdefault(cid, {}).setdefault(lang, 0)
                         langs[cid][lang] += 1
-    except ET.ParseError:
-        pass  # keep whatever was readable before the broken part
+    except ET.ParseError as ex:
+        log(f"  guide is partly broken XML ({ex}) - kept what was readable")
     for cid, info in idx.items():
         info["n"] = per.get(cid, 0)
         if cid in langs:
@@ -421,15 +486,18 @@ def load_epg_index():
     EPG_INDEX = new
 
 
-TIME_RE = re.compile(r"(\d{14})\s*([+-]\d{4})?")
+TIME_RE = re.compile(r"(\d{12}(?:\d\d)?)\s*([+-]\d\d:?\d\d)?")
 
 
 def parse_xmltv_time(s):
     m = TIME_RE.match(s or "")
     if not m:
         return None
-    dt = datetime.strptime(m[1], "%Y%m%d%H%M%S")
-    off = m[2] or "+0000"
+    try:  # a broken time ("hour 24", "Feb 30") must never stop the whole guide
+        dt = datetime.strptime(m[1].ljust(14, "0"), "%Y%m%d%H%M%S")
+    except ValueError:
+        return None
+    off = (m[2] or "+0000").replace(":", "")
     delta = timedelta(hours=int(off[1:3]), minutes=int(off[3:5]))
     return dt.replace(tzinfo=timezone.utc) - (delta if off[0] == "+" else -delta)
 
@@ -455,13 +523,14 @@ def auto_match(only_unmatched=True):
     lookup = {}
     for cid, info in EPG_INDEX.items():
         for n in info["names"] + [cid.split(".")[0]]:
-            lookup.setdefault(norm(n), cid)
+            if norm(n):
+                lookup.setdefault(norm(n), cid)
     matched = 0
     for ch in CFG["channels"].values():
         e = effective(ch)
         if only_unmatched and e["epg_id"] in EPG_INDEX:
             continue
-        cid = lookup.get(norm(e["name"]))
+        cid = lookup.get(norm(e["name"])) if norm(e["name"]) else None
         if cid:
             ch["ov"]["epg_id"] = cid
             if ch["up"]["epg_id"] == cid:
@@ -760,11 +829,19 @@ def mark_health(src, bad, kind="dead", why=""):
     if bad:
         rec = AUTO["bad_since"].get(src["url"])
         if not rec or rec.get("kind") != kind:
-            AUTO["bad_since"][src["url"]] = {"t": time.time(), "kind": kind, "why": why[:200]}
+            AUTO["bad_since"][src["url"]] = {"t": time.time(), "kind": kind, "why": why[:200], "count": 1}
         else:
             rec["why"] = why[:200]
+            rec["count"] = rec.get("count", 1) + 1
     else:
         AUTO["bad_since"].pop(src["url"], None)
+
+
+def mass_failure():
+    """True when half or more of the sources look dead together (Wi-Fi down, PC just woke up...)."""
+    srcs = [x for x in all_sources() if x.get("enabled", True)]
+    dead = sum(1 for x in srcs if AUTO["bad_since"].get(x["url"], {}).get("kind") == "dead")
+    return len(srcs) >= 4 and dead >= len(srcs) / 2
 
 
 def remove_dead_sources():
@@ -772,12 +849,15 @@ def remove_dead_sources():
     settings = CFG["settings"]
     limits = {"dead": float(settings.get("dead_remove_hours") or 0),
               "stale": float(settings.get("stale_remove_hours") or 0)}
+    if mass_failure():
+        log("Most sources are failing at once - that is a network problem here, not dead sources; removing nothing")
+        return
     for src in list(all_sources()):
         rec = AUTO["bad_since"].get(src["url"])
         if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]):
             continue
         hours = (time.time() - rec["t"]) / 3600
-        if hours >= limits[rec["kind"]]:
+        if hours >= limits[rec["kind"]] and rec.get("count", 1) >= 3:
             what = "dead" if rec["kind"] == "dead" else "out of date"
             AUTO["removed"][src["url"]] = {"t": time.time(), "name": src["name"], "type": src["type"],
                                            "why": f"{what} for {int(hours)} hours: {rec['why']}",
@@ -810,8 +890,10 @@ def retry_removed_sources():
 def drop_dead_auto_sources():
     """Auto-found guides that fail or go stale twice in a row are removed (and re-checked later)."""
     keep = []
+    if mass_failure():
+        return
     for src in AUTO["sources"]:
-        if src.get("fails", 0) >= 2:
+        if src.get("fails", 0) >= 4:
             log(f"Removing auto-found guide '{src['name']}' - it stopped working")
             AUTO["checked"][src["url"]] = {"t": time.time(), "fresh": False, "gain": 0,
                                            "name": src["name"], "why": "stopped working"}
@@ -932,6 +1014,9 @@ def entry_country(name, group, tid):
     own = id_country(tid or "")
     if own in ("us", "uk", "ca"):  # "abc.wsb.atlanta.ga.us" is US - "GA" is Georgia, not Gabon
         return own
+    lead = re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\s*[\])|:\-]", (name or "").lower())
+    if lead:  # "US: FOX SPORTS AZ" - the prefix wins over the state letters at the end
+        return CC_ALIAS.get(lead[1], lead[1])
     t = re.search(r"\s([A-Z]{2})\s*\)?\s*$", name or "")  # trailing upper-case country code: "AMC RO"
     if t and t[1].lower() in ISO2_SET and t[1].lower() not in NOT_COUNTRY:
         return CC_ALIAS.get(t[1].lower(), t[1].lower())
@@ -1061,7 +1146,7 @@ def _match_provider_channel(c, idx):
             if t in idx["by_id"]:
                 return idx["by_id"][t], "code"
     in_name = callsigns(c["name"])
-    for call in sorted(callsigns(c["name"] + " " + tid.upper().replace(".", " ")), key=lambda x: x not in in_name):
+    for call in sorted(callsigns(c["name"] + " " + tid.upper().replace(".", " ")), key=lambda x: (x not in in_name, x)):
         if call in idx["by_call"]:
             return pick_best(idx["by_call"][call], c, idx), "call letters"
     if is_event_channel(c):
@@ -1123,10 +1208,14 @@ def refresh_provider():
         try:
             log(f"Reading your provider list '{pname}'")
             fetch(prov["url"], dest)
-            for e in parse_m3u(dest):
-                if not re.search(r"/(movie|series)/", e["url"], re.I):
-                    e["prov"] = pname
-                    entries.append(e)
+            got = [e for e in parse_m3u(dest) if not re.search(r"/(movie|series)/", e["url"], re.I)]
+            before = sum(1 for c in CFG["provider_channels"] if c.get("prov") == pname)
+            if not got or (before > 50 and len(got) < before / 2):
+                raise RuntimeError(f"list came back with {len(got)} channels (had {before}) - "
+                                   "login expired or provider busy?")
+            for e in got:
+                e["prov"] = pname
+                entries.append(e)
         except Exception as ex:
             log(f"  could not read '{pname}': {ex} - keeping its previous matches")
             failed.add(pname)
@@ -1246,12 +1335,12 @@ def build():
     with open(tmp, "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG">\n')
         for cid, e in wanted.items():
-            f.write(f"<channel id={quoteattr(cid)}><display-name>{escape(e['name'])}</display-name>")
+            f.write(f"<channel id={quoteattr(cid)}><display-name>{escape(clean_text(e['name']))}</display-name>")
             logo = e["logo"] or EPG_INDEX.get(cid, {}).get("icon", "")
             if logo:
                 f.write(f"<icon src={quoteattr(logo)}/>")
             f.write("</channel>\n")
-        claimed = set()
+        claimed, clean = set(), ShowCleaner()
         for src in xml_sources:
             path = os.path.join(CACHE, src["id"] + ".xml")
             if not os.path.exists(path):
@@ -1263,14 +1352,19 @@ def build():
                     if cid not in real or cid in claimed or owner.get(cid) != src["id"] or is_junk(el):
                         continue
                     st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                    if (sp and sp < start_cut) or (st and st > end_cut):
+                    if not st or (sp or st) < start_cut or st > end_cut:
                         continue
+                    times = clean.check(cid, el, st, sp)
+                    if not times:
+                        continue
+                    if times[0] != st:
+                        el.set("start", fmt_xmltv_time(times[0]))
                     el.tail = "\n"
                     f.write(ET.tostring(el, encoding="unicode"))
                     here.add(cid)
                     count += 1
-            except ET.ParseError as ex:
-                log(f"Guide '{src['name']}' is partly broken XML ({ex}); kept what was readable")
+            except Exception as ex:
+                log(f"Guide '{src['name']}' could not be fully read ({ex}); kept what was readable")
             claimed |= here
         if settings["dummy_epg"]:
             for cid, e in wanted.items():
@@ -1313,8 +1407,8 @@ def write_placeholder(f, cid, title, desc, now, end_cut):
     n = 0
     while t < end_cut:
         f.write(f'<programme start="{fmt_xmltv_time(t)}" stop="{fmt_xmltv_time(t + block)}" '
-                f'channel={quoteattr(cid)}><title>{escape(title)}</title>'
-                + (f'<desc>{escape(desc)}</desc>' if desc else '') + '</programme>\n')
+                f'channel={quoteattr(cid)}><title>{escape(clean_text(title))}</title>'
+                + (f'<desc>{escape(clean_text(desc))}</desc>' if desc else '') + '</programme>\n')
         t += block
         n += 1
     return n
@@ -1369,7 +1463,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         up, e = ch["up"], effective(ch)
         if up.get("epg_id") and e.get("epg_id") and up["epg_id"] != e["epg_id"]:
             learned.setdefault(up["epg_id"], (e["epg_id"], []))[1].append(e["name"])
-    targets = {g for g, _ in learned.values()}
+    targets = {g for g, _ in learned.values()} | set(wanted)  # your own playlist's guides come along too
+    lite_codes = set(learned) | {c["id"] for c in events}  # light guide: just the channels your providers carry
 
     chans = {}
     for x in xml_sources:
@@ -1447,7 +1542,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     def file_key(cc):
         cc = cc.lower()
         return "uk" if cc in ("gb", "uk") else cc
-    keys = ["full"] + [file_key(c) for c in pri]
+    keys = ["full", "lite"] + [file_key(c) for c in pri]
     files = {k: gzip.open(os.path.join(OUT, full_name(k) + ".tmp"), "wt", encoding="utf-8", compresslevel=6)
              for k in keys}
     for fh in files.values():
@@ -1455,15 +1550,17 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
 
     def write(code, text):
         files["full"].write(text)
+        if code in lite_codes:
+            files["lite"].write(text)
         k = file_key(out[code]["group"]["cc"] or "")
         if k in files and k != "full":
             files[k].write(text)
 
     for code, o in out.items():
         g = o["group"]
-        own = chans[code]["names"] if code in chans and code != g["best"] else g["names"][:40]
+        own = chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16]
         text = f"<channel id={quoteattr(code)}>" + "".join(
-            f"<display-name>{escape(n)}</display-name>" for n in own)
+            f"<display-name>{escape(clean_text(n))}</display-name>" for n in own if clean_text(n).strip())
         if g["icon"]:
             text += f"<icon src={quoteattr(g['icon'])}/>"
         write(code, text + "</channel>\n")
@@ -1472,7 +1569,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         if o["from"]:
             fill.setdefault(o["from"], []).append(code)
 
-    shows, live_from = 0, set()
+    shows, live_from, clean = 0, set(), ShowCleaner()
     for x in xml_sources:
         path = os.path.join(CACHE, x["id"] + ".xml")
         if not os.path.exists(path):
@@ -1483,8 +1580,14 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 if cid not in fill or chans.get(cid, {}).get("src") != x["id"] or is_junk(el):
                     continue
                 st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                if (sp and sp < start_cut) or (st and st > end_cut):
+                if not st or (sp or st) < start_cut or st > end_cut:
                     continue
+                times = clean.check(cid, el, st, sp)
+                if not times:
+                    continue
+                if times[0] != st:
+                    st = times[0]
+                    el.set("start", fmt_xmltv_time(st))
                 for child in list(el):
                     if child.tag in SLIM_TAGS:
                         el.remove(child)
@@ -1492,17 +1595,19 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 for code in fill[cid]:
                     el.set("channel", code)
                     shift = out[code].get("shift")
-                    if shift and st and sp:
+                    if shift:
                         el.set("start", fmt_xmltv_time(st + timedelta(minutes=shift)))
-                        el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
+                        if sp:
+                            el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
                     write(code, ET.tostring(el, encoding="unicode"))
-                    if shift and st and sp:
+                    if shift:
                         el.set("start", fmt_xmltv_time(st))
-                        el.set("stop", fmt_xmltv_time(sp))
+                        if sp:
+                            el.set("stop", fmt_xmltv_time(sp))
                     shows += 1
                 live_from.add(cid)
-        except ET.ParseError:
-            pass
+        except Exception as ex:  # one broken guide never stops the others
+            log(f"Guide '{x['name']}' could not be fully read ({ex}); kept what was readable")
     for code, o in out.items():  # placeholders so nothing shows "No information"
         e = o.get("placeholder")
         if e and CFG["settings"]["dummy_epg"] and not (o["from"] and o["from"] in live_from):
@@ -1514,6 +1619,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, end_cut)
             write(code, "".join(text))
 
+    log(f"Cleaned out {clean.dropped} duplicate/overlapping/empty shows")
     sizes = []
     for k, fh in files.items():
         fh.write("</tv>\n")
@@ -1522,7 +1628,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         sizes.append(f"{full_name(k)} {os.path.getsize(os.path.join(OUT, full_name(k))) >> 20} MB")
     prov = CFG.get("provider_channels") or []
     STATE["provider_live"] = sum(1 for c in prov if c.get("guide") and out.get(c["id"], {}).get("from") in live_from)
-    STATE["universal"] = {"channels": len(clusters), "codes": len(out), "learned": len(learned), "shows": shows}
+    STATE["universal"] = {"channels": len(clusters), "codes": len(out), "learned": len(learned), "shows": shows,
+                          "real_channels": len(live_from)}
     log(f"Universal guide: {len(clusters)} real channels answering to {len(out)} codes "
         f"({len(learned)} learned from your providers/playlists), {shows} shows - " + ", ".join(sizes))
 
@@ -1789,6 +1896,15 @@ def build_site(outdir, base_url):
     base_url = base_url.rstrip("/")
     refresh()
     build()
+    stats = STATE.get("universal") or {}
+    shows, prev = stats.get("shows", 0), AUTO.get("last_good_shows", 0)
+    if not shows or (prev and shows < prev * 0.5 and AUTO.get("guard_trips", 0) < 2):
+        AUTO["guard_trips"] = AUTO.get("guard_trips", 0) + 1
+        save_auto()
+        raise SystemExit(f"Guide came out far too small ({shows} shows, last good {prev}) - "
+                         "keeping the previous online guide")
+    AUTO["last_good_shows"], AUTO["guard_trips"] = shows, 0
+    save_auto()
     os.makedirs(outdir, exist_ok=True)
     with open(os.path.join(OUT, "playlist.m3u"), encoding="utf-8") as f:
         m3u = f.read().replace("{EPG_URL}", base_url + "/epg.xml.gz")
@@ -1803,7 +1919,8 @@ def build_site(outdir, base_url):
         shutil.copyfile(os.path.join(OUT, name), os.path.join(outdir, name))
     links = "".join(f'<p>{label}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
                     [("Playlist", "playlist.m3u"), ("Guide for this playlist", "epg.xml.gz"),
-                     ("Full guide - use with any provider", "epg-full.xml.gz")] +
+                     ("Full guide - use with any provider", "epg-full.xml.gz"),
+                     ("Light guide - your providers' channels only (Firestick, Smarters, Kodi)", "epg-lite.xml.gz")] +
                     [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()] +
                     ([("Guide made for your provider (TiviMate etc.)", "epg-provider.xml.gz")]
                      if os.path.exists(os.path.join(OUT, "epg-provider.xml.gz")) else []))
@@ -2123,8 +2240,17 @@ class Handler(BaseHTTPRequestHandler):
         if p == "/api/settings":
             with LOCK:
                 for k, v in body.items():
-                    if k in DEFAULT_SETTINGS:
-                        CFG["settings"][k] = type(DEFAULT_SETTINGS[k])(v)
+                    if k not in DEFAULT_SETTINGS:
+                        continue
+                    kind = type(DEFAULT_SETTINGS[k])
+                    try:
+                        v = kind(v)
+                    except (TypeError, ValueError):
+                        continue  # empty or not a number: keep the old value
+                    if kind in (int, float) and kind is not bool and (v != v or v < 0 or
+                                                                     (v == 0 and k in MUST_BE_POSITIVE)):
+                        continue
+                    CFG["settings"][k] = v
                 save_config()
             run_job()
             return self.send(200, {"ok": True})
@@ -2196,7 +2322,7 @@ class Handler(BaseHTTPRequestHandler):
             with LOCK:
                 for c in CFG["provider_channels"]:
                     if c["key"] == body.get("key"):
-                        c.update(guide=body.get("guide", ""), how="manual", manual=True)
+                        c.update(guide=body.get("guide", ""), how="manual", manual=True, shift=0)
                 save_config()
             run_job()
             return self.send(200, {"ok": True})

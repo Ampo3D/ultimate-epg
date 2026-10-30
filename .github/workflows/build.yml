@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "17 */6 * * *"   # every 6 hours
+    - cron: "17 */3 * * *"   # every 3 hours (GitHub sometimes skips a run - the guide always covers 2 days)
   workflow_dispatch:
 
 permissions:
@@ -28,6 +28,8 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main   # always the newest copy, including guides found by the run before
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -36,6 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Save newly found guides
+        if: always()              # also after a refused build, so its notes are kept
         continue-on-error: true   # never let this block publishing your links
         run: |
           git config user.name "github-actions[bot]"
@@ -43,7 +46,7 @@ jobs:
           git add data/auto_sources.json
           if ! git diff --cached --quiet; then
             git commit -m "Auto-found guides update"
-            git pull --rebase --autostash origin main && git push
+            git pull --rebase -X theirs --autostash origin main && git push
           fi
       - uses: actions/upload-pages-artifact@v3
         with:
