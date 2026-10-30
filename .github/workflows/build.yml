@@ -48,8 +48,8 @@ jobs:
             git commit -m "Auto-found guides update"
             git pull --rebase -X theirs --autostash origin main && git push
           fi
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

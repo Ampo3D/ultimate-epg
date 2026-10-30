@@ -5,6 +5,7 @@ lineup, and serve it as a single playlist + guide link for any IPTV player.
 No installs needed beyond Python 3.8+. Run:  python ultimate_epg.py
 Then open http://localhost:8787 in a browser.
 """
+import bisect
 import gzip
 import sys
 import hashlib
@@ -332,11 +333,11 @@ def is_junk(el):
 
 
 class ShowCleaner:
-    """Keeps each channel's shows clean for every player: no duplicates, no overlaps, no empty or 0-minute shows."""
+    """Keeps each channel's shows clean for every player: no duplicates, no overlaps, no empty or 0-minute shows.
+    Works even when a guide lists shows out of order (the night the clocks change)."""
 
     def __init__(self):
-        self.last = {}  # channel -> (start, stop) of the last show kept
-        self.starts = {}  # channel -> start times already kept
+        self.kept = {}  # channel -> sorted [(start, stop)] in seconds
         self.dropped = 0
 
     def check(self, cid, el, st, sp):
@@ -344,21 +345,22 @@ class ShowCleaner:
         if not st or (sp and sp <= st) or not (el.findtext("title") or "").strip():
             self.dropped += 1
             return None
-        seen = self.starts.setdefault(cid, set())
-        key = int(st.timestamp())
-        if key in seen:
+        a, b = int(st.timestamp()), int((sp or st).timestamp())
+        kept = self.kept.setdefault(cid, [])
+        i = bisect.bisect_left(kept, (a, a))
+        if i < len(kept) and kept[i][0] == a:
+            self.dropped += 1  # same start = same show again
+            return None
+        if i and kept[i - 1][1] > a:  # starts while the previous show is still on
+            a = kept[i - 1][1]
+        if i < len(kept) and sp and kept[i][0] < b:  # runs into the next show
+            b = kept[i][0]
+        if sp and b <= a or not sp and i and kept[i - 1][1] > int(st.timestamp()):
             self.dropped += 1
             return None
-        last = self.last.get(cid)
-        if last and last[1] and last[0] <= st < last[1]:  # starts while the previous show is still on
-            if not sp or sp <= last[1]:
-                self.dropped += 1
-                return None
-            st = last[1]
-        seen.add(key)
-        if not last or st >= last[0]:
-            self.last[cid] = (st, sp)
-        return st, sp
+        kept.insert(i, (a, b if sp else a))
+        tz = timezone.utc
+        return datetime.fromtimestamp(a, tz), (datetime.fromtimestamp(b, tz) if sp else None)
 
 
 def scan_xmltv(path):
@@ -1359,6 +1361,8 @@ def build():
                         continue
                     if times[0] != st:
                         el.set("start", fmt_xmltv_time(times[0]))
+                    if sp and times[1] != sp:
+                        el.set("stop", fmt_xmltv_time(times[1]))
                     el.tail = "\n"
                     f.write(ET.tostring(el, encoding="unicode"))
                     here.add(cid)
@@ -1559,8 +1563,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     for code, o in out.items():
         g = o["group"]
         own = chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16]
-        text = f"<channel id={quoteattr(code)}>" + "".join(
-            f"<display-name>{escape(clean_text(n))}</display-name>" for n in own if clean_text(n).strip())
+        own = [clean_text(n).strip() for n in own if clean_text(n).strip()] or [code]
+        text = f"<channel id={quoteattr(code)}>" + "".join(f"<display-name>{escape(n)}</display-name>" for n in own)
         if g["icon"]:
             text += f"<icon src={quoteattr(g['icon'])}/>"
         write(code, text + "</channel>\n")
@@ -1588,6 +1592,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 if times[0] != st:
                     st = times[0]
                     el.set("start", fmt_xmltv_time(st))
+                if sp and times[1] != sp:
+                    sp = times[1]
+                    el.set("stop", fmt_xmltv_time(sp))
                 for child in list(el):
                     if child.tag in SLIM_TAGS:
                         el.remove(child)
