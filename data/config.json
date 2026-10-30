@@ -34991,7 +34991,9 @@
   "41f19dd94820": {
    "key": "41f19dd94820",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "This.Old.House.Makers.Dummy.us"
+   },
    "up": {
     "name": "This Old House Makers",
     "number": "2016",
@@ -62897,7 +62899,9 @@
   "4308da41953f": {
    "key": "4308da41953f",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "Fubo.Sports.us"
+   },
    "up": {
     "name": "fubo Sports",
     "number": "",
@@ -76035,7 +76039,9 @@
   "92b039bab2c3": {
    "key": "92b039bab2c3",
    "source": "553c22cb",
-   "ov": {},
+   "ov": {
+    "epg_id": "HistoryandWarfareNow.au"
+   },
    "up": {
     "name": "History and Warfare Now",
     "number": "",
@@ -86745,7 +86751,9 @@
   "fd38a108f57f": {
    "key": "fd38a108f57f",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "This.Old.House.Makers.Dummy.us"
+   },
    "up": {
     "name": "This Old House Makers",
     "number": "2016",
@@ -89815,7 +89823,9 @@
   "62823bd31b69": {
    "key": "62823bd31b69",
    "source": "bd8e573f",
-   "ov": {},
+   "ov": {
+    "epg_id": "HistoryandWarfareNow.au"
+   },
    "up": {
     "name": "History & Warfare Now",
     "number": "",
@@ -107930,7 +107940,9 @@
   "2d06798fcf5f": {
    "key": "2d06798fcf5f",
    "source": "da8f796a",
-   "ov": {},
+   "ov": {
+    "epg_id": "Aurora.TV.hr"
+   },
    "up": {
     "name": "AuroraTV (720p)",
     "number": "",
@@ -133356,7 +133368,9 @@
   "f038fe50d973": {
    "key": "f038fe50d973",
    "source": "3cbd23a9",
-   "ov": {},
+   "ov": {
+    "epg_id": "Fox.Live.Now.Dummy.us"
+   },
    "up": {
     "name": "FOX Live Now",
     "number": "5",
@@ -146558,7 +146572,9 @@
   "42be42b27ad2": {
    "key": "42be42b27ad2",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "CNBC.UK.ch"
+   },
    "up": {
     "name": "CNBC UK (1080p)",
     "number": "",
@@ -147305,7 +147321,9 @@
   "d7dc75180393": {
    "key": "d7dc75180393",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "Horse.&.Country.TV.be"
+   },
    "up": {
     "name": "Horse & Country TV (1080p)",
     "number": "",
@@ -166563,7 +166581,7 @@
    "up": {
     "name": "A Haunting",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "a-haunting-eng",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=horror&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=ahaunting&ads.content_livestream=0&ads.csid=zeus_uk_ahaunting_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=8086&ads.rakuten_streaming_id=9b1b36a1-9617-4c38-a517-af304fc83a68&ads.rakuten_user_type=visitor&ads.rtv_channel_name=a-haunting-eng_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883149&ads.xumo_channel_id=88883149&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=a-haunting-eng-rakutentv&ads.xumo_streamId=88883149",
@@ -166623,7 +166641,7 @@
    "up": {
     "name": "Adventure Earth",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "adventure-earth",
     "url": "https://f06cd57c1eeb48fd89b80d9ff8ae230f.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/RakutenTV-eu_AdventureEarth/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=documentary%2Coutdoors&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=0&ads.rtv_channel_name=adventure-earth_uk&ads.rtv_content_id=4739&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=be68e327-69a2-4ee8-9e42-7f5c2682acce&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=1299",
@@ -166663,7 +166681,7 @@
    "up": {
     "name": "Aftershock Homicide Hunter",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "aftershock-homicide-hunter-en",
     "url": "https://linear-1279.frequency.stream/dist/rakuten-uk/1279/hls/master/playlist.m3u8?ads.QP_amznbrmid=&ads.QP_amznregion=&ads.QP_amznslots=&ads.QP_app_version=&ads.QP_channel_id=1279&ads.QP_device_make=&ads.QP_device_type=web&ads.QP_device_year=&ads.QP_env=prod&ads.QP_market=uk&ads.QP_os_language=&ads.QP_pod_type=playerpage_midroll&ads.QP_rtv_content_id=7866&ads.QP_streaming_id=95e106cf-3f2e-4d6d-9d1b-18738402c541&ads.QP_tivo_devcountry=&ads.QP_tivo_devmakedate=&ads.QP_tivo_mvpd=&ads.QP_tivo_platform=&ads.QP_tivo_usid=&ads.QP_tivo_uxloc=&ads.QP_user_type=visitor&ads.app_bundle=&ads.app_name=RakutenTV&ads.app_store_url=rakuten.tv&ads.consent_string=&ads.content_categories=IAB1&ads.content_genre=crime&ads.content_livestream=0&ads.device_id=&ads.device_language=&ads.device_make=&ads.device_model=&ads.dnt=1&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_applies=1&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.limit_ad_tracking=1&ads.nonce=&ads.placement=1&ads.player_height=&ads.player_width=&ads.ppid=&ads.prodq=1&ads.rating=15&ads.rtv_channel_name=aftershock-homicide-hunter-en_uk&ads.rtv_content_language=en",
@@ -166683,7 +166701,7 @@
    "up": {
     "name": "Aftershock My Strange Addiction/My Crazy Obsession",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "aftershock-msa-mco",
     "url": "https://aftershock-msa-mco-uk.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-hls-aes128-rivegauche-2-playout/master.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_name=RakutenTV&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_livestream=0&ads.content_url=rakuten.tv&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_year=&ads.did=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.google_ad_manager_nonce=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.platform=web&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=12&ads.rivegauche_channel_id=2&ads.rtv_channel_name=aftershock-msa-mco_uk&ads.rtv_content_id=2&ads.rtv_content_language=en&ads.rtv_language=en&ads.rtvid=271858&ads.streaming_id=5e76caef-6ade-4732-8537-388a36b92564&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&channel_id=2&publishing_platform_id=5&tenant_identifier=rivegauche",
@@ -166703,7 +166721,7 @@
    "up": {
     "name": "Aftershock Real Crime",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "aftershock-real-crime",
     "url": "https://aftershock-real-crime-uk.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-hls-aes128-rivegauche-1-playout/master.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_name=RakutenTV&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_livestream=0&ads.content_url=rakuten.tv&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_year=&ads.did=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.google_ad_manager_nonce=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.platform=web&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=15&ads.rivegauche_channel_id=1&ads.rtv_channel_name=aftershock-real-crime_uk&ads.rtv_content_id=1&ads.rtv_content_language=en&ads.rtv_language=en&ads.rtvid=271858&ads.streaming_id=8fa85c77-caca-4dde-b28f-38ad87734f3b&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&channel_id=1&publishing_platform_id=5&tenant_identifier=rivegauche",
@@ -166763,7 +166781,7 @@
    "up": {
     "name": "American Crime Channel",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "american-crime-channel",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime%2Centertainment&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=Indigenius&ads.content_livestream=0&ads.csid=zeus_uk_americancrimechannel_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=7456&ads.rakuten_streaming_id=e6818c10-48a7-4955-91f2-7ac83cb2c037&ads.rakuten_user_type=visitor&ads.rtv_channel_name=american-crime-channel_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883104&ads.xumo_channel_id=88883104&ads.xumo_contentId=1103&ads.xumo_contentName=Indigenius&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=1103&ads.xumo_providerName=american-crime-channel-eng-rakutentv&ads.xumo_streamId=88883104",
@@ -166983,7 +167001,7 @@
    "up": {
     "name": "BuzzFeed Unsolved",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "filmrise-buzzfeed-unsolved",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=comedy%2Ccrime%2Cmystery&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=BuzzfeedUnsolved&ads.content_livestream=0&ads.csid=zeus_uk_buzzfeedunsolved_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=6258&ads.rakuten_streaming_id=3f41ddd5-3b97-4d1f-99ea-b6ed93799950&ads.rakuten_user_type=visitor&ads.rtv_channel_name=filmrise-buzzfeed-unsolved_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883099&ads.xumo_channel_id=88883099&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=buzzfeed-unsolved-eng-rakutentv&ads.xumo_streamId=88883099",
@@ -167063,7 +167081,7 @@
    "up": {
     "name": "CGTN Documentary",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "cgtn-documentary",
     "url": "https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8?ads_amagi_channel_id=853&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=documentary&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=7&ads_rtv_channel_name=cgtn-documentary_uk&ads_rtv_content_id=4942&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=3ade4cb5-a891-4284-9da5-1d0e3c0becfa&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -167243,7 +167261,7 @@
    "up": {
     "name": "Cosmic Frontiers",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "cosmic-frontiers-uk",
     "url": "https://amg00376-magellan-amg00376c14-rakuten-uk-1694.playouts.now.amagi.tv/playlist/amg00376-magellantv-spacesciencenowcauk-rakutenuk/playlist.m3u8?ads_amagi_channel_id=883&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=sci-fi%2Cdocumentary%2Chobbies&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=7&ads_rtv_channel_name=cosmic-frontiers-uk_uk&ads_rtv_content_id=5765&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=339fd68c-7517-4901-ad35-3f09c5b85f23&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -167263,7 +167281,7 @@
    "up": {
     "name": "Crime & Justice",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "crime-justice",
     "url": "https://32e34bca.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX0NyaW1lSnVzdGljZVVLX0hMUw/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=crime%2Claw&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=7&ads.rtv_channel_name=crime-justice_uk&ads.rtv_content_id=7154&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=5c331c37-1ced-499d-bba5-873edf8bfbe9&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=2108",
@@ -167303,7 +167321,7 @@
    "up": {
     "name": "Crime Scene Solvers",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "crime-scene-solvers-uk",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime&ads._fw_content_language=uk&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=CrimeSceneSolvers&ads.content_livestream=0&ads.csid=zeus_eu_indigeniuscrimescenesolvers_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=5912&ads.rakuten_streaming_id=14bf7b91-bae5-4598-bd1d-b1632d8d8c93&ads.rakuten_user_type=visitor&ads.rtv_channel_name=crime-scene-solvers-uk_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883084&ads.xumo_channel_id=88883084&ads.xumo_contentId=1101&ads.xumo_contentName=Indigenius&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=1101&ads.xumo_providerName=crime-scene-solvers-eng-rakutentv&ads.xumo_streamId=88883084",
@@ -167323,7 +167341,7 @@
    "up": {
     "name": "Criminal Confessions",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "crime-up-close",
     "url": "https://amg00654-itv-amg00654c7-rakuten-uk-1282.playouts.now.amagi.tv/playlist/amg00654-itvstudiosfast-truelives-rakutenuk/playlist.m3u8?ads_amagi_channel_id=877&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=crime%2Cdocumentary&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=15&ads_rtv_channel_name=crime-up-close_uk&ads_rtv_content_id=5539&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=ed47af68-7541-4ec4-aef7-0cd449c0ab31&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -167343,7 +167361,7 @@
    "up": {
     "name": "Curiosity Now",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "curiosity-now-en",
     "url": "https://amg00170-curiositystream-amg00170c3-rakuten-us-2289.playouts.now.amagi.tv/playlist/amg00170-curiositystreamllcfast-curiositynowrow-rakutenus/playlist.m3u8?ads_amagi_channel_id=894&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=sci-fi%2Cdocumentary%2Chobbies&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=7&ads_rtv_channel_name=curiosity-now-en_uk&ads_rtv_content_id=5758&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=8cc57507-7255-4104-8896-cd10a7a01ed3&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -167503,7 +167521,7 @@
    "up": {
     "name": "Dr. G: Medical Examiner",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "filmrise-dr-g-medical-examiner",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=entertainment&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=DrGMedicalExaminerUK&ads.content_livestream=0&ads.csid=zeus_eu_drgmedicalexamineruk_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=4456&ads.rakuten_streaming_id=c01192c7-8d4d-40c0-9c1e-84cd0de047f9&ads.rakuten_user_type=visitor&ads.rtv_channel_name=filmrise-dr-g-medical-examiner_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883008&ads.xumo_channel_id=88883008&ads.xumo_contentId=2071&ads.xumo_contentName=FilmRiseUK&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=2071&ads.xumo_providerName=dr-g-medical-examiner-eng-rakutentv&ads.xumo_streamId=88883008",
@@ -167743,7 +167761,7 @@
    "up": {
     "name": "Filmrise Medical Detectives",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "filmrise-forensic-files-uk-feed",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=ForensicFiles&ads.content_livestream=0&ads.csid=zeus_uk_medicaldetectives_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=7439&ads.rakuten_streaming_id=e8bbeaef-9565-4283-8d1c-d996213ac63b&ads.rakuten_user_type=visitor&ads.rtv_channel_name=filmrise-forensic-files-uk-feed_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883139&ads.xumo_channel_id=88883139&ads.xumo_contentId=2071&ads.xumo_contentName=FilmRiseUK&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=2071&ads.xumo_providerName=forensic-files-uk-rakutentv&ads.xumo_streamId=88883139",
@@ -167943,7 +167961,7 @@
    "up": {
     "name": "Great! Mystery",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "great-mystery-c362c3fd-f873-4f12-8197-a68b7241e16d",
     "url": "https://amg01753-amg01753c8-rakuten-gb-8150.playouts.now.amagi.tv/playlist/amg01753-narrativeuk-greatmystery-rakutengb/playlist.m3u8?ads_amagi_channel_id=1020&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=crime%2Cthriller%2Cmystery%2Centertainment&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=15&ads_rtv_channel_name=great-mystery-c362c3fd-f873-4f12-8197-a68b7241e16d_uk&ads_rtv_content_id=6242&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=af9b9a78-3fd5-4767-a147-77e7c7b3be75&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168023,7 +168041,7 @@
    "up": {
     "name": "Haunt TV",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "haunt-tv",
     "url": "https://bamcahaunttvrakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-bamcahaunttvrakuten/CDN/playlist.m3u8?ads_amagi_channel_id=814&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=mystery%2Centertainment&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=haunt-tv_uk&ads_rtv_content_id=4367&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=7df011cb-d252-4f8c-a3c6-ba166c125e6a&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168143,7 +168161,7 @@
    "up": {
     "name": "History Hit",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "history-hit",
     "url": "https://lds-timeline-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lds-timeline-rakuten/CDN/master.m3u8?ads_amagi_channel_id=731&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=history&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=history-hit_uk&ads_rtv_content_id=2916&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=e7d7833b-5254-4e98-8c7b-7a383aa02be8&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168163,7 +168181,7 @@
    "up": {
     "name": "History Hunters",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "history-hunters",
     "url": "https://amg00841-amg00841c7-rakuten-uk-2820.playouts.now.amagi.tv/playlist/amg00841-aeemeafast-historyhuntersrakuten-rakutenuk/playlist.m3u8?ads_amagi_channel_id=909&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=entertainment%2Chistory&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=history-hunters_uk&ads_rtv_content_id=5895&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=71bb6909-2f45-4c79-888d-d77e1294cab0&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168263,7 +168281,7 @@
    "up": {
     "name": "I Survived",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "i-survived",
     "url": "https://8e979536.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX0lTdXJ2aXZlZF9ITFM/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=drama%2Centertainment&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=7&ads.rtv_channel_name=i-survived_uk&ads.rtv_content_id=6016&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=f5185cec-91c4-4e1a-b81c-d98b34d062ce&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=1717",
@@ -168323,7 +168341,7 @@
    "up": {
     "name": "Inside Crime",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "inside-crime-uk",
     "url": "https://aenetworks-insidecrime-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-aenetworks-insidecrime-rakuten/CDN/master.m3u8?ads_amagi_channel_id=865&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=crime&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=inside-crime-uk_uk&ads_rtv_content_id=5221&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=dbb1f4c4-d897-4153-acf6-52754082ec0c&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168523,7 +168541,7 @@
    "up": {
     "name": "Mayday: Air Disaster",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "mayday-air-disaster",
     "url": "https://c5424e34.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX01heWRheUFpckRpc2FzdGVyX0hMUw/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=documentary%2Coutdoors&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=7&ads.rtv_channel_name=mayday-air-disaster_uk&ads.rtv_content_id=7155&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=8e60396f-a01a-4700-9e12-81b0e8609d97&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=2110",
@@ -168623,7 +168641,7 @@
    "up": {
     "name": "Most Haunted Channel",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "most-haunted-eng",
     "url": "https://amg00426-lds-amg00426c17-rakuten-gb-10156.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00426-littledotstudiofast-mosthaunted-rakutengb/playlist.m3u8?ads_amagi_channel_id=1065&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=crime%2Chorror&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=15&ads_rtv_channel_name=most-haunted-eng_uk&ads_rtv_content_id=7353&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=a06cf5d3-22b0-4c36-906d-9dd1631192e4&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168703,7 +168721,7 @@
    "up": {
     "name": "Mystery TV",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "mystery-tv",
     "url": "https://aenetworks-mysterytv-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-aenetworks-mysterytv-rakuten/CDN/master.m3u8?ads_amagi_channel_id=864&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=mystery&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=mystery-tv_uk&ads_rtv_content_id=5222&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=b2b858ed-60a5-42b2-a1c4-ef1c3b06d4d9&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -168783,7 +168801,7 @@
    "up": {
     "name": "Nature Time",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "nature-time-eng-uk-feed",
     "url": "https://amg01576-amg01576c3-rakuten-gb-10666.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01576-blueantmediacanadafast-naturetimeemeaenglish-rakutengb/playlist.m3u8?ads_amagi_channel_id=1087&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=documentary%2Canimals%2Chistory%2Coutdoors&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=7&ads_rtv_channel_name=nature-time-eng-uk-feed_uk&ads_rtv_content_id=7395&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=c4b51ee1-f8b6-4f2d-b097-398fbe8d236e&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -169023,7 +169041,7 @@
    "up": {
     "name": "Real Crime",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "real-crime-uk",
     "url": "https://amg00426-lds-amg00426c13-rakuten-gb-8480.playouts.now.amagi.tv/playlist/amg00426-littledotstudiofast-realcrimegamma-rakutengb/playlist.m3u8?ads_amagi_channel_id=1032&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=crime%2Centertainment&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=real-crime-uk_uk&ads_rtv_content_id=2915&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=ab833917-7e29-45d2-a211-f94b269e474a&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -169043,7 +169061,7 @@
    "up": {
     "name": "Real Wild",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "real-wild",
     "url": "https://amg00426-amg00426c30-amgplt0165.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg00426-amg00426c30-amgplt0165/playlist.m3u8?ads_amagi_channel_id=1116&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=animals%2Coutdoors&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=real-wild_uk&ads_rtv_content_id=2914&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=cae8b21f-3570-4b7f-9511-1c31930afe13&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -169561,7 +169579,7 @@
    "up": {
     "name": "Terra Mater WILD",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "terra-mater-wild-eng-new",
     "url": "https://bec46f4c.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X1RlcnJhTWF0ZXJXSUxERU5fSExT/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=documentary%2Canimals%2Coutdoors&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=7&ads.rtv_channel_name=terra-mater-wild-eng-new_uk&ads.rtv_content_id=8158&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=dbcbb1a4-4ef4-41f0-9e57-fafa1894f17a&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=2303",
@@ -169741,7 +169759,7 @@
    "up": {
     "name": "The FBI Files",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "fbi-files-eng",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=filmrisethefbifiles&ads.content_livestream=0&ads.csid=zeus_uk_filmrisethefbifiles_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=8087&ads.rakuten_streaming_id=3bb9c82b-e75b-4717-83c8-310228101d7d&ads.rakuten_user_type=visitor&ads.rtv_channel_name=fbi-files-eng_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883170&ads.xumo_channel_id=88883170&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=the-fbi-files-eng-rakutentv&ads.xumo_streamId=88883170",
@@ -169761,7 +169779,7 @@
    "up": {
     "name": "The New Detectives",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "new-detectives-eng",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=filmrisethenewdetectives&ads.content_livestream=0&ads.csid=zeus_uk_filmrisethenewdetectives_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=8088&ads.rakuten_streaming_id=2dc784d3-d512-4c7a-b128-eba23c078fc8&ads.rakuten_user_type=visitor&ads.rtv_channel_name=new-detectives-eng_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883172&ads.xumo_channel_id=88883172&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=the-new-detectives-eng-rakutentv&ads.xumo_streamId=88883172",
@@ -170041,7 +170059,7 @@
    "up": {
     "name": "Unsolved Mysteries",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "filmrise-unsolved-mysteries",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=crime%2Cmystery&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=UnsolvedMysteries&ads.content_livestream=0&ads.csid=zeus_uk_unsolvedmysteries_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=318&ads.rakuten_streaming_id=e9f75869-b727-43df-a0f8-0ca38dc4f7e8&ads.rakuten_user_type=visitor&ads.rtv_channel_name=filmrise-unsolved-mysteries_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883010&ads.xumo_channel_id=88883010&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=filmrise-unsolved-mysteries-eng-rakutentv&ads.xumo_streamId=88883010",
@@ -170061,7 +170079,7 @@
    "up": {
     "name": "Untold Stories Of The ER",
     "number": "",
-    "group": "Crime &amp; Mystery",
+    "group": "Crime & Mystery",
     "logo": "",
     "epg_id": "filmrise-untold-stories-of-the-er",
     "url": "https://d39g1vxj2ef6in.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod-rakuten-stitched/master.m3u8?ads._fw_app_bundle=&ads._fw_app_store_url=rakuten.tv&ads._fw_content_category=IAB1&ads._fw_content_genre=mystery&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=&ads._fw_device_model=&ads._fw_devicetype=3-connected_tv&ads._fw_gdpr=1&ads._fw_gdpr_consent=&ads._fw_is_lat=1&ads._ifa_type=&ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.appName=RakutenTV&ads.app_version=&ads.brand_name=&ads.caid=UntoldStoriesOfTheER&ads.content_livestream=0&ads.csid=zeus_uk_untoldstoriesoftheer_ssai&ads.extra_eids=&ads.gam_correlator=&ads.google_ad_manager_nonce=&ads.inv_partner_domain=rakuten.tv&ads.network_name=RakutenTV&ads.os_language=&ads.placement=1&ads.prodq=1&ads.rakuten_content_type=live_channels&ads.rakuten_device_type=web&ads.rakuten_device_year=&ads.rakuten_env=prod&ads.rakuten_market=uk&ads.rakuten_pod_type=playerpage_midroll&ads.rakuten_rtv_content_id=6257&ads.rakuten_streaming_id=9a10b116-e3c9-4461-9d37-27b00e38c2e6&ads.rakuten_user_type=visitor&ads.rtv_channel_name=filmrise-untold-stories-of-the-er_uk&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.xumo_channelId=88883101&ads.xumo_channel_id=88883101&ads.xumo_contentId=260&ads.xumo_contentName=FilmRise&ads.xumo_ifa=&ads.xumo_ifaType=ppid&ads.xumo_providerId=260&ads.xumo_providerName=untold-stories-of-er-eng-rakutentv&ads.xumo_streamId=88883101",
@@ -170121,7 +170139,7 @@
    "up": {
     "name": "Waterbear",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "waterbear",
     "url": "https://waterbear-waterbear-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-waterbear-waterbear-rakuten/CDN/master.m3u8?ads_amagi_channel_id=833&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=documentary%2Canimals%2Coutdoors&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=waterbear_uk&ads_rtv_content_id=4560&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=5ca74ed8-7d4a-4dfe-a330-3d3481a20c8e&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -170141,7 +170159,7 @@
    "up": {
     "name": "Weather Spy",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "weather-spy-new",
     "url": "https://beaece44.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X1dlYXRoZXJTcHlfSExT/playlist.m3u8?ads.amznbrmid=&ads.amznregion=&ads.amznslots=&ads.app_bundle=&ads.app_store_url=rakuten.tv&ads.app_version=&ads.brand_name=&ads.content_categories=IAB1&ads.content_genre=documentary&ads.content_livestream=0&ads.device_lmt=1&ads.device_make=&ads.device_model=&ads.device_type=web&ads.device_year=&ads.env=prod&ads.extra_eids=&ads.gam_correlator=&ads.gdpr_consent=&ads.ifa_type=&ads.inv_partner_domain=rakuten.tv&ads.ip=162.158.33.250&ads.market=uk&ads.network_name=RakutenTV&ads.nonce=&ads.os_language=&ads.placement=1&ads.player_height=&ads.player_width=&ads.pod_type=playerpage_midroll&ads.ppid=&ads.prodq=1&ads.rating=0&ads.rtv_channel_name=weather-spy-new_uk&ads.rtv_content_id=5118&ads.rtv_content_language=en&ads.rtvid=271858&ads.streaming_id=5af112c6-8cc7-4166-b485-a4e77122e1af&ads.tivo_devcountry=&ads.tivo_devmakedate=&ads.tivo_mvpd=&ads.tivo_platform=&ads.tivo_usid=&ads.tivo_uxloc=&ads.user_type=visitor&ads.wurl_channel_id=1143",
@@ -170181,7 +170199,7 @@
    "up": {
     "name": "Wheels & Steel",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "wheels-steel-eng",
     "url": "https://amg01775-amg01775c2-amgplt0165.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg01775-amg01775c2-amgplt0165/playlist.m3u8?ads_amagi_channel_id=1106&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=documentary%2Centertainment&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=7&ads_rtv_channel_name=wheels-steel-eng_uk&ads_rtv_content_id=7705&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=133c7cd3-863c-47ed-9f38-0aa2e62fb66c&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -170261,7 +170279,7 @@
    "up": {
     "name": "Wonder",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "wonder",
     "url": "https://lds-wonder-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lds-wonder-rakuten/CDN/master.m3u8?ads_amagi_channel_id=729&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=animals&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=wonder_uk&ads_rtv_content_id=2912&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=50effb98-a08a-4112-a7c3-c6b24c27587c&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -170341,7 +170359,7 @@
    "up": {
     "name": "World War TV",
     "number": "",
-    "group": "Docs &amp; Factual",
+    "group": "Docs & Factual",
     "logo": "",
     "epg_id": "world-war-tv",
     "url": "https://aenetworks-worldwartv-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-aenetworks-worldwartv-rakuten/CDN/master.m3u8?ads_amagi_channel_id=863&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB1&ads_content_genre=war%2Chistory&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.33.250&ads_market=uk&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=12&ads_rtv_channel_name=world-war-tv_uk&ads_rtv_content_id=5223&ads_rtv_content_language=en&ads_rtvid=271858&ads_streaming_id=0e8b5c36-84f9-4af3-b41f-f8761a746d10&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor",
@@ -180043,7 +180061,9 @@
   "178854835362": {
    "key": "178854835362",
    "source": "0830e470",
-   "ov": {},
+   "ov": {
+    "epg_id": "Stingray.iConcerts.HD.be"
+   },
    "up": {
     "name": "Stingray iConcerts HD",
     "number": "",
@@ -203667,375 +203687,375 @@
   "74429009": {
    "ok": true,
    "msg": "695 channels (0 new)",
-   "time": 1793325783.73409
+   "time": 1793328131.818891
   },
   "20966c93": {
    "ok": true,
    "msg": "432 channels (0 new)",
-   "time": 1793325783.8401928
+   "time": 1793328131.9962194
   },
   "775a55e3": {
    "ok": true,
    "msg": "255 channels (0 new)",
-   "time": 1793325783.9050574
+   "time": 1793328132.1303267
   },
   "78afd227": {
    "ok": true,
    "msg": "588 channels (0 new)",
-   "time": 1793325784.0024548
+   "time": 1793328132.2672725
   },
   "e1a90831": {
    "ok": true,
    "msg": "181 channels (0 new)",
-   "time": 1793325784.0945177
+   "time": 1793328132.3938603
   },
   "6d1c64a5": {
    "ok": true,
    "msg": "435 channels (0 new)",
-   "time": 1793325784.2130427
+   "time": 1793328132.5637279
   },
   "fa1cdf63": {
    "ok": true,
-   "msg": "786 guide channels, 63460 upcoming shows",
-   "time": 1793325791.291784,
+   "msg": "786 guide channels, 63101 upcoming shows",
+   "time": 1793328134.9020615,
    "fresh": true
   },
   "9bd31d9a": {
    "ok": true,
-   "msg": "693 guide channels, 27792 upcoming shows",
-   "time": 1793325792.2499657,
+   "msg": "693 guide channels, 27314 upcoming shows",
+   "time": 1793328136.0640016,
    "fresh": true
   },
   "596431ea": {
    "ok": true,
-   "msg": "433 guide channels, 7868 upcoming shows",
-   "time": 1793325792.787089,
+   "msg": "433 guide channels, 7628 upcoming shows",
+   "time": 1793328136.825757,
    "fresh": true
   },
   "a6a61f2f": {
    "ok": true,
-   "msg": "718 guide channels, 63833 upcoming shows",
-   "time": 1793325794.3598032,
+   "msg": "718 guide channels, 63353 upcoming shows",
+   "time": 1793328138.4774702,
    "fresh": true
   },
   "c1f14f19": {
    "ok": true,
-   "msg": "181 guide channels, 5817 upcoming shows",
-   "time": 1793325794.615538,
+   "msg": "181 guide channels, 5666 upcoming shows",
+   "time": 1793328138.748994,
    "fresh": true
   },
   "dd8f7100": {
    "ok": true,
-   "msg": "435 guide channels, 10614 upcoming shows",
-   "time": 1793325795.0257847,
+   "msg": "435 guide channels, 10353 upcoming shows",
+   "time": 1793328139.2977352,
    "fresh": true
   },
   "e01b5428": {
    "fresh": false,
    "ok": true,
-   "msg": "588 guide channels, 4422 upcoming shows - OUT OF DATE, not used",
-   "time": 1793325795.5051515
+   "msg": "588 guide channels, 3993 upcoming shows - OUT OF DATE, not used",
+   "time": 1793328139.8465059
   },
   "cbe16a4b": {
    "fresh": false,
    "ok": true,
-   "msg": "146 guide channels, 1043 upcoming shows - OUT OF DATE, not used",
-   "time": 1793325796.0122123
+   "msg": "146 guide channels, 986 upcoming shows - OUT OF DATE, not used",
+   "time": 1793328140.4451966
   },
   "7ab24a94": {
    "fresh": true,
    "ok": true,
-   "msg": "547 guide channels, 17558 upcoming shows",
-   "time": 1793325798.8684766
+   "msg": "547 guide channels, 17324 upcoming shows",
+   "time": 1793328142.0240512
   },
   "f0af7d6a": {
    "fresh": true,
    "ok": true,
-   "msg": "663 guide channels, 20281 upcoming shows",
-   "time": 1793325801.0241914
+   "msg": "663 guide channels, 20027 upcoming shows",
+   "time": 1793328143.678374
   },
   "c50299a7": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 218 upcoming shows",
-   "time": 1793325801.4377728
+   "msg": "1 guide channels, 217 upcoming shows",
+   "time": 1793328144.388043
   },
   "216e7968": {
    "fresh": true,
    "ok": true,
-   "msg": "12842 guide channels, 1001159 upcoming shows",
-   "time": 1793325816.0064783
+   "msg": "12842 guide channels, 999770 upcoming shows",
+   "time": 1793328162.5212579
   },
   "6d5fcaf0": {
    "fresh": true,
    "ok": true,
    "msg": "15 guide channels, 2451 upcoming shows",
-   "time": 1793325816.473751
+   "time": 1793328162.9678485
   },
   "4df0cc2a": {
    "fresh": true,
    "ok": true,
-   "msg": "739 guide channels, 34128 upcoming shows",
-   "time": 1793325817.4234083
+   "msg": "739 guide channels, 36359 upcoming shows",
+   "time": 1793328163.975172
   },
   "13b38fb3": {
    "fresh": true,
    "ok": true,
-   "msg": "739 guide channels, 91781 upcoming shows",
-   "time": 1793325820.889633
+   "msg": "739 guide channels, 91536 upcoming shows",
+   "time": 1793328167.63188
   },
   "9ca24dfd": {
    "fresh": true,
    "ok": true,
-   "msg": "298 guide channels, 93401 upcoming shows",
-   "time": 1793325822.7473674
+   "msg": "298 guide channels, 93393 upcoming shows",
+   "time": 1793328169.049319
   },
   "f303f1d1": {
    "fresh": true,
    "ok": true,
-   "msg": "4471 guide channels, 431666 upcoming shows",
-   "time": 1793325835.6848793
+   "msg": "4471 guide channels, 430042 upcoming shows",
+   "time": 1793328196.3512983
   },
   "8c45ed1d": {
    "fresh": true,
    "ok": true,
-   "msg": "5542 guide channels, 406237 upcoming shows",
-   "time": 1793325840.9106975
+   "msg": "5542 guide channels, 404080 upcoming shows",
+   "time": 1793328207.9840348
   },
   "f25236e4": {
    "ok": true,
    "msg": "389 channels (0 new)",
-   "time": 1793325842.0050943
+   "time": 1793328209.2046268
   },
   "514536fe": {
    "ok": true,
    "msg": "433 channels (0 new)",
-   "time": 1793325843.1007974
+   "time": 1793328210.1620097
   },
   "2108517c": {
    "ok": true,
    "msg": "593 channels (0 new)",
-   "time": 1793325843.824669
+   "time": 1793328210.8821058
   },
   "553c22cb": {
    "ok": true,
    "msg": "166 channels (0 new)",
-   "time": 1793325844.4027886
+   "time": 1793328211.4578857
   },
   "899a75f3": {
    "ok": true,
    "msg": "539 channels (0 new)",
-   "time": 1793325845.2497458
+   "time": 1793328212.3321264
   },
   "bd8e573f": {
    "ok": true,
    "msg": "447 channels (0 new)",
-   "time": 1793325846.4933276
+   "time": 1793328213.5494606
   },
   "e554360c": {
    "ok": true,
    "msg": "459 channels (0 new)",
-   "time": 1793325847.4981148
+   "time": 1793328214.5128026
   },
   "da8f796a": {
    "ok": true,
    "msg": "1494 channels (0 new)",
-   "time": 1793325847.6097636
+   "time": 1793328214.6333172
   },
   "3cbd23a9": {
    "ok": true,
    "msg": "28 channels (0 new)",
-   "time": 1793325847.6702468
+   "time": 1793328214.7105958
   },
   "ce8577df": {
    "ok": true,
    "msg": "125 channels (0 new)",
-   "time": 1793325848.3563733
+   "time": 1793328215.4312873
   },
   "49cfa410": {
    "ok": true,
    "msg": "336 channels (0 new)",
-   "time": 1793325849.356998
+   "time": 1793328216.4364066
   },
   "938bb238": {
    "ok": true,
    "msg": "67 channels (0 new)",
-   "time": 1793325849.7833388
+   "time": 1793328216.8578675
   },
   "ad8c9d97": {
    "ok": true,
    "fresh": true,
-   "time": 1793325913.4748518,
-   "msg": "15955 guide channels, 1273599 upcoming shows"
+   "time": 1793328261.560809,
+   "msg": "15955 guide channels, 1265261 upcoming shows"
   },
   "e92dc1ef": {
    "ok": true,
-   "msg": "55 channels (55 new)",
-   "time": 1793325849.9234567
+   "msg": "55 channels (0 new)",
+   "time": 1793328216.9112492
   },
   "1c763150": {
    "ok": true,
-   "msg": "295 channels (295 new)",
-   "time": 1793325850.4214964
+   "msg": "295 channels (0 new)",
+   "time": 1793328216.9871106
   },
   "94b82bd9": {
    "ok": true,
-   "msg": "340 channels (340 new)",
-   "time": 1793325851.3698132
+   "msg": "340 channels (0 new)",
+   "time": 1793328217.9762444
   },
   "a9a0358c": {
    "ok": true,
-   "msg": "369 channels (369 new)",
-   "time": 1793325851.6125162
+   "msg": "369 channels (0 new)",
+   "time": 1793328218.0717819
   },
   "2ddbef2d": {
    "ok": true,
-   "msg": "186 channels (186 new)",
-   "time": 1793325851.756651
+   "msg": "186 channels (0 new)",
+   "time": 1793328218.1458561
   },
   "d7968fcb": {
    "ok": true,
-   "msg": "197 channels (197 new)",
-   "time": 1793325852.7557232
+   "msg": "197 channels (0 new)",
+   "time": 1793328219.1438835
   },
   "ed8db8ff": {
    "ok": true,
-   "msg": "277 channels (277 new)",
-   "time": 1793325852.968398
+   "msg": "277 channels (0 new)",
+   "time": 1793328219.2349963
   },
   "3502e7ee": {
    "fresh": true,
    "ok": true,
-   "msg": "754 guide channels, 52175 upcoming shows",
-   "time": 1793325853.86764
+   "msg": "754 guide channels, 51790 upcoming shows",
+   "time": 1793328220.1723745
   },
   "8777ef13": {
    "fresh": true,
    "ok": true,
-   "msg": "486 guide channels, 31138 upcoming shows",
-   "time": 1793325854.750179
+   "msg": "486 guide channels, 30980 upcoming shows",
+   "time": 1793328221.0315907
   },
   "40fc4001": {
    "fresh": true,
    "ok": true,
-   "msg": "560 guide channels, 72662 upcoming shows",
-   "time": 1793325857.6136556
+   "msg": "560 guide channels, 72449 upcoming shows",
+   "time": 1793328223.876313
   },
   "98e7bbf9": {
    "fresh": true,
    "ok": true,
-   "msg": "284 guide channels, 46811 upcoming shows",
-   "time": 1793325859.0327106
+   "msg": "284 guide channels, 46726 upcoming shows",
+   "time": 1793328224.9854772
   },
   "7fe2e073": {
    "fresh": true,
    "ok": true,
-   "msg": "933 guide channels, 100317 upcoming shows",
-   "time": 1793325877.2379415
+   "msg": "933 guide channels, 100150 upcoming shows",
+   "time": 1793328227.7926526
   },
   "f2423499": {
    "fresh": true,
    "ok": true,
-   "msg": "566 guide channels, 17102 upcoming shows",
-   "time": 1793325879.4309824
+   "msg": "566 guide channels, 16931 upcoming shows",
+   "time": 1793328229.7548168
   },
   "74457e16": {
    "fresh": true,
    "ok": true,
    "msg": "272 guide channels, 68 upcoming shows",
-   "time": 1793325880.6656399
+   "time": 1793328230.9320564
   },
   "5d1419db": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 16096 upcoming shows",
-   "time": 1793325881.466207
+   "msg": "370 guide channels, 15828 upcoming shows",
+   "time": 1793328231.8288383
   },
   "c558aacf": {
    "fresh": true,
    "ok": true,
-   "msg": "186 guide channels, 3963 upcoming shows",
-   "time": 1793325882.5134556
+   "msg": "186 guide channels, 3790 upcoming shows",
+   "time": 1793328232.2993815
   },
   "440d664a": {
    "fresh": false,
    "ok": true,
-   "msg": "277 guide channels, 2182 upcoming shows - OUT OF DATE, not used",
-   "time": 1793325883.5648317
+   "msg": "277 guide channels, 1970 upcoming shows - OUT OF DATE, not used",
+   "time": 1793328233.6501396
   },
   "ee63f468": {
    "ok": true,
-   "msg": "20 channels (20 new)",
-   "time": 1793325883.7135072
+   "msg": "20 channels (0 new)",
+   "time": 1793328233.726775
   },
   "0830e470": {
    "ok": true,
-   "msg": "265 channels (265 new)",
-   "time": 1793325883.8445904
+   "msg": "265 channels (0 new)",
+   "time": 1793328233.7964344
   },
   "ccd44578": {
    "ok": true,
-   "msg": "234 channels (234 new)",
-   "time": 1793325884.681789
+   "msg": "234 channels (0 new)",
+   "time": 1793328234.791829
   },
   "93f106ed": {
    "ok": true,
-   "msg": "468 channels (468 new)",
-   "time": 1793325884.8470778
+   "msg": "468 channels (0 new)",
+   "time": 1793328234.8684356
   },
   "977a2df8": {
    "ok": true,
-   "msg": "235 channels (235 new)",
-   "time": 1793325884.9776642
+   "msg": "235 channels (0 new)",
+   "time": 1793328234.9429348
   },
   "29d1a082": {
    "ok": true,
-   "msg": "292 channels (292 new)",
-   "time": 1793325885.1251614
+   "msg": "292 channels (0 new)",
+   "time": 1793328235.0084367
   },
   "a3bce8af": {
    "fresh": true,
    "ok": true,
-   "msg": "696 guide channels, 31633 upcoming shows",
-   "time": 1793325885.9828532
+   "msg": "696 guide channels, 31417 upcoming shows",
+   "time": 1793328236.3777194
   },
   "1ebcf8d2": {
    "fresh": true,
    "ok": true,
-   "msg": "696 guide channels, 42491 upcoming shows",
-   "time": 1793325892.4088564
+   "msg": "696 guide channels, 42292 upcoming shows",
+   "time": 1793328238.636157
   },
   "78306880": {
    "fresh": true,
    "ok": true,
-   "msg": "808 guide channels, 101803 upcoming shows",
-   "time": 1793325895.4499414
+   "msg": "808 guide channels, 101582 upcoming shows",
+   "time": 1793328243.8653698
   },
   "45aa734d": {
    "fresh": true,
    "ok": true,
-   "msg": "127 guide channels, 3954 upcoming shows",
-   "time": 1793325896.8420753
+   "msg": "127 guide channels, 3922 upcoming shows",
+   "time": 1793328245.4133024
   },
   "9168b6b9": {
    "fresh": true,
    "ok": true,
-   "msg": "468 guide channels, 19958 upcoming shows",
-   "time": 1793325897.7592204
+   "msg": "468 guide channels, 19659 upcoming shows",
+   "time": 1793328246.051541
   },
   "4a0f87cf": {
    "fresh": true,
    "ok": true,
-   "msg": "235 guide channels, 5361 upcoming shows",
-   "time": 1793325898.4697347
+   "msg": "235 guide channels, 5134 upcoming shows",
+   "time": 1793328246.6483352
   },
   "81306b48": {
    "fresh": false,
    "ok": true,
-   "msg": "292 guide channels, 2271 upcoming shows - OUT OF DATE, not used",
-   "time": 1793325898.9798684
+   "msg": "292 guide channels, 2049 upcoming shows - OUT OF DATE, not used",
+   "time": 1793328247.027398
   }
  },
- "last_refresh": 1793325937.2630801,
+ "last_refresh": 1793328304.5988553,
  "dismissed": []
 }

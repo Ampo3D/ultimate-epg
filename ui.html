@@ -152,6 +152,11 @@ dialog h2{margin:0 0 14px;font-size:16px}
       checked automatically every few minutes</p>
     <details><summary class="muted small" style="cursor:pointer">Recent changes</summary><div id="healthEvents" class="events"></div></details>
   </div>
+  <div class="card" id="removedCard">
+    <h2>🗑 Removed automatically</h2>
+    <p class="muted small" style="margin-top:0">Sources that stayed dead (or out of date) too long are taken out of use by themselves. Every 3 days they get re-checked and come back on their own if they work again. Press Restore to bring one back now and never remove it automatically.</p>
+    <div id="removedList"></div>
+  </div>
   <div class="card">
     <h2>Your sources</h2>
     <p class="muted small" style="margin-top:0">Add as many playlists (M3U) and guides (XMLTV, .xml or .xml.gz) as you like. A URL or a file path on this PC both work. Higher sources win when two guides cover the same channel — use ▲▼ to set priority.</p>
@@ -202,6 +207,9 @@ dialog h2{margin:0 0 14px;font-size:16px}
       <label class="f">Re-download sources every (hours, 0 = never)<input type="number" min="0" id="s_refresh_hours"></label>
       <label class="f">Priority countries, most important first (their sources are added automatically)<input id="s_priority_countries" placeholder="US,GB,CA"></label>
       <label class="f">Days of guide to keep<input type="number" min="1" max="14" id="s_days"></label>
+      <label class="f">Days in the any-provider guides<input type="number" min="1" max="7" id="s_full_guide_days"></label>
+      <label class="f">Remove a dead source automatically after (hours, 0 = never)<input type="number" min="0" id="s_dead_remove_hours"></label>
+      <label class="f">Remove an out-of-date guide automatically after (hours, 0 = never)<input type="number" min="0" id="s_stale_remove_hours"></label>
       <label class="f">Placeholder guide block length (hours)<input type="number" min="1" max="24" id="s_dummy_hours"></label>
       <label class="f">Guides to test per search<input type="number" min="1" max="200" id="s_discover_per_run"></label>
       <label class="f">Skip guides bigger than (MB download)<input type="number" min="5" max="500" id="s_discover_max_mb"></label>
@@ -211,6 +219,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
         <label class="c"><input type="checkbox" id="s_auto_match"> Auto-match guides after every download</label>
         <label class="c"><input type="checkbox" id="s_auto_discover"> Search the internet for missing guides</label>
         <label class="c"><input type="checkbox" id="s_hide_duplicates"> Hide duplicate channels (best source wins)</label>
+        <label class="c"><input type="checkbox" id="s_full_guide"> Also make a full guide for any provider (all channels of your priority countries)</label>
       </div>
     </div>
     <div class="bar" style="margin-top:14px">
@@ -282,7 +291,19 @@ async function load() {
 }
 let pollT = null;
 /* source health - updates live without redrawing the page */
-const H_WORD = {healthy: 'Working', stale: 'Out of date', dead: 'Dead', checking: 'Checking…'};
+const H_WORD = {healthy: 'Working', stale: 'Out of date', dead: 'Dead', checking: 'Checking…', removed: 'Removed'};
+function renderRemoved() {
+  const r = S.removed || [];
+  $('removedList').innerHTML = r.length ? r.map(x => `<div class="src-row" style="grid-template-columns:1fr auto">
+      <span><b>${esc(x.name)}</b> <span class="tag">${x.type === 'm3u' ? 'Playlist' : 'Guide'}</span><br>
+        <span class="hdetail">${esc(x.why)} · removed ${ago(x.t)}</span><br><span class="muted small">${esc(x.url)}</span></span>
+      <button class="b" data-restore="${esc(x.url)}">Restore</button></div>`).join('')
+    : '<p class="muted small">Nothing removed — all your sources are in use.</p>';
+}
+$('removedList').addEventListener('click', async e => {
+  const u = e.target.dataset.restore;
+  if (u) { await post('/api/restore', {url: u}); srcDraft = null; poll(); }
+});
 function ago(t) {
   const m = Math.round((Date.now() / 1000 - t) / 60);
   return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`;
@@ -355,7 +376,7 @@ async function poll() {
   else { srcDraft = null; await load(); }
 }
 
-function renderAll() { renderStatus(); renderFilters(); renderTable(); renderSources(); renderAuto(); renderLinks(); renderLog(); renderHealth(); }
+function renderAll() { renderStatus(); renderFilters(); renderTable(); renderSources(); renderAuto(); renderRemoved(); renderLinks(); renderLog(); renderHealth(); }
 
 function renderStatus() {
   const n = S.channels.filter(c => c.enabled && !c.missing && !c.duplicate).length;
@@ -526,7 +547,8 @@ function renderSources() {
       <label class="c"><input type="checkbox" data-f="enabled" ${s.enabled !== false ? 'checked' : ''}> On</label>
       <span style="display:flex;gap:4px"><button class="b" data-mv="-1">▲</button><button class="b" data-mv="1">▼</button>
         ${s.id ? `<button class="b" data-rf title="Download now">⟳</button>` : ''}<button class="b d" data-del>✕</button></span>
-      <span class="st">${s.id ? `<span data-h="${s.id}"></span>` : '<span class="muted">New — press Save sources</span>'}</span>
+      <span class="st">${(S.removed || []).some(r => r.url === s.url) ? '<span class="hl dead">Removed</span> <span class="hdetail">taken out of use automatically - see "Removed automatically" above</span>'
+        : s.id ? `<span data-h="${s.id}"></span>` : '<span class="muted">New — press Save sources</span>'}</span>
     </div>`;
   }).join('') : '<p class="muted">No sources yet. Add your provider\'s M3U link and an XMLTV guide, or pick a free one below.</p>';
   renderLib();
@@ -599,7 +621,7 @@ $('autoList').addEventListener('click', async e => {
 function renderLinks() {
   const pu = S.settings.public_url;
   $('pubBtn').classList.toggle('hide', !pu);
-  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide (XMLTV)', pu + '/epg.xml'], ['Guide, compressed', pu + '/epg.xml.gz']]
+  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Full guide — any provider', pu + '/epg-full.xml.gz']]
     .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
   $('onlineHelp').textContent = pu
     ? 'GitHub rebuilds these every 6 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update a few minutes later.'
@@ -609,7 +631,7 @@ function renderLinks() {
   const rows = [];
   for (const b of bases) {
     const label = b.includes('localhost') || b.includes('127.0.0.1') ? ' (this PC only)' : '';
-    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide (XMLTV)' + label, b + '/epg.xml'], ['Guide, compressed' + label, b + '/epg.xml.gz']);
+    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide for this playlist' + label, b + '/epg.xml.gz'], ['Full guide — any provider' + label, b + '/epg-full.xml.gz']);
   }
   $('linkRows').innerHTML = rows.map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('');
   for (const k of Object.keys(S.settings)) {

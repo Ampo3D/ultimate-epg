@@ -8,6 +8,7 @@ Then open http://localhost:8787 in a browser.
 import gzip
 import sys
 import hashlib
+import html
 import json
 import os
 import re
@@ -50,6 +51,10 @@ DEFAULT_SETTINGS = {
     "health_minutes": 10,      # how often every source is checked to see if it still answers
     "priority_countries": "US,GB,CA",  # most important first; their sources are added and ranked first
     "hide_duplicates": True,   # the same channel from two playlists only appears once (best source wins)
+    "full_guide": True,        # also publish epg-full.xml.gz: every channel of your priority countries (any provider)
+    "full_guide_days": 2,      # days in the any-provider guides (they are big - fewer days keeps them light)
+    "dead_remove_hours": 12,   # a source that keeps failing this long is removed automatically (0 = never)
+    "stale_remove_hours": 48,  # a guide with no upcoming shows this long is removed automatically (0 = never)
 }
 
 LOCK = threading.RLock()
@@ -75,6 +80,7 @@ def load_config():
     cfg.setdefault("channels", {})
     cfg.setdefault("status", {})
     cfg.setdefault("last_refresh", 0)
+    cfg.setdefault("keep_urls", [])  # sources you restored - never removed automatically
     cfg.setdefault("dismissed", [])  # library sources you removed - never re-added automatically
     if not os.path.exists(CONFIG_PATH):  # first run: start with the recommended free sources
         try:
@@ -106,7 +112,7 @@ def load_auto():
     except (OSError, ValueError):
         a = {}
     for k, v in {"sources": [], "checked": {}, "blocked": [], "last_discovery": 0,
-                 "known": 0, "cache": {}}.items():
+                 "known": 0, "cache": {}, "bad_since": {}, "removed": {}}.items():
         a.setdefault(k, v)
     return a
 
@@ -121,8 +127,13 @@ def save_auto():
 AUTO = load_auto()
 
 
+def is_removed(src):
+    return src["url"] in AUTO["removed"] and src["url"] not in CFG["keep_urls"]
+
+
 def all_sources():
-    return CFG["sources"] + AUTO["sources"]
+    """Every source in use: yours + auto-found, minus ones removed automatically for being dead."""
+    return [s for s in CFG["sources"] + AUTO["sources"] if not is_removed(s)]
 
 
 def log(msg):
@@ -175,6 +186,15 @@ def fetch(url, dest, max_bytes=None):
 ATTR_RE = re.compile(r'([\w-]+)="([^"]*)"')
 
 
+def unescape_all(v):
+    """Some playlists write & as &amp; (even &amp;amp;) - turn it back into a plain &."""
+    while True:
+        u = html.unescape(v)
+        if u == v:
+            return v
+        v = u
+
+
 def parse_m3u(path):
     with open(path, encoding="utf-8", errors="replace") as f:
         lines = [l.strip() for l in f]
@@ -184,8 +204,8 @@ def parse_m3u(path):
             continue
         if line.upper().startswith("#EXTINF"):
             head, _, title = line.partition(",")
-            attrs = dict(ATTR_RE.findall(head))
-            cur = {"attrs": attrs, "title": title.strip()}
+            attrs = {k: unescape_all(v) for k, v in ATTR_RE.findall(head)}
+            cur = {"attrs": attrs, "title": unescape_all(title.strip())}
             extra = []
         elif line.startswith("#EXTGRP:") and cur:
             cur["attrs"].setdefault("group-title", line[8:].strip())
@@ -687,6 +707,59 @@ def discover():
     log(f"Guide search done: tried {tried}, {len(wanted)} channel(s) still without a guide")
 
 
+def mark_health(src, bad, kind="dead", why=""):
+    """Remember since when a source has been failing (kept in auto_sources.json so the
+    GitHub copy remembers it between runs)."""
+    if bad:
+        rec = AUTO["bad_since"].get(src["url"])
+        if not rec or rec.get("kind") != kind:
+            AUTO["bad_since"][src["url"]] = {"t": time.time(), "kind": kind, "why": why[:200]}
+        else:
+            rec["why"] = why[:200]
+    else:
+        AUTO["bad_since"].pop(src["url"], None)
+
+
+def remove_dead_sources():
+    """Take sources out of use once they have been dead (or out of date) for too long."""
+    settings = CFG["settings"]
+    limits = {"dead": float(settings.get("dead_remove_hours") or 0),
+              "stale": float(settings.get("stale_remove_hours") or 0)}
+    for src in list(all_sources()):
+        rec = AUTO["bad_since"].get(src["url"])
+        if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]):
+            continue
+        hours = (time.time() - rec["t"]) / 3600
+        if hours >= limits[rec["kind"]]:
+            what = "dead" if rec["kind"] == "dead" else "out of date"
+            AUTO["removed"][src["url"]] = {"t": time.time(), "name": src["name"], "type": src["type"],
+                                           "why": f"{what} for {int(hours)} hours: {rec['why']}",
+                                           "retry": time.time() + 3 * 86400}
+            text = f"'{src['name']}' was removed automatically - {what} for {int(hours)} hours"
+            HEALTH_EVENTS.append({"t": time.time(), "id": src["id"], "name": src["name"],
+                                  "state": "removed", "text": text})
+            HEALTH.pop(src["id"], None)
+            log(text)
+
+
+def retry_removed_sources():
+    """Every 3 days, removed sources get another chance: if they answer again they come back."""
+    for url in list(AUTO["removed"]):
+        rec = AUTO["removed"][url]
+        if url in CFG["keep_urls"]:
+            AUTO["removed"].pop(url)
+            continue
+        if time.time() < rec.get("retry", 0):
+            continue
+        ok, why, _ = ping(url)
+        if ok:
+            AUTO["removed"].pop(url)
+            AUTO["bad_since"].pop(url, None)
+            log(f"'{rec['name']}' answers again - put back into use")
+        else:
+            rec["retry"] = time.time() + 3 * 86400
+
+
 def drop_dead_auto_sources():
     """Auto-found guides that fail or go stale twice in a row are removed (and re-checked later)."""
     keep = []
@@ -709,7 +782,7 @@ DUPES = set()  # channel keys hidden because a better copy exists
 
 
 def output_channels():
-    active = {s["id"] for s in CFG["sources"] if s.get("enabled", True)} | {"custom"}
+    active = {s["id"] for s in all_sources() if s.get("enabled", True)} | {"custom"}
     rows = []
     for ch in CFG["channels"].values():
         e = effective(ch)
@@ -742,6 +815,20 @@ def output_channels():
     return rows
 
 
+def m3u_attr(v):
+    """Playlists are not XML: keep & as-is (players match tvg-id to the guide character by character)."""
+    return '"' + str(v).replace('"', "'").replace("\n", " ") + '"'
+
+
+SLIM_TAGS = {"credits", "image", "rating", "star-rating", "review", "video", "audio", "previously-shown",
+             "premiere", "last-chance", "subtitles", "length", "country", "keyword", "url", "language",
+             "orig-language"}  # left out of the full guides to keep them small
+
+
+def full_name(key):
+    return "epg-full.xml.gz" if key == "full" else f"epg-{'uk' if key == 'GB' else key.lower()}.xml.gz"
+
+
 def build():
     with LOCK:
         rows = output_channels()
@@ -752,12 +839,12 @@ def build():
     # playlist; {EPG_URL} is swapped for the real address when served
     m3u = ['#EXTM3U url-tvg="{EPG_URL}" x-tvg-url="{EPG_URL}"']
     for e in rows:
-        attrs = f'tvg-id={quoteattr(e["tvg_id"])} tvg-name={quoteattr(e["name"])}'
+        attrs = f'tvg-id={m3u_attr(e["tvg_id"])} tvg-name={m3u_attr(e["name"])}'
         if e["number"]:
-            attrs += f' tvg-chno={quoteattr(str(e["number"]))}'
+            attrs += f' tvg-chno={m3u_attr(e["number"])}'
         if e["logo"]:
-            attrs += f' tvg-logo={quoteattr(e["logo"])}'
-        attrs += f' group-title={quoteattr(e["group"] or "Other")}'
+            attrs += f' tvg-logo={m3u_attr(e["logo"])}'
+        attrs += f' group-title={m3u_attr(e["group"] or "Other")}'
         m3u.append(f"#EXTINF:-1 {attrs},{e['name']}")
         m3u.extend(e["extra"])
         m3u.append(e["url"])
@@ -774,6 +861,43 @@ def build():
     for e in rows:
         wanted.setdefault(e["tvg_id"], e)
     real = {cid for cid in wanted if cid in EPG_INDEX}
+    # full guide: every channel in your priority countries' guides, so any provider's channels match
+    # full guides: every channel in your priority countries' guides, so any provider's channels match.
+    # One combined file plus one per country; bulky extras TV apps don't show are left out.
+    full = None
+    full_end_cut = now + timedelta(days=float(settings.get("full_guide_days") or 2))
+    if settings.get("full_guide"):
+        n_pri = len(priority_list())
+        full_src = [x for x in xml_sources if priority_rank(x) < n_pri]
+        src_cc = {x["id"]: guess_country(x["url"], x["name"]) for x in full_src}
+        full_owner, full_info = {}, {}
+        for x in full_src:
+            p = os.path.join(CACHE, x["id"] + ".channels.json")
+            if os.path.exists(p):
+                with open(p, encoding="utf-8") as fh:
+                    for cid, info in json.load(fh).items():
+                        if cid not in full_owner:
+                            full_owner[cid], full_info[cid] = x["id"], info
+        full = {"full": None, **{cc: None for cc in priority_list()}}
+        for key in full:
+            full[key] = gzip.open(os.path.join(OUT, f"{full_name(key)}.tmp"), "wt", encoding="utf-8", compresslevel=6)
+            full[key].write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG">\n')
+
+        def full_write(cid, text):
+            full["full"].write(text)
+            cc = src_cc.get(full_owner.get(cid))
+            if cc in full:
+                full[cc].write(text)
+        for cid, info in full_info.items():
+            text = f"<channel id={quoteattr(cid)}>" + "".join(
+                f"<display-name>{escape(n)}</display-name>" for n in info["names"] if n)
+            if info.get("icon"):
+                text += f"<icon src={quoteattr(info['icon'])}/>"
+            full_write(cid, text + "</channel>\n")
+        for cid, e in wanted.items():  # your own lineup is always in the full guide too
+            if cid not in full_owner:
+                full_write(cid, f"<channel id={quoteattr(cid)}><display-name>{escape(e['name'])}</display-name></channel>\n")
+    full_count = 0
     tmp = os.path.join(OUT, "epg.xml.tmp")
     count = 0
     with open(tmp, "w", encoding="utf-8") as f:
@@ -793,15 +917,30 @@ def build():
             try:
                 for el in iter_xmltv(path, ("programme",)):
                     cid = el.get("channel", "")
-                    if cid not in real or cid in claimed:
+                    to_main = cid in real and cid not in claimed
+                    to_full = full is not None and (full_owner.get(cid) == src["id"]
+                                                    or (to_main and cid not in full_owner))
+                    if not (to_main or to_full):
                         continue
                     st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                    if (sp and sp < start_cut) or (st and st > end_cut):
+                    if sp and sp < start_cut:
+                        continue
+                    to_main = to_main and not (st and st > end_cut)
+                    to_full = to_full and not (st and st > full_end_cut)
+                    if not (to_main or to_full):
                         continue
                     el.tail = "\n"
-                    f.write(ET.tostring(el, encoding="unicode"))
-                    here.add(cid)
-                    count += 1
+                    text = ET.tostring(el, encoding="unicode")
+                    if to_main:
+                        f.write(text)
+                        here.add(cid)
+                        count += 1
+                    if to_full:
+                        for child in list(el):
+                            if child.tag in SLIM_TAGS:
+                                el.remove(child)
+                        full_write(cid, ET.tostring(el, encoding="unicode"))
+                        full_count += 1
             except ET.ParseError as ex:
                 log(f"Guide '{src['name']}' is partly broken XML ({ex}); kept what was readable")
             claimed |= here
@@ -815,9 +954,12 @@ def build():
                 t = t0
                 desc = e["desc"] or f"{e['name']} - live 24/7"
                 while t < end_cut:
-                    f.write(f'<programme start="{fmt_xmltv_time(t)}" stop="{fmt_xmltv_time(t + block)}" '
+                    text = (f'<programme start="{fmt_xmltv_time(t)}" stop="{fmt_xmltv_time(t + block)}" '
                             f'channel={quoteattr(cid)}><title>{escape(e["name"])}</title>'
                             f'<desc>{escape(desc)}</desc></programme>\n')
+                    f.write(text)
+                    if full is not None and cid not in full_owner:
+                        full_write(cid, text)
                     t += block
                     count += 1
         f.write("</tv>\n")
@@ -825,6 +967,15 @@ def build():
     with open(os.path.join(OUT, "epg.xml"), "rb") as src, gzip.open(os.path.join(OUT, "epg.xml.gz.tmp"), "wb") as dst:
         shutil.copyfileobj(src, dst, 1 << 20)
     os.replace(os.path.join(OUT, "epg.xml.gz.tmp"), os.path.join(OUT, "epg.xml.gz"))
+    if full is not None:
+        sizes = []
+        for key, fh in full.items():
+            fh.write("</tv>\n")
+            fh.close()
+            name = full_name(key)
+            os.replace(os.path.join(OUT, name + ".tmp"), os.path.join(OUT, name))
+            sizes.append(f"{name} {os.path.getsize(os.path.join(OUT, name)) >> 20} MB")
+        log(f"Full guides: {len(full_owner)} channels, {full_count} shows - " + ", ".join(sizes))
     STATE["last_build"] = time.time()
     log(f"Done: {len(rows)} channels, {count} guide entries ({len(claimed)} channels with real guide)")
 
@@ -836,6 +987,7 @@ def refresh(only=None):
         with LOCK:
             sync_priority_sources()
             save_config()
+        retry_removed_sources()
     for src in list(all_sources()):
         if not src.get("enabled", True) or (only and src["id"] not in only):
             continue
@@ -862,8 +1014,15 @@ def refresh(only=None):
             log(f"  FAILED: {ex}")
         if src.get("auto"):
             src["fails"] = 0 if st.get("fresh") else src.get("fails", 0) + 1
+        if not st.get("ok"):
+            mark_health(src, True, "dead", st.get("msg", ""))
+        elif src["type"] == "xmltv" and not st.get("fresh"):
+            mark_health(src, True, "stale", "guide has no upcoming shows")
+        else:
+            mark_health(src, False)
         update_health(src, ping_ok=st.get("ok"), ping_msg=st.get("msg", ""))
     drop_dead_auto_sources()
+    remove_dead_sources()
     with LOCK:
         load_epg_index()
         if CFG["settings"]["auto_match"]:
@@ -997,7 +1156,17 @@ def check_all_sources():
     with ThreadPoolExecutor(8) as ex:
         results = list(ex.map(lambda s: ping(s["url"]), srcs))
     for src, (ok, msg, ms) in zip(srcs, results):
+        if not ok:
+            mark_health(src, True, "dead", msg)
+        elif AUTO["bad_since"].get(src["url"], {}).get("kind") == "dead" and status_of(src).get("ok"):
+            mark_health(src, False)
         update_health(src, ok, msg, ms)
+    before = len(AUTO["removed"])
+    remove_dead_sources()
+    if len(AUTO["removed"]) != before:
+        with LOCK:
+            load_epg_index()
+        run_job()  # rebuild without the removed source
     for sid in list(HEALTH):  # forget removed sources
         if not source_by_id(sid):
             del HEALTH[sid]
@@ -1013,6 +1182,7 @@ def health_loop():
             last = time.time()
             try:
                 check_all_sources()
+                save_auto()
             except Exception as ex:
                 log(f"Health check failed: {ex}")
 
@@ -1053,13 +1223,17 @@ def build_site(outdir, base_url):
         m3u = f.read().replace("{EPG_URL}", base_url + "/epg.xml.gz")
     with open(os.path.join(outdir, "playlist.m3u"), "w", encoding="utf-8") as f:
         f.write(m3u)
-    for name in ("epg.xml", "epg.xml.gz"):
+    for name in ["epg.xml", "epg.xml.gz"] + sorted(f for f in os.listdir(OUT) if re.fullmatch(r"epg-[a-z]+\.xml\.gz", f)):
+        if not os.path.exists(os.path.join(OUT, name)):
+            continue
         if name == "epg.xml" and os.path.getsize(os.path.join(OUT, name)) > 95_000_000:
             log("Full-size guide is over 95 MB - publishing only the compressed epg.xml.gz")
             continue
         shutil.copyfile(os.path.join(OUT, name), os.path.join(outdir, name))
     links = "".join(f'<p>{label}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
-                    [("Playlist", "playlist.m3u"), ("Guide", "epg.xml"), ("Guide (compressed)", "epg.xml.gz")])
+                    [("Playlist", "playlist.m3u"), ("Guide for this playlist", "epg.xml.gz"),
+                     ("Full guide - use with any provider", "epg-full.xml.gz")] +
+                    [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()])
     with open(os.path.join(outdir, "index.html"), "w", encoding="utf-8") as f:
         f.write(f'<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">'
                 f'<title>My EPG</title><body style="font:16px system-ui;max-width:640px;margin:40px auto;padding:0 16px">'
@@ -1185,6 +1359,7 @@ def api_state():
             "settings": CFG["settings"], "status": CFG["status"],
             "sources": [{**x, "country": guess_country(x["url"], x["name"])} for x in CFG["sources"]],
             **health_payload(),
+            "removed": [{"url": u, **r} for u, r in AUTO["removed"].items() if u not in CFG["keep_urls"]],
             "auto": AUTO["sources"], "auto_info": {
                 "known": AUTO["known"], "checked": len(AUTO["checked"]), "blocked": len(AUTO["blocked"]),
                 "last": AUTO["last_discovery"],
@@ -1334,6 +1509,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_file(os.path.join(OUT, "epg.xml"), "application/xml; charset=utf-8")
         if p == "/epg.xml.gz":
             return self.send_file(os.path.join(OUT, "epg.xml.gz"), "application/gzip")
+        if re.fullmatch(r"/epg-[a-z]+\.xml\.gz", p):
+            return self.send_file(os.path.join(OUT, p[1:]), "application/gzip")
         if p == "/api/catalog":
             return self.send_file(os.path.join(BASE, "catalog.json"), "application/json; charset=utf-8")
         if p == "/api/state":
@@ -1414,6 +1591,18 @@ class Handler(BaseHTTPRequestHandler):
                     save_auto()
             run_job()
             return self.send(200, {"ok": bool(src)})
+        if p == "/api/restore":
+            url = body.get("url", "")
+            with LOCK:
+                if url and url not in CFG["keep_urls"]:
+                    CFG["keep_urls"].append(url)
+                AUTO["removed"].pop(url, None)
+                AUTO["bad_since"].pop(url, None)
+                save_config()
+                save_auto()
+                src = next((x for x in all_sources() if x["url"] == url), None)
+            run_job(refresh, {src["id"]} if src else None)
+            return self.send(200, {"ok": True})
         if p == "/api/health-check":
             HEALTH_NOW.set()
             return self.send(200, {"ok": True})
