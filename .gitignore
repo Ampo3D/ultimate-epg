@@ -4,3 +4,4 @@ data/*.tmp
 data/log.txt
 site/
 __pycache__/
+data/private.json

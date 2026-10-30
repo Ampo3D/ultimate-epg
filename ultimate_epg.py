@@ -80,6 +80,7 @@ def load_config():
     cfg.setdefault("channels", {})
     cfg.setdefault("status", {})
     cfg.setdefault("last_refresh", 0)
+    cfg.setdefault("provider_channels", [])  # your provider's channel names/codes + matched guide (no links)
     cfg.setdefault("keep_urls", [])  # sources you restored - never removed automatically
     cfg.setdefault("dismissed", [])  # library sources you removed - never re-added automatically
     if not os.path.exists(CONFIG_PATH):  # first run: start with the recommended free sources
@@ -125,6 +126,23 @@ def save_auto():
 
 
 AUTO = load_auto()
+PRIVATE_PATH = os.path.join(DATA, "private.json")  # your provider link (has your password) - stays on this PC
+
+
+def load_private():
+    try:
+        with open(PRIVATE_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {"providers": []}
+
+
+def save_private():
+    with open(PRIVATE_PATH, "w", encoding="utf-8") as f:
+        json.dump(PRIVATE, f, indent=1)
+
+
+PRIVATE = load_private()
 
 
 def is_removed(src):
@@ -272,7 +290,7 @@ def iter_xmltv(path, tags):
 
 def scan_xmltv(path):
     """Read a guide's channel list and check it actually has upcoming shows."""
-    idx, upcoming, last = {}, 0, None
+    idx, upcoming, last, per = {}, 0, None, {}
     now = datetime.now(timezone.utc)
     try:
         for el in iter_xmltv(path, ("channel", "programme")):
@@ -285,8 +303,12 @@ def scan_xmltv(path):
                 if end and end > now:
                     upcoming += 1
                     last = max(last, end) if last else end
+                    cid = el.get("channel", "")
+                    per[cid] = per.get(cid, 0) + 1
     except ET.ParseError:
         pass  # keep whatever was readable before the broken part
+    for cid, info in idx.items():
+        info["n"] = per.get(cid, 0)  # upcoming shows - channels listed with no shows are skipped when matching
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=12)
     return idx, upcoming, fresh
 
@@ -378,7 +400,7 @@ def load_epg_index():
             continue
         with open(p, encoding="utf-8") as f:
             for cid, info in json.load(f).items():
-                if cid not in new:
+                if cid not in new and info.get("n", 1):
                     new[cid] = {"name": (info["names"] or [cid])[0], "names": info["names"],
                                 "icon": info["icon"], "source": src["id"]}
     EPG_INDEX = new
@@ -778,6 +800,153 @@ def drop_dead_auto_sources():
 
 # ---------------------------------------------------------------- build output
 
+PROVIDER_PREFIX_RE = re.compile(r"^\s*[\[(|]?\s*(us|usa|uk|gb|ca|can|cdn)\s*[\])|:\-]+\s*", re.I)
+FEED_RE = re.compile(r"\b(east|west|pacific|feed|backup|alt|hd|fhd|uhd|sd|4k)\b")
+CC_ALIAS = {"usa": "us", "united states": "us", "gb": "uk", "united kingdom": "uk", "can": "ca", "cdn": "ca",
+            "canada": "ca"}
+
+
+def pkey(name):
+    """Name used to compare a provider channel with a guide channel ("US| ESPN HD" -> "espn")."""
+    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    return norm(FEED_RE.sub(" ", n))
+
+
+def entry_country(name, group, tid):
+    m = re.search(r"\.(us|uk|gb|ca)\d?(?:@|$)", (tid or "").lower())
+    if not m:
+        m = (re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\b", (name or "").lower())
+             or re.search(r"\b(usa|united states|united kingdom|uk|canada|us|ca)\b", (group or "").lower()))
+    return CC_ALIAS.get(m[1], m[1]) if m else ""
+
+
+def provider_index():
+    """All channels of all working guides, best sources first."""
+    owner, names, src_cc = {}, {}, {}
+    for x in guide_sources():
+        src_cc[x["id"]] = CC_ALIAS.get(guess_country(x["url"], x["name"]).lower(),
+                                       guess_country(x["url"], x["name"]).lower())
+        path = os.path.join(CACHE, x["id"] + ".channels.json")
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as fh:
+                for cid, info in json.load(fh).items():
+                    if cid not in owner and info.get("n", 1):
+                        owner[cid], names[cid] = x["id"], info["names"]
+    by_id = {cid.lower(): cid for cid in owner}
+    by_name, by_call = {}, {}
+    for cid, ns in names.items():
+        for n in ns or [cid.split(".")[0]]:
+            k = pkey(n)
+            if k and cid not in by_name.setdefault(k, []):
+                by_name[k].append(cid)
+        for call in callsigns(" ".join(ns) + " " + cid.replace(".", " ")):
+            if cid not in by_call.setdefault(call, []):
+                by_call[call].append(cid)
+
+    def cc_of(cid):
+        m = re.search(r"\.(us|uk|gb|ca)\d?(?:@|$)", cid.lower())
+        return CC_ALIAS.get(m[1], m[1]) if m else src_cc.get(owner[cid], "")
+    return {"by_id": by_id, "by_name": by_name, "by_call": by_call, "cc": cc_of, "names": names}
+
+
+CALL_RE = re.compile(r"(?<![A-Za-z])([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?![A-Za-z])")
+NOT_CALLS = {"WEST", "WILD", "WORD", "KIDS", "WETV", "WOOD", "WORK", "KING", "KISS", "WINE", "WALL", "WIDE"}
+
+
+def callsigns(text):
+    """Local TV call letters in a name, e.g. 'ABC 7 New York (WABC)' -> {'WABC'}."""
+    return {c for c in CALL_RE.findall(text or "") if c not in NOT_CALLS}
+
+
+def pick_best(cands, c, idx):
+    """Several guide channels share the name: prefer same country and the same time-zone feed."""
+    want_cc = entry_country(c["name"], c.get("group", ""), c.get("id", ""))
+    pname = PROVIDER_PREFIX_RE.sub("", unescape_all(c["name"]).lower())
+    want_west = bool(re.search(r"\b(pacific|west)\b", pname))
+    exact = norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", pname))
+
+    def score(cid):
+        text = (" ".join(idx["names"].get(cid, [])) + " " + cid).lower()
+        west = bool(re.search(r"pacific|west|\(p\)", text))
+        sc = 0
+        if want_cc and idx["cc"](cid) == want_cc:
+            sc += 4
+        if west != want_west:
+            sc -= 5  # never put the West Coast feed on an East Coast channel (3 hours off)
+        if any(norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", n.lower())) == exact for n in idx["names"].get(cid, [])):
+            sc += 2
+        return -sc
+    return sorted(cands, key=score)[0]
+
+
+def match_provider_channel(c, idx):
+    """Find the guide channel for one provider channel: exact code, then name (+ country)."""
+    tid = (c.get("id") or "").strip()
+    if tid:
+        for t in (tid.lower(), tid.split("@")[0].lower()):
+            if t in idx["by_id"]:
+                return idx["by_id"][t], "code"
+    for call in callsigns(c["name"] + " " + tid.upper().replace(".", " ")):
+        if call in idx["by_call"]:
+            return pick_best(idx["by_call"][call], c, idx), "call letters"
+    cands = idx["by_name"].get(pkey(c["name"]), [])
+    if not cands:
+        return "", ""
+    return pick_best(cands, c, idx), "name"
+
+
+def rematch_provider(idx=None):
+    """Match provider channels that have no (working) guide yet. Needs no provider link."""
+    chans = CFG.get("provider_channels") or []
+    if not chans:
+        return 0
+    idx = idx or provider_index()
+    n = 0
+    for c in chans:
+        if c.get("manual") or (c.get("guide") and c["guide"].lower() in idx["by_id"]):
+            continue
+        c["guide"], c["how"] = match_provider_channel(c, idx)
+        n += bool(c["guide"])
+    return n
+
+
+def refresh_provider():
+    """Read your provider's channel list (on this PC only) and match every channel to a guide."""
+    if not PRIVATE.get("providers"):
+        return False
+    entries = []
+    for i, prov in enumerate(PRIVATE["providers"]):
+        dest = os.path.join(CACHE, f"provider{i}.m3u")
+        try:
+            log(f"Reading your provider list '{prov.get('name', 'Provider')}'")
+            fetch(prov["url"], dest)
+            entries += [e for e in parse_m3u(dest) if not re.search(r"/(movie|series)/", e["url"], re.I)]
+            os.remove(dest)  # don't keep a copy with your login in it
+        except Exception as ex:
+            log(f"  could not read your provider list: {ex}")
+            return False
+    old = {c["key"]: c for c in CFG["provider_channels"]}
+    idx = provider_index()
+    new, seen = [], set()
+    for e in entries:
+        key = e["epg_id"] or "name:" + e["name"]
+        if key in seen:
+            continue
+        seen.add(key)
+        c = {"key": key, "id": e["epg_id"] or e["name"], "name": e["name"], "group": e["group"]}
+        prev = old.get(key)
+        if prev and prev.get("manual"):
+            c.update(guide=prev["guide"], how="manual", manual=True)
+        else:
+            c["guide"], c["how"] = match_provider_channel(c, idx)
+        new.append(c)
+    changed = [(c["key"], c["guide"]) for c in new] != [(c["key"], c.get("guide")) for c in CFG["provider_channels"]]
+    CFG["provider_channels"] = new
+    matched = sum(1 for c in new if c["guide"])
+    log(f"Your provider: {len(new)} live channels, {matched} matched to a guide")
+    return changed
+
+
 DUPES = set()  # channel keys hidden because a better copy exists
 
 
@@ -876,7 +1045,7 @@ def build():
             if os.path.exists(p):
                 with open(p, encoding="utf-8") as fh:
                     for cid, info in json.load(fh).items():
-                        if cid not in full_owner:
+                        if cid not in full_owner and info.get("n", 1):
                             full_owner[cid], full_info[cid] = x["id"], info
         full = {"full": None, **{cc: None for cc in priority_list()}}
         for key in full:
@@ -897,6 +1066,33 @@ def build():
         for cid, e in wanted.items():  # your own lineup is always in the full guide too
             if cid not in full_owner:
                 full_write(cid, f"<channel id={quoteattr(cid)}><display-name>{escape(e['name'])}</display-name></channel>\n")
+    # provider guide: your provider's exact channel codes, so TiviMate etc. connect every channel
+    prov = [c for c in CFG.get("provider_channels") or []]
+    pf = None
+    if prov:
+        prov_targets = {}
+        for c in prov:
+            if c.get("guide"):
+                prov_targets.setdefault(c["guide"], [])
+                if c["id"] not in prov_targets[c["guide"]]:
+                    prov_targets[c["guide"]].append(c["id"])
+        pf = gzip.open(os.path.join(OUT, "epg-provider.xml.gz.tmp"), "wt", encoding="utf-8", compresslevel=6)
+        pf.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG (provider)">\n')
+        written = set()
+        for c in prov:
+            if c["id"] not in written:
+                written.add(c["id"])
+                pf.write(f"<channel id={quoteattr(c['id'])}><display-name>{escape(c['name'])}</display-name></channel>\n")
+    prov_claimed, prov_count = set(), 0
+    # which guide site each channel code belongs to (codes like "172" mean different channels on different sites)
+    owner = {}
+    for x in xml_sources:
+        path = os.path.join(CACHE, x["id"] + ".channels.json")
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as fh:
+                for cid, info in json.load(fh).items():
+                    if cid not in owner and info.get("n", 1):
+                        owner[cid] = x["id"]
     full_count = 0
     tmp = os.path.join(OUT, "epg.xml.tmp")
     count = 0
@@ -913,21 +1109,25 @@ def build():
             path = os.path.join(CACHE, src["id"] + ".xml")
             if not os.path.exists(path):
                 continue
-            here = set()
+            here, here_prov = set(), set()
             try:
                 for el in iter_xmltv(path, ("programme",)):
                     cid = el.get("channel", "")
-                    to_main = cid in real and cid not in claimed
+                    mine = owner.get(cid) == src["id"]
+                    to_main = cid in real and cid not in claimed and mine
                     to_full = full is not None and (full_owner.get(cid) == src["id"]
                                                     or (to_main and cid not in full_owner))
-                    if not (to_main or to_full):
+                    to_prov = pf is not None and cid in prov_targets and cid not in prov_claimed and mine
+                    if not (to_main or to_full or to_prov):
                         continue
                     st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
                     if sp and sp < start_cut:
                         continue
-                    to_main = to_main and not (st and st > end_cut)
+                    late = st and st > end_cut
+                    to_main = to_main and not late
+                    to_prov = to_prov and not late
                     to_full = to_full and not (st and st > full_end_cut)
-                    if not (to_main or to_full):
+                    if not (to_main or to_full or to_prov):
                         continue
                     el.tail = "\n"
                     text = ET.tostring(el, encoding="unicode")
@@ -941,9 +1141,16 @@ def build():
                                 el.remove(child)
                         full_write(cid, ET.tostring(el, encoding="unicode"))
                         full_count += 1
+                    if to_prov:
+                        for out_id in prov_targets[cid]:
+                            el.set("channel", out_id)
+                            pf.write(ET.tostring(el, encoding="unicode"))
+                            prov_count += 1
+                        here_prov.add(cid)
             except ET.ParseError as ex:
                 log(f"Guide '{src['name']}' is partly broken XML ({ex}); kept what was readable")
             claimed |= here
+            prov_claimed |= here_prov
         if settings["dummy_epg"]:
             block = timedelta(hours=max(1, int(settings["dummy_hours"])))
             hours = int(block.total_seconds() // 3600)
@@ -967,6 +1174,27 @@ def build():
     with open(os.path.join(OUT, "epg.xml"), "rb") as src, gzip.open(os.path.join(OUT, "epg.xml.gz.tmp"), "wb") as dst:
         shutil.copyfileobj(src, dst, 1 << 20)
     os.replace(os.path.join(OUT, "epg.xml.gz.tmp"), os.path.join(OUT, "epg.xml.gz"))
+    if pf is not None:
+        if settings["dummy_epg"]:  # channels with no guide at all show their own name instead of "No information"
+            block = timedelta(hours=max(1, int(settings["dummy_hours"])))
+            t0 = now.replace(minute=0, second=0, microsecond=0)
+            done = set()
+            for c in prov:
+                if c["id"] in done or (c.get("guide") and c["guide"] in prov_claimed):
+                    continue
+                done.add(c["id"])
+                t = t0
+                while t < end_cut:
+                    pf.write(f'<programme start="{fmt_xmltv_time(t)}" stop="{fmt_xmltv_time(t + block)}" '
+                             f'channel={quoteattr(c["id"])}><title>{escape(c["name"])}</title></programme>\n')
+                    t += block
+        pf.write("</tv>\n")
+        pf.close()
+        os.replace(os.path.join(OUT, "epg-provider.xml.gz.tmp"), os.path.join(OUT, "epg-provider.xml.gz"))
+        with_guide = sum(1 for c in prov if c.get("guide") and c["guide"] in prov_claimed)
+        STATE["provider_live"] = with_guide
+        log(f"Provider guide: {len(prov)} channels, {with_guide} with real listings, {prov_count} shows "
+            f"({os.path.getsize(os.path.join(OUT, 'epg-provider.xml.gz')) >> 20} MB)")
     if full is not None:
         sizes = []
         for key, fh in full.items():
@@ -1028,6 +1256,12 @@ def refresh(only=None):
         if CFG["settings"]["auto_match"]:
             n = auto_match(only_unmatched=True)
             log(f"Auto-matched {n} channel(s) without a guide")
+    provider_changed = False
+    with LOCK:
+        if PRIVATE.get("providers"):
+            provider_changed = refresh_provider()
+        else:
+            rematch_provider()
     if not only and CFG["settings"]["auto_discover"]:
         try:
             discover()
@@ -1037,10 +1271,29 @@ def refresh(only=None):
             load_epg_index()
             auto_match(only_unmatched=True)
     with LOCK:
+        rematch_provider()
         if not only:
             CFG["last_refresh"] = time.time()
         save_config()
     save_auto()
+    if provider_changed and CFG["settings"].get("public_url") and os.path.isdir(os.path.join(BASE, ".git")):
+        try:  # keep the online provider guide in step with your provider's channels
+            with LOCK:
+                publish()
+        except Exception as ex:
+            log(f"Could not publish provider changes: {ex}")
+
+
+def provider_job():
+    with LOCK:
+        changed = refresh_provider()
+        save_config()
+    if changed and CFG["settings"].get("public_url") and os.path.isdir(os.path.join(BASE, ".git")):
+        try:
+            with LOCK:
+                publish()
+        except Exception as ex:
+            log(f"Could not publish provider changes: {ex}")
 
 
 def discover_now():
@@ -1233,7 +1486,9 @@ def build_site(outdir, base_url):
     links = "".join(f'<p>{label}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
                     [("Playlist", "playlist.m3u"), ("Guide for this playlist", "epg.xml.gz"),
                      ("Full guide - use with any provider", "epg-full.xml.gz")] +
-                    [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()])
+                    [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()] +
+                    ([("Guide made for your provider (TiviMate etc.)", "epg-provider.xml.gz")]
+                     if os.path.exists(os.path.join(OUT, "epg-provider.xml.gz")) else []))
     with open(os.path.join(outdir, "index.html"), "w", encoding="utf-8") as f:
         f.write(f'<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">'
                 f'<title>My EPG</title><body style="font:16px system-ui;max-width:640px;margin:40px auto;padding:0 16px">'
@@ -1359,6 +1614,12 @@ def api_state():
             "settings": CFG["settings"], "status": CFG["status"],
             "sources": [{**x, "country": guess_country(x["url"], x["name"])} for x in CFG["sources"]],
             **health_payload(),
+            "provider": {
+                "names": [x.get("name", "Provider") for x in PRIVATE.get("providers", [])],
+                "count": len(CFG["provider_channels"]),
+                "matched": sum(1 for c in CFG["provider_channels"] if c.get("guide")),
+                "live": STATE.get("provider_live"),
+                "unmatched": [c for c in CFG["provider_channels"] if not c.get("guide")][:500]},
             "removed": [{"url": u, **r} for u, r in AUTO["removed"].items() if u not in CFG["keep_urls"]],
             "auto": AUTO["sources"], "auto_info": {
                 "known": AUTO["known"], "checked": len(AUTO["checked"]), "blocked": len(AUTO["blocked"]),
@@ -1591,6 +1852,24 @@ class Handler(BaseHTTPRequestHandler):
                     save_auto()
             run_job()
             return self.send(200, {"ok": bool(src)})
+        if p == "/api/provider":
+            url = (body.get("url") or "").strip()
+            with LOCK:
+                PRIVATE["providers"] = [{"name": body.get("name") or "My provider", "url": url}] if url else []
+                save_private()
+                if not url:
+                    CFG["provider_channels"] = []
+                    save_config()
+            run_job(provider_job)
+            return self.send(200, {"ok": True})
+        if p == "/api/provider/map":
+            with LOCK:
+                for c in CFG["provider_channels"]:
+                    if c["key"] == body.get("key"):
+                        c.update(guide=body.get("guide", ""), how="manual", manual=True)
+                save_config()
+            run_job()
+            return self.send(200, {"ok": True})
         if p == "/api/restore":
             url = body.get("url", "")
             with LOCK:
