@@ -13,8 +13,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325915.0213563,
-    "msg": "690 guide channels, 55153 upcoming shows"
+    "time": 1793327769.329362,
+    "msg": "690 guide channels, 54786 upcoming shows"
    }
   },
   {
@@ -30,8 +30,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325918.7374637,
-    "msg": "1640 guide channels, 94697 upcoming shows"
+    "time": 1793327773.014476,
+    "msg": "1640 guide channels, 93948 upcoming shows"
    }
   },
   {
@@ -47,8 +47,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325920.9008482,
-    "msg": "2885 guide channels, 113836 upcoming shows"
+    "time": 1793327775.5529635,
+    "msg": "2885 guide channels, 112546 upcoming shows"
    }
   },
   {
@@ -64,8 +64,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325923.4671695,
-    "msg": "2584 guide channels, 64512 upcoming shows"
+    "time": 1793327778.509355,
+    "msg": "2584 guide channels, 62400 upcoming shows"
    }
   },
   {
@@ -81,8 +81,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325926.350409,
-    "msg": "370 guide channels, 16090 upcoming shows"
+    "time": 1793327778.9578927,
+    "msg": "370 guide channels, 15871 upcoming shows"
    }
   },
   {
@@ -98,8 +98,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325927.1688735,
-    "msg": "186 guide channels, 3956 upcoming shows"
+    "time": 1793327779.291353,
+    "msg": "186 guide channels, 3821 upcoming shows"
    }
   },
   {
@@ -115,8 +115,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325929.1174226,
-    "msg": "468 guide channels, 19951 upcoming shows"
+    "time": 1793327779.7345603,
+    "msg": "468 guide channels, 19708 upcoming shows"
    }
   },
   {
@@ -132,8 +132,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325930.0168688,
-    "msg": "235 guide channels, 5359 upcoming shows"
+    "time": 1793327780.0865364,
+    "msg": "235 guide channels, 5175 upcoming shows"
    }
   },
   {
@@ -149,8 +149,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325933.1282666,
-    "msg": "266 guide channels, 20144 upcoming shows"
+    "time": 1793327781.1061711,
+    "msg": "266 guide channels, 20034 upcoming shows"
    }
   },
   {
@@ -166,8 +166,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325935.7647421,
-    "msg": "373 guide channels, 365 upcoming shows"
+    "time": 1793327782.1299934,
+    "msg": "373 guide channels, 352 upcoming shows"
    }
   },
   {
@@ -183,8 +183,144 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1793325936.5840316,
-    "msg": "178 guide channels, 7459 upcoming shows"
+    "time": 1793327782.412523,
+    "msg": "178 guide channels, 7415 upcoming shows"
+   }
+  },
+  {
+   "id": "a3382e8b",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_AT1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327784.1335964,
+   "gain": 0,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327784.6903303,
+    "msg": "144 guide channels, 13937 upcoming shows"
+   }
+  },
+  {
+   "id": "ab197b60",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327786.2722871,
+   "gain": 2,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327787.6995258,
+    "msg": "345 guide channels, 25603 upcoming shows"
+   }
+  },
+  {
+   "id": "a9606450",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_BA1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327788.4934423,
+   "gain": 0,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327789.1565242,
+    "msg": "254 guide channels, 19430 upcoming shows"
+   }
+  },
+  {
+   "id": "a5a50d5f",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_BE2.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327792.3154526,
+   "gain": 2,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327795.3043928,
+    "msg": "601 guide channels, 56852 upcoming shows"
+   }
+  },
+  {
+   "id": "a6bde2c6",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_CH1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327798.9229198,
+   "gain": 1,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327801.1321998,
+    "msg": "751 guide channels, 64980 upcoming shows"
+   }
+  },
+  {
+   "id": "a0ec189c",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327801.7590704,
+   "gain": 0,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327801.978628,
+    "msg": "138 guide channels, 8528 upcoming shows"
+   }
+  },
+  {
+   "id": "a98400e1",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_CY1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327802.6448088,
+   "gain": 0,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327802.9178646,
+    "msg": "94 guide channels, 9325 upcoming shows"
+   }
+  },
+  {
+   "id": "ae6f4bc7",
+   "type": "xmltv",
+   "name": "guide linked by 'Free-TV Usa'",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_CZ1.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1793327804.533857,
+   "gain": 0,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1793327805.954448,
+    "msg": "1087 guide channels, 43495 upcoming shows"
    }
   }
  ],
@@ -422,10 +558,130 @@
    "name": "guide linked by 'Free-TV Usa'",
    "channels": 2,
    "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz": {
+   "t": 1793327782.9938643,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 82,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_ASIANTELEVISION1.xml.gz": {
+   "t": 1793327783.2896657,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 54,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_AT1.xml.gz": {
+   "t": 1793327783.405552,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 144,
+   "why": "added as backup"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz": {
+   "t": 1793327784.6916246,
+   "fresh": true,
+   "gain": 2,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 345,
+   "why": "added"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_BA1.xml.gz": {
+   "t": 1793327787.7008255,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 254,
+   "why": "added as backup"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_BE2.xml.gz": {
+   "t": 1793327789.1578982,
+   "fresh": true,
+   "gain": 2,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 601,
+   "why": "added"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_BEIN1.xml.gz": {
+   "t": 1793327795.3058844,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 80,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_BG1.xml.gz": {
+   "t": 1793327795.4538531,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 86,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz": {
+   "t": 1793327795.670593,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 266,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CH1.xml.gz": {
+   "t": 1793327796.4892616,
+   "fresh": true,
+   "gain": 1,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 751,
+   "why": "added"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CL1.xml.gz": {
+   "t": 1793327801.1337368,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 90,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz": {
+   "t": 1793327801.4310572,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 138,
+   "why": "added as backup"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CR1.xml.gz": {
+   "t": 1793327801.9802337,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 117,
+   "why": "covers nothing new"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CY1.xml.gz": {
+   "t": 1793327802.2942142,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 94,
+   "why": "added as backup"
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_CZ1.xml.gz": {
+   "t": 1793327802.9192977,
+   "fresh": true,
+   "gain": 0,
+   "name": "guide linked by 'Free-TV Usa'",
+   "channels": 1087,
+   "why": "added as backup"
   }
  },
  "blocked": [],
- "last_discovery": 1793325936.8650794,
+ "last_discovery": 1793327805.9560902,
  "known": 319,
  "cache": {
   "i.mjh.nz": {
