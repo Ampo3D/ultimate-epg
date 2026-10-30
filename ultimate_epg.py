@@ -667,7 +667,9 @@ def rank_candidates(todo, wanted, sources):
 def guide_lookup(idx):
     names = set()
     for cid, info in idx.items():
-        names.update(norm(n) for n in info["names"] + [cid.split(".")[0]])
+        for n in info["names"] + [cid.split(".")[0]]:
+            names.add(norm(n))
+            names.add(pkey(n))
     names.discard("")
     return set(idx), names
 
@@ -680,6 +682,9 @@ def discover():
     with LOCK:
         lineup = {e["key"]: (e["epg_id"], norm(e["name"])) for e in output_channels()}
         wanted = {k: v for k, v in lineup.items() if v[0] not in EPG_INDEX}
+        for c in CFG.get("provider_channels") or []:  # your providers' channels without a guide too
+            if not c.get("guide") and c.get("how") != "event":
+                wanted["p:" + c["key"]] = (c["id"], pkey(c["name"]))
     priority = set(priority_list())
     log(f"Searching the internet for guides ({len(wanted)} channels still have no real guide)")
     cands, origin = find_candidates()
@@ -832,16 +837,40 @@ CC_ALIAS = {"usa": "us", "united states": "us", "gb": "uk", "united kingdom": "u
             "canada": "ca"}
 
 
+TRAILING_CC_RE = re.compile(r"[\s\-|:(]*\b(us|usa|uk|gb|ca|can|cdn)\b\)?\.?\s*$", re.I)
+GENERIC_RE = re.compile(r"\b(the|network|channel|tv|television|hd|east|eastern)\b")
+
+
 def pkey(name):
-    """Name used to compare a provider channel with a guide channel ("US| ESPN HD" -> "espn")."""
+    """Name used to compare a provider channel with a guide channel ("US| ESPN HD", "ESPN (East) US" -> "espn")."""
     n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = TRAILING_CC_RE.sub("", n)
+    n = re.sub(r"\(x\d+\)", " ", n)
     return norm(FEED_RE.sub(" ", n))
+
+
+def pkey_loose(name):
+    """Looser name: also ignores words like Network/Channel/TV ("COZI Network" = "Cozi TV")."""
+    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = TRAILING_CC_RE.sub("", n)
+    n = re.sub(r"\(x\d+\)", " ", n)
+    n = GENERIC_RE.sub(" ", FEED_RE.sub(" ", n))
+    return norm(n)
+
+
+EVENT_RE = re.compile(r"\bevents?\b|\bppv\b|pay.?per.?view", re.I)
+
+
+def is_event_channel(c):
+    """Temporary game/PPV slots - no guide exists anywhere for these."""
+    return bool(EVENT_RE.search(c.get("group", "")) or re.match(r"^\s*(event|ppv)\s*\d", c.get("name", ""), re.I))
 
 
 def entry_country(name, group, tid):
     m = re.search(r"\.(us|uk|gb|ca)\d?(?:@|$)", (tid or "").lower())
     if not m:
         m = (re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\b", (name or "").lower())
+             or re.search(r"\b(usa|us|uk|gb|ca|can)\s*\)?\s*$", (name or "").lower())
              or re.search(r"\b(usa|united states|united kingdom|uk|canada|us|ca)\b", (group or "").lower()))
     return CC_ALIAS.get(m[1], m[1]) if m else ""
 
@@ -860,19 +889,23 @@ def provider_index():
                         owner[cid], names[cid] = x["id"], info["names"]
                         langs[cid] = info.get("lang", "")
     by_id = {cid.lower(): cid for cid in owner}
-    by_name, by_call = {}, {}
+    by_name, by_loose, by_call = {}, {}, {}
     for cid, ns in names.items():
         for n in ns or [cid.split(".")[0]]:
             k = pkey(n)
             if k and cid not in by_name.setdefault(k, []):
                 by_name[k].append(cid)
+            k = pkey_loose(n)
+            if len(k) >= 3 and cid not in by_loose.setdefault(k, []):
+                by_loose[k].append(cid)
         for call in callsigns(" ".join(ns) + " " + cid.replace(".", " ")):
             if cid not in by_call.setdefault(call, []):
                 by_call[call].append(cid)
 
     def cc_of(cid):
         return id_country(cid) or src_cc.get(owner[cid], "")
-    return {"by_id": by_id, "by_name": by_name, "by_call": by_call, "cc": cc_of, "names": names, "langs": langs}
+    return {"by_id": by_id, "by_name": by_name, "by_loose": by_loose, "by_call": by_call, "cc": cc_of,
+            "names": names, "langs": langs}
 
 
 CALL_RE = re.compile(r"(?<![A-Za-z])([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?![A-Za-z])")
@@ -884,17 +917,36 @@ def callsigns(text):
     return {c for c in CALL_RE.findall(text or "") if c not in NOT_CALLS}
 
 
+NET_RE = re.compile(r"\b(abc|cbs|nbc|fox|pbs|cw|mnt|myn|ion|telemundo|univision|unimas|cbc|ctv|global|citytv)\b")
+LOOSE_STOP = {"music", "happy", "movies", "movie", "sports", "sport", "news", "kids", "comedy", "drama", "action",
+              "classic", "classics", "family", "life", "style", "food", "church", "faith", "local", "world"}
+
+
+def mostly_latin(names):
+    text = "".join(names)
+    letters = [ch for ch in text if ch.isalpha()]
+    return not letters or sum(ch.isascii() for ch in letters) / len(letters) > 0.7
+
+
 def pick_best(cands, c, idx):
     """Several guide channels share the name: prefer same country and the same time-zone feed."""
     want_cc = entry_country(c["name"], c.get("group", ""), c.get("id", ""))
     pname = PROVIDER_PREFIX_RE.sub("", unescape_all(c["name"]).lower())
-    want_west = bool(re.search(r"\b(pacific|west)\b", pname))
+    want_west = bool(re.search(r"\b(pacific|west)\b", pname + " " + re.sub(r"[._]", " ", (c.get("id") or "").lower())))
     exact = norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", pname))
+
+    want_net = set(NET_RE.findall(pname))
+    want_sub = bool(re.search(r"dt\d|\.\d\b", pname))
 
     def score(cid):
         text = (" ".join(idx["names"].get(cid, [])) + " " + cid).lower()
         west = bool(re.search(r"pacific|west|\(p\)", text))
         sc = 0
+        nets = set(NET_RE.findall(text))
+        if want_net and nets:
+            sc += 3 if want_net & nets else -3  # same network as the provider says
+        if re.search(r"dt\d", text) and not want_sub:
+            sc -= 2  # prefer the main channel over a sub-channel
         if want_cc and idx["cc"](cid) == want_cc:
             sc += 4
         if west != want_west:
@@ -917,10 +969,24 @@ def match_provider_channel(c, idx):
     for call in callsigns(c["name"] + " " + tid.upper().replace(".", " ")):
         if call in idx["by_call"]:
             return pick_best(idx["by_call"][call], c, idx), "call letters"
-    cands = idx["by_name"].get(pkey(c["name"]), [])
-    if not cands:
-        return "", ""
-    return pick_best(cands, c, idx), "name"
+    if is_event_channel(c):
+        return "", "event"
+    want = entry_country(c["name"], c.get("group", ""), tid)
+    latin = mostly_latin([c["name"]])
+
+    def ok(cid):  # wrong listings are worse than none
+        if want and idx["cc"](cid) not in (want, ""):
+            return False
+        return not latin or mostly_latin(idx["names"].get(cid, []))
+    cands = [x for x in idx["by_name"].get(pkey(c["name"]), []) if ok(x)]
+    if cands:
+        return pick_best(cands, c, idx), "name"
+    key = pkey_loose(c["name"])
+    if len(key) >= 5 and key not in LOOSE_STOP:
+        cands = [x for x in idx["by_loose"].get(key, []) if ok(x)]
+        if cands:
+            return pick_best(cands, c, idx), "similar name"
+    return "", ""
 
 
 def rematch_provider(idx=None):
@@ -931,7 +997,7 @@ def rematch_provider(idx=None):
     idx = idx or provider_index()
     n = 0
     for c in chans:
-        if c.get("manual") or (c.get("guide") and c["guide"].lower() in idx["by_id"]):
+        if c.get("manual") or (c.get("guide") and c["guide"].lower() in idx["by_id"]) or c.get("how") == "event":
             continue
         c["guide"], c["how"] = match_provider_channel(c, idx)
         n += bool(c["guide"])
@@ -1745,10 +1811,11 @@ def api_state():
                 "names": [x.get("name", "Provider") for x in PRIVATE.get("providers", [])],
                 "per": {n: sum(1 for c in CFG["provider_channels"] if c.get("prov") == n)
                         for n in [x.get("name", "Provider") for x in PRIVATE.get("providers", [])]},
-                "count": len(CFG["provider_channels"]),
+                "count": sum(1 for c in CFG["provider_channels"] if c.get("how") != "event"),
+                "events": sum(1 for c in CFG["provider_channels"] if c.get("how") == "event"),
                 "matched": sum(1 for c in CFG["provider_channels"] if c.get("guide")),
                 "live": STATE.get("provider_live"),
-                "unmatched": [c for c in CFG["provider_channels"] if not c.get("guide")][:500]},
+                "unmatched": [c for c in CFG["provider_channels"] if not c.get("guide") and c.get("how") != "event"][:800]},
             "removed": [{"url": u, **r} for u, r in AUTO["removed"].items() if u not in CFG["keep_urls"]],
             "auto": AUTO["sources"], "auto_info": {
                 "known": AUTO["known"], "checked": len(AUTO["checked"]), "blocked": len(AUTO["blocked"]),
