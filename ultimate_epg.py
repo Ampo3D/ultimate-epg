@@ -59,6 +59,7 @@ DEFAULT_SETTINGS = {
 }
 
 LOCK = threading.RLock()
+SAVE_LOCK = threading.Lock()
 STATE = {"busy": False, "log": [], "last_build": None}
 EPG_INDEX = {}  # xmltv channel id -> {"name", "icon", "source"}
 
@@ -68,7 +69,8 @@ os.makedirs(OUT, exist_ok=True)
 
 # ---------------------------------------------------------------- config
 
-MUST_BE_POSITIVE = {"refresh_hours", "days", "dummy_hours", "full_guide_days", "health_minutes", "discover_per_run",
+SETTING_MAX = {"days": 14, "full_guide_days": 7, "dummy_hours": 24, "discover_per_run": 500}
+MUST_BE_POSITIVE = {"days", "dummy_hours", "full_guide_days", "health_minutes", "discover_per_run",
                     "discover_max_mb"}
 
 
@@ -115,7 +117,10 @@ def load_auto():
     try:
         with open(AUTO_PATH, encoding="utf-8") as f:
             a = json.load(f)
-    except (OSError, ValueError):
+    except OSError:
+        a = {}
+    except ValueError:  # never overwrite a damaged file with an empty one
+        shutil.copyfile(AUTO_PATH, AUTO_PATH + ".broken")
         a = {}
     for k, v in {"sources": [], "checked": {}, "blocked": [], "last_discovery": 0,
                  "known": 0, "cache": {}, "bad_since": {}, "removed": {}}.items():
@@ -123,11 +128,25 @@ def load_auto():
     return a
 
 
-def save_auto():
-    tmp = AUTO_PATH + ".tmp"
+def write_atomic(path, text):
+    """A crash or a second thread can never leave a half-written file."""
+    tmp = f"{path}.{threading.get_ident()}.tmp"
     with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(AUTO, f, ensure_ascii=False, indent=1)
-    os.replace(tmp, AUTO_PATH)
+        f.write(text)
+    os.replace(tmp, path)
+
+
+def save_auto():
+    with SAVE_LOCK:
+        for attempt in range(5):
+            try:
+                text = json.dumps(AUTO, ensure_ascii=False, indent=1)
+                break
+            except RuntimeError:  # another thread was changing it mid-way
+                time.sleep(0.05)
+        else:
+            return
+        write_atomic(AUTO_PATH, text)
 
 
 AUTO = load_auto()
@@ -143,8 +162,7 @@ def load_private():
 
 
 def save_private():
-    with open(PRIVATE_PATH, "w", encoding="utf-8") as f:
-        json.dump(PRIVATE, f, indent=1)
+    write_atomic(PRIVATE_PATH, json.dumps(PRIVATE, indent=1))
 
 
 PRIVATE = load_private()
@@ -180,28 +198,34 @@ def source_by_id(sid):
 def fetch(url, dest, max_bytes=None):
     """Download a URL (or copy a local file) to dest, un-gzipping if needed."""
     tmp = dest + ".part"
-    if re.match(r"^https?://", url, re.I):
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=180) as r, open(tmp, "wb") as f:
-            got = 0
-            while chunk := r.read(1 << 20):
-                got += len(chunk)
-                if max_bytes and got > max_bytes:
-                    f.close()
-                    os.remove(tmp)
-                    raise ValueError(f"bigger than {max_bytes >> 20} MB")
-                f.write(chunk)
-    else:
-        path = url[7:] if url.lower().startswith("file://") else url
-        shutil.copyfile(os.path.expanduser(path), tmp)
-    with open(tmp, "rb") as f:
-        gz = f.read(2) == b"\x1f\x8b"
-    if gz:
-        with gzip.open(tmp, "rb") as src, open(dest, "wb") as dst:
-            shutil.copyfileobj(src, dst, 1 << 20)
-        os.remove(tmp)
-    else:
-        os.replace(tmp, dest)
+    try:
+        if re.match(r"^https?://", url, re.I):
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=180) as r, open(tmp, "wb") as f:
+                got = 0
+                while chunk := r.read(1 << 20):
+                    got += len(chunk)
+                    if max_bytes and got > max_bytes:
+                        raise ValueError(f"bigger than {max_bytes >> 20} MB")
+                    f.write(chunk)
+                size = r.headers.get("Content-Length")
+                if size and size.isdigit() and not r.headers.get("Content-Encoding") and got < int(size):
+                    raise ValueError(f"download was cut off ({got} of {size} bytes)")
+        else:
+            path = url[7:] if url.lower().startswith("file://") else url
+            shutil.copyfile(os.path.expanduser(path), tmp)
+        with open(tmp, "rb") as f:
+            gz = f.read(2) == b"\x1f\x8b"
+        if gz:
+            with gzip.open(tmp, "rb") as src, open(dest + ".unz", "wb") as dst:
+                shutil.copyfileobj(src, dst, 1 << 20)
+            os.replace(dest + ".unz", dest)
+        else:
+            os.replace(tmp, dest)
+    finally:  # also removes anything that could hold a provider login
+        for leftover in (tmp, dest + ".unz"):
+            if os.path.exists(leftover):
+                os.remove(leftover)
 
 
 # ---------------------------------------------------------------- M3U
@@ -284,7 +308,9 @@ def merge_m3u_source(src, entries):
 
 # ---------------------------------------------------------------- XMLTV
 
-BAD_XML_BYTES = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+BAD_XML_BYTES = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]|\xef\xbf[\xbe\xbf]|"
+                           rb"&#(?:0*(?:[0-8]|1[124-9]|2\d|3[01])|[xX]0*(?:[0-8bcefBCEF]|1[0-9a-fA-F]));")
+BARE_AMP = re.compile(rb"&(?!(?:amp|lt|gt|quot|apos|#\d+|#[xX][0-9a-fA-F]+);)")
 CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\ufffe\uffff]")
 
 
@@ -293,9 +319,24 @@ class CleanReader:
 
     def __init__(self, path):
         self.f = open(path, "rb")
+        self.carry = b""
+        self.utf16 = self.f.read(2) in (b"\xff\xfe", b"\xfe\xff")
+        self.f.seek(0)
 
     def read(self, n=-1):
-        return BAD_XML_BYTES.sub(b"", self.f.read(n))
+        if self.utf16:
+            return self.f.read(n)
+        while True:  # an empty answer would mean "end of file" to the parser
+            raw = self.f.read(n)
+            data = self.carry + raw
+            self.carry = b""
+            if raw:  # a "&...;" or a bad character may be cut in two between reads
+                cut = max(data.rfind(b"&", max(0, len(data) - 16)), data.rfind(b"\xef", max(0, len(data) - 3)))
+                if cut >= 0:
+                    data, self.carry = data[:cut], data[cut:]
+            data = BARE_AMP.sub(b"&amp;", BAD_XML_BYTES.sub(b"", data))
+            if data or not raw:
+                return data
 
     def close(self):
         self.f.close()
@@ -385,20 +426,19 @@ def scan_xmltv(path):
                     if lang:
                         langs.setdefault(cid, {}).setdefault(lang, 0)
                         langs[cid][lang] += 1
-    except ET.ParseError as ex:
-        log(f"  guide is partly broken XML ({ex}) - kept what was readable")
+    except Exception as ex:  # keep whatever was readable before the broken part
+        log(f"  guide is partly broken ({ex}) - kept what was readable")
     for cid, info in idx.items():
         info["n"] = per.get(cid, 0)
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
-    fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=12)
+    fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
     return idx, upcoming, fresh
 
 
 def index_xmltv_source(src):
     idx, upcoming, fresh = scan_xmltv(os.path.join(CACHE, src["id"] + ".xml"))
-    with open(os.path.join(CACHE, src["id"] + ".channels.json"), "w", encoding="utf-8") as f:
-        json.dump(idx, f, ensure_ascii=False)
+    write_atomic(os.path.join(CACHE, src["id"] + ".channels.json"), json.dumps(idx, ensure_ascii=False))
     return len(idx), upcoming, fresh
 
 
@@ -480,28 +520,39 @@ def load_epg_index():
         p = os.path.join(CACHE, src["id"] + ".channels.json")
         if not os.path.exists(p):
             continue
-        with open(p, encoding="utf-8") as f:
-            for cid, info in json.load(f).items():
-                if cid not in new and info.get("n", 1):
-                    new[cid] = {"name": (info["names"] or [cid])[0], "names": info["names"],
-                                "icon": info["icon"], "source": src["id"]}
+        try:
+            with open(p, encoding="utf-8") as f:
+                data = json.load(f)
+        except ValueError:
+            log(f"Index of '{src['name']}' was damaged - it is rebuilt on the next update")
+            os.remove(p)
+            continue
+        for cid, info in data.items():
+            if cid not in new and info.get("n", 1):
+                new[cid] = {"name": (info["names"] or [cid])[0], "names": info["names"],
+                            "icon": info["icon"], "source": src["id"]}
     EPG_INDEX = new
 
 
-TIME_RE = re.compile(r"(\d{12}(?:\d\d)?)\s*([+-]\d\d:?\d\d)?")
+TIME_RE = re.compile(r"(\d{12}(?:\d\d)?)(?!\d)\s*([+-]\d\d:?\d\d|[A-Za-z]{3,4})?")
+ZONES = {"UTC": "+0000", "GMT": "+0000", "EST": "-0500", "EDT": "-0400", "CST": "-0600", "CDT": "-0500", "MST": "-0700",
+         "MDT": "-0600", "PST": "-0800", "PDT": "-0700", "BST": "+0100", "CET": "+0100", "CEST": "+0200"}
 
 
 def parse_xmltv_time(s):
     m = TIME_RE.match(s or "")
     if not m:
         return None
-    try:  # a broken time ("hour 24", "Feb 30") must never stop the whole guide
+    off = m[2] or "+0000"
+    off = ZONES.get(off.upper(), "") if off[0].isalpha() else off.replace(":", "")
+    if not off:
+        return None  # a time zone we can't place would put the show at the wrong hour
+    try:  # a broken time ("hour 24", "Feb 30", year 0001) must never stop the whole guide
         dt = datetime.strptime(m[1].ljust(14, "0"), "%Y%m%d%H%M%S")
-    except ValueError:
+        delta = timedelta(hours=int(off[1:3]), minutes=int(off[3:5]))
+        return dt.replace(tzinfo=timezone.utc) - (delta if off[0] == "+" else -delta)
+    except (ValueError, OverflowError):
         return None
-    off = (m[2] or "+0000").replace(":", "")
-    delta = timedelta(hours=int(off[1:3]), minutes=int(off[3:5]))
-    return dt.replace(tzinfo=timezone.utc) - (delta if off[0] == "+" else -delta)
 
 
 def fmt_xmltv_time(dt):
@@ -839,6 +890,22 @@ def mark_health(src, bad, kind="dead", why=""):
         AUTO["bad_since"].pop(src["url"], None)
 
 
+def outage_hosts():
+    """Websites where most guides fail together: that is an outage (or a block), not dead guides."""
+    per = {}
+    for x in all_sources():
+        if x.get("enabled", True):
+            host = urllib.parse.urlparse(x["url"]).hostname or ""
+            rec = per.setdefault(host, [0, 0])
+            rec[0] += 1
+            rec[1] += AUTO["bad_since"].get(x["url"], {}).get("kind") == "dead"
+    return {h for h, (n, bad) in per.items() if n >= 3 and bad >= n * 0.7}
+
+
+def on_outage(src, hosts):
+    return (urllib.parse.urlparse(src["url"]).hostname or "") in hosts
+
+
 def mass_failure():
     """True when half or more of the sources look dead together (Wi-Fi down, PC just woke up...)."""
     srcs = [x for x in all_sources() if x.get("enabled", True)]
@@ -854,9 +921,10 @@ def remove_dead_sources():
     if mass_failure():
         log("Most sources are failing at once - that is a network problem here, not dead sources; removing nothing")
         return
+    hosts = outage_hosts()
     for src in list(all_sources()):
         rec = AUTO["bad_since"].get(src["url"])
-        if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]):
+        if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]) or on_outage(src, hosts):
             continue
         hours = (time.time() - rec["t"]) / 3600
         if hours >= limits[rec["kind"]] and rec.get("count", 1) >= 3:
@@ -890,14 +958,18 @@ def retry_removed_sources():
 
 
 def drop_dead_auto_sources():
-    """Auto-found guides that fail or go stale twice in a row are removed (and re-checked later)."""
+    """Auto-found guides that stay broken for 2 days are removed; the finder tries them again 3 days later."""
     keep = []
     if mass_failure():
         return
+    hosts = outage_hosts()
     for src in AUTO["sources"]:
-        if src.get("fails", 0) >= 4:
+        bad = AUTO["bad_since"].get(src["url"])
+        days = (time.time() - bad["t"]) / 86400 if bad else 0
+        if src.get("fails", 0) >= 4 and days >= 2 and src["url"] not in CFG["keep_urls"] and not on_outage(src, hosts):
             log(f"Removing auto-found guide '{src['name']}' - it stopped working")
-            AUTO["checked"][src["url"]] = {"t": time.time(), "fresh": False, "gain": 0,
+            AUTO["bad_since"].pop(src["url"], None)
+            AUTO["checked"][src["url"]] = {"t": time.time() - 11 * 86400, "fresh": False, "gain": 0,
                                            "name": src["name"], "why": "stopped working"}
             for f in os.listdir(CACHE):
                 if f.startswith(src["id"] + "."):
@@ -1019,6 +1091,9 @@ def entry_country(name, group, tid):
     lead = re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\s*[\])|:\-]", (name or "").lower())
     if lead:  # "US: FOX SPORTS AZ" - the prefix wins over the state letters at the end
         return CC_ALIAS.get(lead[1], lead[1])
+    g = re.search(r"\b(usa|united states|united kingdom|uk|canada|us|ca)\b", (group or "").lower())
+    if g:  # "NBC Sports CA" in a US group is California
+        return CC_ALIAS.get(g[1], g[1])
     t = re.search(r"\s([A-Z]{2})\s*\)?\s*$", name or "")  # trailing upper-case country code: "AMC RO"
     if t and t[1].lower() in ISO2_SET and t[1].lower() not in NOT_COUNTRY:
         return CC_ALIAS.get(t[1].lower(), t[1].lower())
@@ -1085,6 +1160,10 @@ LOOSE_STOP = {"music", "happy", "movies", "movie", "sports", "sport", "news", "k
               "classic", "classics", "family", "life", "style", "food", "church", "faith", "local", "world"}
 
 
+INTL_RE = re.compile(r"\b(cnn|bbc|nhk|france 24|dw|euronews|al jazeera|bloomberg|cnbc|sky news|fashion|mtv|trace|"
+                     r"rt|cgtn|tv5|arirang|ewtn|red bull)\b", re.I)
+
+
 def mostly_latin(names):
     text = "".join(names)
     letters = [ch for ch in text if ch.isalpha()]
@@ -1095,7 +1174,7 @@ def pick_best(cands, c, idx):
     """Several guide channels share the name: prefer same country and the same time-zone feed."""
     want_cc = entry_country(c["name"], c.get("group", ""), c.get("id", "")) or id_country(c.get("id") or "")
     pname = PROVIDER_PREFIX_RE.sub("", unescape_all(c["name"]).lower())
-    want_west = bool(re.search(r"\b(pacific|west)\b", pname + " " + re.sub(r"[._]", " ", (c.get("id") or "").lower())))
+    want_west = wants_west(c)
     exact = norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", pname))
 
     want_net = set(NET_RE.findall(pname))
@@ -1103,7 +1182,7 @@ def pick_best(cands, c, idx):
 
     def score(cid):
         text = (" ".join(idx["names"].get(cid, [])) + " " + cid).lower()
-        west = bool(re.search(r"pacific|west|\(p\)", text))
+        west = bool(re.search(r"\bpacific\b|\bwest\b|\(p\)", text))
         sc = 0
         nets = set(NET_RE.findall(text))
         if want_net and nets:
@@ -1123,11 +1202,16 @@ def pick_best(cands, c, idx):
 
 
 def wants_west(c):
-    return bool(re.search(r"\b(pacific|west)\b", (c.get("name", "") + " " + re.sub(r"[._]", " ", c.get("id") or "")).lower()))
+    """A West Coast feed: "MTV West", "HBO (Pacific)", "hbo.pacific.us" - not "West Palm Beach" or "BBC One West"."""
+    if entry_country(c.get("name", ""), c.get("group", ""), c.get("id", "")) not in ("us", "ca", ""):
+        return False
+    name, tid = c.get("name", "").lower(), (c.get("id") or "").lower()
+    return bool(re.search(r"\((?:west|pacific)\)|\b(?:west|pacific)(?:\s+(?:us|usa|ca))?\s*$", name)
+                or re.search(r"\.(?:west|pacific)(?:\.(?:us|ca)\d?)?(?:@|$)", tid))
 
 
 def is_west_feed(cid, idx):
-    return bool(re.search(r"pacific|west|\(p\)", (" ".join(idx["names"].get(cid, [])) + " " + cid).lower()))
+    return bool(re.search(r"\bpacific\b|\bwest\b|\(p\)", (" ".join(idx["names"].get(cid, [])) + " " + re.sub(r"[._]", " ", cid)).lower()))
 
 
 def match_provider_channel(c, idx):
@@ -1155,6 +1239,8 @@ def _match_provider_channel(c, idx):
         return "", "event"
     want = entry_country(c["name"], c.get("group", ""), tid)
     latin = mostly_latin([c["name"]])
+    own = id_country(tid)
+    intl = bool(INTL_RE.search(c["name"]))
 
     def ok(cid):  # wrong listings are worse than none
         cc = idx["cc"](cid)
@@ -1162,6 +1248,8 @@ def _match_provider_channel(c, idx):
             return False
         if not cc and want in ("us", "uk", "ca") and idx["langs"].get(cid, "") not in ("", "en"):
             return False  # unknown country: an English channel only takes English listings
+        if own not in ("", "us", "uk", "ca") and cc in ("us", "uk", "ca") and not intl:
+            return False  # "antena.3.ro" never gets a US/UK/CA channel's listings
         return not latin or mostly_latin(idx["names"].get(cid, []))
     cands = [x for x in idx["by_name"].get(pkey(c["name"]), []) if ok(x)]
     if cands:
@@ -1192,8 +1280,14 @@ def rematch_provider(idx=None):
     idx = idx or provider_index()
     n = 0
     for c in chans:
-        if c.get("manual") or c.get("how") == "event":
+        if c.get("how") == "event":
             continue
+        if c.get("manual"):
+            pick = c.get("picked") or c.get("guide") or ""
+            if pick.lower() in idx["by_id"] or not pick:
+                c.update(guide=pick, how="manual", shift=0)
+                continue
+            c["picked"] = pick  # its guide is gone for now: use the automatic match until it returns
         c["guide"], c["how"] = match_provider_channel(c, idx)
         n += bool(c["guide"])
     return n
@@ -1404,6 +1498,23 @@ def channel_owners(xml_sources):
     return owner
 
 
+def event_is_over(name, now):
+    """Event names can carry a date ("... Oct 30 01:00 AM") that is long gone when your PC stays off."""
+    m = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\b", name, re.I)
+    try:
+        if m:
+            month = "jan feb mar apr may jun jul aug sep oct nov dec".split().index(m[1].lower()) + 1
+            when = datetime(now.year, month, int(m[2]), tzinfo=timezone.utc)
+            if when > now + timedelta(days=180):  # December's event seen in January
+                when = when.replace(year=now.year - 1)
+        else:
+            m = re.search(r"\b(\d{4})-(\d\d)-(\d\d)\b", name)
+            when = m and datetime(int(m[1]), int(m[2]), int(m[3]), tzinfo=timezone.utc)
+    except ValueError:
+        return False
+    return bool(when) and when < now - timedelta(days=1)
+
+
 def write_placeholder(f, cid, title, desc, now, end_cut):
     block = timedelta(hours=max(1, int(CFG["settings"]["dummy_hours"])))
     hours = int(block.total_seconds() // 3600)
@@ -1535,6 +1646,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     for c in events:  # game/PPV slots: show the event name from the channel name instead of "No information"
         if c["id"] not in out:
             title = re.sub(r"\s*\|\s*\(?\d{4}-\d\d-\d\d.*$", "", c["name"]).strip() or c["name"]
+            if event_is_over(c["name"], now):
+                title = "No event scheduled"
             out[c["id"]] = {"from": None, "group": {"names": [c["name"]], "icon": "", "cc": "", "best": c["id"]},
                             "placeholder": {"name": title, "desc": f"Live event on {c['group'] or 'this channel'}"}}
     for cid, e in wanted.items():  # your own playlist's channels are always in it too
@@ -1658,6 +1771,8 @@ def refresh(only=None):
             fetch(src["url"], dest)
             if src["type"] == "m3u":
                 entries = parse_m3u(dest)
+                if not entries:
+                    raise ValueError("playlist came back empty")
                 with LOCK:
                     added = merge_m3u_source(src, entries)
                 msg = f"{len(entries)} channels ({added} new)"
@@ -1670,10 +1785,16 @@ def refresh(only=None):
             st.update(ok=True, msg=msg, time=time.time())
             log(f"  OK: {msg}")
         except Exception as ex:
-            st.update(ok=False, fresh=False, msg=str(ex)[:300], time=time.time())
-            log(f"  FAILED: {ex}")
+            fresh = False
+            if src["type"] == "xmltv" and os.path.exists(dest):
+                try:  # last good copy: its remaining shows still go in the guide
+                    fresh = index_xmltv_source(src)[2]
+                except Exception:
+                    pass
+            st.update(ok=False, fresh=fresh, msg=str(ex)[:300], time=time.time())
+            log(f"  FAILED: {ex}" + (" - using the last good copy" if fresh else ""))
         if src.get("auto"):
-            src["fails"] = 0 if st.get("fresh") else src.get("fails", 0) + 1
+            src["fails"] = 0 if st.get("ok") and st.get("fresh") else src.get("fails", 0) + 1
         if not st.get("ok"):
             mark_health(src, True, "dead", st.get("msg", ""))
         elif src["type"] == "xmltv" and not st.get("fresh"):
@@ -1684,13 +1805,16 @@ def refresh(only=None):
     drop_dead_auto_sources()
     remove_dead_sources()
     with LOCK:
+        gone = set(CFG.get("blocked_urls") or [])  # guides you removed, on any device
+        AUTO["blocked"] = sorted(set(AUTO["blocked"]) | gone)
+        AUTO["sources"] = [x for x in AUTO["sources"] if x["url"] not in gone]
         load_epg_index()
         if CFG["settings"]["auto_match"]:
             n = auto_match(only_unmatched=True)
             log(f"Auto-matched {n} channel(s) without a guide")
     provider_changed = False
     with LOCK:
-        if PRIVATE.get("providers"):
+        if PRIVATE.get("providers") and not only:
             provider_changed = refresh_provider()
         else:
             rematch_provider()
@@ -1901,16 +2025,24 @@ def git(*args, check=True):
 def build_site(outdir, base_url):
     """Used by the GitHub Action: download everything, build, write a static site."""
     base_url = base_url.rstrip("/")
+    before = json.dumps(AUTO)
     refresh()
     build()
-    stats = STATE.get("universal") or {}
-    shows, prev = stats.get("shows", 0), AUTO.get("last_good_shows", 0)
-    if not shows or (prev and shows < prev * 0.5 and AUTO.get("guard_trips", 0) < 2):
-        AUTO["guard_trips"] = AUTO.get("guard_trips", 0) + 1
+    sizes = {f: os.path.getsize(os.path.join(OUT, f)) for f in os.listdir(OUT)
+             if re.fullmatch(r"epg(-[a-z]+)?\.xml\.gz|playlist\.m3u", f)}
+    last = AUTO.get("good_sizes") or {}
+    small = [f for f, n in sizes.items() if n < 5000 or n < last.get(f, 0) * 0.5]
+    since = AUTO.get("guard_since") or time.time()
+    if small and time.time() - since < 24 * 3600:  # the online guide covers 2 days, so there is time to wait
+        reason = ", ".join(f"{f} {sizes[f]} bytes (last good {last.get(f, 0)})" for f in small)
+        AUTO.clear()
+        AUTO.update(json.loads(before))  # a bad run changes nothing, except remembering it happened
+        AUTO["guard_since"] = since
         save_auto()
-        raise SystemExit(f"Guide came out far too small ({shows} shows, last good {prev}) - "
-                         "keeping the previous online guide")
-    AUTO["last_good_shows"], AUTO["guard_trips"] = shows, 0
+        raise SystemExit(f"Guide came out far too small: {reason} - keeping the previous online guide")
+    if small:
+        log("Guide stayed small for a whole day - accepting it as the new normal")
+    AUTO["good_sizes"], AUTO["guard_since"] = sizes, 0
     save_auto()
     os.makedirs(outdir, exist_ok=True)
     with open(os.path.join(OUT, "playlist.m3u"), encoding="utf-8") as f:
@@ -1941,9 +2073,13 @@ def build_site(outdir, base_url):
 def sync_from_github():
     """Fetch guides GitHub found on its own (the online copy of auto_sources.json wins)."""
     global AUTO
-    git("checkout", "--", "data/auto_sources.json", check=False)
-    git("pull", "-q", "--rebase", "--autostash", "origin", "main")
-    AUTO = load_auto()
+    with SAVE_LOCK:
+        git("reset", "-q", "--", "data/auto_sources.json", check=False)
+        git("checkout", "--", "data/auto_sources.json", check=False)
+        git("pull", "-q", "--rebase", "--autostash", "origin", "main")
+        fresh = load_auto()
+        AUTO.clear()  # same object: running jobs keep working on it
+        AUTO.update(fresh)
     load_epg_index()
 
 
@@ -2180,7 +2316,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
+        if not self.path.startswith("/api"):
+            self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Cache-Control", "no-cache")
         for k, v in (extra or {}).items():
             self.send_header(k, v)
@@ -2232,6 +2369,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         p = urlparse(self.path).path
+        origin = self.headers.get("Origin")
+        if origin and urlparse(origin).netloc != self.headers.get("Host"):
+            return self.send(403, {"error": "not allowed from another website"})
         n = int(self.headers.get("Content-Length") or 0)
         try:
             body = json.loads(self.rfile.read(n) or b"{}")
@@ -2250,13 +2390,19 @@ class Handler(BaseHTTPRequestHandler):
                     if k not in DEFAULT_SETTINGS:
                         continue
                     kind = type(DEFAULT_SETTINGS[k])
-                    try:
-                        v = kind(v)
-                    except (TypeError, ValueError):
-                        continue  # empty or not a number: keep the old value
-                    if kind in (int, float) and kind is not bool and (v != v or v < 0 or
-                                                                     (v == 0 and k in MUST_BE_POSITIVE)):
-                        continue
+                    if v is None or v == "":
+                        continue  # left empty: keep the old value
+                    if kind is bool:
+                        v = v.lower() in ("true", "1", "yes", "on") if isinstance(v, str) else bool(v)
+                    else:
+                        try:
+                            v = kind(v)
+                        except (TypeError, ValueError, OverflowError):
+                            continue
+                        if kind in (int, float):
+                            if v != v or v < 0 or v == float("inf") or (v == 0 and k in MUST_BE_POSITIVE):
+                                continue
+                            v = min(v, SETTING_MAX.get(k, v))
                     CFG["settings"][k] = v
                 save_config()
             run_job()
@@ -2299,6 +2445,8 @@ class Handler(BaseHTTPRequestHandler):
                         CFG["status"][src["id"]] = src.get("st", {})
                     else:
                         AUTO["blocked"].append(src["url"])
+                        CFG.setdefault("blocked_urls", []).append(src["url"])
+                        save_config()
                         for f in os.listdir(CACHE):
                             if f.startswith(src["id"] + "."):
                                 os.remove(os.path.join(CACHE, f))
@@ -2329,7 +2477,7 @@ class Handler(BaseHTTPRequestHandler):
             with LOCK:
                 for c in CFG["provider_channels"]:
                     if c["key"] == body.get("key"):
-                        c.update(guide=body.get("guide", ""), how="manual", manual=True, shift=0)
+                        c.update(guide=body.get("guide", ""), how="manual", manual=True, shift=0, picked="")
                 save_config()
             run_job()
             return self.send(200, {"ok": True})

@@ -701,7 +701,7 @@ function renderLinks() {
 function renderLog() { $('log').textContent = (S.log || []).join('\n') || 'Nothing yet.'; $('log').scrollTop = 1e9; }
 async function saveSettings() {
   const body = {};
-  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? +el.value : el.value.trim(); }
+  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? el.value : el.value.trim(); }
   await post('/api/settings', body); poll();
 }
 async function publishOnline() {
