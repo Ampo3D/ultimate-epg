@@ -204171,8 +204171,8 @@
    "name": "AWE TV Network",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "AWE.us",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "axs.tv.usa.us",
@@ -204333,7 +204333,7 @@
    "name": "CBS (WSAW-DT1) WI",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "CWWSAWDT4.us",
+   "guide": "CBSWSAW.us",
    "how": "call letters"
   },
   {
@@ -204495,8 +204495,8 @@
    "name": "COZI Network",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "COZI.TV.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "cspan.us",
@@ -204711,8 +204711,8 @@
    "name": "France 24 EN",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "France.24.EN.cy",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "free.speech.network.us",
@@ -204738,8 +204738,8 @@
    "name": "FUSE TV (East)",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "Fuse.HD.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "fxpacific.us",
@@ -204819,8 +204819,8 @@
    "name": "Grit Network",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "Grit.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "hallmark.channel.eastern.us",
@@ -204882,8 +204882,8 @@
    "name": "HBO Family (West)",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "HBO.Family.co",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "hbo.signature.hbo.3.pacific.us",
@@ -205062,8 +205062,8 @@
    "name": "Kitchen Nightmares",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "571967",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "ktla.los.angeles.ca.us",
@@ -205080,8 +205080,8 @@
    "name": "Laff Network",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "Laff.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "law.crime.network.us",
@@ -205098,8 +205098,8 @@
    "name": "Lifetime Movies (East)",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "64305451fc3be5947773c339-69bad1dfc68ea9badd9faf5a",
-   "how": "name"
+   "guide": "LifetimeMoviesNetwork.us",
+   "how": "similar name"
   },
   {
    "key": "lifetime.network.us.eastern.us",
@@ -205287,8 +205287,8 @@
    "name": "NASA 4K US",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "5776",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "national.geographic.us",
@@ -205413,8 +205413,8 @@
    "name": "PixL TV",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "PixL.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "pop.east.us",
@@ -205476,8 +205476,8 @@
    "name": "Rally TV US",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "RallyTV.uk",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "red.bull.extreme.sports.us",
@@ -205881,8 +205881,8 @@
    "name": "The Dove",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "6a1610bebdf296985fd95603-5efe1de8e0b3f5003f5d9f91",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "the.first.us",
@@ -206259,8 +206259,8 @@
    "name": "WeatherNation",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "a1e38b83ae2a56f09f4d2ee8ed206b35",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "weathernation.us",
@@ -206286,8 +206286,8 @@
    "name": "WGN Chicago",
    "group": "US",
    "prov": "Apollo Group TV",
-   "guide": "WGN.(Chicago).ca2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "wpix.new.york.superstation.us",
@@ -206574,8 +206574,8 @@
    "name": "BBC World CA",
    "group": "News",
    "prov": "Apollo Group TV",
-   "guide": "BBC.World.cy",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "bbc.world.co",
@@ -207312,7 +207312,7 @@
    "name": "News Center 1 KNBN US",
    "group": "News",
    "prov": "Apollo Group TV",
-   "guide": "CBSKNBNDT2.us",
+   "guide": "NBCKNBN.us",
    "how": "call letters"
   },
   {
@@ -207429,8 +207429,8 @@
    "name": "RDI",
    "group": "News",
    "prov": "Apollo Group TV",
-   "guide": "I125.52235.schedulesdirect.org",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "realitatea.tv.ro",
@@ -207465,8 +207465,8 @@
    "name": "RT US",
    "group": "News",
    "prov": "Apollo Group TV",
-   "guide": "I937.98986.schedulesdirect.org",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "rte.news.uk",
@@ -207852,8 +207852,8 @@
    "name": "American Heroes Channel CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "American.Heroes.Channel.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "animal.planet.canada.ca",
@@ -207861,8 +207861,8 @@
    "name": "Animal Planet",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "Animal.Planet.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "aptn.ca",
@@ -207897,8 +207897,8 @@
    "name": "Bein Sports CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "beINSports.us",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "bravo.canada.ca",
@@ -207933,7 +207933,7 @@
    "name": "CBC Charlottetown",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CBCT.ca2",
+   "guide": "CBCPrinceEdwardIsland-CBCT.ca",
    "how": "call letters"
   },
   {
@@ -207942,7 +207942,7 @@
    "name": "CBC Edmonton",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CBXT-DT.ca2",
+   "guide": "CBCEdmonton-CBXT.ca",
    "how": "call letters"
   },
   {
@@ -207951,7 +207951,7 @@
    "name": "CBC Fredericton",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CBAT.ca2",
+   "guide": "CBCNewBrunswick-CBAT.ca",
    "how": "call letters"
   },
   {
@@ -207960,7 +207960,7 @@
    "name": "CBC Halifax",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CBHT-DT.ca2",
+   "guide": "CBCHalifax-CBHT.ca",
    "how": "call letters"
   },
   {
@@ -207987,7 +207987,7 @@
    "name": "CBC Regina",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CBKT-DT.ca2",
+   "guide": "CBCSaskatchewan-CBKT.ca",
    "how": "call letters"
   },
   {
@@ -208104,8 +208104,8 @@
    "name": "Comedy Network (East) CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "Comedy.TV.HD.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "cottage.life.ca",
@@ -208239,7 +208239,7 @@
    "name": "CTV Kitchener",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CKCO.ca2",
+   "guide": "CTVKitchener-CKCO.ca",
    "how": "call letters"
   },
   {
@@ -208257,7 +208257,7 @@
    "name": "CTV Montreal QC",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CFCF-DT.ca2",
+   "guide": "CTVMontreal-CFCF.ca",
    "how": "call letters"
   },
   {
@@ -208266,7 +208266,7 @@
    "name": "CTV Ottawa ON",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CJOH-DT.ca2",
+   "guide": "CTVOttawa-CJOH.ca",
    "how": "call letters"
   },
   {
@@ -208401,8 +208401,8 @@
    "name": "E! CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "E.us",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "ewtn.canada.ca",
@@ -208446,8 +208446,8 @@
    "name": "Family Channel",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "The.Family.Channel.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "family.chrgd.ca",
@@ -208509,7 +208509,7 @@
    "name": "Global (CHEX) Peterborough, ON",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CHEX.ca2",
+   "guide": "GlobalPeterborough-CHEX.ca",
    "how": "call letters"
   },
   {
@@ -208527,7 +208527,7 @@
    "name": "Global (CKWS) Kingston News, ON",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "CKWS.ca2",
+   "guide": "GlobalKingston-CKWS.ca",
    "how": "call letters"
   },
   {
@@ -208698,8 +208698,8 @@
    "name": "MavTV CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "I214.61036.schedulesdirect.org",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "meteo.media.ca",
@@ -208734,8 +208734,8 @@
    "name": "National Geographic CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "National.Geographic.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "nickelodeon.canada.ca",
@@ -208743,8 +208743,8 @@
    "name": "Nickelodeon CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "Nickelodeon.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "outdoor.life.network.canada.ca",
@@ -208806,8 +208806,8 @@
    "name": "Paramount Network CA",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "Paramount.Network.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "rai.italia.1.ca",
@@ -208815,7 +208815,7 @@
    "name": "Rai Italia",
    "group": "Canada",
    "prov": "Apollo Group TV",
-   "guide": "I2021.17250.schedulesdirect.org",
+   "guide": "470764",
    "how": "name"
   },
   {
@@ -209229,7 +209229,7 @@
    "name": "ABC (KABC) Los Angeles CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KABC.us",
+   "guide": "ABCKABC.us",
    "how": "call letters"
   },
   {
@@ -209301,7 +209301,7 @@
    "name": "ABC (KCAU) Sioux City IA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKCAU.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -209490,7 +209490,7 @@
    "name": "ABC (KMBC) Kansas City MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKMBC.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -209499,7 +209499,7 @@
    "name": "ABC (KMGH) Denver CO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KMGH.us",
+   "guide": "ABCKMGH.us",
    "how": "call letters"
   },
   {
@@ -209544,7 +209544,7 @@
    "name": "ABC (KOCO) Oklahoma City OK",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKOCO.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -209670,7 +209670,7 @@
    "name": "ABC (KTVX) Salt Lake City UT",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKTVX.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -209841,7 +209841,7 @@
    "name": "ABC (WCJB) Gainesville FL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWCJBDT2.us",
+   "guide": "ABCWCJB.us",
    "how": "call letters"
   },
   {
@@ -209868,7 +209868,7 @@
    "name": "ABC (WCVB) Boston MA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "610463",
+   "guide": "ABCWCVB.us",
    "how": "call letters"
   },
   {
@@ -209922,7 +209922,7 @@
    "name": "ABC (WFTV) Orlando FL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "28cca0d6e56f5527bb6bc15c8a30d133",
+   "guide": "ABCWFTV.us",
    "how": "call letters"
   },
   {
@@ -210120,7 +210120,7 @@
    "name": "ABC (WMAR) Baltimore MD",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "692074",
+   "guide": "ABCWMAR.us",
    "how": "call letters"
   },
   {
@@ -210147,7 +210147,7 @@
    "name": "ABC (WMUR) Manchester NH",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "578082",
+   "guide": "ABCWMUR.us",
    "how": "call letters"
   },
   {
@@ -210291,7 +210291,7 @@
    "name": "ABC (WSOC) Charlotte NC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "6a1610bebdf296985fd95603-61f9a6aec68d91e31d4cc86e",
+   "guide": "ABCWSOC.us",
    "how": "call letters"
   },
   {
@@ -210597,8 +210597,8 @@
    "name": "Adult Swim",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "Adult.Swim.ca2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "africa.magic.family.ze",
@@ -210831,8 +210831,8 @@
    "name": "BBC 2",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "BBC2.be",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "bbc.four.uk",
@@ -211065,7 +211065,7 @@
    "name": "CBS (KCBS) Los Angeles CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KCBS.us",
+   "guide": "CBSKCBS.us",
    "how": "call letters"
   },
   {
@@ -211083,7 +211083,7 @@
    "name": "CBS (KCNC) Denver CO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KCNC.us",
+   "guide": "CBSKCNC.us",
    "how": "call letters"
   },
   {
@@ -211092,7 +211092,7 @@
    "name": "CBS (KCOY) Santa Maria CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKCOYDT3.us",
+   "guide": "TelemundoKCOY.us",
    "how": "call letters"
   },
   {
@@ -211101,7 +211101,7 @@
    "name": "CBS (KCTV) Kansas City MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSKCTV.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -211128,7 +211128,7 @@
    "name": "CBS (KELO) Sioux Falls SD",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKELODT4.us",
+   "guide": "CBSKELO.us",
    "how": "call letters"
   },
   {
@@ -211209,7 +211209,7 @@
    "name": "CBS (KGBT) Harlingen TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKGBT.us",
+   "guide": "KGBT-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -211218,7 +211218,7 @@
    "name": "CBS (KGMB) Honolulu HI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "365BlkKGMBDT3.us",
+   "guide": "CBSKGMB.us",
    "how": "call letters"
   },
   {
@@ -211245,7 +211245,7 @@
    "name": "CBS (KHOU) Houston TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "BOUNCEKHOUDT2.us",
+   "guide": "CBSKHOU.us",
    "how": "call letters"
   },
   {
@@ -211254,7 +211254,7 @@
    "name": "CBS (KHQA) Quincy MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKHQADT2.us",
+   "guide": "CBSKHQA.us",
    "how": "call letters"
   },
   {
@@ -211290,7 +211290,7 @@
    "name": "CBS (KIRO) Seattle WA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "632b619c8d2a6c0007ff534e",
+   "guide": "CBSKIRO.us",
    "how": "call letters"
   },
   {
@@ -211335,7 +211335,7 @@
    "name": "CBS (KMEG) Sioux City IA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KMEG-DT.us_locals1",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -211344,7 +211344,7 @@
    "name": "CBS (KMOV) St Louis MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKMOVDT7.us",
+   "guide": "CBSKMOV.us",
    "how": "call letters"
   },
   {
@@ -211362,7 +211362,7 @@
    "name": "CBS (KNOE) Monroe LA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKNOEDT2.us",
+   "guide": "CBSKNOE.us",
    "how": "call letters"
   },
   {
@@ -211470,7 +211470,7 @@
    "name": "CBS (KRQE) Albuquerque NM",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXKRQE.us",
+   "guide": "KRQE-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -211524,7 +211524,7 @@
    "name": "CBS (KUTV) Salt Lake City UT",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSKUTV.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -211677,7 +211677,7 @@
    "name": "CBS (WBTV) Charlotte NC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "bf7ee95e6a905222a1d24174120cc106",
+   "guide": "CBSWBTV.us",
    "how": "call letters"
   },
   {
@@ -211893,7 +211893,7 @@
    "name": "CBS (WIAT) Birmingham AL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWIAT.us",
+   "guide": "WIAT-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -211956,7 +211956,7 @@
    "name": "CBS (WJTV) Jackson MS",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWJTV.us",
+   "guide": "WJTV-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -212253,7 +212253,7 @@
    "name": "CBS (WUSA) District of Columbia",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "610471",
+   "guide": "CBSWUSA.us",
    "how": "call letters"
   },
   {
@@ -212271,7 +212271,7 @@
    "name": "CBS (WWAYDT2) Wilmington NC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWWAY.us",
+   "guide": "CBSWWAYDT2.us",
    "how": "call letters"
   },
   {
@@ -212298,7 +212298,7 @@
    "name": "CBS (WWMT) Kalamazoo MI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ARCWWMTDT2.us",
+   "guide": "CBSWWMT.us",
    "how": "call letters"
   },
   {
@@ -212334,7 +212334,7 @@
    "name": "CBS WISC Madison",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "MyWISCDT2.us",
+   "guide": "CBSWISC.us",
    "how": "call letters"
   },
   {
@@ -212514,7 +212514,7 @@
    "name": "CW (WMDTDT2) Salisbury MD",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWMDT.us",
+   "guide": "CWWMDTDT2.us",
    "how": "call letters"
   },
   {
@@ -212568,7 +212568,7 @@
    "name": "CW (WUPA) Atlanta GA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSWUPA.us",
+   "guide": "WUPA-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -212892,7 +212892,7 @@
    "name": "FOX (KARD) DT1 Monroe LA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKARDDT2.us",
+   "guide": "FOXKARD.us",
    "how": "call letters"
   },
   {
@@ -212901,7 +212901,7 @@
    "name": "FOX (KCBA) Salinas CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKCBA.us",
+   "guide": "KCBA-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -212946,7 +212946,7 @@
    "name": "FOX (KDVR) Denver CO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KDVR.us",
+   "guide": "FOXKDVR.us",
    "how": "call letters"
   },
   {
@@ -212955,7 +212955,7 @@
    "name": "FOX (KECY) Yuma AZ",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKECYDT2.us",
+   "guide": "FOXKECY.us",
    "how": "call letters"
   },
   {
@@ -213036,7 +213036,7 @@
    "name": "FOX (KHON) Honolulu HI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKHONDT2.us",
+   "guide": "FOXKHON.us",
    "how": "call letters"
   },
   {
@@ -213054,7 +213054,7 @@
    "name": "FOX (KJUDDT3) Juneau AK",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKJUD.us",
+   "guide": "KJUD-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -213135,7 +213135,7 @@
    "name": "FOX (KOKH) Oklahoma City OK",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXKOKH.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -213162,7 +213162,7 @@
    "name": "FOX (KPTH) Sioux City IA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSKPTHDT3.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -213171,7 +213171,7 @@
    "name": "FOX (KPTM) Omaha NE",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKPTMDT3.us",
+   "guide": "FOXKPTM.us",
    "how": "call letters"
   },
   {
@@ -213198,7 +213198,7 @@
    "name": "FOX (KRIV) Houston TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "DecadesKRIVDT2.us",
+   "guide": "FOXKRIV.us",
    "how": "call letters"
   },
   {
@@ -213243,7 +213243,7 @@
    "name": "FOX (KSTU) Salt Lake City UT",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXKSTU.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -213288,7 +213288,7 @@
    "name": "FOX (KTTV) Los Angeles CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KTTV.us",
+   "guide": "FOXKTTV.us",
    "how": "call letters"
   },
   {
@@ -213432,7 +213432,7 @@
    "name": "FOX (WDAF) Kansas City MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXWDAF.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -213603,7 +213603,7 @@
    "name": "FOX (WGXA) Macon GA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWGXADT2.us",
+   "guide": "FOXWGXA.us",
    "how": "call letters"
   },
   {
@@ -213684,7 +213684,7 @@
    "name": "FOX (WLOV) Tupelo MS",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWLOV.us",
+   "guide": "WLOV-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -213711,7 +213711,7 @@
    "name": "FOX (WNAC) E Providence RI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWNACDT2.us",
+   "guide": "FOXWNAC.us",
    "how": "call letters"
   },
   {
@@ -213810,7 +213810,7 @@
    "name": "FOX (WSVN) Miami FL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWSVNDT2.us",
+   "guide": "FOXWSVN.us",
    "how": "call letters"
   },
   {
@@ -213819,7 +213819,7 @@
    "name": "FOX (WSYM) Lansing MI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "47+WSYMDT4.us",
+   "guide": "FOXWSYM.us",
    "how": "call letters"
   },
   {
@@ -213900,7 +213900,7 @@
    "name": "FOX (WTWCDT2) Tallahassee FL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "NBCWTWC.us",
+   "guide": "WTWC-DT2.us_locals1",
    "how": "call letters"
   },
   {
@@ -214179,8 +214179,8 @@
    "name": "FTV BIH US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FTV.HD.(BIH).ba",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "galavision.eastern.us",
@@ -214314,8 +214314,8 @@
    "name": "Happy Channel",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "456845",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "happy.tv.hr",
@@ -214323,8 +214323,8 @@
    "name": "Happy TV",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "456845",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "hayat.rs",
@@ -214503,8 +214503,8 @@
    "name": "ITV",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "I-TV.ch",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "itv.2.uk",
@@ -214530,8 +214530,8 @@
    "name": "ITV East",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "I-TV.ch",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "itv.granada.uk",
@@ -214548,8 +214548,8 @@
    "name": "ITV London",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ITV.HD.London.cz",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "itv.meridian.thamesvalley.uk",
@@ -214575,8 +214575,8 @@
    "name": "ITV West",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "I-TV.ch",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "itvn.pl",
@@ -214737,7 +214737,7 @@
    "name": "KTXS Abilene TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKTXSDT2.us",
+   "guide": "ABCKTXS.us",
    "how": "call letters"
   },
   {
@@ -215070,8 +215070,8 @@
    "name": "Mega",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "I405.69301.schedulesdirect.org",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mega.gr",
@@ -215079,8 +215079,8 @@
    "name": "Mega",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "I405.69301.schedulesdirect.org",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mega.cosmos.gr",
@@ -215160,7 +215160,7 @@
    "name": "MNT (WCIV) Charleston SC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWCIVDT2.us",
+   "guide": "MyWCIV.us",
    "how": "call letters"
   },
   {
@@ -215169,7 +215169,7 @@
    "name": "MNT (WMYT) Charlotte NC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWMYT.us",
+   "guide": "WMYT-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -215268,7 +215268,7 @@
    "name": "NBC (KADNDT2) Lafayette LA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXKADN.us",
+   "guide": "KADN-DT.us_locals1",
    "how": "call letters"
   },
   {
@@ -215322,7 +215322,7 @@
    "name": "NBC (KCEN) Temple TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CoziTVKCENDT2.us",
+   "guide": "NBCKCEN.us",
    "how": "call letters"
   },
   {
@@ -215349,7 +215349,7 @@
    "name": "NBC (KDLT) Sioux Falls SD",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FoxKDLTDT2.us",
+   "guide": "NBCKDLT.us",
    "how": "call letters"
   },
   {
@@ -215394,7 +215394,7 @@
    "name": "NBC (KGNS) Laredo TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCKGNSDT2.us",
+   "guide": "NBCKGNS.us",
    "how": "call letters"
   },
   {
@@ -215412,7 +215412,7 @@
    "name": "NBC (KHNL) Honolulu HI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "AntennaTVKHNLDT3.us",
+   "guide": "NBCKHNL.us",
    "how": "call letters"
   },
   {
@@ -215457,7 +215457,7 @@
    "name": "NBC (KNBC) Los Angeles CA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KNBC.us",
+   "guide": "NBCKNBC.us",
    "how": "call letters"
   },
   {
@@ -215511,7 +215511,7 @@
    "name": "NBC (KOMU) Columbia MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKOMUDT3.us",
+   "guide": "NBCKOMU.us",
    "how": "call letters"
   },
   {
@@ -215520,7 +215520,7 @@
    "name": "NBC (KPLC) Lake Charles LA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKPLCDT2.us",
+   "guide": "NBCKPLC.us",
    "how": "call letters"
   },
   {
@@ -215538,7 +215538,7 @@
    "name": "NBC (KPRC) Houston TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "MeToonsKPRCDT5.us",
+   "guide": "NBCKPRC.us",
    "how": "call letters"
   },
   {
@@ -215601,7 +215601,7 @@
    "name": "NBC (KSHB) Kansas City MO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "NBCKSHB.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -215682,7 +215682,7 @@
    "name": "NBC (KTIV) Sioux City IA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CW+KTIVDT2.us",
+   "guide": "StLouisCITYSC.mls",
    "how": "call letters"
   },
   {
@@ -215700,7 +215700,7 @@
    "name": "NBC (KTTC) Rochester MN",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWKTTCDT2.us",
+   "guide": "NBCKTTC.us",
    "how": "call letters"
   },
   {
@@ -215736,7 +215736,7 @@
    "name": "NBC (KUSA) Denver CO",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "KUSA.us",
+   "guide": "NBCKUSA.us",
    "how": "call letters"
   },
   {
@@ -215745,7 +215745,7 @@
    "name": "NBC (KVEO) Brownsville TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSKVEODT2.us",
+   "guide": "NBCKVEO.us",
    "how": "call letters"
   },
   {
@@ -215853,7 +215853,7 @@
    "name": "NBC (WALB) Albany GA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWALBDT2.us",
+   "guide": "NBCWALB.us",
    "how": "call letters"
   },
   {
@@ -215880,7 +215880,7 @@
    "name": "NBC (WBAL) Baltimore MD",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "603906",
+   "guide": "NBCWBAL.us",
    "how": "call letters"
   },
   {
@@ -215979,7 +215979,7 @@
    "name": "NBC (WCYB) Bristol VA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXWCYBDT3.us",
+   "guide": "NBCWCYB.us",
    "how": "call letters"
   },
   {
@@ -215988,7 +215988,7 @@
    "name": "NBC (WDAM) Laurel MS",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWDAMDT2.us",
+   "guide": "NBCWDAM.us",
    "how": "call letters"
   },
   {
@@ -215997,7 +215997,7 @@
    "name": "NBC (WDIV) Detroit MI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "MeTVWDIVDT3.us",
+   "guide": "NBCWDIV.us",
    "how": "call letters"
   },
   {
@@ -216060,7 +216060,7 @@
    "name": "NBC (WGAL) Lancaster PA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "603917",
+   "guide": "NBCWGAL.us",
    "how": "call letters"
   },
   {
@@ -216078,7 +216078,7 @@
    "name": "NBC (WGEM) Quincy IL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWGEMDT2.us",
+   "guide": "NBCWGEM.us",
    "how": "call letters"
   },
   {
@@ -216141,7 +216141,7 @@
    "name": "NBC (WJAR) Cranston RI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWJARDT2.us",
+   "guide": "NBCWJAR.us",
    "how": "call letters"
   },
   {
@@ -216204,7 +216204,7 @@
    "name": "NBC (WLTZ) Columbus GA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWLTZDT2.us",
+   "guide": "NBCWLTZ.us",
    "how": "call letters"
   },
   {
@@ -216258,7 +216258,7 @@
    "name": "NBC (WMTV) Madison WI",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWMTVDT2.us",
+   "guide": "NBCWMTV.us",
    "how": "call letters"
   },
   {
@@ -216285,7 +216285,7 @@
    "name": "NBC (WNKY) Bowling Green KY",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSWNKYDT2.us",
+   "guide": "NBCWNKY.us",
    "how": "call letters"
   },
   {
@@ -216312,7 +216312,7 @@
    "name": "NBC (WOAI) San Antonio TX",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWOAIDT2.us",
+   "guide": "NBCWOAI.us",
    "how": "call letters"
   },
   {
@@ -216357,7 +216357,7 @@
    "name": "NBC (WPTADT2) Ft Wayne IN",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWPTA.us",
+   "guide": "NBCWPTADT2.us",
    "how": "call letters"
   },
   {
@@ -216384,7 +216384,7 @@
    "name": "NBC (WPXI) Pittsburgh PA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "e38d66dbb4e05f9690f6c573417fc231",
+   "guide": "NBCWPXI.us",
    "how": "call letters"
   },
   {
@@ -216465,7 +216465,7 @@
    "name": "NBC (WSMV) Nashville TN",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "d53b1fb8c41f574387cde82d084515ea",
+   "guide": "NBCWSMV.us",
    "how": "call letters"
   },
   {
@@ -216474,7 +216474,7 @@
    "name": "NBC (WSTM) Syracuse NY",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWSTMDT2.us",
+   "guide": "NBCWSTM.us",
    "how": "call letters"
   },
   {
@@ -216510,7 +216510,7 @@
    "name": "NBC (WTOV) Steubenville OH",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FOXWTOVDT2.us",
+   "guide": "NBCWTOV.us",
    "how": "call letters"
   },
   {
@@ -216519,7 +216519,7 @@
    "name": "NBC (WTVA) Tupelo MS",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "ABCWTVADT2.us",
+   "guide": "NBCWTVA.us",
    "how": "call letters"
   },
   {
@@ -216564,7 +216564,7 @@
    "name": "NBC (WVTM) Birmingham AL",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CBSWVTMDT4.us",
+   "guide": "NBCWVTM.us",
    "how": "call letters"
   },
   {
@@ -216582,7 +216582,7 @@
    "name": "NBC (WWLP) Springfield MA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWWLPDT2.us",
+   "guide": "NBCWWLP.us",
    "how": "call letters"
   },
   {
@@ -216600,7 +216600,7 @@
    "name": "NBC (WXII) WinstonSalem NC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "6a1610bebdf296985fd95603-62441750cc4140a6505193e4",
+   "guide": "NBCWXII.us",
    "how": "call letters"
   },
   {
@@ -216609,7 +216609,7 @@
    "name": "NBC (WYFF) Greenville SC",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "6a1610bebdf296985fd95603-6243f13c02c2415bd217305a",
+   "guide": "NBCWYFF.us",
    "how": "call letters"
   },
   {
@@ -216618,7 +216618,7 @@
    "name": "NBC 29 (WVIR-TV) VA US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CWWVIRDT3.us",
+   "guide": "NBCWVIR.us",
    "how": "call letters"
   },
   {
@@ -216636,7 +216636,7 @@
    "name": "NBC WLUC TV 6 Mi US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "FoxUpWLUCDT2.us",
+   "guide": "NBCWLUC.us",
    "how": "call letters"
   },
   {
@@ -216681,8 +216681,8 @@
    "name": "Nova BH BIH US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "Nova.BH.HD.(BIH).ba",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "nova.bh.wa.us",
@@ -216762,8 +216762,8 @@
    "name": "OBN BIH US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "OBN.(BIH).ba",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "ocs.city.fr",
@@ -216978,7 +216978,7 @@
    "name": "PBS WETP TN US",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "CreateWETPDT3.us",
+   "guide": "PBSWETP.us",
    "how": "call letters"
   },
   {
@@ -216996,8 +216996,8 @@
    "name": "Pick",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "Pick.TV.cz",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tv.pink.rs",
@@ -217167,8 +217167,8 @@
    "name": "Pro TV",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "151487",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "prosieben.de",
@@ -217743,8 +217743,8 @@
    "name": "Sky Replay",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "562033",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "sky.showcase.de",
@@ -218166,8 +218166,8 @@
    "name": "TV Plus",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "Plus.cy",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tv.sonce.mk",
@@ -218418,7 +218418,7 @@
    "name": "UNI (WUVG) Atlanta GA",
    "group": "Entertainment",
    "prov": "Apollo Group TV",
-   "guide": "UniMasWUVGDT2.us",
+   "guide": "UnivisionWUVG.us",
    "how": "call letters"
   },
   {
@@ -219021,7 +219021,7 @@
    "name": "The U (WCIU TV) Chicago US",
    "group": "US Local",
    "prov": "Apollo Group TV",
-   "guide": "TheUTooWCIUDT2.us",
+   "guide": "TheUWCIU.us",
    "how": "call letters"
   },
   {
@@ -219039,7 +219039,7 @@
    "name": "WEEK TV NBC 25 US",
    "group": "US Local",
    "prov": "Apollo Group TV",
-   "guide": "ABCWEEKDT2.us",
+   "guide": "NBCWEEK.us",
    "how": "call letters"
   },
   {
@@ -219228,8 +219228,8 @@
    "name": "Crime Investigation",
    "group": "Documentary",
    "prov": "Apollo Group TV",
-   "guide": "484093",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "da.vinci.ru",
@@ -219444,8 +219444,8 @@
    "name": "Discovery Science CA",
    "group": "Documentary",
    "prov": "Apollo Group TV",
-   "guide": "ScienceChannel.us",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "discovery.science.uk",
@@ -219597,8 +219597,8 @@
    "name": "H2 UK",
    "group": "Documentary",
    "prov": "Apollo Group TV",
-   "guide": "HISTORY2.ca",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "historia.es",
@@ -221991,8 +221991,8 @@
    "name": "SYFY UK",
    "group": "Movies",
    "prov": "Apollo Group TV",
-   "guide": "Syfy.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "talking.pictures.tv.uk",
@@ -222999,7 +222999,7 @@
    "name": "Bridge TV",
    "group": "Music",
    "prov": "Apollo Group TV",
-   "guide": "6315",
+   "guide": "7217",
    "how": "name"
   },
   {
@@ -223233,8 +223233,8 @@
    "name": "MTV Music UK",
    "group": "Music",
    "prov": "Apollo Group TV",
-   "guide": "MTV.-.Music.Television.HD.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mtv.usa.pacific.us",
@@ -223260,8 +223260,8 @@
    "name": "Music",
    "group": "Music",
    "prov": "Apollo Group TV",
-   "guide": "6546",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "24.il",
@@ -223278,8 +223278,8 @@
    "name": "Music Channel",
    "group": "Music",
    "prov": "Apollo Group TV",
-   "guide": "6546",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "music.choice.us",
@@ -223431,7 +223431,7 @@
    "name": "RU TV",
    "group": "Music",
    "prov": "Apollo Group TV",
-   "guide": "6854",
+   "guide": "7109",
    "how": "name"
   },
   {
@@ -230289,8 +230289,8 @@
    "name": "beIN Sports 1 US",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "beINSports1.au",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "bein.sports.2.fr",
@@ -231189,8 +231189,8 @@
    "name": "Eurosport 2 UK",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "EUROSPORT.2.at",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "eurosport2xtra.de",
@@ -231405,8 +231405,8 @@
    "name": "Ginx eSports TV CA",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "6390",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "gol.es",
@@ -231414,8 +231414,8 @@
    "name": "Gol",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "GOLTVEnglish.us",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "golf.channel.canada.ca",
@@ -231639,8 +231639,8 @@
    "name": "MLB Network CA",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "MLB.Network.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mlb.network.strike.zone.us",
@@ -232287,8 +232287,8 @@
    "name": "Red Bull TV UK",
    "group": "Sports",
    "prov": "Apollo Group TV",
-   "guide": "c5e8a74546771de365652cd053f73351",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "redbull.au",
@@ -240711,8 +240711,8 @@
    "name": "HGTV",
    "group": "UK",
    "prov": "Apollo Group TV",
-   "guide": "172",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "itvbe.uk",
@@ -240927,8 +240927,8 @@
    "name": "Cufo TV",
    "group": "Albania",
    "prov": "Apollo Group TV",
-   "guide": "Cufo.al",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "iran.international.ir",
@@ -241053,7 +241053,7 @@
    "name": "Fox Life",
    "group": "Brazil",
    "prov": "Apollo Group TV",
-   "guide": "FoxLife.HD.cy",
+   "guide": "6693",
    "how": "name"
   },
   {
@@ -241197,8 +241197,8 @@
    "name": "Church",
    "group": "Caribbean",
    "prov": "Apollo Group TV",
-   "guide": "568561",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "citytv.co",
@@ -241467,7 +241467,7 @@
    "name": "FOX Life",
    "group": "EX-YU",
    "prov": "Apollo Group TV",
-   "guide": "FoxLife.HD.cy",
+   "guide": "6693",
    "how": "name"
   },
   {
@@ -241908,8 +241908,8 @@
    "name": "Food Channel",
    "group": "Israel",
    "prov": "Apollo Group TV",
-   "guide": "Food.Network.HD.us2",
-   "how": "similar name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "goodlife.il",
@@ -242214,7 +242214,7 @@
    "name": "Disney Channel (East) CA",
    "group": "Kids",
    "prov": "Apollo Group TV",
-   "guide": "Disney.Channel.HD.us2",
+   "guide": "DisneyChannelPacific.ca",
    "how": "name"
   },
   {
@@ -242259,8 +242259,8 @@
    "name": "Disney Junior CA",
    "group": "Kids",
    "prov": "Apollo Group TV",
-   "guide": "Disney.Junior.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "disney.xd.usa.eastern.us",
@@ -243366,7 +243366,7 @@
    "name": "Telemundo (KDEN) Longmont CO",
    "group": "Latino",
    "prov": "Apollo Group TV",
-   "guide": "KDEN.us",
+   "guide": "TelemundoKDEN.us",
    "how": "call letters"
   },
   {
@@ -243429,7 +243429,7 @@
    "name": "Telemundo (KTMD) Houston TX",
    "group": "Latino",
    "prov": "Apollo Group TV",
-   "guide": "OxygenTrueCrimeKTMDDT5.us",
+   "guide": "TelemundoKTMD.us",
    "how": "call letters"
   },
   {
@@ -243456,7 +243456,7 @@
    "name": "Telemundo (KVEA) Los Angeles CA",
    "group": "Latino",
    "prov": "Apollo Group TV",
-   "guide": "KVEA.us",
+   "guide": "TelemundoKVEA.us",
    "how": "call letters"
   },
   {
@@ -243663,7 +243663,7 @@
    "name": "UNI (KXLN) Houston TX",
    "group": "Latino",
    "prov": "Apollo Group TV",
-   "guide": "IonMysteryKXLNDT3.us",
+   "guide": "UnivisionKXLN.us",
    "how": "call letters"
   },
   {
@@ -243771,8 +243771,8 @@
    "name": "Cooking Channel CA",
    "group": "Lifestyle",
    "prov": "Apollo Group TV",
-   "guide": "Cooking.Channel.HD.us2",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "digi.life.ro",
