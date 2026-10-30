@@ -141,16 +141,16 @@ dialog h2{margin:0 0 14px;font-size:16px}
 <!-- SOURCES -->
 <section id="tab-sources" class="hide">
   <div class="card">
-    <h2>📺 My provider (private)</h2>
-    <p class="muted small" style="margin-top:0">Paste your paid provider's M3U link (the one you use in TiviMate). Ultimate EPG reads its channel list
-      <b>on this PC only</b> and builds a guide that uses your provider's exact channel codes, so TiviMate fills in every channel it can.
-      Your link (with your password) is never uploaded — only channel names and their matched guides go online.</p>
+    <h2>📺 My providers (private) — teach the universal guide</h2>
+    <p class="muted small" style="margin-top:0">Add the M3U link of every provider you use (paid or free). Ultimate EPG reads their channel lists
+      <b>on this PC only</b> and teaches the <b>one universal guide</b> their channel codes and names, so the same guide link works in any player with
+      any of your providers. Your links (with passwords) are never uploaded — only channel names and codes go online.</p>
+    <div id="provList"></div>
     <div class="bar">
-      <input id="provName" placeholder="Name (e.g. My IPTV)" style="width:180px">
+      <input id="provName" placeholder="Name (e.g. Provider A)" style="width:180px">
       <input id="provUrl" type="password" placeholder="Provider M3U link (http://…/get.php?username=…)" style="flex:1;min-width:220px" autocomplete="off">
       <button class="b" onclick="const u=$('provUrl');u.type=u.type==='password'?'text':'password'">👁</button>
-      <button class="b p" onclick="saveProvider()">Save &amp; match</button>
-      <button class="b d" id="provRemove" onclick="removeProvider()">Remove</button>
+      <button class="b p" onclick="saveProvider()">+ Add provider</button>
     </div>
     <div id="provInfo" class="muted small"></div>
     <div id="provLinks" class="links"></div>
@@ -311,23 +311,25 @@ let pollT = null;
 /* source health - updates live without redrawing the page */
 const H_WORD = {healthy: 'Working', stale: 'Out of date', dead: 'Dead', checking: 'Checking…', removed: 'Removed'};
 function renderProvider() {
-  const pv = S.provider || {count: 0, names: [], unmatched: []};
-  if (!$('provName').value && pv.names.length) $('provName').value = pv.names[0];
-  $('provUrl').placeholder = pv.names.length ? 'Saved privately on this PC — paste again only to change it' : "Provider M3U link (http://…/get.php?username=…)";
-  $('provRemove').classList.toggle('hide', !pv.names.length && !pv.count);
+  const pv = S.provider || {count: 0, names: [], unmatched: [], per: {}};
+  $('provList').innerHTML = pv.names.map((n, i) => `<div class="src-row" style="grid-template-columns:1fr auto">
+      <span><b>${esc(n)}</b> <span class="hdetail">${(pv.per || {})[n] || 0} live channels · link saved privately on this PC</span></span>
+      <button class="b d" data-prem="${i}">Remove</button></div>`).join('');
   const pct = pv.count ? Math.round(100 * pv.matched / pv.count) : 0;
-  $('provInfo').innerHTML = pv.count
-    ? `<span class="hl ${pct >= 80 ? 'healthy' : pct >= 50 ? 'stale' : 'dead'}">${pct}% matched</span> ${pv.count} live channels · <b>${pv.matched}</b> matched to a guide` +
-      (pv.live != null ? ` · ${pv.live} with listings right now` : '') + ` · ${pv.count - pv.matched} without a guide`
-    : (pv.names.length ? 'Reading your provider list…' : 'No provider added yet.');
+  const u = S.universal;
+  $('provInfo').innerHTML = (pv.count
+    ? `<span class="hl ${pct >= 80 ? 'healthy' : pct >= 50 ? 'stale' : 'dead'}">${pct}% matched</span> ${pv.count} provider channels · <b>${pv.matched}</b> matched` +
+      (pv.live != null ? ` · ${pv.live} with listings now` : '') + ` · ${pv.count - pv.matched} without a guide`
+    : (pv.names.length ? 'Reading your provider lists…' : 'No providers added yet — the universal guide still works; adding providers makes it match them even better.')) +
+    (u ? `<br>Universal guide: <b>${u.channels.toLocaleString()}</b> real channels answering to <b>${u.codes.toLocaleString()}</b> channel codes (${u.learned.toLocaleString()} learned from your providers and playlists)` : '');
   const pu = S.settings.public_url;
-  $('provLinks').innerHTML = pv.count ? [[pu ? 'Put this in TiviMate (EPG)' : 'EPG link (this PC)', (pu || location.origin) + '/epg-provider.xml.gz']]
-    .map(([l, u]) => `<div class="row"><span style="width:200px" class="small"><b>${l}</b></span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
+  $('provLinks').innerHTML = [[pu ? 'Universal guide — any player, any provider' : 'Universal guide (this PC)', (pu || location.origin) + '/epg-full.xml.gz']]
+    .map(([l, x]) => `<div class="row"><span style="width:200px" class="small"><b>${l}</b></span><input readonly value="${x}"><button class="b" onclick="navigator.clipboard.writeText('${x}');this.textContent='Copied'">Copy</button></div>`).join('');
   $('provMissDetails').classList.toggle('hide', !pv.count);
-  $('provMissTitle').textContent = `Channels without a guide (${pv.count - pv.matched}) — press Find to pick one`;
+  $('provMissTitle').textContent = `Provider channels without a guide (${pv.count - pv.matched}) — press Find to pick one`;
   const q = $('provMissQ').value.toLowerCase();
   $('provMiss').innerHTML = pv.unmatched.filter(c => !q || (c.name + ' ' + c.group).toLowerCase().includes(q)).slice(0, 200).map(c =>
-    `<div style="cursor:default"><span style="flex:1">${esc(c.name)} <span class="muted small">· ${esc(c.group || '')}</span></span><button class="b" data-pfind="${esc(c.key)}" data-pname="${esc(c.name)}">Find</button></div>`).join('')
+    `<div style="cursor:default"><span style="flex:1">${esc(c.name)} <span class="muted small">· ${esc(c.prov || '')} · ${esc(c.group || '')}</span></span><button class="b" data-pfind="${esc(c.key)}" data-pname="${esc(c.name)}">Find</button></div>`).join('')
     || '<p class="muted small">Every channel has a guide 🎉</p>';
 }
 $('provMissQ').addEventListener('input', renderProvider);
@@ -335,16 +337,18 @@ $('provMiss').addEventListener('click', e => {
   const b = e.target.closest('[data-pfind]'); if (!b) return;
   searchTarget = {provider: b.dataset.pfind}; openSearch(null, b.dataset.pname.replace(/^\s*[\[(|]?\s*(us|usa|uk|gb|ca)\s*[\])|:\-]+\s*/i, ''));
 });
+$('provList').addEventListener('click', async e => {
+  const i = e.target.dataset.prem; if (i == null) return;
+  if (!confirm('Remove this provider? Its private link is deleted from this PC.')) return;
+  await post('/api/provider', {remove: +i}); poll();
+});
 async function saveProvider() {
   const url = $('provUrl').value.trim();
-  if (!url) return alert('Paste your provider M3U link first.');
+  if (!url) return alert('Paste a provider M3U link first.');
   await post('/api/provider', {name: $('provName').value.trim(), url});
-  $('provUrl').value = ''; $('provInfo').textContent = 'Reading your provider list and matching channels… (a minute or two)';
+  $('provUrl').value = ''; $('provName').value = '';
+  $('provInfo').textContent = 'Reading your provider lists and teaching the universal guide… (a minute or two)';
   poll();
-}
-async function removeProvider() {
-  if (!confirm('Remove your provider? Its private link and the provider guide are removed.')) return;
-  await post('/api/provider', {url: ''}); $('provName').value = ''; poll();
 }
 function renderRemoved() {
   const r = S.removed || [];
@@ -676,7 +680,7 @@ $('autoList').addEventListener('click', async e => {
 function renderLinks() {
   const pu = S.settings.public_url;
   $('pubBtn').classList.toggle('hide', !pu);
-  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Full guide — any provider', pu + '/epg-full.xml.gz']].concat(S.provider && S.provider.count ? [['Guide for MY provider', pu + '/epg-provider.xml.gz']] : [])
+  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Universal guide — US only', pu + '/epg-us.xml.gz'], ['Universal guide — UK only', pu + '/epg-uk.xml.gz'], ['Universal guide — Canada only', pu + '/epg-ca.xml.gz']]
     .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
   $('onlineHelp').textContent = pu
     ? 'GitHub rebuilds these every 6 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update a few minutes later.'
@@ -686,8 +690,7 @@ function renderLinks() {
   const rows = [];
   for (const b of bases) {
     const label = b.includes('localhost') || b.includes('127.0.0.1') ? ' (this PC only)' : '';
-    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide for this playlist' + label, b + '/epg.xml.gz'], ['Full guide — any provider' + label, b + '/epg-full.xml.gz']);
-    if (S.provider && S.provider.count) rows.push(['Guide for MY provider' + label, b + '/epg-provider.xml.gz']);
+    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide for this playlist' + label, b + '/epg.xml.gz'], ['Universal guide' + label, b + '/epg-full.xml.gz']);
   }
   $('linkRows').innerHTML = rows.map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('');
   for (const k of Object.keys(S.settings)) {

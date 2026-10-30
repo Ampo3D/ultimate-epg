@@ -204068,8 +204068,9 @@
    "id": "ae.us.eastern.us",
    "name": "A&E (East) US",
    "group": "US",
-   "guide": "",
-   "how": ""
+   "guide": "A.and.E.HD.East.us2",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "actionmax.eastern.us",
@@ -204116,16 +204117,18 @@
    "id": "american.heroes.channel.us",
    "name": "American Heroes Channel US",
    "group": "US",
-   "guide": "",
-   "how": ""
+   "guide": "American.Heroes.Channel.HD.us2",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "animal.planet.us.east.us",
    "id": "animal.planet.us.east.us",
    "name": "Animal Planet (East) US",
    "group": "US",
-   "guide": "",
-   "how": ""
+   "guide": "Animal.Planet.HD.us2",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "antenna.network.us",
