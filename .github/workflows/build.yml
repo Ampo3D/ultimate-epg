@@ -6,6 +6,8 @@ name: Build EPG
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - .github/workflows/watchdog.yml
   schedule:
     - cron: "17 */3 * * *"   # every 3 hours (GitHub sometimes skips a run - the guide always covers 2 days)
   workflow_dispatch:

@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: "7,37 * * * *"
   workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild now even if the guide is new
+        type: boolean
+        default: false
 
 permissions:
   actions: write
@@ -31,4 +36,4 @@ jobs:
           age=999999
           if [ -n "$last" ]; then age=$(( $(date +%s) - $(date -d "$last" +%s) )); fi
           echo "Last good build started $age seconds ago"
-          if [ "$age" -gt 10800 ]; then gh workflow run build.yml -R "$REPO" --ref main; echo "Rebuild started"; fi
+          if [ "$age" -gt 10800 ] || [ "${{ inputs.force }}" = "true" ]; then gh workflow run build.yml -R "$REPO" --ref main; echo "Rebuild started"; fi
