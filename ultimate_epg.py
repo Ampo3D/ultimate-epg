@@ -7,6 +7,7 @@ Then open http://localhost:8787 in a browser.
 """
 import bisect
 import gzip
+import lzma
 import sys
 import hashlib
 import html
@@ -215,9 +216,10 @@ def fetch(url, dest, max_bytes=None):
             path = url[7:] if url.lower().startswith("file://") else url
             shutil.copyfile(os.path.expanduser(path), tmp)
         with open(tmp, "rb") as f:
-            gz = f.read(2) == b"\x1f\x8b"
-        if gz:
-            with gzip.open(tmp, "rb") as src, open(dest + ".unz", "wb") as dst:
+            magic = f.read(6)
+        gz, xz = magic[:2] == b"\x1f\x8b", magic == b"\xfd7zXZ\x00"
+        if gz or xz:
+            with (gzip.open if gz else lzma.open)(tmp, "rb") as src, open(dest + ".unz", "wb") as dst:
                 shutil.copyfileobj(src, dst, 1 << 20)
             os.replace(dest + ".unz", dest)
         else:
@@ -421,6 +423,7 @@ def scan_xmltv(path):
                     last = max(last, end) if last else end
                     cid = el.get("channel", "")
                     per[cid] = per.get(cid, 0) + 1
+                    idx.setdefault(cid, {"names": [], "icon": ""})  # some guides (Rytec) have no channel list
                     t = el.find("title")
                     lang = (t.get("lang") or "").lower()[:2] if t is not None else ""
                     if lang:
