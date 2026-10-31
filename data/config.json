@@ -788,6 +788,97 @@
    "name": "Rytec CH Basic",
    "url": "http://www.xmltvepg.nl/rytecCH_Basic.xz",
    "enabled": true
+  },
+  {
+   "id": "fafdcf80",
+   "type": "xmltv",
+   "name": "Rytec BE FR Common",
+   "url": "http://www.xmltvepg.nl/rytecBE_FR_Common.xz",
+   "enabled": true
+  },
+  {
+   "id": "5fddc323",
+   "type": "xmltv",
+   "name": "Rytec BG",
+   "url": "http://www.xmltvepg.nl/rytecBG.xz",
+   "enabled": true
+  },
+  {
+   "id": "1f0d91b3",
+   "type": "xmltv",
+   "name": "Rytec DK Misc",
+   "url": "http://www.xmltvepg.nl/rytecDK_Misc.xz",
+   "enabled": true
+  },
+  {
+   "id": "db15be5e",
+   "type": "xmltv",
+   "name": "Rytec DK SportMovies",
+   "url": "http://www.xmltvepg.nl/rytecDK_SportMovies.xz",
+   "enabled": true
+  },
+  {
+   "id": "7dd27b4f",
+   "type": "xmltv",
+   "name": "Rytec FI Misc",
+   "url": "http://www.xmltvepg.nl/rytecFI_Misc.xz",
+   "enabled": true
+  },
+  {
+   "id": "729e418e",
+   "type": "xmltv",
+   "name": "Rytec FI SportMovies",
+   "url": "http://www.xmltvepg.nl/rytecFI_SportMovies.xz",
+   "enabled": true
+  },
+  {
+   "id": "f3567460",
+   "type": "xmltv",
+   "name": "Rytec NL Extra",
+   "url": "http://www.xmltvepg.nl/rytecNL_Extra.xz",
+   "enabled": true
+  },
+  {
+   "id": "f032c84b",
+   "type": "xmltv",
+   "name": "Rytec NO Misc",
+   "url": "http://www.xmltvepg.nl/rytecNO_Misc.xz",
+   "enabled": true
+  },
+  {
+   "id": "b9889c0e",
+   "type": "xmltv",
+   "name": "Rytec NO SportMovies",
+   "url": "http://www.xmltvepg.nl/rytecNO_SportMovies.xz",
+   "enabled": true
+  },
+  {
+   "id": "1ca78122",
+   "type": "xmltv",
+   "name": "Rytec PT",
+   "url": "http://www.xmltvepg.nl/rytecPT.xz",
+   "enabled": true
+  },
+  {
+   "id": "94dd3029",
+   "type": "xmltv",
+   "name": "Rytec RO SportMovies",
+   "url": "http://www.xmltvepg.nl/rytecRO_SportMovies.xz",
+   "enabled": true
+  },
+  {
+   "id": "78e8e7e5",
+   "type": "xmltv",
+   "name": "Rytec SE Misc",
+   "url": "http://www.xmltvepg.nl/rytecSE_Misc.xz",
+   "enabled": true
+  },
+  {
+   "id": "6c31127a",
+   "type": "xmltv",
+   "name": "Rytec SE SportMovies",
+   "url": "http://www.xmltvepg.nl/rytecSE_SportMovies.xz",
+   "enabled": true
   }
  ],
  "channels": {
@@ -213638,7 +213729,20 @@
   "25f9232f": {},
   "ca825868": {},
   "5feb2742": {},
-  "ec4d0752": {}
+  "ec4d0752": {},
+  "fafdcf80": {},
+  "5fddc323": {},
+  "1f0d91b3": {},
+  "db15be5e": {},
+  "7dd27b4f": {},
+  "729e418e": {},
+  "f3567460": {},
+  "f032c84b": {},
+  "b9889c0e": {},
+  "1ca78122": {},
+  "94dd3029": {},
+  "78e8e7e5": {},
+  "6c31127a": {}
  },
  "last_refresh": 1793371972.375795,
  "dismissed": [],
