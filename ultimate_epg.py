@@ -1588,9 +1588,8 @@ def build():
                     times = clean.check(cid, el, st, sp)
                     if not times:
                         continue
-                    if times[0] != st:
-                        el.set("start", fmt_xmltv_time(times[0]))
-                    if sp and times[1] != sp:
+                    el.set("start", fmt_xmltv_time(times[0]))  # always a full time with its zone
+                    if sp:
                         el.set("stop", fmt_xmltv_time(times[1]))
                     el.tail = "\n"
                     f.write(ET.tostring(el, encoding="unicode"))
@@ -1837,11 +1836,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 times = clean.check(cid, el, st, sp)
                 if not times:
                     continue
-                if times[0] != st:
-                    st = times[0]
-                    el.set("start", fmt_xmltv_time(st))
-                if sp and times[1] != sp:
-                    sp = times[1]
+                st, sp = times
+                el.set("start", fmt_xmltv_time(st))  # always a full time with its zone
+                if sp:
                     el.set("stop", fmt_xmltv_time(sp))
                 for child in list(el):
                     if child.tag in SLIM_TAGS:
