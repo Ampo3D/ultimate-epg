@@ -6,6 +6,7 @@ No installs needed beyond Python 3.8+. Run:  python ultimate_epg.py
 Then open http://localhost:8787 in a browser.
 """
 import bisect
+import difflib
 import gzip
 import lzma
 import sys
@@ -19,6 +20,7 @@ import socket
 import threading
 import time
 import traceback
+import unicodedata
 import urllib.parse
 import urllib.error
 import urllib.request
@@ -985,8 +987,8 @@ def drop_dead_auto_sources():
 # ---------------------------------------------------------------- build output
 
 PROVIDER_PREFIX_RE = re.compile(r"^\s*[\[(|]?\s*(us|usa|uk|gb|ca|can|cdn)\s*[\])|:\-]+\s*", re.I)
-FEED_RE = re.compile(r"\b(east|west|pacific|feed|backup|alt|hd|fhd|uhd|sd|4k)\b")
-NOT_COUNTRY = {"hd", "sd", "tv", "fm", "am", "tc", "ar"}  # "AR" on a provider = Arabic
+FEED_RE = re.compile(r"\b(east|west|pacific|feed|backup|alt|hd|fhd|uhd|sd|4k|raw|vip|ultra|hevc|eu)\b|(?<=\d)hd\+?(?=\s|$)|\bhd\+")
+NOT_COUNTRY = {"hd", "sd", "tv", "fm", "am", "tc"}
 
 
 def id_country(cid):
@@ -1001,6 +1003,34 @@ CC_ALIAS = {"usa": "us", "united states": "us", "gb": "uk", "united kingdom": "u
             "canada": "ca"}
 
 
+ANY_PREFIX_RE = re.compile(r"^\s*[\[(|]?\s*((?:ca|us)\s+(?:en|fr)|[a-z]{2,3})\s*[\])|:\-]+\s*")
+EXTRA_PREFIX = {"usa", "can", "cdn", "ban", "uga", "arg", "bih", "gre", "tur", "ger", "ita", "esp"}
+BH_ALIAS = {"bh": "ba", "bih": "ba", "ban": "bd", "uga": "ug", "arg": "ar", "gre": "gr", "tur": "tr", "ger": "de",
+            "ita": "it", "esp": "es"}
+
+
+def plain(text):
+    """'T\u00e9l\u00e9 Qu\u00e9bec' -> 'Tele Quebec', tiny 'RAW' letters -> 'RAW', no decoration symbols."""
+    text = unicodedata.normalize("NFKD", unescape_all(text or ""))
+    return "".join(ch for ch in text if not unicodedata.combining(ch) and ch not in "\u25c9\u2605\u2022")
+
+
+def name_prefix(name):
+    """The country a guide writes in front of a name: 'DK - TV 2', '[CA] Citytv', 'CA EN: CTV', 'BH: Nova'."""
+    m = ANY_PREFIX_RE.match(name.lower())
+    if not m:
+        return "", name
+    word = m[1].split()[0]
+    if word == "ar":  # Arabic or Argentina: strip it, but it says nothing about the country
+        return "", name[m.end():]
+    known = word in EXTRA_PREFIX or (word.upper() in ISO2 and word not in NOT_COUNTRY) or word in ("uk", "bh")
+    return (BH_ALIAS.get(word, CC_ALIAS.get(word, word)), name[m.end():]) if known else ("", name)
+
+
+def clean_name(name):
+    return name_prefix(plain(name).lower())[1]
+
+
 TRAILING_CC_RE = re.compile(r"[\s\-|:(]*\b(us|usa|uk|gb|ca|can|cdn)\b\)?\.?\s*$", re.I)
 GENERIC_RE = re.compile(r"\b(the|network|networks|channel|tv|television|hd|east|eastern|and)\b")
 # channels that changed their name - providers often still use the old one
@@ -1012,6 +1042,11 @@ RENAMES = {"EPIX": "MGM+", "EPIX 2": "MGM+ Hits", "EPIX Hits": "MGM+ Hits", "EPI
            "Bally Sports": "FanDuel Sports", "HLN TV": "HLN", "Starz Kids Family": "Starz Kids & Family",
            "Hallmark Movies Mysteries": "Hallmark Movies & Mysteries", "Hallmark Drama": "Hallmark Family",
            "DIY Network": "Magnolia Network", "Esquire": "Esquire Network", "Discovery Life": "Discovery Life Channel",
+           "Las Estrella": "Las Estrellas", "Travel + Escape": "Travel Escapes",
+           "Global Montreal Quebec": "Global News Montreal", "CTV News Winnipeg": "CTV Winnipeg",
+           "Sudbury CTV News": "CTV Sudbury", "CITY Vancouver BC": "City TV Vancouver", "CityCT Montreal": "Citytv Montreal",
+           "TVI 24": "CNN Portugal", "BBC London": "BBC One London", "BBC One Scot": "BBC One Scotland",
+           "Investigacao Discovery": "Investigacao Discovery", "Black News": "Black News Channel",
            "Science": "Science Channel", "Sundance": "SundanceTV", "Ovation": "Ovation TV", "Nat Geo": "National Geographic",
            "Bay News 9": "Spectrum Bay News 9 Tampa", "Global National": "Global News National",
            "Comedy Network": "CTV Comedy Channel", "Teletoon": "Cartoon Network", "Tele Toon": "Cartoon Network",
@@ -1033,7 +1068,7 @@ def numbers(n):
 
 def pkey_words(name):
     """Same words in any order: "Bloomberg BNN CA" = "BNN Bloomberg", "Spectrum News - NY1 - STVA" = "Spectrum News NY1"."""
-    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = clean_name(name)
     n = TRAILING_CC_RE.sub("", n)
     n = re.sub(r"\b(us|uk|ca|stva|us2|ca2)\b", " ", numbers(n.replace("&", " ")))
     n = GENERIC_RE.sub(" ", FEED_RE.sub(" ", n))
@@ -1043,7 +1078,7 @@ def pkey_words(name):
 
 def pkey(name):
     """Name used to compare a provider channel with a guide channel ("US| ESPN HD", "ESPN (East) US" -> "espn")."""
-    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = clean_name(name)
     n = TRAILING_CC_RE.sub("", n)
     n = re.sub(r"\(x\d+\)", " ", n)
     n = re.sub(r"\b(us|uk|ca)\b", " ", n)  # "Showtime Next US (East) US"
@@ -1053,7 +1088,7 @@ def pkey(name):
 
 def pkey_loose(name):
     """Looser name: also ignores words like Network/Channel/TV ("COZI Network" = "Cozi TV")."""
-    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = clean_name(name)
     n = TRAILING_CC_RE.sub("", n)
     n = re.sub(r"\(x\d+\)", " ", n)
     n = re.sub(r"\b(us|uk|ca)\b", " ", n)
@@ -1098,14 +1133,26 @@ def entry_country(name, group, tid):
     if g:  # "NBC Sports CA" in a US group is California
         return CC_ALIAS.get(g[1], g[1])
     t = re.search(r"\s([A-Z]{2})\s*\)?\s*$", name or "")  # trailing upper-case country code: "AMC RO"
-    if t and t[1].lower() in ISO2_SET and t[1].lower() not in NOT_COUNTRY:
-        return CC_ALIAS.get(t[1].lower(), t[1].lower())
+    if t and t[1].lower() in ISO2_SET and t[1].lower() not in NOT_COUNTRY and (t[1] != "AR" or own == "ar"):
+        return CC_ALIAS.get(t[1].lower(), t[1].lower())  # "AR" alone may mean Arabic, the code decides
     m = re.search(r"\.(us|uk|gb|ca)\d?(?:@|$)", (tid or "").lower())
     if not m:
         m = (re.match(r"^\s*[\[(|]?\s*(usa|us|uk|gb|canada|can|cdn|ca)\b", (name or "").lower())
              or re.search(r"\b(usa|us|uk|gb|ca|can)\s*\)?\s*$", (name or "").lower())
              or re.search(r"\b(usa|united states|united kingdom|uk|canada|us|ca)\b", (group or "").lower()))
     return CC_ALIAS.get(m[1], m[1]) if m else ""
+
+
+def raw_key(name):
+    """Names in any alphabet, letters kept: 'Карусель HD' and 'Карусель'."""
+    n = PROVIDER_PREFIX_RE.sub("", unescape_all(name or "").lower())
+    n = re.sub(r"\b(hd|fhd|uhd|sd|4k|ua|ru|by|kz|tv|\u0442\u0432)\b", " ", n)
+    return re.sub(r"[\W_]+", "", n)
+
+
+def code_key(cid):
+    """'history.en.espanol.us' = 'HistoryenEspanol.us@SD'."""
+    return re.sub(r"[^a-z0-9]", "", plain(cid).lower().split("@")[0])
 
 
 def provider_index():
@@ -1122,9 +1169,15 @@ def provider_index():
                         owner[cid], names[cid] = x["id"], info["names"]
                         langs[cid] = info.get("lang", "")
     by_id = {cid.lower(): cid for cid in owner}
-    by_name, by_loose, by_call, by_words = {}, {}, {}, {}
+    by_code = {}
+    for cid in owner:
+        by_code.setdefault(code_key(cid), cid)
+    by_name, by_loose, by_call, by_words, by_raw = {}, {}, {}, {}, {}
     for cid, ns in names.items():
         for n in ns or [cid.split(".")[0]]:
+            k = raw_key(n)
+            if len(k) >= 3 and not mostly_latin([n]) and cid not in by_raw.setdefault(k, []):
+                by_raw[k].append(cid)
             k = pkey(n)
             if k and cid not in by_name.setdefault(k, []):
                 by_name[k].append(cid)
@@ -1139,9 +1192,13 @@ def provider_index():
                 by_call[call].append(cid)
 
     def cc_of(cid):
-        cc = id_country(cid) or src_cc.get(owner[cid], "")
+        first = plain((names.get(cid) or [""])[0])
+        cc = id_country(cid) or name_prefix(first)[0] or src_cc.get(owner[cid], "")
         return "" if cc in ("all", "int", "xx") else cc
-    return {"by_id": by_id, "by_name": by_name, "by_loose": by_loose, "by_call": by_call, "by_words": by_words, "cc": cc_of,
+    loose_by_len = {}
+    for k in by_loose:
+        loose_by_len.setdefault(len(k), []).append(k)
+    return {"loose_by_len": loose_by_len, "by_id": by_id, "by_name": by_name, "by_loose": by_loose, "by_call": by_call, "by_words": by_words, "by_code": by_code, "by_raw": by_raw, "cc": cc_of,
             "names": names, "langs": langs}
 
 
@@ -1149,13 +1206,15 @@ CALL_RE = re.compile(r"(?<![A-Za-z])([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?![A-Za-z])
 NOT_CALLS = {"CITY", "CINE", "CLUB", "CHAT", "KICK", "WEST", "WILD", "WORD", "KIDS", "WETV", "WOOD", "WORK", "KING", "KISS", "WINE", "WALL", "WIDE"}
 
 
+BOXED_CALL_RE = re.compile(r"\(((?:[KW][A-Z]{2,3})|C[A-Z]{3})[)/\-]")
 CALL3_RE = re.compile(r"(?<![A-Za-z])(?i:abc|cbs|nbc|fox|cw|pbs|mnt|ion)\s*[(\-]?\s*([KW][A-Z]{2})(?![A-Za-z])")
 
 
 def callsigns(text):
     """Local TV call letters in a name, e.g. 'ABC 7 New York (WABC)' -> {'WABC'}, 'CBS (WBZ) Boston' -> {'WBZ'}."""
     found = {c for c in CALL_RE.findall(text or "") if c not in NOT_CALLS}
-    return found | set(CALL3_RE.findall(text or ""))
+    boxed = {c for c in BOXED_CALL_RE.findall(text or "") if c not in ("WEST", "CITY", "CINE", "KIDS")}
+    return found | boxed | set(CALL3_RE.findall(text or ""))
 
 
 NET_RE = re.compile(r"\b(abc|cbs|nbc|fox|pbs|cw|mnt|myn|ion|telemundo|univision|unimas|cbc|ctv|global|citytv)\b")
@@ -1165,6 +1224,35 @@ LOOSE_STOP = {"music", "happy", "movies", "movie", "sports", "sport", "news", "k
 
 INTL_RE = re.compile(r"\b(cnn|bbc|nhk|france 24|dw|euronews|al jazeera|bloomberg|cnbc|sky news|fashion|mtv|trace|"
                      r"rt|cgtn|tv5|arirang|ewtn|red bull)\b", re.I)
+
+
+WORLD_RE = re.compile(r"\b(cnn international|bbc world|bbc news|euronews|france 24|kbs world|nhk world|tv5 ?monde|"
+                      r"dw\b|al jazeera|cgtn|arirang)", re.I)
+NATIONAL_RE = re.compile(r"boomerang|viasat|paramount|discovery|nat ?geo|national geographic|cnn|hbo|fox|espn|mtv|nick|disney|cartoon|comedy|history|"
+                         r"animal|tlc|sky|star|amc|universal|paramount|syfy|cinemax|showtime|bbc|cbs|nbc|abc|tnt|tbs|"
+                         r"eurosport|bein|dazn|canal|rtl|sport|kids|movie|film|cinema|news|music", re.I)
+NAME_TAG_RE = re.compile(r"\s+(?:[A-Z]{2,3}|HAM|LOCAL|FHD|HD)\s*\)?$")
+HOST_CC = {"be", "cy", "ch", "at", "cz", "lu", "sv", "al", "hk"}  # sites here re-share other countries' channels
+NAME_STOP = {"curacao", "teletoon"}
+BALKANS = {"hr", "rs", "ba", "mk", "si", "me", "al", "xk"}
+
+
+def shorter_names(name):
+    """'Kanal 5 SE' -> 'Kanal 5'; 'TRT 1 HD HAM' -> 'TRT 1 HD', 'TRT 1'; 'Nova BH BIH US' -> 'Nova BH BIH', 'Nova BH'."""
+    out = []
+    while NAME_TAG_RE.search(name) and len(out) < 2:
+        name = NAME_TAG_RE.sub("", name)
+        out.append(name)
+    return out
+
+
+def similar_spelling(key, idx):
+    """One slip in a long name: 'Africa Magic Lgbo' = 'Igbo', 'Globo Internatioanal' = 'International'."""
+    if len(key) < 10:
+        return []
+    near = difflib.get_close_matches(key, idx["loose_by_len"].get(len(key), []) + idx["loose_by_len"].get(len(key) - 1, [])
+                                     + idx["loose_by_len"].get(len(key) + 1, []), 3, 0.93)
+    return [k for k in near if re.findall(r"\d+", k) == re.findall(r"\d+", key)]
 
 
 def mostly_latin(names):
@@ -1234,6 +1322,9 @@ def _match_provider_channel(c, idx):
         for t in (tid.lower(), tid.split("@")[0].lower()):
             if t in idx["by_id"]:
                 return idx["by_id"][t], "code"
+        ck = code_key(tid)
+        if len(ck) >= 7 and not ck.isdigit() and ck in idx["by_code"]:
+            return idx["by_code"][ck], "same code"
     in_name = callsigns(c["name"])
     for call in sorted(callsigns(c["name"] + " " + tid.upper().replace(".", " ")), key=lambda x: (x not in in_name, x)):
         if call in idx["by_call"]:
@@ -1243,21 +1334,31 @@ def _match_provider_channel(c, idx):
     want = entry_country(c["name"], c.get("group", ""), tid)
     latin = mostly_latin([c["name"]])
     own = id_country(tid)
+    own = own if own.upper() in ISO2 or own in ("uk", "") else ""
     intl = bool(INTL_RE.search(c["name"]))
+    world = bool(WORLD_RE.search(plain(c["name"])))
 
     def ok(cid):  # wrong listings are worse than none
         cc = idx["cc"](cid)
-        if want and cc not in (want, ""):
+        if want and cc not in (want, "") and not world:
             return False
         if not cc and want in ("us", "uk", "ca") and idx["langs"].get(cid, "") not in ("", "en"):
             return False  # unknown country: an English channel only takes English listings
         if own not in ("", "us", "uk", "ca") and cc in ("us", "uk", "ca") and not intl:
             return False  # "antena.3.ro" never gets a US/UK/CA channel's listings
+        if own and cc and own != cc and cc not in HOST_CC and not world and not intl \
+                and not {own, cc} <= BALKANS and not {own, cc} <= {"ru", "ua", "by", "kz"}:
+            return False  # "kuchnia.pl" never gets the Russian channel with a similar name
         return not latin or mostly_latin(idx["names"].get(cid, []))
+    if not latin:
+        cands = [x for x in idx["by_raw"].get(raw_key(c["name"]), []) if ok(x)]
+        return (pick_best(cands, c, idx), "same name") if cands else ("", "")
     cands = [x for x in idx["by_name"].get(pkey(c["name"]), []) if ok(x)]
-    if cands:
+    if cands and pkey(c["name"]) not in NAME_STOP:
         return pick_best(cands, c, idx), "name"
     key = pkey_loose(c["name"])
+    if key in NAME_STOP:
+        return "", ""
     renamed = renamed_name(c["name"])
     if renamed:
         cands = [x for x in idx["by_name"].get(pkey(renamed), []) + idx["by_loose"].get(pkey_loose(renamed), []) if ok(x)]
@@ -1272,6 +1373,37 @@ def _match_provider_channel(c, idx):
     cands = [x for x in idx["by_words"].get(pkey_words(c["name"]), []) if ok(x)]
     if cands:
         return pick_best(cands, c, idx), "same words"
+    tag = re.search(r"\s([A-Z]{2,3})\s*\)?$", re.sub(r"\s+(?:US|USA)$", "", plain(c["name"])))
+    tag = tag[1].lower() if tag else ""
+    tag = BH_ALIAS.get(tag, CC_ALIAS.get(tag, tag))
+    tag_cc = tag if tag.upper() in ISO2 else ""
+    home = want or own or tag_cc
+    national = bool(NATIONAL_RE.search(plain(c["name"])))
+
+    def fits(cid):  # exact country, or an unmistakable name with no country of its own
+        cc = idx["cc"](cid)
+        if world or cc == home:
+            return True
+        return not national and not cc and not (tag_cc and cc)
+
+    for short in shorter_names(plain(c["name"])):  # country and quality tags at the end of the name
+        for pool, k in ((idx["by_name"], pkey(short)), (idx["by_loose"], pkey_loose(short))):
+            if k not in LOOSE_STOP:
+                cands = [x for x in pool.get(k, []) if ok(x) and fits(x) and (idx["cc"](x) == home or (
+                    len(k) >= 5 and not re.fullmatch(r"(channel|canal)\d+", k)))]
+                if cands:
+                    return pick_best(cands, c, idx), "name without tags"
+    for k in similar_spelling(key, idx):
+        cands = [x for x in idx["by_loose"].get(k, []) if ok(x) and (not national or idx["cc"](x) == home)]
+        if cands:
+            return pick_best(cands, c, idx), "similar spelling"
+    # a provider filed it under the wrong country ("Wigan Athletic" with a .us code): only if it can't be a national version
+    if not national and want in ("us", "") and own in ("us", ""):
+        for short in [plain(c["name"])] + shorter_names(plain(c["name"])):
+            k = pkey_loose(short)
+            cands = [x for x in idx["by_loose"].get(k, []) if mostly_latin(idx["names"].get(x, []))]
+            if len(k) >= 6 and k not in LOOSE_STOP and len({idx["cc"](x) for x in cands} - {""}) == 1:
+                return pick_best(cands, c, idx), "only copy anywhere"
     return "", ""
 
 
