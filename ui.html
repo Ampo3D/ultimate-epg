@@ -680,7 +680,7 @@ $('autoList').addEventListener('click', async e => {
 function renderLinks() {
   const pu = S.settings.public_url;
   $('pubBtn').classList.toggle('hide', !pu);
-  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Light guide — your providers’ channels only (Firestick, Smarters, Kodi)', pu + '/epg-lite.xml.gz'], ['Universal guide — US only', pu + '/epg-us.xml.gz'], ['Universal guide — UK only', pu + '/epg-uk.xml.gz'], ['Universal guide — Canada only', pu + '/epg-ca.xml.gz']]
+  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Light guide — your providers’ channels only (Firestick, Smarters, Kodi)', pu + '/epg-lite.xml.gz'], ['Week guide — your providers’ channels, up to 7 days (TiviMate, OTT Navigator)', pu + '/epg-week.xml.gz'], ['Universal guide — US only', pu + '/epg-us.xml.gz'], ['Universal guide — UK only', pu + '/epg-uk.xml.gz'], ['Universal guide — Canada only', pu + '/epg-ca.xml.gz']]
     .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
   $('onlineHelp').textContent = pu
     ? 'GitHub rebuilds these every 6 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update a few minutes later.'

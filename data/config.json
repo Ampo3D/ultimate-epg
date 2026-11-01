@@ -923,24 +923,10 @@
    "enabled": true
   },
   {
-   "id": "4a24e166",
-   "type": "xmltv",
-   "name": "Rytec BE FR Basic",
-   "url": "http://www.xmltvepg.nl/rytecBE_FR_Basic.xz",
-   "enabled": true
-  },
-  {
    "id": "8e1a804e",
    "type": "xmltv",
    "name": "Rytec IT Basic",
    "url": "http://www.xmltvepg.nl/rytecIT_Basic.xz",
-   "enabled": true
-  },
-  {
-   "id": "b064accf",
-   "type": "xmltv",
-   "name": "Rytec IT SportMovies",
-   "url": "http://www.xmltvepg.nl/rytecIT_SportMovies.xz",
    "enabled": true
   },
   {
@@ -986,24 +972,10 @@
    "enabled": true
   },
   {
-   "id": "18d9b616",
-   "type": "xmltv",
-   "name": "Rytec FR SportMovies",
-   "url": "http://www.xmltvepg.nl/rytecFR_SportMovies.xz",
-   "enabled": true
-  },
-  {
    "id": "821a52b4",
    "type": "xmltv",
    "name": "Rytec GR Basic",
    "url": "http://www.xmltvepg.nl/rytecGR_Basic.xz",
-   "enabled": true
-  },
-  {
-   "id": "598fea0e",
-   "type": "xmltv",
-   "name": "Rytec GR SportMovies",
-   "url": "http://www.xmltvepg.nl/rytecGR_SportMovies.xz",
    "enabled": true
   },
   {
@@ -1014,27 +986,6 @@
    "enabled": true
   },
   {
-   "id": "25f9232f",
-   "type": "xmltv",
-   "name": "Rytec CZ Basic",
-   "url": "http://www.xmltvepg.nl/rytecCZ_Basic.xz",
-   "enabled": true
-  },
-  {
-   "id": "ca825868",
-   "type": "xmltv",
-   "name": "Rytec SK Basic",
-   "url": "http://www.xmltvepg.nl/rytecSK_Basic.xz",
-   "enabled": true
-  },
-  {
-   "id": "5feb2742",
-   "type": "xmltv",
-   "name": "Rytec AT Basic",
-   "url": "http://www.xmltvepg.nl/rytecAT_Basic.xz",
-   "enabled": true
-  },
-  {
    "id": "ec4d0752",
    "type": "xmltv",
    "name": "Rytec CH Basic",
@@ -1042,38 +993,10 @@
    "enabled": true
   },
   {
-   "id": "fafdcf80",
-   "type": "xmltv",
-   "name": "Rytec BE FR Common",
-   "url": "http://www.xmltvepg.nl/rytecBE_FR_Common.xz",
-   "enabled": true
-  },
-  {
-   "id": "5fddc323",
-   "type": "xmltv",
-   "name": "Rytec BG",
-   "url": "http://www.xmltvepg.nl/rytecBG.xz",
-   "enabled": true
-  },
-  {
-   "id": "1f0d91b3",
-   "type": "xmltv",
-   "name": "Rytec DK Misc",
-   "url": "http://www.xmltvepg.nl/rytecDK_Misc.xz",
-   "enabled": true
-  },
-  {
    "id": "db15be5e",
    "type": "xmltv",
    "name": "Rytec DK SportMovies",
    "url": "http://www.xmltvepg.nl/rytecDK_SportMovies.xz",
-   "enabled": true
-  },
-  {
-   "id": "7dd27b4f",
-   "type": "xmltv",
-   "name": "Rytec FI Misc",
-   "url": "http://www.xmltvepg.nl/rytecFI_Misc.xz",
    "enabled": true
   },
   {
@@ -1095,13 +1018,6 @@
    "type": "xmltv",
    "name": "Rytec NO Misc",
    "url": "http://www.xmltvepg.nl/rytecNO_Misc.xz",
-   "enabled": true
-  },
-  {
-   "id": "b9889c0e",
-   "type": "xmltv",
-   "name": "Rytec NO SportMovies",
-   "url": "http://www.xmltvepg.nl/rytecNO_SportMovies.xz",
    "enabled": true
   },
   {
@@ -1175,38 +1091,10 @@
    "enabled": true
   },
   {
-   "id": "15de6c2e",
-   "type": "xmltv",
-   "name": "sulthanpamenan: epg.xml",
-   "url": "https://raw.githubusercontent.com/sulthanpamenan/padang-tv-playlist/main/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "8b8b5c2b",
-   "type": "xmltv",
-   "name": "sulthanpamenan: epg.xml",
-   "url": "https://raw.githubusercontent.com/sulthanpamenan/transmedia-playlist/main/epg.xml",
-   "enabled": true
-  },
-  {
    "id": "8357ebe2",
    "type": "xmltv",
    "name": "jasonramg: airtel.xml.gz",
    "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/airtel.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "8a44c5b9",
-   "type": "xmltv",
-   "name": "jasonramg: dishtv.xml.gz",
-   "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "77b58831",
-   "type": "xmltv",
-   "name": "jasonramg: slingtv.xml.gz",
-   "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/slingtv.xml.gz",
    "enabled": true
   },
   {
@@ -1224,27 +1112,6 @@
    "enabled": true
   },
   {
-   "id": "6564a84d",
-   "type": "xmltv",
-   "name": "jasonramg: zee5.xml.gz",
-   "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "2f97c349",
-   "type": "xmltv",
-   "name": "sasagr: tgs.xml",
-   "url": "https://raw.githubusercontent.com/sasagr/tgs-epg/main/tgs.xml",
-   "enabled": true
-  },
-  {
-   "id": "4c2bd1bc",
-   "type": "xmltv",
-   "name": "JulioCesarXY: epg_final.xml",
-   "url": "https://raw.githubusercontent.com/JulioCesarXY/EPG-TracePlus/main/epg_final.xml",
-   "enabled": true
-  },
-  {
    "id": "0911a3f1",
    "type": "xmltv",
    "name": "22bw: epg.xml",
@@ -1256,13 +1123,6 @@
    "type": "xmltv",
    "name": "richardallensmith: epg.xml",
    "url": "https://raw.githubusercontent.com/richardallensmith/japan-epg/main/output/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "b67590e0",
-   "type": "xmltv",
-   "name": "913AycltFM: 91.3_Ayclt_FM_radio_guide.xml",
-   "url": "https://raw.githubusercontent.com/913AycltFM/91.3-Ayclt-FM-TV/main/91.3_Ayclt_FM_radio_guide.xml",
    "enabled": true
   },
   {
@@ -1280,27 +1140,6 @@
    "enabled": true
   },
   {
-   "id": "ef524f47",
-   "type": "xmltv",
-   "name": "Animenosekai: guide@nhkworldpremium.xml",
-   "url": "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@nhkworldpremium.xml",
-   "enabled": true
-  },
-  {
-   "id": "08b9ae53",
-   "type": "xmltv",
-   "name": "Animenosekai: guide@skyperfectv.xml",
-   "url": "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@skyperfectv.xml",
-   "enabled": true
-  },
-  {
-   "id": "ae8e21f2",
-   "type": "xmltv",
-   "name": "dotm612: nbc_new_york_news_epg.xml",
-   "url": "https://raw.githubusercontent.com/dotm612/nbc-new-york-epg/main/nbc_new_york_news_epg.xml",
-   "enabled": true
-  },
-  {
    "id": "82921e46",
    "type": "xmltv",
    "name": "quique48: chicago.xml.gz",
@@ -1312,27 +1151,6 @@
    "type": "xmltv",
    "name": "quique48: sports.xml.gz",
    "url": "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/sports.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "c55e836d",
-   "type": "xmltv",
-   "name": "OmarandSherwet: nilesat.xml",
-   "url": "https://raw.githubusercontent.com/OmarandSherwet/nilesat-epg/main/docs/nilesat.xml",
-   "enabled": true
-  },
-  {
-   "id": "c3a4854d",
-   "type": "xmltv",
-   "name": "philipsaad: epl.xml.gz",
-   "url": "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/epl.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "50ac3229",
-   "type": "xmltv",
-   "name": "philipsaad: nba.xml.gz",
-   "url": "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/nba.xml.gz",
    "enabled": true
   },
   {
@@ -1357,24 +1175,10 @@
    "enabled": true
   },
   {
-   "id": "fa9d2d0a",
-   "type": "xmltv",
-   "name": "mingram751-afk: merged.xml",
-   "url": "https://raw.githubusercontent.com/mingram751-afk/epg-atlanta/main/merged.xml",
-   "enabled": true
-  },
-  {
    "id": "378b3150",
    "type": "xmltv",
    "name": "lucianodias089: guide.xml",
    "url": "https://raw.githubusercontent.com/lucianodias089/nos-tv-epg/main/guide.xml",
-   "enabled": true
-  },
-  {
-   "id": "3e7aa81a",
-   "type": "xmltv",
-   "name": "JulioCesarXY: latinasat_epg.xml",
-   "url": "https://raw.githubusercontent.com/JulioCesarXY/EPG-TVLatinaSat/main/latinasat_epg.xml",
    "enabled": true
   },
   {
@@ -1392,66 +1196,10 @@
    "enabled": true
   },
   {
-   "id": "d35a194a",
-   "type": "xmltv",
-   "name": "martindidriksen: drtva.xml",
-   "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/dr/drtva.xml",
-   "enabled": true
-  },
-  {
    "id": "2228dd36",
    "type": "xmltv",
    "name": "martindidriksen: epg.xml",
    "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "fb705484",
-   "type": "xmltv",
-   "name": "martindidriksen: kvf.xml",
-   "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf.xml",
-   "enabled": true
-  },
-  {
-   "id": "c1d7d1d1",
-   "type": "xmltv",
-   "name": "martindidriksen: kvf2.xml",
-   "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf2.xml",
-   "enabled": true
-  },
-  {
-   "id": "4bca5f91",
-   "type": "xmltv",
-   "name": "martindidriksen: ruv.xml",
-   "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv.xml",
-   "enabled": true
-  },
-  {
-   "id": "6d195c7c",
-   "type": "xmltv",
-   "name": "martindidriksen: ruv2.xml",
-   "url": "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv2.xml",
-   "enabled": true
-  },
-  {
-   "id": "35c99832",
-   "type": "xmltv",
-   "name": "guiand888: starhub.xml",
-   "url": "https://raw.githubusercontent.com/guiand888/epg-parsed/main/processed/starhub.xml",
-   "enabled": true
-  },
-  {
-   "id": "5cd1160c",
-   "type": "xmltv",
-   "name": "hupcus: guide.xml",
-   "url": "https://raw.githubusercontent.com/hupcus/cz-epg/main/guide.xml",
-   "enabled": true
-  },
-  {
-   "id": "5f527c7a",
-   "type": "xmltv",
-   "name": "sasagr: teleone.xml",
-   "url": "https://raw.githubusercontent.com/sasagr/teleone-epg/main/teleone.xml",
    "enabled": true
   },
   {
@@ -2064,41 +1812,6 @@
    "enabled": true
   },
   {
-   "id": "7ebab9eb",
-   "type": "xmltv",
-   "name": "sasagr: aljazeera.xml",
-   "url": "https://raw.githubusercontent.com/sasagr/aljazeera-epg/main/aljazeera.xml",
-   "enabled": true
-  },
-  {
-   "id": "e719f7e2",
-   "type": "xmltv",
-   "name": "sasagr: tgcom24.xml",
-   "url": "https://raw.githubusercontent.com/sasagr/tgcom24-epg/main/tgcom24.xml",
-   "enabled": true
-  },
-  {
-   "id": "875f5a05",
-   "type": "xmltv",
-   "name": "JulioCesarXY: tcl_epg.xml",
-   "url": "https://raw.githubusercontent.com/JulioCesarXY/EPG-TCL-Channel/main/tcl_epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "1c50e25a",
-   "type": "xmltv",
-   "name": "sasagr: rds.xml",
-   "url": "https://raw.githubusercontent.com/sasagr/rds-epg/main/rds.xml",
-   "enabled": true
-  },
-  {
-   "id": "500d693b",
-   "type": "xmltv",
-   "name": "Shadow-GR-Official: epg.xml",
-   "url": "https://raw.githubusercontent.com/Shadow-GR-Official/vodafone.gr-epg/main/data/epg.xml",
-   "enabled": true
-  },
-  {
    "id": "c8e5921a",
    "type": "xmltv",
    "name": "dhasap: epg.xml",
@@ -2120,38 +1833,10 @@
    "enabled": true
   },
   {
-   "id": "9a2218b7",
-   "type": "xmltv",
-   "name": "SandObserver: iranintl.xml",
-   "url": "https://raw.githubusercontent.com/SandObserver/live-tv-guide/main/output/iranintl.xml",
-   "enabled": true
-  },
-  {
-   "id": "694fb39c",
-   "type": "xmltv",
-   "name": "mathewmeconry: tv7_init7_epg.xml.gz",
-   "url": "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_init7_epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "77e8ccb2",
-   "type": "xmltv",
-   "name": "mathewmeconry: tv7_teleboy_epg.xml.gz",
-   "url": "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_teleboy_epg.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "d2ee8bd4",
    "type": "xmltv",
    "name": "mitthu786: epg.xml.gz",
    "url": "https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "316faeac",
-   "type": "xmltv",
-   "name": "mitthu786: epg.xml.gz",
-   "url": "https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz",
    "enabled": true
   },
   {
@@ -2166,13 +1851,6 @@
    "type": "xmltv",
    "name": "GhalebAldoboni: ArabicEPG.xml",
    "url": "https://raw.githubusercontent.com/GhalebAldoboni/EPG-Guide/master/ArabicEPG.xml",
-   "enabled": true
-  },
-  {
-   "id": "5727ae92",
-   "type": "xmltv",
-   "name": "elevidallc: br.xml",
-   "url": "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/br.xml",
    "enabled": true
   },
   {
@@ -2204,20 +1882,6 @@
    "enabled": true
   },
   {
-   "id": "188ac957",
-   "type": "xmltv",
-   "name": "karenda-jp: guides.xml",
-   "url": "https://raw.githubusercontent.com/karenda-jp/etc/main/guides.xml",
-   "enabled": true
-  },
-  {
-   "id": "b6594b50",
-   "type": "xmltv",
-   "name": "370network: a3b_a1.xml",
-   "url": "https://raw.githubusercontent.com/370network/skylink-xmltv/main/a3b_a1.xml",
-   "enabled": true
-  },
-  {
    "id": "7ab6d253",
    "type": "xmltv",
    "name": "guide linked by 'Roku Channel (all)'",
@@ -2236,20 +1900,6 @@
    "type": "xmltv",
    "name": "NZ + AU combined guide",
    "url": "https://i.mjh.nz/nzau/epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "a443501a",
-   "type": "xmltv",
-   "name": "World free channels guide",
-   "url": "https://i.mjh.nz/world/epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "51e37789",
-   "type": "xmltv",
-   "name": "Pluto TV AR guide",
-   "url": "https://i.mjh.nz/PlutoTV/ar.xml.gz",
    "enabled": true
   },
   {
@@ -2323,94 +1973,10 @@
    "enabled": true
   },
   {
-   "id": "402bde09",
-   "type": "xmltv",
-   "name": "Kayo Sports guide",
-   "url": "https://i.mjh.nz/Kayo/epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "89d265a6",
-   "type": "xmltv",
-   "name": "Plex Live TV AU guide",
-   "url": "https://i.mjh.nz/Plex/au.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "2ed3829d",
-   "type": "xmltv",
-   "name": "xmltv.net Adelaide",
-   "url": "https://xmltv.net/xml_files/Adelaide.xml",
-   "enabled": true
-  },
-  {
-   "id": "65a26c4c",
-   "type": "xmltv",
-   "name": "xmltv.net Brisbane",
-   "url": "https://xmltv.net/xml_files/Brisbane.xml",
-   "enabled": true
-  },
-  {
-   "id": "60491f1e",
-   "type": "xmltv",
-   "name": "xmltv.net Melbourne",
-   "url": "https://xmltv.net/xml_files/Melbourne.xml",
-   "enabled": true
-  },
-  {
-   "id": "75be3a89",
-   "type": "xmltv",
-   "name": "xmltv.net Perth",
-   "url": "https://xmltv.net/xml_files/Perth.xml",
-   "enabled": true
-  },
-  {
-   "id": "a858dced",
-   "type": "xmltv",
-   "name": "xmltv.net Sydney",
-   "url": "https://xmltv.net/xml_files/Sydney.xml",
-   "enabled": true
-  },
-  {
-   "id": "38ac16fc",
-   "type": "xmltv",
-   "name": "Pluto TV BR guide",
-   "url": "https://i.mjh.nz/PlutoTV/br.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "3faa154c",
-   "type": "xmltv",
-   "name": "Pluto TV DE guide",
-   "url": "https://i.mjh.nz/PlutoTV/de.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "f3cbbd59",
-   "type": "xmltv",
-   "name": "Pluto TV DK guide",
-   "url": "https://i.mjh.nz/PlutoTV/dk.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "d7eb3ae4",
    "type": "xmltv",
    "name": "Open-EPG spain1",
    "url": "https://www.open-epg.com/files/spain1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "a5ba1760",
-   "type": "xmltv",
-   "name": "Plex Live TV FR guide",
-   "url": "https://i.mjh.nz/Plex/fr.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "7ae9f87c",
-   "type": "xmltv",
-   "name": "Pluto TV FR guide",
-   "url": "https://i.mjh.nz/PlutoTV/fr.xml.gz",
    "enabled": true
   },
   {
@@ -2421,34 +1987,6 @@
    "enabled": true
   },
   {
-   "id": "7b18c7a5",
-   "type": "xmltv",
-   "name": "IPTV-EPG.org IN",
-   "url": "https://iptv-epg.org/files/epg-in.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "4fe3fab5",
-   "type": "xmltv",
-   "name": "Open-EPG india1",
-   "url": "https://www.open-epg.com/files/india1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "4074519f",
-   "type": "xmltv",
-   "name": "Pluto TV IT guide",
-   "url": "https://i.mjh.nz/PlutoTV/it.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "0e9a811c",
-   "type": "xmltv",
-   "name": "TV Italia guide",
-   "url": "https://tvit.leicaflorianrobert.dev/epg/list.xml",
-   "enabled": true
-  },
-  {
    "id": "765874d7",
    "type": "xmltv",
    "name": "Open-EPG netherlands1",
@@ -2456,59 +1994,10 @@
    "enabled": true
   },
   {
-   "id": "28ea1952",
-   "type": "xmltv",
-   "name": "Pluto TV NO guide",
-   "url": "https://i.mjh.nz/PlutoTV/no.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "30fabbb0",
-   "type": "xmltv",
-   "name": "IPTV-EPG.org NZ",
-   "url": "https://iptv-epg.org/files/epg-nz.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "4eaa90a3",
-   "type": "xmltv",
-   "name": "NZ Freeview guide",
-   "url": "https://i.mjh.nz/nz/epg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "ec2cb430",
-   "type": "xmltv",
-   "name": "Pluto TV SE guide",
-   "url": "https://i.mjh.nz/PlutoTV/se.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "503d14be",
-   "type": "xmltv",
-   "name": "Plex Live TV NZ guide",
-   "url": "https://i.mjh.nz/Plex/nz.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "54eb5625",
-   "type": "xmltv",
-   "name": "Sky Sport Now guide",
-   "url": "https://i.mjh.nz/SkySportNow/epg.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "26252717",
    "type": "xmltv",
    "name": "EPGTalk Latino_guide",
    "url": "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "472492bf",
-   "type": "xmltv",
-   "name": "Singapore",
-   "url": "https://raw.githubusercontent.com/AqFad2811/epg/main/singapore.xml",
    "enabled": true
   },
   {
@@ -2533,80 +2022,10 @@
    "enabled": true
   },
   {
-   "id": "882284ff",
-   "type": "xmltv",
-   "name": "BB1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_BB1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "e2727f32",
-   "type": "xmltv",
-   "name": "PEACOCK1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_PEACOCK1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "5d35748b",
-   "type": "xmltv",
-   "name": "TH1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_TH1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "9a5a725f",
-   "type": "xmltv",
-   "name": "MUSICBOX1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_MUSICBOX1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "367e57b3",
-   "type": "xmltv",
-   "name": "KZ1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_KZ1.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "41ceea5e",
-   "type": "xmltv",
-   "name": "IN2 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_IN2.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1e3dc68c",
-   "type": "xmltv",
-   "name": "BO (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-bo.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "6c5ad00c",
-   "type": "xmltv",
-   "name": "AM (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-am.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "1e69716d",
    "type": "xmltv",
    "name": "BG (iptv-epg.org)",
    "url": "https://iptv-epg.org/files/epg-bg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "d4ad1cbf",
-   "type": "xmltv",
-   "name": "PY (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-py.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "231e1db3",
-   "type": "xmltv",
-   "name": "NI (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-ni.xml.gz",
    "enabled": true
   },
   {
@@ -2621,118 +2040,6 @@
    "type": "xmltv",
    "name": "AT (iptv-epg.org)",
    "url": "https://iptv-epg.org/files/epg-at.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "caacb7e0",
-   "type": "xmltv",
-   "name": "ID (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-id.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "c8ad17f7",
-   "type": "xmltv",
-   "name": "TW (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-tw.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "11e89152",
-   "type": "xmltv",
-   "name": "UY (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-uy.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "f2558687",
-   "type": "xmltv",
-   "name": "CR (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-cr.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "ebdf9f95",
-   "type": "xmltv",
-   "name": "CW (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-cw.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1b0b369e",
-   "type": "xmltv",
-   "name": "VE (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-ve.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "ab4a1f4c",
-   "type": "xmltv",
-   "name": "LV (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-lv.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "b0a21794",
-   "type": "xmltv",
-   "name": "BA (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-ba.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "9bb0ab7a",
-   "type": "xmltv",
-   "name": "SG (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-sg.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "0c5dd952",
-   "type": "xmltv",
-   "name": "DK (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-dk.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "9753a92e",
-   "type": "xmltv",
-   "name": "IS (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-is.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "116fac94",
-   "type": "xmltv",
-   "name": "CN (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_CN.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1bf73c43",
-   "type": "xmltv",
-   "name": "ID (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_ID.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "4f10d0e2",
-   "type": "xmltv",
-   "name": "JP (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_JP.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "388fbd7c",
-   "type": "xmltv",
-   "name": "MY (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_MY.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "fdf7256f",
-   "type": "xmltv",
-   "name": "PH (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_PH.xml.gz",
    "enabled": true
   },
   {
@@ -2754,27 +2061,6 @@
    "type": "xmltv",
    "name": "ZA (epg.pw)",
    "url": "https://epg.pw/xmltv/epg_ZA.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "26e09b64",
-   "type": "xmltv",
-   "name": "cyta.cy-epg: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/Shadow-GR-Official/cyta.cy-epg/main/data/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "8ae04e18",
-   "type": "xmltv",
-   "name": "CTVU-EPG-OWN: web.magentatv.de.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/web.magentatv.de.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "a1ee1983",
-   "type": "xmltv",
-   "name": "iptv-epg: zee5.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml",
    "enabled": true
   },
   {
@@ -2810,13 +2096,6 @@
    "type": "xmltv",
    "name": "i.mjh.nz: epg.xml (GitHub)",
    "url": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/au/all/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "d4b76fc2",
-   "type": "xmltv",
-   "name": "i.mjh.nz: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nz/epg.xml",
    "enabled": true
   },
   {
@@ -2883,31 +2162,10 @@
    "enabled": true
   },
   {
-   "id": "7fee5411",
-   "type": "xmltv",
-   "name": "movistar-epg-peru: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/bryanhs21/movistar-epg-peru/main/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "9395f611",
-   "type": "xmltv",
-   "name": "epg-repository: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/sulthanpamenan/epg-repository/main/epg.xml",
-   "enabled": true
-  },
-  {
    "id": "cdace29f",
    "type": "xmltv",
    "name": "pluto-playlist: epg.xml (GitHub)",
    "url": "https://raw.githubusercontent.com/sulthanpamenan/pluto-playlist/main/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "d3177948",
-   "type": "xmltv",
-   "name": "epg-tv-scraper: guide.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/ronaldoribeirosm/epg-tv-scraper/main/output/guide.xml",
    "enabled": true
   },
   {
@@ -2918,31 +2176,10 @@
    "enabled": true
   },
   {
-   "id": "92a9c9e3",
-   "type": "xmltv",
-   "name": "CTVU-EPG-OWN: dishtv.in.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/dishtv.in.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "9b5ea913",
    "type": "xmltv",
    "name": "CTVU-EPG-OWN: mi.tv.xml.gz (GitHub)",
    "url": "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/mi.tv.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "0db8ded0",
-   "type": "xmltv",
-   "name": "CTVU-EPG-OWN: tv.sfr.fr.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.sfr.fr.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "72929705",
-   "type": "xmltv",
-   "name": "CTVU-EPG-OWN: programtv.onet.pl.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/programtv.onet.pl.xml.gz",
    "enabled": true
   },
   {
@@ -2967,13 +2204,6 @@
    "enabled": true
   },
   {
-   "id": "486de79a",
-   "type": "xmltv",
-   "name": "epg: epg-raiplay.it.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/Rootzpower/epg/main/epg/epg-raiplay.it.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "47a2a68c",
    "type": "xmltv",
    "name": "personal-epg: epg.xml.gz (GitHub)",
@@ -2995,115 +2225,10 @@
    "enabled": true
   },
   {
-   "id": "86882a98",
-   "type": "xmltv",
-   "name": "Samsung TV Plus AT guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/at.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "799e8189",
-   "type": "xmltv",
-   "name": "Samsung TV Plus CH guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/ch.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "b9b0c754",
-   "type": "xmltv",
-   "name": "Samsung TV Plus DE guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "c9a38b80",
-   "type": "xmltv",
-   "name": "Samsung TV Plus ES guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/es.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1b397576",
-   "type": "xmltv",
-   "name": "Samsung TV Plus FR guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "653119bb",
-   "type": "xmltv",
-   "name": "Samsung TV Plus IN guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/in.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "123a90fb",
-   "type": "xmltv",
-   "name": "Samsung TV Plus IT guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/it.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "a436ce87",
-   "type": "xmltv",
-   "name": "Samsung TV Plus KR guide",
-   "url": "https://i.mjh.nz/SamsungTVPlus/kr.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "32d68703",
-   "type": "xmltv",
-   "name": "epg: runntv.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/runntv.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1fa7a65e",
-   "type": "xmltv",
-   "name": "epg: neotv.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml.gz",
-   "enabled": true
-  },
-  {
-   "id": "1f226d49",
-   "type": "xmltv",
-   "name": "The-Mid-West-Plainsman-TV-Guide: The-Mid-West-Plainsman-TV-G",
-   "url": "https://raw.githubusercontent.com/913AycltFM/The-Mid-West-Plainsman-TV-Guide/main/The-Mid-West-Plainsman-TV-Guide.xml",
-   "enabled": true
-  },
-  {
-   "id": "f66c1d7c",
-   "type": "xmltv",
-   "name": "DZGreen-EPG: ElCinema-EPG.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/DzGreenServices/DZGreen-EPG/main/docs/ElCinema-EPG.xml",
-   "enabled": true
-  },
-  {
-   "id": "7cb51e1a",
-   "type": "xmltv",
-   "name": "iptvson: epg.xml.gz (GitHub)",
-   "url": "https://raw.githubusercontent.com/YananHelena/iptvson/main/epg.xml.gz",
-   "enabled": true
-  },
-  {
    "id": "099d2f20",
    "type": "xmltv",
    "name": "iptv: TV.xml (GitHub)",
    "url": "https://raw.githubusercontent.com/doms9/iptv/default/M3U8/TV.xml",
-   "enabled": true
-  },
-  {
-   "id": "72e67685",
-   "type": "xmltv",
-   "name": "iptv_api: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/alantang1977/iptv_api/main/output/epg.xml",
-   "enabled": true
-  },
-  {
-   "id": "c501c6b6",
-   "type": "xmltv",
-   "name": "TheGreekle: ssiptv-epg.xml",
-   "url": "https://raw.githubusercontent.com/TheGreekle/small-greektvapp-epg/main/ssiptv-greek-epg/public/ssiptv-epg.xml",
    "enabled": true
   }
  ],
@@ -216635,23 +215760,11 @@
    "msg": "49 guide channels, 7667 upcoming shows",
    "time": 1793473097.3108814
   },
-  "4a24e166": {
-   "fresh": true,
-   "ok": true,
-   "msg": "28 guide channels, 3504 upcoming shows",
-   "time": 1793473120.4218788
-  },
   "8e1a804e": {
    "fresh": true,
    "ok": true,
    "msg": "131 guide channels, 22813 upcoming shows",
    "time": 1793473147.089217
-  },
-  "b064accf": {
-   "fresh": true,
-   "ok": true,
-   "msg": "39 guide channels, 2877 upcoming shows",
-   "time": 1793473169.0969074
   },
   "f7d4a85a": {
    "fresh": true,
@@ -216689,23 +215802,11 @@
    "msg": "67 guide channels, 8687 upcoming shows",
    "time": 1793473309.1481876
   },
-  "18d9b616": {
-   "fresh": true,
-   "ok": true,
-   "msg": "29 guide channels, 2199 upcoming shows",
-   "time": 1793473331.8204553
-  },
   "821a52b4": {
    "fresh": true,
    "ok": true,
    "msg": "79 guide channels, 8846 upcoming shows",
    "time": 1793473355.6002264
-  },
-  "598fea0e": {
-   "fresh": true,
-   "ok": true,
-   "msg": "47 guide channels, 2733 upcoming shows",
-   "time": 1793473377.987969
   },
   "0cea9c73": {
    "fresh": true,
@@ -216713,59 +215814,17 @@
    "msg": "83 guide channels, 13454 upcoming shows",
    "time": 1793473401.6103714
   },
-  "25f9232f": {
-   "fresh": true,
-   "ok": true,
-   "msg": "19 guide channels, 3383 upcoming shows",
-   "time": 1793473423.94879
-  },
-  "ca825868": {
-   "fresh": true,
-   "ok": true,
-   "msg": "41 guide channels, 5194 upcoming shows",
-   "time": 1793473447.2481315
-  },
-  "5feb2742": {
-   "fresh": true,
-   "ok": true,
-   "msg": "37 guide channels, 7509 upcoming shows",
-   "time": 1793473471.6825552
-  },
   "ec4d0752": {
    "fresh": true,
    "ok": true,
    "msg": "62 guide channels, 13382 upcoming shows",
    "time": 1793473496.1494312
   },
-  "fafdcf80": {
-   "fresh": true,
-   "ok": true,
-   "msg": "44 guide channels, 12774 upcoming shows",
-   "time": 1793473523.194458
-  },
-  "5fddc323": {
-   "fresh": true,
-   "ok": true,
-   "msg": "122 guide channels, 8411 upcoming shows",
-   "time": 1793473546.8882272
-  },
-  "1f0d91b3": {
-   "fresh": true,
-   "ok": true,
-   "msg": "26 guide channels, 6392 upcoming shows",
-   "time": 1793473570.3239129
-  },
   "db15be5e": {
    "fresh": true,
    "ok": true,
    "msg": "12 guide channels, 1557 upcoming shows",
    "time": 1793473592.2673929
-  },
-  "7dd27b4f": {
-   "fresh": true,
-   "ok": true,
-   "msg": "20 guide channels, 4544 upcoming shows",
-   "time": 1793473615.5753024
   },
   "729e418e": {
    "fresh": true,
@@ -216784,12 +215843,6 @@
    "ok": true,
    "msg": "32 guide channels, 7876 upcoming shows",
    "time": 1793473684.5585277
-  },
-  "b9889c0e": {
-   "fresh": true,
-   "ok": true,
-   "msg": "35 guide channels, 2663 upcoming shows",
-   "time": 1793473706.6584435
   },
   "1ca78122": {
    "fresh": true,
@@ -216857,46 +215910,22 @@
   "1fc4b145": {},
   "f7f641d6": {},
   "bc6e3da8": {},
-  "15de6c2e": {},
-  "8b8b5c2b": {},
   "8357ebe2": {},
-  "8a44c5b9": {},
-  "77b58831": {},
   "43a7b582": {},
   "08eb90b9": {},
-  "6564a84d": {},
-  "2f97c349": {},
-  "4c2bd1bc": {},
   "0911a3f1": {},
   "38ad38f5": {},
-  "b67590e0": {},
   "48b5ff27": {},
   "75903439": {},
-  "ef524f47": {},
-  "08b9ae53": {},
-  "ae8e21f2": {},
   "82921e46": {},
   "8a2c124a": {},
-  "c55e836d": {},
-  "c3a4854d": {},
-  "50ac3229": {},
   "4fd90019": {},
   "46cbba44": {},
   "7e5495c3": {},
-  "fa9d2d0a": {},
   "378b3150": {},
-  "3e7aa81a": {},
   "297c1806": {},
   "a899ea25": {},
-  "d35a194a": {},
   "2228dd36": {},
-  "fb705484": {},
-  "c1d7d1d1": {},
-  "4bca5f91": {},
-  "6d195c7c": {},
-  "35c99832": {},
-  "5cd1160c": {},
-  "5f527c7a": {},
   "e4d4727a": {},
   "97a6671f": {},
   "6fff98e3": {},
@@ -216984,33 +216013,19 @@
   "699df42a": {},
   "93c51652": {},
   "f43b8622": {},
-  "7ebab9eb": {},
-  "e719f7e2": {},
-  "875f5a05": {},
-  "1c50e25a": {},
-  "500d693b": {},
   "c8e5921a": {},
   "c93bd647": {},
   "bd09eba0": {},
-  "9a2218b7": {},
-  "694fb39c": {},
-  "77e8ccb2": {},
   "d2ee8bd4": {},
-  "316faeac": {},
   "c47308e6": {},
   "1bde316e": {},
-  "5727ae92": {},
   "36a66b74": {},
   "b70d7d00": {},
   "d8da3ac4": {},
   "9353d41f": {},
-  "188ac957": {},
-  "b6594b50": {},
   "7ab6d253": {},
   "b8f8dc0f": {},
   "7bcd962c": {},
-  "a443501a": {},
-  "51e37789": {},
   "e8b6bcf0": {},
   "240a9513": {},
   "606090a1": {},
@@ -217021,77 +216036,24 @@
   "c2c2c168": {},
   "ad26b853": {},
   "7b324a80": {},
-  "402bde09": {},
-  "89d265a6": {},
-  "2ed3829d": {},
-  "65a26c4c": {},
-  "60491f1e": {},
-  "75be3a89": {},
-  "a858dced": {},
-  "38ac16fc": {},
-  "3faa154c": {},
-  "f3cbbd59": {},
   "d7eb3ae4": {},
-  "a5ba1760": {},
-  "7ae9f87c": {},
   "5f054e4d": {},
-  "7b18c7a5": {},
-  "4fe3fab5": {},
-  "4074519f": {},
-  "0e9a811c": {},
   "765874d7": {},
-  "28ea1952": {},
-  "30fabbb0": {},
-  "4eaa90a3": {},
-  "ec2cb430": {},
-  "503d14be": {},
-  "54eb5625": {},
   "26252717": {},
-  "472492bf": {},
   "0ac53c6b": {},
   "55d4898c": {},
   "b40cf2f2": {},
-  "882284ff": {},
-  "e2727f32": {},
-  "5d35748b": {},
-  "9a5a725f": {},
-  "367e57b3": {},
-  "41ceea5e": {},
-  "1e3dc68c": {},
-  "6c5ad00c": {},
   "1e69716d": {},
-  "d4ad1cbf": {},
-  "231e1db3": {},
   "cb89b93e": {},
   "e77100c8": {},
-  "caacb7e0": {},
-  "c8ad17f7": {},
-  "11e89152": {},
-  "f2558687": {},
-  "ebdf9f95": {},
-  "1b0b369e": {},
-  "ab4a1f4c": {},
-  "b0a21794": {},
-  "9bb0ab7a": {},
-  "0c5dd952": {},
-  "9753a92e": {},
-  "116fac94": {},
-  "1bf73c43": {},
-  "4f10d0e2": {},
-  "388fbd7c": {},
-  "fdf7256f": {},
   "509e4967": {},
   "65604491": {},
   "1d6306b8": {},
-  "26e09b64": {},
-  "8ae04e18": {},
-  "a1ee1983": {},
   "27256190": {},
   "f007e89b": {},
   "eabda65b": {},
   "6c4df515": {},
   "c9b73d25": {},
-  "d4b76fc2": {},
   "d4785d8d": {},
   "45b4cbc7": {},
   "d88f4967": {},
@@ -217101,38 +216063,16 @@
   "3c77e8dd": {},
   "d56f382c": {},
   "1fb656fc": {},
-  "7fee5411": {},
-  "9395f611": {},
   "cdace29f": {},
-  "d3177948": {},
   "935f6505": {},
-  "92a9c9e3": {},
   "9b5ea913": {},
-  "0db8ded0": {},
-  "72929705": {},
   "abdf2a2a": {},
   "febbaca4": {},
   "78a20bba": {},
-  "486de79a": {},
   "47a2a68c": {},
   "7228cb32": {},
   "873b0170": {},
-  "86882a98": {},
-  "799e8189": {},
-  "b9b0c754": {},
-  "c9a38b80": {},
-  "1b397576": {},
-  "653119bb": {},
-  "123a90fb": {},
-  "a436ce87": {},
-  "32d68703": {},
-  "1fa7a65e": {},
-  "1f226d49": {},
-  "f66c1d7c": {},
-  "7cb51e1a": {},
-  "099d2f20": {},
-  "72e67685": {},
-  "c501c6b6": {}
+  "099d2f20": {}
  },
  "last_refresh": 1793474274.6674473,
  "dismissed": [],
@@ -218977,8 +217917,9 @@
    "group": "US",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "SonLife.au",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "sony.movies.us",
@@ -224957,8 +223898,9 @@
    "group": "Entertainment",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "BHT.1.ba",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "bn.tv.ba",
@@ -233847,8 +232789,9 @@
    "group": "US Local",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "Hayatovci.ba",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "multimedios.costa.rica.canal.8.us",
@@ -267011,5 +265954,161 @@
    "how": "name"
   }
  ],
- "keep_urls": []
+ "keep_urls": [],
+ "blocked_urls": [
+  "http://www.xmltvepg.nl/rytecAT_Basic.xz",
+  "http://www.xmltvepg.nl/rytecBE_FR_Basic.xz",
+  "http://www.xmltvepg.nl/rytecBE_FR_Common.xz",
+  "http://www.xmltvepg.nl/rytecBG.xz",
+  "http://www.xmltvepg.nl/rytecCZ_Basic.xz",
+  "http://www.xmltvepg.nl/rytecDK_Misc.xz",
+  "http://www.xmltvepg.nl/rytecFI_Misc.xz",
+  "http://www.xmltvepg.nl/rytecFR_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecGR_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecIT_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecNO_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecSK_Basic.xz",
+  "https://epg.pw/xmltv/epg_CN.xml.gz",
+  "https://epg.pw/xmltv/epg_DE.xml.gz",
+  "https://epg.pw/xmltv/epg_HK.xml.gz",
+  "https://epg.pw/xmltv/epg_ID.xml.gz",
+  "https://epg.pw/xmltv/epg_IN.xml.gz",
+  "https://epg.pw/xmltv/epg_JP.xml.gz",
+  "https://epg.pw/xmltv/epg_MY.xml.gz",
+  "https://epg.pw/xmltv/epg_PH.xml.gz",
+  "https://epg.pw/xmltv/epg_TW.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_BB1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_IN2.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_KZ1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_MN1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_MUSICBOX1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_PEACOCK1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_TH1.xml.gz",
+  "https://i.mjh.nz/DStv/za.xml.gz",
+  "https://i.mjh.nz/Kayo/epg.xml.gz",
+  "https://i.mjh.nz/Plex/au.xml.gz",
+  "https://i.mjh.nz/Plex/es.xml.gz",
+  "https://i.mjh.nz/Plex/fr.xml.gz",
+  "https://i.mjh.nz/Plex/mx.xml.gz",
+  "https://i.mjh.nz/Plex/nz.xml.gz",
+  "https://i.mjh.nz/PlutoTV/ar.xml.gz",
+  "https://i.mjh.nz/PlutoTV/br.xml.gz",
+  "https://i.mjh.nz/PlutoTV/de.xml.gz",
+  "https://i.mjh.nz/PlutoTV/dk.xml.gz",
+  "https://i.mjh.nz/PlutoTV/fr.xml.gz",
+  "https://i.mjh.nz/PlutoTV/it.xml.gz",
+  "https://i.mjh.nz/PlutoTV/mx.xml.gz",
+  "https://i.mjh.nz/PlutoTV/no.xml.gz",
+  "https://i.mjh.nz/PlutoTV/se.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/at.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/ch.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/es.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/in.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/it.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/kr.xml.gz",
+  "https://i.mjh.nz/SkySportNow/epg.xml.gz",
+  "https://i.mjh.nz/nz/epg.xml.gz",
+  "https://i.mjh.nz/world/epg.xml.gz",
+  "https://iptv-epg.org/files/epg-am.xml.gz",
+  "https://iptv-epg.org/files/epg-ba.xml.gz",
+  "https://iptv-epg.org/files/epg-bo.xml.gz",
+  "https://iptv-epg.org/files/epg-by.xml.gz",
+  "https://iptv-epg.org/files/epg-cr.xml.gz",
+  "https://iptv-epg.org/files/epg-cw.xml.gz",
+  "https://iptv-epg.org/files/epg-cz.xml.gz",
+  "https://iptv-epg.org/files/epg-dk.xml.gz",
+  "https://iptv-epg.org/files/epg-do.xml.gz",
+  "https://iptv-epg.org/files/epg-gt.xml.gz",
+  "https://iptv-epg.org/files/epg-id.xml.gz",
+  "https://iptv-epg.org/files/epg-in.xml.gz",
+  "https://iptv-epg.org/files/epg-is.xml.gz",
+  "https://iptv-epg.org/files/epg-jm.xml.gz",
+  "https://iptv-epg.org/files/epg-lt.xml.gz",
+  "https://iptv-epg.org/files/epg-lu.xml.gz",
+  "https://iptv-epg.org/files/epg-lv.xml.gz",
+  "https://iptv-epg.org/files/epg-mt.xml.gz",
+  "https://iptv-epg.org/files/epg-ni.xml.gz",
+  "https://iptv-epg.org/files/epg-nz.xml.gz",
+  "https://iptv-epg.org/files/epg-pa.xml.gz",
+  "https://iptv-epg.org/files/epg-py.xml.gz",
+  "https://iptv-epg.org/files/epg-sg.xml.gz",
+  "https://iptv-epg.org/files/epg-tw.xml.gz",
+  "https://iptv-epg.org/files/epg-uy.xml.gz",
+  "https://iptv-epg.org/files/epg-ve.xml.gz",
+  "https://iptv-epg.org/files/epg-zw.xml.gz",
+  "https://raw.githubusercontent.com/370network/skylink-xmltv/main/a3b_a1.xml",
+  "https://raw.githubusercontent.com/913AycltFM/91.3-Ayclt-FM-TV/main/91.3_Ayclt_FM_radio_guide.xml",
+  "https://raw.githubusercontent.com/913AycltFM/The-Mid-West-Plainsman-TV-Guide/main/The-Mid-West-Plainsman-TV-Guide.xml",
+  "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@nhkworldpremium.xml",
+  "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@skyperfectv.xml",
+  "https://raw.githubusercontent.com/AqFad2811/epg/main/singapore.xml",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/dishtv.in.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/programtv.onet.pl.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.sfr.fr.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/web.magentatv.de.xml.gz",
+  "https://raw.githubusercontent.com/DzGreenServices/DZGreen-EPG/main/docs/ElCinema-EPG.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TCL-Channel/main/tcl_epg.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TVLatinaSat/main/latinasat_epg.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TracePlus/main/epg_final.xml",
+  "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml",
+  "https://raw.githubusercontent.com/OmarandSherwet/nilesat-epg/main/docs/nilesat.xml",
+  "https://raw.githubusercontent.com/Rootzpower/epg/main/epg/epg-raiplay.it.xml.gz",
+  "https://raw.githubusercontent.com/SandObserver/live-tv-guide/main/output/iranintl.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/cyta.cy-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/magentatv-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/vodafone.gr-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/TheGreekle/small-greektvapp-epg/main/ssiptv-greek-epg/public/ssiptv-epg.xml",
+  "https://raw.githubusercontent.com/YananHelena/iptvson/main/epg.xml.gz",
+  "https://raw.githubusercontent.com/alantang1977/iptv_api/main/output/epg.xml",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml.gz",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/runntv.xml.gz",
+  "https://raw.githubusercontent.com/bryanhs21/movistar-epg-peru/main/epg.xml",
+  "https://raw.githubusercontent.com/ccm789/epg/main/epg.xml",
+  "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/EPG_dobleM.xml.gz",
+  "https://raw.githubusercontent.com/dotm612/nbc-new-york-epg/main/nbc_new_york_news_epg.xml",
+  "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/br.xml",
+  "https://raw.githubusercontent.com/guiand888/epg-parsed/main/processed/starhub.xml",
+  "https://raw.githubusercontent.com/hupcus/cz-epg/main/guide.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml.gz",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/slingtv.xml.gz",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml.gz",
+  "https://raw.githubusercontent.com/karenda-jp/etc/main/guides.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/dr/drtva.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf2.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv2.xml",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_epg.xml.gz",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_init7_epg.xml.gz",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_teleboy_epg.xml.gz",
+  "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nz/epg.xml",
+  "https://raw.githubusercontent.com/mingram751-afk/epg-atlanta/main/merged.xml",
+  "https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz",
+  "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/epl.xml.gz",
+  "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/nba.xml.gz",
+  "https://raw.githubusercontent.com/ronaldoribeirosm/epg-tv-scraper/main/output/guide.xml",
+  "https://raw.githubusercontent.com/sasagr/aljazeera-epg/main/aljazeera.xml",
+  "https://raw.githubusercontent.com/sasagr/rds-epg/main/rds.xml",
+  "https://raw.githubusercontent.com/sasagr/teleone-epg/main/teleone.xml",
+  "https://raw.githubusercontent.com/sasagr/tgcom24-epg/main/tgcom24.xml",
+  "https://raw.githubusercontent.com/sasagr/tgs-epg/main/tgs.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/epg-repository/main/epg.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/padang-tv-playlist/main/epg.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/transmedia-playlist/main/epg.xml",
+  "https://tvit.leicaflorianrobert.dev/epg/list.xml",
+  "https://www.open-epg.com/files/india1.xml.gz",
+  "https://www.open-epg.com/files/newzealand1.xml.gz",
+  "https://xmltv.net/xml_files/Adelaide.xml",
+  "https://xmltv.net/xml_files/Brisbane.xml",
+  "https://xmltv.net/xml_files/Melbourne.xml",
+  "https://xmltv.net/xml_files/Perth.xml",
+  "https://xmltv.net/xml_files/Sydney.xml"
+ ]
 }

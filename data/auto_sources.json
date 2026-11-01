@@ -1,40 +1,6 @@
 {
  "sources": [
   {
-   "id": "a70f781e",
-   "type": "xmltv",
-   "name": "epgshare01 PLEX1",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793322591.7102067,
-   "gain": 3,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793495915.9642441,
-    "msg": "690 guide channels, 55482 upcoming shows"
-   }
-  },
-  {
-   "id": "aea121cb",
-   "type": "xmltv",
-   "name": "epgshare01 RAKUTEN1",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793322609.9680264,
-   "gain": 7,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793495920.8469508,
-    "msg": "1640 guide channels, 101938 upcoming shows"
-   }
-  },
-  {
    "id": "a147b2d1",
    "type": "xmltv",
    "name": "Plex Live TV ALL guide",
@@ -919,23 +885,6 @@
    }
   },
   {
-   "id": "a27bec09",
-   "type": "xmltv",
-   "name": "epg.pw DE",
-   "url": "https://epg.pw/xmltv/epg_DE.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793336415.7408257,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793495981.514959,
-    "msg": "250 guide channels, 22627 upcoming shows"
-   }
-  },
-  {
    "id": "a9d8cd76",
    "type": "xmltv",
    "name": "IPTV-EPG.org DE",
@@ -1001,40 +950,6 @@
     "fresh": true,
     "time": 1793495986.8217373,
     "msg": "121 guide channels, 2043 upcoming shows"
-   }
-  },
-  {
-   "id": "a67fec28",
-   "type": "xmltv",
-   "name": "Plex Live TV MX guide",
-   "url": "https://i.mjh.nz/Plex/mx.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793339136.776288,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793495987.8831291,
-    "msg": "279 guide channels, 16481 upcoming shows"
-   }
-  },
-  {
-   "id": "a0475507",
-   "type": "xmltv",
-   "name": "Pluto TV MX guide",
-   "url": "https://i.mjh.nz/PlutoTV/mx.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793339138.341679,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793495988.8166976,
-    "msg": "197 guide channels, 4010 upcoming shows"
    }
   },
   {
@@ -1174,23 +1089,6 @@
    }
   },
   {
-   "id": "a79ac2fb",
-   "type": "xmltv",
-   "name": "Plex Live TV ES guide",
-   "url": "https://i.mjh.nz/Plex/es.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793364891.245507,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496002.164326,
-    "msg": "267 guide channels, 4812 upcoming shows"
-   }
-  },
-  {
    "id": "aebe51c9",
    "type": "xmltv",
    "name": "Pluto TV ES guide",
@@ -1276,23 +1174,6 @@
    }
   },
   {
-   "id": "af621051",
-   "type": "xmltv",
-   "name": "epg.pw IN",
-   "url": "https://epg.pw/xmltv/epg_IN.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793364910.477932,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496017.2253525,
-    "msg": "528 guide channels, 18248 upcoming shows"
-   }
-  },
-  {
    "id": "a7eb9660",
    "type": "xmltv",
    "name": "IPTV-EPG.org IT",
@@ -1361,40 +1242,6 @@
    }
   },
   {
-   "id": "a52b7f76",
-   "type": "xmltv",
-   "name": "Open-EPG newzealand1",
-   "url": "https://www.open-epg.com/files/newzealand1.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793364933.183738,
-   "gain": 10,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496023.6313684,
-    "msg": "44 guide channels, 1772 upcoming shows"
-   }
-  },
-  {
-   "id": "a3e8c96a",
-   "type": "xmltv",
-   "name": "DStv guide",
-   "url": "https://i.mjh.nz/DStv/za.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793368008.3837614,
-   "gain": 4,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496025.0320039,
-    "msg": "158 guide channels, 9100 upcoming shows"
-   }
-  },
-  {
    "id": "a986535d",
    "type": "xmltv",
    "name": "EPGTalk FreeTV_guide",
@@ -1426,40 +1273,6 @@
     "fresh": true,
     "time": 1793496033.4687326,
     "msg": "1707 guide channels, 58075 upcoming shows"
-   }
-  },
-  {
-   "id": "a7bbbe11",
-   "type": "xmltv",
-   "name": "TV7 / Init7 Switzerland",
-   "url": "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_epg.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793368025.3419995,
-   "gain": 4,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496037.4833558,
-    "msg": "241 guide channels, 57953 upcoming shows"
-   }
-  },
-  {
-   "id": "ada389b2",
-   "type": "xmltv",
-   "name": "EPG dobleM Spain",
-   "url": "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/EPG_dobleM.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793368030.291626,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496040.6180065,
-    "msg": "632 guide channels, 68252 upcoming shows"
    }
   },
   {
@@ -1667,23 +1480,6 @@
    }
   },
   {
-   "id": "abb36d33",
-   "type": "xmltv",
-   "name": "MN1 (epgshare01)",
-   "url": "https://epgshare01.online/epgshare01/epg_ripper_MN1.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793370948.8143275,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496060.6310658,
-    "msg": "42 guide channels, 819 upcoming shows"
-   }
-  },
-  {
    "id": "a22eaa24",
    "type": "xmltv",
    "name": "AE1 (epgshare01)",
@@ -1735,23 +1531,6 @@
    }
   },
   {
-   "id": "ab637cd5",
-   "type": "xmltv",
-   "name": "BY (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-by.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793370959.754071,
-   "gain": 3,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496064.6270847,
-    "msg": "114 guide channels, 3145 upcoming shows"
-   }
-  },
-  {
    "id": "a2e84573",
    "type": "xmltv",
    "name": "PT (iptv-epg.org)",
@@ -1766,23 +1545,6 @@
     "fresh": true,
     "time": 1793496067.0214927,
     "msg": "195 guide channels, 25196 upcoming shows"
-   }
-  },
-  {
-   "id": "a6dd19a6",
-   "type": "xmltv",
-   "name": "GT (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-gt.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793370970.1955504,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496068.1285293,
-    "msg": "95 guide channels, 8721 upcoming shows"
    }
   },
   {
@@ -1834,23 +1596,6 @@
     "fresh": true,
     "time": 1793496073.3325422,
     "msg": "212 guide channels, 31660 upcoming shows"
-   }
-  },
-  {
-   "id": "ab04d045",
-   "type": "xmltv",
-   "name": "PA (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-pa.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793370985.7028365,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496074.0355465,
-    "msg": "121 guide channels, 7275 upcoming shows"
    }
   },
   {
@@ -1922,23 +1667,6 @@
    }
   },
   {
-   "id": "a3f8f13c",
-   "type": "xmltv",
-   "name": "DO (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-do.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793371010.8848343,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496083.5099418,
-    "msg": "97 guide channels, 6004 upcoming shows"
-   }
-  },
-  {
    "id": "a5842643",
    "type": "xmltv",
    "name": "MY (iptv-epg.org)",
@@ -1973,23 +1701,6 @@
    }
   },
   {
-   "id": "af278b3e",
-   "type": "xmltv",
-   "name": "MT (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-mt.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372181.755075,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496086.616253,
-    "msg": "129 guide channels, 19863 upcoming shows"
-   }
-  },
-  {
    "id": "abbdd533",
    "type": "xmltv",
    "name": "HK (iptv-epg.org)",
@@ -2007,40 +1718,6 @@
    }
   },
   {
-   "id": "a865f645",
-   "type": "xmltv",
-   "name": "CZ (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-cz.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372186.4011486,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496089.8882375,
-    "msg": "261 guide channels, 44244 upcoming shows"
-   }
-  },
-  {
-   "id": "a285dd9f",
-   "type": "xmltv",
-   "name": "ZW (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-zw.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372188.462598,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496091.642018,
-    "msg": "130 guide channels, 16460 upcoming shows"
-   }
-  },
-  {
    "id": "a94a0b48",
    "type": "xmltv",
    "name": "NG (iptv-epg.org)",
@@ -2055,23 +1732,6 @@
     "fresh": true,
     "time": 1793496092.7786658,
     "msg": "157 guide channels, 17394 upcoming shows"
-   }
-  },
-  {
-   "id": "adc8378f",
-   "type": "xmltv",
-   "name": "LU (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-lu.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372193.3574915,
-   "gain": 5,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496095.0217283,
-    "msg": "324 guide channels, 48162 upcoming shows"
    }
   },
   {
@@ -2174,40 +1834,6 @@
     "fresh": true,
     "time": 1793496104.5935194,
     "msg": "142 guide channels, 16588 upcoming shows"
-   }
-  },
-  {
-   "id": "a039297e",
-   "type": "xmltv",
-   "name": "HK (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_HK.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372943.657457,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496106.0585177,
-    "msg": "237 guide channels, 46365 upcoming shows"
-   }
-  },
-  {
-   "id": "a236934a",
-   "type": "xmltv",
-   "name": "TW (epg.pw)",
-   "url": "https://epg.pw/xmltv/epg_TW.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793372952.09783,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496108.65135,
-    "msg": "519 guide channels, 75261 upcoming shows"
    }
   },
   {
@@ -2330,57 +1956,6 @@
    }
   },
   {
-   "id": "ab28377d",
-   "type": "xmltv",
-   "name": "JM (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-jm.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793432094.804802,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496157.6731963,
-    "msg": "128 guide channels, 5800 upcoming shows"
-   }
-  },
-  {
-   "id": "ac5eca16",
-   "type": "xmltv",
-   "name": "LT (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-lt.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793432096.5714798,
-   "gain": 3,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496158.819405,
-    "msg": "184 guide channels, 16686 upcoming shows"
-   }
-  },
-  {
-   "id": "a1e02667",
-   "type": "xmltv",
-   "name": "magentatv-epg: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/Shadow-GR-Official/magentatv-epg/main/data/epg.xml",
-   "enabled": true,
-   "auto": true,
-   "added": 1793432100.8759797,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496159.8740468,
-    "msg": "113 guide channels, 16721 upcoming shows"
-   }
-  },
-  {
    "id": "a17a90dd",
    "type": "xmltv",
    "name": "iptv-epg: jiotv.xml (GitHub)",
@@ -2415,23 +1990,6 @@
    }
   },
   {
-   "id": "a722c962",
-   "type": "xmltv",
-   "name": "iptv-epg: dishtv.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml",
-   "enabled": true,
-   "auto": true,
-   "added": 1793432111.0779955,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496170.1985157,
-    "msg": "692 guide channels, 37461 upcoming shows"
-   }
-  },
-  {
    "id": "ac138507",
    "type": "xmltv",
    "name": "iptv-epg: sundirectgo.xml (GitHub)",
@@ -2463,23 +2021,6 @@
     "fresh": true,
     "time": 1793496172.0160866,
     "msg": "282 guide channels, 5173 upcoming shows"
-   }
-  },
-  {
-   "id": "aabbaad0",
-   "type": "xmltv",
-   "name": "epg: epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/ccm789/epg/main/epg.xml",
-   "enabled": true,
-   "auto": true,
-   "added": 1793432126.298941,
-   "gain": 2,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496176.5980556,
-    "msg": "750 guide channels, 90370 upcoming shows"
    }
   },
   {
@@ -2531,23 +2072,6 @@
     "fresh": true,
     "time": 1793496181.3739574,
     "msg": "197 guide channels, 7046 upcoming shows"
-   }
-  },
-  {
-   "id": "a90ec30e",
-   "type": "xmltv",
-   "name": "Sri-Lanka-IPTV-EPG: Epg.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml",
-   "enabled": true,
-   "auto": true,
-   "added": 1793440525.0042644,
-   "gain": 1,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496182.1048615,
-    "msg": "139 guide channels, 7795 upcoming shows"
    }
   },
   {
@@ -2820,23 +2344,6 @@
     "fresh": true,
     "time": 1793496273.7263696,
     "msg": "3311 guide channels, 255861 upcoming shows"
-   }
-  },
-  {
-   "id": "ad5f6c0b",
-   "type": "xmltv",
-   "name": "epg: neotv.xml (GitHub)",
-   "url": "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml",
-   "enabled": true,
-   "auto": true,
-   "added": 1793467624.9475071,
-   "gain": 5,
-   "fails": 0,
-   "st": {
-    "ok": true,
-    "fresh": true,
-    "time": 1793496273.932307,
-    "msg": "92 guide channels, 1509 upcoming shows"
    }
   },
   {
@@ -6056,7 +5563,162 @@
    "why": "added"
   }
  },
- "blocked": [],
+ "blocked": [
+  "http://www.xmltvepg.nl/rytecAT_Basic.xz",
+  "http://www.xmltvepg.nl/rytecBE_FR_Basic.xz",
+  "http://www.xmltvepg.nl/rytecBE_FR_Common.xz",
+  "http://www.xmltvepg.nl/rytecBG.xz",
+  "http://www.xmltvepg.nl/rytecCZ_Basic.xz",
+  "http://www.xmltvepg.nl/rytecDK_Misc.xz",
+  "http://www.xmltvepg.nl/rytecFI_Misc.xz",
+  "http://www.xmltvepg.nl/rytecFR_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecGR_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecIT_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecNO_SportMovies.xz",
+  "http://www.xmltvepg.nl/rytecSK_Basic.xz",
+  "https://epg.pw/xmltv/epg_CN.xml.gz",
+  "https://epg.pw/xmltv/epg_DE.xml.gz",
+  "https://epg.pw/xmltv/epg_HK.xml.gz",
+  "https://epg.pw/xmltv/epg_ID.xml.gz",
+  "https://epg.pw/xmltv/epg_IN.xml.gz",
+  "https://epg.pw/xmltv/epg_JP.xml.gz",
+  "https://epg.pw/xmltv/epg_MY.xml.gz",
+  "https://epg.pw/xmltv/epg_PH.xml.gz",
+  "https://epg.pw/xmltv/epg_TW.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_BB1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_IN2.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_KZ1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_MN1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_MUSICBOX1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_PEACOCK1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz",
+  "https://epgshare01.online/epgshare01/epg_ripper_TH1.xml.gz",
+  "https://i.mjh.nz/DStv/za.xml.gz",
+  "https://i.mjh.nz/Kayo/epg.xml.gz",
+  "https://i.mjh.nz/Plex/au.xml.gz",
+  "https://i.mjh.nz/Plex/es.xml.gz",
+  "https://i.mjh.nz/Plex/fr.xml.gz",
+  "https://i.mjh.nz/Plex/mx.xml.gz",
+  "https://i.mjh.nz/Plex/nz.xml.gz",
+  "https://i.mjh.nz/PlutoTV/ar.xml.gz",
+  "https://i.mjh.nz/PlutoTV/br.xml.gz",
+  "https://i.mjh.nz/PlutoTV/de.xml.gz",
+  "https://i.mjh.nz/PlutoTV/dk.xml.gz",
+  "https://i.mjh.nz/PlutoTV/fr.xml.gz",
+  "https://i.mjh.nz/PlutoTV/it.xml.gz",
+  "https://i.mjh.nz/PlutoTV/mx.xml.gz",
+  "https://i.mjh.nz/PlutoTV/no.xml.gz",
+  "https://i.mjh.nz/PlutoTV/se.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/at.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/ch.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/es.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/in.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/it.xml.gz",
+  "https://i.mjh.nz/SamsungTVPlus/kr.xml.gz",
+  "https://i.mjh.nz/SkySportNow/epg.xml.gz",
+  "https://i.mjh.nz/nz/epg.xml.gz",
+  "https://i.mjh.nz/world/epg.xml.gz",
+  "https://iptv-epg.org/files/epg-am.xml.gz",
+  "https://iptv-epg.org/files/epg-ba.xml.gz",
+  "https://iptv-epg.org/files/epg-bo.xml.gz",
+  "https://iptv-epg.org/files/epg-by.xml.gz",
+  "https://iptv-epg.org/files/epg-cr.xml.gz",
+  "https://iptv-epg.org/files/epg-cw.xml.gz",
+  "https://iptv-epg.org/files/epg-cz.xml.gz",
+  "https://iptv-epg.org/files/epg-dk.xml.gz",
+  "https://iptv-epg.org/files/epg-do.xml.gz",
+  "https://iptv-epg.org/files/epg-gt.xml.gz",
+  "https://iptv-epg.org/files/epg-id.xml.gz",
+  "https://iptv-epg.org/files/epg-in.xml.gz",
+  "https://iptv-epg.org/files/epg-is.xml.gz",
+  "https://iptv-epg.org/files/epg-jm.xml.gz",
+  "https://iptv-epg.org/files/epg-lt.xml.gz",
+  "https://iptv-epg.org/files/epg-lu.xml.gz",
+  "https://iptv-epg.org/files/epg-lv.xml.gz",
+  "https://iptv-epg.org/files/epg-mt.xml.gz",
+  "https://iptv-epg.org/files/epg-ni.xml.gz",
+  "https://iptv-epg.org/files/epg-nz.xml.gz",
+  "https://iptv-epg.org/files/epg-pa.xml.gz",
+  "https://iptv-epg.org/files/epg-py.xml.gz",
+  "https://iptv-epg.org/files/epg-sg.xml.gz",
+  "https://iptv-epg.org/files/epg-tw.xml.gz",
+  "https://iptv-epg.org/files/epg-uy.xml.gz",
+  "https://iptv-epg.org/files/epg-ve.xml.gz",
+  "https://iptv-epg.org/files/epg-zw.xml.gz",
+  "https://raw.githubusercontent.com/370network/skylink-xmltv/main/a3b_a1.xml",
+  "https://raw.githubusercontent.com/913AycltFM/91.3-Ayclt-FM-TV/main/91.3_Ayclt_FM_radio_guide.xml",
+  "https://raw.githubusercontent.com/913AycltFM/The-Mid-West-Plainsman-TV-Guide/main/The-Mid-West-Plainsman-TV-Guide.xml",
+  "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@nhkworldpremium.xml",
+  "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide@skyperfectv.xml",
+  "https://raw.githubusercontent.com/AqFad2811/epg/main/singapore.xml",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/dishtv.in.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/programtv.onet.pl.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.sfr.fr.xml.gz",
+  "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/web.magentatv.de.xml.gz",
+  "https://raw.githubusercontent.com/DzGreenServices/DZGreen-EPG/main/docs/ElCinema-EPG.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TCL-Channel/main/tcl_epg.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TVLatinaSat/main/latinasat_epg.xml",
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-TracePlus/main/epg_final.xml",
+  "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml",
+  "https://raw.githubusercontent.com/OmarandSherwet/nilesat-epg/main/docs/nilesat.xml",
+  "https://raw.githubusercontent.com/Rootzpower/epg/main/epg/epg-raiplay.it.xml.gz",
+  "https://raw.githubusercontent.com/SandObserver/live-tv-guide/main/output/iranintl.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/cyta.cy-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/magentatv-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/Shadow-GR-Official/vodafone.gr-epg/main/data/epg.xml",
+  "https://raw.githubusercontent.com/TheGreekle/small-greektvapp-epg/main/ssiptv-greek-epg/public/ssiptv-epg.xml",
+  "https://raw.githubusercontent.com/YananHelena/iptvson/main/epg.xml.gz",
+  "https://raw.githubusercontent.com/alantang1977/iptv_api/main/output/epg.xml",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml.gz",
+  "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/runntv.xml.gz",
+  "https://raw.githubusercontent.com/bryanhs21/movistar-epg-peru/main/epg.xml",
+  "https://raw.githubusercontent.com/ccm789/epg/main/epg.xml",
+  "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/EPG_dobleM.xml.gz",
+  "https://raw.githubusercontent.com/dotm612/nbc-new-york-epg/main/nbc_new_york_news_epg.xml",
+  "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/br.xml",
+  "https://raw.githubusercontent.com/guiand888/epg-parsed/main/processed/starhub.xml",
+  "https://raw.githubusercontent.com/hupcus/cz-epg/main/guide.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml.gz",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/slingtv.xml.gz",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml",
+  "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml.gz",
+  "https://raw.githubusercontent.com/karenda-jp/etc/main/guides.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/dr/drtva.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/kvf/kvf2.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv.xml",
+  "https://raw.githubusercontent.com/martindidriksen/iptv-epg/main/ruv/ruv2.xml",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_epg.xml.gz",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_init7_epg.xml.gz",
+  "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_teleboy_epg.xml.gz",
+  "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nz/epg.xml",
+  "https://raw.githubusercontent.com/mingram751-afk/epg-atlanta/main/merged.xml",
+  "https://raw.githubusercontent.com/mitthu786/tvepg/main/tataplay/epg.xml.gz",
+  "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/epl.xml.gz",
+  "https://raw.githubusercontent.com/philipsaad/epgxmltv/main/output/nba.xml.gz",
+  "https://raw.githubusercontent.com/ronaldoribeirosm/epg-tv-scraper/main/output/guide.xml",
+  "https://raw.githubusercontent.com/sasagr/aljazeera-epg/main/aljazeera.xml",
+  "https://raw.githubusercontent.com/sasagr/rds-epg/main/rds.xml",
+  "https://raw.githubusercontent.com/sasagr/teleone-epg/main/teleone.xml",
+  "https://raw.githubusercontent.com/sasagr/tgcom24-epg/main/tgcom24.xml",
+  "https://raw.githubusercontent.com/sasagr/tgs-epg/main/tgs.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/epg-repository/main/epg.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/padang-tv-playlist/main/epg.xml",
+  "https://raw.githubusercontent.com/sulthanpamenan/transmedia-playlist/main/epg.xml",
+  "https://tvit.leicaflorianrobert.dev/epg/list.xml",
+  "https://www.open-epg.com/files/india1.xml.gz",
+  "https://www.open-epg.com/files/newzealand1.xml.gz",
+  "https://xmltv.net/xml_files/Adelaide.xml",
+  "https://xmltv.net/xml_files/Brisbane.xml",
+  "https://xmltv.net/xml_files/Melbourne.xml",
+  "https://xmltv.net/xml_files/Perth.xml",
+  "https://xmltv.net/xml_files/Sydney.xml"
+ ],
  "last_discovery": 1793496312.5863724,
  "known": 430,
  "cache": {

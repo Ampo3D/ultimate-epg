@@ -1663,6 +1663,22 @@ def write_placeholder(f, cid, title, desc, now, end_cut):
     return n
 
 
+NO_SCHEDULE = "This channel doesn't publish a schedule."
+LABEL_KINDS = ((re.compile(r"big brother|fazenda", re.I), "Live Camera"),
+               (re.compile(r"music|stingray|proturk|lionbox|redbox|byzbox", re.I), "Music Channel"),
+               (re.compile(r"sport|world cup|center ice|racing", re.I), "Live Sports"),
+               (re.compile(r"movies", re.I), "Movies"),
+               (re.compile(r"news", re.I), "News"))
+
+
+def channel_label(c):
+    """'Stingray Latin Pop - Music Channel': says what the channel is, never pretends to be a show."""
+    name = clean_text(unescape_all(c["name"])).strip()
+    text = f'{name} {c.get("group") or ""}'
+    kind = next((k for rx, k in LABEL_KINDS if rx.search(text)), "")
+    return {"name": f"{name} - {kind}" if kind else name, "desc": NO_SCHEDULE, "logo": ""}
+
+
 NAME_PREFIXES = {"us": ["US: ", "US| ", "USA: ", "US - "], "uk": ["UK: ", "UK| ", "UK - "],
                  "ca": ["CA: ", "CA| ", "CA - "]}
 
@@ -1690,6 +1706,9 @@ def name_variants(name, cc):
     return out
 
 
+WEEK_DAYS = 7
+
+
 def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     """ONE guide for any provider and any player.
     Every copy of a real channel (ESPN on five guide sites under five codes) is grouped together.
@@ -1713,7 +1732,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         if up.get("epg_id") and e.get("epg_id") and up["epg_id"] != e["epg_id"]:
             learned.setdefault(up["epg_id"], (e["epg_id"], []))[1].append(e["name"])
     targets = {g for g, _ in learned.values()} | set(wanted)  # your own playlist's guides come along too
-    lite_codes = set(learned) | {c["id"] for c in events}  # light guide: just the channels your providers carry
+    prov = [c for c in CFG.get("provider_channels") or [] if c.get("id")]
+    lite_codes = {c["id"] for c in prov} | set(learned)  # light guide: just the channels your providers carry
 
     chans = {}
     for x in xml_sources:
@@ -1784,6 +1804,12 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 title = "No event scheduled"
             out[c["id"]] = {"from": None, "group": {"names": [c["name"]], "icon": "", "cc": "", "best": c["id"]},
                             "placeholder": {"name": title, "desc": f"Live event on {c['group'] or 'this channel'}"}}
+    for c in prov:  # no shows from any guide: a clear label instead of an empty row
+        if c.get("how") == "event":
+            continue
+        if c["id"] not in out:
+            out[c["id"]] = {"from": None, "group": {"names": [c["name"]], "icon": "", "cc": "", "best": c["id"]}}
+        out[c["id"]].setdefault("placeholder", channel_label(c))
     for cid, e in wanted.items():  # your own playlist's channels are always in it too
         if cid not in out:
             out[cid] = {"from": cid if cid in chans else None,
@@ -1793,13 +1819,18 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     def file_key(cc):
         cc = cc.lower()
         return "uk" if cc in ("gb", "uk") else cc
-    keys = ["full", "lite"] + [file_key(c) for c in pri]
+    keys = ["full", "lite", "week"] + [file_key(c) for c in pri]
+    week_cut = max(end_cut, now + timedelta(days=WEEK_DAYS))
     files = {k: gzip.open(os.path.join(OUT, full_name(k) + ".tmp"), "wt", encoding="utf-8", compresslevel=6)
              for k in keys}
     for fh in files.values():
         fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG (universal)">\n')
 
-    def write(code, text):
+    def write(code, text, far=False):
+        if code in lite_codes:
+            files["week"].write(text)
+        if far:  # past the normal guide's last day: the week guide only
+            return
         files["full"].write(text)
         if code in lite_codes:
             files["lite"].write(text)
@@ -1831,7 +1862,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 if cid not in fill or chans.get(cid, {}).get("src") != x["id"] or is_junk(el):
                     continue
                 st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                if not st or (sp or st) < start_cut or st > end_cut:
+                if not st or (sp or st) < start_cut or st > week_cut:
                     continue
                 times = clean.check(cid, el, st, sp)
                 if not times:
@@ -1851,7 +1882,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                         el.set("start", fmt_xmltv_time(st + timedelta(minutes=shift)))
                         if sp:
                             el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
-                    write(code, ET.tostring(el, encoding="unicode"))
+                    write(code, ET.tostring(el, encoding="unicode"), st > end_cut)
                     if shift:
                         el.set("start", fmt_xmltv_time(st))
                         if sp:
@@ -1869,7 +1900,11 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 def write(self, t):
                     text.append(t)
             write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, end_cut)
+            near = len(text)
             write(code, "".join(text))
+            text.clear()
+            write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, week_cut)
+            write(code, "".join(text[near:]), True)
 
     log(f"Cleaned out {clean.dropped} duplicate/overlapping/empty shows")
     sizes = []
@@ -2191,7 +2226,8 @@ def build_site(outdir, base_url):
     links = "".join(f'<p>{label}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
                     [("Playlist", "playlist.m3u"), ("Guide for this playlist", "epg.xml.gz"),
                      ("Full guide - use with any provider", "epg-full.xml.gz"),
-                     ("Light guide - your providers' channels only (Firestick, Smarters, Kodi)", "epg-lite.xml.gz")] +
+                     ("Light guide - your providers' channels only (Firestick, Smarters, Kodi)", "epg-lite.xml.gz"),
+                     ("Week guide - your providers' channels, up to 7 days (TiviMate, OTT Navigator)", "epg-week.xml.gz")] +
                     [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()] +
                     ([("Guide made for your provider (TiviMate etc.)", "epg-provider.xml.gz")]
                      if os.path.exists(os.path.join(OUT, "epg-provider.xml.gz")) else []))
