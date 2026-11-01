@@ -2230,6 +2230,22 @@
    "name": "iptv: TV.xml (GitHub)",
    "url": "https://raw.githubusercontent.com/doms9/iptv/default/M3U8/TV.xml",
    "enabled": true
+  },
+  {
+   "id": "ifill001",
+   "type": "xmltv",
+   "name": "Iptvx Lite (hand-picked channels only)",
+   "url": "https://iptvx.one/epg/epg_lite.xml.gz",
+   "enabled": true,
+   "picks_only": true
+  },
+  {
+   "id": "pfill001",
+   "type": "xmltv",
+   "name": "Programadorx Gratis (hand-picked channels only)",
+   "url": "https://epg.programadorx.cl/mdiaz/gratis.xml",
+   "enabled": true,
+   "picks_only": true
   }
  ],
  "channels": {
@@ -217591,6 +217607,14 @@
    "ok": true,
    "msg": "217 guide channels, 16735 upcoming shows",
    "time": 1793519202.7789273
+  },
+  "ifill001": {
+   "ok": true,
+   "fresh": true
+  },
+  "pfill001": {
+   "ok": true,
+   "fresh": true
   }
  },
  "last_refresh": 1793519711.3860338,
@@ -218976,8 +219000,9 @@
    "group": "US",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "nasa4k",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "national.geographic.us",
@@ -219547,8 +219572,9 @@
    "group": "US",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "stingray-qello",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "stingray.urban.beat.us",
@@ -249379,8 +249405,9 @@
    "group": "Sports",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "sky-sports-arena",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "sky.sports.1.at",
@@ -261019,8 +261046,9 @@
    "group": "Latino",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "fox.mx",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "fox.sports.2.co",
@@ -261229,8 +261257,9 @@
    "group": "Latino",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "211mvstr.ar",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "rcn.co",

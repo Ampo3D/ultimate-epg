@@ -1181,10 +1181,13 @@ def code_key(cid):
     return re.sub(r"[^a-z0-9]", "", plain(cid).lower().split("@")[0])
 
 
-def provider_index():
-    """All channels of all working guides, best sources first."""
+def provider_index(picks=False):
+    """All channels of all working guides, best sources first.
+    picks=True adds the guides that are only used for channels you picked by hand."""
     owner, names, src_cc, langs = {}, {}, {}, {}
     for x in guide_sources():
+        if x.get("picks_only") and not picks:
+            continue
         src_cc[x["id"]] = CC_ALIAS.get(guess_country(x["url"], x["name"]).lower(),
                                        guess_country(x["url"], x["name"]).lower())
         path = os.path.join(CACHE, x["id"] + ".channels.json")
@@ -1433,19 +1436,20 @@ def _match_provider_channel(c, idx):
     return "", ""
 
 
-def rematch_provider(idx=None):
+def rematch_provider():
     """Match every provider channel again with the newest guides and rules (your own picks stay). Needs no provider link."""
     chans = CFG.get("provider_channels") or []
     if not chans:
         return 0
-    idx = idx or provider_index()
+    idx = provider_index()
+    by_id = provider_index(picks=True)["by_id"]
     n = 0
     for c in chans:
         if c.get("how") == "event":
             continue
         if c.get("manual"):
             pick = c.get("picked") or c.get("guide") or ""
-            if pick.lower() in idx["by_id"] or not pick:
+            if pick.lower() in by_id or not pick:
                 c.update(guide=pick, how="manual", shift=0)
                 continue
             c["picked"] = pick  # its guide is gone for now: use the automatic match until it returns
