@@ -715,9 +715,10 @@
   {
    "id": "45aa734d",
    "type": "xmltv",
-   "name": "Open-EPG canada1",
+   "name": "Open-EPG canada1 (hand-picked channels only: listings are often on the wrong channel)",
    "url": "https://www.open-epg.com/files/canada1.xml.gz",
-   "enabled": true
+   "enabled": true,
+   "picks_only": true
   },
   {
    "id": "9168b6b9",
@@ -223173,8 +223174,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "YTV (Youth Television) - East HD.ca",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "sp2.latin.telexitos.wnju.us",

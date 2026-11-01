@@ -1778,6 +1778,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             for cid, info in json.load(fh).items():
                 if cid in chans or not info.get("n", 1) or not (in_pri or cid in targets):
                     continue
+                if x.get("picks_only") and cid not in targets:
+                    continue  # only the channels you picked from it, never its other listings
                 chans[cid] = {"src": x["id"], "names": [n for n in info["names"] if n] or [cid],
                               "icon": info.get("icon", ""), "n": info.get("n", 1),
                               "cc": id_country(cid) or xcc, "lang": info.get("lang", "")}
