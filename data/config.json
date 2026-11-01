@@ -222554,8 +222554,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "FamilyJr.ca",
-   "how": "same code"
+   "guide": "",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "food.network.canada.ca",
@@ -248657,8 +248658,9 @@
    "group": "Sports",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "nflnetwork.ca",
-   "how": "name"
+   "guide": "NFLNetwork.us",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "nfl.network.us",
