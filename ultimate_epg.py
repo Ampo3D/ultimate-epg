@@ -26,6 +26,7 @@ import urllib.error
 import urllib.request
 import uuid
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
@@ -198,18 +199,26 @@ def source_by_id(sid):
 
 # ---------------------------------------------------------------- download
 
+MAX_DOWNLOADS = 12   # at once
+HOST_DOWNLOADS = 3   # at once from one site, to stay polite
+MIN_SPEED = 50_000   # bytes a second, checked after the first minute
+
+
 def fetch(url, dest, max_bytes=None):
     """Download a URL (or copy a local file) to dest, un-gzipping if needed."""
     tmp = dest + ".part"
     try:
         if re.match(r"^https?://", url, re.I):
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-            with urllib.request.urlopen(req, timeout=180) as r, open(tmp, "wb") as f:
-                got = 0
-                while chunk := r.read(1 << 20):
+            with urllib.request.urlopen(req, timeout=30) as r, open(tmp, "wb") as f:
+                got, began = 0, time.time()
+                while chunk := r.read(1 << 18):
                     got += len(chunk)
                     if max_bytes and got > max_bytes:
                         raise ValueError(f"bigger than {max_bytes >> 20} MB")
+                    took = time.time() - began
+                    if took > 60 and got < took * MIN_SPEED:
+                        raise ValueError(f"too slow ({got >> 10} KB in {int(took)} s)")
                     f.write(chunk)
                 size = r.headers.get("Content-Length")
                 if size and size.isdigit() and not r.headers.get("Content-Encoding") and got < int(size):
@@ -230,6 +239,23 @@ def fetch(url, dest, max_bytes=None):
         for leftover in (tmp, dest + ".unz"):
             if os.path.exists(leftover):
                 os.remove(leftover)
+
+
+def download_all(sources, dest_of):
+    """Fetch many sources at once so one slow site holds up nobody else. Returns {source id: error}."""
+    hosts, failed = {}, {}
+    for src in sources:
+        hosts.setdefault(urlparse(src["url"]).netloc, threading.Semaphore(HOST_DOWNLOADS))
+
+    def one(src):
+        with hosts[urlparse(src["url"]).netloc]:
+            try:
+                fetch(src["url"], dest_of(src))
+            except Exception as ex:
+                failed[src["id"]] = ex
+    with ThreadPoolExecutor(MAX_DOWNLOADS) as pool:
+        list(pool.map(one, sources))
+    return failed
 
 
 # ---------------------------------------------------------------- M3U
@@ -1572,9 +1598,10 @@ def build():
                 f.write(f"<icon src={quoteattr(logo)}/>")
             f.write("</channel>\n")
         claimed, clean = set(), ShowCleaner()
+        needed = {owner[cid] for cid in real if cid in owner}
         for src in xml_sources:
             path = os.path.join(CACHE, src["id"] + ".xml")
-            if not os.path.exists(path):
+            if src["id"] not in needed or not os.path.exists(path):
                 continue
             here = set()
             try:
@@ -1852,9 +1879,10 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             fill.setdefault(o["from"], []).append(code)
 
     shows, live_from, clean = 0, set(), ShowCleaner()
+    needed = {chans[cid]["src"] for cid in fill if cid in chans}
     for x in xml_sources:
         path = os.path.join(CACHE, x["id"] + ".xml")
-        if not os.path.exists(path):
+        if x["id"] not in needed or not os.path.exists(path):
             continue
         try:
             for el in iter_xmltv(path, ("programme",)):
@@ -1928,14 +1956,19 @@ def refresh(only=None):
             sync_priority_sources()
             save_config()
         retry_removed_sources()
-    for src in list(all_sources()):
-        if not src.get("enabled", True) or (only and src["id"] not in only):
-            continue
+    def dest_of(src):
+        return os.path.join(CACHE, src["id"] + (".m3u" if src["type"] == "m3u" else ".xml"))
+    todo = [s for s in list(all_sources()) if s.get("enabled", True) and (not only or s["id"] in only)]
+    log(f"Downloading {len(todo)} sources")
+    failed = download_all(todo, dest_of)
+    log(f"Downloads finished, {len(failed)} failed")
+    for src in todo:
         st = status_of(src)
         try:
-            log(f"Downloading {src['type'].upper()} '{src['name']}'")
-            dest = os.path.join(CACHE, src["id"] + (".m3u" if src["type"] == "m3u" else ".xml"))
-            fetch(src["url"], dest)
+            log(f"Reading {src['type'].upper()} '{src['name']}'")
+            dest = dest_of(src)
+            if src["id"] in failed:
+                raise failed[src["id"]]
             if src["type"] == "m3u":
                 entries = parse_m3u(dest)
                 if not entries:
