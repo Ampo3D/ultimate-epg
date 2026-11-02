@@ -221890,8 +221890,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "AnimalPlanet.ca",
-   "how": "name"
+   "guide": "",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "aptn.ca",
@@ -221930,8 +221931,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "ph.caenbeinsportshd",
-   "how": "name"
+   "guide": "470340",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "bravo.canada.ca",
@@ -222000,8 +222002,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "cbchalifax.ca",
-   "how": "call letters"
+   "guide": "CBCHalifax-CBHT.ca",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "cbc.cbmt.montreal.qc.ca",
@@ -222470,8 +222473,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "DocumentaryCanada.ca",
-   "how": "name"
+   "guide": "",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "dtour.ca",
@@ -222811,8 +222815,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "Makeful.ca",
-   "how": "code"
+   "guide": "470737",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "mavtv.canada.ca",
@@ -222861,8 +222866,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "I503.88533.schedulesdirect.org",
-   "how": "name"
+   "guide": "470668",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "nickelodeon.canada.ca",
@@ -223061,8 +223067,9 @@
    "group": "Canada",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "superchannelhearthome.ca",
-   "how": "same code"
+   "guide": "SuperChannelHeartHome.ca",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "teletoon.east.ca",
@@ -227934,8 +227941,9 @@
    "group": "Entertainment",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "FOXKICU.us",
-   "how": "call letters"
+   "guide": "KTVU-DT.us_locals1",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "fox.ktxl.sacramento.ca.us",
@@ -229134,8 +229142,9 @@
    "group": "Entertainment",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "icitele.ca",
-   "how": "same code"
+   "guide": "CBFT.ca",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "ici.cbvt.quebec.qc.ca",
@@ -229854,8 +229863,9 @@
    "group": "Entertainment",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "ABCKAEF.us",
-   "how": "call letters"
+   "guide": "",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "metvn.kaza.us",
@@ -234635,8 +234645,9 @@
    "group": "Documentary",
    "prov": "Apollo Group TV",
    "shift": 0,
-   "guide": "I223.110960.schedulesdirect.org",
-   "how": "name"
+   "guide": "470809",
+   "how": "manual",
+   "manual": true
   },
   {
    "key": "discovery.science.uk",
