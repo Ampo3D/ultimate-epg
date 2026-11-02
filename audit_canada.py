@@ -49,44 +49,42 @@ chans = [c for c in u.CFG["provider_channels"] if c.get("how") != "event" and (c
 real = [c for c in chans if c.get("guide")]
 print("canadian", len(chans), "with a guide", len(real), flush=True)
 
-indexes = {}
 
-
-def alternate(c, skip):
-    """The guide the normal matcher would pick if the skipped sources did not exist."""
-    key = frozenset(skip)
-    if key not in indexes:
-        if len(indexes) >= 8:
-            indexes.pop(next(iter(indexes)))  # each index is big; too many ran the cloud machine out of memory
+def alternates(items):
+    """Per group of channels with the same skipped sources, what the normal matcher would pick without those sources."""
+    groups = {}
+    for r in items:
+        groups.setdefault(frozenset(r["skip"]), []).append(r)
+    print("rebuilding", len(groups), "indexes", flush=True)
+    for key, members in groups.items():
         u.guide_sources = lambda: [s for s in sources if s["id"] not in key]
-        indexes[key] = u.provider_index()
+        idx = u.provider_index()
         u.guide_sources = all_guides
-        print("index without", len(key), "sources:", len(indexes), flush=True)
-    d = copy.deepcopy(c)
-    cid = u.match_provider_channel(d, indexes[key])[0]
-    if not cid:
-        return None
-    src = next((x for x in holders.get(cid, []) if x not in key), None)
-    return (src, cid, d.get("shift", 0)) if src else None
+        for r in members:
+            d = copy.deepcopy(r["c"])
+            cid = u.match_provider_channel(d, idx)[0]
+            src = next((x for x in holders.get(cid, []) if x not in key), None) if cid else None
+            if src:
+                r["alts"].append((src, cid, d.get("shift", 0)))
+                r["skip"].append(src)
+                want.setdefault(src, set()).add(cid)
 
 
 rows = []
 want = {}
 for c in real:
-    src = next((x for x in holders.get(c["guide"], [])), None)
-    if not src:
-        rows.append({"c": c, "src": None, "alts": []})
-        continue
-    want.setdefault(src, set()).add(c["guide"])
-    alts, skip = [], [src]
-    for _ in range(3):
-        a = alternate(c, skip)
-        if not a:
-            break
-        alts.append(a)
-        skip.append(a[0])
-        want.setdefault(a[0], set()).add(a[1])
-    rows.append({"c": c, "src": src, "alts": alts})
+    held = holders.get(c["guide"], [])
+    src = held[0] if held else None
+    r = {"c": c, "src": src, "alts": [], "skip": [src]}
+    rows.append(r)
+    if src:
+        want.setdefault(src, set()).add(c["guide"])
+        for other in held[1:3]:  # the same channel code published by another source
+            r["alts"].append((other, c["guide"], c.get("shift", 0)))
+            want.setdefault(other, set()).add(c["guide"])
+live = [r for r in rows if r["src"]]
+alternates(live)
+alternates(live)
 
 now = datetime.now(timezone.utc)
 end = now + timedelta(hours=24)
