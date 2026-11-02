@@ -56,6 +56,8 @@ def alternate(c, skip):
     """The guide the normal matcher would pick if the skipped sources did not exist."""
     key = frozenset(skip)
     if key not in indexes:
+        if len(indexes) >= 8:
+            indexes.pop(next(iter(indexes)))  # each index is big; too many ran the cloud machine out of memory
         u.guide_sources = lambda: [s for s in sources if s["id"] not in key]
         indexes[key] = u.provider_index()
         u.guide_sources = all_guides
