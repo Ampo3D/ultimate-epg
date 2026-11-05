@@ -97,6 +97,8 @@ jobs:
           path: site
       - id: deploy
         uses: actions/deploy-pages@v5
+        with:
+          timeout: 2400000   # 40 min: GitHub sometimes takes over 10 min to publish the ~300 MB site (Nov 5)
       - name: Drop old guide copies from the cache   # 8 copies x 1.29 GB = 10.26 GB on 2026-11-05: at GitHub's 10 GB limit
         if: success()
         continue-on-error: true
