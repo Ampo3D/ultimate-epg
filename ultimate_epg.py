@@ -892,7 +892,8 @@ BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|p
 CLOCK_FIXES = ((re.compile(r"epgshare01\.online/.*_(?:RS1|ALL_SOURCES1)\.xml", re.I), re.compile(r"\.rs$"), "+0100", -60),
                (re.compile(r"epgshare01\.online/.*_(?:ZA1|ALL_SOURCES1)\.xml", re.I), re.compile(r"\.za$"), "+0700", -60),
                (re.compile(r"/GhalebAldoboni/EPG-Guide/", re.I),
-                re.compile(r"^(?:AlAoula\.ma|Al Aoula Morocco|JordanTV\.jo|Jordan TV|MBC.*|Mbc.*|Rotana.*|SBC)$"), "+0400", 60))
+                re.compile(r"^(?:AlAoula\.ma|Al Aoula Morocco|JordanTV\.jo|Jordan TV|MBC.*|Mbc.*|Rotana.*|SBC)$"), "+0400", 60),
+               (re.compile(r"/piizitv-epg/", re.I), re.compile(r"^Sportsnet\.?(?:West|\(?Pacific\)?)"), "+0000", -60))  # still on summer time (NHL schedule, Nov 5)
 
 
 def clock_fix(src, cid, start):
@@ -1728,7 +1729,7 @@ def pick_best(cands, c, idx):
             sc -= 4  # an English channel should get English listings
         if any(norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", n.lower())) == exact for n in idx["names"].get(cid, [])):
             sc += 2
-        if want_cc == "us" and want_net and re.search(r"news", text) and not re.search(r"news", pname):
+        if want_cc == "us" and want_net and re.search(r"\bnews\b", text) and not re.search(r"\bnews\b", pname):
             sc -= 2  # "KPTV FOX 12 Oregon News" is the station's streaming news channel, not FOX 12 itself
         return -sc
     return sorted(cands, key=score)[0]
