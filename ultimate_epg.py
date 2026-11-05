@@ -721,6 +721,9 @@ JUNK_TITLE_RE = re.compile(r"no longer available|no (programme |program )?inform
                            r"^beIN SPORTS, le plus grand des spectacles$|^unknown title$", re.I)
 
 
+NO_INFO_RE = re.compile(r"(?i)^no (?:info|information) available\.?$")  # IPTV-EPG.org's 13 h Pluto filler
+
+
 def is_junk(el):
     return bool(JUNK_TITLE_RE.search((el.findtext("title") or "").strip()))
 
@@ -732,13 +735,14 @@ class ShowCleaner:
     def __init__(self):
         self.kept = {}  # channel -> sorted [(start, stop)] in seconds
         self.dropped = 0
-        self.last = {}  # channel -> (title, start, stop) of the show read just before
+        self.last = {}  # channel -> (title, start, stop, desc, dropped as filler) of the show read just before
         self.titles = {}  # channel -> a few different titles seen
 
-    def remember(self, cid, el, st, sp):
+    def remember(self, cid, el, st, sp, filler=False):
         """The show read just before, and a few titles: also for shows that ended before the guide's window."""
-        tk = title_key((el.findtext("title") or "").strip())
-        self.last[cid] = (tk, st, sp)
+        title = (el.findtext("title") or "").strip()
+        tk = title_key(title)
+        self.last[cid] = (tk, st, sp, (el.findtext("desc") or "").strip(), filler, re.sub(r"\W", "", title.lower()))
         seen = self.titles.setdefault(cid, set())
         if len(seen) < 3:
             seen.add(tk)
@@ -752,10 +756,14 @@ class ShowCleaner:
         title = (el.findtext("title") or "").strip()
         tk, before = title_key(title), self.last.get(cid)
         seen = self.remember(cid, el, st, sp)
-        if (sp and sp - st >= timedelta(hours=8) and before and before[0] == tk and before[2] == st
-                and before[2] - before[1] <= timedelta(hours=1) and len(seen) >= 3
-                and not re.match(r"(?i)live\b|this is\b", title) and not re.search(r"(?i)\breturns?\b", title)):
-            self.dropped += 1  # the last episode stretched over hours the guide has nothing for
+        desc = (el.findtext("desc") or "").strip()
+        if sp and sp - st >= timedelta(hours=8) and (NO_INFO_RE.match(desc) or (
+                before and before[0] == tk and before[2] == st
+                and not re.match(r"(?i)live\b|this is\b", title) and not re.search(r"(?i)\breturns?\b", title)
+                and (before[4] and before[5] == self.last[cid][5] or before[2] - before[1] <= timedelta(hours=1)
+                     and (len(seen) >= 3 or desc and desc != before[3] and before[5] == self.last[cid][5])))):
+            self.remember(cid, el, st, sp, True)  # the next 13 h block of the same show is filler too
+            self.dropped += 1  # the last episode stretched over hours the guide has nothing for, or "no info available"
             return None
         a, b = int(st.timestamp()), int((sp or st).timestamp())
         b = min(b, a + 86400)  # a few guides stretch one show over two weeks, which fills the grid with it
@@ -1120,6 +1128,82 @@ def nhl_check(xml_sources, now):
         log(f"  Sportsnet times corrected by the NHL schedule: {sorted({f'{c} {d:+d} min' for (i, c), d in NHL_FIX.items()})}")
 
 
+CLOCK_OUT = {}  # (guide id, channel code) -> minutes its shows are off every other guide's copies: never used
+CLOCK_OUT_KEY = [None]
+ZONE_FEED_RE = re.compile(r"\b(?:west|western|pacific|mountain|central|alaska|hawaii|atlantic|newfoundland|delay|delayed|"
+                          r"timeshift)\b|\+\s?\d{1,2}\b|\bplus\s?\d\b", re.I)  # a feed that runs at other hours on purpose
+NATIONAL_WORDS = NET_WORDS | {"stream", "national", "feed", "eastern", "sd", "fhd", "uhd"}
+PLAIN_FEEDS = ("", "sd", "hd", "east", "easthd", "hdeast", "fhd", "uhd")  # iptv-org's "AMC.us@EastHD"; "@SouthAsia" is a feed of its own
+
+
+def clock_outliers(copies):
+    """copies: {(guide id, code): (its channels.json entry, country)} of the guides used automatically.
+    A US/Canadian national copy (no call letters, no West/Pacific/+1 feed, a readable .us/.ca code) is an outlier when no
+    other guide's copy has its shows at the same times, while copies with the same name in 2+ other guides agree that
+    every show is the same whole number of hours away - and twice as many as any other offset. nt74's nbc.us had Today
+    at 18:00 UTC and The Traitors at 07:00, every other NBC East 12:00 and 01:00: its tvpassport channels are 6 hours
+    late. Local stations and regional feeds keep their own clocks. Empty is better than hours off."""
+    def national(cid, names):
+        text = " ".join(names) + " " + re.sub(r"[._@]", " ", cid)
+        if callsigns(text) or call_country(cid) or re.search(r"(?<![A-Za-z0-9])[KW]\d\d[A-Z]{2}", text):
+            return False  # a local station: its own time zone
+        return not any(NET_RE.search(n.lower()) and set(re.findall(r"[a-z]+", n.lower())) - NATIONAL_WORDS for n in names)
+    pool, by_show = {}, {}
+    for k, (info, cc) in copies.items():
+        if cc not in ("us", "ca") or not info.get("n") or len(info.get("starts") or ()) < 8:
+            continue
+        names = [n for n in info.get("names") or () if n]
+        feed = k[1].split("@", 1)[1].lower() if "@" in k[1] else ""
+        zoned = bool(ZONE_FEED_RE.search(" ".join(names) + " " + re.sub(r"[._]", " ", k[1]))) or feed not in PLAIN_FEEDS
+        cand = id_country(k[1]) in ("us", "ca") and not zoned and national(k[1], names)
+        pool[k] = (list(zip(info["starts"], info.get("heads") or ())), zoned, cand, pkey_loose((names or [k[1]])[0]))
+        for s, h in pool[k][0]:
+            if h:
+                by_show.setdefault((h, s), []).append(k)
+    out = {}
+    for k, (mine, zoned, cand, key) in pool.items():
+        if not cand or len(key) < 2:
+            continue
+        hits = {}
+        for i, (s, h) in enumerate(mine):
+            for d in range(-720, 721, 60) if h else ():
+                for t in by_show.get((h, s + d), ()):
+                    if t[0] != k[0]:
+                        hits.setdefault((t, d), set()).add(i)
+        aligned = {}
+        for (t, d), ix in hits.items():
+            if len(ix) >= max(4, 0.4 * len(mine)) and len({mine[i][1] for i in ix}) >= 3:
+                aligned.setdefault(d, []).append(t)
+        if not aligned or 0 in aligned:
+            continue  # another guide has the same shows at the same times
+        same = {d: {tuple(copies[t][0]["starts"]) for t in ts if not pool[t][1] and pool[t][3] and (key in pool[t][3] or pool[t][3] in key)}
+                for d, ts in aligned.items()}  # the same name; one file mirrored by two links counts once
+        d = max(same, key=lambda x: (len(same[x]), -abs(x)))
+        if len(same[d]) >= 2 and len(same[d]) >= 2 * max((len(v) for x, v in same.items() if x != d), default=0):
+            out[k] = d
+    return out
+
+
+def find_clock_outliers(read):
+    """read: [(source, its channels.json)] - remembered while no guide file changed (the check takes a few seconds)."""
+    key = tuple(sorted((s["id"], os.path.getmtime(os.path.join(CACHE, s["id"] + ".channels.json"))) for s, _ in read
+                       if os.path.exists(os.path.join(CACHE, s["id"] + ".channels.json"))))
+    if CLOCK_OUT_KEY[0] == key:
+        return
+    copies = {}
+    for src, data in read:
+        xcc = guess_country(src["url"], src.get("name", "")).lower()
+        xcc = CC_ALIAS.get(xcc, xcc)
+        for cid, info in data.items():
+            copies[(src["id"], cid)] = (info, id_country(cid) or xcc)
+    CLOCK_OUT.clear()
+    CLOCK_OUT.update(clock_outliers(copies))
+    CLOCK_OUT_KEY[0] = key
+    if CLOCK_OUT:
+        log(f"  {len(CLOCK_OUT)} channel(s) left out - every other guide has their shows hours apart: " +
+            ", ".join(sorted(f"{c} ({d / 60:+g} h)" for (_, c), d in CLOCK_OUT.items())[:10]))
+
+
 WRONG_FEED_RE = re.compile(r"/melocalex/lighteye/|/M3UPT/|/lucianodias089/", re.I)  # every show twice 3 h apart; other countries' feeds under local codes
 
 
@@ -1136,7 +1220,7 @@ def guide_sources():
 
 def load_epg_index():
     global EPG_INDEX
-    new = {}
+    new, read = {}, []
     for src in guide_sources():
         p = os.path.join(CACHE, src["id"] + ".channels.json")
         if not os.path.exists(p) or picks_only(src):
@@ -1148,8 +1232,11 @@ def load_epg_index():
             log(f"Index of '{src['name']}' was damaged - it is rebuilt on the next update")
             os.remove(p)
             continue
+        read.append((src, data))
+    find_clock_outliers(read)
+    for src, data in read:
         for cid, info in data.items():
-            if cid not in new and info.get("n", 1):
+            if cid not in new and info.get("n", 1) and (src["id"], cid) not in CLOCK_OUT:
                 new[cid] = {"name": (info["names"] or [cid])[0], "names": info["names"],
                             "icon": info["icon"], "source": src["id"]}
     EPG_INDEX = new
@@ -1191,9 +1278,8 @@ STREAM_TAG_RE = re.compile(r"\s*(?:\((?:\d{3,4}[pi]|Geo)\)|\[(?:Geo-blocked|Not 
 
 
 def placeholder_desc(name):
-    """'Fox 5 - live 24/7', but never on a stream the playlist itself marks '[Not 24/7]'."""
-    clean = stream_name(name)
-    return f"{clean} - no schedule published" if re.search(r"(?i)not 24/7", name or "") else f"{clean} - live 24/7"
+    """'Fox 5 - no schedule published for this channel': a channel without a guide may not be on all day."""
+    return f"{stream_name(name)} - no schedule published for this channel"
 
 
 def stream_name(name):
@@ -1262,6 +1348,45 @@ def feed_station(tid, name, by_call):
     return None
 
 
+PROVIDER_ID_RE = re.compile(r"^(?:[A-Z]{2}(?=[A-Z]*\d)[A-Z0-9]{7,12}|[0-9a-f]{24}(?:-[0-9a-f]{24})?|[0-9a-f]{32})$")
+# Samsung TV Plus "USBC2100008DP", Pluto "5f8ed1ff5c39700007e2204a", Plex "<24 hex>-<24 hex>", Roku "<32 hex>"
+
+
+def guide_codes():
+    """The codes only out-of-date guides list (back after their next download), and each copy's language:
+    ({code}, {(guide id, code): language}) over the guides used automatically."""
+    fresh_ids = {s["id"] for s in guide_sources()}
+    fresh, stale, langs = set(), set(), {}
+    for src in all_sources():
+        if src["type"] != "xmltv" or not src.get("enabled", True) or picks_only(src):
+            continue
+        try:
+            with open(os.path.join(CACHE, src["id"] + ".channels.json"), encoding="utf-8") as f:
+                data = json.load(f)
+        except (OSError, ValueError):
+            continue
+        (fresh if src["id"] in fresh_ids else stale).update(data)
+        langs.update(((src["id"], c), i.get("lang") or "") for c, i in data.items())
+    return stale - fresh, langs
+
+
+def own_code(up_id, out_of_date):
+    """A streaming service's own code for the stream (Samsung TV Plus 'USBC2100008DP', Pluto/Plex ids) with shows in a
+    guide, or listed by a guide that is only out of date for now: that guide is the service's own schedule for exactly
+    this stream. Codes like 'AMC.us', '172' or a slug like 'antiques-road-trip' (another service's code too) are not this."""
+    return bool(PROVIDER_ID_RE.match(up_id or "")) and (up_id in EPG_INDEX or up_id in out_of_date)
+
+
+def same_letters(name, cid):
+    """norm() drops letters it can't spell, so 'ČT2' = 'T2': the guide channel must answer to the name with its accented
+    letters spelled out ('Č' -> 'C'); symbols like 'Ⓖ' stay dropped."""
+    def spelled(s):
+        return norm("".join(c for c in unicodedata.normalize("NFD", s or "") if not unicodedata.combining(c)))
+    k = spelled(name)
+    heads = [cid.split(".")[0]] if re.fullmatch(r"[^.]+\.[a-zA-Z]{2,3}\d?", cid) else []
+    return bool(k) and any(spelled(n) == k for n in EPG_INDEX[cid]["names"] + heads)
+
+
 def auto_match(only_unmatched=True):
     lookup = {}
     for cid, info in EPG_INDEX.items():
@@ -1270,17 +1395,45 @@ def auto_match(only_unmatched=True):
         for n in info["names"] + ([cid.split(".")[0]] if re.fullmatch(r"[^.]+\.[a-zA-Z]{2,3}\d?", cid) else []):
             if norm(n) and cid not in lookup.setdefault(norm(n), []):
                 lookup[norm(n)].append(cid)
+    out_of_date, langs = guide_codes()
+    homes = {}
     matched, by_call = 0, None
     for ch in CFG["channels"].values():
-        e = effective(ch)
-        if ch.get("epg_mine") or only_unmatched and e["epg_id"] in EPG_INDEX:
+        if ch.get("epg_mine"):
             continue  # a code you typed (or emptied) yourself is never replaced
         up_id = ch["up"].get("epg_id") or ""
+        if own_code(up_id, out_of_date):  # Samsung's "Xplore" USBC2100008DP: Samsung's own schedule, never Xplore.us2 (3 hours early)
+            if ch["ov"].pop("epg_id", None) is not None:
+                matched += 1  # a name match made while its own guide was out of date
+            continue  # its guide out of date for now: empty until it is back, never another channel's
+        e = effective(ch)
+        if ch["source"] not in homes:
+            s = source_by_id(ch["source"])
+            h = guess_country(s["url"], s.get("name", "")).lower() if s else ""
+            homes[ch["source"]] = CC_ALIAS.get(h, h)
         want = id_country(up_id) or entry_country(e["name"], e.get("group", ""), up_id)
         if not id_country(up_id) and want not in ("us", "uk", "ca"):
             want = ""  # "Shop LC" is not Saint Lucia
-        cands = lookup.get(norm(e["name"]), []) if norm(e["name"]) else []
-        cid = next((x for x in cands if not want or id_country(x) in (want, "")), None)  # "CCTV" in a US list is not China's CCTV 8K
+        strict = SAMSUNG_CC_RE.match(up_id) and code_country(up_id)  # "US1700017NM": a US channel in English
+        home = strict or want or homes[ch["source"]]
+
+        def fits(x):
+            if strict:
+                lang = LANG_OF.get(strict, "")
+                l = langs.get((EPG_INDEX[x]["source"], x), "")[:2].lower()
+                if id_country(x) != strict or lang and l and LANG_ALIAS.get(l, l) != lang:
+                    return False  # K-Drama+ US is not ES:.K-Drama+.be, ZooMoo US not a Spanish copy
+            return same_letters(e["name"], x)  # T2 (tennis) is not ČT2.cz
+        named = lookup.get(norm(e["name"]), []) if norm(e["name"]) else []
+        cands = sorted((x for x in named if (not want or id_country(x) in (want, "")) and fits(x)),
+                       key=lambda x: code_country(x) != home)  # "CCTV" in a US list is not China's CCTV 8K; its own country first
+        x = ch["ov"].get("epg_id")
+        if x and x in EPG_INDEX and x in named and (not fits(x) or home and code_country(x) not in ("", home) and cands and code_country(cands[0]) == home):
+            del ch["ov"]["epg_id"]  # an earlier name match these rules don't make: made while the right copy was out
+            e = effective(ch)
+        if only_unmatched and e["epg_id"] in EPG_INDEX:
+            continue
+        cid = cands[0] if cands else None
         feed = IPTV_ORG_RE.match(up_id)
         if feed and (feed[2].upper() == "4K" or feed[2].upper() in ("US", "UK", "GB", "CA") and code_country(up_id) != feed[1]):
             feed = None  # "Love Nature 4K" is a channel of its own; "DogWhisperer.us@UK" is the British feed
@@ -2273,7 +2426,9 @@ DUPES = set()  # channel keys hidden because a better copy exists
 
 
 FEED_CODES = {"SD": ("{b}",), "HD": ("{b}",), "East": ("{b}", "{n}East.{c}"), "Eastern": ("{b}", "{n}East.{c}"),
-              "West": ("{n}West.{c}", "{n}Pacific.{c}"), "Pacific": ("{n}Pacific.{c}", "{n}West.{c}")}
+              "West": ("{n}West.{c}", "{n}Pacific.{c}"), "Pacific": ("{n}Pacific.{c}", "{n}West.{c}"),
+              "EastHD": ("{b}", "{n}East.{c}"), "HDEast": ("{b}", "{n}East.{c}"),  # iptv-org's "AMC.us@EastHD"
+              "WestHD": ("{n}West.{c}", "{n}Pacific.{c}"), "HDWest": ("{n}West.{c}", "{n}Pacific.{c}")}
 
 
 def guide_code(tid):
@@ -2385,7 +2540,9 @@ def build():
     with open(tmp, "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG">\n')
         for cid, e in wanted.items():
-            f.write(f"<channel id={quoteattr(cid)}><display-name>{escape(clean_text(e['name']))}</display-name>")
+            shown = clean_text(e["name"])  # the clean name first; the playlist's tvg-name (with its stream notes) after it
+            f.write(f"<channel id={quoteattr(cid)}>" + "".join(f"<display-name>{escape(n)}</display-name>"
+                                                                for n in dict.fromkeys((stream_name(shown).strip(), shown))))
             logo = e["logo"] or EPG_INDEX.get(cid, {}).get("icon", "")
             if logo:
                 f.write(f"<icon src={quoteattr(logo)}/>")
@@ -2455,7 +2612,7 @@ def channel_owners(xml_sources):
         if os.path.exists(path):
             with open(path, encoding="utf-8") as fh:
                 for cid, info in json.load(fh).items():
-                    if cid not in owner and info.get("n", 1):
+                    if cid not in owner and info.get("n", 1) and (x["id"], cid) not in CLOCK_OUT:
                         owner[cid] = x["id"]
     return owner
 
@@ -2743,6 +2900,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                     continue
                 if picks_only(x) and cid not in hand:
                     continue  # only the channels you picked from it, never its other listings
+                if (x["id"], cid) in CLOCK_OUT and cid not in hand:
+                    continue  # its shows are hours off every other guide's copies
                 if cid in chans and (picks_only(x) or chans[cid]["picks"] or not better_copy(cid, chans[cid], info)):
                     continue
                 chans[cid] = {"src": x["id"], "names": [n for n in info["names"] if n] or [cid],
@@ -2896,6 +3055,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         g = o["group"]
         own = o.get("names") or (chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16])
         own = [clean_text(n).strip() for n in own if clean_text(n).strip()] or [code]
+        own = list(dict.fromkeys([stream_name(n) for n in own] + own))  # "Movies! (480p)": clean names first, tagged after
         text = f"<channel id={quoteattr(code)}>" + "".join(f"<display-name>{escape(n)}</display-name>" for n in own)
         if g["icon"]:
             text += f"<icon src={quoteattr(g['icon'])}/>"
