@@ -580,6 +580,7 @@ RYTEC_SEP_RE = re.compile(r"\s*\u2551\s*")
 RYTEC_CODE_RE = re.compile(r"S\d+(?:\s*[/:]?\s*E\d+(?:/\d+)?)?|E\d+(?:/\d+|S\d+)?|(?:Episode|Folge|Aflevering|Epizod[ae]?|Ep\.?)\s*\d+|"
                            r"\d\d[./]\d\d[./]\d{4},?\s*(?:\d\d?:\d\d\.?)?", re.I)  # leading episode codes and dates
 RYTEC_DROP_RE = re.compile(r'\d{1,4}|M?\d{1,2}\+?|\d\d?\.(?:\s*\d\d?\.)*|"?(?-i:[A-Z]{1,3})"?(?:\s*,\s*(?-i:[A-Z]{1,3}))*|serie|film', re.I)  # years, ages, countries
+PLAIN_GENRE_RE = re.compile(r"\s*[^\W\d_]{3,}(?:[ -][^\W\d_]{3,})?\s*")  # one or two words, no digits
 RYTEC_TOK_RE = re.compile(r"\s*(?:[,/&;:]|\b(?:and|und|en|et|e|y)\b)\s*", re.I)
 RYTEC_VOCAB = {}  # guide file -> (genre words, parts many different shows share)
 RYTEC_ALL = [0, set()]  # every guide's genre words: "Documentary" alone is a genre in a guide that never names episodes too
@@ -653,7 +654,8 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             child.text = ""  # escaped XML in the text ("<original-title /> ... <subevent>no</subevent>"): empty, not markup
     sub = el.find("sub-title")
     if sub is not None and sub.text and (re.fullmatch(r"\s*S\d+\s*", sub.text) or sub.text.strip().lower() in
-                                         {(c.text or "").strip().lower() for c in el.findall("category")}):
+                                         {(c.text or "").strip().lower() for c in el.findall("category")} or
+                                         sub.text.strip().lower() in vocab[1] and rytec_words(sub.text.strip()) <= vocab[0]):
         sub.text = ""  # "S1", or the genre again ("Film policier"), is no episode name
     el[:] = sorted((c for c in el if c.tag in DTD_ORDER and not (  # strict players reject other tags and orders
         c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
@@ -746,7 +748,7 @@ def same_shows(a, b):
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
     idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
-    rytec = set()
+    rytec, plain = set(), {}
     window_done = set()
     now = datetime.now(timezone.utc)
     try:
@@ -783,6 +785,10 @@ def scan_xmltv(path, src=None):
                     sub = el.findtext("sub-title") or ""
                     if "\u2551" in sub:  # learn this guide's genre words
                         rytec.add(((el.findtext("title") or "").strip().lower(), sub))
+                    elif sub and len(sub) <= 30 and PLAIN_GENRE_RE.fullmatch(sub):  # "Documentar" as the episode of every show
+                        ts = plain.setdefault(sub.strip().lower(), set())
+                        if len(ts) < 5:
+                            ts.add((el.findtext("title") or "").strip().lower())
                     if len(seen.setdefault(cid, set())) < 2:
                         seen[cid].add((el.findtext("title") or "").strip().lower())
                     if len(parts.setdefault(cid, set())) < 3:  # a one-show channel still has different episodes
@@ -803,6 +809,7 @@ def scan_xmltv(path, src=None):
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
     g, p = rytec_learn(rytec) if src and src.get("id") else (set(), set())
+    p |= {k for k, ts in plain.items() if len(ts) >= 5}  # one word under 5+ different shows: a genre, not an episode
     if not (src and src.get("id")):
         return idx, upcoming, fresh  # a guide being tried out: its words are not learned
     RYTEC_VOCAB[path] = (g, p)
