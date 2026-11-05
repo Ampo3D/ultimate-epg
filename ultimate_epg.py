@@ -642,6 +642,10 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             child.set("src", tidy_text(child.get("src")))
         if child.tag in ("title", "sub-title") and t and NEWLINE_RE.search(t):  # "Anderson Cooper 360\nEn Vivo": one line
             child.text = re.sub(r"\s+", " ", NEWLINE_RE.sub(" ", t)).strip()
+    sub = el.find("sub-title")
+    if sub is not None and sub.text and (re.fullmatch(r"\s*S\d+\s*", sub.text) or sub.text.strip().lower() in
+                                         {(c.text or "").strip().lower() for c in el.findall("category")}):
+        sub.text = ""  # "S1", or the genre again ("Film policier"), is no episode name
     el[:] = sorted((c for c in el if c.tag in DTD_ORDER and not (  # strict players reject other tags and orders
         c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
         c.tag == "icon" and (not re.match(r"https?://", c.get("src", ""), re.I) or PRIVATE_URL_RE.match(c.get("src", ""))))),
