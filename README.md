@@ -12,20 +12,20 @@ The program lives in `C:\Users\Ampo3D\UltimateEPG`. If something goes wrong, `da
 says what happened.
 
 ## Use it
-1. **Sources tab** â€“ it starts preloaded with recommended free sources. Browse the
+1. **Sources tab** – it starts preloaded with recommended free sources. Browse the
    **Free source library** to add more (filter by country), or add your playlists (M3U) and guides (XMLTV `.xml` / `.xml.gz`).
    URLs or files on your PC both work. Press **Save sources**; they download automatically.
    Order matters for guides: the one higher up wins when two cover the same channel.
 2. **Channels tab**
    - Tick/untick **On** to keep or hide channels. Select many rows for bulk enable/disable,
      set group, or renumber.
-   - Rename, regroup, renumber, change logo inline; âœŽ edits everything incl. the stream URL.
+   - Rename, regroup, renumber, change logo inline; ✎ edits everything incl. the stream URL.
    - **Guide column**: green = real guide, orange = placeholder guide, red = none.
-     Press **Auto-match guide** to match channels to guides by name, or ðŸ” to pick one by hand.
-   - **+ Add 24/7 / custom channel** â€“ paste any stream URL. Without a real guide it gets
+     Press **Auto-match guide** to match channels to guides by name, or 🔍 to pick one by hand.
+   - **+ Add 24/7 / custom channel** – paste any stream URL. Without a real guide it gets
      a placeholder guide (channel name + your description) so it never shows "No information".
    - Press **Save changes**. Your edits survive every re-download of the sources.
-3. **Links & Settings tab** â€“ copy your links.
+3. **Links & Settings tab** – copy your links.
 
 ## The universal guide (any player, any provider)
 `https://ampo3d.github.io/ultimate-epg/epg-full.xml.gz` (or `epg-us` / `epg-uk` / `epg-ca`.xml.gz)
@@ -47,9 +47,9 @@ Every time your sources update (every 12 hours at home, every 3 hours on GitHub)
 3. Tests the most promising ones (your channels' countries first) and **adds only guides that
    cover channels that still have no guide**. The rest are remembered and re-checked every 1-2 weeks.
 
-See them on the **Sources tab â†’ Auto-found guides**: press **Keep** to make one permanent or
+See them on the **Sources tab → Auto-found guides**: press **Keep** to make one permanent or
 **Remove** to never add it again. Settings let you change how many guides are tested per search
-(default 15) and the biggest download allowed (default 80 MB).
+(default 30) and the biggest download allowed (default 80 MB).
 
 ## Links for your players
 - Playlist: `http://<this-PC-IP>:8787/playlist.m3u` (the guide link is embedded in it)
@@ -58,9 +58,9 @@ See them on the **Sources tab â†’ Auto-found guides**: press **Keep** to ma
 These work in TiviMate, IPTV Smarters, OTT Navigator, Kodi (PVR IPTV Simple), VLC, Plex/Jellyfin
 Live TV, etc., on any device on your home network while this PC is on.
 Sources re-download every 12 hours by default (change it in Settings). These home links
-need this PC on â€” see below for links that don't.
+need this PC on — see below for links that don't.
 
-## Put it online â€” links that work with your PC OFF (free)
+## Put it online — links that work with your PC OFF (free)
 GitHub rebuilds your playlist and guide on its own servers every 3 hours and hosts the links
 for free (GitHub Pages). Your PC is only needed when you want to edit.
 
@@ -71,9 +71,9 @@ for free (GitHub Pages). Your PC is only needed when you want to edit.
 3. About 5 minutes later your permanent links are live:
    - Playlist: `https://<your-github-name>.github.io/my-epg/playlist.m3u`
    - Guide: `https://<your-github-name>.github.io/my-epg/epg.xml.gz`
-   They're also shown in the editor under **Links & Settings â†’ Online links**.
+   They're also shown in the editor under **Links & Settings → Online links**.
 
-**Changing things later:** start the editor, make your edits, press **â˜ Publish online**.
+**Changing things later:** start the editor, make your edits, press **☁ Publish online**.
 The online links update a few minutes later.
 
 **Good to know**

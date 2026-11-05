@@ -1,11 +1,26 @@
-# GitHub often skips scheduled runs. This tiny job asks to run twice an hour (GitHub
-# runs it every few hours) and starts a rebuild if the last good build is over 3 hours
-# old, so the guide never runs out. After 8 hours with no good build it emails you (then at most every 12 hours).
+# Replacement for .github/workflows/watchdog.yml
+#
+# Why: GitHub's cron is not reliable on this repo. Since the repo was created
+# (2026-11-05 02:34 UTC) the "7,37 * * * *" watchdog fired ONCE in ~9 hours (run
+# 42005706389) and the 3-hourly build cron fired ONCE (run 42014067978, the 09:17 slot,
+# 93 min late). Every other build came from the owner's own pushes, i.e. from the PC.
+# A watchdog that only runs when cron fires cannot rescue a cron that doesn't fire.
+#
+# What changes:
+# 1. Relay: each watchdog run keeps watching for ~5.5 h (one check every 20 min), then
+#    starts the next watchdog itself (workflow_dispatch with GITHUB_TOKEN is allowed to
+#    start runs). The cron stays only as a backstop that restarts the relay if it breaks.
+#    The concurrency group keeps at most one running + one waiting watchdog.
+#    (Public repo: standard runners are free. If you prefer not to keep a runner busy,
+#    use an outside pinger such as cron-job.org calling the workflow_dispatch API with a
+#    fine-grained token limited to "Actions: write" on this one repo.)
+# 2. It also reads the LIVE site's health.json, so a build that "succeeded" but did not
+#    change what players download (Pages hiccup, deploy skipped) is noticed too.
 name: Watchdog
 
 on:
   schedule:
-    - cron: "7,37 * * * *"
+    - cron: "7,37 * * * *"   # backstop only: restarts the relay if it ever stops
   workflow_dispatch:
     inputs:
       force:
@@ -25,31 +40,56 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 345
     steps:
-      - name: Rebuild if the guide is getting old
+      - name: Watch the guide (a check every 20 minutes for about 5.5 hours)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          FORCE: ${{ inputs.force }}
+          SITE: https://ampo3d.github.io/ultimate-epg
+        run: |
+          check() {
+            # a GitHub hiccup anywhere here must never stop the rebuild at the end
+            q() { gh run list -R "$REPO" -w build.yml --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""'; }
+            last=$(q) || { sleep 20; last=$(q) || last=unknown; }
+            age=999999
+            if [ "$last" = unknown ]; then age=10801; elif [ -n "$last" ]; then age=$(( $(date +%s) - $(date -d "$last" +%s) )); fi
+            # what players really download: the time inside the published health.json
+            site=$(curl -fsS --max-time 60 "$SITE/health.json?nocache=$(date +%s)" | jq -r '.time // empty' 2>/dev/null) || site=""
+            if [ -n "$site" ]; then site_age=$(( $(date +%s) - ${site%.*} )); else site_age=$age; fi
+            [ "$site_age" -gt "$age" ] && [ "$last" != unknown ] && age=$site_age
+            echo "$(date -u +%H:%M) last good build: $last; published guide age: ${site_age}s; using ${age}s"
+            if [ "$age" -gt 28800 ] && [ "$last" != unknown ]; then   # 8 hours: tell the owner (at most once every 12 hours)
+              n=$(gh issue list -R "$REPO" --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') || n=SKIP
+              if [ "$n" = SKIP ]; then echo "Couldn't check the alert issue; trying again next time"; else
+                told=""
+                if [ -n "$n" ]; then told=$(gh issue view "$n" -R "$REPO" --json body,createdAt,comments --jq '[(if (.body | contains("No good guide update")) then .createdAt else empty end), (.comments[] | select(.body | contains("No good guide update")) | .createdAt)] | last // ""' || true); fi
+                if [ -z "$told" ] || [ $(( $(date +%s) - $(date -d "$told" +%s) )) -gt 43200 ]; then
+                  if [ -n "$last" ]; then since="for $((age / 3600)) hours"; else since="found"; fi
+                  body="@Ampo3D No good guide update $since (the published guide is $((site_age / 3600)) hours old). Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
+                  if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body" || true; else gh issue create -R "$REPO" --title "Guide needs attention" --body "$body" || true; fi
+                fi
+              fi
+            fi
+            active=$(gh run list -R "$REPO" -w build.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length') || active=0
+            if [ "$active" != "0" ]; then echo "A build is already running or waiting"; return 0; fi
+            if [ "$age" -gt 10800 ] || [ "$FORCE" = "true" ]; then
+              FORCE=false
+              gh workflow run build.yml -R "$REPO" --ref main || { sleep 30; gh workflow run build.yml -R "$REPO" --ref main; } || true
+              echo "Rebuild started"
+            fi
+          }
+          end=$(( $(date +%s) + 19800 ))   # 5.5 hours, inside the 345-minute job limit
+          while :; do
+            check || echo "check failed, trying again in 20 minutes"
+            [ $(( $(date +%s) + 1200 )) -lt "$end" ] || break
+            sleep 1200
+          done
+      - name: Hand over to the next watchdog
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          # a GitHub hiccup anywhere here must never stop the rebuild at the end
-          q() { gh run list -R "$REPO" -w build.yml --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""'; }
-          last=$(q) || { sleep 20; last=$(q) || last=unknown; }
-          age=999999
-          if [ "$last" = unknown ]; then age=10801; elif [ -n "$last" ]; then age=$(( $(date +%s) - $(date -d "$last" +%s) )); fi
-          echo "Last good build: $last ($age seconds ago)"
-          if [ "$age" -gt 28800 ] && [ "$last" != unknown ]; then   # 8 hours: tell the owner (at most once every 12 hours)
-            n=$(gh issue list -R "$REPO" --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') || n=SKIP
-            if [ "$n" = SKIP ]; then echo "Couldn't check the alert issue; trying again next time"; else
-              told=""
-              if [ -n "$n" ]; then told=$(gh issue view "$n" -R "$REPO" --json body,createdAt,comments --jq '[(if (.body | contains("No good guide update")) then .createdAt else empty end), (.comments[] | select(.body | contains("No good guide update")) | .createdAt)] | last // ""' || true); fi
-              if [ -z "$told" ] || [ $(( $(date +%s) - $(date -d "$told" +%s) )) -gt 43200 ]; then
-                if [ -n "$last" ]; then since="for $((age / 3600)) hours"; else since="found"; fi
-                body="@Ampo3D No good guide update $since. Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
-                if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body" || true; else gh issue create -R "$REPO" --title "Guide needs attention" --body "$body" || true; fi
-              fi
-            fi
-          fi
-          active=$(gh run list -R "$REPO" -w build.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length') || active=0
-          if [ "$active" != "0" ]; then echo "A build is already running or waiting"; exit 0; fi
-          if [ "$age" -gt 10800 ] || [ "${{ inputs.force }}" = "true" ]; then gh workflow run build.yml -R "$REPO" --ref main || { sleep 30; gh workflow run build.yml -R "$REPO" --ref main; }; echo "Rebuild started"; fi
+          gh workflow run watchdog.yml -R "$REPO" --ref main || { sleep 30; gh workflow run watchdog.yml -R "$REPO" --ref main; }

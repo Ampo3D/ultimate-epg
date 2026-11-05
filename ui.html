@@ -38,7 +38,7 @@ td input{width:100%;padding:4px 6px}
 td.num input{width:58px}
 img.logo{width:36px;height:24px;object-fit:contain;background:#0003;border-radius:3px;display:block}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;flex:none}
-.dot.real{background:var(--ok)}.dot.dummy{background:var(--warn)}.dot.none{background:var(--bad)}
+.dot.real{background:var(--ok)}.dot.dummy{background:var(--warn)}.dot.none{background:var(--bad)}.dot.pending{background:var(--acc)}
 .epg{display:flex;align-items:center;gap:4px}
 .epg input{flex:1}
 .tag{font-size:11px;padding:1px 6px;border-radius:9px;background:var(--panel2);color:var(--dim);white-space:nowrap}
@@ -291,7 +291,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let S = null, byKey = {}, dirty = {}, sel = new Set(), shown = 300, srcDraft = null, filtered = [];
+let S = null, byKey = {}, dirty = {}, sel = new Set(), shown = 300, srcDraft = null, srcBase = '', filtered = [];
 
 async function post(path, body) {
   const r = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
@@ -304,7 +304,9 @@ async function load() {
     if (dirty[c.key]) Object.assign(c, dirty[c.key]);
     byKey[c.key] = c;
   }
-  if (!srcDraft) srcDraft = JSON.parse(JSON.stringify(S.sources));
+  for (const k of [...sel]) if (!byKey[k]) sel.delete(k);
+  for (const k of Object.keys(dirty)) if (!byKey[k]) delete dirty[k];
+  if (!srcDraft) { srcDraft = JSON.parse(JSON.stringify(S.sources)); srcBase = JSON.stringify(S.sources); }
   renderAll();
 }
 let pollT = null;
@@ -377,9 +379,9 @@ function renderHealth() {
   const c = S.health_counts || {}, dead = all.filter(s => H[s.id]?.state === 'dead'), stale = all.filter(s => H[s.id]?.state === 'stale');
   const total = Object.values(c).reduce((a, b) => a + b, 0);
   const chip = $('healthChip');
-  chip.className = 'hl ' + (dead.length ? 'dead' : stale.length ? 'stale' : total ? 'healthy' : 'checking');
+  chip.className = 'hl ' + (dead.length ? 'dead' : stale.length ? 'stale' : total && !c.checking ? 'healthy' : 'checking');
   chip.textContent = !total ? 'Checking sources…' : dead.length ? `${dead.length} dead source${dead.length > 1 ? 's' : ''}`
-    : stale.length ? `${stale.length} out of date` : `All ${total} sources working`;
+    : stale.length ? `${stale.length} out of date` : c.checking ? `${c.healthy || 0} working · ${c.checking} checking…` : `All ${total} sources working`;
   $('healthSummary').textContent = total ? `${c.healthy || 0} working · ${c.stale || 0} out of date · ${c.dead || 0} dead` : 'Checking…';
   const b = $('healthBanner');
   b.classList.toggle('hide', !dead.length);
@@ -418,6 +420,7 @@ async function live() {
     renderHealth();
     if (r.busy && !S.busy) poll();
   } catch (e) {
+    if (!$('healthChip')) return;
     $('healthChip').className = 'hl dead'; $('healthChip').textContent = 'Ultimate EPG is not running';
   }
 }
@@ -431,7 +434,7 @@ async function poll() {
   Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events});
   renderStatus(); renderLog(); renderHealth();
   if (r.busy) pollT = setTimeout(poll, 1500);
-  else { srcDraft = null; await load(); }
+  else { if (srcDraft && JSON.stringify(srcDraft) === srcBase) srcDraft = null; await load(); }  // keep unsaved source edits
 }
 
 function renderAll() { renderStatus(); renderFilters(); renderTable(); renderSources(); renderAuto(); renderRemoved(); renderProvider(); renderLinks(); renderLog(); renderHealth(); }
@@ -446,7 +449,8 @@ function renderStatus() {
 
 function renderFilters() {
   const groups = [...new Set(S.channels.map(c => c.group || ''))].sort();
-  const keep = (id, html) => { const v = $(id).value; $(id).innerHTML = html; $(id).value = v || $(id).options[0].value; };
+  const keep = (id, html) => { const el = $(id), had = el.options.length, v = el.value; el.innerHTML = html;
+    if (had) el.value = v; if (!had || el.selectedIndex < 0) el.value = el.options[0].value; };
   keep('fGroup', '<option value="*">All groups</option>' + groups.map(g => `<option value="${esc(g)}">${esc(g || '(no group)')}</option>`).join(''));
   const srcs = [...S.sources.filter(s => s.type === 'm3u'), {id: 'custom', name: 'Custom'}];
   keep('fSource', '<option value="*">All sources</option>' + srcs.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join(''));
@@ -479,7 +483,7 @@ function renderTable() {
       <td>${c.logo ? `<img class="logo" loading="lazy" src="${esc(c.logo)}" onerror="this.style.visibility='hidden'">` : ''}</td>
       <td><input data-f="name" value="${esc(c.name)}"></td>
       <td><input data-f="group" list="groupList" value="${esc(c.group)}"></td>
-      <td><span class="epg"><i class="dot ${c.guide}" title="${c.guide === 'real' ? 'Real guide found' : c.guide === 'dummy' ? 'Placeholder guide' : 'No guide'}"></i>
+      <td><span class="epg"><i class="dot ${c.guide}" title="${c.guide === 'real' ? 'Real guide found' : c.guide === 'dummy' ? 'Placeholder guide' : c.guide === 'pending' ? 'Guide picked - press Save' : 'No guide'}"></i>
         <input data-f="epg_id" value="${esc(c.epg_id)}" placeholder="—"><button class="b" data-find title="Find guide">🔍</button></span></td>
       <td><span class="tag ${c.missing ? 'bad' : ''}" title="${c.missing ? 'No longer in this source' : ''}">${esc(c.source_name)}${c.missing ? ' (gone)' : ''}</span>${c.duplicate ? '<br><span class="tag" title="Same channel exists in a higher-priority source, so this copy is left out of your playlist">duplicate</span>' : ''}</td>
       <td><button class="b" data-edit title="All fields">✎</button></td>
@@ -698,13 +702,16 @@ function renderLinks() {
   $('linkRows').innerHTML = rows.map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('');
   for (const k of Object.keys(S.settings)) {
     const el = $('s_' + k); if (!el) continue;
+    const cur = el.type === 'checkbox' ? String(el.checked) : el.value;
+    if ('shown' in el.dataset && cur !== el.dataset.shown) continue;  // changed but not saved yet: keep it
     el.type === 'checkbox' ? el.checked = S.settings[k] : el.value = S.settings[k];
+    el.dataset.shown = el.type === 'checkbox' ? String(el.checked) : el.value;
   }
 }
 function renderLog() { $('log').textContent = (S.log || []).join('\n') || 'Nothing yet.'; $('log').scrollTop = 1e9; }
 async function saveSettings() {
   const body = {};
-  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? el.value : el.value.trim(); }
+  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) delete el.dataset.shown; if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? el.value : el.value.trim(); }
   await post('/api/settings', body); poll();
 }
 async function publishOnline() {

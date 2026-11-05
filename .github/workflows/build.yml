@@ -1,7 +1,16 @@
-# Rebuilds your playlist + guide on GitHub's servers, searches the internet for new
-# guides, and publishes everything on GitHub Pages - so your links work even when
-# your PC is off. Asked for every 3 hours; GitHub often runs it only every 5-8 hours
-# (watchdog.yml starts a build when one is overdue).
+# Replacement for .github/workflows/build.yml
+#
+# Changes against the current file (everything else is identical):
+# 1. Step timeout 80 -> 150 min, job timeout 90 -> 170 min. Measured "Download sources,
+#    find new guides, build" step: 29-60 min over the 10 completed runs of 2026-11-05
+#    (60 min in run 41971060255 = 75% of the old limit). The source list grows by itself
+#    (auto-discovery), so the old limit is one slow guide host away from killing a build.
+# 2. Cron line unchanged; its comment now says the truth: GitHub fired it once in 8.5 h
+#    on 2026-11-05, and the watchdog relay (fix_1) is what starts builds when the PC is off.
+# 4. Old 1.3 GB guide-copy caches are deleted (8 copies = 10.26 GB, the repo limit), which
+#    needs actions: write.
+# 3. "Save newly found guides": if all three push attempts fail, say so in alert.md
+#    instead of silently losing the discovered guides.
 name: Build EPG
 
 on:
@@ -10,7 +19,7 @@ on:
     paths-ignore:
       - .github/workflows/watchdog.yml
   schedule:
-    - cron: "17 */3 * * *"   # every 3 hours (GitHub sometimes skips a run - the guide always covers 2 days)
+    - cron: "17 */3 * * *"   # asked for every 3 hours; GitHub skips many - watchdog.yml starts the missing ones
   workflow_dispatch:
     inputs:
       test_alert:
@@ -23,6 +32,7 @@ permissions:
   issues: write       # the email: a mention on a GitHub issue
   pages: write
   id-token: write
+  actions: write      # only to delete old guide-copy caches (each 1.3 GB, repo limit 10 GB)
 
 concurrency:
   group: pages
@@ -31,7 +41,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 170
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -53,7 +63,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Download sources, find new guides, build
-        timeout-minutes: 80   # fails like a normal step, so the alert and save steps after it still run
+        timeout-minutes: 150   # measured 29-60 min; fails like a normal step, so the alert and save steps after it still run
         run: python ultimate_epg.py --build-site site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,17 +84,27 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Auto-found guides update"
             git reset -q --hard HEAD   # the build's own config.json edits are never published; they'd block the pull
+            saved=no
             for i in 1 2 3; do   # your own push can land in between: try again
-              git pull --rebase -X theirs origin main && git push && break
+              if git pull --rebase -X theirs origin main && git push; then saved=yes; break; fi
               git rebase --abort 2>/dev/null || true
               sleep 10
             done
+            if [ "$saved" != yes ]; then echo "- The guides this run found could not be saved to the repo (push refused 3 times)" >> alert.md; fi
           fi
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - id: deploy
         uses: actions/deploy-pages@v5
+      - name: Drop old guide copies from the cache   # 8 copies x 1.29 GB = 10.26 GB on 2026-11-05: at GitHub's 10 GB limit
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |   # this run's own copy is saved after this step; keep the 2 newest older ones as spares
+          gh cache list --key epg-cache- --sort created_at --order desc --limit 100 --json id --jq '.[2:][].id' | xargs -r -n1 gh cache delete || true
       - name: Email you if something went wrong
         if: always()
         continue-on-error: true

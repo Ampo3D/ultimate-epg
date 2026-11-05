@@ -6,6 +6,7 @@ No installs needed beyond Python 3.8+. Run:  python ultimate_epg.py
 Then open http://localhost:8787 in a browser.
 """
 import bisect
+import codecs
 import difflib
 import gzip
 import lzma
@@ -491,6 +492,11 @@ BAD_XML_BYTES = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]|\xef\xbf[\xbe\xbf]|"
                            rb"&#(?:0*(?:[0-8]|1[124-9]|2\d|3[01])|[xX]0*(?:[0-8bcefBCEF]|1[0-9a-fA-F]));")
 BARE_AMP = re.compile(rb"&(?!(?:amp|lt|gt|quot|apos|#\d+|#[xX][0-9a-fA-F]+);)")
 CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f\ufffe\uffff]")
+NOT_UTF8_DECL = re.compile(rb"^\s*<\?xml[^>]*\bencoding\s*=\s*[\"'](?!utf-?8[\"'])", re.I)
+
+
+def cp1252_fallback(e):  # a byte that is not UTF-8 is read the way a browser would
+    return e.object[e.start:e.end].decode("cp1252", "replace"), e.end
 
 
 class CleanReader:
@@ -499,14 +505,19 @@ class CleanReader:
     def __init__(self, path):
         self.f = open(path, "rb")
         self.carry = b""
-        self.utf16 = self.f.read(2) in (b"\xff\xfe", b"\xfe\xff")
-        self.f.seek(0)
+        head = self.f.read(200)
+        self.utf16 = head[:2] in (b"\xff\xfe", b"\xfe\xff")
+        self.f.seek(0)  # a stray Latin-1 byte ("Caf\xe9") in a UTF-8 guide stops the parser: the rest of the guide lost
+        codecs.register_error("uepg_cp1252", cp1252_fallback)
+        self.dec = None if self.utf16 or NOT_UTF8_DECL.match(head) else codecs.getincrementaldecoder("utf-8")("uepg_cp1252")
 
     def read(self, n=-1):
         if self.utf16:
             return self.f.read(n)
         while True:  # an empty answer would mean "end of file" to the parser
             raw = self.f.read(n)
+            if self.dec:  # split characters wait in the decoder for the next read
+                raw = self.dec.decode(raw, final=not raw).encode("utf-8")
             data = self.carry + raw
             self.carry = b""
             if raw:  # a "&...;" or a bad character may be cut in two between reads
@@ -538,6 +549,12 @@ NEW_TAG_RE = re.compile(r"(?:\s*\[(?:NEW|LIVE)\]:?)+\s*$")
 GARBLED_TAIL_RE = re.compile("[\u00fb\u00f4\u00e3\u00c2\u20ac\u0161\u0192\u02dc\u201a\u00ce]{6,}$")
 ARABIC_FORMS_RE = re.compile("[\ufb50-\ufdff\ufe70-\ufefc]+")  # presentation forms many TV fonts can't draw
 C1_RE = re.compile("[\x80-\x9f]")  # Windows quote marks and dashes read as Latin-1: "\x93Hello\x94"
+CONTROLS_RE = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f\ufffe\uffff]")
+
+
+def fix_controls(t):
+    """'Richard O\x92Brien' -> 'Richard O\u2019Brien'; DEL and controls with no Windows meaning are dropped."""
+    return C1_RE.sub(lambda m: bytes([ord(m[0])]).decode("cp1252", "ignore"), CTRL_RE.sub("", t))
 
 
 def fix_mojibake(m):
@@ -633,6 +650,14 @@ PRIVATE_URL_RE = re.compile(r"^\s*[a-z]+://(?:[^/@\s]*@)?(?:127\.|10\.|192\.168\
 
 def tidy_show(el, vocab=(frozenset(), frozenset())):
     """Guides that escaped their text twice would show "&amp;" and diamonds on screen."""
+    for node in el.iter():  # every text: credits, ratings and attributes too, not only the title
+        if node.text and CONTROLS_RE.search(node.text):
+            node.text = fix_controls(node.text)
+        if node is not el and node.tail and CONTROLS_RE.search(node.tail):
+            node.tail = fix_controls(node.tail)
+        for k, v in node.attrib.items():
+            if CONTROLS_RE.search(v):
+                node.set(k, fix_controls(v))
     for child in el:
         if child.tag == "sub-title" and child.text and "\u2551" in child.text:  # "S4E20 ║ Episode 20 ║ Gameshow ║ GB ║ 2025"
             parts = rytec_parts(child.text)  # after the codes: the episode name, if there is one, then genre, country, year
@@ -669,7 +694,7 @@ DTD_ORDER = {t: i for i, t in enumerate("title sub-title desc credits date categ
 
 
 def clean_text(t):
-    return tidy_text(CTRL_RE.sub("", t or ""))
+    return tidy_text(fix_controls(t or ""))
 
 
 def iter_xmltv(path, tags):
@@ -707,11 +732,24 @@ class ShowCleaner:
     def __init__(self):
         self.kept = {}  # channel -> sorted [(start, stop)] in seconds
         self.dropped = 0
+        self.last = {}  # channel -> (title, start, stop) of the show read just before
+        self.titles = {}  # channel -> a few different titles seen
 
     def check(self, cid, el, st, sp):
         """Returns the (start, stop) to write, or None to skip the show."""
         if not st or (sp and (sp <= st or sp - st >= timedelta(hours=18))) or not (el.findtext("title") or "").strip():
             self.dropped += 1
+            return None
+        title = (el.findtext("title") or "").strip()
+        tk, before = title_key(title), self.last.get(cid)
+        self.last[cid] = (tk, st, sp)
+        seen = self.titles.setdefault(cid, set())
+        if len(seen) < 3:
+            seen.add(tk)
+        if (sp and sp - st >= timedelta(hours=8) and before and before[0] == tk and before[2] == st
+                and before[2] - before[1] <= timedelta(hours=1) and len(seen) >= 3
+                and not re.match(r"(?i)live\b|this is\b", title) and not re.search(r"(?i)\breturns?\b", title)):
+            self.dropped += 1  # the last episode stretched over hours the guide has nothing for
             return None
         a, b = int(st.timestamp()), int((sp or st).timestamp())
         b = min(b, a + 86400)  # a few guides stretch one show over two weeks, which fills the grid with it
@@ -748,7 +786,7 @@ def same_shows(a, b):
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
     idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
-    rytec, plain = set(), {}
+    rytec, plain, clocks = set(), {}, {}
     window_done = set()
     now = datetime.now(timezone.utc)
     try:
@@ -760,6 +798,9 @@ def scan_xmltv(path, src=None):
                 idx[el.get("id", "")] = {"names": names, "icon": logo if re.match(r"https?://", logo, re.I) and not PRIVATE_URL_RE.match(logo) else ""}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
+                st1 = parse_xmltv_time(el.get("start"))
+                if end and el.get("stop") and (not st1 or end <= st1 or end - st1 >= timedelta(hours=18)):
+                    end = None  # the build drops it (ShowCleaner): a 3-day filler is no "guide runs until" either
                 fix = timedelta(minutes=clock_fix(src, el.get("channel", ""), el.get("start") or "")) if src and end else None
                 if fix:
                     end += fix
@@ -781,6 +822,11 @@ def scan_xmltv(path, src=None):
                             starts[cid].append(int(st.timestamp()) // 60)
                             heads.setdefault(cid, []).append(title_key(el.findtext("title")))  # and their titles
                     idx.setdefault(cid, {"names": [], "icon": ""})  # some guides (Rytec) have no channel list
+                    said = len(clocks.get(cid, ())) < 60 and title_clock(el.findtext("title"))
+                    st1 = said and parse_xmltv_time(el.get("start"))
+                    if st1:  # "News at 10pm": where the guide put a show that states its time
+                        st1 += fix or timedelta(0)
+                        clocks.setdefault(cid, []).append((said, st1.hour * 60 + st1.minute))
                     t = el.find("title")
                     sub = el.findtext("sub-title") or ""
                     if "\u2551" in sub:  # learn this guide's genre words
@@ -807,6 +853,7 @@ def scan_xmltv(path, src=None):
             info["last"] = lasts.get(cid, 0)
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
+    clock_check(idx, clocks, src)
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
     g, p = rytec_learn(rytec) if src and src.get("id") else (set(), set())
     p |= {k for k, ts in plain.items() if len(ts) >= 5}  # one word under 5+ different shows: a genre, not an episode
@@ -828,6 +875,7 @@ def index_xmltv_source(src):
             if info.get("lang") == "de" and id_country(cid) not in ("de", "at", "ch"):
                 info["lang"] = ""  # unknown, not German: copies are then compared by their shows only
     write_atomic(os.path.join(CACHE, src["id"] + ".channels.json"), json.dumps(idx, ensure_ascii=False))
+    status_of(src)["until"] = max((i.get("end", 0) for i in idx.values() if i.get("n")), default=0)  # its last show ends
     return len(idx), upcoming, fresh
 
 
@@ -903,7 +951,8 @@ def sync_priority_sources():
     return added
 
 
-BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|piizitv-epg/|epg_ripper_NG|epg_ripper_BEIN1|open-epg\.com/files/(germany1|spain1)|/Robync27/personal-epg/", re.I)  # times hours off, in both directions
+BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|piizitv-epg/|epg_ripper_NG|epg_ripper_BEIN1|open-epg\.com/files/(germany1|spain1)|/Robync27/personal-epg/|/aurtkn1/open-epg-turkey/|/Shincyann128/iptv-epg/", re.I)  # times hours off, in both directions
+# Shincyann128: all shows stamped +0800, the US ones in Eastern wall-clock time - KDFW, ESPN, Golf Channel 13 h late.
 # guides whose clock is off for some channels: (guide link, channel code, time zone stamp, minutes to add).
 # epgshare's Serbian codes stamped +0100 are an hour late (93 of 94 checked against iptv-epg.org RS; the +0000 ones are right).
 # A rule stops by itself when the guide changes its stamp.
@@ -920,6 +969,96 @@ def clock_fix(src, cid, start):
     z = re.search(r"([+-])(\d\d):?(\d\d)\s*$", start or "")
     zone = z and z[1] + z[2] + z[3]
     return next((m for u, c, r, m in CLOCK_FIXES if zone == r and c.search(cid) and u.search(src["url"])), 0)
+
+
+# A title that states its own time shows where the guide put the local clock: "FOX 35 News at 10pm" at 22:00 UTC is
+# Orlando's local time written as UTC (Roku), "Fox 4 News at 5" at 12:00 UTC is Dallas 13 hours late (a +0800 guide).
+CLOCK_AMPM_RE = re.compile(r"(?<![\w:.])(\d{1,2})(?:[:.](\d\d))?\s?([ap])\.?\s?m\b\.?", re.I)  # "6AM", "10 p.m.", "at 4:30AM"
+CLOCK_AT_RE = re.compile(r"(?:\bat|@)\s*(\d{1,2})(?:[:.h](\d\d))?(?![\w.,:/%\u00b0'-])", re.I)  # "News at 5", "@ 20:00"
+CLOCK_WORD_RE = re.compile(r"(?:\bat|@)\s*(noon|midnight)\b", re.I)
+CLOCK_NOT_RE = re.compile(r"\b(?:start|return|resume|back|next|until|till|coming|from|program|ar ais|"
+                          r"(?:mon|tues|wednes|thurs|fri|satur|sun)day|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)", re.I)
+# "Programmes start at 6am", "Next event Nov. 3 at 7pm": a time that isn't this show's
+NA_ZONES = (-150, -180, -210, -240, -300, -360, -420, -480, -540, -600)  # minutes: Newfoundland to Hawaii, summer and winter
+NET_WORDS = {"abc", "cbs", "nbc", "fox", "pbs", "cw", "mnt", "myn", "ion", "telemundo", "univision", "unimas", "cbc", "ctv",
+             "global", "citytv", "news", "tv", "hd", "local", "live", "channel", "network", "the", "now", "plus", "east",
+             "west", "us", "usa"}  # "ABC NEWS" is a network; "FOX LOCAL Orlando" is a local station
+
+
+def title_clock(title):
+    """The local times of day (minutes) a title states: "News at 10pm" -> [1320], "News at 5" -> [300, 1020], none -> []."""
+    t = title or ""
+    if CLOCK_NOT_RE.search(t):
+        return []
+    m = CLOCK_AMPM_RE.search(t)
+    if m and 1 <= int(m[1]) <= 12 and int(m[2] or 0) < 60:
+        return [int(m[1]) % 12 * 60 + (720 if m[3].lower() == "p" else 0) + int(m[2] or 0)]
+    m = CLOCK_AT_RE.search(t)
+    if m and int(m[1]) < 24 and int(m[2] or 0) < 60:
+        h, mi = int(m[1]), int(m[2] or 0)
+        if h > 12 or h == 0 or m[1].startswith("0"):
+            return [h * 60 + mi]
+        return [h % 12 * 60 + mi, h % 12 * 60 + 720 + mi]  # "at 5": morning or evening
+    m = CLOCK_WORD_RE.search(t)
+    return [720 if m[1].lower() == "noon" else 0] if m else []
+
+
+def clock_offset(samples, zones):
+    """samples: [(stated local times, UTC minute of day)]. Returns (the UTC offset most titles say, how many shows only
+    it explains, how many only the best of 'zones' explains), or None. A show 35 minutes late still fits."""
+    sets = []
+    for hours, utc in samples:
+        s = set()
+        for x in hours:
+            i = (x - utc + 720) % 1440 - 720
+            for g in range(-((35 - i) // 15) * 15, i + 36, 15):
+                s.update(h for h in (g, g + 1440, g - 1440) if -720 <= h <= 840)
+        sets.append(s)
+    count = {}
+    for s in sets:
+        for g in s:
+            count[g] = count.get(g, 0) + 1
+    if not count:
+        return None
+    best = max(count, key=lambda o: (count[o], o in zones, o % 60 == 0, o % 30 == 0))  # a tie keeps the channel's own zones
+    home = max(zones, key=lambda o: count.get(o, 0))
+    return best, sum(best in s and home not in s for s in sets), sum(home in s and best not in s for s in sets)
+
+
+def clock_wrong(samples, zones=NA_ZONES):
+    """The UTC offset the titles say when most shows that state a time fit no zone in 'zones' by 2+ hours, else None."""
+    r = len(samples) >= 4 and clock_offset(samples, zones)
+    if r and min(abs(r[0] - z) for z in zones) >= 120 and r[1] >= max(4, len(samples) / 3) and r[2] * 4 <= r[1]:
+        return r[0]
+    return None
+
+
+def clock_check(idx, clocks, src):
+    """North American local stations (call letters, or a network and a city in a North American guide) whose titles'
+    times fit no North American time zone get no shows: empty is better than hours off. Returns their codes."""
+    cc = guess_country(src.get("url", ""), src.get("name", "")).lower() if src else ""
+    cc = CC_ALIAS.get(cc, cc)
+    if cc not in ("us", "ca", ""):
+        return []
+    tested = [v for v in clocks.values() if len(v) >= 4]
+    fits = sum(1 for v in tested if (lambda r: r and min(abs(r[0] - z) for z in NA_ZONES) < 60)(clock_offset(v, NA_ZONES)))
+    na_guide = cc in ("us", "ca") or len(tested) >= 5 and fits >= 0.6 * len(tested)  # the Roku guide linked by its playlist
+    wrong = []
+    for cid, samples in clocks.items():
+        info = idx.get(cid)
+        own = code_country(cid)
+        if len(samples) < 4 or not info or not info.get("n") or own and own not in ("us", "ca"):
+            continue
+        names = [n for n in info.get("names") or () if n]
+        local = callsigns(" ".join(names) + " " + cid) or call_country(cid) or na_guide and any(
+            NET_RE.search(n.lower()) and set(re.findall(r"[a-z]+", n.lower())) - NET_WORDS for n in names)
+        off = clock_wrong(samples) if local else None
+        if off is not None:
+            info["n"], info["clock"] = 0, off
+            wrong.append(f"{(names or [cid])[0]} ({off / 60:+g} h)")
+    if wrong:
+        log(f"  {len(wrong)} local station(s) left out - their shows' own times say another clock: {', '.join(sorted(wrong)[:8])}")
+    return wrong
 
 
 NHL_FEEDS = (("SNW", re.compile(r"^Sportsnet\W?West\b", re.I)), ("SNP", re.compile(r"^Sportsnet\W{0,2}Pacific\b", re.I)),
@@ -964,7 +1103,7 @@ def nhl_check(xml_sources, now):
                 sched = games.get(net, set()) | games.get("SN", set())  # national games are on every regional feed
                 hits = {d: sum(1 for st in hockey if st + d in sched) for d in (0, -60, 60)}
                 best = max(hits, key=lambda d: (hits[d], d == 0))
-                if hits[best]:
+                if hits[best] and (best == 0 or hits[best] >= 2):  # an hour off only on 2+ games: one game under another network code proves nothing
                     memory[key] = [best, int(time.time())]
             d, when = memory.get(key, [0, 0])
             if d and time.time() - when < 4 * 86400:  # no game in the next day: the last measurement holds for 4 days
@@ -1042,11 +1181,79 @@ QUALITY_RE = re.compile(r"\b(hd|fhd|uhd|sd|4k|8k|hevc|h265|h264|1080p?|720p?|50f
 PREFIX_RE = re.compile(r"^\s*[\[(|]?\s*[a-z]{2,3}\s*[\])|:]\s*")
 
 
+STREAM_TAG_RE = re.compile(r"\s*(?:\((?:\d{3,4}[pi]|Geo)\)|\[(?:Geo-blocked|Not 24/7)(?:\s*;\s*(?:Geo-blocked|Not 24/7))*\])", re.I)
+
+
+def placeholder_desc(name):
+    """'Fox 5 - live 24/7', but never on a stream the playlist itself marks '[Not 24/7]'."""
+    clean = stream_name(name)
+    return f"{clean} - no schedule published" if re.search(r"(?i)not 24/7", name or "") else f"{clean} - live 24/7"
+
+
+def stream_name(name):
+    """'BBC One Scotland (540p) [Geo-blocked]' -> 'BBC One Scotland': a playlist's notes about the stream, not its name."""
+    return STREAM_TAG_RE.sub("", name or "").strip() or (name or "")
+
+
 def norm(s):
     s = (s or "").lower().replace("&", "and").replace("+", "plus")
     s = PREFIX_RE.sub("", s)
     s = QUALITY_RE.sub("", s)
     return re.sub(r"[^a-z0-9]", "", s)
+
+
+IPTV_ORG_RE = re.compile(r"^[A-Za-z0-9]+\.(us|uk|ca)@([A-Za-z0-9]+)$")
+
+
+def feed_name(name, cc, lookup):
+    """The exact name, once the stream tags are gone, in a guide of the same country, as that guide's own main name or code:
+    never another country's copy, and never a guide that only lists "Tiny Pop +1" among Tiny Pop's names (an hour off)."""
+    key = norm(name)
+    if NET_RE.fullmatch(plain(name).lower().strip()):
+        return None  # "PBS" alone: every station has its own schedule
+    for x in lookup.get(key, []) if key else ():
+        own = {norm(clean_name(EPG_INDEX[x]["name"]))}  # its own main name: "Thats70s.uk" named "That's TV2" is not That's 70s
+        if re.fullmatch(r"[^.]+\.[a-zA-Z]{2,3}\d?(?:@\w+)?", x) and not any(norm(clean_name(n)) for n in EPG_INDEX[x]["names"]):
+            own.add(norm(x.split(".")[0]))  # the code counts only when the guide gives no name at all
+        if id_country(x) == cc and key in own and callsigns(" ".join(EPG_INDEX[x]["names"])) <= callsigns(name):  # "PBS" is no "US - PBS WNED"
+            return x
+    return None
+
+
+FEED_CALL_RE = re.compile(r"^[A-Za-z]+\.(us|ca)@([KW][A-Z]{2,3}|C[BFHIJK][A-Z]{2})(TV|DT|CD|LD)?$")
+
+
+def calls_index():
+    """Guide channels by the call letters in their names and codes: 'US - FOX WNYW NYC NY' -> WNYW."""
+    out = {}
+    for cid, info in EPG_INDEX.items():
+        if not cid.isdigit():
+            for call in callsigns(" ".join(info["names"]) + " " + re.sub(r"[._]", " ", cid)):
+                out.setdefault(call, []).append(cid)
+    return out
+
+
+def feed_station(tid, name, by_call):
+    """iptv-org's 'Fox.us@WNYW' ('Fox (United States) WNYW') is FoxEast_WNYW.us: the same call letters in the code AND
+    the name, and the guide names exactly the same network. A station's low-power twin, sub-channel or news stream is
+    another channel: wrong listings are worse than none."""
+    m = FEED_CALL_RE.match(tid or "")
+    if not m or m[2] in NOT_CALLS or m[2] not in callsigns(name):
+        return None
+    nets = set(NET_RE.findall(plain(name).lower()))
+    call, low = m[2].lower(), (m[3] or "").lower() in ("ld", "cd")
+    if not nets:
+        return None
+    for cid in by_call.get(m[2], ()):
+        text = plain(" ".join(EPG_INDEX[cid]["names"]) + " " + re.sub(r"[._]", " ", cid)).lower()
+        if id_country(cid) not in (m[1], "") or set(NET_RE.findall(text)) != nets:
+            continue
+        if re.search(rf"\b{call}\s*-?\s*dt\s*[2-9]", text) or (not low and re.search(rf"\b{call}\s*-?\s*(?:ld|cd)\b", text)):
+            continue  # KIRO-LD, WMAQ-DT2
+        if re.search(r"\bnews\b", text) and not re.search(r"\bnews\b", name.lower()):
+            continue  # "WOAI NBC News Channel 4" is the station's news stream
+        return cid
+    return None
 
 
 def auto_match(only_unmatched=True):
@@ -1057,7 +1264,7 @@ def auto_match(only_unmatched=True):
         for n in info["names"] + ([cid.split(".")[0]] if re.fullmatch(r"[^.]+\.[a-zA-Z]{2,3}\d?", cid) else []):
             if norm(n) and cid not in lookup.setdefault(norm(n), []):
                 lookup[norm(n)].append(cid)
-    matched = 0
+    matched, by_call = 0, None
     for ch in CFG["channels"].values():
         e = effective(ch)
         if ch.get("epg_mine") or only_unmatched and e["epg_id"] in EPG_INDEX:
@@ -1068,6 +1275,14 @@ def auto_match(only_unmatched=True):
             want = ""  # "Shop LC" is not Saint Lucia
         cands = lookup.get(norm(e["name"]), []) if norm(e["name"]) else []
         cid = next((x for x in cands if not want or id_country(x) in (want, "")), None)  # "CCTV" in a US list is not China's CCTV 8K
+        feed = IPTV_ORG_RE.match(up_id)
+        if feed and (feed[2].upper() == "4K" or feed[2].upper() in ("US", "UK", "GB", "CA") and code_country(up_id) != feed[1]):
+            feed = None  # "Love Nature 4K" is a channel of its own; "DogWhisperer.us@UK" is the British feed
+        if not cid and feed:  # iptv-org's "BBCOne.uk@Scotland", named "BBC One Scotland (540p) [Geo-blocked]"
+            cid = feed_name(stream_name(e["name"]), feed[1].lower(), lookup)
+            if not cid and FEED_CALL_RE.match(up_id):
+                by_call = calls_index() if by_call is None else by_call
+                cid = feed_station(up_id, stream_name(e["name"]), by_call)
         if cid:
             ch["ov"]["epg_id"] = cid
             if ch["up"]["epg_id"] == cid:
@@ -1285,6 +1500,14 @@ def guide_lookup(idx):
     return set(idx), names
 
 
+def url_key(url):
+    """The same file under another address: i.mjh.nz = its GitHub copy, x.xml = x.xml.gz, github.com/../raw/ = raw.githubusercontent."""
+    u = re.sub(r"^[a-z]+://", "", url.strip().lower())
+    u = re.sub(r"^github\.com/([^/]+/[^/]+)/raw/(?:refs/heads/)?", r"raw.githubusercontent.com/\1/", u)
+    u = re.sub(r"^i\.mjh\.nz/", "raw.githubusercontent.com/matthuisman/i.mjh.nz/master/", u)
+    return re.sub(r"\.(?:gz|xz)$", "", u)
+
+
 def discover():
     """Find guides on the internet that cover channels which still have no guide,
     and add them automatically. Guides that don't help are remembered and re-checked later."""
@@ -1301,10 +1524,11 @@ def discover():
     cands, origin = find_candidates()
     AUTO["known"] = len(cands)
     have = {s["url"] for s in all_sources()} | set(AUTO["blocked"])
+    have_keys = {url_key(u) for u in have}  # a copy of a guide in use adds nothing
     todo = []
     for url, label in cands.items():
         ck = AUTO["checked"].get(url)
-        if url in have or (ck and time.time() - ck["t"] < (7 if ck.get("fresh") else 14) * 86400):
+        if url in have or url_key(url) in have_keys or (ck and time.time() - ck["t"] < (7 if ck.get("fresh") else 14) * 86400):
             continue
         todo.append((url, label))
     todo = rank_candidates(todo, wanted, origin)
@@ -1447,9 +1671,18 @@ def drop_dead_auto_sources():
     if mass_failure():
         return
     hosts = outage_hosts()
+    taken = {url_key(s["url"]) for s in CFG["sources"] if s.get("enabled", True) and not is_removed(s)}
     for src in AUTO["sources"]:
         bad = AUTO["bad_since"].get(src["url"])
         days = (time.time() - bad["t"]) / 86400 if bad else 0
+        if url_key(src["url"]) in taken and src["url"] not in CFG["keep_urls"]:
+            log(f"Removing auto-found guide '{src['name']}' - the same file is already in use under another link")
+            AUTO["bad_since"].pop(src["url"], None)
+            for f in os.listdir(CACHE):
+                if f.startswith(src["id"] + "."):
+                    os.remove(os.path.join(CACHE, f))
+            continue
+        taken.add(url_key(src["url"]))
         if src.get("fails", 0) >= 4 and days >= 2 and src["url"] not in CFG["keep_urls"] and not on_outage(src, hosts):
             log(f"Removing auto-found guide '{src['name']}' - it stopped working")
             AUTO["bad_since"].pop(src["url"], None)
@@ -1699,7 +1932,7 @@ def provider_index(picks=False):
             "names": names, "langs": langs}
 
 
-CALL_RE = re.compile(r"(?<![A-Za-z])([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?=(?:DT\d+)?(?![A-Za-z]))")
+CALL_RE = re.compile(r"(?<![^\W\d_])([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?=(?:DT\d+)?(?![^\W\d_]))")  # any letter is an edge: "KLASİK" is no KLAS
 NOT_CALLS = {"CITY", "CINE", "CLUB", "CHAT", "KICK", "WEST", "WILD", "WORD", "KIDS", "WETV", "WOOD", "WORK", "KING", "KISS", "WINE", "WALL", "WIDE", "KINO",
              "WITH", "CBBC", "CBSN"}
 CALL_CODE_RE = re.compile(r"^([KW][A-Z]{3}|C[BFHIJK][A-Z]{2})(?:-?(?:DT|CD|LD|TV)\d*)?(?:\.|$)")
@@ -1720,8 +1953,10 @@ def call_country(code):
     return ("us" if m[1][0] in "KW" else "ca") if m and m[1] not in NOT_CALLS else ""
 
 
+US_AREAS = set("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND "
+               "OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC PR VI GU AS MP".split())  # "Monroe LA" is Louisiana
 BOXED_CALL_RE = re.compile(r"\(((?:[KW][A-Z]{2,3})|C[A-Z]{3})[)/\-]")
-CALL3_RE = re.compile(r"(?<![A-Za-z])(?i:abc|cbs|nbc|fox|cw|pbs|mnt|ion)\s*[(\-]?\s*([KW][A-Z]{2})(?![A-Za-z])")
+CALL3_RE = re.compile(r"(?<![^\W\d_])(?i:abc|cbs|nbc|fox|cw|pbs|mnt|ion)\s*[(\-]?\s*([KW][A-Z]{2})(?![^\W\d_])")
 
 
 def callsigns(text):
@@ -1731,6 +1966,7 @@ def callsigns(text):
     return found | boxed | set(CALL3_RE.findall(text or ""))
 
 
+RADIO_NAME_RE = re.compile(r"(?<![^\W\d_])[KWC][A-Z]{2,3}-(?:FM|AM)\b|(?<![\d.])(?:\d{2,3}(?:\.\d)?\s?FM|\d{3,4}\s?AM)\b")  # "WCBS-FM", "106.9FM", "740 AM"
 NET_RE = re.compile(r"\b(abc|cbs|nbc|fox|pbs|cw|mnt|myn|ion|telemundo|univision|unimas|cbc|ctv|global|citytv)\b")
 LOOSE_STOP = {"music", "happy", "movies", "movie", "sports", "sport", "news", "kids", "comedy", "drama", "action",
               "classic", "classics", "family", "life", "style", "food", "church", "faith", "local", "world"}
@@ -1849,8 +2085,10 @@ def _match_provider_channel(c, idx):
         if len(ck) >= 7 and not ck.isdigit() and ck in idx["by_code"]:
             return idx["by_code"][ck], "same code"
     in_name = callsigns(c["name"])
+    home_cc = entry_country(c["name"], c.get("group", ""), tid)
+    calls_ok = home_cc in ("us", "ca", "") or home_cc.upper() in US_AREAS  # "KABE TV TR" is Turkish, not KABE-LD
     for call in sorted(callsigns(c["name"] + " " + tid.upper().replace(".", " ")), key=lambda x: (x not in in_name, x)):
-        if call in idx["by_call"]:
+        if calls_ok and call in idx["by_call"]:
             return pick_best(idx["by_call"][call], c, idx), "call letters"
     if is_event_channel(c):
         return "", "event"
@@ -2183,7 +2421,7 @@ def build():
         if settings["dummy_epg"]:
             for cid, e in wanted.items():
                 if cid not in claimed:
-                    count += write_placeholder(f, cid, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, end_cut)
+                    count += write_placeholder(f, cid, e["name"], e["desc"] or placeholder_desc(e["name"]), now, end_cut)
         f.write("</tv>\n")
     safe_replace(tmp, os.path.join(OUT, "epg.xml"))
     with open(os.path.join(OUT, "epg.xml"), "rb") as src, gzip.open(os.path.join(OUT, "epg.xml.gz.tmp"), "wb") as dst:
@@ -2253,14 +2491,15 @@ def write_placeholder(f, cid, title, desc, now, end_cut, stop_at=None, start_at=
         begin = max(t, start_at) if start_at else t  # ...nor on top of the last one that already ran
         if stop > begin:
             f.write(f'<programme start="{fmt_xmltv_time(begin)}" stop="{fmt_xmltv_time(stop)}" '
-                    f'channel={quoteattr(cid)}><title>{escape(clean_text(title))}</title>'
-                    + (f'<desc>{escape(clean_text(desc))}</desc>' if desc else '') + '</programme>\n')
+                    f'channel={quoteattr(cid)}><title>{escape(clean_text(stream_name(title)))}</title>'
+                    + (f'<desc>{escape(clean_text(stream_name(desc)))}</desc>' if desc else '') + '</programme>\n')
             n += 1
         t += block
     return n
 
 
 NO_SCHEDULE = "This channel doesn't publish a schedule."
+EVENT_DESC = "No schedule published for this event channel."  # a label all day long: never "Live event on ..."
 NOT_YET = "Listings for this time aren't published yet."
 LABEL_KINDS = ((re.compile(r"big brother|fazenda", re.I), "Live Camera"),
                (re.compile(r"music|stingray|proturk|lionbox|redbox|byzbox", re.I), "Music Channel"),
@@ -2508,7 +2747,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     clusters = {}
     for cid, c in chans.items():
         text = " ".join(c["names"]) + " " + re.sub(r"[._]", " ", cid)
-        calls = sorted(callsigns(text))
+        calls = [] if RADIO_NAME_RE.search(text) else sorted(callsigns(text))  # WCBS-FM is not WCBS-TV: a group of its own
         if calls:  # "CW KIFIDT3" is KIFI's third channel, often another network: a group of its own
             sub = re.search(rf"(?<![A-Za-z]){calls[0]}-?DT(\d+)", text)
             key = ("call", calls[0], sub[1] if sub and sub[1] != "1" else "")
@@ -2527,9 +2766,10 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             return (c["n"] > 0, english_ok, is_readable_id(k), c["n"])
         best = max(cids, key=rank)
         names, seen = [], set()
+        radio = all(RADIO_NAME_RE.search(n) for k in cids for n in chans[k]["names"])  # a radio group keeps its names
         for k in cids:
             for n in chans[k]["names"]:
-                if n.lower() not in seen:
+                if n.lower() not in seen and (radio or not RADIO_NAME_RE.search(n)):  # no "WCBS-FM" on CBS
                     seen.add(n.lower())
                     names.append(n)
         for n in name_variants(chans[best]["names"][0], chans[best]["cc"]):
@@ -2546,13 +2786,16 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         if g not in chans:
             continue
         group = chans[g]["group"]
-        for n in names:  # their names help name-matching players for the whole group
+        shifted = shifts.get(code, 0)
+        for n in [] if shifted else names:  # their names help name-matching players for the whole group - never a West name on East times
             if n.lower() not in group["seen"]:
                 group["seen"].add(n.lower())
                 group["names"].append(n)
         if code not in out or (code in prov_ids and (code != g or shifts.get(code))):  # the provider's pick wins
             out[code] = {"from": g if chans[g]["n"] else group["best"], "group": group,
-                         "shift": shifts.get(code, 0)}
+                         "shift": shifted}
+            if shifted:
+                out[code]["names"] = names  # shifted times: only its own names, never the East ones
     def is_call(t):
         text = " ".join(chans[t]["names"]) + " " + t
         if re.search(r"(?<![A-Za-z0-9])[KW]\d\d[A-Z]{2}(?:-?(?:D|LD|CD))?\b", text):
@@ -2600,7 +2843,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             if event_is_over(c["name"], now):
                 title = "No event scheduled"
             out[c["id"]] = {"from": None, "group": {"names": [c["name"]], "icon": "", "cc": "", "best": c["id"]},
-                            "placeholder": {"name": title, "desc": f"Live event on {c['group'] or 'this channel'}"}}
+                            "placeholder": {"name": title, "desc": EVENT_DESC + (f" Group: {c['group']}." if c.get("group") else "")}}
     for c in prov:  # no shows from any guide: a clear label instead of an empty row
         if c.get("how") == "event":
             continue
@@ -2643,7 +2886,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
 
     for code, o in out.items():
         g = o["group"]
-        own = chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16]
+        own = o.get("names") or (chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16])
         own = [clean_text(n).strip() for n in own if clean_text(n).strip()] or [code]
         text = f"<channel id={quoteattr(code)}>" + "".join(f"<display-name>{escape(n)}</display-name>" for n in own)
         if g["icon"]:
@@ -2725,13 +2968,13 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             done = done and done + timedelta(minutes=o.get("shift") or 0)
             if later:
                 later += timedelta(minutes=o.get("shift") or 0)
-            write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, end_cut,
+            write_placeholder(W(), code, e["name"], e["desc"] or placeholder_desc(e["name"]), now, end_cut,
                               later or None, done)
             near = len(text)
             write(code, "".join(text))
             text.clear()
             if not any(k in live_from for k in mine):  # real shows later in the week: no label on top of them
-                write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, week_cut, None, done)
+                write_placeholder(W(), code, e["name"], e["desc"] or placeholder_desc(e["name"]), now, week_cut, None, done)
                 write(code, "".join(text[near:]), True)
         if e and CFG["settings"]["dummy_epg"] and any(k in last_stop and k in nxt for k in mine):  # Clubland's guide ends 5 hours ahead
             gap = max(last_stop[k] for k in mine if k in last_stop) + timedelta(minutes=o.get("shift") or 0)
@@ -2907,6 +3150,7 @@ HEALTH = {}          # source id -> {"state", "detail", "checked", "since", "ms"
 HEALTH_EVENTS = []   # recent changes, newest last
 HEALTH_NOW = threading.Event()
 RECOVERY_TRIED = {}
+RECOVERY_FAILS = {}  # source id -> recovery downloads that failed in a row
 
 
 def ping(url):
@@ -2960,8 +3204,15 @@ def update_health(src, ping_ok, ping_msg, ms=None):
         since = old["since"]
     HEALTH[src["id"]] = {"state": state, "detail": detail, "checked": now, "since": since,
                          "ms": ms if ms is not None else (old or {}).get("ms")}
-    # a source that answers again after failing gets re-downloaded (at most every 15 minutes)
-    if ping_ok and st.get("ok") is False and now - RECOVERY_TRIED.get(src["id"], 0) > 900:
+    # a source that answers again after failing gets re-downloaded: after 15 minutes, then 30, 60... up to 12 hours
+    # (a site that answers but serves an error page - "download limit reached" - is not hammered all day)
+    if st.get("ok") is not False:
+        RECOVERY_FAILS.pop(src["id"], None)
+        RECOVERY_TRIED.pop(src["id"], None)
+    wait = min(900 * 2 ** RECOVERY_FAILS.get(src["id"], 0), 43200)
+    if ping_ok and st.get("ok") is False and now - RECOVERY_TRIED.get(src["id"], 0) > wait:
+        if src["id"] in RECOVERY_TRIED:
+            RECOVERY_FAILS[src["id"]] = RECOVERY_FAILS.get(src["id"], 0) + 1
         RECOVERY_TRIED[src["id"]] = now
         run_job(refresh, {src["id"]})
 
@@ -2983,8 +3234,9 @@ def check_all_sources():
         with LOCK:
             load_epg_index()
         run_job()  # rebuild without the removed source
-    for sid in list(HEALTH):  # forget removed sources
-        if not source_by_id(sid):
+    checked = {s["id"] for s in srcs}
+    for sid in list(HEALTH):  # forget removed sources, and switched-off ones (they are not checked any more)
+        if sid not in checked or not source_by_id(sid):
             del HEALTH[sid]
 
 
@@ -3017,6 +3269,12 @@ def scheduler():
         if (hours > 0 and not STATE["busy"] and all_sources()
                 and time.time() - CFG["last_refresh"] > hours * 3600):
             run_job(refresh)
+        elif hours > 0 and not STATE["busy"]:  # a guide that publishes only hours ahead runs out before the next refresh
+            now = time.time()
+            soon = {s["id"] for s in guide_sources() if now - 6 * 3600 < status_of(s).get("until", 0) < now + 3600
+                    and now - status_of(s).get("time", 0) > 3 * 3600}
+            if soon:
+                run_job(refresh, soon)
 
 
 # ---------------------------------------------------------------- online (GitHub)
@@ -3095,7 +3353,19 @@ def build_site(outdir, base_url):
             log("Full-size guide is over 95 MB - publishing only the compressed epg.xml.gz")
             continue
         shutil.copyfile(os.path.join(OUT, name), os.path.join(outdir, name))
-    links = "".join(f'<p>{label}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
+    def size_note(n):  # players choke on big guides: say how big each one is
+        p = os.path.join(outdir, n)
+        if not os.path.exists(p):
+            return ""
+        mb = os.path.getsize(p) / 1e6
+        if not n.endswith(".gz"):
+            return f" <small>({mb:.1f} MB)</small>"
+        with open(p, "rb") as fh:  # gzip stores the unpacked size (mod 4 GB) in its last 4 bytes
+            fh.seek(-4, 2)
+            full = int.from_bytes(fh.read(4), "little") / 1e6
+        warn = " - too big for weak players like Firestick apps" if full > 300 else ""
+        return f" <small>({mb:.0f} MB download, {full:.0f} MB unpacked{warn})</small>"
+    links = "".join(f'<p>{label}{size_note(n)}<br><a href="{base_url}/{n}">{base_url}/{n}</a></p>' for label, n in
                     [("Playlist", "playlist.m3u"), ("Guide for this playlist", "epg.xml.gz"),
                      ("Full guide - use with any provider", "epg-full.xml.gz"),
                      ("Light guide - your providers' channels only (Firestick, Smarters, Kodi)", "epg-lite.xml.gz"),
@@ -3622,6 +3892,16 @@ def main():
         args = sys.argv[sys.argv.index("--build-site") + 1:]
         base = os.environ.get("PUBLIC_URL") or CFG["settings"]["public_url"] or "http://localhost"
         return build_site(args[0] if args else "site", base)
+    try:  # before anything else: a second copy must stop here
+        ThreadingHTTPServer.allow_reuse_address = False  # a second copy must fail, not share the port
+        srv = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
+    except OSError:
+        print(f"Port {PORT} is busy - Ultimate EPG is probably already running.")
+        print(f"Open http://localhost:{PORT} in your browser.")
+        if "--open" in sys.argv:
+            import webbrowser
+            webbrowser.open(f"http://localhost:{PORT}")
+        return
     if os.path.isdir(os.path.join(BASE, ".git")):
         try:
             with LOCK:
@@ -3635,16 +3915,6 @@ def main():
     HEALTH_NOW.set()  # check everything right away
     if all_sources() and not os.path.exists(os.path.join(OUT, "epg.xml")):
         run_job(refresh)
-    try:
-        ThreadingHTTPServer.allow_reuse_address = False  # a second copy must fail, not share the port
-        srv = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    except OSError:
-        print(f"Port {PORT} is busy - Ultimate EPG is probably already running.")
-        print(f"Open http://localhost:{PORT} in your browser.")
-        if "--open" in sys.argv:
-            import webbrowser
-            webbrowser.open(f"http://localhost:{PORT}")
-        return
     if "--open" in sys.argv:
         import webbrowser
         threading.Timer(1.0, webbrowser.open, [f"http://localhost:{PORT}"]).start()
