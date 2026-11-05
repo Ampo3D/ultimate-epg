@@ -11575,7 +11575,7 @@
    "key": "f91d2794e202",
    "source": "74429009",
    "ov": {
-    "epg_id": "plex.tv.Spark.TV.Luz.y.Amor.plex"
+    "epg_id": "608049aefa2b8ae93c2c3a63-6623c03b28a167c6e5b3079a"
    },
    "up": {
     "name": "Spark TV Luz y Amor",
@@ -27138,7 +27138,9 @@
   "2da5640a6fe1": {
    "key": "2da5640a6fe1",
    "source": "775a55e3",
-   "ov": {},
+   "ov": {
+    "epg_id": "g.mjh.roku.vixnovelasdeoro"
+   },
    "up": {
     "name": "ViX Novelas de oro",
     "number": "5073",
@@ -79404,7 +79406,7 @@
    "key": "11853804cc8f",
    "source": "553c22cb",
    "ov": {
-    "epg_id": "us#69049185/kmtv"
+    "epg_id": "KMTV.us"
    },
    "up": {
     "name": "KMTV",
@@ -110686,7 +110688,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000190
+   "order": 32000191
   },
   "274247352a44": {
    "key": "274247352a44",
@@ -110704,7 +110706,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000191
+   "order": 32000192
   },
   "d542983ecfef": {
    "key": "d542983ecfef",
@@ -110722,7 +110724,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000192
+   "order": 32000193
   },
   "12ca66351dc5": {
    "key": "12ca66351dc5",
@@ -110740,7 +110742,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000193
+   "order": 32000194
   },
   "c81e82139496": {
    "key": "c81e82139496",
@@ -110760,7 +110762,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000194
+   "order": 32000195
   },
   "33b32a82f441": {
    "key": "33b32a82f441",
@@ -110778,7 +110780,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000195
+   "order": 32000196
   },
   "9d4dcc4421da": {
    "key": "9d4dcc4421da",
@@ -110796,7 +110798,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000196
+   "order": 32000197
   },
   "97da31e2637d": {
    "key": "97da31e2637d",
@@ -110816,7 +110818,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000197
+   "order": 32000198
   },
   "8d2945798ec6": {
    "key": "8d2945798ec6",
@@ -110836,7 +110838,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000198
+   "order": 32000199
   },
   "cc8b6eb7346a": {
    "key": "cc8b6eb7346a",
@@ -110854,7 +110856,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000199
+   "order": 32000200
   },
   "951c08fd5c00": {
    "key": "951c08fd5c00",
@@ -110874,7 +110876,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000200
+   "order": 32000201
   },
   "aa3b242be3ad": {
    "key": "aa3b242be3ad",
@@ -110894,7 +110896,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000201
+   "order": 32000202
   },
   "0e64fbaa7cd2": {
    "key": "0e64fbaa7cd2",
@@ -110914,7 +110916,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000202
+   "order": 32000203
   },
   "dca3c310d7eb": {
    "key": "dca3c310d7eb",
@@ -110934,7 +110936,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000203
+   "order": 32000204
   },
   "224a96ea602f": {
    "key": "224a96ea602f",
@@ -110952,7 +110954,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000204
+   "order": 32000205
   },
   "e9a3ae3e4c86": {
    "key": "e9a3ae3e4c86",
@@ -110970,7 +110972,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000205
+   "order": 32000206
   },
   "d92201438c92": {
    "key": "d92201438c92",
@@ -110990,7 +110992,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000206
+   "order": 32000207
   },
   "e5e98fa10871": {
    "key": "e5e98fa10871",
@@ -111010,7 +111012,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000207
+   "order": 32000208
   },
   "aec8bed2f5a5": {
    "key": "aec8bed2f5a5",
@@ -111030,7 +111032,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000208
+   "order": 32000209
   },
   "ae1c82f58040": {
    "key": "ae1c82f58040",
@@ -111050,7 +111052,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000209
+   "order": 32000210
   },
   "adf6bce9faff": {
    "key": "adf6bce9faff",
@@ -111068,7 +111070,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000210
+   "order": 32000211
   },
   "cbd9f9756d39": {
    "key": "cbd9f9756d39",
@@ -111086,7 +111088,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000211
+   "order": 32000212
   },
   "bc5eaa1fb761": {
    "key": "bc5eaa1fb761",
@@ -111106,7 +111108,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000212
+   "order": 32000213
   },
   "2e05ee528ddb": {
    "key": "2e05ee528ddb",
@@ -111124,7 +111126,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000213
+   "order": 32000214
   },
   "ff3bb8d61150": {
    "key": "ff3bb8d61150",
@@ -111142,7 +111144,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000214
+   "order": 32000215
   },
   "661101e315d3": {
    "key": "661101e315d3",
@@ -111162,7 +111164,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000215
+   "order": 32000216
   },
   "bad5a0b16863": {
    "key": "bad5a0b16863",
@@ -111180,7 +111182,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000216
+   "order": 32000217
   },
   "026c40fbe186": {
    "key": "026c40fbe186",
@@ -111198,7 +111200,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000217
+   "order": 32000218
   },
   "5f21f0a67189": {
    "key": "5f21f0a67189",
@@ -111218,7 +111220,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000218
+   "order": 32000219
   },
   "1243edd3239f": {
    "key": "1243edd3239f",
@@ -111238,7 +111240,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000219
+   "order": 32000220
   },
   "b1522423a821": {
    "key": "b1522423a821",
@@ -111258,7 +111260,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000220
+   "order": 32000221
   },
   "ce46d750c2b2": {
    "key": "ce46d750c2b2",
@@ -111276,7 +111278,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000221
+   "order": 32000222
   },
   "63498bfbdb82": {
    "key": "63498bfbdb82",
@@ -111296,7 +111298,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000222
+   "order": 32000223
   },
   "b42e5f02ad99": {
    "key": "b42e5f02ad99",
@@ -111316,7 +111318,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000223
+   "order": 32000224
   },
   "a03d2e8194ca": {
    "key": "a03d2e8194ca",
@@ -111336,7 +111338,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000224
+   "order": 32000225
   },
   "35fdc3c70933": {
    "key": "35fdc3c70933",
@@ -111356,7 +111358,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000225
+   "order": 32000226
   },
   "982668f1a205": {
    "key": "982668f1a205",
@@ -111374,7 +111376,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000226
+   "order": 32000227
   },
   "74a14a1a74b7": {
    "key": "74a14a1a74b7",
@@ -111392,7 +111394,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000227
+   "order": 32000228
   },
   "654c1b8243c9": {
    "key": "654c1b8243c9",
@@ -111412,7 +111414,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000228
+   "order": 32000229
   },
   "ec5347b26b39": {
    "key": "ec5347b26b39",
@@ -111430,7 +111432,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000229
+   "order": 32000230
   },
   "3f3bd3e5a683": {
    "key": "3f3bd3e5a683",
@@ -111450,7 +111452,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000230
+   "order": 32000231
   },
   "e70b3ff5fd7d": {
    "key": "e70b3ff5fd7d",
@@ -111470,7 +111472,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000231
+   "order": 32000232
   },
   "5933fe906eb1": {
    "key": "5933fe906eb1",
@@ -111490,7 +111492,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000232
+   "order": 32000233
   },
   "10c14bf45303": {
    "key": "10c14bf45303",
@@ -111508,7 +111510,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000233
+   "order": 32000234
   },
   "63352726e729": {
    "key": "63352726e729",
@@ -111526,7 +111528,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000234
+   "order": 32000235
   },
   "42f5edd4ed72": {
    "key": "42f5edd4ed72",
@@ -111546,7 +111548,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000235
+   "order": 32000236
   },
   "eb4eb0c9ca0e": {
    "key": "eb4eb0c9ca0e",
@@ -111566,7 +111568,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000236
+   "order": 32000237
   },
   "7d8491170a07": {
    "key": "7d8491170a07",
@@ -111584,7 +111586,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000237
+   "order": 32000238
   },
   "eb1d9ff7ad92": {
    "key": "eb1d9ff7ad92",
@@ -111602,7 +111604,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000238
+   "order": 32000239
   },
   "6ff9aa4cb677": {
    "key": "6ff9aa4cb677",
@@ -111622,7 +111624,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000239
+   "order": 32000240
   },
   "3d3cf4d5df2c": {
    "key": "3d3cf4d5df2c",
@@ -111642,7 +111644,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000240
+   "order": 32000241
   },
   "b86a551b6be3": {
    "key": "b86a551b6be3",
@@ -111660,7 +111662,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000241
+   "order": 32000242
   },
   "e7ecebdf83de": {
    "key": "e7ecebdf83de",
@@ -111680,7 +111682,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000242
+   "order": 32000243
   },
   "936776e38268": {
    "key": "936776e38268",
@@ -111698,7 +111700,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000243
+   "order": 32000244
   },
   "4a4fa49d4ad1": {
    "key": "4a4fa49d4ad1",
@@ -111716,7 +111718,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000244
+   "order": 32000245
   },
   "0b2f79c3ec60": {
    "key": "0b2f79c3ec60",
@@ -111736,7 +111738,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000245
+   "order": 32000246
   },
   "dfff03ce1c19": {
    "key": "dfff03ce1c19",
@@ -111754,7 +111756,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000246
+   "order": 32000247
   },
   "8ce2783df730": {
    "key": "8ce2783df730",
@@ -111772,7 +111774,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000247
+   "order": 32000248
   },
   "ba144439b216": {
    "key": "ba144439b216",
@@ -111790,7 +111792,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000248
+   "order": 32000249
   },
   "f161e80e0c27": {
    "key": "f161e80e0c27",
@@ -111808,7 +111810,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000249
+   "order": 32000250
   },
   "579474376cea": {
    "key": "579474376cea",
@@ -111826,7 +111828,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000250
+   "order": 32000251
   },
   "675d4058823c": {
    "key": "675d4058823c",
@@ -111846,7 +111848,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000251
+   "order": 32000252
   },
   "5f2d5088c7bf": {
    "key": "5f2d5088c7bf",
@@ -111864,7 +111866,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000252
+   "order": 32000253
   },
   "0b4efa6681dc": {
    "key": "0b4efa6681dc",
@@ -111882,7 +111884,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000253
+   "order": 32000254
   },
   "9b2c52e787b3": {
    "key": "9b2c52e787b3",
@@ -111900,7 +111902,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000254
+   "order": 32000255
   },
   "8cc53fe31e08": {
    "key": "8cc53fe31e08",
@@ -111918,7 +111920,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000255
+   "order": 32000256
   },
   "feb3060194d6": {
    "key": "feb3060194d6",
@@ -111936,7 +111938,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000256
+   "order": 32000257
   },
   "3f3cf5a1d2b7": {
    "key": "3f3cf5a1d2b7",
@@ -111954,7 +111956,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000257
+   "order": 32000258
   },
   "26875e470ff8": {
    "key": "26875e470ff8",
@@ -111972,7 +111974,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000258
+   "order": 32000259
   },
   "c543e542e801": {
    "key": "c543e542e801",
@@ -111990,7 +111992,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000259
+   "order": 32000260
   },
   "242272f1423e": {
    "key": "242272f1423e",
@@ -112008,7 +112010,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000260
+   "order": 32000261
   },
   "7f8864fd5a8c": {
    "key": "7f8864fd5a8c",
@@ -112028,7 +112030,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000261
+   "order": 32000262
   },
   "b8ee6c5d12e8": {
    "key": "b8ee6c5d12e8",
@@ -112046,7 +112048,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000262
+   "order": 32000263
   },
   "446aa95dd294": {
    "key": "446aa95dd294",
@@ -112064,7 +112066,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000263
+   "order": 32000264
   },
   "004c5491f4c8": {
    "key": "004c5491f4c8",
@@ -112084,7 +112086,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000264
+   "order": 32000265
   },
   "3bb5d6cced20": {
    "key": "3bb5d6cced20",
@@ -112102,7 +112104,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000265
+   "order": 32000266
   },
   "55a44bf8ca69": {
    "key": "55a44bf8ca69",
@@ -112120,7 +112122,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000266
+   "order": 32000267
   },
   "31c38c3f6443": {
    "key": "31c38c3f6443",
@@ -112140,7 +112142,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000267
+   "order": 32000268
   },
   "211a7216db25": {
    "key": "211a7216db25",
@@ -112158,7 +112160,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000268
+   "order": 32000269
   },
   "a852bf8e1d9e": {
    "key": "a852bf8e1d9e",
@@ -112176,7 +112178,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000269
+   "order": 32000270
   },
   "6f0675203e0b": {
    "key": "6f0675203e0b",
@@ -112196,7 +112198,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000270
+   "order": 32000271
   },
   "22e603c0f651": {
    "key": "22e603c0f651",
@@ -112216,7 +112218,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000271
+   "order": 32000272
   },
   "8685c989f959": {
    "key": "8685c989f959",
@@ -112234,7 +112236,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000272
+   "order": 32000273
   },
   "0f17e375fc56": {
    "key": "0f17e375fc56",
@@ -112252,7 +112254,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000273
+   "order": 32000274
   },
   "64f42a94492f": {
    "key": "64f42a94492f",
@@ -112272,7 +112274,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000274
+   "order": 32000275
   },
   "8e59d81beaf0": {
    "key": "8e59d81beaf0",
@@ -112290,7 +112292,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000275
+   "order": 32000276
   },
   "1ca5e3d762b5": {
    "key": "1ca5e3d762b5",
@@ -112310,7 +112312,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000276
+   "order": 32000277
   },
   "818997c8e563": {
    "key": "818997c8e563",
@@ -112328,7 +112330,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000277
+   "order": 32000278
   },
   "4a8159fa713f": {
    "key": "4a8159fa713f",
@@ -112346,7 +112348,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000278
+   "order": 32000279
   },
   "f93029eaf687": {
    "key": "f93029eaf687",
@@ -112364,7 +112366,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000279
+   "order": 32000280
   },
   "ea1d3766410e": {
    "key": "ea1d3766410e",
@@ -112382,7 +112384,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000280
+   "order": 32000281
   },
   "c91814d3b7b6": {
    "key": "c91814d3b7b6",
@@ -112400,7 +112402,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000281
+   "order": 32000282
   },
   "97798c79c25f": {
    "key": "97798c79c25f",
@@ -112420,7 +112422,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000282
+   "order": 32000283
   },
   "9cd358fc94c3": {
    "key": "9cd358fc94c3",
@@ -112438,7 +112440,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000283
+   "order": 32000284
   },
   "16bdc68dc56c": {
    "key": "16bdc68dc56c",
@@ -112458,7 +112460,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000284
+   "order": 32000285
   },
   "34f22bbaf7bd": {
    "key": "34f22bbaf7bd",
@@ -112476,7 +112478,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000285
+   "order": 32000286
   },
   "fa3780b66cf8": {
    "key": "fa3780b66cf8",
@@ -112496,7 +112498,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000286
+   "order": 32000287
   },
   "1a82112c33d0": {
    "key": "1a82112c33d0",
@@ -112516,7 +112518,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000287
+   "order": 32000288
   },
   "2e3a5e0d7c90": {
    "key": "2e3a5e0d7c90",
@@ -112536,7 +112538,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000288
+   "order": 32000289
   },
   "01ae4d792b3d": {
    "key": "01ae4d792b3d",
@@ -112556,7 +112558,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000289
+   "order": 32000290
   },
   "8f63f92bc06c": {
    "key": "8f63f92bc06c",
@@ -112576,7 +112578,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000290
+   "order": 32000291
   },
   "92b7c1535f6d": {
    "key": "92b7c1535f6d",
@@ -112596,7 +112598,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000291
+   "order": 32000292
   },
   "5fc5a9743f09": {
    "key": "5fc5a9743f09",
@@ -112616,7 +112618,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000292
+   "order": 32000293
   },
   "95a0923c655f": {
    "key": "95a0923c655f",
@@ -112636,7 +112638,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000293
+   "order": 32000294
   },
   "f64b4604e3d1": {
    "key": "f64b4604e3d1",
@@ -112656,7 +112658,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000294
+   "order": 32000295
   },
   "4f0c006363e6": {
    "key": "4f0c006363e6",
@@ -112676,7 +112678,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000295
+   "order": 32000296
   },
   "f83d15d70263": {
    "key": "f83d15d70263",
@@ -112696,7 +112698,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000296
+   "order": 32000297
   },
   "f46a9ddad65d": {
    "key": "f46a9ddad65d",
@@ -112714,7 +112716,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000297
+   "order": 32000298
   },
   "e8a1b0cabe5b": {
    "key": "e8a1b0cabe5b",
@@ -112734,7 +112736,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000298
+   "order": 32000299
   },
   "6548abb6c94b": {
    "key": "6548abb6c94b",
@@ -112754,7 +112756,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000299
+   "order": 32000300
   },
   "d77119475f46": {
    "key": "d77119475f46",
@@ -112774,7 +112776,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000300
+   "order": 32000301
   },
   "39d0a335f0d1": {
    "key": "39d0a335f0d1",
@@ -112794,7 +112796,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000301
+   "order": 32000302
   },
   "1c4f5aa4d707": {
    "key": "1c4f5aa4d707",
@@ -112812,7 +112814,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000302,
+   "order": 32000303,
    "epg_mine": true
   },
   "98e1d9c20d1d": {
@@ -112831,7 +112833,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000303
+   "order": 32000304
   },
   "7c2d73f48384": {
    "key": "7c2d73f48384",
@@ -112849,7 +112851,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000304
+   "order": 32000305
   },
   "6e903a4a805f": {
    "key": "6e903a4a805f",
@@ -112867,7 +112869,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000305
+   "order": 32000306
   },
   "f246880e3fca": {
    "key": "f246880e3fca",
@@ -112885,7 +112887,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000306
+   "order": 32000307
   },
   "b5d5be118d80": {
    "key": "b5d5be118d80",
@@ -112903,7 +112905,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000307
+   "order": 32000308
   },
   "e037ac998410": {
    "key": "e037ac998410",
@@ -112921,7 +112923,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000308,
+   "order": 32000309,
    "epg_mine": true
   },
   "a8e5cb95e064": {
@@ -112940,7 +112942,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000309
+   "order": 32000310
   },
   "16159586e6f0": {
    "key": "16159586e6f0",
@@ -112958,7 +112960,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000310
+   "order": 32000311
   },
   "05534bf8383b": {
    "key": "05534bf8383b",
@@ -112976,7 +112978,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000311
+   "order": 32000312
   },
   "f966cda60259": {
    "key": "f966cda60259",
@@ -112996,7 +112998,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000312
+   "order": 32000313
   },
   "6ffab06952be": {
    "key": "6ffab06952be",
@@ -113016,7 +113018,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000313
+   "order": 32000314
   },
   "63de51d05d77": {
    "key": "63de51d05d77",
@@ -113036,7 +113038,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000314
+   "order": 32000315
   },
   "98654e1aaa36": {
    "key": "98654e1aaa36",
@@ -113054,7 +113056,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000315
+   "order": 32000316
   },
   "38e54641f88e": {
    "key": "38e54641f88e",
@@ -113072,7 +113074,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000316
+   "order": 32000317
   },
   "8022d1eac42d": {
    "key": "8022d1eac42d",
@@ -113092,7 +113094,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000317
+   "order": 32000318
   },
   "5c47fd60ae27": {
    "key": "5c47fd60ae27",
@@ -113110,7 +113112,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000318
+   "order": 32000319
   },
   "9aa3ff1d3fe0": {
    "key": "9aa3ff1d3fe0",
@@ -113130,7 +113132,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000319
+   "order": 32000320
   },
   "8beef609d381": {
    "key": "8beef609d381",
@@ -113150,7 +113152,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000320
+   "order": 32000321
   },
   "194169c12bc8": {
    "key": "194169c12bc8",
@@ -113170,7 +113172,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000321
+   "order": 32000322
   },
   "7be6128cc645": {
    "key": "7be6128cc645",
@@ -113188,7 +113190,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000322
+   "order": 32000323
   },
   "d2c1657d35e5": {
    "key": "d2c1657d35e5",
@@ -113208,7 +113210,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000323
+   "order": 32000324
   },
   "cb4a0aba6e15": {
    "key": "cb4a0aba6e15",
@@ -113228,7 +113230,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000324
+   "order": 32000325
   },
   "a77d9c5f2ed2": {
    "key": "a77d9c5f2ed2",
@@ -113248,7 +113250,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000325
+   "order": 32000326
   },
   "640887ccb932": {
    "key": "640887ccb932",
@@ -113268,7 +113270,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000326
+   "order": 32000327
   },
   "a76045c4476d": {
    "key": "a76045c4476d",
@@ -113286,7 +113288,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000327
+   "order": 32000328
   },
   "a5f39e9d2c63": {
    "key": "a5f39e9d2c63",
@@ -113306,7 +113308,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000328
+   "order": 32000329
   },
   "cba803215889": {
    "key": "cba803215889",
@@ -113326,7 +113328,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000329
+   "order": 32000330
   },
   "938f1c065186": {
    "key": "938f1c065186",
@@ -113346,7 +113348,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000330
+   "order": 32000331
   },
   "fb97fd1d55d9": {
    "key": "fb97fd1d55d9",
@@ -113364,7 +113366,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000331
+   "order": 32000332
   },
   "a5d641d4e378": {
    "key": "a5d641d4e378",
@@ -113382,7 +113384,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000332
+   "order": 32000333
   },
   "488270ca6b08": {
    "key": "488270ca6b08",
@@ -113402,7 +113404,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000333
+   "order": 32000334
   },
   "27f8c8680848": {
    "key": "27f8c8680848",
@@ -113420,7 +113422,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000334
+   "order": 32000335
   },
   "b931072788d1": {
    "key": "b931072788d1",
@@ -113438,7 +113440,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000335
+   "order": 32000336
   },
   "06bdf3f58237": {
    "key": "06bdf3f58237",
@@ -113456,7 +113458,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000336
+   "order": 32000337
   },
   "205f5c6503a9": {
    "key": "205f5c6503a9",
@@ -113474,7 +113476,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000337
+   "order": 32000338
   },
   "534728f4d643": {
    "key": "534728f4d643",
@@ -113492,7 +113494,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000338
+   "order": 32000339
   },
   "7cdd649d7fa0": {
    "key": "7cdd649d7fa0",
@@ -113510,7 +113512,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000339
+   "order": 32000340
   },
   "6446dfa6917f": {
    "key": "6446dfa6917f",
@@ -113528,7 +113530,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000340
+   "order": 32000341
   },
   "8462b4a733cb": {
    "key": "8462b4a733cb",
@@ -113546,7 +113548,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000341
+   "order": 32000342
   },
   "74a2657f9491": {
    "key": "74a2657f9491",
@@ -113564,7 +113566,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000342
+   "order": 32000343
   },
   "cb04829592cb": {
    "key": "cb04829592cb",
@@ -113582,7 +113584,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000343
+   "order": 32000344
   },
   "ef73f8837ad0": {
    "key": "ef73f8837ad0",
@@ -113600,7 +113602,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000344
+   "order": 32000345
   },
   "684bde83e047": {
    "key": "684bde83e047",
@@ -113618,7 +113620,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000345
+   "order": 32000346
   },
   "ae5cb32b4212": {
    "key": "ae5cb32b4212",
@@ -113636,7 +113638,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000346
+   "order": 32000347
   },
   "00fa17b822ce": {
    "key": "00fa17b822ce",
@@ -113656,7 +113658,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000347
+   "order": 32000348
   },
   "fed69c093c1f": {
    "key": "fed69c093c1f",
@@ -113676,7 +113678,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000348
+   "order": 32000349
   },
   "c4ca3159cdfb": {
    "key": "c4ca3159cdfb",
@@ -113696,7 +113698,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000349
+   "order": 32000350
   },
   "9e13b26fdfd5": {
    "key": "9e13b26fdfd5",
@@ -113716,7 +113718,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000350
+   "order": 32000351
   },
   "c445950146fa": {
    "key": "c445950146fa",
@@ -113736,7 +113738,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000351
+   "order": 32000352
   },
   "147b109393e1": {
    "key": "147b109393e1",
@@ -113756,7 +113758,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000352
+   "order": 32000353
   },
   "bca2044d2661": {
    "key": "bca2044d2661",
@@ -113776,7 +113778,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000353
+   "order": 32000354
   },
   "7d516443f0ac": {
    "key": "7d516443f0ac",
@@ -113794,7 +113796,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000354
+   "order": 32000355
   },
   "547d99bf85ed": {
    "key": "547d99bf85ed",
@@ -113812,7 +113814,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000355
+   "order": 32000356
   },
   "44a514eacc1e": {
    "key": "44a514eacc1e",
@@ -113830,7 +113832,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000356
+   "order": 32000357
   },
   "d420aa22ce57": {
    "key": "d420aa22ce57",
@@ -113848,7 +113850,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000357
+   "order": 32000358
   },
   "2a7c60a129b8": {
    "key": "2a7c60a129b8",
@@ -113866,7 +113868,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000358
+   "order": 32000359
   },
   "12fa4874fbdb": {
    "key": "12fa4874fbdb",
@@ -113884,7 +113886,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000359
+   "order": 32000360
   },
   "e25083530788": {
    "key": "e25083530788",
@@ -113902,7 +113904,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000360
+   "order": 32000361
   },
   "14416dc3e214": {
    "key": "14416dc3e214",
@@ -113920,7 +113922,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000361
+   "order": 32000362
   },
   "29d029e580f7": {
    "key": "29d029e580f7",
@@ -113938,7 +113940,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000362
+   "order": 32000363
   },
   "101d9f7474ed": {
    "key": "101d9f7474ed",
@@ -113958,7 +113960,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000363
+   "order": 32000364
   },
   "3c9f2ea75103": {
    "key": "3c9f2ea75103",
@@ -113978,7 +113980,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000364
+   "order": 32000365
   },
   "9b61fa7ecdd7": {
    "key": "9b61fa7ecdd7",
@@ -113996,7 +113998,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000365,
+   "order": 32000366,
    "epg_mine": true
   },
   "857c87899ffe": {
@@ -114015,7 +114017,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000366
+   "order": 32000367
   },
   "eaa8aff9aaee": {
    "key": "eaa8aff9aaee",
@@ -114035,7 +114037,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000367
+   "order": 32000368
   },
   "12ff7bc99fb6": {
    "key": "12ff7bc99fb6",
@@ -114053,7 +114055,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000368
+   "order": 32000369
   },
   "cae4a4723b01": {
    "key": "cae4a4723b01",
@@ -114091,7 +114093,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000369
+   "order": 32000370
   },
   "6e0db8725ef9": {
    "key": "6e0db8725ef9",
@@ -114111,7 +114113,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000370
+   "order": 32000371
   },
   "ca61d8d5d318": {
    "key": "ca61d8d5d318",
@@ -114131,7 +114133,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000371
+   "order": 32000372
   },
   "4a69119ec5ad": {
    "key": "4a69119ec5ad",
@@ -114149,7 +114151,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000372
+   "order": 32000373
   },
   "5a1298d2eb12": {
    "key": "5a1298d2eb12",
@@ -114169,7 +114171,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000373
+   "order": 32000374
   },
   "9a1dd3654d4c": {
    "key": "9a1dd3654d4c",
@@ -114187,7 +114189,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000374
+   "order": 32000375
   },
   "7593e94f024c": {
    "key": "7593e94f024c",
@@ -114207,7 +114209,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000375
+   "order": 32000376
   },
   "55f92c241a44": {
    "key": "55f92c241a44",
@@ -114227,7 +114229,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000376
+   "order": 32000377
   },
   "117dbdce9dbd": {
    "key": "117dbdce9dbd",
@@ -114265,7 +114267,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000378
+   "order": 32000379
   },
   "0717fbd6b187": {
    "key": "0717fbd6b187",
@@ -114285,7 +114287,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000379
+   "order": 32000380
   },
   "5e28f04f0791": {
    "key": "5e28f04f0791",
@@ -114303,7 +114305,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000380
+   "order": 32000381
   },
   "841c1e555b4a": {
    "key": "841c1e555b4a",
@@ -114321,7 +114323,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000381
+   "order": 32000382
   },
   "9f44edb1e950": {
    "key": "9f44edb1e950",
@@ -114341,7 +114343,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000382
+   "order": 32000383
   },
   "bbd4a93de571": {
    "key": "bbd4a93de571",
@@ -114359,7 +114361,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000383
+   "order": 32000384
   },
   "9904a1d5ffc8": {
    "key": "9904a1d5ffc8",
@@ -114377,7 +114379,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000384
+   "order": 32000385
   },
   "1ef08243f168": {
    "key": "1ef08243f168",
@@ -114397,7 +114399,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000385
+   "order": 32000386
   },
   "4bb2d5e6e366": {
    "key": "4bb2d5e6e366",
@@ -114415,7 +114417,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000386
+   "order": 32000387
   },
   "655001f2a164": {
    "key": "655001f2a164",
@@ -114435,7 +114437,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000387
+   "order": 32000388
   },
   "f3aede727b6d": {
    "key": "f3aede727b6d",
@@ -114455,7 +114457,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000388
+   "order": 32000389
   },
   "11129be807bc": {
    "key": "11129be807bc",
@@ -114473,7 +114475,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000389
+   "order": 32000390
   },
   "8110d9cee853": {
    "key": "8110d9cee853",
@@ -114493,7 +114495,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000390
+   "order": 32000391
   },
   "f46d62f96148": {
    "key": "f46d62f96148",
@@ -114513,7 +114515,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000391
+   "order": 32000392
   },
   "79a737f1fd89": {
    "key": "79a737f1fd89",
@@ -114531,7 +114533,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000392
+   "order": 32000393
   },
   "74724641f93e": {
    "key": "74724641f93e",
@@ -114549,7 +114551,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000393
+   "order": 32000394
   },
   "bceb24c202c4": {
    "key": "bceb24c202c4",
@@ -114567,7 +114569,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000394
+   "order": 32000395
   },
   "0c930565aa6a": {
    "key": "0c930565aa6a",
@@ -114585,7 +114587,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000395
+   "order": 32000396
   },
   "581899f70aab": {
    "key": "581899f70aab",
@@ -114603,7 +114605,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000396
+   "order": 32000397
   },
   "5f5c815ed01c": {
    "key": "5f5c815ed01c",
@@ -114623,7 +114625,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000397
+   "order": 32000398
   },
   "a39fc838fd8d": {
    "key": "a39fc838fd8d",
@@ -114641,7 +114643,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000398
+   "order": 32000399
   },
   "b645855c8091": {
    "key": "b645855c8091",
@@ -114659,7 +114661,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000399
+   "order": 32000400
   },
   "e244943c0c5e": {
    "key": "e244943c0c5e",
@@ -114679,7 +114681,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000400
+   "order": 32000401
   },
   "814dd78a74f8": {
    "key": "814dd78a74f8",
@@ -114697,7 +114699,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000401
+   "order": 32000402
   },
   "8e9c074220e5": {
    "key": "8e9c074220e5",
@@ -114715,7 +114717,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000402
+   "order": 32000403
   },
   "eaaff01a60ad": {
    "key": "eaaff01a60ad",
@@ -114733,7 +114735,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000403
+   "order": 32000404
   },
   "5a6d88a19a53": {
    "key": "5a6d88a19a53",
@@ -114751,7 +114753,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000404
+   "order": 32000405
   },
   "d3979b6c3ec3": {
    "key": "d3979b6c3ec3",
@@ -114771,7 +114773,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000405
+   "order": 32000406
   },
   "2bb1cf14dfd3": {
    "key": "2bb1cf14dfd3",
@@ -114789,7 +114791,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000406
+   "order": 32000407
   },
   "6bc0d1b45722": {
    "key": "6bc0d1b45722",
@@ -114809,7 +114811,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000407
+   "order": 32000408
   },
   "ef5e5a3125e0": {
    "key": "ef5e5a3125e0",
@@ -114827,7 +114829,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000408
+   "order": 32000409
   },
   "162cfba32430": {
    "key": "162cfba32430",
@@ -114845,7 +114847,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000409
+   "order": 32000410
   },
   "7da5b12b717a": {
    "key": "7da5b12b717a",
@@ -114863,7 +114865,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000410
+   "order": 32000411
   },
   "4f85aabf53d7": {
    "key": "4f85aabf53d7",
@@ -114881,7 +114883,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000411
+   "order": 32000412
   },
   "3dc8fca11373": {
    "key": "3dc8fca11373",
@@ -114899,7 +114901,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000412
+   "order": 32000413
   },
   "d3195d3c873f": {
    "key": "d3195d3c873f",
@@ -114917,7 +114919,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000413
+   "order": 32000414
   },
   "e9d02df14afb": {
    "key": "e9d02df14afb",
@@ -114935,7 +114937,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000414
+   "order": 32000415
   },
   "024a33f3af12": {
    "key": "024a33f3af12",
@@ -114953,7 +114955,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000415
+   "order": 32000416
   },
   "8fc4810873d2": {
    "key": "8fc4810873d2",
@@ -114971,7 +114973,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000416
+   "order": 32000417
   },
   "46f4cf65e670": {
    "key": "46f4cf65e670",
@@ -114989,7 +114991,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000417
+   "order": 32000418
   },
   "0cd473238999": {
    "key": "0cd473238999",
@@ -115007,7 +115009,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000418
+   "order": 32000419
   },
   "f25921be4674": {
    "key": "f25921be4674",
@@ -115025,7 +115027,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000419
+   "order": 32000420
   },
   "7a841e0bb63b": {
    "key": "7a841e0bb63b",
@@ -115043,7 +115045,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000420
+   "order": 32000421
   },
   "c1d619226b24": {
    "key": "c1d619226b24",
@@ -115063,7 +115065,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000421
+   "order": 32000422
   },
   "ff8193c0030f": {
    "key": "ff8193c0030f",
@@ -115081,7 +115083,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000422
+   "order": 32000423
   },
   "0a486c9460a1": {
    "key": "0a486c9460a1",
@@ -115101,7 +115103,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000423
+   "order": 32000424
   },
   "836ed10115c1": {
    "key": "836ed10115c1",
@@ -115121,7 +115123,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000424
+   "order": 32000425
   },
   "0cea0b1d6fc6": {
    "key": "0cea0b1d6fc6",
@@ -115141,7 +115143,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000425
+   "order": 32000426
   },
   "0416b4352102": {
    "key": "0416b4352102",
@@ -115159,7 +115161,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000426
+   "order": 32000427
   },
   "2fc2c7aea296": {
    "key": "2fc2c7aea296",
@@ -115177,7 +115179,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000427
+   "order": 32000428
   },
   "d95b1c928fd3": {
    "key": "d95b1c928fd3",
@@ -115195,7 +115197,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000428
+   "order": 32000429
   },
   "bf816382bc72": {
    "key": "bf816382bc72",
@@ -115213,7 +115215,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000429
+   "order": 32000430
   },
   "da79968c498f": {
    "key": "da79968c498f",
@@ -115231,7 +115233,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000430
+   "order": 32000431
   },
   "8ae70175b94d": {
    "key": "8ae70175b94d",
@@ -115251,7 +115253,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000431
+   "order": 32000432
   },
   "bf9454314021": {
    "key": "bf9454314021",
@@ -115269,7 +115271,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000432
+   "order": 32000433
   },
   "2ea247d4d6a5": {
    "key": "2ea247d4d6a5",
@@ -115289,7 +115291,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000433
+   "order": 32000434
   },
   "d38786196bfc": {
    "key": "d38786196bfc",
@@ -115307,7 +115309,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000434
+   "order": 32000435
   },
   "f1475d971e10": {
    "key": "f1475d971e10",
@@ -115327,7 +115329,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000435
+   "order": 32000436
   },
   "9b0d62346a96": {
    "key": "9b0d62346a96",
@@ -115345,7 +115347,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000436
+   "order": 32000437
   },
   "3ef2b2388b8d": {
    "key": "3ef2b2388b8d",
@@ -115363,7 +115365,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000437
+   "order": 32000438
   },
   "d33b00cf4877": {
    "key": "d33b00cf4877",
@@ -115381,7 +115383,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000438
+   "order": 32000439
   },
   "31191fab22cf": {
    "key": "31191fab22cf",
@@ -115399,7 +115401,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000439
+   "order": 32000440
   },
   "030901715cea": {
    "key": "030901715cea",
@@ -115419,7 +115421,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000440
+   "order": 32000441
   },
   "df847288232e": {
    "key": "df847288232e",
@@ -115437,7 +115439,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000441
+   "order": 32000442
   },
   "6f631926bb5f": {
    "key": "6f631926bb5f",
@@ -115455,7 +115457,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000442
+   "order": 32000443
   },
   "f09628adf641": {
    "key": "f09628adf641",
@@ -115473,7 +115475,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000443
+   "order": 32000444
   },
   "3b6188a5d446": {
    "key": "3b6188a5d446",
@@ -115491,7 +115493,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000444
+   "order": 32000445
   },
   "50f3feab147d": {
    "key": "50f3feab147d",
@@ -115509,7 +115511,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000445
+   "order": 32000446
   },
   "b989a9a62715": {
    "key": "b989a9a62715",
@@ -115527,7 +115529,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000446
+   "order": 32000447
   },
   "181224892598": {
    "key": "181224892598",
@@ -115545,7 +115547,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000447
+   "order": 32000448
   },
   "997c3ecc2fc5": {
    "key": "997c3ecc2fc5",
@@ -115563,7 +115565,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000449
+   "order": 32000450
   },
   "2db695abc690": {
    "key": "2db695abc690",
@@ -148451,7 +148453,9 @@
   "552cb2cdc1f7": {
    "key": "552cb2cdc1f7",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "BBC.Two.HD.uk"
+   },
    "up": {
     "name": "BBC Two HD (720p)",
     "number": "",
@@ -149105,7 +149109,9 @@
   "a864c50a2f12": {
    "key": "a864c50a2f12",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "Faith.World.TV.uk"
+   },
    "up": {
     "name": "Faith World TV (1080p)",
     "number": "",
@@ -149224,7 +149230,9 @@
   "4974d305cb76": {
    "key": "4974d305cb76",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "GB.News.HD.uk"
+   },
    "up": {
     "name": "GB News (1080p)",
     "number": "",
@@ -150494,7 +150502,9 @@
   "3f3e3b0833c3": {
    "key": "3f3e3b0833c3",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "NOW.70s.uk"
+   },
    "up": {
     "name": "Now 70s (720p)",
     "number": "",
@@ -150512,7 +150522,9 @@
   "ca5559882bc7": {
    "key": "ca5559882bc7",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "NOW.80s.uk"
+   },
    "up": {
     "name": "Now 80s (1080p)",
     "number": "",
@@ -152314,7 +152326,9 @@
   "7b2cb2639ff6": {
    "key": "7b2cb2639ff6",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "TV.Warehouse.uk"
+   },
    "up": {
     "name": "TV Warehouse (720p)",
     "number": "",
@@ -152350,7 +152364,9 @@
   "8dc9a3ea5ebb": {
    "key": "8dc9a3ea5ebb",
    "source": "1c763150",
-   "ov": {},
+   "ov": {
+    "epg_id": "U.and.W.HD.uk"
+   },
    "up": {
     "name": "U&W",
     "number": "",
@@ -160438,9 +160454,7 @@
   "74de0078fbd8": {
    "key": "74de0078fbd8",
    "source": "a9a0358c",
-   "ov": {
-    "epg_id": "5e20b730f2f8d5003d739db7-6245f06793b402a3d1097787"
-   },
+   "ov": {},
    "up": {
     "name": "Euronews Français",
     "number": "",
@@ -165151,7 +165165,7 @@
    "key": "c58342643523",
    "source": "a9a0358c",
    "ov": {
-    "epg_id": "697140a85d851f5e69414688-68b74890b5b437bf872b6b72"
+    "epg_id": "608049aefa2b8ae93c2c3a63-68b74890b5b437bf872b6b72"
    },
    "up": {
     "name": "TV5MONDE Chefs",
@@ -168992,7 +169006,9 @@
   "0047e66337f4": {
    "key": "0047e66337f4",
    "source": "2ddbef2d",
-   "ov": {},
+   "ov": {
+    "epg_id": "6a1610bebdf296985fd95603-5fc705ff2f220e002d5e6bce"
+   },
    "up": {
     "name": "The Walking Dead Universe",
     "number": "25",
@@ -178614,7 +178630,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000005
+   "order": 68000003
   },
   "bf29bb4a7169": {
    "key": "bf29bb4a7169",
@@ -178632,7 +178648,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000006
+   "order": 68000004
   },
   "4c62ee7e5f55": {
    "key": "4c62ee7e5f55",
@@ -178652,7 +178668,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000007
+   "order": 68000005
   },
   "76a2c63bc17d": {
    "key": "76a2c63bc17d",
@@ -178672,7 +178688,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000008
+   "order": 68000006
   },
   "db1aec9fde93": {
    "key": "db1aec9fde93",
@@ -178692,7 +178708,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000009
+   "order": 68000007
   },
   "27689e952d75": {
    "key": "27689e952d75",
@@ -178712,7 +178728,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000010,
+   "order": 68000008,
    "epg_mine": true
   },
   "20bec1659f27": {
@@ -178733,7 +178749,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000011
+   "order": 68000009
   },
   "d1b41b3a2f15": {
    "key": "d1b41b3a2f15",
@@ -178751,7 +178767,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000012
+   "order": 68000010
   },
   "ba5f99b13007": {
    "key": "ba5f99b13007",
@@ -178771,7 +178787,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000013
+   "order": 68000011
   },
   "749838f4cb28": {
    "key": "749838f4cb28",
@@ -178791,7 +178807,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000014
+   "order": 68000012
   },
   "bfe7bc96664b": {
    "key": "bfe7bc96664b",
@@ -178811,7 +178827,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000015
+   "order": 68000013
   },
   "e3e33ee2de28": {
    "key": "e3e33ee2de28",
@@ -178831,7 +178847,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000016
+   "order": 68000014
   },
   "bd2117ce412a": {
    "key": "bd2117ce412a",
@@ -178849,7 +178865,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000017
+   "order": 68000015
   },
   "ddaadc941777": {
    "key": "ddaadc941777",
@@ -178869,7 +178885,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000018
+   "order": 68000016
   },
   "b08ee887a985": {
    "key": "b08ee887a985",
@@ -178887,7 +178903,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 68000019
+   "order": 68000017
   },
   "443a8e09d546": {
    "key": "443a8e09d546",
@@ -215735,7 +215751,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000377
+   "order": 32000378
   },
   "9bee4057c295": {
    "key": "9bee4057c295",
@@ -218383,7 +218399,7 @@
    },
    "extra": [],
    "missing": false,
-   "order": 32000448
+   "order": 32000449
   },
   "75852c87a91a": {
    "key": "75852c87a91a",
@@ -220382,859 +220398,877 @@
    "extra": [],
    "missing": false,
    "order": 73000217
+  },
+  "d692afe32f01": {
+   "key": "d692afe32f01",
+   "source": "da8f796a",
+   "ov": {},
+   "up": {
+    "name": "beIN Sports USA (576p)",
+    "number": "",
+    "group": "Sports",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/BeIN_Sports_logo_%28vertical_version%29.svg/500px-BeIN_Sports_logo_%28vertical_version%29.svg.png",
+    "epg_id": "beINSportsUSA.us@SD",
+    "url": "https://tvsen6.aynaott.com/beinsports/index.m3u8",
+    "desc": "",
+    "enabled": true
+   },
+   "extra": [],
+   "missing": false,
+   "order": 32000190
   }
  },
  "status": {
   "74429009": {
    "ok": true,
    "msg": "692 channels (0 new)",
-   "time": 1793796124.2723038
+   "time": 1793846501.0546947
   },
   "20966c93": {
    "ok": true,
-   "msg": "457 channels (1 new)",
-   "time": 1793796124.2990737
+   "msg": "457 channels (0 new)",
+   "time": 1793846501.0933664
   },
   "775a55e3": {
    "ok": true,
    "msg": "256 channels (0 new)",
-   "time": 1793796124.3209653
+   "time": 1793846501.1214614
   },
   "78afd227": {
    "ok": true,
-   "msg": "593 channels (10 new)",
-   "time": 1793796124.3482544
+   "msg": "593 channels (0 new)",
+   "time": 1793846501.1653135
   },
   "e1a90831": {
    "ok": true,
    "msg": "183 channels (0 new)",
-   "time": 1793796124.3576448
+   "time": 1793846501.1780362
   },
   "6d1c64a5": {
    "ok": true,
    "msg": "433 channels (0 new)",
-   "time": 1793796124.3787456
+   "time": 1793846501.217007
   },
   "fa1cdf63": {
    "ok": true,
-   "msg": "786 guide channels, 55753 upcoming shows",
-   "time": 1793796129.5440202,
+   "msg": "791 guide channels, 64439 upcoming shows",
+   "time": 1793846506.739875,
    "fresh": true
   },
   "9bd31d9a": {
    "ok": true,
-   "msg": "692 guide channels, 31554 upcoming shows",
-   "time": 1793796131.174904,
+   "msg": "692 guide channels, 37127 upcoming shows",
+   "time": 1793846508.5299397,
    "fresh": true
   },
   "596431ea": {
    "ok": true,
-   "msg": "457 guide channels, 7905 upcoming shows",
-   "time": 1793796131.7920449,
+   "msg": "457 guide channels, 8533 upcoming shows",
+   "time": 1793846509.2300987,
    "fresh": true
   },
   "a6a61f2f": {
    "ok": true,
-   "msg": "725 guide channels, 64472 upcoming shows",
-   "time": 1793796134.9012642,
+   "msg": "724 guide channels, 65166 upcoming shows",
+   "time": 1793846512.6201372,
    "fresh": true
   },
   "c1f14f19": {
    "ok": true,
-   "msg": "183 guide channels, 9118 upcoming shows",
-   "time": 1793796135.2904327,
+   "msg": "183 guide channels, 5597 upcoming shows",
+   "time": 1793846513.0314019,
    "fresh": true
   },
   "dd8f7100": {
    "ok": true,
-   "msg": "433 guide channels, 16696 upcoming shows",
-   "time": 1793796136.2672164,
+   "msg": "433 guide channels, 10256 upcoming shows",
+   "time": 1793846514.0536184,
    "fresh": true
   },
   "e01b5428": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4803 upcoming shows",
-   "time": 1793796136.5665078
+   "msg": "593 guide channels, 4710 upcoming shows",
+   "time": 1793846514.3950799
   },
   "cbe16a4b": {
    "fresh": true,
    "ok": true,
-   "msg": "146 guide channels, 4411 upcoming shows",
-   "time": 1793796136.8910546
+   "msg": "146 guide channels, 1103 upcoming shows",
+   "time": 1793846514.6711707
   },
   "7ab24a94": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796137.9267614
+   "ok": true,
+   "msg": "547 guide channels, 18423 upcoming shows",
+   "time": 1793846515.8431287
   },
   "f0af7d6a": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796139.1026096
+   "ok": true,
+   "msg": "663 guide channels, 20747 upcoming shows",
+   "time": 1793846517.181923
   },
   "c50299a7": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 242 upcoming shows",
-   "time": 1793796139.1152542
+   "msg": "1 guide channels, 222 upcoming shows",
+   "time": 1793846517.1939473
   },
   "216e7968": {
    "fresh": true,
    "ok": true,
-   "msg": "12843 guide channels, 1024858 upcoming shows",
-   "time": 1793796187.3585453
+   "msg": "12843 guide channels, 984758 upcoming shows",
+   "time": 1793846567.6742337
   },
   "6d5fcaf0": {
    "fresh": true,
    "ok": true,
-   "msg": "15 guide channels, 2315 upcoming shows",
-   "time": 1793796187.4558706
+   "msg": "15 guide channels, 2425 upcoming shows",
+   "time": 1793846567.776626
   },
   "4df0cc2a": {
    "fresh": true,
    "ok": true,
-   "msg": "739 guide channels, 35964 upcoming shows",
-   "time": 1793796189.8429863
+   "msg": "739 guide channels, 34597 upcoming shows",
+   "time": 1793846570.3294835
   },
   "13b38fb3": {
    "fresh": true,
    "ok": true,
-   "msg": "739 guide channels, 120026 upcoming shows",
-   "time": 1793796198.0946882
+   "msg": "739 guide channels, 109702 upcoming shows",
+   "time": 1793846578.8978698
   },
   "9ca24dfd": {
    "fresh": true,
    "ok": true,
-   "msg": "298 guide channels, 106917 upcoming shows",
-   "time": 1793796202.661013
+   "msg": "298 guide channels, 106293 upcoming shows",
+   "time": 1793846583.8346727
   },
   "f303f1d1": {
    "fresh": true,
    "ok": true,
-   "msg": "4471 guide channels, 398525 upcoming shows",
-   "time": 1793796238.6919274
+   "msg": "4471 guide channels, 445428 upcoming shows",
+   "time": 1793846623.1301334
   },
   "8c45ed1d": {
    "fresh": true,
    "ok": true,
-   "msg": "5542 guide channels, 349261 upcoming shows",
-   "time": 1793796256.8718636
+   "msg": "5541 guide channels, 423477 upcoming shows",
+   "time": 1793846644.5316472
   },
   "f25236e4": {
    "ok": true,
    "msg": "389 channels (0 new)",
-   "time": 1793796256.8937137
+   "time": 1793846644.5716999
   },
   "514536fe": {
    "ok": true,
    "msg": "433 channels (0 new)",
-   "time": 1793796256.9112308
+   "time": 1793846644.6025114
   },
   "2108517c": {
    "ok": true,
    "msg": "593 channels (0 new)",
-   "time": 1793796256.92382
+   "time": 1793846644.6211717
   },
   "553c22cb": {
    "ok": true,
    "msg": "166 channels (0 new)",
-   "time": 1793796256.927804
+   "time": 1793846644.626678
   },
   "899a75f3": {
    "ok": true,
    "msg": "539 channels (0 new)",
-   "time": 1793796256.9593716
+   "time": 1793846644.6670437
   },
   "bd8e573f": {
    "ok": true,
    "msg": "447 channels (0 new)",
-   "time": 1793796256.9893572
+   "time": 1793846644.7394028
   },
   "e554360c": {
    "ok": true,
    "msg": "459 channels (0 new)",
-   "time": 1793796257.0078678
+   "time": 1793846644.772522
   },
   "da8f796a": {
    "ok": true,
-   "msg": "1494 channels (1 new)",
-   "time": 1793796257.066532
+   "msg": "1495 channels (1 new)",
+   "time": 1793846644.8494136
   },
   "3cbd23a9": {
    "ok": true,
    "msg": "28 channels (0 new)",
-   "time": 1793796257.0686133
+   "time": 1793846644.8522866
   },
   "ce8577df": {
    "ok": true,
    "msg": "125 channels (0 new)",
-   "time": 1793796257.0755842
+   "time": 1793846644.8628983
   },
   "49cfa410": {
    "ok": true,
    "msg": "336 channels (0 new)",
-   "time": 1793796257.0993917
+   "time": 1793846644.8941643
   },
   "938bb238": {
    "ok": true,
-   "msg": "122 channels (72 new)",
-   "time": 1793796257.103679
+   "msg": "122 channels (0 new)",
+   "time": 1793846644.8990324
   },
   "ad8c9d97": {
    "ok": true,
    "fresh": true,
-   "time": 1793796373.236667,
-   "msg": "16037 guide channels, 1182917 upcoming shows"
+   "time": 1793846770.8653355,
+   "msg": "16037 guide channels, 934566 upcoming shows"
   },
   "e92dc1ef": {
    "ok": true,
    "msg": "55 channels (0 new)",
-   "time": 1793796269.7887857
+   "time": 1793846658.7363799
   },
   "1c763150": {
    "ok": true,
    "msg": "304 channels (0 new)",
-   "time": 1793796269.8012893
+   "time": 1793846658.7542126
   },
   "94b82bd9": {
    "ok": true,
    "msg": "340 channels (0 new)",
-   "time": 1793796269.815208
+   "time": 1793846658.7775767
   },
   "a9a0358c": {
    "ok": true,
    "msg": "369 channels (0 new)",
-   "time": 1793796269.8421412
+   "time": 1793846658.8119817
   },
   "2ddbef2d": {
    "ok": true,
-   "msg": "182 channels (1 new)",
-   "time": 1793796269.8541198
+   "msg": "182 channels (0 new)",
+   "time": 1793846658.827376
   },
   "d7968fcb": {
    "ok": true,
    "msg": "197 channels (0 new)",
-   "time": 1793796269.8628745
+   "time": 1793846658.8477132
   },
   "ed8db8ff": {
    "ok": true,
-   "msg": "278 channels (4 new)",
-   "time": 1793796269.8797154
+   "msg": "278 channels (0 new)",
+   "time": 1793846658.870059
   },
   "3502e7ee": {
    "fresh": true,
    "ok": true,
-   "msg": "755 guide channels, 42220 upcoming shows",
-   "time": 1793796272.0704176
+   "msg": "755 guide channels, 51437 upcoming shows",
+   "time": 1793846661.4520414
   },
   "8777ef13": {
    "fresh": true,
    "ok": true,
-   "msg": "487 guide channels, 26389 upcoming shows",
-   "time": 1793796273.9238923
+   "msg": "487 guide channels, 30553 upcoming shows",
+   "time": 1793846663.5094059
   },
   "40fc4001": {
    "fresh": true,
    "ok": true,
-   "msg": "560 guide channels, 96238 upcoming shows",
-   "time": 1793796280.1698787
+   "msg": "560 guide channels, 87955 upcoming shows",
+   "time": 1793846670.2553823
   },
   "98e7bbf9": {
    "fresh": true,
    "ok": true,
-   "msg": "284 guide channels, 43980 upcoming shows",
-   "time": 1793796282.0106652
+   "msg": "284 guide channels, 46690 upcoming shows",
+   "time": 1793846672.332975
   },
   "7fe2e073": {
    "fresh": true,
    "ok": true,
-   "msg": "932 guide channels, 102360 upcoming shows",
-   "time": 1793796287.4098203
+   "msg": "932 guide channels, 96396 upcoming shows",
+   "time": 1793846677.8203294
   },
   "f2423499": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796288.471594
+   "ok": true,
+   "msg": "566 guide channels, 16509 upcoming shows",
+   "time": 1793846679.1268823
   },
   "74457e16": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796288.5194216
+   "ok": true,
+   "msg": "272 guide channels, 35 upcoming shows",
+   "time": 1793846679.1829886
   },
   "5d1419db": {
    "fresh": true,
    "ok": true,
-   "msg": "369 guide channels, 10032 upcoming shows",
-   "time": 1793796289.090056
+   "msg": "369 guide channels, 15293 upcoming shows",
+   "time": 1793846680.0020654
   },
   "c558aacf": {
    "fresh": true,
    "ok": true,
-   "msg": "182 guide channels, 3571 upcoming shows",
-   "time": 1793796289.3778732
+   "msg": "182 guide channels, 3870 upcoming shows",
+   "time": 1793846680.3497596
   },
   "440d664a": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2370 upcoming shows",
-   "time": 1793796289.5217822
+   "msg": "278 guide channels, 2336 upcoming shows",
+   "time": 1793846680.5294223
   },
   "ee63f468": {
    "ok": true,
    "msg": "20 channels (0 new)",
-   "time": 1793796296.2305791
+   "time": 1793846687.8406663
   },
   "0830e470": {
    "ok": true,
    "msg": "265 channels (0 new)",
-   "time": 1793796296.2432268
+   "time": 1793846687.857441
   },
   "ccd44578": {
    "ok": true,
    "msg": "234 channels (0 new)",
-   "time": 1793796296.253349
+   "time": 1793846687.8746362
   },
   "93f106ed": {
    "ok": true,
    "msg": "465 channels (0 new)",
-   "time": 1793796296.2867925
+   "time": 1793846687.9174104
   },
   "977a2df8": {
    "ok": true,
    "msg": "241 channels (0 new)",
-   "time": 1793796296.3016467
+   "time": 1793846687.9359856
   },
   "29d1a082": {
    "ok": true,
-   "msg": "293 channels (3 new)",
-   "time": 1793796296.320037
+   "msg": "293 channels (0 new)",
+   "time": 1793846687.9590745
   },
   "a3bce8af": {
    "fresh": true,
    "ok": true,
-   "msg": "696 guide channels, 52698 upcoming shows",
-   "time": 1793796298.774653
+   "msg": "696 guide channels, 58781 upcoming shows",
+   "time": 1793846690.6592283
   },
   "1ebcf8d2": {
    "fresh": true,
    "ok": true,
-   "msg": "696 guide channels, 63546 upcoming shows",
-   "time": 1793796303.1834645
+   "msg": "696 guide channels, 53429 upcoming shows",
+   "time": 1793846695.3879712
   },
   "78306880": {
    "fresh": true,
    "ok": true,
-   "msg": "808 guide channels, 111767 upcoming shows",
-   "time": 1793796308.7975655
+   "msg": "808 guide channels, 102489 upcoming shows",
+   "time": 1793846701.523343
   },
   "45aa734d": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796309.042778
+   "ok": true,
+   "msg": "127 guide channels, 7195 upcoming shows",
+   "time": 1793846702.0911024
   },
   "9168b6b9": {
    "fresh": true,
    "ok": true,
-   "msg": "465 guide channels, 13411 upcoming shows",
-   "time": 1793796309.8329446
+   "msg": "465 guide channels, 20811 upcoming shows",
+   "time": 1793846703.1664197
   },
   "4a0f87cf": {
    "fresh": true,
    "ok": true,
-   "msg": "241 guide channels, 5195 upcoming shows",
-   "time": 1793796310.0890086
+   "msg": "241 guide channels, 5573 upcoming shows",
+   "time": 1793846703.5826268
   },
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2393 upcoming shows",
-   "time": 1793796310.2420633
+   "msg": "293 guide channels, 2380 upcoming shows",
+   "time": 1793846703.754714
   },
   "84d2ba49": {
    "fresh": true,
    "ok": true,
-   "msg": "54 guide channels, 127 upcoming shows",
-   "time": 1793796311.7385063
+   "msg": "54 guide channels, 100 upcoming shows",
+   "time": 1793846705.3403618
   },
   "b2fb127b": {
    "fresh": true,
    "ok": true,
-   "msg": "253 guide channels, 47509 upcoming shows",
-   "time": 1793796291.3849726
+   "msg": "253 guide channels, 43063 upcoming shows",
+   "time": 1793846682.6112757
   },
   "96673aad": {
    "fresh": true,
    "ok": true,
-   "msg": "53 guide channels, 5775 upcoming shows",
-   "time": 1793796291.6180685
+   "msg": "53 guide channels, 5270 upcoming shows",
+   "time": 1793846682.863117
   },
   "ea13cd93": {
    "fresh": true,
    "ok": true,
-   "msg": "1707 guide channels, 61333 upcoming shows",
-   "time": 1793796377.0349653
+   "msg": "1706 guide channels, 58929 upcoming shows",
+   "time": 1793846775.0117726
   },
   "6958a1cd": {
    "fresh": true,
    "ok": true,
-   "msg": "396 guide channels, 6642 upcoming shows",
-   "time": 1793796377.5575566
+   "msg": "396 guide channels, 5735 upcoming shows",
+   "time": 1793846775.5555563
   },
   "736dd003": {
    "fresh": true,
    "ok": true,
-   "msg": "10211 guide channels, 521623 upcoming shows",
-   "time": 1793796400.2990794
+   "msg": "10200 guide channels, 577197 upcoming shows",
+   "time": 1793846801.6145635
   },
   "1331a3e0": {
    "fresh": true,
    "ok": true,
-   "msg": "722 guide channels, 9794 upcoming shows",
-   "time": 1793796401.6012437
+   "msg": "766 guide channels, 19646 upcoming shows",
+   "time": 1793846803.408743
   },
   "45074959": {
    "fresh": true,
    "ok": true,
-   "msg": "4445 guide channels, 33505 upcoming shows",
-   "time": 1793796420.3199136
+   "msg": "4445 guide channels, 39400 upcoming shows",
+   "time": 1793846823.4378633
   },
   "29d5eb90": {
    "fresh": true,
    "ok": true,
-   "msg": "71 guide channels, 9863 upcoming shows",
-   "time": 1793796420.8630836
+   "msg": "71 guide channels, 11004 upcoming shows",
+   "time": 1793846824.060749
   },
   "2c074dc1": {
    "fresh": true,
    "ok": true,
-   "msg": "28321 guide channels, 2113282 upcoming shows",
-   "time": 1793796567.844512
+   "msg": "28329 guide channels, 2043402 upcoming shows",
+   "time": 1793846978.7623656
   },
   "ac96ede6": {
    "fresh": true,
    "ok": true,
-   "msg": "574 guide channels, 60504 upcoming shows",
-   "time": 1793796571.2253444
+   "msg": "574 guide channels, 50076 upcoming shows",
+   "time": 1793846982.3173978
   },
   "292fdfee": {
    "fresh": true,
    "ok": true,
-   "msg": "159 guide channels, 14768 upcoming shows",
-   "time": 1793796572.433588
+   "msg": "159 guide channels, 11209 upcoming shows",
+   "time": 1793846983.618432
   },
   "51a402b5": {
-   "fresh": true,
+   "fresh": false,
    "ok": true,
-   "msg": "128 guide channels, 1267 upcoming shows",
-   "time": 1793796572.675742
+   "msg": "128 guide channels, 4 upcoming shows - OUT OF DATE, not used",
+   "time": 1793846983.7858167
   },
   "1b7f4b60": {
    "fresh": true,
    "ok": true,
-   "msg": "96 guide channels, 13484 upcoming shows",
-   "time": 1793796573.5592704
+   "msg": "96 guide channels, 12035 upcoming shows",
+   "time": 1793846984.625062
   },
   "ea06e7bc": {
    "fresh": true,
    "ok": true,
-   "msg": "185 guide channels, 21041 upcoming shows",
-   "time": 1793796574.7353764
+   "msg": "185 guide channels, 18767 upcoming shows",
+   "time": 1793846985.7601042
   },
   "bc33dd4d": {
    "fresh": true,
    "ok": true,
-   "msg": "53 guide channels, 4557 upcoming shows",
-   "time": 1793796574.9279096
+   "msg": "53 guide channels, 4002 upcoming shows",
+   "time": 1793846985.9784992
   },
   "6eda2730": {
    "fresh": true,
    "ok": true,
-   "msg": "282 guide channels, 39001 upcoming shows",
-   "time": 1793796576.776458
+   "msg": "282 guide channels, 33943 upcoming shows",
+   "time": 1793846987.8913002
   },
   "bdf4dfd4": {
    "fresh": true,
    "ok": true,
-   "msg": "70 guide channels, 9311 upcoming shows",
-   "time": 1793796577.2432866
+   "msg": "70 guide channels, 8263 upcoming shows",
+   "time": 1793846988.3580794
   },
   "710bf4ca": {
    "fresh": true,
    "ok": true,
-   "msg": "133 guide channels, 17475 upcoming shows",
-   "time": 1793796578.2704637
+   "msg": "133 guide channels, 15575 upcoming shows",
+   "time": 1793846989.3171172
   },
   "d1cedbd4": {
    "fresh": true,
    "ok": true,
-   "msg": "1707 guide channels, 61318 upcoming shows",
-   "time": 1793796582.0841904
+   "msg": "1706 guide channels, 58920 upcoming shows",
+   "time": 1793846993.4748647
   },
   "2aee5380": {
    "fresh": true,
    "ok": true,
-   "msg": "563 guide channels, 32229 upcoming shows",
-   "time": 1793796583.6078444
+   "msg": "563 guide channels, 20813 upcoming shows",
+   "time": 1793846995.032275
   },
   "0b922a38": {
    "fresh": true,
    "ok": true,
-   "msg": "89 guide channels, 19373 upcoming shows",
-   "time": 1793796584.3546233
+   "msg": "89 guide channels, 17516 upcoming shows",
+   "time": 1793846995.8420997
   },
   "7648131c": {
    "fresh": true,
    "ok": true,
-   "msg": "91 guide channels, 20278 upcoming shows",
-   "time": 1793796585.295569
+   "msg": "91 guide channels, 18498 upcoming shows",
+   "time": 1793846996.8490105
   },
   "9a4d3d68": {
    "fresh": true,
    "ok": true,
-   "msg": "86 guide channels, 15949 upcoming shows",
-   "time": 1793796586.0001137
+   "msg": "86 guide channels, 14396 upcoming shows",
+   "time": 1793846997.5984437
   },
   "9006f43b": {
    "fresh": true,
    "ok": true,
-   "msg": "121 guide channels, 8713 upcoming shows",
-   "time": 1793796586.392828
+   "msg": "121 guide channels, 7878 upcoming shows",
+   "time": 1793846998.0024166
   },
   "c176d515": {
    "fresh": true,
    "ok": true,
-   "msg": "49 guide channels, 7895 upcoming shows",
-   "time": 1793796586.722653
+   "msg": "49 guide channels, 7115 upcoming shows",
+   "time": 1793846998.3582466
   },
   "8e1a804e": {
    "fresh": true,
    "ok": true,
-   "msg": "135 guide channels, 24097 upcoming shows",
-   "time": 1793796587.689865
+   "msg": "135 guide channels, 21738 upcoming shows",
+   "time": 1793846999.396552
   },
   "f7d4a85a": {
    "fresh": true,
    "ok": true,
-   "msg": "43 guide channels, 12294 upcoming shows",
-   "time": 1793796588.1992173
+   "msg": "43 guide channels, 11129 upcoming shows",
+   "time": 1793846999.9433634
   },
   "7900d031": {
    "fresh": true,
    "ok": true,
-   "msg": "45 guide channels, 8443 upcoming shows",
-   "time": 1793796588.5665367
+   "msg": "45 guide channels, 7672 upcoming shows",
+   "time": 1793847000.3331907
   },
   "fd2a37e5": {
    "fresh": true,
    "ok": true,
-   "msg": "21 guide channels, 3062 upcoming shows",
-   "time": 1793796588.6934114
+   "msg": "21 guide channels, 2781 upcoming shows",
+   "time": 1793847000.4766085
   },
   "da397552": {
    "fresh": true,
    "ok": true,
-   "msg": "33 guide channels, 5638 upcoming shows",
-   "time": 1793796588.9516733
+   "msg": "33 guide channels, 5078 upcoming shows",
+   "time": 1793847000.7521424
   },
   "691f0350": {
    "fresh": true,
    "ok": true,
-   "msg": "17 guide channels, 2941 upcoming shows",
-   "time": 1793796589.0790656
+   "msg": "17 guide channels, 2676 upcoming shows",
+   "time": 1793847000.889892
   },
   "4e0bfe53": {
    "fresh": true,
    "ok": true,
-   "msg": "67 guide channels, 9226 upcoming shows",
-   "time": 1793796589.5151873
+   "msg": "67 guide channels, 8109 upcoming shows",
+   "time": 1793847001.3489964
   },
   "821a52b4": {
    "fresh": true,
    "ok": true,
-   "msg": "79 guide channels, 8876 upcoming shows",
-   "time": 1793796589.9685526
+   "msg": "79 guide channels, 7740 upcoming shows",
+   "time": 1793847001.8225918
   },
   "0cea9c73": {
    "fresh": true,
    "ok": true,
-   "msg": "83 guide channels, 14903 upcoming shows",
-   "time": 1793796590.6376092
+   "msg": "83 guide channels, 13103 upcoming shows",
+   "time": 1793847002.5245123
   },
   "ec4d0752": {
    "fresh": true,
    "ok": true,
-   "msg": "62 guide channels, 13858 upcoming shows",
-   "time": 1793796591.245758
+   "msg": "62 guide channels, 12506 upcoming shows",
+   "time": 1793847003.1544015
   },
   "db15be5e": {
    "fresh": true,
    "ok": true,
-   "msg": "12 guide channels, 1618 upcoming shows",
-   "time": 1793796591.3022866
+   "msg": "12 guide channels, 1473 upcoming shows",
+   "time": 1793847003.2413125
   },
   "729e418e": {
    "fresh": true,
    "ok": true,
-   "msg": "19 guide channels, 1480 upcoming shows",
-   "time": 1793796591.3695893
+   "msg": "19 guide channels, 1313 upcoming shows",
+   "time": 1793847003.3093991
   },
   "f3567460": {
    "fresh": true,
    "ok": true,
-   "msg": "46 guide channels, 5349 upcoming shows",
-   "time": 1793796591.6113307
+   "msg": "46 guide channels, 4690 upcoming shows",
+   "time": 1793847003.5627222
   },
   "f032c84b": {
    "fresh": true,
    "ok": true,
-   "msg": "32 guide channels, 7674 upcoming shows",
-   "time": 1793796591.9864192
+   "msg": "32 guide channels, 6954 upcoming shows",
+   "time": 1793847003.9612386
   },
   "1ca78122": {
    "fresh": true,
    "ok": true,
-   "msg": "154 guide channels, 26848 upcoming shows",
-   "time": 1793796593.1239903
+   "msg": "154 guide channels, 24066 upcoming shows",
+   "time": 1793847005.1263146
   },
   "94dd3029": {
    "fresh": true,
    "ok": true,
-   "msg": "41 guide channels, 4997 upcoming shows",
-   "time": 1793796593.3661678
+   "msg": "41 guide channels, 4493 upcoming shows",
+   "time": 1793847005.3628218
   },
   "78e8e7e5": {
    "fresh": true,
    "ok": true,
-   "msg": "37 guide channels, 7755 upcoming shows",
-   "time": 1793796593.7099826
+   "msg": "37 guide channels, 6984 upcoming shows",
+   "time": 1793847005.7198627
   },
   "6c31127a": {
    "fresh": true,
    "ok": true,
-   "msg": "27 guide channels, 2299 upcoming shows",
-   "time": 1793796593.8079903
+   "msg": "27 guide channels, 2091 upcoming shows",
+   "time": 1793847005.8308506
   },
   "83b15ab6": {
    "fresh": true,
    "ok": true,
-   "msg": "291 guide channels, 21354 upcoming shows",
-   "time": 1793796258.660417
+   "msg": "291 guide channels, 16037 upcoming shows",
+   "time": 1793846646.5934587
   },
   "e325041b": {
    "fresh": true,
    "ok": true,
-   "msg": "739 guide channels, 35962 upcoming shows",
-   "time": 1793796261.1507106
+   "msg": "739 guide channels, 34597 upcoming shows",
+   "time": 1793846649.2462533
   },
   "8aadaa96": {
    "fresh": true,
    "ok": true,
-   "msg": "291 guide channels, 21354 upcoming shows",
-   "time": 1793796262.7375848
+   "msg": "291 guide channels, 16037 upcoming shows",
+   "time": 1793846650.9555504
   },
   "046cf668": {
    "fresh": true,
    "ok": true,
-   "msg": "748 guide channels, 7369 upcoming shows",
-   "time": 1793796263.4492726
+   "msg": "748 guide channels, 10204 upcoming shows",
+   "time": 1793846651.7720358
   },
   "943b32c5": {
    "fresh": true,
    "ok": true,
-   "msg": "2013 guide channels, 59938 upcoming shows",
-   "time": 1793796267.13391
+   "msg": "2013 guide channels, 49329 upcoming shows",
+   "time": 1793846655.8408515
   },
   "80273aa6": {
    "fresh": true,
    "ok": true,
-   "msg": "692 guide channels, 31515 upcoming shows",
-   "time": 1793796268.8250642
+   "msg": "692 guide channels, 37096 upcoming shows",
+   "time": 1793846657.6744041
   },
   "44764bb5": {
    "fresh": true,
    "ok": true,
-   "msg": "457 guide channels, 7897 upcoming shows",
-   "time": 1793796269.4627316
+   "msg": "457 guide channels, 8519 upcoming shows",
+   "time": 1793846658.3913422
   },
   "d2b50043": {
    "fresh": true,
    "ok": true,
-   "msg": "2 guide channels, 155 upcoming shows",
-   "time": 1793796311.747361
+   "msg": "2 guide channels, 127 upcoming shows",
+   "time": 1793846705.349624
   },
   "738c524a": {
    "fresh": true,
    "ok": true,
-   "msg": "82 guide channels, 7926 upcoming shows",
-   "time": 1793796312.1570024
+   "msg": "82 guide channels, 7497 upcoming shows",
+   "time": 1793846705.7557225
   },
   "9d3c7bf8": {
    "fresh": true,
    "ok": true,
-   "msg": "80 guide channels, 1683 upcoming shows",
-   "time": 1793796312.2957313
+   "msg": "80 guide channels, 2159 upcoming shows",
+   "time": 1793846705.9237444
   },
   "3899fcb7": {
    "fresh": true,
    "ok": true,
-   "msg": "86 guide channels, 3984 upcoming shows",
-   "time": 1793796312.5679505
+   "msg": "86 guide channels, 4157 upcoming shows",
+   "time": 1793846706.2125173
   },
   "b61b007a": {
    "fresh": true,
    "ok": true,
-   "msg": "90 guide channels, 6095 upcoming shows",
-   "time": 1793796312.8956308
+   "msg": "90 guide channels, 5565 upcoming shows",
+   "time": 1793846706.5505676
   },
   "9d64c3dd": {
    "fresh": true,
    "ok": true,
-   "msg": "117 guide channels, 7582 upcoming shows",
-   "time": 1793796313.346269
+   "msg": "117 guide channels, 5515 upcoming shows",
+   "time": 1793846707.044708
   },
   "7b6fa7ed": {
    "fresh": true,
    "ok": true,
-   "msg": "5 guide channels, 73 upcoming shows",
-   "time": 1793796313.351978
+   "msg": "5 guide channels, 63 upcoming shows",
+   "time": 1793846707.0520658
   },
   "7bd3bcd9": {
    "fresh": true,
    "ok": true,
-   "msg": "4 guide channels, 165 upcoming shows",
-   "time": 1793796313.3599026
+   "msg": "4 guide channels, 132 upcoming shows",
+   "time": 1793846707.0614843
   },
   "f0bd7893": {
    "fresh": true,
    "ok": true,
-   "msg": "56 guide channels, 2975 upcoming shows",
-   "time": 1793796313.5689223
+   "msg": "56 guide channels, 2029 upcoming shows",
+   "time": 1793846707.284437
   },
   "d3133c9a": {
    "fresh": true,
    "ok": true,
-   "msg": "90 guide channels, 6698 upcoming shows",
-   "time": 1793796313.9503396
+   "msg": "90 guide channels, 5222 upcoming shows",
+   "time": 1793846707.6967297
   },
   "a55593ac": {
    "fresh": true,
    "ok": true,
-   "msg": "45 guide channels, 2622 upcoming shows",
-   "time": 1793796314.1176412
+   "msg": "45 guide channels, 2184 upcoming shows",
+   "time": 1793846707.8793592
   },
   "1571d443": {
    "fresh": true,
    "ok": true,
-   "msg": "133 guide channels, 8178 upcoming shows",
-   "time": 1793796314.6417215
+   "msg": "133 guide channels, 8974 upcoming shows",
+   "time": 1793846708.4469132
   },
   "e5040d6e": {
    "fresh": true,
    "ok": true,
-   "msg": "157 guide channels, 10254 upcoming shows",
-   "time": 1793796315.1718428
+   "msg": "157 guide channels, 12676 upcoming shows",
+   "time": 1793846709.0650053
   },
   "dcdaf2b8": {
    "fresh": true,
    "ok": true,
-   "msg": "106 guide channels, 6943 upcoming shows",
-   "time": 1793796315.5887682
+   "msg": "106 guide channels, 6498 upcoming shows",
+   "time": 1793846709.4663582
   },
   "577bc6e9": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 106 upcoming shows",
-   "time": 1793796315.5961096
+   "msg": "1 guide channels, 90 upcoming shows",
+   "time": 1793846709.473035
   },
   "fea1e8ef": {
    "fresh": true,
    "ok": true,
-   "msg": "31 guide channels, 3044 upcoming shows",
-   "time": 1793796315.7701933
+   "msg": "31 guide channels, 3577 upcoming shows",
+   "time": 1793846709.673523
   },
   "5548462c": {
    "fresh": true,
    "ok": true,
-   "msg": "126 guide channels, 12662 upcoming shows",
-   "time": 1793796316.7272236
+   "msg": "126 guide channels, 10669 upcoming shows",
+   "time": 1793846710.7034562
   },
   "da972621": {
    "fresh": true,
    "ok": true,
-   "msg": "16 guide channels, 844 upcoming shows",
-   "time": 1793796316.7720006
+   "msg": "16 guide channels, 690 upcoming shows",
+   "time": 1793846710.7506433
   },
   "20a758a0": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 179 upcoming shows",
-   "time": 1793796316.781725
+   "msg": "1 guide channels, 170 upcoming shows",
+   "time": 1793846710.761009
   },
   "c1124d20": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 36 upcoming shows",
-   "time": 1793796316.7855496
+   "msg": "1 guide channels, 64 upcoming shows",
+   "time": 1793846710.765512
   },
   "6c9954e4": {
    "fresh": true,
    "ok": true,
-   "msg": "17 guide channels, 144 upcoming shows",
-   "time": 1793796316.7964761
+   "msg": "17 guide channels, 119 upcoming shows",
+   "time": 1793846710.776996
   },
   "96a2cd32": {
    "fresh": true,
    "ok": true,
-   "msg": "3 guide channels, 83 upcoming shows",
-   "time": 1793796316.801579
+   "msg": "3 guide channels, 69 upcoming shows",
+   "time": 1793846710.7827506
   },
   "e1638530": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4756 upcoming shows",
-   "time": 1793796269.7832358
+   "msg": "593 guide channels, 4685 upcoming shows",
+   "time": 1793846658.730268
   },
   "9d3f4d1d": {
    "fresh": true,
    "ok": true,
-   "msg": "560 guide channels, 28668 upcoming shows",
-   "time": 1793796293.3753297
+   "msg": "560 guide channels, 27655 upcoming shows",
+   "time": 1793846684.835968
   },
   "7a5f7f33": {
    "fresh": true,
    "ok": true,
-   "msg": "560 guide channels, 28668 upcoming shows",
-   "time": 1793796295.1113145
+   "msg": "560 guide channels, 27655 upcoming shows",
+   "time": 1793846686.826887
   },
   "8b19567b": {
    "fresh": true,
    "ok": true,
-   "msg": "829 guide channels, 15220 upcoming shows",
-   "time": 1793796296.0842352
+   "msg": "829 guide channels, 7139 upcoming shows",
+   "time": 1793846687.6693773
   },
   "39d58f19": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2370 upcoming shows",
-   "time": 1793796296.2271657
+   "msg": "278 guide channels, 2335 upcoming shows",
+   "time": 1793846687.836374
   },
   "8496682f": {
    "fresh": true,
    "ok": true,
-   "msg": "999 guide channels, 20240 upcoming shows",
-   "time": 1793796311.5767462
+   "msg": "999 guide channels, 13699 upcoming shows",
+   "time": 1793846705.1562274
   },
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2393 upcoming shows",
-   "time": 1793796311.7284148
+   "msg": "293 guide channels, 2380 upcoming shows",
+   "time": 1793846705.3301914
   },
   "a36755d3": {
    "fresh": true,
@@ -221245,1025 +221279,1025 @@
   "a7d7aec4": {
    "fresh": true,
    "ok": true,
-   "msg": "604 guide channels, 29692 upcoming shows",
-   "time": 1793796595.8053887
+   "msg": "604 guide channels, 28540 upcoming shows",
+   "time": 1793847007.9641445
   },
   "7e61d332": {
    "fresh": true,
    "ok": true,
-   "msg": "525 guide channels, 5335 upcoming shows",
-   "time": 1793796596.078573
+   "msg": "525 guide channels, 5177 upcoming shows",
+   "time": 1793847008.279134
   },
   "1fc4b145": {
    "fresh": true,
    "ok": true,
-   "msg": "1171 guide channels, 98154 upcoming shows",
-   "time": 1793796602.3012276
+   "msg": "1171 guide channels, 79245 upcoming shows",
+   "time": 1793847014.8766043
   },
   "f7f641d6": {
    "fresh": true,
    "ok": true,
-   "msg": "604 guide channels, 29668 upcoming shows",
-   "time": 1793796604.2570748
+   "msg": "604 guide channels, 28540 upcoming shows",
+   "time": 1793847016.975274
   },
   "bc6e3da8": {
    "fresh": true,
    "ok": true,
-   "msg": "525 guide channels, 5335 upcoming shows",
-   "time": 1793796604.5176904
+   "msg": "525 guide channels, 5177 upcoming shows",
+   "time": 1793847017.253951
   },
   "8357ebe2": {
    "fresh": true,
    "ok": true,
-   "msg": "762 guide channels, 72169 upcoming shows",
-   "time": 1793796608.08854
+   "msg": "762 guide channels, 74200 upcoming shows",
+   "time": 1793847021.2829165
   },
   "43a7b582": {
    "fresh": true,
    "ok": true,
-   "msg": "441 guide channels, 19490 upcoming shows",
-   "time": 1793796609.6188056
+   "msg": "441 guide channels, 10543 upcoming shows",
+   "time": 1793847022.8473957
   },
   "08eb90b9": {
    "fresh": true,
    "ok": true,
-   "msg": "282 guide channels, 10522 upcoming shows",
-   "time": 1793796610.2428966
+   "msg": "283 guide channels, 11560 upcoming shows",
+   "time": 1793847023.6014616
   },
   "0911a3f1": {
    "fresh": true,
    "ok": true,
-   "msg": "424 guide channels, 431 upcoming shows",
-   "time": 1793796610.268219
+   "msg": "431 guide channels, 437 upcoming shows",
+   "time": 1793847023.6276045
   },
   "38ad38f5": {
    "fresh": true,
    "ok": true,
-   "msg": "30 guide channels, 1001 upcoming shows",
-   "time": 1793796610.3619359
+   "msg": "30 guide channels, 494 upcoming shows",
+   "time": 1793847023.7289922
   },
   "48b5ff27": {
    "fresh": true,
    "ok": true,
-   "msg": "105 guide channels, 4125 upcoming shows",
-   "time": 1793796610.6275904
+   "msg": "105 guide channels, 5136 upcoming shows",
+   "time": 1793847024.0236282
   },
   "75903439": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 516 upcoming shows",
-   "time": 1793796610.6513922
+   "msg": "1 guide channels, 591 upcoming shows",
+   "time": 1793847024.0524557
   },
   "82921e46": {
    "fresh": true,
    "ok": true,
-   "msg": "28 guide channels, 3087 upcoming shows",
-   "time": 1793796610.837478
+   "msg": "28 guide channels, 2766 upcoming shows",
+   "time": 1793847024.2558763
   },
   "8a2c124a": {
    "fresh": true,
    "ok": true,
-   "msg": "526 guide channels, 4911 upcoming shows",
-   "time": 1793796611.078837
+   "msg": "525 guide channels, 5177 upcoming shows",
+   "time": 1793847024.5508456
   },
   "4fd90019": {
    "fresh": false,
    "ok": true,
    "msg": "77 guide channels, 0 upcoming shows - OUT OF DATE, not used",
-   "time": 1793796611.0997527
+   "time": 1793847024.5726418
   },
   "46cbba44": {
    "fresh": true,
    "ok": true,
-   "msg": "63 guide channels, 4712 upcoming shows",
-   "time": 1793796611.423977
+   "msg": "63 guide channels, 5172 upcoming shows",
+   "time": 1793847024.9319808
   },
   "7e5495c3": {
    "fresh": true,
    "ok": true,
-   "msg": "75 guide channels, 6335 upcoming shows",
-   "time": 1793796611.7453878
+   "msg": "75 guide channels, 6981 upcoming shows",
+   "time": 1793847025.3050888
   },
   "378b3150": {
    "fresh": true,
    "ok": true,
-   "msg": "161 guide channels, 2645 upcoming shows",
-   "time": 1793796612.1388118
+   "msg": "161 guide channels, 4833 upcoming shows",
+   "time": 1793847025.823126
   },
   "297c1806": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 222 upcoming shows",
-   "time": 1793796612.1500928
+   "msg": "1 guide channels, 200 upcoming shows",
+   "time": 1793847025.8388522
   },
   "a899ea25": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 158 upcoming shows",
-   "time": 1793796612.1587963
+   "msg": "1 guide channels, 140 upcoming shows",
+   "time": 1793847025.8481612
   },
   "2228dd36": {
    "fresh": true,
    "ok": true,
-   "msg": "7 guide channels, 1303 upcoming shows",
-   "time": 1793796612.2100053
+   "msg": "7 guide channels, 1182 upcoming shows",
+   "time": 1793847025.9070983
   },
   "e4d4727a": {
    "fresh": true,
    "ok": true,
-   "msg": "1 guide channels, 336 upcoming shows",
-   "time": 1793796612.2274787
+   "msg": "1 guide channels, 305 upcoming shows",
+   "time": 1793847025.922251
   },
   "97a6671f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67636 upcoming shows",
-   "time": 1793796615.733558
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847029.7377763
   },
   "6fff98e3": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67897 upcoming shows",
-   "time": 1793796619.071937
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847033.5218952
   },
   "a411463b": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67636 upcoming shows",
-   "time": 1793796622.423612
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847037.2452867
   },
   "47f1aad6": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67897 upcoming shows",
-   "time": 1793796625.7725081
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847040.8885472
   },
   "b44aa527": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67639 upcoming shows",
-   "time": 1793796629.124978
+   "msg": "370 guide channels, 61511 upcoming shows",
+   "time": 1793847044.2902648
   },
   "7bd0db34": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67636 upcoming shows",
-   "time": 1793796632.3858616
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847047.7496743
   },
   "1b2f3938": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67897 upcoming shows",
-   "time": 1793796635.607905
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847051.1972795
   },
   "b928312d": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67636 upcoming shows",
-   "time": 1793796638.93344
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847054.5357254
   },
   "c6adc4f8": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67897 upcoming shows",
-   "time": 1793796642.2874286
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847057.873313
   },
   "998f3fff": {
    "fresh": true,
    "ok": true,
-   "msg": "365 guide channels, 66444 upcoming shows",
-   "time": 1793796645.545512
+   "msg": "365 guide channels, 60426 upcoming shows",
+   "time": 1793847061.2356982
   },
   "cdf017f1": {
    "fresh": true,
    "ok": true,
-   "msg": "365 guide channels, 66725 upcoming shows",
-   "time": 1793796648.8293169
+   "msg": "365 guide channels, 60683 upcoming shows",
+   "time": 1793847064.9901366
   },
   "e7284b22": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67640 upcoming shows",
-   "time": 1793796652.170605
+   "msg": "370 guide channels, 61511 upcoming shows",
+   "time": 1793847068.6526127
   },
   "297f7fae": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67901 upcoming shows",
-   "time": 1793796655.6039672
+   "msg": "370 guide channels, 61750 upcoming shows",
+   "time": 1793847072.1773188
   },
   "72860510": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67636 upcoming shows",
-   "time": 1793796658.9419405
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847075.8247402
   },
   "073765db": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67897 upcoming shows",
-   "time": 1793796662.1850257
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847079.4107785
   },
   "b85456a2": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796665.522856
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847082.9318707
   },
   "e9e5094b": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796668.8700616
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847086.3065221
   },
   "84f07f7b": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796672.1786377
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847090.331038
   },
   "a79a80f0": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67639 upcoming shows",
-   "time": 1793796675.5154352
+   "msg": "370 guide channels, 61511 upcoming shows",
+   "time": 1793847094.1025398
   },
   "f60fe639": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67900 upcoming shows",
-   "time": 1793796678.8135562
+   "msg": "370 guide channels, 61750 upcoming shows",
+   "time": 1793847098.2948983
   },
   "f5365790": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796682.0884686
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847103.1306577
   },
   "006dba88": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796685.3825526
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847107.898568
   },
   "7b78ac4a": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796688.6551542
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847111.6183784
   },
   "ca45e30e": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796691.9361546
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847115.0911376
   },
   "e7369842": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796695.1688201
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847118.5701168
   },
   "14431e37": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796698.407081
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847122.6560564
   },
   "eb6173b1": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796701.6906445
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847127.0358677
   },
   "1acfff0f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796704.9695125
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847131.2519155
   },
   "d5e8028c": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796708.2880123
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847135.982639
   },
   "964fcd84": {
    "fresh": true,
    "ok": true,
-   "msg": "371 guide channels, 67686 upcoming shows",
-   "time": 1793796711.5743752
+   "msg": "371 guide channels, 61554 upcoming shows",
+   "time": 1793847139.546444
   },
   "566ab55f": {
    "fresh": true,
    "ok": true,
-   "msg": "371 guide channels, 67686 upcoming shows",
-   "time": 1793796714.8292658
+   "msg": "371 guide channels, 61554 upcoming shows",
+   "time": 1793847143.0820851
   },
   "01ce58f7": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796718.1190026
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847146.2646906
   },
   "a53c464d": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796721.4296014
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847149.5239022
   },
   "702f6197": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796724.6184092
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847153.0612934
   },
   "682605b4": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796727.877518
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847156.5874357
   },
   "bfdd2657": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796731.1353402
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847160.1667237
   },
   "09f7192f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796734.6187181
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847163.7853289
   },
   "001ea12e": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796737.8849232
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847167.3461342
   },
   "29992ee4": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796741.0817149
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847170.9561143
   },
   "4b8c8b23": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796744.3712595
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847174.5251107
   },
   "a6de9df8": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796747.6942086
+   "msg": "370 guide channels, 61747 upcoming shows",
+   "time": 1793847177.882745
   },
   "583a571f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796750.9911335
+   "msg": "370 guide channels, 61508 upcoming shows",
+   "time": 1793847181.4331586
   },
   "09a53065": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796754.2834668
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847185.0107877
   },
   "9bf32537": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796757.5828676
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847188.594619
   },
   "a8618d3a": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796760.9205883
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847192.208254
   },
   "c040d543": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796764.2500534
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847195.8265553
   },
   "2ca4634f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796767.5964105
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847199.3230472
   },
   "3e8707bf": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796770.892819
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847202.6833136
   },
   "aaeba9f9": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796774.2061734
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847205.934286
   },
   "22ed7b70": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796777.5201247
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847209.3531177
   },
   "54bd83df": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796780.8438778
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847212.88616
   },
   "639f4a95": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796784.0881486
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847216.3047652
   },
   "04948949": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796787.3789918
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847219.8440633
   },
   "b4037602": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796790.6618853
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847223.3386788
   },
   "de938b32": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796794.0232873
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847226.7831633
   },
   "1edb4306": {
    "fresh": true,
    "ok": true,
-   "msg": "284 guide channels, 56010 upcoming shows",
-   "time": 1793796796.810451
+   "msg": "284 guide channels, 51027 upcoming shows",
+   "time": 1793847229.6654582
   },
   "40703c60": {
    "fresh": true,
    "ok": true,
-   "msg": "284 guide channels, 56094 upcoming shows",
-   "time": 1793796799.5878153
+   "msg": "284 guide channels, 51104 upcoming shows",
+   "time": 1793847232.5930564
   },
   "1b431c88": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796802.9497485
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847235.9607086
   },
   "9136a715": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796806.3110785
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847239.4150214
   },
   "d18c15c0": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796809.6416912
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847242.8738384
   },
   "896991fd": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796812.956781
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847246.3179028
   },
   "83cf9a7e": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67639 upcoming shows",
-   "time": 1793796816.316283
+   "msg": "370 guide channels, 61509 upcoming shows",
+   "time": 1793847249.79429
   },
   "0f68ff52": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67900 upcoming shows",
-   "time": 1793796819.6630602
+   "msg": "370 guide channels, 61748 upcoming shows",
+   "time": 1793847253.2815506
   },
   "38a6afcd": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67639 upcoming shows",
-   "time": 1793796822.99483
+   "msg": "370 guide channels, 61509 upcoming shows",
+   "time": 1793847256.7831516
   },
   "6f84a378": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67900 upcoming shows",
-   "time": 1793796826.3644097
+   "msg": "370 guide channels, 61748 upcoming shows",
+   "time": 1793847260.3087666
   },
   "8fce4c1f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796829.6993282
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847263.8055356
   },
   "0fe71d16": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796833.0874274
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847267.2315183
   },
   "fed1e0c9": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796836.6086447
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847270.6860535
   },
   "51829255": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796839.9265425
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847274.1207843
   },
   "a8847c15": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796843.2516694
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847277.6094053
   },
   "7376977c": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796846.5833604
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847281.0834682
   },
   "5d2ae7af": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796849.8046756
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847284.4962
   },
   "bbe21b25": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796853.1681743
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847287.9691174
   },
   "d1af37f2": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796856.4698143
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847291.4595973
   },
   "6756ea12": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796859.7908547
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847294.9680343
   },
   "e7a40f60": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796863.1017542
+   "msg": "370 guide channels, 61506 upcoming shows",
+   "time": 1793847298.3842716
   },
   "236743b8": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796866.4215984
+   "msg": "370 guide channels, 61745 upcoming shows",
+   "time": 1793847301.8913434
   },
   "83647c69": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796869.741218
+   "msg": "370 guide channels, 61498 upcoming shows",
+   "time": 1793847305.364259
   },
   "2f864951": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796873.0269785
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847308.6437924
   },
   "6bf69008": {
    "fresh": true,
    "ok": true,
-   "msg": "366 guide channels, 66726 upcoming shows",
-   "time": 1793796876.292331
+   "msg": "366 guide channels, 60672 upcoming shows",
+   "time": 1793847312.0139446
   },
   "6cbab877": {
    "fresh": true,
    "ok": true,
-   "msg": "364 guide channels, 66513 upcoming shows",
-   "time": 1793796879.5552187
+   "msg": "364 guide channels, 60474 upcoming shows",
+   "time": 1793847315.39361
   },
   "fb21284d": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796883.0195665
+   "msg": "370 guide channels, 61498 upcoming shows",
+   "time": 1793847318.8676622
   },
   "7fe45e0f": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796886.3472176
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847322.3417394
   },
   "699df42a": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796889.6390924
+   "msg": "370 guide channels, 61498 upcoming shows",
+   "time": 1793847325.748112
   },
   "93c51652": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67635 upcoming shows",
-   "time": 1793796892.9581451
+   "msg": "370 guide channels, 61498 upcoming shows",
+   "time": 1793847329.1928313
   },
   "f43b8622": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67896 upcoming shows",
-   "time": 1793796896.2980103
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847332.6909144
   },
   "c8e5921a": {
    "fresh": true,
    "ok": true,
-   "msg": "820 guide channels, 6481 upcoming shows",
-   "time": 1793796896.6946132
+   "msg": "820 guide channels, 4723 upcoming shows",
+   "time": 1793847333.0811677
   },
   "c93bd647": {
    "fresh": true,
    "ok": true,
-   "msg": "194 guide channels, 25235 upcoming shows",
-   "time": 1793796899.1178486
+   "msg": "194 guide channels, 20982 upcoming shows",
+   "time": 1793847335.5473497
   },
   "bd09eba0": {
    "fresh": true,
    "ok": true,
-   "msg": "102 guide channels, 5136 upcoming shows",
-   "time": 1793796899.3673358
+   "msg": "102 guide channels, 6119 upcoming shows",
+   "time": 1793847335.8364983
   },
   "d2ee8bd4": {
    "fresh": true,
    "ok": true,
-   "msg": "2192 guide channels, 11534 upcoming shows",
-   "time": 1793796901.0313582
+   "msg": "2272 guide channels, 34677 upcoming shows",
+   "time": 1793847338.153201
   },
   "c47308e6": {
    "fresh": true,
    "ok": true,
-   "msg": "179 guide channels, 16054 upcoming shows",
-   "time": 1793796901.706744
+   "msg": "179 guide channels, 19044 upcoming shows",
+   "time": 1793847338.9484618
   },
   "1bde316e": {
    "fresh": true,
    "ok": true,
-   "msg": "167 guide channels, 8470 upcoming shows",
-   "time": 1793796902.1185138
+   "msg": "169 guide channels, 9365 upcoming shows",
+   "time": 1793847339.4354413
   },
   "36a66b74": {
    "fresh": true,
    "ok": true,
-   "msg": "604 guide channels, 10384 upcoming shows",
-   "time": 1793796902.7398684
+   "msg": "604 guide channels, 7328 upcoming shows",
+   "time": 1793847340.1644354
   },
   "b70d7d00": {
    "fresh": true,
    "ok": true,
-   "msg": "178 guide channels, 18504 upcoming shows",
-   "time": 1793796903.830255
+   "msg": "178 guide channels, 15329 upcoming shows",
+   "time": 1793847341.3501353
   },
   "d8da3ac4": {
    "fresh": true,
    "ok": true,
-   "msg": "158 guide channels, 14786 upcoming shows",
-   "time": 1793796905.4061213
+   "msg": "158 guide channels, 12141 upcoming shows",
+   "time": 1793847342.9571471
   },
   "9353d41f": {
    "fresh": true,
    "ok": true,
-   "msg": "503 guide channels, 2522 upcoming shows",
-   "time": 1793796905.9068148
+   "msg": "503 guide channels, 8939 upcoming shows",
+   "time": 1793847343.6875699
   },
   "7ab6d253": {
    "fresh": true,
    "ok": true,
-   "msg": "725 guide channels, 64324 upcoming shows",
-   "time": 1793796908.9838285
+   "msg": "724 guide channels, 65010 upcoming shows",
+   "time": 1793847346.9167128
   },
   "b8f8dc0f": {
    "fresh": true,
    "ok": true,
-   "msg": "286 guide channels, 37663 upcoming shows",
-   "time": 1793796910.9493103
+   "msg": "288 guide channels, 38695 upcoming shows",
+   "time": 1793847348.9769633
   },
   "7bcd962c": {
    "fresh": true,
    "ok": true,
-   "msg": "212 guide channels, 23155 upcoming shows",
-   "time": 1793796912.175901
+   "msg": "214 guide channels, 23201 upcoming shows",
+   "time": 1793847350.2876935
   },
   "e8b6bcf0": {
    "fresh": true,
    "ok": true,
-   "msg": "266 guide channels, 16081 upcoming shows",
-   "time": 1793796912.8998115
+   "msg": "266 guide channels, 13549 upcoming shows",
+   "time": 1793847351.065209
   },
   "240a9513": {
    "fresh": true,
    "ok": true,
-   "msg": "175 guide channels, 15946 upcoming shows",
-   "time": 1793796913.966877
+   "msg": "175 guide channels, 13315 upcoming shows",
+   "time": 1793847352.134552
   },
   "606090a1": {
    "fresh": true,
    "ok": true,
-   "msg": "178 guide channels, 11905 upcoming shows",
-   "time": 1793796914.6447132
+   "msg": "178 guide channels, 12527 upcoming shows",
+   "time": 1793847352.8111763
   },
   "5fc59a3f": {
    "fresh": true,
    "ok": true,
-   "msg": "100 guide channels, 8485 upcoming shows",
-   "time": 1793796915.0573878
+   "msg": "100 guide channels, 6989 upcoming shows",
+   "time": 1793847353.2411373
   },
   "50c30fa0": {
    "fresh": true,
    "ok": true,
-   "msg": "179 guide channels, 15207 upcoming shows",
-   "time": 1793796915.7628462
+   "msg": "181 guide channels, 15710 upcoming shows",
+   "time": 1793847353.9968235
   },
   "9ddba40d": {
    "fresh": true,
    "ok": true,
-   "msg": "246 guide channels, 28544 upcoming shows",
-   "time": 1793796917.125802
+   "msg": "248 guide channels, 29939 upcoming shows",
+   "time": 1793847355.431644
   },
   "4ce30ff7": {
    "fresh": true,
    "ok": true,
-   "msg": "170 guide channels, 13837 upcoming shows",
-   "time": 1793796917.7583928
+   "msg": "172 guide channels, 14204 upcoming shows",
+   "time": 1793847355.9001882
   },
   "c2c2c168": {
    "fresh": true,
    "ok": true,
-   "msg": "169 guide channels, 13712 upcoming shows",
-   "time": 1793796918.3866813
+   "msg": "171 guide channels, 14097 upcoming shows",
+   "time": 1793847356.560866
   },
   "ad26b853": {
    "fresh": true,
    "ok": true,
-   "msg": "172 guide channels, 14036 upcoming shows",
-   "time": 1793796919.0413756
+   "msg": "174 guide channels, 14445 upcoming shows",
+   "time": 1793847357.241007
   },
   "7b324a80": {
    "fresh": true,
    "ok": true,
-   "msg": "204 guide channels, 12142 upcoming shows",
-   "time": 1793796919.568297
+   "msg": "204 guide channels, 13315 upcoming shows",
+   "time": 1793847357.8044071
   },
   "d7eb3ae4": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796919.897925
+   "ok": true,
+   "msg": "190 guide channels, 4407 upcoming shows",
+   "time": 1793847358.1540685
   },
   "5f054e4d": {
    "fresh": true,
    "ok": true,
-   "msg": "30 guide channels, 6737 upcoming shows",
-   "time": 1793796920.3191786
+   "msg": "30 guide channels, 7093 upcoming shows",
+   "time": 1793847358.5973842
   },
   "765874d7": {
    "fresh": true,
-   "ok": false,
-   "msg": "not a guide or playlist (error page or empty)",
-   "time": 1793796920.8169298
+   "ok": true,
+   "msg": "243 guide channels, 8337 upcoming shows",
+   "time": 1793847359.1874378
   },
   "26252717": {
    "fresh": true,
    "ok": true,
-   "msg": "604 guide channels, 99581 upcoming shows",
-   "time": 1793796927.8247364
+   "msg": "604 guide channels, 91070 upcoming shows",
+   "time": 1793847366.079935
   },
   "0ac53c6b": {
    "fresh": true,
    "ok": true,
-   "msg": "169 guide channels, 13717 upcoming shows",
-   "time": 1793796928.4606278
+   "msg": "171 guide channels, 14103 upcoming shows",
+   "time": 1793847366.7634969
   },
   "55d4898c": {
    "fresh": true,
    "ok": true,
-   "msg": "171 guide channels, 14515 upcoming shows",
-   "time": 1793796929.1122646
+   "msg": "173 guide channels, 14919 upcoming shows",
+   "time": 1793847367.4553292
   },
   "b40cf2f2": {
    "fresh": true,
    "ok": true,
-   "msg": "169 guide channels, 13582 upcoming shows",
-   "time": 1793796929.7330682
+   "msg": "171 guide channels, 13957 upcoming shows",
+   "time": 1793847368.1185598
   },
   "1e69716d": {
    "fresh": true,
    "ok": true,
-   "msg": "116 guide channels, 13336 upcoming shows",
-   "time": 1793796930.367122
+   "msg": "116 guide channels, 11289 upcoming shows",
+   "time": 1793847368.544359
   },
   "cb89b93e": {
    "fresh": true,
    "ok": true,
-   "msg": "203 guide channels, 6514 upcoming shows",
-   "time": 1793796930.8037744
+   "msg": "203 guide channels, 4019 upcoming shows",
+   "time": 1793847368.9322438
   },
   "e77100c8": {
    "fresh": true,
    "ok": true,
-   "msg": "286 guide channels, 38765 upcoming shows",
-   "time": 1793796932.8237479
+   "msg": "286 guide channels, 34336 upcoming shows",
+   "time": 1793847371.0173903
   },
   "509e4967": {
    "fresh": true,
    "ok": true,
-   "msg": "364 guide channels, 25697 upcoming shows",
-   "time": 1793796934.023161
+   "msg": "366 guide channels, 28055 upcoming shows",
+   "time": 1793847372.2504437
   },
   "65604491": {
    "fresh": true,
    "ok": true,
-   "msg": "142 guide channels, 263 upcoming shows",
-   "time": 1793796934.1378803
+   "msg": "142 guide channels, 2868 upcoming shows",
+   "time": 1793847372.451507
   },
   "1d6306b8": {
    "fresh": true,
    "ok": true,
-   "msg": "270 guide channels, 17353 upcoming shows",
-   "time": 1793796935.0335839
+   "msg": "270 guide channels, 21165 upcoming shows",
+   "time": 1793847373.4229712
   },
   "27256190": {
    "fresh": true,
    "ok": true,
-   "msg": "1493 guide channels, 11388 upcoming shows",
-   "time": 1793796938.624268
+   "msg": "1496 guide channels, 29895 upcoming shows",
+   "time": 1793847377.451408
   },
   "f007e89b": {
    "fresh": true,
    "ok": true,
-   "msg": "2608 guide channels, 60778 upcoming shows",
-   "time": 1793796943.5700727
+   "msg": "2608 guide channels, 65874 upcoming shows",
+   "time": 1793847382.8167825
   },
   "eabda65b": {
    "fresh": true,
    "ok": true,
-   "msg": "286 guide channels, 37661 upcoming shows",
-   "time": 1793796945.5513399
+   "msg": "288 guide channels, 38694 upcoming shows",
+   "time": 1793847384.872879
   },
   "6c4df515": {
    "fresh": true,
    "ok": true,
-   "msg": "212 guide channels, 23153 upcoming shows",
-   "time": 1793796946.8329132
+   "msg": "214 guide channels, 23200 upcoming shows",
+   "time": 1793847386.1273174
   },
   "c9b73d25": {
    "fresh": true,
    "ok": true,
-   "msg": "246 guide channels, 28542 upcoming shows",
-   "time": 1793796948.1741107
+   "msg": "248 guide channels, 29939 upcoming shows",
+   "time": 1793847387.589378
   },
   "d4785d8d": {
    "fresh": true,
    "ok": true,
-   "msg": "369 guide channels, 68188 upcoming shows",
-   "time": 1793796951.5502555
+   "msg": "369 guide channels, 62030 upcoming shows",
+   "time": 1793847390.9545546
   },
   "45b4cbc7": {
    "fresh": true,
    "ok": true,
-   "msg": "371 guide channels, 67943 upcoming shows",
-   "time": 1793796954.9390972
+   "msg": "371 guide channels, 61783 upcoming shows",
+   "time": 1793847394.2115648
   },
   "d88f4967": {
    "fresh": true,
    "ok": true,
-   "msg": "371 guide channels, 67943 upcoming shows",
-   "time": 1793796958.3082523
+   "msg": "371 guide channels, 61783 upcoming shows",
+   "time": 1793847397.608024
   },
   "91e4bcdc": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67895 upcoming shows",
-   "time": 1793796961.5576932
+   "msg": "370 guide channels, 61740 upcoming shows",
+   "time": 1793847401.0365114
   },
   "4b66c92c": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67892 upcoming shows",
-   "time": 1793796964.904218
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847404.4500823
   },
   "67e84b69": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67892 upcoming shows",
-   "time": 1793796968.2720041
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847407.8756707
   },
   "3c77e8dd": {
    "fresh": true,
    "ok": true,
-   "msg": "370 guide channels, 67892 upcoming shows",
-   "time": 1793796971.5827818
+   "msg": "370 guide channels, 61737 upcoming shows",
+   "time": 1793847411.3494337
   },
   "d56f382c": {
    "fresh": true,
    "ok": true,
-   "msg": "9107 guide channels, 656605 upcoming shows",
-   "time": 1793797011.4760292
+   "msg": "9106 guide channels, 548041 upcoming shows",
+   "time": 1793847457.8757648
   },
   "1fb656fc": {
    "fresh": true,
    "ok": true,
-   "msg": "526 guide channels, 4911 upcoming shows",
-   "time": 1793797011.711239
+   "msg": "525 guide channels, 5177 upcoming shows",
+   "time": 1793847458.5592873
   },
   "cdace29f": {
-   "fresh": true,
-   "ok": true,
-   "msg": "457 guide channels, 3477 upcoming shows",
-   "time": 1793797012.2130477
+   "fresh": false,
+   "ok": false,
+   "msg": "HTTP Error 404: Not Found",
+   "time": 1793847459.4694886
   },
   "935f6505": {
    "fresh": true,
    "ok": true,
-   "msg": "54 guide channels, 3039 upcoming shows",
-   "time": 1793797012.363032
+   "msg": "54 guide channels, 2931 upcoming shows",
+   "time": 1793847459.69632
   },
   "9b5ea913": {
    "fresh": true,
    "ok": true,
-   "msg": "52 guide channels, 1903 upcoming shows",
-   "time": 1793797012.4670656
+   "msg": "52 guide channels, 1198 upcoming shows",
+   "time": 1793847459.9450817
   },
   "abdf2a2a": {
    "fresh": true,
    "ok": true,
-   "msg": "154 guide channels, 12574 upcoming shows",
-   "time": 1793797013.2607055
+   "msg": "154 guide channels, 9539 upcoming shows",
+   "time": 1793847461.3835268
   },
   "febbaca4": {
    "fresh": true,
    "ok": true,
-   "msg": "210 guide channels, 13854 upcoming shows",
-   "time": 1793797014.1223776
+   "msg": "210 guide channels, 10454 upcoming shows",
+   "time": 1793847463.3747528
   },
   "78a20bba": {
    "fresh": true,
    "ok": true,
-   "msg": "162 guide channels, 14513 upcoming shows",
-   "time": 1793797014.85669
+   "msg": "162 guide channels, 11144 upcoming shows",
+   "time": 1793847464.5143905
   },
   "47a2a68c": {
    "fresh": true,
    "ok": true,
-   "msg": "806 guide channels, 148741 upcoming shows",
-   "time": 1793797020.022315
+   "msg": "806 guide channels, 142429 upcoming shows",
+   "time": 1793847470.3031445
   },
   "7228cb32": {
    "fresh": true,
    "ok": true,
-   "msg": "1068 guide channels, 57578 upcoming shows",
-   "time": 1793797023.4678755
+   "msg": "1068 guide channels, 51957 upcoming shows",
+   "time": 1793847473.3625078
   },
   "873b0170": {
    "fresh": true,
    "ok": true,
-   "msg": "2665 guide channels, 21295 upcoming shows",
-   "time": 1793797024.8198586
+   "msg": "2665 guide channels, 21558 upcoming shows",
+   "time": 1793847475.1122155
   },
   "099d2f20": {
    "fresh": true,
    "ok": true,
-   "msg": "215 guide channels, 15671 upcoming shows",
-   "time": 1793797026.28897
+   "msg": "215 guide channels, 16822 upcoming shows",
+   "time": 1793847476.881486
   },
   "ifill001": {
    "ok": true,
    "fresh": true,
-   "msg": "4339 guide channels, 437126 upcoming shows",
-   "time": 1793797063.6024106
+   "msg": "4348 guide channels, 400127 upcoming shows",
+   "time": 1793847516.0521948
   },
   "pfill001": {
    "ok": true,
    "fresh": true,
-   "msg": "512 guide channels, 23952 upcoming shows",
-   "time": 1793797064.6037302
+   "msg": "512 guide channels, 23919 upcoming shows",
+   "time": 1793847517.1434286
   }
  },
- "last_refresh": 1793797579.8412774,
+ "last_refresh": 1793848015.6030974,
  "dismissed": [],
  "provider_channels": [
   {
@@ -222479,7 +222513,7 @@
    "group": "US",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "BETSoul.us",
+   "guide": "BETSOUL.us",
    "how": "same code"
   },
   {
@@ -223210,7 +223244,7 @@
    "group": "US",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "HBO2.(Pacific).us2",
+   "guide": "HBO2.HD.(Pacific).us2",
    "how": "name"
   },
   {
@@ -223796,7 +223830,7 @@
    "group": "US",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Ovation.us",
+   "guide": "OVATION.us",
    "how": "code"
   },
   {
@@ -224042,6 +224076,16 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "ScreenPixWesterns.us",
+   "how": "same code"
+  },
+  {
+   "key": "showtime.extreme.pacific.us",
+   "id": "showtime.extreme.pacific.us",
+   "name": "Showtime Extreme (West) US",
+   "group": "US",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ShowtimeExtremePacific.us",
    "how": "same code"
   },
   {
@@ -224430,13 +224474,13 @@
    "name": "The Spot Vegas 34",
    "group": "US",
    "prov": "Provider 1",
+   "backups": [
+    "KMCC-DT.us_locals1"
+   ],
    "shift": 0,
    "guide": "Vegas34KMCC.us",
    "how": "manual",
-   "manual": true,
-   "backups": [
-    "KMCC-DT.us_locals1"
-   ]
+   "manual": true
   },
   {
    "key": "tlc.usa.eastern.us",
@@ -224994,16 +225038,6 @@
    "how": ""
   },
   {
-   "key": "al.sharqiya.iq",
-   "id": "al.sharqiya.iq",
-   "name": "Al Sharqiya TV",
-   "group": "News",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "AlSharqiya.iq",
-   "how": "same code"
-  },
-  {
    "key": "alert.channel.gr",
    "id": "alert.channel.gr",
    "name": "Alert Channel GR",
@@ -225062,6 +225096,16 @@
    "shift": 0,
    "guide": "",
    "how": ""
+  },
+  {
+   "key": "b.1.ro",
+   "id": "b.1.ro",
+   "name": "B1 RO",
+   "group": "News",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "B1TV.ro",
+   "how": "name without tags"
   },
   {
    "key": "b1.tv.ro",
@@ -225130,8 +225174,8 @@
    "group": "News",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "BBCWorld.co",
-   "how": "same code"
+   "guide": "BBC.World.cy",
+   "how": "name without tags"
   },
   {
    "key": "bbc.world.north.america.us",
@@ -225204,8 +225248,8 @@
    "group": "News",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Canal24hsEspana.cl",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "cbc.news.network.ca",
@@ -227229,6 +227273,16 @@
    "shift": 0,
    "guide": "DejaView.ca",
    "how": "same code"
+  },
+  {
+   "key": "do.it.yourself.network.canada.ca",
+   "id": "do.it.yourself.network.canada.ca",
+   "name": "DIY Network CA",
+   "group": "Canada",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "Magnolia.Network.ca2",
+   "how": "renamed channel"
   },
   {
    "key": "documentary.channel.canada.ca",
@@ -232063,7 +232117,7 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "DR1.dk",
+   "guide": "dr1.dk",
    "how": "code"
   },
   {
@@ -233920,8 +233974,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Globo Brasília.br",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "globo.internatioanal.br",
@@ -233980,8 +234034,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "+ Globosat.br",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "gma.pinoy.ph",
@@ -234436,6 +234490,16 @@
    "how": "code"
   },
   {
+   "key": "kanal.d.2.ro",
+   "id": "kanal.d.2.ro",
+   "name": "Kanal D 2 RO",
+   "group": "Entertainment",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "Kanal.D2.ro",
+   "how": "same code"
+  },
+  {
    "key": "kbs.world.kr",
    "id": "kbs.world.kr",
    "name": "KBS World KR",
@@ -234533,7 +234597,7 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "La.trois.be",
+   "guide": "LA.TROIS.be",
    "how": "code"
   },
   {
@@ -238802,8 +238866,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Vizion.+.HD.al",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "vox.de",
@@ -239312,11 +239376,11 @@
    "name": "Multimedios Costa Rica (Canal 8) US",
    "group": "US Local",
    "prov": "Provider 1",
+   "backups": [],
    "shift": 0,
    "guide": "Canal.Multimedios.(Costa.Rica).cr",
    "how": "manual",
-   "manual": true,
-   "backups": []
+   "manual": true
   },
   {
    "key": "nbc.universo.eastern.us",
@@ -239325,7 +239389,7 @@
    "group": "US Local",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "I410.14791.schedulesdirect.org",
+   "guide": "nbcuniverso.us",
    "how": "name"
   },
   {
@@ -239529,6 +239593,16 @@
    "how": "same code"
   },
   {
+   "key": "bbc.earth.ro",
+   "id": "bbc.earth.ro",
+   "name": "BBC Earth RO",
+   "group": "Documentary",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "BBC.Earth.ro",
+   "how": "code"
+  },
+  {
    "key": "blaze.uk",
    "id": "blaze.uk",
    "name": "Blaze UK",
@@ -239625,8 +239699,8 @@
    "group": "Documentary",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Discovery.br",
-   "how": "code"
+   "guide": "lch769",
+   "how": "name"
   },
   {
    "key": "discovery.es",
@@ -240027,6 +240101,16 @@
    "how": "code"
   },
   {
+   "key": "history.br",
+   "id": "history.br",
+   "name": "History",
+   "group": "Documentary",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "lch149",
+   "how": "name"
+  },
+  {
    "key": "history.il",
    "id": "history.il",
    "name": "History",
@@ -240077,6 +240161,16 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "HistoryChannel.de",
+   "how": "same code"
+  },
+  {
+   "key": "history.channel.gr",
+   "id": "history.channel.gr",
+   "name": "History Channel GR",
+   "group": "Documentary",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "HistoryChannel.gr",
    "how": "same code"
   },
   {
@@ -240234,16 +240328,6 @@
    "manual": true
   },
   {
-   "key": "nat.geo.es",
-   "id": "nat.geo.es",
-   "name": "NatGeo",
-   "group": "Documentary",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "natgeo.es",
-   "how": "same code"
-  },
-  {
    "key": "natgeo.de",
    "id": "natgeo.de",
    "name": "NatGeo",
@@ -240252,6 +240336,16 @@
    "shift": 0,
    "guide": "NatGeo.de",
    "how": "code"
+  },
+  {
+   "key": "nat.geo.es",
+   "id": "nat.geo.es",
+   "name": "NatGeo",
+   "group": "Documentary",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "natgeo.es",
+   "how": "same code"
   },
   {
    "key": "national.geographic.br",
@@ -240383,8 +240477,8 @@
    "group": "Documentary",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Ocean-TV",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "odisea.es",
@@ -240760,16 +240854,6 @@
    "how": "same name"
   },
   {
-   "key": "kultura.ru",
-   "id": "kultura.ru",
-   "name": "Культура",
-   "group": "Documentary",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "kultura",
-   "how": "same name"
-  },
-  {
    "key": "moya.planeta.ru",
    "id": "moya.planeta.ru",
    "name": "Моя Планета",
@@ -240911,8 +240995,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "B4U.Movies.in",
-   "how": "code"
+   "guide": "b4umovies.in",
+   "how": "same code"
   },
   {
    "key": "canal.hollywood.pt",
@@ -241041,8 +241125,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Cinema.One.ph",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "cinemax.br",
@@ -241153,8 +241237,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "COLORS.CINEPLEX.in",
-   "how": "code"
+   "guide": "LIVETV_LIVETVCHANNEL_COLORS_CINEPLEX",
+   "how": "name"
   },
   {
    "key": "comet.tv.us",
@@ -241174,6 +241258,16 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "CosmoteCinema1.gr",
+   "how": "same code"
+  },
+  {
+   "key": "cosmote.cinema.2.gr",
+   "id": "cosmote.cinema.2.gr",
+   "name": "Cosmote Cinema 2 GR",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "CosmoteCinema2.gr",
    "how": "same code"
   },
   {
@@ -241301,16 +241395,6 @@
    "how": "code"
   },
   {
-   "key": "filmbox.extra.rs",
-   "id": "filmbox.extra.rs",
-   "name": "Filmbox Extra",
-   "group": "Movies",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "FilmboxExtra.rs",
-   "how": "same code"
-  },
-  {
    "key": "filmbox.extra.ro",
    "id": "filmbox.extra.ro",
    "name": "FilmBox Extra",
@@ -241318,6 +241402,16 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "FilmBoxExtra.ro",
+   "how": "same code"
+  },
+  {
+   "key": "filmbox.extra.rs",
+   "id": "filmbox.extra.rs",
+   "name": "Filmbox Extra",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "FilmboxExtra.rs",
    "how": "same code"
   },
   {
@@ -241329,6 +241423,16 @@
    "shift": 0,
    "guide": "FilmBox.Family.ro",
    "how": "code"
+  },
+  {
+   "key": "filmbox.plus.ro",
+   "id": "filmbox.plus.ro",
+   "name": "FilmBox Plus",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "FilmBoxPlus.ro",
+   "how": "same code"
   },
   {
    "key": "filmbox.plus.rs",
@@ -241789,18 +241893,6 @@
    "how": ""
   },
   {
-   "key": "paramount.channel.ro",
-   "id": "paramount.channel.ro",
-   "name": "Paramount Channel",
-   "group": "Movies",
-   "prov": "Provider 1",
-   "backups": [],
-   "shift": 0,
-   "guide": "",
-   "how": "manual",
-   "manual": true
-  },
-  {
    "key": "pink.action.rs",
    "id": "pink.action.rs",
    "name": "Pink Action",
@@ -242096,6 +242188,16 @@
    "how": "name"
   },
   {
+   "key": "showtime.2.pacific.us",
+   "id": "showtime.2.pacific.us",
+   "name": "Showtime 2 (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "Showtime2Pacific.us",
+   "how": "same code"
+  },
+  {
    "key": "showtime.extreme.eastern.us",
    "id": "showtime.extreme.eastern.us",
    "name": "Showtime Extreme (East) US",
@@ -242116,6 +242218,26 @@
    "how": "name"
   },
   {
+   "key": "showtime.family.zone.pacific.us",
+   "id": "showtime.family.zone.pacific.us",
+   "name": "Showtime Family Zone (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ShowtimeFamilyzonePacific.us",
+   "how": "same code"
+  },
+  {
+   "key": "showtime.next.pacific.us",
+   "id": "showtime.next.pacific.us",
+   "name": "Showtime Next (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ShowtimeNextPacific.us",
+   "how": "same code"
+  },
+  {
    "key": "showtime.showcase.eastern.us",
    "id": "showtime.showcase.eastern.us",
    "name": "Showtime Showcase (East) US",
@@ -242124,6 +242246,16 @@
    "shift": 0,
    "guide": "Showtime.Showcase.HD.us2",
    "how": "name"
+  },
+  {
+   "key": "showtime.showcase.pacific.us",
+   "id": "showtime.showcase.pacific.us",
+   "name": "Showtime Showcase (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ShowtimeShowcasePacific.us",
+   "how": "same code"
   },
   {
    "key": "showtime.women.eastern.us",
@@ -242138,6 +242270,16 @@
    "guide": "ShowtimeWomen.us",
    "how": "manual",
    "manual": true
+  },
+  {
+   "key": "showtime.women.pacific.us",
+   "id": "showtime.women.pacific.us",
+   "name": "Showtime Women (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ShowtimeWomenPacific.us",
+   "how": "same code"
   },
   {
    "key": "sky.cinema.action.de",
@@ -242294,16 +242436,6 @@
    "how": "code"
   },
   {
-   "key": "sky.cinema.thriller.uk",
-   "id": "sky.cinema.thriller.uk",
-   "name": "Sky Cinema Thriller",
-   "group": "Movies",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "SkyCinemaThriller.uk",
-   "how": "same code"
-  },
-  {
    "key": "sky.heimatkanal.de",
    "id": "sky.heimatkanal.de",
    "name": "Sky Heimat Kanal",
@@ -242374,6 +242506,16 @@
    "how": ""
   },
   {
+   "key": "sky.select.7.de",
+   "id": "sky.select.7.de",
+   "name": "Sky Select 7",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
    "key": "sky.select.8.de",
    "id": "sky.select.8.de",
    "name": "Sky Select 8",
@@ -242400,8 +242542,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "SONY.MAX.2.in",
-   "how": "code"
+   "guide": "483",
+   "how": "name"
   },
   {
    "key": "sony.sci.fi.ru",
@@ -242452,6 +242594,16 @@
    "shift": 0,
    "guide": "Starz.HD.us2",
    "how": "name"
+  },
+  {
+   "key": "starz.pacific.us",
+   "id": "starz.pacific.us",
+   "name": "Starz (West) US",
+   "group": "Movies",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "StarzPacific.us",
+   "how": "same code"
   },
   {
    "key": "starz.cinema.eastern.us",
@@ -242670,17 +242822,6 @@
    "shift": 0,
    "guide": "SyfyPacific.us",
    "how": "same code"
-  },
-  {
-   "key": "syfy.uk",
-   "id": "syfy.uk",
-   "name": "SYFY UK",
-   "group": "Movies",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "manual",
-   "manual": true
   },
   {
    "key": "talking.pictures.tv.uk",
@@ -243137,8 +243278,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Феникс+ Кино",
-   "how": "same name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "13th.street.de",
@@ -243808,7 +243949,7 @@
    "group": "Music",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "A1",
+   "guide": "A1.ru",
    "how": "name"
   },
   {
@@ -243890,6 +244031,16 @@
    "shift": 0,
    "guide": "Etno.TV.ro",
    "how": "code"
+  },
+  {
+   "key": "etno.ro",
+   "id": "etno.ro",
+   "name": "Etno RO",
+   "group": "Music",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "Etno.TV.HD.ro",
+   "how": "name without tags"
   },
   {
    "key": "folk.al",
@@ -244258,9 +244409,10 @@
     "Pink.Koncert.rs"
    ],
    "shift": 0,
-   "guide": "PinkKoncert.rs",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0
   },
   {
    "key": "pink.music.rs",
@@ -244578,8 +244730,8 @@
    "group": "Music",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Матур ТВ",
-   "how": "same name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "muz.tv.ru",
@@ -244640,6 +244792,16 @@
    "shift": 0,
    "guide": "shanson-tv",
    "how": "same name"
+  },
+  {
+   "key": "dazn.009.uk",
+   "id": "dazn.009.uk",
+   "name": "(UK) Dazn  09: NCAA Football: Central Michigan @ Eastern Michigan Nov 04 07:30 PM",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
   },
   {
    "key": "amazon.007.uk",
@@ -244962,6 +245124,166 @@
    "how": "event"
   },
   {
+   "key": "espn.0101.us",
+   "id": "espn.0101.us",
+   "name": "Basketball: 76ers vs. Pistons (76ers vs. Pistons)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0125.us",
+   "id": "espn.0125.us",
+   "name": "Basketball: FDU vs. #6 Texas (FDU vs. #6 Texas)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0081.us",
+   "id": "espn.0081.us",
+   "name": "Basketball: NBA Countdown (NBA Countdown)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0082.us",
+   "id": "espn.0082.us",
+   "name": "Basketball: NBA Courtside (NBA Courtside)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0053.us",
+   "id": "espn.0053.us",
+   "name": "Basketball: NBA Tip_Off (NBA Tip_Off)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0025.us",
+   "id": "espn.0025.us",
+   "name": "Basketball: NBA Today (NBA Today)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0136.us",
+   "id": "espn.0136.us",
+   "name": "Basketball: Radford vs. California (Radford vs. California)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0124.us",
+   "id": "espn.0124.us",
+   "name": "Basketball: SE Louisiana vs. Auburn (SE Louisiana vs. Auburn)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0031.us",
+   "id": "espn.0031.us",
+   "name": "Basketball: The Hoop Collective (The Hoop Collective)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0135.us",
+   "id": "espn.0135.us",
+   "name": "Cal State Northridge vs. Cal State Fullerton (First Round) Nov 04 9:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0111.us",
+   "id": "espn.0111.us",
+   "name": "Cal State Northridge vs. Wichita State Nov 04 7:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0141.us",
+   "id": "espn.0141.us",
+   "name": "Calgary Flames vs. Seattle Kraken Nov 04 9:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0142.us",
+   "id": "espn.0142.us",
+   "name": "Calgary Flames vs. Seattle Kraken Nov 04 9:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "sportsnet.011.us",
+   "id": "sportsnet.011.us",
+   "name": "Chicago @ Florida",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "sportsnet.012.us",
+   "id": "sportsnet.012.us",
+   "name": "Chicago @ New York",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "sportsnet.014.us",
+   "id": "sportsnet.014.us",
+   "name": "Dallas @ San Antonio",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
    "key": "dazn.074.ca",
    "id": "dazn.074.ca",
    "name": "DAZN 074",
@@ -245205,6 +245527,16 @@
    "key": "dazn.099.ca",
    "id": "dazn.099.ca",
    "name": "DAZN 099",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0076.us",
+   "id": "espn.0076.us",
+   "name": "Erskine vs. UNC Asheville Nov 04 7:00PM ET",
    "group": "Mainstream Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -246832,6 +247164,386 @@
    "how": "event"
   },
   {
+   "key": "espn.0143.us",
+   "id": "espn.0143.us",
+   "name": "ESPN Unlimited: Above the Rim: DAL vs. SAS (Above the Rim: DAL vs. SAS)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0099.us",
+   "id": "espn.0099.us",
+   "name": "ESPN Unlimited: Above the Rim: PHI vs. DET (Above the Rim: PHI vs. DET)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0132.us",
+   "id": "espn.0132.us",
+   "name": "ESPN Unlimited: NBA Layup Lines (NBA Layup Lines)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0017.us",
+   "id": "espn.0017.us",
+   "name": "Field Hockey: #16 Syracuse vs. #7 North Carolina (#16 Syracuse vs. #7 North Carolina)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0027.us",
+   "id": "espn.0027.us",
+   "name": "Field Hockey: #18 Virginia vs. Boston College (#18 Virginia vs. Boston College)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0080.us",
+   "id": "espn.0080.us",
+   "name": "Football: Ball State vs. UMass (Ball State vs. UMass)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0112.us",
+   "id": "espn.0112.us",
+   "name": "Football: C Michigan vs. E Michigan (C Michigan vs. E Michigan)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0121.us",
+   "id": "espn.0121.us",
+   "name": "Football: Cardinals vs. Cowboys (Cardinals vs. Cowboys)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0019.us",
+   "id": "espn.0019.us",
+   "name": "Football: College Football Live (College Football Live)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0036.us",
+   "id": "espn.0036.us",
+   "name": "Football: NFL Fantasy Live (NFL Fantasy Live)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0029.us",
+   "id": "espn.0029.us",
+   "name": "Football: NFL Live (NFL Live)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0079.us",
+   "id": "espn.0079.us",
+   "name": "Football: The Insiders (The Insiders)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0051.us",
+   "id": "espn.0051.us",
+   "name": "Football: The Schrager Hour (The Schrager Hour)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0020.us",
+   "id": "espn.0020.us",
+   "name": "Football: Titans vs. Bengals (Titans vs. Bengals)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0013.us",
+   "id": "espn.0013.us",
+   "name": "Football: Total Access (Total Access)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0134.us",
+   "id": "espn.0134.us",
+   "name": "Grace University vs. Utah Tech Nov 04 9:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0118.us",
+   "id": "espn.0118.us",
+   "name": "Grand Slam of Curling: Masters Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "sportsnet.013.us",
+   "id": "sportsnet.013.us",
+   "name": "GSOC Masters _ Draw 8",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0108.us",
+   "id": "espn.0108.us",
+   "name": "Incarnate Word vs. Houston Christian Nov 04 7:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0117.us",
+   "id": "espn.0117.us",
+   "name": "Lindenwood vs. Denver Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0119.us",
+   "id": "espn.0119.us",
+   "name": "Loyola Maryland vs. Navy Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0116.us",
+   "id": "espn.0116.us",
+   "name": "Morgan State vs. Colorado Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0014.us",
+   "id": "espn.0014.us",
+   "name": "NCAA Football: ACC Network Football Podcast (ACC Network Football Podcast)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0123.us",
+   "id": "espn.0123.us",
+   "name": "NCAA Football: CMU vs. EMU • WWE NXT (CMU vs. EMU )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0113.us",
+   "id": "espn.0113.us",
+   "name": "NCAA Football: PHI vs. DET • CMU vs. EMU (PHI vs. DET )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0122.us",
+   "id": "espn.0122.us",
+   "name": "NCAA Football: PHI vs. DET • CMU vs. EMU • WWE NXT (PHI vs. DET )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0092.us",
+   "id": "espn.0092.us",
+   "name": "NCAA Men`s Basketball: LONG vs. JOES • ERSK vs. UNCA • FRSU vs. DART (LONG vs. JOES )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0089.us",
+   "id": "espn.0089.us",
+   "name": "NCAA Men`s Basketball: LONG vs. JOES • UMES vs. HPU • FRSU vs. DART (LONG vs. JOES )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0138.us",
+   "id": "espn.0138.us",
+   "name": "NCAA Men`s Basketball: RAD vs. CAL • GRCU vs. UTU (RAD vs. CAL )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0140.us",
+   "id": "espn.0140.us",
+   "name": "NCAA Men`s Basketball: RAD vs. CAL • SKC vs. MONT (RAD vs. CAL )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0137.us",
+   "id": "espn.0137.us",
+   "name": "NCAA Men`s Basketball: RAD vs. CAL • SKC vs. MONT • GRCU vs. UTU (RAD vs. CAL )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0139.us",
+   "id": "espn.0139.us",
+   "name": "NCAA Men`s Basketball: SKC vs. MONT • GRCU vs. UTU (SKC vs. MONT )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0054.us",
+   "id": "espn.0054.us",
+   "name": "NCAA Women`s Basketball: Campbell vs. #25 NC State (Campbell vs. #25 NC State)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0127.us",
+   "id": "espn.0127.us",
+   "name": "NCAA Women`s Basketball: FDU vs. #6 TEX • STET vs. #7 LOU (FDU vs. #6 TEX )",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0126.us",
+   "id": "espn.0126.us",
+   "name": "NCAA Women`s Basketball: Stetson vs. #7 Louisville (Stetson vs. #7 Louisville)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0107.us",
+   "id": "espn.0107.us",
+   "name": "Ottawa Senators vs. Buffalo Sabres Nov 04 7:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0110.us",
+   "id": "espn.0110.us",
+   "name": "Ottawa Senators vs. Buffalo Sabres Nov 04 7:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0115.us",
+   "id": "espn.0115.us",
+   "name": "Our Lady of the Lake vs. Texas A&M_Corpus Christi Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
    "key": "paramount.040.us",
    "id": "paramount.040.us",
    "name": "Paramount 040",
@@ -247435,26 +248147,6 @@
    "key": "paramount.100.us",
    "id": "paramount.100.us",
    "name": "Paramount 100",
-   "group": "Mainstream Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "peacock.001.us",
-   "id": "peacock.001.us",
-   "name": "Peacock | M & W Bronze Matches",
-   "group": "Mainstream Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "peacock.002.us",
-   "id": "peacock.002.us",
-   "name": "Peacock | Men`s Street Prelims",
    "group": "Mainstream Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -248232,6 +248924,56 @@
    "how": "event"
   },
   {
+   "key": "sportsnet.010.us",
+   "id": "sportsnet.010.us",
+   "name": "Philadelphia @ Detroit",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0120.us",
+   "id": "espn.0120.us",
+   "name": "Saint Mary`s of the Woods vs. Southern Indiana Nov 04 8:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0133.us",
+   "id": "espn.0133.us",
+   "name": "Salish Kootenai College vs. Montana Nov 04 9:00PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0097.us",
+   "id": "espn.0097.us",
+   "name": "Soccer: Syracuse vs. #20 Pitt (Syracuse vs. #20 Pitt)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0096.us",
+   "id": "espn.0096.us",
+   "name": "Soccer: Virginia vs. Notre Dame (Virginia vs. Notre Dame)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
    "key": "stan.024.au",
    "id": "stan.024.au",
    "name": "STAN | Guangzhou: Day 7  WTA 250",
@@ -248626,6 +249368,556 @@
    "id": "stan.100.au",
    "name": "STAN 100",
    "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0098.us",
+   "id": "espn.0098.us",
+   "name": "Volleyball: Arkansas vs. LSU (Arkansas vs. LSU)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0105.us",
+   "id": "espn.0105.us",
+   "name": "Webster vs. Southeast Missouri State Nov 04 7:30PM ET",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "espn.0131.us",
+   "id": "espn.0131.us",
+   "name": "WWE: WWE NXT (WWE NXT)",
+   "group": "Mainstream Sports Networks (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0050.us",
+   "id": "flsp.0050.us",
+   "name": "FLSP | fc:  Batten University vs Lynchburg _ Women`s (Batten vs Lynchburg)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0054.us",
+   "id": "flsp.0054.us",
+   "name": "FLSP | fc:  Bentley vs American International _ Men`s (NE10 Men`s Soccer Champ. _ G5)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0052.us",
+   "id": "flsp.0052.us",
+   "name": "FLSP | fc:  Catholic vs Moravian _ Men`s (Landmark Men`s Soccer Champ. _ G3)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0053.us",
+   "id": "flsp.0053.us",
+   "name": "FLSP | fc:  Drew vs Catholic _ Women`s (Landmark Women`s Soccer Champ. _ G4)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0055.us",
+   "id": "flsp.0055.us",
+   "name": "FLSP | fc:  Franklin Pierce vs Southern New Hampshire _ Men`s (NE10 Men`s Soccer Champ. _ G4)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0051.us",
+   "id": "flsp.0051.us",
+   "name": "FLSP | fc:  Keene State vs UMass_Boston _ Women`s (LEC Women`s Soccer Champ. _ G4)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0079.us",
+   "id": "flsp.0079.us",
+   "name": "FLSP | fc:  St. Mary`s (TX) vs Okla. Christian _ Men`s (LSC Men`s Soccer Champ. _ G3)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0049.us",
+   "id": "flsp.0049.us",
+   "name": "FLSP | fc:  Susquehanna vs Scranton _ Women`s (Landmark Women`s Soccer Champ. _ G3)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0078.us",
+   "id": "flsp.0078.us",
+   "name": "FLSP | fc:  UT Dallas vs Midwestern State _ Men`s (LSC Men`s Soccer Champ. _ G4)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0086.us",
+   "id": "flsp.0086.us",
+   "name": "FLSP | hockey:  Alberni Valley Bulldogs vs Victoria Grizzlies (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0085.us",
+   "id": "flsp.0085.us",
+   "name": "FLSP | hockey:  Alberni Valley Bulldogs vs Victoria Grizzlies (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0089.us",
+   "id": "flsp.0089.us",
+   "name": "FLSP | hockey:  Allen Americans vs New Mexico Goatheads (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0088.us",
+   "id": "flsp.0088.us",
+   "name": "FLSP | hockey:  Allen Americans vs New Mexico Goatheads (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0048.us",
+   "id": "flsp.0048.us",
+   "name": "FLSP | hockey:  Bruins Gold U15 vs Bruins Black U15 (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0075.us",
+   "id": "flsp.0075.us",
+   "name": "FLSP | hockey:  Canmore Eagles vs Olds Grizzlys (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0074.us",
+   "id": "flsp.0074.us",
+   "name": "FLSP | hockey:  Canmore Eagles vs Olds Grizzlys (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0073.us",
+   "id": "flsp.0073.us",
+   "name": "FLSP | hockey:  Carleton Place Jr Canadians vs Brockville Tikis (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0065.us",
+   "id": "flsp.0065.us",
+   "name": "FLSP | hockey:  Cleveland Monsters vs Rochester Americans (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0064.us",
+   "id": "flsp.0064.us",
+   "name": "FLSP | hockey:  Cleveland Monsters vs Rochester Americans (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0038.us",
+   "id": "flsp.0038.us",
+   "name": "FLSP | hockey:  College Charles_Lemoyne vs St_Hyacinthe (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0066.us",
+   "id": "flsp.0066.us",
+   "name": "FLSP | hockey:  Erie Otters vs Soo Greyhounds (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0034.us",
+   "id": "flsp.0034.us",
+   "name": "FLSP | hockey:  Hartford Wolf Pack vs Hershey Bears (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0033.us",
+   "id": "flsp.0033.us",
+   "name": "FLSP | hockey:  Hartford Wolf Pack vs Hershey Bears (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0045.us",
+   "id": "flsp.0045.us",
+   "name": "FLSP | hockey:  Hawkesbury Hawks vs Kemptville 73`s (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0040.us",
+   "id": "flsp.0040.us",
+   "name": "FLSP | hockey:  Lehigh Valley Phantoms vs Laval Rocket (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0039.us",
+   "id": "flsp.0039.us",
+   "name": "FLSP | hockey:  Lehigh Valley Phantoms vs Laval Rocket (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0076.us",
+   "id": "flsp.0076.us",
+   "name": "FLSP | hockey:  Notre Dame Hounds vs Moose Jaw Winmar Warriors (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0072.us",
+   "id": "flsp.0072.us",
+   "name": "FLSP | hockey:  Okotoks U18 vs Northstars U18 (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0063.us",
+   "id": "flsp.0063.us",
+   "name": "FLSP | hockey:  Owen Sound Attack vs Sarnia Sting (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0067.us",
+   "id": "flsp.0067.us",
+   "name": "FLSP | hockey:  Pembina Valley Hawks U18 AAA vs Winnipeg Thrashers U18 AAA (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0081.us",
+   "id": "flsp.0081.us",
+   "name": "FLSP | hockey:  Saskatoon Blazers vs Battleford Stars (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0084.us",
+   "id": "flsp.0084.us",
+   "name": "FLSP | hockey:  Saskatoon Contacts vs Tisdale Trojans (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0069.us",
+   "id": "flsp.0069.us",
+   "name": "FLSP | hockey:  Southwest Cougars U18 AAA vs Central Plains Capitals U18 AAA (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0037.us",
+   "id": "flsp.0037.us",
+   "name": "FLSP | hockey:  St_Eustache vs Trois_Rivieres (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0046.us",
+   "id": "flsp.0046.us",
+   "name": "FLSP | hockey:  St. Thomas Stars vs London Nationals (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0047.us",
+   "id": "flsp.0047.us",
+   "name": "FLSP | hockey:  Strathroy Rockets vs LaSalle Vipers (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0083.us",
+   "id": "flsp.0083.us",
+   "name": "FLSP | hockey:  Swift Current Legionnaires vs Regina Pat Canadians (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0042.us",
+   "id": "flsp.0042.us",
+   "name": "FLSP | hockey:  Texas Stars vs Grand Rapids Griffins (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0041.us",
+   "id": "flsp.0041.us",
+   "name": "FLSP | hockey:  Texas Stars vs Grand Rapids Griffins (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0036.us",
+   "id": "flsp.0036.us",
+   "name": "FLSP | hockey:  Toledo Walleye vs Kalamazoo Wings (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0035.us",
+   "id": "flsp.0035.us",
+   "name": "FLSP | hockey:  Toledo Walleye vs Kalamazoo Wings (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0043.us",
+   "id": "flsp.0043.us",
+   "name": "FLSP | hockey:  Toronto Marlies vs Hamilton Hammers (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0071.us",
+   "id": "flsp.0071.us",
+   "name": "FLSP | hockey:  Trail Smoke Eaters vs Brooks Bandits (Away)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0070.us",
+   "id": "flsp.0070.us",
+   "name": "FLSP | hockey:  Trail Smoke Eaters vs Brooks Bandits (Home)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0068.us",
+   "id": "flsp.0068.us",
+   "name": "FLSP | hockey:  Westfield State vs American International _ Men`s (Westfield State vs AIC)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0077.us",
+   "id": "flsp.0077.us",
+   "name": "FLSP | hoops:  Victor Valley vs Riverside City College _ Men`s (Victor Valley vs Riverside City)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0080.us",
+   "id": "flsp.0080.us",
+   "name": "FLSP | volleyball:  Cypress College vs Santa Ana College _ Women`s (Cypress vs Santa Ana)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0082.us",
+   "id": "flsp.0082.us",
+   "name": "FLSP | volleyball:  Illinois College vs WashU _ Women`s (Illinois College vs WashU)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0062.us",
+   "id": "flsp.0062.us",
+   "name": "FLSP | volleyball:  Illinois Wesleyan vs Chicago _ Women`s (Illinois Wesleyan vs Chicago)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0060.us",
+   "id": "flsp.0060.us",
+   "name": "FLSP | volleyball:  Lynchburg vs Bridgewater College (VA) _ Women`s (Lynchburg vs Bridgewater (VA))",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0057.us",
+   "id": "flsp.0057.us",
+   "name": "FLSP | volleyball:  Molloy vs St. Thomas Aquinas _ Women`s (Molloy vs STAC)",
+   "group": "Multi-Sport Event Streaming (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "flsp.0091.us",
+   "id": "flsp.0091.us",
+   "name": "FLSP | volleyball:  Riverside City College vs Fullerton College _ Women`s (Riverside City vs Fullerton)",
+   "group": "Multi-Sport Event Streaming (Events)",
    "prov": "Provider 1",
    "shift": 0,
    "guide": "",
@@ -252036,16 +253328,6 @@
    "how": "same code"
   },
   {
-   "key": "cosmote.sport.5.gr",
-   "id": "cosmote.sport.5.gr",
-   "name": "COSMOTE SPORT 5 GR",
-   "group": "Sports",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "cosmotesport5.gr",
-   "how": "same code"
-  },
-  {
    "key": "cosmote.sport.6.gr",
    "id": "cosmote.sport.6.gr",
    "name": "COSMOTE SPORT 6 GR",
@@ -252053,6 +253335,16 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "cosmotesport6.gr",
+   "how": "same code"
+  },
+  {
+   "key": "cosmote.sport.7.gr",
+   "id": "cosmote.sport.7.gr",
+   "name": "COSMOTE SPORT 7 GR",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "cosmotesport7.gr",
    "how": "same code"
   },
   {
@@ -252406,8 +253698,18 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "ESPN Brasil.br",
-   "how": "same code"
+   "guide": "ESPN.br@SD",
+   "how": "name"
+  },
+  {
+   "key": "espn.co",
+   "id": "espn.co",
+   "name": "ESPN CO",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "ESPN.co",
+   "how": "code"
   },
   {
    "key": "espn.deportes.us",
@@ -252681,16 +253983,6 @@
    "how": "same code"
   },
   {
-   "key": "nsw.sydney.fox.league.au",
-   "id": "nsw.sydney.fox.league.au",
-   "name": "Fox LEAGUE AU",
-   "group": "Sports",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "NSW-SydneyFOXLEAGUE.au",
-   "how": "same code"
-  },
-  {
    "key": "fox.soccer.plus.us",
    "id": "fox.soccer.plus.us",
    "name": "FOX Soccer Plus",
@@ -252728,8 +254020,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "FOX.SPORTS.mx",
-   "how": "code"
+   "guide": "FOXSports.mx",
+   "how": "same code"
   },
   {
    "key": "fox.sports.2.us",
@@ -252748,8 +254040,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "FOX.SPORTS.2.mx",
-   "how": "code"
+   "guide": "FOXSports2.mx",
+   "how": "same code"
   },
   {
    "key": "nsw.sydney.fox.sports.503.au",
@@ -253427,6 +254719,26 @@
    "how": "same code"
   },
   {
+   "key": "nhl.center.ice.2.ca",
+   "id": "nhl.center.ice.2.ca",
+   "name": "NHL Center Ice Plus 02",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
+   "key": "nhl.center.ice.3.ca",
+   "id": "nhl.center.ice.3.ca",
+   "name": "NHL Center Ice Plus 03",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
    "key": "nhl.center.ice.13.ca",
    "id": "nhl.center.ice.13.ca",
    "name": "NHL Center Ice Plus 13",
@@ -253484,16 +254796,6 @@
    "prov": "Provider 1",
    "shift": 0,
    "guide": "Novasports4.gr",
-   "how": "same code"
-  },
-  {
-   "key": "nova.sports.5.gr",
-   "id": "nova.sports.5.gr",
-   "name": "Nova Sports 5 GR",
-   "group": "Sports",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "Novasports5.gr",
    "how": "same code"
   },
   {
@@ -253563,8 +254865,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "OLPLAY.fr",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "outside.television.us",
@@ -253643,7 +254945,7 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "lch142",
+   "guide": "Premiere.2.al",
    "how": "name"
   },
   {
@@ -253653,8 +254955,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Premiere5.br",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "premiere.6.br",
@@ -253858,6 +255160,16 @@
    "shift": 0,
    "guide": "SHO.x.BET.HD.us2",
    "how": "name"
+  },
+  {
+   "key": "shoxbet.pacific.us",
+   "id": "shoxbet.pacific.us",
+   "name": "SHOXBET (West) US",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "SHOxBETPacific.us",
+   "how": "same code"
   },
   {
    "key": "sk.6.hr",
@@ -254067,16 +255379,6 @@
    "how": ""
   },
   {
-   "key": "sky.sport.football.it",
-   "id": "sky.sport.football.it",
-   "name": "Sky Sport Football IT",
-   "group": "Sports",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": ""
-  },
-  {
    "key": "sky.sport.news.de",
    "id": "sky.sport.news.de",
    "name": "Sky Sport News",
@@ -254126,6 +255428,16 @@
    "guide": "SkySpAction.uk",
    "how": "manual",
    "manual": true
+  },
+  {
+   "key": "mfghdzzfhs.ss",
+   "id": "mfghdzzfhs.ss",
+   "name": "Sky Sports Arena",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
   },
   {
    "key": "sky.sports.1.at",
@@ -254372,7 +255684,7 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "sportklub4.hr",
+   "guide": "SportKlub4.hr",
    "how": "name"
   },
   {
@@ -254382,7 +255694,7 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "sportklub5.hr",
+   "guide": "SportKlub5.hr",
    "how": "name"
   },
   {
@@ -255011,6 +256323,16 @@
    "how": "same code"
   },
   {
+   "key": "tvg.2.horse.racing.us",
+   "id": "tvg.2.horse.racing.us",
+   "name": "TVG 2 Horse Racing US",
+   "group": "Sports",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
    "key": "tvg.television.games.network.us",
    "id": "tvg.television.games.network.us",
    "name": "TVG Television Games Network US",
@@ -255272,8 +256594,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Матч! Планета",
-   "how": "same name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "match.strana.ru",
@@ -255284,36 +256606,6 @@
    "shift": 0,
    "guide": "MatchStrana.ru",
    "how": "same code"
-  },
-  {
-   "key": "tsn.001.us",
-   "id": "tsn.001.us",
-   "name": "ATP 1000 Tennis: Paris _ Day #2 (Court Central)",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tsn.002.us",
-   "id": "tsn.002.us",
-   "name": "ATP 1000 Tennis: Paris _ Day #3 (Court 1)",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tsn.003.us",
-   "id": "tsn.003.us",
-   "name": "ATP 1000 Tennis: Paris _ Day #3 (Court 2)",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
   },
   {
    "key": "btn.041.us",
@@ -256416,36 +257708,6 @@
    "how": "event"
   },
   {
-   "key": "cbc.002.ca",
-   "id": "cbc.002.ca",
-   "name": "CBC | Dakar 2026 Youth Olympic Games: Beach Volleyball _ Men`s and Women`s Bronze",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "cbc.004.ca",
-   "id": "cbc.004.ca",
-   "name": "CBC | Dakar 2026 Youth Olympic Games: Skateboard Street _ Men`s Heats 1 & 2",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "cbc.003.ca",
-   "id": "cbc.003.ca",
-   "name": "CBC | World Table Tennis Champions Frankfurt: Day 2 Afternoon",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
    "key": "cbc.040.ca",
    "id": "cbc.040.ca",
    "name": "CBC 040",
@@ -256566,16 +257828,6 @@
    "how": "event"
   },
   {
-   "key": "rtl.plus.4.de",
-   "id": "rtl.plus.4.de",
-   "name": "DE: RTL+ Sport Event 4 HD",
-   "group": "Regional & Local Sports Networks (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
    "key": "rtl.plus.6.de",
    "id": "rtl.plus.6.de",
    "name": "DE: RTL+ Sport Event 6 HD",
@@ -256642,8 +257894,8 @@
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "SkySportBundesliga6.de",
-   "how": "same code"
+   "guide": "Sky.Sport.Bundesliga.6.de",
+   "how": "code"
   },
   {
    "key": "sky.sport.bundesliga.7.de",
@@ -256652,8 +257904,8 @@
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "SkySportBundesliga7.de",
-   "how": "same code"
+   "guide": "Sky.Sport.Bundesliga.7.de",
+   "how": "code"
   },
   {
    "key": "disney.049.uk",
@@ -257356,9 +258608,9 @@
    "how": "event"
   },
   {
-   "key": "disney.006.uk",
-   "id": "disney.006.uk",
-   "name": "MAX | Bronze Medal Games | Day 5 | Dakar 2026: Beach Volleyball",
+   "key": "tsn.009.us",
+   "id": "tsn.009.us",
+   "name": "NBA on TSN: Bulls vs. Knicks",
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -257366,9 +258618,9 @@
    "how": "event"
   },
   {
-   "key": "disney.007.uk",
-   "id": "disney.007.uk",
-   "name": "MAX | International Championship | Quarter_Final: Chang Bingyu _ Zhao Xintong",
+   "key": "tsn.007.us",
+   "id": "tsn.007.us",
+   "name": "NCAA Football: Ball State vs. Massachusetts",
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -257376,9 +258628,9 @@
    "how": "event"
   },
   {
-   "key": "disney.008.uk",
-   "id": "disney.008.uk",
-   "name": "MAX | International Championship | Quarter_Final: Marco Fu _ John Higgins",
+   "key": "tsn.008.us",
+   "id": "tsn.008.us",
+   "name": "NCAA Football: Central Michigan vs. Eastern Michigan",
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -257386,9 +258638,9 @@
    "how": "event"
   },
   {
-   "key": "disney.009.uk",
-   "id": "disney.009.uk",
-   "name": "MAX | Men | Group Stage | Dakar 2026: Paraguay _ Morocco",
+   "key": "tsn.010.us",
+   "id": "tsn.010.us",
+   "name": "NCAA Women`s Basketball: Stetson vs. Louisville",
    "group": "Regional & Local Sports Networks (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -257889,6 +259141,226 @@
    "key": "mls.050.us",
    "id": "mls.050.us",
    "name": "MLS 050",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.005.us",
+   "id": "nba.005.us",
+   "name": "NBA | Celtics vs Bucks (Bucks In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.004.us",
+   "id": "nba.004.us",
+   "name": "NBA | Celtics vs Bucks (Celtics In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.014.us",
+   "id": "nba.014.us",
+   "name": "NBA | Grizzlies vs Pacers (Grizzlies In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.015.us",
+   "id": "nba.015.us",
+   "name": "NBA | Grizzlies vs Pacers (Pacers In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.009.us",
+   "id": "nba.009.us",
+   "name": "NBA | Knicks vs Bulls (Bulls In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.008.us",
+   "id": "nba.008.us",
+   "name": "NBA | Knicks vs Bulls (Knicks In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.007.us",
+   "id": "nba.007.us",
+   "name": "NBA | Nets vs Hornets (Hornets In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.006.us",
+   "id": "nba.006.us",
+   "name": "NBA | Nets vs Hornets (Nets In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.018.us",
+   "id": "nba.018.us",
+   "name": "NBA | Nuggets vs Raptors (Nuggets In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.019.us",
+   "id": "nba.019.us",
+   "name": "NBA | Nuggets vs Raptors (Raptors In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.013.us",
+   "id": "nba.013.us",
+   "name": "NBA | Pelicans vs Jazz (Jazz In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.012.us",
+   "id": "nba.012.us",
+   "name": "NBA | Pelicans vs Jazz (Pelicans In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.003.us",
+   "id": "nba.003.us",
+   "name": "NBA | Pistons vs 76ers (76ers In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.016.us",
+   "id": "nba.016.us",
+   "name": "NBA | Rockets vs Timberwolves (Rockets In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.017.us",
+   "id": "nba.017.us",
+   "name": "NBA | Rockets vs Timberwolves (Timberwolves In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.022.us",
+   "id": "nba.022.us",
+   "name": "NBA | Spurs vs Mavericks (Spurs In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.020.us",
+   "id": "nba.020.us",
+   "name": "NBA | Suns vs Trail Blazers (Suns In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.021.us",
+   "id": "nba.021.us",
+   "name": "NBA | Suns vs Trail Blazers (Trail Blazers In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.011.us",
+   "id": "nba.011.us",
+   "name": "NBA | Thunder vs Cavaliers (Cavaliers In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.010.us",
+   "id": "nba.010.us",
+   "name": "NBA | Thunder vs Cavaliers (Thunder In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.002.us",
+   "id": "nba.002.us",
+   "name": "NBA | Wizards vs Hawks (Hawks In_Arena)",
+   "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "nba.001.us",
+   "id": "nba.001.us",
+   "name": "NBA | Wizards vs Hawks (Wizards In_Arena)",
    "group": "Major League Sports (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -259100,6 +260572,136 @@
    "id": "nhl.100.us",
    "name": "NHL 100",
    "group": "Major League Sports (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.cleveland.ca",
+   "id": "ahl.cleveland.ca",
+   "name": "(AHL) Cleveland Monsters [CLE]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.grand.rapids.ca",
+   "id": "ahl.grand.rapids.ca",
+   "name": "(AHL) Grand Rapids Griffins [GR]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.hartford.ca",
+   "id": "ahl.hartford.ca",
+   "name": "(AHL) Hartford Wolf Pack [HFD]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.hershey.ca",
+   "id": "ahl.hershey.ca",
+   "name": "(AHL) Hershey Bears [HER]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.laval.ca",
+   "id": "ahl.laval.ca",
+   "name": "(AHL) Laval Rocket [LAV]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.lehigh.valley.ca",
+   "id": "ahl.lehigh.valley.ca",
+   "name": "(AHL) Lehigh Valley Phantoms [LV]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.rochester.ca",
+   "id": "ahl.rochester.ca",
+   "name": "(AHL) Rochester Americans [ROC]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.texas.ca",
+   "id": "ahl.texas.ca",
+   "name": "(AHL) Texas Stars [TEX]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ahl.toronto.ca",
+   "id": "ahl.toronto.ca",
+   "name": "(AHL) Toronto Marlies [TOR]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ohl.erie.ca",
+   "id": "ohl.erie.ca",
+   "name": "(OHL) Erie Otters [ERI]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ohl.owen.sound.ca",
+   "id": "ohl.owen.sound.ca",
+   "name": "(OHL) Owen Sound Attack [OS]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ohl.sarnia.ca",
+   "id": "ohl.sarnia.ca",
+   "name": "(OHL) Sarnia Sting [SAR]",
+   "group": "College & Minor Leagues (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
+   "key": "ohl.soo.ca",
+   "id": "ohl.soo.ca",
+   "name": "(OHL) Soo Greyhounds [SOO]",
+   "group": "College & Minor Leagues (Events)",
    "prov": "Provider 1",
    "shift": 0,
    "guide": "",
@@ -260936,6 +262538,16 @@
    "how": "event"
   },
   {
+   "key": "fanatiz.004.es",
+   "id": "fanatiz.004.es",
+   "name": "Fanatiz | Universitario vs Sport Boys",
+   "group": "Latin & Spanish-Language (Events)",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": "event"
+  },
+  {
    "key": "fanatiz.040.es",
    "id": "fanatiz.040.es",
    "name": "FANATIZ 040",
@@ -261636,46 +263248,6 @@
    "how": "event"
   },
   {
-   "key": "tennis.ch.017.us",
-   "id": "tennis.ch.017.us",
-   "name": "ATP: Andreozzi G / Guinard M _ Pavlasek A / Rikl P",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.016.us",
-   "id": "tennis.ch.016.us",
-   "name": "ATP: Van Assche_ Luca _ Tien_ Learner",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.024.us",
-   "id": "tennis.ch.024.us",
-   "name": "ATP: Zverev_ Alexander _ Musetti_ Lorenzo",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.001.us",
-   "id": "tennis.ch.001.us",
-   "name": "Davis Cup Junior Finals: Australia vs Egypt",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
    "key": "tennis.ch.036.us",
    "id": "tennis.ch.036.us",
    "name": "TENNIS ch",
@@ -262229,46 +263801,6 @@
    "key": "tennistv.050.us",
    "id": "tennistv.050.us",
    "name": "TENNISTV 050",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.007.us",
-   "id": "tennis.ch.007.us",
-   "name": "WTA: Gorgodze E / Timofeeva M _ Cho I_H / Cho Y T",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.012.us",
-   "id": "tennis.ch.012.us",
-   "name": "WTA: Joint_ Maya _ Sakkari_ Maria",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.025.us",
-   "id": "tennis.ch.025.us",
-   "name": "WTA: Karamoko N / Waltert S _ Ramesh D R / Vinayagamurthy D",
-   "group": "Tennis & Racquet Sports (Events)",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": "event"
-  },
-  {
-   "key": "tennis.ch.014.us",
-   "id": "tennis.ch.014.us",
-   "name": "WTA: Tjen_ Janice _ Garland_ Joanna",
    "group": "Tennis & Racquet Sports (Events)",
    "prov": "Provider 1",
    "shift": 0,
@@ -263593,6 +265125,16 @@
    "shift": 0,
    "guide": "Cartoon.Network.br",
    "how": "code"
+  },
+  {
+   "key": "comedy.central.br",
+   "id": "comedy.central.br",
+   "name": "Comedy Central",
+   "group": "Brazil",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "US-Comedy Central (US) - Eastern Feed",
+   "how": "name"
   },
   {
    "key": "discovery.kids.br",
@@ -265178,6 +266720,16 @@
    "how": "name"
   },
   {
+   "key": "teennick.eastern.us",
+   "id": "teennick.eastern.us",
+   "name": "TeenNick (East) US",
+   "group": "Kids",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "Teen.Nick.us2",
+   "how": "name"
+  },
+  {
    "key": "teletoon.pl",
    "id": "teletoon.pl",
    "name": "teleTOON+",
@@ -265294,8 +266846,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "A&EMundo.co",
-   "how": "same code"
+   "guide": "A&E.co",
+   "how": "name without tags"
   },
   {
    "key": "a.e.mundo.mx",
@@ -265734,8 +267286,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Chilevision.cl",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tvc.cine.mexicano.cmc.mx",
@@ -265968,8 +267520,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Eurochannel.cl",
-   "how": "code"
+   "guide": "998-eurochannel",
+   "how": "name without tags"
   },
   {
    "key": "evtv.lat",
@@ -266009,8 +267561,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "FOX.SPORTS.3.mx",
-   "how": "code"
+   "guide": "FOXSports3.mx",
+   "how": "same code"
   },
   {
    "key": "fox.sports.co",
@@ -266019,8 +267571,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "FOXSports.co",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "fx.mx",
@@ -266109,8 +267661,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Mega.cl",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mtv.ar",
@@ -266534,8 +268086,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Tooncast.cl",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tudn.mx",
@@ -266576,8 +268128,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TVN.cl",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tyc.sports.ar",
@@ -266812,6 +268364,16 @@
    "guide": "EEntertainmentTelevision.us",
    "how": "manual",
    "manual": true
+  },
+  {
+   "key": "el.entertaiment.ro",
+   "id": "el.entertaiment.ro",
+   "name": "El Entertaiment RO",
+   "group": "Lifestyle",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
   },
   {
    "key": "fashion.one.ru",
@@ -267165,8 +268727,8 @@
    "group": "Lifestyle",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Психология 21",
-   "how": "same name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "usadba.ru",
@@ -267709,29 +269271,29 @@
    "how": ""
   },
   {
+   "key": "byzbox.ilahi.1.tr",
+   "id": "byzbox.ilahi.1.tr",
+   "name": "BYZBOX İLAHİ 1 TR",
+   "group": "Turkey",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
+   "key": "byzbox.ilahi.2.tr",
+   "id": "byzbox.ilahi.2.tr",
+   "name": "BYZBOX İLAHİ 2 TR",
+   "group": "Turkey",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "",
+   "how": ""
+  },
+  {
    "key": "byzbox.ilahi.3.tr",
    "id": "byzbox.ilahi.3.tr",
    "name": "BYZBOX İLAHİ 3 TR",
-   "group": "Turkey",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": ""
-  },
-  {
-   "key": "byzbox.ilahi.4.tr",
-   "id": "byzbox.ilahi.4.tr",
-   "name": "BYZBOX İLAHİ 4 TR",
-   "group": "Turkey",
-   "prov": "Provider 1",
-   "shift": 0,
-   "guide": "",
-   "how": ""
-  },
-  {
-   "key": "byzbox.ilahi.5.tr",
-   "id": "byzbox.ilahi.5.tr",
-   "name": "BYZBOX İLAHİ 5 TR",
    "group": "Turkey",
    "prov": "Provider 1",
    "shift": 0,
@@ -267797,6 +269359,16 @@
    "shift": 0,
    "guide": "",
    "how": ""
+  },
+  {
+   "key": "kabe.tv.tr",
+   "id": "kabe.tv.tr",
+   "name": "KABE TV TR",
+   "group": "Turkey",
+   "prov": "Provider 1",
+   "shift": 0,
+   "guide": "KABE-LD.us_locals1",
+   "how": "call letters"
   },
   {
    "key": "kudus.tv.tr",
