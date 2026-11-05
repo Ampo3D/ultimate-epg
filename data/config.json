@@ -1825,7 +1825,8 @@
    "type": "xmltv",
    "name": "370network: magio.xml",
    "url": "https://raw.githubusercontent.com/370network/magio-xmltv/main/magio.xml",
-   "enabled": true
+   "enabled": true,
+   "country": "SK"
   },
   {
    "id": "bd09eba0",
@@ -54501,9 +54502,7 @@
   "648769752925": {
    "key": "648769752925",
    "source": "f25236e4",
-   "ov": {
-    "epg_id": "QVC.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "QVC",
     "number": "",
@@ -66021,9 +66020,7 @@
   "b9709d8434df": {
    "key": "b9709d8434df",
    "source": "514536fe",
-   "ov": {
-    "epg_id": "QVC.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "QVC",
     "number": "",
@@ -114022,9 +114019,7 @@
   "eaa8aff9aaee": {
    "key": "eaa8aff9aaee",
    "source": "da8f796a",
-   "ov": {
-    "epg_id": "CNN.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "CNN (720p)",
     "number": "",
@@ -119411,9 +119406,7 @@
   "6c4c5072e6d6": {
    "key": "6c4c5072e6d6",
    "source": "da8f796a",
-   "ov": {
-    "epg_id": "INSP.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "INSP (720p)",
     "number": "",
@@ -127816,9 +127809,7 @@
   "cc75ca791f16": {
    "key": "cc75ca791f16",
    "source": "da8f796a",
-   "ov": {
-    "epg_id": "Revolt.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "Revolt (720p)",
     "number": "",
@@ -131944,9 +131935,7 @@
   "c29ed3b087e6": {
    "key": "c29ed3b087e6",
    "source": "da8f796a",
-   "ov": {
-    "epg_id": "truTV.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "truTV (720p)",
     "number": "",
@@ -135300,9 +135289,7 @@
   "0af23373f5fe": {
    "key": "0af23373f5fe",
    "source": "3cbd23a9",
-   "ov": {
-    "epg_id": "Bloomberg.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "Bloomberg",
     "number": "3",
@@ -151092,9 +151079,7 @@
   "27b0f69395e9": {
    "key": "27b0f69395e9",
    "source": "1c763150",
-   "ov": {
-    "epg_id": "POP.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "Pop (1080p)",
     "number": "",
@@ -163222,9 +163207,7 @@
   "2d6ae14ffc20": {
    "key": "2d6ae14ffc20",
    "source": "a9a0358c",
-   "ov": {
-    "epg_id": "POP.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "POP",
     "number": "",
@@ -171716,9 +171699,7 @@
   "370cb5ea0356": {
    "key": "370cb5ea0356",
    "source": "d7968fcb",
-   "ov": {
-    "epg_id": "POP.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "POP",
     "number": "",
@@ -172956,9 +172937,7 @@
   "d51c93cd6129": {
    "key": "d51c93cd6129",
    "source": "d7968fcb",
-   "ov": {
-    "epg_id": "Westerns.Plus.us2"
-   },
+   "ov": {},
    "up": {
     "name": "Westerns +",
     "number": "",
@@ -176623,9 +176602,7 @@
   "6c0f10fa37d5": {
    "key": "6c0f10fa37d5",
    "source": "ed8db8ff",
-   "ov": {
-    "epg_id": "POP.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "POP",
     "number": "4799",
@@ -179750,9 +179727,7 @@
   "caaa33c8ca7c": {
    "key": "caaa33c8ca7c",
    "source": "0830e470",
-   "ov": {
-    "epg_id": "CNN.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "CNN (720p)",
     "number": "",
@@ -227913,8 +227888,12 @@
    "group": "Canada",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "SuperChannelFuse.ca",
-   "how": "same code"
+   "guide": "Super.Channel.Fuse.HD.ca2",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "Super.Channel.Fuse.ca2"
+   ]
   },
   {
    "key": "super.channel.heart.home.ca",
@@ -232765,8 +232744,12 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "5c8d77c2f6b85da3a7e74223b769ef5c",
-   "how": "call letters"
+   "guide": "FOXKPTV.us",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "KPTV-DT.us_locals1"
+   ]
   },
   {
    "key": "fox.kqfx.columbia.mo.us",
@@ -233155,7 +233138,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "backups": [
-    "FOX+9WFTCDT2.us"
+    "FOX+9WFTCDT2.us",
+    "FOXWFTC.us"
    ],
    "shift": 0,
    "guide": "WFTC-DT.us_locals1",
@@ -235349,7 +235333,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "backups": [
-    "KING-DT.ca2"
+    "KING-DT.ca2",
+    "NBCKING.us"
    ],
    "shift": 0,
    "guide": "KING-DT.us_locals1",
@@ -237425,8 +237410,12 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "",
-   "how": ""
+   "guide": "Nuestra.Tele.Internacional.us2",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "NuestraTeleInt.us"
+   ]
   },
   {
    "key": "really.uk",
@@ -238082,8 +238071,12 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "STAR.PLUS.in",
-   "how": "code"
+   "guide": "1132",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "STAR.PLUS.in"
+   ]
   },
   {
    "key": "stv.uk",
@@ -239046,8 +239039,12 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "ZEE.TV.in",
-   "how": "code"
+   "guide": "167",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "ZEE.TV.in"
+   ]
   },
   {
    "key": "zee.tv.ru",
@@ -240354,8 +240351,10 @@
    "group": "Documentary",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "4004",
-   "how": "name"
+   "guide": "",
+   "how": "manual",
+   "manual": true,
+   "backups": []
   },
   {
    "key": "national.geographic.rs",
@@ -254284,8 +254283,10 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "mligadecampeones1.es",
-   "how": "same code"
+   "guide": "",
+   "how": "manual",
+   "manual": true,
+   "backups": []
   },
   {
    "key": "m.liga.de.campeones.2.es",
@@ -255850,7 +255851,7 @@
    "backups": [
     "Sportsnet.(Pacific).ca2"
    ],
-   "shift": 0,
+   "shift": -60,
    "guide": "Sportsnet.(Pacific).HD.ca2",
    "how": "manual",
    "manual": true
@@ -255862,7 +255863,7 @@
    "group": "Sports",
    "prov": "Provider 1",
    "backups": [],
-   "shift": 0,
+   "shift": -60,
    "guide": "Sportsnet.West.HD.ca2",
    "how": "manual",
    "manual": true
@@ -255914,8 +255915,12 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "STAR.SPORTS.SELECT.1.HD.in",
-   "how": "code"
+   "guide": "460",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "STAR.SPORTS.SELECT.1.HD.in"
+   ]
   },
   {
    "key": "star.sports.select.2.hd.in",
@@ -255944,8 +255949,12 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "STAR.SPORTS.2.in",
-   "how": "code"
+   "guide": "1141",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "STAR.SPORTS.2.in"
+   ]
   },
   {
    "key": "ss.cricket.ze",
@@ -256174,8 +256183,12 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TNTSport5.uk",
-   "how": "similar spelling"
+   "guide": "TNT.Sports.5.HD.uk",
+   "how": "manual",
+   "manual": true,
+   "backups": [
+    "TNTSports5.uk"
+   ]
   },
   {
    "key": "toros.es",
