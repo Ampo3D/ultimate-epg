@@ -735,6 +735,15 @@ class ShowCleaner:
         self.last = {}  # channel -> (title, start, stop) of the show read just before
         self.titles = {}  # channel -> a few different titles seen
 
+    def remember(self, cid, el, st, sp):
+        """The show read just before, and a few titles: also for shows that ended before the guide's window."""
+        tk = title_key((el.findtext("title") or "").strip())
+        self.last[cid] = (tk, st, sp)
+        seen = self.titles.setdefault(cid, set())
+        if len(seen) < 3:
+            seen.add(tk)
+        return seen
+
     def check(self, cid, el, st, sp):
         """Returns the (start, stop) to write, or None to skip the show."""
         if not st or (sp and (sp <= st or sp - st >= timedelta(hours=18))) or not (el.findtext("title") or "").strip():
@@ -742,10 +751,7 @@ class ShowCleaner:
             return None
         title = (el.findtext("title") or "").strip()
         tk, before = title_key(title), self.last.get(cid)
-        self.last[cid] = (tk, st, sp)
-        seen = self.titles.setdefault(cid, set())
-        if len(seen) < 3:
-            seen.add(tk)
+        seen = self.remember(cid, el, st, sp)
         if (sp and sp - st >= timedelta(hours=8) and before and before[0] == tk and before[2] == st
                 and before[2] - before[1] <= timedelta(hours=1) and len(seen) >= 3
                 and not re.match(r"(?i)live\b|this is\b", title) and not re.search(r"(?i)\breturns?\b", title)):
@@ -2401,6 +2407,8 @@ def build():
                     if fix:
                         st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
                     if not st or (sp or st) < start_cut or st > end_cut:
+                        if st and sp and sp < start_cut:
+                            clean.remember(cid, el, st, sp)  # the episode before a stretched one
                         continue
                     tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
                     times = clean.check(cid, el, st, sp)
@@ -2915,6 +2923,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 if fix:
                     st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
                 if not st or (sp or st) < start_cut or st > week_cut:
+                    if st and sp and sp < start_cut:
+                        clean.remember(cid, el, st, sp)  # the episode before a stretched one
                     continue
                 for child in list(el):
                     if child.tag in SLIM_TAGS:
