@@ -527,7 +527,9 @@ ESCAPED_RE = re.compile(r"&([a-zA-Z]{2,8}|#\d+|#x[0-9a-fA-F]+);")  # "&eacute;" 
 
 LOST_U_RE = re.compile(r"(?<!\\)u00([c-fC-F][0-9a-fA-F])")  # "Notu00edcias": a \u escape that lost its backslash
 MOJIBAKE_RE = re.compile("(?:[\u00c2\u00c3][\u0080-\u00bf\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u02c6\u02dc\u2013-\u2122]|\u00e2\u20ac.)+")  # UTF-8 read as Windows-1252: "Â£", "â€™"
-TAG_RE = re.compile(r"<!--.*?(?:-->|$)|<style\b.*?(?:</style>|$)|</?[A-Za-z][\w:-]*(?:\s[^<>]*)?/?>", re.I | re.S)  # any tag, comments, styles
+TAG_RE = re.compile(r"<!--.*?(?:-->|$)|<style\b.*?(?:</style>|$)|</?(?:a|b|i|u|s|br|hr|p|em|strong|small|big|sup|sub|span|div|font|center|meta|link|"
+                    r"img|button|li|ul|ol|dl|dt|dd|h[1-6]|table|thead|tbody|tr|td|th|blockquote|section|article|header|footer|nav|"
+                    r"label|input|form|iframe|script|noscript|wbr)(?:\s+[^<>]*=[^<>]*)?\s*/?>", re.I | re.S)  # web-page tags, comments, styles; "<Idol Booth> is" stays
 JSON_ESC_RE = re.compile(r"\\u([0-9a-fA-F]{4})")  # "Rehras Sahib \u0026 Shabad"
 NEEDS_TIDY_RE = re.compile("[&\ufffd<\u00c2\u00c3\u00e2\u00d0\u00fb\\\\\x80-\x9f\\[\ufb50-\ufdff\ufe70-\ufefc]|u00[c-fC-F]|\",\\s*\"")
 JSON_LEFTOVER_RE = re.compile(r'",\s*"[A-Za-z]{1,20}"\s*:\s*(?:"|\{|\[|true\b|false\b|null\b|-?\d).*$', re.S)  # 'The Late Show","audioDescription":false,...'
@@ -575,18 +577,62 @@ def tidy_text(t):
 
 
 RYTEC_SEP_RE = re.compile(r"\s*\u2551\s*")
-RYTEC_DROP_RE = re.compile(r'S\d+/?E\d+(?:/\d+)?|Episode \d+|\d\d\.\d\d\.\d{4},?\s*\d\d?:\d\d\.?|\d{4}|M?\d{1,2}\+?|"?[A-Z]{2}"?(?:,\s*[A-Z]{2})*|serie|film', re.I)
+RYTEC_CODE_RE = re.compile(r"S\d+(?:\s*[/:]?\s*E\d+(?:/\d+)?)?|E\d+(?:/\d+|S\d+)?|(?:Episode|Folge|Aflevering|Epizod[ae]?|Ep\.?)\s*\d+|"
+                           r"\d\d[./]\d\d[./]\d{4},?\s*(?:\d\d?:\d\d\.?)?", re.I)  # leading episode codes and dates
+RYTEC_DROP_RE = re.compile(r'\d{1,4}|M?\d{1,2}\+?|\d\d?\.(?:\s*\d\d?\.)*|"?(?-i:[A-Z]{1,3})"?(?:\s*,\s*(?-i:[A-Z]{1,3}))*|serie|film', re.I)  # years, ages, countries
+RYTEC_TOK_RE = re.compile(r"\s*(?:[,/&;:]|\b(?:and|und|en|et|e|y)\b)\s*", re.I)
+RYTEC_VOCAB = {}  # guide file -> (genre words, parts many different shows share)
+RYTEC_ALL = [-1, set()]  # every guide's genre words: "Documentary" alone is a genre in a guide that never names episodes too
+
+
+def rytec_parts(text):
+    parts = [p for p in (p.strip().strip("'").strip() for p in RYTEC_SEP_RE.split(text)) if p]
+    while parts and RYTEC_CODE_RE.fullmatch(parts[0]):
+        parts.pop(0)
+    return parts
+
+
+def rytec_words(part):
+    return {w.lower() for w in RYTEC_TOK_RE.split(part) if w}
+
+
+def rytec_learn(pairs):
+    """From one guide's "S1E2 ║ name ║ genre ║ country" lines: the words used as genres, and parts shared by many shows."""
+    words, firsts = {}, {}
+    for title, sub in pairs:
+        parts = rytec_parts(sub)
+        for p in parts[1:]:
+            for w in rytec_words(p):
+                words.setdefault(w, set()).add(sub)
+        if parts:
+            firsts.setdefault(parts[0].lower(), set()).add(title)
+    return {w for w, x in words.items() if len(x) >= 3}, {p for p, x in firsts.items() if len(x) >= 3}
+
+
+def rytec_vocab(path):
+    if path not in RYTEC_VOCAB:
+        try:
+            with open(path[:-4] + ".genres.json", encoding="utf-8") as f:
+                g, p = json.load(f)
+            RYTEC_VOCAB[path] = (set(g), set(p))
+        except (OSError, ValueError):
+            RYTEC_VOCAB[path] = (set(), set())
+    if RYTEC_ALL[0] != len(RYTEC_VOCAB):
+        RYTEC_ALL[:] = [len(RYTEC_VOCAB), set().union(*(g for g, p in RYTEC_VOCAB.values()))]
+    return RYTEC_ALL[1], RYTEC_VOCAB[path][1]
 PRIVATE_URL_RE = re.compile(r"^\s*[a-z]+://(?:[^/@\s]*@)?(?:127\.|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.|169\.254\.|\[?::1\]?|"
                             r"(?:localhost|[^/:\s]+\.(?:local|lan|internal|home\.arpa))(?=[:/]|$))", re.I)
 
 
-def tidy_show(el):
+def tidy_show(el, vocab=(frozenset(), frozenset())):
     """Guides that escaped their text twice would show "&amp;" and diamonds on screen."""
     for child in el:
         if child.tag == "sub-title" and child.text and "\u2551" in child.text:  # "S4E20 ║ Episode 20 ║ Gameshow ║ GB ║ 2025"
-            parts = [p.strip().strip("'").strip() for p in RYTEC_SEP_RE.split(child.text)][:2]  # the episode name is first or second; genres follow
-            parts = [p for p in parts if p and not RYTEC_DROP_RE.fullmatch(p)]
-            child.text = parts[0] if parts and parts[0].lower() != (el.findtext("title") or "").strip().lower() else ""
+            parts = rytec_parts(child.text)  # after the codes: the episode name, if there is one, then genre, country, year
+            name = re.sub(r"^S\d+\s*:?\s*E\d+\s+", "", parts[0]) if parts else ""  # "S5:E2 Alte Wunden"
+            genre = (not name or RYTEC_DROP_RE.fullmatch(name) or rytec_words(name) <= vocab[0] or parts[0].lower() in vocab[1] or
+                     re.fullmatch(r"[^\W\d_][\w'-]*(?:\s*[,/]\s*[^\W\d_][\w'-]*)+", name))  # "Tekenfilm, Kinderen, Komedie"
+            child.text = "" if genre or name.lower() == (el.findtext("title") or "").strip().lower() else name  # no name: empty, not a genre
         t = child.text
         if child.tag == "title" and t and t.endswith(" (?)"):
             t = child.text = t[:-4]  # one guide marks unsure titles with "(?)"
@@ -687,6 +733,7 @@ def same_shows(a, b):
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
     idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
+    rytec = set()
     window_done = set()
     now = datetime.now(timezone.utc)
     try:
@@ -695,7 +742,7 @@ def scan_xmltv(path, src=None):
                 names = [d.text or "" for d in el.findall("display-name")]
                 icon = el.find("icon")
                 logo = icon.get("src", "") if icon is not None else ""  # not "src": that is the guide itself
-                idx[el.get("id", "")] = {"names": names, "icon": "" if PRIVATE_URL_RE.match(logo) else logo}
+                idx[el.get("id", "")] = {"names": names, "icon": logo if re.match(r"https?://", logo, re.I) and not PRIVATE_URL_RE.match(logo) else ""}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
                 fix = timedelta(minutes=clock_fix(src, el.get("channel", ""), el.get("start") or "")) if src and end else None
@@ -720,6 +767,9 @@ def scan_xmltv(path, src=None):
                             heads.setdefault(cid, []).append(title_key(el.findtext("title")))  # and their titles
                     idx.setdefault(cid, {"names": [], "icon": ""})  # some guides (Rytec) have no channel list
                     t = el.find("title")
+                    sub = el.findtext("sub-title") or ""
+                    if "\u2551" in sub:  # learn this guide's genre words
+                        rytec.add(((el.findtext("title") or "").strip().lower(), sub))
                     if len(seen.setdefault(cid, set())) < 2:
                         seen[cid].add((el.findtext("title") or "").strip().lower())
                     if len(parts.setdefault(cid, set())) < 3:  # a one-show channel still has different episodes
@@ -739,6 +789,14 @@ def scan_xmltv(path, src=None):
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
+    g, p = rytec_learn(rytec)
+    RYTEC_VOCAB[path] = (g, p)
+    RYTEC_ALL[0] = -1  # the combined list is rebuilt
+    try:
+        if g or p or os.path.exists(path[:-4] + ".genres.json"):
+            write_atomic(path[:-4] + ".genres.json", json.dumps([sorted(g), sorted(p)], ensure_ascii=False))
+    except OSError:
+        pass
     return idx, upcoming, fresh
 
 
@@ -2030,7 +2088,7 @@ def build():
                         st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
                     if not st or (sp or st) < start_cut or st > end_cut:
                         continue
-                    tidy_show(el)  # first: a title that tidying empties is no show
+                    tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
                     times = clean.check(cid, el, st, sp)
                     if not times:
                         continue
@@ -2541,7 +2599,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 for child in list(el):
                     if child.tag in SLIM_TAGS:
                         el.remove(child)
-                tidy_show(el)  # first: a title that tidying empties is no show
+                tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
                 times = clean.check(cid, el, st, sp)
                 if not times:
                     continue
