@@ -694,8 +694,8 @@ def scan_xmltv(path, src=None):
             if el.tag == "channel":
                 names = [d.text or "" for d in el.findall("display-name")]
                 icon = el.find("icon")
-                src = icon.get("src", "") if icon is not None else ""
-                idx[el.get("id", "")] = {"names": names, "icon": "" if PRIVATE_URL_RE.match(src) else src}
+                logo = icon.get("src", "") if icon is not None else ""  # not "src": that is the guide itself
+                idx[el.get("id", "")] = {"names": names, "icon": "" if PRIVATE_URL_RE.match(logo) else logo}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
                 fix = timedelta(minutes=clock_fix(src, el.get("channel", ""), el.get("start") or "")) if src and end else None
