@@ -1,0 +1,112 @@
+# Rebuilds your playlist + guide on GitHub's servers, searches the internet for new
+# guides, and publishes everything on GitHub Pages - so your links work even when
+# your PC is off. Asked for every 3 hours; GitHub often runs it only every 5-8 hours
+# (watchdog.yml starts a build when one is overdue).
+name: Build EPG
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - .github/workflows/watchdog.yml
+  schedule:
+    - cron: "17 */3 * * *"   # every 3 hours (GitHub sometimes skips a run - the guide always covers 2 days)
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: Send a test email
+        type: boolean
+        default: false
+
+permissions:
+  contents: write     # to save newly found guides back to the repo
+  issues: write       # the email: a mention on a GitHub issue
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Make room on the server   # some GitHub servers have 72 GB, others 145; the saved guides alone take 16
+        continue-on-error: true
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          df -h /
+      - uses: actions/checkout@v5
+        with:
+          ref: main   # always the newest copy, including guides found by the run before
+      - uses: actions/cache@v6   # last good copy of each guide, in case a download fails
+        with:
+          path: data/cache
+          key: epg-cache-${{ github.run_id }}
+          restore-keys: epg-cache-
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Download sources, find new guides, build
+        run: python ultimate_epg.py --build-site site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Disk space left   # the saved guide copies are big; this shows if the server is close to full
+        if: always()
+        continue-on-error: true
+        run: |
+          df -h . && du -sh data/cache || true
+          free=$(df --output=avail -k . | tail -1)
+          if [ "$free" -lt 8388608 ]; then echo "- The build server had only $((free / 1048576)) GB of disk left: guide updates may soon fail" >> alert.md; fi
+      - name: Save newly found guides
+        if: always()              # also after a refused build, so its notes are kept
+        continue-on-error: true   # never let this block publishing your links
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/auto_sources.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-found guides update"
+            for i in 1 2 3; do   # your own push can land in between: try again
+              git pull --rebase -X theirs --autostash origin main && git push && break
+              sleep 10
+            done
+          fi
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v5
+      - name: Email you if something went wrong
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          STATUS: ${{ job.status }}
+          TEST: ${{ inputs.test_alert }}
+          PAGE: https://ampo3d.github.io/ultimate-epg/health.html
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$STATUS" != "success" ]; then echo "- The guide update failed, so your links still show the last good guide: $RUN" >> alert.md; fi
+          if [ "$TEST" = "true" ]; then echo "- This is a test. Nothing is wrong." >> alert.md; fi
+          [ -f alert.md ] || exit 0
+          for i in 1 2 3; do   # a GitHub hiccup must not swallow the email
+            n=$(gh issue list --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') && break
+            n=""; sleep 15
+          done
+          if [ -n "$n" ]; then   # failed builds and a full disk repeat every run: tell you once every 12 hours, not every time
+            told=$(gh issue view "$n" --json body,createdAt,comments --jq '[(select(now - (.createdAt | fromdateiso8601) < 43200) | .body), (.comments[] | select(now - (.createdAt | fromdateiso8601) < 43200) | .body)] | join(" ")' || true)
+            for k in "The guide update failed" "GB of disk left"; do
+              if printf '%s' "$told" | grep -qF "$k"; then grep -vF "$k" alert.md > alert.tmp || true; mv alert.tmp alert.md; fi
+            done
+            [ -s alert.md ] || exit 0
+          fi
+          body="@Ampo3D your guide needs a look: $(cat alert.md) Full report: $PAGE"
+          if [ -n "$n" ] && gh issue comment "$n" --body "$body"; then exit 0; fi
+          gh issue create --title "Guide needs attention" --body "$body"   # no open issue, or it can't take comments

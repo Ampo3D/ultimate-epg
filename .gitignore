@@ -1,0 +1,8 @@
+data/cache/
+data/output/
+data/*.tmp
+data/log.txt
+site/
+__pycache__/
+data/private.json
+data/*.bak

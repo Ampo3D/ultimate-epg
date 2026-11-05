@@ -1,0 +1,55 @@
+# GitHub often skips scheduled runs. This tiny job asks to run twice an hour (GitHub
+# runs it every few hours) and starts a rebuild if the last good build is over 3 hours
+# old, so the guide never runs out. After 8 hours with no good build it emails you (then at most every 12 hours).
+name: Watchdog
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild now even if the guide is new
+        type: boolean
+        default: false
+
+permissions:
+  actions: write
+  contents: read
+  issues: write   # the email: a mention on the "Guide needs attention" issue
+
+concurrency:
+  group: watchdog
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Rebuild if the guide is getting old
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          # a GitHub hiccup anywhere here must never stop the rebuild at the end
+          q() { gh run list -R "$REPO" -w build.yml --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""'; }
+          last=$(q) || { sleep 20; last=$(q) || last=unknown; }
+          age=999999
+          if [ "$last" = unknown ]; then age=10801; elif [ -n "$last" ]; then age=$(( $(date +%s) - $(date -d "$last" +%s) )); fi
+          echo "Last good build: $last ($age seconds ago)"
+          if [ "$age" -gt 28800 ] && [ "$last" != unknown ]; then   # 8 hours: tell the owner (at most once every 12 hours)
+            n=$(gh issue list -R "$REPO" --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') || n=SKIP
+            if [ "$n" = SKIP ]; then echo "Couldn't check the alert issue; trying again next time"; else
+              told=""
+              if [ -n "$n" ]; then told=$(gh issue view "$n" -R "$REPO" --json body,createdAt,comments --jq '[(if (.body | contains("No good guide update")) then .createdAt else empty end), (.comments[] | select(.body | contains("No good guide update")) | .createdAt)] | last // ""' || true); fi
+              if [ -z "$told" ] || [ $(( $(date +%s) - $(date -d "$told" +%s) )) -gt 43200 ]; then
+                if [ -n "$last" ]; then since="for $((age / 3600)) hours"; else since="found"; fi
+                body="@Ampo3D No good guide update $since. Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
+                if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body" || true; else gh issue create -R "$REPO" --title "Guide needs attention" --body "$body" || true; fi
+              fi
+            fi
+          fi
+          active=$(gh run list -R "$REPO" -w build.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length') || active=0
+          if [ "$active" != "0" ]; then echo "A build is already running or waiting"; exit 0; fi
+          if [ "$age" -gt 10800 ] || [ "${{ inputs.force }}" = "true" ]; then gh workflow run build.yml -R "$REPO" --ref main; echo "Rebuild started"; fi
