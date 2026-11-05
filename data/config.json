@@ -172937,7 +172937,9 @@
   "d51c93cd6129": {
    "key": "d51c93cd6129",
    "source": "d7968fcb",
-   "ov": {},
+   "ov": {
+    "epg_id": "UK:.Westerns.+.be"
+   },
    "up": {
     "name": "Westerns +",
     "number": "",
@@ -172950,7 +172952,8 @@
    },
    "extra": [],
    "missing": false,
-   "order": 50000183
+   "order": 50000183,
+   "epg_mine": true
   },
   "bde6af099c28": {
    "key": "bde6af099c28",
