@@ -906,14 +906,66 @@ BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|p
 CLOCK_FIXES = ((re.compile(r"epgshare01\.online/.*_(?:RS1|ALL_SOURCES1)\.xml", re.I), re.compile(r"\.rs$"), "+0100", -60),
                (re.compile(r"epgshare01\.online/.*_(?:ZA1|ALL_SOURCES1)\.xml", re.I), re.compile(r"\.za$"), "+0700", -60),
                (re.compile(r"/GhalebAldoboni/EPG-Guide/", re.I),
-                re.compile(r"^(?:AlAoula\.ma|Al Aoula Morocco|JordanTV\.jo|Jordan TV|MBC.*|Mbc.*|Rotana.*|SBC)$"), "+0400", 60),
-               (re.compile(r"/piizitv-epg/", re.I), re.compile(r"^Sportsnet\.?(?:West|\(?Pacific\)?)"), "+0000", -60))  # still on summer time (NHL schedule, Nov 5)
+                re.compile(r"^(?:AlAoula\.ma|Al Aoula Morocco|JordanTV\.jo|Jordan TV|MBC.*|Mbc.*|Rotana.*|SBC)$"), "+0400", 60))
 
 
 def clock_fix(src, cid, start):
     z = re.search(r"([+-])(\d\d):?(\d\d)\s*$", start or "")
     zone = z and z[1] + z[2] + z[3]
     return next((m for u, c, r, m in CLOCK_FIXES if zone == r and c.search(cid) and u.search(src["url"])), 0)
+
+
+NHL_FEEDS = (("SNW", re.compile(r"^Sportsnet\W?West\b", re.I)), ("SNP", re.compile(r"^Sportsnet\W{0,2}Pacific\b", re.I)),
+             ("SNE", re.compile(r"^Sportsnet\W?East\b", re.I)), ("SNO", re.compile(r"^Sportsnet\W?Ontario\b", re.I)))
+NHL_FIX = {}  # (guide id, channel) -> minutes, measured against the NHL's own schedule
+
+
+def show_fix(src, cid, start):
+    """Clock fix used when building: the fixed rules plus what the NHL check measured."""
+    return clock_fix(src, cid, start) + NHL_FIX.get((src.get("id"), cid), 0)
+
+
+def nhl_check(xml_sources, now):
+    """Some guides kept Sportsnet's regional feeds on summer time after Nov 1, and fix it whenever they like:
+    each guide's next NHL games are compared with the league's schedule, and only a clear 1-hour offset is corrected."""
+    games = {}
+    try:
+        for day in ("now", (now + timedelta(days=7)).strftime("%Y-%m-%d")):
+            for wk in json.loads(http_text(f"https://api-web.nhle.com/v1/schedule/{day}", 20)).get("gameWeek", []):
+                for g in wk.get("games", []):
+                    st = datetime.strptime(g["startTimeUTC"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                    for b in g.get("tvBroadcasts", []):
+                        games.setdefault(b.get("network"), set()).add(int(st.timestamp()) // 60)
+    except Exception as ex:
+        games = None
+        log(f"  NHL schedule not available ({str(ex)[:80]}) - Sportsnet times as last checked")
+    memory = AUTO.setdefault("nhl_fix", {})
+    NHL_FIX.clear()
+    for x in xml_sources:
+        try:
+            with open(os.path.join(CACHE, x["id"] + ".channels.json"), encoding="utf-8") as f:
+                idx = json.load(f)
+        except (OSError, ValueError):
+            continue
+        for cid, info in idx.items():
+            net = next((n for n, r in NHL_FEEDS if r.search(cid)), None)
+            if not net:
+                continue
+            key = x["id"] + " " + cid
+            hockey = [st for st, h in zip(info.get("starts", []), info.get("heads", [])) if h.startswith("nhlhock")]
+            if games is not None and hockey:
+                sched = games.get(net, set()) | games.get("SN", set())  # national games are on every regional feed
+                hits = {d: sum(1 for st in hockey if st + d in sched) for d in (0, -60, 60)}
+                best = max(hits, key=lambda d: (hits[d], d == 0))
+                if hits[best]:
+                    memory[key] = [best, int(time.time())]
+            d, when = memory.get(key, [0, 0])
+            if d and time.time() - when < 4 * 86400:  # no game in the next day: the last measurement holds for 4 days
+                NHL_FIX[(x["id"], cid)] = d
+    for key in [k for k, (d, when) in memory.items() if time.time() - when > 14 * 86400]:
+        del memory[key]
+    if NHL_FIX:
+        log(f"  Sportsnet times corrected by the NHL schedule: {sorted({f'{c} {d:+d} min' for (i, c), d in NHL_FIX.items()})}")
 
 
 WRONG_FEED_RE = re.compile(r"/melocalex/lighteye/|/M3UPT/|/lucianodias089/", re.I)  # every show twice 3 h apart; other countries' feeds under local codes
@@ -2048,6 +2100,7 @@ def build():
         settings = dict(CFG["settings"])
         xml_sources = guide_sources()
         rytec_prepare(xml_sources)
+        nhl_check(xml_sources, datetime.now(timezone.utc))
     log(f"Building output for {len(rows)} channels")
 
     # playlist; {EPG_URL} is swapped for the real address when served
@@ -2099,7 +2152,7 @@ def build():
                     if cid not in real or cid in claimed or owner.get(cid) != src["id"] or is_junk(el):
                         continue
                     st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                    fix = st and clock_fix(src, cid, el.get("start"))
+                    fix = st and show_fix(src, cid, el.get("start"))
                     if fix:
                         st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
                     if not st or (sp or st) < start_cut or st > end_cut:
@@ -2608,7 +2661,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 if (cid not in fill and cid not in ext) or chans.get(cid, {}).get("src") != x["id"] or is_junk(el):
                     continue
                 st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                fix = st and clock_fix(x, cid, el.get("start"))
+                fix = st and show_fix(x, cid, el.get("start"))
                 if fix:
                     st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
                 if not st or (sp or st) < start_cut or st > week_cut:
