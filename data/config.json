@@ -255854,7 +255854,6 @@
    "backups": [
     "Sportsnet.(Pacific).ca2"
    ],
-   "shift": -60,
    "guide": "Sportsnet.(Pacific).HD.ca2",
    "how": "manual",
    "manual": true
@@ -255866,7 +255865,6 @@
    "group": "Sports",
    "prov": "Provider 1",
    "backups": [],
-   "shift": -60,
    "guide": "Sportsnet.West.HD.ca2",
    "how": "manual",
    "manual": true
