@@ -582,7 +582,7 @@ RYTEC_CODE_RE = re.compile(r"S\d+(?:\s*[/:]?\s*E\d+(?:/\d+)?)?|E\d+(?:/\d+|S\d+)
 RYTEC_DROP_RE = re.compile(r'\d{1,4}|M?\d{1,2}\+?|\d\d?\.(?:\s*\d\d?\.)*|"?(?-i:[A-Z]{1,3})"?(?:\s*,\s*(?-i:[A-Z]{1,3}))*|serie|film', re.I)  # years, ages, countries
 RYTEC_TOK_RE = re.compile(r"\s*(?:[,/&;:]|\b(?:and|und|en|et|e|y)\b)\s*", re.I)
 RYTEC_VOCAB = {}  # guide file -> (genre words, parts many different shows share)
-RYTEC_ALL = [-1, set()]  # every guide's genre words: "Documentary" alone is a genre in a guide that never names episodes too
+RYTEC_ALL = [0, set()]  # every guide's genre words: "Documentary" alone is a genre in a guide that never names episodes too
 
 
 def rytec_parts(text):
@@ -617,9 +617,15 @@ def rytec_vocab(path):
             RYTEC_VOCAB[path] = (set(g), set(p))
         except (OSError, ValueError):
             RYTEC_VOCAB[path] = (set(), set())
-    if RYTEC_ALL[0] != len(RYTEC_VOCAB):
-        RYTEC_ALL[:] = [len(RYTEC_VOCAB), set().union(*(g for g, p in RYTEC_VOCAB.values()))]
     return RYTEC_ALL[1], RYTEC_VOCAB[path][1]
+
+
+def rytec_prepare(xml_sources):
+    """Before a build: every guide's genre words, also after a restart or a one-guide refresh (saved files fill the gaps)."""
+    paths = [os.path.join(CACHE, x["id"] + ".xml") for x in xml_sources]
+    for p in paths:
+        rytec_vocab(p)
+    RYTEC_ALL[1] = set().union(*(RYTEC_VOCAB[p][0] for p in paths))
 PRIVATE_URL_RE = re.compile(r"^\s*[a-z]+://(?:[^/@\s]*@)?(?:127\.|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.|169\.254\.|\[?::1\]?|"
                             r"(?:localhost|[^/:\s]+\.(?:local|lan|internal|home\.arpa))(?=[:/]|$))", re.I)
 
@@ -642,6 +648,9 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             child.set("src", tidy_text(child.get("src")))
         if child.tag in ("title", "sub-title") and t and NEWLINE_RE.search(t):  # "Anderson Cooper 360\nEn Vivo": one line
             child.text = re.sub(r"\s+", " ", NEWLINE_RE.sub(" ", t)).strip()
+    for child in el:
+        if child.tag in ("title", "sub-title", "desc") and child.text and re.search(r"</[A-Za-z]|<[A-Za-z][\w:-]*\s*/>", child.text):
+            child.text = ""  # escaped XML in the text ("<original-title /> ... <subevent>no</subevent>"): empty, not markup
     sub = el.find("sub-title")
     if sub is not None and sub.text and (re.fullmatch(r"\s*S\d+\s*", sub.text) or sub.text.strip().lower() in
                                          {(c.text or "").strip().lower() for c in el.findall("category")}):
@@ -793,9 +802,10 @@ def scan_xmltv(path, src=None):
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
-    g, p = rytec_learn(rytec)
+    g, p = rytec_learn(rytec) if src and src.get("id") else (set(), set())
+    if not (src and src.get("id")):
+        return idx, upcoming, fresh  # a guide being tried out: its words are not learned
     RYTEC_VOCAB[path] = (g, p)
-    RYTEC_ALL[0] = -1  # the combined list is rebuilt
     try:
         if g or p or os.path.exists(path[:-4] + ".genres.json"):
             write_atomic(path[:-4] + ".genres.json", json.dumps([sorted(g), sorted(p)], ensure_ascii=False))
@@ -2037,6 +2047,7 @@ def build():
         rows = output_channels()
         settings = dict(CFG["settings"])
         xml_sources = guide_sources()
+        rytec_prepare(xml_sources)
     log(f"Building output for {len(rows)} channels")
 
     # playlist; {EPG_URL} is swapped for the real address when served
@@ -2375,6 +2386,7 @@ def better_copy(cid, old, new):
 
 
 def build_universal(xml_sources, wanted, now, start_cut, end_cut):
+    rytec_prepare(xml_sources)
     """ONE guide for any provider and any player.
     Every copy of a real channel (ESPN on five guide sites under five codes) is grouped together.
     The group answers to every known code - including codes learned from your providers and
