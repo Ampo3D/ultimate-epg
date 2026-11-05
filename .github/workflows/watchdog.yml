@@ -52,4 +52,4 @@ jobs:
           fi
           active=$(gh run list -R "$REPO" -w build.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length') || active=0
           if [ "$active" != "0" ]; then echo "A build is already running or waiting"; exit 0; fi
-          if [ "$age" -gt 10800 ] || [ "${{ inputs.force }}" = "true" ]; then gh workflow run build.yml -R "$REPO" --ref main; echo "Rebuild started"; fi
+          if [ "$age" -gt 10800 ] || [ "${{ inputs.force }}" = "true" ]; then gh workflow run build.yml -R "$REPO" --ref main || { sleep 30; gh workflow run build.yml -R "$REPO" --ref main; }; echo "Rebuild started"; fi

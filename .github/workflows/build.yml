@@ -53,6 +53,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Download sources, find new guides, build
+        timeout-minutes: 80   # fails like a normal step, so the alert and save steps after it still run
         run: python ultimate_epg.py --build-site site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,8 +73,10 @@ jobs:
           git add data/auto_sources.json
           if ! git diff --cached --quiet; then
             git commit -m "Auto-found guides update"
+            git reset -q --hard HEAD   # the build's own config.json edits are never published; they'd block the pull
             for i in 1 2 3; do   # your own push can land in between: try again
-              git pull --rebase -X theirs --autostash origin main && git push && break
+              git pull --rebase -X theirs origin main && git push && break
+              git rebase --abort 2>/dev/null || true
               sleep 10
             done
           fi

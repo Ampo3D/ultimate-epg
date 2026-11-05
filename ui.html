@@ -534,7 +534,8 @@ async function bulkDelete() {
 }
 
 async function saveChanges() {
-  await post('/api/channels', {channels: Object.values(dirty)});
+  const r = await post('/api/channels', {channels: Object.values(dirty)});
+  if (r.ok === false) return alert(r.error);
   dirty = {}; poll();
 }
 async function autoMatch() {
@@ -563,7 +564,9 @@ function openAdd() {
   $('e_ok').onclick = async () => {
     const it = {}; EF.forEach(f => it[f] = $('e_' + f).value.trim());
     if (!it.name || !it.url) return alert('Name and stream URL are required.');
-    await post('/api/channels/add', it); dlg.close(); poll();
+    const r = await post('/api/channels/add', it);
+    if (r.ok === false) return alert(r.error);
+    dlg.close(); poll();
   };
   dlg.showModal();
 }

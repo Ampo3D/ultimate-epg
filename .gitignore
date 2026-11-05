@@ -6,3 +6,6 @@ site/
 __pycache__/
 data/private.json
 data/*.bak
+alert.md
+alert.tmp
+data/*.broken

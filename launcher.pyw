@@ -67,6 +67,7 @@ try:
             popup(f"Ultimate EPG is taking long to start. Try {URL} in your browser in a minute.")
         threading.Thread(target=wait_and_open, daemon=True).start()
     ultimate_epg.main()
-except Exception as ex:
-    note(f"crashed: {ex!r}")
-    popup(f"Ultimate EPG could not start:\n\n{ex}\n\nDetails are in {LOG}")
+except (Exception, SystemExit) as ex:  # "config.json has git clash marks" is a SystemExit: say so too
+    if not (isinstance(ex, SystemExit) and ex.code in (0, None)):
+        note(f"crashed: {ex!r}")
+        popup(f"Ultimate EPG could not start:\n\n{ex.code if isinstance(ex, SystemExit) else ex}\n\nDetails are in {LOG}")

@@ -490,7 +490,7 @@ def char_ref_ok(m):  # "&#55357;" (half an emoji) or "&#x110000;" would stop the
 BAD_XML_BYTES = re.compile(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]|\xef\xbf[\xbe\xbf]|"
                            rb"&#(?:0*(?:[0-8]|1[124-9]|2\d|3[01])|[xX]0*(?:[0-8bcefBCEF]|1[0-9a-fA-F]));")
 BARE_AMP = re.compile(rb"&(?!(?:amp|lt|gt|quot|apos|#\d+|#[xX][0-9a-fA-F]+);)")
-CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\ufffe\uffff]")
+CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f\ufffe\uffff]")
 
 
 class CleanReader:
@@ -527,7 +527,7 @@ ESCAPED_RE = re.compile(r"&([a-zA-Z]{2,8}|#\d+|#x[0-9a-fA-F]+);")  # "&eacute;" 
 
 LOST_U_RE = re.compile(r"(?<!\\)u00([c-fC-F][0-9a-fA-F])")  # "Notu00edcias": a \u escape that lost its backslash
 MOJIBAKE_RE = re.compile("(?:[\u00c2\u00c3][\u0080-\u00bf\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u02c6\u02dc\u2013-\u2122]|\u00e2\u20ac.)+")  # UTF-8 read as Windows-1252: "Â£", "â€™"
-TAG_RE = re.compile(r"</?(?:a|b|i|u|br|p|em|strong|span|div|font)\b[^<>]*>", re.I)
+TAG_RE = re.compile(r"<!--.*?(?:-->|$)|<style\b.*?(?:</style>|$)|</?[A-Za-z][\w:-]*(?:\s[^<>]*)?/?>", re.I | re.S)  # any tag, comments, styles
 JSON_ESC_RE = re.compile(r"\\u([0-9a-fA-F]{4})")  # "Rehras Sahib \u0026 Shabad"
 NEEDS_TIDY_RE = re.compile("[&\ufffd<\u00c2\u00c3\u00e2\u00d0\u00fb\\\\\x80-\x9f\\[\ufb50-\ufdff\ufe70-\ufefc]|u00[c-fC-F]|\",\\s*\"")
 JSON_LEFTOVER_RE = re.compile(r'",\s*"[A-Za-z]{1,20}"\s*:\s*(?:"|\{|\[|true\b|false\b|null\b|-?\d).*$', re.S)  # 'The Late Show","audioDescription":false,...'
@@ -542,11 +542,14 @@ def fix_mojibake(m):
     try:
         return bytes(ord(c) if ord(c) < 256 else c.encode("cp1252")[0] for c in m[0]).decode("utf-8")
     except (UnicodeError, ValueError):
-        return m[0]  # a real "Ã" next to other letters: leave it
+        try:  # "â€ś": a Central European page read the same way
+            return bytes(ord(c) if ord(c) < 128 else c.encode("cp1250")[0] for c in m[0]).decode("utf-8")
+        except (UnicodeError, ValueError):
+            return m[0]  # a real "Ã" next to other letters: leave it
 
 
 def tidy_text(t):
-    t = t.replace("\\r\\n", "\n").replace("\\n", "\n").replace('\\"', '"')  # a literal "\n" from a JSON copy
+    t = re.sub(r'\\+"', '"', t.replace("\\r\\n", "\n").replace("\\n", "\n").replace("\\t", " ").replace("\\r", ""))  # a literal "\n" from a JSON copy
     t = JSON_LEFTOVER_RE.sub("", t)
     while ESCAPED_TWICE_RE.search(t):
         t = ESCAPED_TWICE_RE.sub("&", t)
@@ -565,14 +568,25 @@ def tidy_text(t):
     t = GARBLED_TAIL_RE.sub("", re.sub("(?<= )\u00d0(?= )", "\u2013", t))  # a Mac dash read as "\u00d0"
     t = ARABIC_FORMS_RE.sub(lambda m: unicodedata.normalize("NFKC", m[0]), t)
     if "[" in t:
-        u = SPORT_TAG_RE.sub("", t)
+        u = re.sub(r"^\s*\[[K\u039a]\d{0,2}\]\s*", "", SPORT_TAG_RE.sub("", t))  # Greek age ratings "[K8] ..."
+        u = re.sub(r"^\s*\[LIVE\]\s*:?\s*(?=\S)", "Live: ", u)
         t = NEW_TAG_RE.sub("", u) or u or t  # a title that is only "[LIVE]" keeps it
     return re.sub(r" {2,}", " ", TAG_RE.sub(" ", t)).strip() if TAG_RE.search(t) else t
+
+
+RYTEC_SEP_RE = re.compile(r"\s*\u2551\s*")
+RYTEC_DROP_RE = re.compile(r'S\d+/?E\d+(?:/\d+)?|Episode \d+|\d\d\.\d\d\.\d{4},?\s*\d\d?:\d\d\.?|\d{4}|M?\d{1,2}\+?|"?[A-Z]{2}"?(?:,\s*[A-Z]{2})*|serie|film', re.I)
+PRIVATE_URL_RE = re.compile(r"^\s*[a-z]+://(?:[^/@\s]*@)?(?:127\.|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.|169\.254\.|\[?::1\]?|"
+                            r"(?:localhost|[^/:\s]+\.(?:local|lan|internal|home\.arpa))(?=[:/]|$))", re.I)
 
 
 def tidy_show(el):
     """Guides that escaped their text twice would show "&amp;" and diamonds on screen."""
     for child in el:
+        if child.tag == "sub-title" and child.text and "\u2551" in child.text:  # "S4E20 ║ Episode 20 ║ Gameshow ║ GB ║ 2025"
+            parts = [p.strip().strip("'").strip() for p in RYTEC_SEP_RE.split(child.text)][:2]  # the episode name is first or second; genres follow
+            parts = [p for p in parts if p and not RYTEC_DROP_RE.fullmatch(p)]
+            child.text = parts[0] if parts and parts[0].lower() != (el.findtext("title") or "").strip().lower() else ""
         t = child.text
         if child.tag == "title" and t and t.endswith(" (?)"):
             t = child.text = t[:-4]  # one guide marks unsure titles with "(?)"
@@ -582,7 +596,10 @@ def tidy_show(el):
             child.set("src", tidy_text(child.get("src")))
         if child.tag in ("title", "sub-title") and t and NEWLINE_RE.search(t):  # "Anderson Cooper 360\nEn Vivo": one line
             child.text = re.sub(r"\s+", " ", NEWLINE_RE.sub(" ", t)).strip()
-    el[:] = sorted(el, key=lambda c: DTD_ORDER.get(c.tag, len(DTD_ORDER)))  # strict players reject other orders
+    el[:] = sorted((c for c in el if c.tag in DTD_ORDER and not (  # strict players reject other tags and orders
+        c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
+        c.tag == "icon" and (not re.match(r"https?://", c.get("src", ""), re.I) or PRIVATE_URL_RE.match(c.get("src", ""))))),
+        key=lambda c: DTD_ORDER[c.tag])  # "/imgs/717.png" and a stranger's home server can't load
 
 
 DTD_ORDER = {t: i for i, t in enumerate("title sub-title desc credits date category keyword language orig-language length icon "
@@ -669,7 +686,7 @@ def same_shows(a, b):
 
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
-    idx, upcoming, last, per, langs, seen, parts, ends, starts, heads = {}, 0, None, {}, {}, {}, {}, {}, {}, {}
+    idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
     window_done = set()
     now = datetime.now(timezone.utc)
     try:
@@ -677,7 +694,8 @@ def scan_xmltv(path, src=None):
             if el.tag == "channel":
                 names = [d.text or "" for d in el.findall("display-name")]
                 icon = el.find("icon")
-                idx[el.get("id", "")] = {"names": names, "icon": icon.get("src", "") if icon is not None else ""}
+                src = icon.get("src", "") if icon is not None else ""
+                idx[el.get("id", "")] = {"names": names, "icon": "" if PRIVATE_URL_RE.match(src) else src}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
                 fix = timedelta(minutes=clock_fix(src, el.get("channel", ""), el.get("start") or "")) if src and end else None
@@ -689,6 +707,9 @@ def scan_xmltv(path, src=None):
                     cid = el.get("channel", "")
                     per[cid] = per.get(cid, 0) + 1
                     ends[cid] = max(ends.get(cid, end), end)
+                    st0 = parse_xmltv_time(el.get("start"))
+                    if st0:
+                        lasts[cid] = max(lasts.get(cid, 0), int((st0 + (fix or timedelta(0))).timestamp()))
                     if len(starts.setdefault(cid, [])) < 48 and cid not in window_done:  # the next day's start times,
                         st = parse_xmltv_time(el.get("start"))                              # compared with other copies
                         st = st and fix and st + fix or st
@@ -714,6 +735,7 @@ def scan_xmltv(path, src=None):
         info["n"] = 0 if filler else per.get(cid, 0)  # one title all day isn't a schedule: treated like a channel with no shows
         if cid in ends:
             info["end"], info["starts"], info["heads"] = int(ends[cid].timestamp()), starts.get(cid, []), heads.get(cid, [])
+            info["last"] = lasts.get(cid, 0)
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
@@ -767,6 +789,9 @@ def guess_country(url, name=""):
     m = re.search(r"/epg_ripper_([A-Z]{2})\d+\.xml", url)
     if m:  # epgshare's file names say the country: epg_ripper_RO1
         return {"UK": "GB"}.get(m[1], m[1])
+    m = re.search(r"iptv-epg\.org/files/epg-([a-z]{2})\.xml", url)
+    if m:  # and iptv-epg.org's: epg-pe.xml
+        return {"UK": "GB"}.get(m[1].upper(), m[1].upper())
     name = re.sub(r"^guide linked by '.*?'", "", name)  # the playlist that linked it, not the guide's country
     text = (url.replace("i.mjh.nz", "") + " " + name).lower()  # that site's address isn't a New Zealand guide
     for cc in priority_list() + [c for c in COUNTRY_TOKENS if c not in priority_list()]:
@@ -1484,8 +1509,8 @@ def provider_index(picks=False):
     for x in guide_sources():
         if picks_only(x) and not picks:
             continue
-        src_cc[x["id"]] = CC_ALIAS.get(guess_country(x["url"], x["name"]).lower(),
-                                       guess_country(x["url"], x["name"]).lower())
+        cc = (x.get("country") or guess_country(x["url"], x["name"])).lower()
+        src_cc[x["id"]] = CC_ALIAS.get(cc, cc)
         path = os.path.join(CACHE, x["id"] + ".channels.json")
         if os.path.exists(path):
             with open(path, encoding="utf-8") as fh:
@@ -1645,6 +1670,8 @@ def pick_best(cands, c, idx):
             sc -= 4  # an English channel should get English listings
         if any(norm(re.sub(r"\b(hd|fhd|uhd|sd|4k)\b", " ", n.lower())) == exact for n in idx["names"].get(cid, [])):
             sc += 2
+        if want_cc == "us" and want_net and re.search(r"news", text) and not re.search(r"news", pname):
+            sc -= 2  # "KPTV FOX 12 Oregon News" is the station's streaming news channel, not FOX 12 itself
         return -sc
     return sorted(cands, key=score)[0]
 
@@ -1869,6 +1896,23 @@ def refresh_provider():
 DUPES = set()  # channel keys hidden because a better copy exists
 
 
+FEED_CODES = {"SD": ("{b}",), "HD": ("{b}",), "East": ("{b}", "{n}East.{c}"), "Eastern": ("{b}", "{n}East.{c}"),
+              "West": ("{n}West.{c}", "{n}Pacific.{c}"), "Pacific": ("{n}Pacific.{c}", "{n}West.{c}")}
+
+
+def guide_code(tid):
+    """'ESPN.us@SD' -> 'ESPN.us' when only the plain code has listings; a West feed only ever to a West/Pacific code."""
+    if not tid or tid in EPG_INDEX or "@" not in tid:
+        return tid
+    base, feed = tid.split("@", 1)
+    name, _, cc = base.rpartition(".")
+    for pat in FEED_CODES.get(feed, ()):
+        alt = pat.format(b=base, n=name, c=cc)
+        if alt in EPG_INDEX:
+            return alt
+    return tid
+
+
 def output_channels():
     active = {s["id"] for s in all_sources() if s.get("enabled", True)} | {"custom"}
     rows = []
@@ -1877,7 +1921,7 @@ def output_channels():
         if not e["enabled"] or ch.get("missing") or ch["source"] not in active or LOGIN_URL_RE.search(e.get("url") or ""):
             continue  # someone's paid login leaked into a public list: never pass it on
         e["key"], e["extra"], e["order"] = ch["key"], ch.get("extra", []), ch["order"]
-        e["tvg_id"] = e["epg_id"] or "ue." + ch["key"]
+        e["tvg_id"] = guide_code(e["epg_id"]) if e["epg_id"] else "ue." + ch["key"]
         rows.append(e)
 
     def sort_key(e):
@@ -2171,14 +2215,14 @@ def guide_health(path, base_url):
         report["lost_this_week"] = max(r[1] for r in report["recent"]) - report["with_shows"]
         before = old.get("lost_this_week", AUTO.get("health_lost_week", 0 if old.get("recent") else 150))  # no history last time: it may have alerted already
         report["new_weekly_loss"] = report["lost_this_week"] >= 150 and before < 150
-    except Exception:
+    except Exception as ex:
         report["recent"] = [r for r in AUTO.get("health_recent", []) if report["time"] - r[0] < 7 * 86400] + [
             [report["time"], report["with_shows"]]]
         report["lost_since_last_run"] = report["playlist_lost"] = 0
         report["lost_this_week"] = max(r[1] for r in report["recent"]) - report["with_shows"]
         report["new_weekly_loss"] = report["lost_this_week"] >= 150 and AUTO.get("health_lost_week", 150) < 150
         report["new"] = {}
-        report["no_comparison"] = True
+        report["no_comparison"] = not (isinstance(ex, urllib.error.HTTPError) and ex.code == 404)  # a brand-new site has none yet
     return report
 
 
@@ -2258,10 +2302,11 @@ def better_copy(cid, old, new):
     copy (really a different schedule) is in the right one - RTL.hr in German - or the other copy has the same shows
     at the same times and runs at least a day longer."""
     a, b = set(old.get("starts") or ()), set(new.get("starts") or ())
-    same = len(a & b) >= 3 and 3 * len(a & b) >= 2 * min(len(a), len(b))
+    same_times = len(a & b) >= 3 and 3 * len(a & b) >= 2 * min(len(a), len(b))
+    same = same_times and (same_shows(old, new) if old.get("heads") and new.get("heads") else True)  # JBS.us: a crime channel's shows
     want = LANG_OF.get(id_country(cid), "")
     lo, ln = (LANG_ALIAS.get(x[:2], x[:2]) for x in (old.get("lang") or "", new.get("lang") or ""))
-    if want and lo not in ("", "en", want) and ln == want and a and b and not same:  # many guides tag every show "en": not a sign
+    if want and lo not in ("", "en", want) and ln == want and a and b and not same_times:  # many guides tag every show "en": not a sign
         return True
     return same and (lo == ln or not lo or not ln) and new.get("end", 0) >= old.get("end", 0) + 86400
 
@@ -2286,6 +2331,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         elif c.get("how") == "event":
             events.append(c)
     for ch in CFG["channels"].values():
+        if ch.get("missing"):
+            continue  # gone from its playlist: its code may belong to another channel now
         up, e = ch["up"], effective(ch)
         if up.get("epg_id") and e.get("epg_id") and up["epg_id"] != e["epg_id"]:
             learned.setdefault(up["epg_id"], (e["epg_id"], []))[1].append(e["name"])
@@ -2319,7 +2366,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 chans[cid] = {"src": x["id"], "names": [n for n in info["names"] if n] or [cid],
                               "icon": info.get("icon", ""), "n": info.get("n", 1), "picks": bool(picks_only(x)),
                               "cc": id_country(cid) or xcc, "lang": info.get("lang", ""),
-                              "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", [])}
+                              "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", []),
+                              "last": info.get("last", 0)}
 
     # group the copies of each real-world channel
     clusters = {}
@@ -2331,7 +2379,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             key = ("call", calls[0], sub[1] if sub and sub[1] != "1" else "")
         else:
             raw = PROVIDER_PREFIX_RE.sub("", unescape_all(c["names"][0]).lower())
-            west = bool(re.search(r"\b(pacific|west)\b", raw + " " + cid.lower()))
+            w = re.search(r"\b(pacific|west)\b", raw + " " + cid.lower())
+            west = (w[1] if c["cc"] == "ca" else True) if w else False  # Sportsnet West and Pacific are two feeds
             key = (c["cc"], pkey(raw) or cid, west)
         clusters.setdefault(key, []).append(cid)
 
@@ -2370,14 +2419,27 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             out[code] = {"from": g if chans[g]["n"] else group["best"], "group": group,
                          "shift": shifts.get(code, 0)}
     def is_call(t):
+        text = " ".join(chans[t]["names"]) + " " + t
+        if re.search(r"(?<![A-Za-z0-9])[KW]\d\d[A-Z]{2}(?:-?(?:D|LD|CD))?\b", text):
+            return True
         return chans[t]["group"].get("call") or bool(callsigns(re.sub(r"(?<=[A-Z]{4})DT\b", " ", " ".join(chans[t]["names"]) + " " + re.sub(r"[._]", " ", t))))
+    def per_day(t):
+        return chans[t]["n"] * 86400 / max(43200, chans[t]["end"] - now.timestamp())
     by_start = None
+    backups_of = {c["guide"]: c.get("backups") or [] for c in prov if c.get("manual") and c.get("guide")}
     for o in out.values():  # TNT Sports 1 ran out at 3 pm while a copy with the same shows ran two days: use the longer one
         k = o["from"]
-        if not k or k in hand or chans[k]["picks"]:
-            continue  # hand picks stay as picked
+        if not k or chans[k]["picks"]:
+            continue
+        if k in hand:  # hand picks: only from the owner's own backups, and only with the same shows
+            twin = max((t for t in backups_of.get(k, ()) if t in chans and chans[t]["n"] and not chans[t]["picks"] and
+                        chans[t]["end"] >= chans[k]["end"] + 43200 and per_day(t) >= 0.8 * per_day(k) and same_shows(chans[k], chans[t])),
+                       key=lambda t: chans[t]["end"], default=None)
+            if twin:
+                o["ext"] = (twin, datetime.fromtimestamp(max(chans[k]["end"], chans[k].get("last", 0) + 60), timezone.utc))
+            continue
         twin = max((t for t in o["group"].get("cids", ()) if t != k and chans[t]["n"] and not chans[t]["picks"] and
-                    chans[t]["end"] >= chans[k]["end"] + 43200 and same_shows(chans[k], chans[t])),
+                    chans[t]["end"] >= chans[k]["end"] + 43200 and per_day(t) >= 0.8 * per_day(k) and same_shows(chans[k], chans[t])),
                    key=lambda t: chans[t]["end"], default=None)
         if not twin and not is_call(k) and chans[k]["end"] < (now + timedelta(days=WEEK_DAYS)).timestamp() - 43200 and len(chans[k]["starts"]) >= 12 and len(chans[k].get("heads") or ()) == len(chans[k]["starts"]):
             if by_start is None:  # built once, only from copies that run long
@@ -2392,11 +2454,11 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 for t in by_start.get(m0, ()):
                     hits[t] = hits.get(t, 0) + 1
             twin = max((t for t, n in hits.items() if n == len(mine) and t != k and chans[t]["cc"] == chans[k]["cc"] and not is_call(t) and
-                        chans[t]["end"] >= chans[k]["end"] + 43200 and
+                        chans[t]["end"] >= chans[k]["end"] + 43200 and per_day(t) >= 0.8 * per_day(k) and
                         all(dict(zip(chans[t]["starts"], chans[t]["heads"])).get(m0) == h for m0, h in mine.items())),
                        key=lambda t: chans[t]["end"], default=None)
         if twin:
-            o["ext"] = (twin, datetime.fromtimestamp(chans[k]["end"], timezone.utc))  # from here on
+            o["ext"] = (twin, datetime.fromtimestamp(max(chans[k]["end"], chans[k].get("last", 0) + 60), timezone.utc))  # from here on
     for c in events:  # game/PPV slots: show the event name from the channel name instead of "No information"
         if c["id"] not in out:
             title = re.sub(r"\s*\|\s*\(?\d{4}-\d\d-\d\d.*$", "", c["name"]).strip() or c["name"]
@@ -2434,7 +2496,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
         files["full"].write(text)
         if code in lite_codes:
             files["lite"].write(text)
-        k = file_key(prov_cc.get(code) or "")
+        own0 = code_country(code)
+        k = "" if own0 and own0 not in ("us", "uk", "gb", "ca") else file_key(prov_cc.get(code) or "")
         if k not in files:  # "Monroe LA" is Louisiana, not Laos: back to the guide's own country
             cc = out[code]["group"]["cc"]
             own = code_country(code)  # "CBBC.uk@SD" says its country, even under a US playlist's guide
@@ -2535,7 +2598,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             if not any(k in live_from for k in mine):  # real shows later in the week: no label on top of them
                 write_placeholder(W(), code, e["name"], e["desc"] or f"{e['name']} - live 24/7", now, week_cut, None, done)
                 write(code, "".join(text[near:]), True)
-        elif e and CFG["settings"]["dummy_epg"] and any(k in last_stop for k in mine):  # Clubland's guide ends 5 hours ahead
+        if e and CFG["settings"]["dummy_epg"] and any(k in last_stop and k in nxt for k in mine):  # Clubland's guide ends 5 hours ahead
             gap = max(last_stop[k] for k in mine if k in last_stop) + timedelta(minutes=o.get("shift") or 0)
             if gap < end_cut - timedelta(hours=1):
                 buf = []
@@ -2956,12 +3019,14 @@ def publish():
     """Push the current sources + channel edits to GitHub; the Action rebuilds from them."""
     if not os.path.isdir(os.path.join(BASE, ".git")):
         raise RuntimeError("Not online yet - set up GitHub in the app first.")
+    if git("rev-parse", "--abbrev-ref", "HEAD", check=False) != "main":
+        raise RuntimeError("Not on the main branch - switch back with: git checkout main")
     save_config()  # changes still only in memory go out too
     git("add", "data/config.json")
     if git("status", "--porcelain", "data/config.json"):
         git("commit", "-m", "Update channels and sources")
     sync_from_github()
-    git("push", "-q", "origin", "HEAD")
+    git("push", "-q", "origin", "refs/heads/main:refs/heads/main")
     log("Published to GitHub - online links update in about 2-5 minutes")
 
 
@@ -3292,6 +3357,10 @@ class Handler(BaseHTTPRequestHandler):
                 save_config()
             run_job()
             return self.send(200, {"ok": True})
+        if p in ("/api/channels", "/api/channels/add") and any(
+                LOGIN_URL_RE.search(it.get("url") or "") for it in (body.get("channels") or [body])):
+            return self.send(200, {"ok": False, "error": "This link holds a login. config.json is public, so it can't be "
+                                                         "stored here - add it as a provider instead."})
         if p == "/api/channels":
             api_save_channels(body.get("channels", []))
             run_job()
