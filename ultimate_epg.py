@@ -1138,6 +1138,24 @@ def clock_check(idx, clocks, src):
 NHL_FEEDS = (("SNW", re.compile(r"^Sportsnet\W?West\b", re.I)), ("SNP", re.compile(r"^Sportsnet\W{0,2}Pacific\b", re.I)),
              ("SNE", re.compile(r"^Sportsnet\W?East\b", re.I)), ("SNO", re.compile(r"^Sportsnet\W?Ontario\b", re.I)))
 NHL_FIX = {}  # (guide id, channel) -> minutes, measured against the NHL's own schedule
+NHL_ARENAS = {}  # arena name, lower case ("scotiabank saddledome") -> game start minutes, from the NHL's schedule
+NHL_TITLE_RE = re.compile(r"\bNHL\b.*\bhockey\b|\bhockey\b.*\bNHL\b", re.I)
+
+
+def nhl_hour_off(cid, el, st):
+    """A live NHL game on a Sportsnet regional feed, from an arena where the league's schedule has a game exactly
+    an hour away and none at the listed time: one wrong listing on an otherwise right channel."""
+    if not st or not NHL_ARENAS or not NHL_TITLE_RE.search(el.findtext("title") or ""):
+        return False
+    if not any(r.search(cid) for _, r in NHL_FEEDS):
+        return False
+    desc = (el.findtext("desc") or "").lower()
+    m = int(st.timestamp()) // 60
+    for arena, starts in NHL_ARENAS.items():
+        if arena in desc:
+            near = [s for s in starts if abs(s - m) <= 180]
+            return bool(near) and m not in near and all(abs(s - m) == 60 for s in near)
+    return False
 
 
 def show_fix(src, cid, start):
@@ -1148,7 +1166,7 @@ def show_fix(src, cid, start):
 def nhl_check(xml_sources, now):
     """Some guides kept Sportsnet's regional feeds on summer time after Nov 1, and fix it whenever they like:
     each guide's next NHL games are compared with the league's schedule, and only a clear 1-hour offset is corrected."""
-    games = {}
+    games, arenas = {}, {}
     try:
         for day in ("now", (now + timedelta(days=7)).strftime("%Y-%m-%d")):
             for wk in json.loads(http_text(f"https://api-web.nhle.com/v1/schedule/{day}", 20)).get("gameWeek", []):
@@ -1156,11 +1174,17 @@ def nhl_check(xml_sources, now):
                     st = datetime.strptime(g["startTimeUTC"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
                     for b in g.get("tvBroadcasts", []):
                         games.setdefault(b.get("network"), set()).add(int(st.timestamp()) // 60)
+                    arena = ((g.get("venue") or {}).get("default") or "").lower().strip()
+                    if len(arena) > 5:
+                        arenas.setdefault(arena, set()).add(int(st.timestamp()) // 60)
     except Exception as ex:
         games = None
         log(f"  NHL schedule not available ({str(ex)[:80]}) - Sportsnet times as last checked")
     memory = AUTO.setdefault("nhl_fix", {})
     NHL_FIX.clear()
+    if games is not None:
+        NHL_ARENAS.clear()
+        NHL_ARENAS.update(arenas)
     for x in xml_sources:
         try:
             with open(os.path.join(CACHE, x["id"] + ".channels.json"), encoding="utf-8") as f:
@@ -2717,6 +2741,8 @@ def build():
                     fix = st and show_fix(src, cid, el.get("start"))
                     if fix:
                         st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
+                    if nhl_hour_off(cid, el, st):
+                        continue  # the league's schedule has this game an hour away: empty, not wrong
                     if not st or (sp or st) < start_cut or st > end_cut:
                         if st and sp and sp < start_cut:
                             clean.remember(cid, el, st, sp)  # the episode before a stretched one
@@ -3236,6 +3262,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 fix = st and show_fix(x, cid, el.get("start"))
                 if fix:
                     st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
+                if nhl_hour_off(cid, el, st):
+                    continue  # the league's schedule has this game an hour away: empty, not wrong
                 if not st or (sp or st) < start_cut or st > week_cut:
                     if st and sp and sp < start_cut:
                         clean.remember(cid, el, st, sp)  # the episode before a stretched one
