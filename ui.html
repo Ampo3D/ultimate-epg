@@ -616,7 +616,7 @@ function renderSources() {
       <span class="st">${(S.removed || []).some(r => r.url === s.url) ? '<span class="hl dead">Removed</span> <span class="hdetail">taken out of use automatically - see "Removed automatically" above</span>'
         : s.id ? `<span data-h="${s.id}"></span>` : '<span class="muted">New — press Save sources</span>'}</span>
     </div>`;
-  }).join('') : '<p class="muted">No sources yet. Add your provider\'s M3U link and an XMLTV guide, or pick a free one below.</p>';
+  }).join('') : '<p class="muted">No sources yet. Add a playlist (M3U) and an XMLTV guide, or pick a free one below. Paid provider links go under My providers above.</p>';
   renderLib();
   if (S.health) renderHealth();
 }
@@ -660,7 +660,9 @@ $('lib').addEventListener('click', e => {
 function addSource(type) { srcDraft.push({type, name: type === 'm3u' ? 'My playlist' : 'My guide', url: '', enabled: true}); renderSources(); }
 async function saveSources() {
   if (Object.keys(dirty).length) await saveChanges();
-  await post('/api/sources', {sources: srcDraft}); srcDraft = null; poll();
+  const r = await post('/api/sources', {sources: srcDraft});
+  if (r.ok === false) return alert(r.error);  // the draft stays, so you can fix it
+  srcDraft = null; poll();
 }
 
 function renderAuto() {
@@ -690,7 +692,7 @@ function renderLinks() {
   $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Light guide — your providers’ channels only (Firestick, Smarters, Kodi)', pu + '/epg-lite.xml.gz'], ['Week guide — your providers’ channels, up to 7 days (TiviMate, OTT Navigator)', pu + '/epg-week.xml.gz'], ['Universal guide — US only', pu + '/epg-us.xml.gz'], ['Universal guide — UK only', pu + '/epg-uk.xml.gz'], ['Universal guide — Canada only', pu + '/epg-ca.xml.gz']]
     .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
   $('onlineHelp').textContent = pu
-    ? 'GitHub rebuilds these every 3 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update a few minutes later.'
+    ? 'GitHub rebuilds these every 3 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update about 1-2 hours later (GitHub rebuilds the whole guide).'
     : 'Not set up yet. Press the button below once (you need a free GitHub account). After that you get links that work anywhere, even with this PC off.';
   $('setupBtn').classList.toggle('hide', !!pu);
   const bases = [...new Set([S.lan, location.origin])];
@@ -720,7 +722,7 @@ async function publishOnline() {
   $('pubBtn').textContent = 'Publishing…';
   const r = await post('/api/publish', {});
   $('pubBtn').textContent = '☁ Publish online';
-  alert(r.ok ? 'Published! Your online links update in about 2-5 minutes.' : 'Could not publish: ' + r.error);
+  alert(r.ok ? 'Published! Your online links update in about 1-2 hours (GitHub rebuilds the whole guide).' : 'Could not publish: ' + r.error);
   poll();
 }
 async function refreshAll() { await post('/api/refresh', {}); poll(); }

@@ -648,6 +648,12 @@ PRIVATE_URL_RE = re.compile(r"^\s*[a-z]+://(?:[^/@\s]*@)?(?:127\.|10\.|192\.168\
                             r"(?:localhost|[^/:\s]+\.(?:local|lan|internal|home\.arpa))(?=[:/]|$))", re.I)
 
 
+def unglue_url(u):
+    """"https://sat.tvhttps://www.sat.tv/a.svg", "x.jpeg|https://y.jpeg": the last whole address (one after "=" is a query value)."""
+    glued = [m.start() for m in re.finditer(r"https?://", u or "", re.I) if m.start() and u[m.start() - 1] not in "=?&"]
+    return u[glued[-1]:] if glued else u
+
+
 def tidy_show(el, vocab=(frozenset(), frozenset())):
     """Guides that escaped their text twice would show "&amp;" and diamonds on screen."""
     for node in el.iter():  # every text: credits, ratings and attributes too, not only the title
@@ -672,6 +678,8 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             t = child.text = tidy_text(t)
         elif child.tag == "icon" and "&amp;" in child.get("src", ""):
             child.set("src", tidy_text(child.get("src")))
+        if child.tag == "icon" and child.get("src"):
+            child.set("src", unglue_url(child.get("src")))
         if child.tag in ("title", "sub-title") and t and NEWLINE_RE.search(t):  # "Anderson Cooper 360\nEn Vivo": one line
             child.text = re.sub(r"\s+", " ", NEWLINE_RE.sub(" ", t)).strip()
     for child in el:
@@ -682,6 +690,11 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
                                          {(c.text or "").strip().lower() for c in el.findall("category")} or
                                          sub.text.strip().lower() in vocab[1] and rytec_words(sub.text.strip()) <= vocab[0]):
         sub.text = ""  # "S1", or the genre again ("Film policier"), is no episode name
+    for r in [c for c in el if c.tag in ("rating", "star-rating") and c.find("value") is None]:
+        if (r.text or "").strip():  # "<rating>TV14</rating>": players read only <rating><value>
+            ET.SubElement(r, "value").text, r.text = r.text.strip(), None
+        else:
+            el.remove(r)  # an empty rating says nothing
     el[:] = sorted((c for c in el if c.tag in DTD_ORDER and not (  # strict players reject other tags and orders
         c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
         c.tag == "icon" and (not re.match(r"https?://", c.get("src", ""), re.I) or PRIVATE_URL_RE.match(c.get("src", ""))))),
@@ -808,7 +821,7 @@ def scan_xmltv(path, src=None):
             if el.tag == "channel":
                 names = [d.text or "" for d in el.findall("display-name")]
                 icon = el.find("icon")
-                logo = icon.get("src", "") if icon is not None else ""  # not "src": that is the guide itself
+                logo = unglue_url(icon.get("src", "")) if icon is not None else ""  # not "src": that is the guide itself
                 idx[el.get("id", "")] = {"names": names, "icon": logo if re.match(r"https?://", logo, re.I) and not PRIVATE_URL_RE.match(logo) else ""}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
@@ -923,6 +936,10 @@ def priority_list():
     return out
 
 
+APSATTV_COUNTRY = {"xumo": "US", "vizio": "US", "tcl": "US", "tablo": "US", "localnow": "US", "uslg": "US", "firetv": "US"}
+# US-only lineups (DistroTV and Free Live Sports carry Indian, Arabic and European channels too)
+
+
 def guess_country(url, name=""):
     """Which country a source is for: from the library, else from its link/name."""
     if url in CATALOG_COUNTRY:
@@ -930,6 +947,9 @@ def guess_country(url, name=""):
     m = re.search(r"/epg_ripper_([A-Z]{2})\d+\.xml", url)
     if m:  # epgshare's file names say the country: epg_ripper_RO1
         return {"UK": "GB"}.get(m[1], m[1])
+    m = re.search(r"apsattv\.com/([a-z_]+)\.m3u", url)
+    if m and m[1] in APSATTV_COUNTRY:  # its FAST lists are one country each: tablo.m3u is the US Tablo lineup
+        return APSATTV_COUNTRY[m[1]]
     m = re.search(r"iptv-epg\.org/files/epg-([a-z]{2})\.xml", url)
     if m:  # and iptv-epg.org's: epg-pe.xml
         return {"UK": "GB"}.get(m[1].upper(), m[1].upper())
@@ -994,6 +1014,34 @@ CLOCK_NOT_RE = re.compile(r"\b(?:start|return|resume|back|next|until|till|coming
                           r"(?:mon|tues|wednes|thurs|fri|satur|sun)day|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)", re.I)
 # "Programmes start at 6am", "Next event Nov. 3 at 7pm": a time that isn't this show's
 NA_ZONES = (-150, -180, -210, -240, -300, -360, -420, -480, -540, -600)  # minutes: Newfoundland to Hawaii, summer and winter
+THE_NATIONAL_RE = re.compile(r"(?:live\s*:\s*)?the national", re.I)
+# Western Canadian stations: (name/code words, standard offset, keeps summer time). iptv-epg.org's CBC Vancouver/Calgary/
+# Edmonton/Yellowknife/Winnipeg and Global News BC 1 stayed on summer time after Nov 1 2026 (The National at 9 p.m.,
+# "Global News at 11" at 22:00 PST): an hour early, yet still *a* North American zone. Regina, without DST, was right.
+CA_HOME_ZONES = ((re.compile(r"vancouver|victoria|british columbia|okanagan|kelowna|kamloops|(?<![a-z])bc(?![a-z])|newsbc|"
+                             r"\b(?:CBUT|CHAN|CIVT|CKVU|CHEK)\b", re.I), -480, True),
+                 (re.compile(r"calgary|edmonton|alberta|lethbridge|red deer|yellowknife|\b(?:CBRT|CBXT|CFYK|CFCN|CFRN|CICT|"
+                             r"CITV)\b", re.I), -420, True),
+                 (re.compile(r"winnipeg|manitoba|\b(?:CBWT|CKY|CKND)\b", re.I), -360, True),
+                 (re.compile(r"regina|saskatoon|saskatchewan|\b(?:CBKT|CKCK|CFQC)\b", re.I), -360, False))
+
+
+def home_offset(cid, names, now):
+    """A western Canadian station's UTC offset (minutes) at 'now', from its code (else its names); None when unknown/mixed."""
+    found = set()
+    for text in (re.sub(r"[._@-]", " ", cid), " ".join(names)):  # 'globalnewsbc1.ca' named "Global News BC/Regina/..."
+        found = found or {(std, dst) for r, std, dst in CA_HOME_ZONES if r.search(text)}
+    if len(found) != 1:
+        return None
+    std, dst = found.pop()
+    if not dst:
+        return std
+    y = now.year
+    mar = datetime(y, 3, 8, tzinfo=timezone.utc)
+    nov = datetime(y, 11, 1, tzinfo=timezone.utc)
+    start = mar + timedelta(days=(6 - mar.weekday()) % 7, hours=2, minutes=-std)  # 2nd Sunday of March, 2 a.m. local
+    end = nov + timedelta(days=(6 - nov.weekday()) % 7, hours=2, minutes=-std - 60)  # 1st Sunday of November
+    return std + 60 if start <= now < end else std
 NET_WORDS = {"abc", "cbs", "nbc", "fox", "pbs", "cw", "mnt", "myn", "ion", "telemundo", "univision", "unimas", "cbc", "ctv",
              "global", "citytv", "news", "tv", "hd", "local", "live", "channel", "network", "the", "now", "plus", "east",
              "west", "us", "usa"}  # "ABC NEWS" is a network; "FOX LOCAL Orlando" is a local station
@@ -1014,6 +1062,8 @@ def title_clock(title):
             return [h * 60 + mi]
         return [h % 12 * 60 + mi, h % 12 * 60 + 720 + mi]  # "at 5": morning or evening
     m = CLOCK_WORD_RE.search(t)
+    if not m and THE_NATIONAL_RE.fullmatch(t.strip()):
+        return [1320]  # CBC: "The National, weeknights and Sundays at 10 p.m." local
     return [720 if m[1].lower() == "noon" else 0] if m else []
 
 
@@ -1067,6 +1117,16 @@ def clock_check(idx, clocks, src):
         local = callsigns(" ".join(names) + " " + cid) or call_country(cid) or na_guide and any(
             NET_RE.search(n.lower()) and set(re.findall(r"[a-z]+", n.lower())) - NET_WORDS for n in names)
         off = clock_wrong(samples) if local else None
+        home = None if off is not None or not (own == "ca" or call_country(cid) == "ca") else \
+            home_offset(cid, names, datetime.now(timezone.utc))
+        if home is not None:  # a western Canadian station: its own zone today, not just any North American one
+            station = callsigns(" ".join(names) + " " + cid) or call_country(cid)  # The National is 10 p.m. on stations only,
+            runs = [s for i, s in enumerate(samples)  # not on CBC News streams; "Global News at 11" looped all night: once
+                    if (not i or s[0] != samples[i - 1][0] or (s[1] - samples[i - 1][1]) % 1440 > 180)
+                    and (station or s[0] != [1320])]
+            r = clock_offset(runs, (home,))
+            if r and abs(r[0] - home) >= 60 and r[1] >= 2 and r[2] * 4 <= r[1]:  # The National twice an hour off
+                off = r[0]
         if off is not None:
             info["n"], info["clock"] = 0, off
             wrong.append(f"{(names or [cid])[0]} ({off / 60:+g} h)")
@@ -1196,14 +1256,44 @@ def find_clock_outliers(read):
         xcc = CC_ALIAS.get(xcc, xcc)
         for cid, info in data.items():
             copies[(src["id"], cid)] = (info, id_country(cid) or xcc)
-    CLOCK_OUT.clear()
-    CLOCK_OUT.update(clock_outliers(copies))
+    found = clock_outliers(copies)  # takes seconds: a build running meanwhile must never see an empty list
+    filler = set()
+    for src, data in read:  # one schedule copied onto 100+ channels (Abu Dhabi TV's on 228 Arabic ones) is nobody's own
+        same = {}
+        for c, info in data.items():
+            if isinstance(info, dict) and len(info.get("heads") or []) >= 4 and len(info.get("starts") or []) >= 4:
+                same.setdefault((tuple(info["heads"][:8]), tuple(info["starts"][:8])), []).append(c)
+        for key, codes in same.items():
+            stations = sum(bool(STATION_CODE_RE.match(c)) for c in codes)
+            if len(codes) >= SMEAR_MIN and len(set(key[0])) >= 3 and stations * 2 < len(codes):
+                filler.add(key)
+    for src, data in read:  # and every guide's copy of that filler: CTVU's "AR: Al Horreya TV" too
+        for c, info in data.items():
+            if filler and isinstance(info, dict) and len(info.get("heads") or []) >= 4 and len(info.get("starts") or []) >= 4 and (
+                    (tuple(info["heads"][:8]), tuple(info["starts"][:8])) in filler):
+                found[(src["id"], c)] = 0
+    for src, data in read:  # another country's feed under a US code: never used, whatever the clock says
+        for pat, codes in WRONG_FEED_CODES:
+            if pat.search(src["url"]):
+                found.update({(src["id"], c): 0 for c in codes if c in data})
+    for k in [k for k in CLOCK_OUT if k not in found]:
+        del CLOCK_OUT[k]
+    CLOCK_OUT.update(found)
     CLOCK_OUT_KEY[0] = key
-    if CLOCK_OUT:
-        log(f"  {len(CLOCK_OUT)} channel(s) left out - every other guide has their shows hours apart: " +
-            ", ".join(sorted(f"{c} ({d / 60:+g} h)" for (_, c), d in CLOCK_OUT.items())[:10]))
+    off = {k: d for k, d in CLOCK_OUT.items() if d}
+    if off:
+        log(f"  {len(off)} channel(s) left out - every other guide has their shows hours apart: " +
+            ", ".join(sorted(f"{c} ({d / 60:+g} h)" for (_, c), d in off.items())[:10]))
+    if len(CLOCK_OUT) > len(off):
+        log(f"  {len(CLOCK_OUT) - len(off)} channel(s) left out - another country's feed, or one schedule copied onto many channels")
 
 
+SMEAR_MIN = 100  # a guide's one schedule on this many channels is filler, not theirs
+STATION_CODE_RE = re.compile(r"^[KWC][A-Z0-9]{2,5}(?:-[A-Z]{1,2})?[.]")  # WGBH-DT.ca2, K23JY-D.us_locals1
+WRONG_FEED_CODES = ((re.compile(r"/BDIX-IPTV/", re.I), ("SYFY.us@East", "LoveThePlanet.us", "Discovery.us", "DiscoveryChannel.us",
+                                                           "natgeo.us", "Boomerang.us@SD", "nickelodeon.ca", "ParamountNetwork.us@East",
+                                                           "TraceLatina.us", "IONTV.us")),)
+# BDIX-IPTV: French/German SYFY ("Code Quantum", "Raumschiff Voyager") and the Spanish Love The Planet under US codes
 WRONG_FEED_RE = re.compile(r"/melocalex/lighteye/|/M3UPT/|/lucianodias089/", re.I)  # every show twice 3 h apart; other countries' feeds under local codes
 
 
@@ -1352,6 +1442,9 @@ PROVIDER_ID_RE = re.compile(r"^(?:[A-Z]{2}(?=[A-Z]*\d)[A-Z0-9]{7,12}|[0-9a-f]{24
 # Samsung TV Plus "USBC2100008DP", Pluto "5f8ed1ff5c39700007e2204a", Plex "<24 hex>-<24 hex>", Roku "<32 hex>"
 
 
+XUMO_ID_RE = re.compile(r"^XUMO_(\d{6,9})$")  # apsattv's Xumo playlist; the Xumo guide lists the bare number
+
+
 def guide_codes():
     """The codes only out-of-date guides list (back after their next download), and each copy's language:
     ({code}, {(guide id, code): language}) over the guides used automatically."""
@@ -1377,6 +1470,33 @@ def own_code(up_id, out_of_date):
     return bool(PROVIDER_ID_RE.match(up_id or "")) and (up_id in EPG_INDEX or up_id in out_of_date)
 
 
+OWN_LANG = {"us": "es", "ca": "fr"}  # Spanish channels in the US, French ones in Canada are their own country's
+
+
+SAMSUNG_ANY_RE = re.compile(r"^([A-Z]{2})(?=[A-Z]*\d)[A-Z0-9]{7,12}$")
+
+
+def samsung_country(cid):
+    """Samsung TV Plus 'IT31000026G' is Samsung Italy's channel: the country its code starts with ('' if not Samsung's)."""
+    m = SAMSUNG_ANY_RE.match(cid or "")
+    info = EPG_INDEX.get(cid) or {}
+    return {"GB": "uk"}.get(m[1], m[1].lower()) if m and "samsungcloud" in (info.get("icon") or "") else ""
+
+
+def prefix_country(cid):
+    """'DE: Z One' (code 'DE:.Z.One.be') is the German feed, whatever the code's last letters say; '' when the
+    guide's own name names no country."""
+    info = EPG_INDEX.get(cid)
+    return name_prefix(plain(info["name"]))[0] if info else ""
+
+
+def kin_code(a, b):
+    """'JusPunjabi.us@SD' and 'JUSPunjabi.in': the same channel's code, only the country after it differs."""
+    def base(c):
+        return re.sub(r"[^a-z0-9]", "", plain(c).lower().split("@")[0].rsplit(".", 1)[0])
+    return bool(base(a)) and base(a) == base(b)
+
+
 def same_letters(name, cid):
     """norm() drops letters it can't spell, so 'ČT2' = 'T2': the guide channel must answer to the name with its accented
     letters spelled out ('Č' -> 'C'); symbols like 'Ⓖ' stay dropped."""
@@ -1385,6 +1505,9 @@ def same_letters(name, cid):
     k = spelled(name)
     heads = [cid.split(".")[0]] if re.fullmatch(r"[^.]+\.[a-zA-Z]{2,3}\d?", cid) else []
     return bool(k) and any(spelled(n) == k for n in EPG_INDEX[cid]["names"] + heads)
+
+
+APSATTV_RE = re.compile(r"apsattv\.com/([a-z_]+)\.m3u", re.I)
 
 
 def auto_match(only_unmatched=True):
@@ -1402,6 +1525,14 @@ def auto_match(only_unmatched=True):
         if ch.get("epg_mine"):
             continue  # a code you typed (or emptied) yourself is never replaced
         up_id = ch["up"].get("epg_id") or ""
+        xumo = XUMO_ID_RE.match(up_id)
+        if xumo and (xumo[1] in EPG_INDEX and "xumo" in ((EPG_INDEX[xumo[1]].get("icon") or "") + " " + (
+                (source_by_id(EPG_INDEX[xumo[1]]["source"]) or {}).get("url") or "")).lower() or
+                     xumo[1] not in EPG_INDEX and xumo[1] in out_of_date):  # its guide out of date: empty until it is back
+            if ch["ov"].get("epg_id") != xumo[1]:
+                ch["ov"]["epg_id"] = xumo[1]
+                matched += 1
+            continue  # apsattv's "XUMO_99951328" is the Xumo guide's 99951328: Xumo's own schedule, never Plex's or a Spanish copy
         if own_code(up_id, out_of_date):  # Samsung's "Xplore" USBC2100008DP: Samsung's own schedule, never Xplore.us2 (3 hours early)
             if ch["ov"].pop("epg_id", None) is not None:
                 matched += 1  # a name match made while its own guide was out of date
@@ -1414,10 +1545,30 @@ def auto_match(only_unmatched=True):
         want = id_country(up_id) or entry_country(e["name"], e.get("group", ""), up_id)
         if not id_country(up_id) and want not in ("us", "uk", "ca"):
             want = ""  # "Shop LC" is not Saint Lucia
+        s = source_by_id(ch["source"])
+        fast = APSATTV_RE.search(s["url"]) if s else None
+        lineup = not want and fast and fast[1].lower() in APSATTV_COUNTRY
+        if lineup:
+            want = APSATTV_COUNTRY[fast[1].lower()].lower()  # Tablo's "Discovery" is the US Discovery, never a European feed
         strict = SAMSUNG_CC_RE.match(up_id) and code_country(up_id)  # "US1700017NM": a US channel in English
         home = strict or want or homes[ch["source"]]
 
+        def guide_cc(x):  # the country of the guide site the copy comes from: Pluto TV ES guide -> "es"
+            sid = EPG_INDEX[x]["source"]
+            if sid not in homes:
+                s = source_by_id(sid)
+                h = guess_country(s["url"], s.get("name", "")).lower() if s else ""
+                homes[sid] = CC_ALIAS.get(h, h)
+            return homes[sid]
+
         def fits(x):
+            pc = prefix_country(x)
+            if home in ("us", "uk", "ca") and (pc not in ("", "us", "uk", "ca") or
+                                               {LANG_OF.get(guide_cc(x), "en"), LANG_OF.get(samsung_country(x) or code_country(x), "en")} - {"en", OWN_LANG.get(home)}):
+                return False  # Rakuten's "DE: Z One" on a UK stream; "RU: Travel Adventure", Serbia's LOL.rs on a US one
+            l = langs.get((EPG_INDEX[x]["source"], x), "")[:2].lower()
+            if lineup and l and LANG_ALIAS.get(l, l) not in ("en", OWN_LANG.get(home)):
+                return False  # Tablo's US "Discovery" is not the code "Discovery" of a Chinese or Spanish guide
             if strict:
                 lang = LANG_OF.get(strict, "")
                 l = langs.get((EPG_INDEX[x]["source"], x), "")[:2].lower()
@@ -1426,9 +1577,12 @@ def auto_match(only_unmatched=True):
             return same_letters(e["name"], x)  # T2 (tennis) is not ČT2.cz
         named = lookup.get(norm(e["name"]), []) if norm(e["name"]) else []
         cands = sorted((x for x in named if (not want or id_country(x) in (want, "")) and fits(x)),
-                       key=lambda x: code_country(x) != home)  # "CCTV" in a US list is not China's CCTV 8K; its own country first
+                       key=lambda x: (prefix_country(x) or code_country(x)) != home)  # "CCTV" in a US list is not China's CCTV 8K; its own country first
         x = ch["ov"].get("epg_id")
-        if x and x in EPG_INDEX and x in named and (not fits(x) or home and code_country(x) not in ("", home) and cands and code_country(cands[0]) == home):
+        lang = x and x in EPG_INDEX and langs.get((EPG_INDEX[x]["source"], x), "")[:2].lower()
+        foreign = lang and LANG_ALIAS.get(lang, lang) in set(LANG_OF.values()) - {"en", LANG_OF.get(want, "")}
+        if x and x in EPG_INDEX and x in named and (not fits(x) or home and code_country(x) not in ("", home) and cands and code_country(cands[0]) == home
+                                                    or want and id_country(x) not in (want, "") and (foreign or not kin_code(up_id, x))):
             del ch["ov"]["epg_id"]  # an earlier name match these rules don't make: made while the right copy was out
             e = effective(ch)
         if only_unmatched and e["epg_id"] in EPG_INDEX:
@@ -3602,7 +3756,7 @@ def publish():
         git("commit", "-m", "Update channels and sources")
     sync_from_github()
     git("push", "-q", "origin", "refs/heads/main:refs/heads/main")
-    log("Published to GitHub - online links update in about 2-5 minutes")
+    log("Published to GitHub - online links update in about 1-2 hours (GitHub rebuilds the whole guide)")
 
 
 def open_setup_window():
@@ -3664,7 +3818,7 @@ def setup_github():
     gh("repo", "create", name, "--public", "--source", ".", "--remote", "origin")
     gh("api", "-X", "POST", f"repos/{owner}/{name}/pages", "-f", "build_type=workflow", check=False)
     git("push", "-q", "-u", "origin", "main")  # the push starts the first build
-    print("\nDone! GitHub is building your EPG now (first build takes ~5 minutes).")
+    print("\nDone! GitHub is building your EPG now (the first build takes about 1-2 hours).")
     print(f"  Playlist: {url}/playlist.m3u")
     print(f"  Guide:    {url}/epg.xml.gz")
     print(f"  Progress: https://github.com/{owner}/{name}/actions")
@@ -3902,6 +4056,9 @@ class Handler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(n) or b"{}")
         except ValueError:
             return self.send(400, {"error": "bad json"})
+        if p == "/api/sources" and any(LOGIN_URL_RE.search((s or {}).get("url") or "") for s in body.get("sources") or []):
+            return self.send(200, {"ok": False, "error": "A source link holds a login. config.json is public, so it can't be "
+                                                         "stored here - add it under My providers instead."})
         if p == "/api/sources":
             new = api_save_sources(body.get("sources", []))
             if new:  # download freshly added sources straight away

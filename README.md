@@ -41,7 +41,7 @@ says what happened.
 ## It finds guides by itself
 Every time your sources update (every 12 hours at home, every 3 hours on GitHub), Ultimate EPG:
 1. Checks every guide you have still works and has upcoming shows. Broken or out-of-date
-   guides are switched off, and auto-found ones that fail twice are removed.
+   guides are switched off, and auto-found ones that stay broken for 2 days are removed.
 2. Searches the internet for more guides: guides your playlists point to, the built-in library,
    i.mjh.nz, epgshare01, iptv-epg.org, epg.pw (every country) and guide projects on GitHub.
 3. Tests the most promising ones (your channels' countries first) and **adds only guides that
@@ -68,13 +68,13 @@ for free (GitHub Pages). Your PC is only needed when you want to edit.
 1. Make a free account at github.com if you don't have one.
 2. In the editor go to **Links & Settings** and press **Put it online**. A window opens:
    sign in to GitHub in the browser when asked, pick a name (e.g. `my-epg`), type `y`.
-3. About 5 minutes later your permanent links are live:
+3. About 1-2 hours later (the first build downloads every guide) your permanent links are live:
    - Playlist: `https://<your-github-name>.github.io/my-epg/playlist.m3u`
    - Guide: `https://<your-github-name>.github.io/my-epg/epg.xml.gz`
    They're also shown in the editor under **Links & Settings → Online links**.
 
 **Changing things later:** start the editor, make your edits, press **☁ Publish online**.
-The online links update a few minutes later.
+The online links update about 1-2 hours later (GitHub rebuilds the whole guide; watch it in the **Actions** tab).
 
 **Good to know**
 - The repository is **public** (free GitHub Pages requires it), so anyone with the link can
