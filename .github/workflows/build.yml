@@ -95,10 +95,17 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-      - id: deploy
+      - id: deploy1   # GitHub sometimes takes over 10 min to publish the site, and 10 min is this action's maximum wait
         uses: actions/deploy-pages@v5
-        with:
-          timeout: 2400000   # 40 min: GitHub sometimes takes over 10 min to publish the ~300 MB site (Nov 5)
+        continue-on-error: true
+      - id: deploy2   # so a timed-out try is tried once more
+        if: steps.deploy1.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+      - id: deploy
+        name: Published?
+        env:
+          URL: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url }}
+        run: echo "page_url=$URL" >> "$GITHUB_OUTPUT"
       - name: Drop old guide copies from the cache   # 8 copies x 1.29 GB = 10.26 GB on 2026-11-05: at GitHub's 10 GB limit
         if: success()
         continue-on-error: true
