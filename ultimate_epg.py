@@ -842,10 +842,37 @@ def same_shows(a, b):
             3 * sum(x[k] == y[k] for k in both) >= 2 * len(both))
 
 
+STOP_WORDS = {
+    "en": "the and of to in with for on at your my is from this what how when who you are new".split(),
+    "de": "der die das und mit von f\u00fcr ein eine im ist auf den dem des zum zur nicht auch wie".split(),
+    "es": "el la los las del y con en para una por al como su sus es un lo".split(),
+    "fr": "le la les des du et un une pour dans avec sur au aux est en ce qui".split(),
+    "it": "il di della e con per gli una dei delle nel alla al lo che".split(),
+    "nl": "de het een van en met voor op aan bij uit is niet".split(),
+    "pt": "o os da do das dos e com para uma no na em um".split(),
+}
+STOP_LANG = {w: {lang for lang, ws in STOP_WORDS.items() if w in ws} for words in STOP_WORDS.values() for w in words}
+
+
+def text_language(words):
+    """{word: count} of a channel's titles and descriptions -> 'de', 'en'... or '' when it is not clear."""
+    score = {}
+    for w, n in words.items():
+        for lang in STOP_LANG.get(w, ()):
+            if len(STOP_LANG[w]) == 1:  # "die", "la", "de" belong to several languages: no help
+                score[lang] = score.get(lang, 0) + n
+    if not score:
+        return ""
+    ranked = sorted(score.items(), key=lambda kv: -kv[1])
+    top, n = ranked[0]
+    second = ranked[1][1] if len(ranked) > 1 else 0
+    return top if n >= 12 and n >= 3 * second else ""
+
+
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
     idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
-    rytec, plain, clocks = set(), {}, {}
+    rytec, plain, clocks, words = set(), {}, {}, {}
     window_done = set()
     now = datetime.now(timezone.utc)
     try:
@@ -898,6 +925,13 @@ def scan_xmltv(path, src=None):
                         seen[cid].add((el.findtext("title") or "").strip().lower())
                     if len(parts.setdefault(cid, set())) < 3:  # a one-show channel still has different episodes
                         parts[cid].add((el.findtext("sub-title") or "") + "|" + (el.findtext("desc") or "")[:60])
+                    bag = words.setdefault(cid, [0, {}])
+                    if bag[0] < 40:  # enough words to tell the language
+                        bag[0] += 1
+                        for w in re.findall(r"[^\W\d_]+", " ".join(x or "" for x in (
+                                el.findtext("title"), el.findtext("sub-title"), (el.findtext("desc") or "")[:300])).lower()):
+                            if w in STOP_LANG:
+                                bag[1][w] = bag[1].get(w, 0) + 1
                     lang = (t.get("lang") or "").lower()[:2] if t is not None else ""
                     if lang:
                         langs.setdefault(cid, {}).setdefault(lang, 0)
@@ -912,6 +946,9 @@ def scan_xmltv(path, src=None):
             info["last"] = lasts.get(cid, 0)
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
+        tl = text_language(words.get(cid, [0, {}])[1])
+        if tl:
+            info["tl"] = tl
     clock_check(idx, clocks, src)
     fresh = bool(upcoming) and last is not None and last > now + timedelta(hours=2)
     g, p = rytec_learn(rytec) if src and src.get("id") else (set(), set())
@@ -2105,7 +2142,9 @@ NOT_COUNTRY = {"hd", "sd", "tv", "fm", "am", "tc"}
 
 
 def id_country(cid):
-    """'HGTV.co' -> 'co', 'ESPN.HD.us2' -> 'us', 'CNN' -> ''."""
+    """'HGTV.co' -> 'co', 'ESPN.HD.us2' -> 'us', 'CNN' -> '', 'mjh-10shake-nsw' -> 'au'."""
+    if cid.lower().startswith("mjh-"):
+        return "au"
     m = re.search(r"\.([a-z]{2})\d?(?:@|$)", cid.lower())
     if not m or m[1] in NOT_COUNTRY:
         return ""
@@ -3077,6 +3116,141 @@ LANG_OF = {"us": "en", "uk": "en", "au": "en", "nz": "en", "ie": "en", "hr": "hr
            "fr": "fr", "it": "it", "pl": "pl", "ro": "ro", "nl": "nl", "se": "sv", "dk": "da", "fi": "fi", "gr": "el",
            "tr": "tr", "hu": "hu", "cz": "cs", "sk": "sk", "bg": "bg", "ru": "ru"}
 LANG_ALIAS = {"se": "sv", "dk": "da", "gr": "el", "cz": "cs", "rs": "sr", "si": "sl"}
+SD_CODE_RE = re.compile(r"I\d+(?:\.\d+)+\.(?:schedulesdirect\.org|gracenote\.com)$")  # say no country of their own
+NATIVE_LANGS = {"us": {"en", "es"}, "uk": {"en", "cy", "gd"}, "ca": {"en", "fr"}}  # languages a channel there is in
+PLUS1_RE = re.compile(r"\+\s?1\b|\bplus\s?1\b|\+1\b", re.I)
+UK_REGIONS = ["north east", "north west", "south east", "south west", "east midlands", "west midlands", "northern ireland",
+              "channel islands", "east", "west", "london", "wales", "scotland", "yorkshire", "midlands", "anglia",
+              "granada", "tyne tees", "meridian", "central", "ulster", "border", "cymru", "south", "north"]
+
+
+def plain_name(n):
+    """'UK: ITV+1 HD' -> 'itv+1', 'Cine Romántico' = 'Cine Romantico', 'U&Laughs' = 'U and Laughs'."""
+    n = PROVIDER_PREFIX_RE.sub("", unescape_all(n).lower()).replace("&", " and ")
+    n = unicodedata.normalize("NFKD", n).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9+*]", "", re.sub(r"\s+(hd|fhd|uhd|sd|4k)$", "", n.strip()))
+
+
+NETWORK_RE = re.compile(r"\b(abc|cbs|nbc|fox|pbs|cw|my\s?net\w*|telemundo|univision|unim[a\u00e1]s|ion)\b", re.I)
+
+
+def station_name(n, call):
+    """Is this name the station's own - 'ABC WNEP Scranton', 'KNTV', 'WSOC-DT' - rather than a sub-channel's
+    ('CW KTXE-LD2', 'KDKA+'), another low-power station's ('WBOC-LD') or an app's news stream's ('KIRO Seattle')?"""
+    if not re.search(rf"(?<![A-Za-z]){call}(?![a-z])", n, re.I):
+        return False
+    if re.search(rf"(?i){call}\s*(?:-?\s*(?:DT|LD|CD|TV|D)?\s*-?\s*[2-9S]\b|-?(?:LD|CD)\b|\s?\+)|\b(?:DT|LD|CD)\s?-?\s?[2-9]\b", n):
+        return False
+    return bool(NETWORK_RE.search(n)) or re.fullmatch(rf"(?i)\W*(?:us\W+)?{call}(?:-?(?:DT|TV)1?)?(?:\s*hd)?\W*", n) is not None
+
+
+PLEX_PREFIX = "6a1610bebdf296985fd95603-"
+
+
+def platform(code):
+    """Free-TV apps run their own schedule under one channel name: Xumo's 'Paranormal Files' is not Plex's."""
+    c = code.lower()
+    if re.fullmatch(r"(?:xumo_)?\d{7,9}", c) or "xumo" in c:
+        return "xumo"
+    if SAMSUNG_CC_RE.match(code) or "samsung" in c:
+        return "samsung"
+    if c.startswith(PLEX_PREFIX) or "plex" in c:
+        return "plex"
+    if re.fullmatch(r"(?:[0-9a-f]{24}-)?[0-9a-f]{24}", c) or "pluto" in c:
+        return "pluto"
+    return ""
+
+
+def fill_ok(code, src):
+    """May an app's channel code show the shows of 'src'? Not another app's (an empty row beats that); a plain code
+    (Bloomberg TV's) is fine."""
+    p, q = platform(code), platform(src)
+    return not p or not q or p == q
+
+
+def code_words(code):
+    """'BBCOneEast.uk@London' -> 'bbc one east uk london': the words a code is made of."""
+    code = re.sub(r"([A-Z])([A-Z][a-z])", lambda m: m[1] + " " + m[2], code)  # "BBCRCymru" -> "BBCR Cymru"
+    code = re.sub(r"([a-z])([A-Z])|([0-9])([A-Za-z])", lambda m: (m[1] or m[3]) + " " + (m[2] or m[4]), code)
+    return re.sub(r"[^a-z0-9]+", " ", code.lower()).strip()
+
+
+def schedule_agree(a, b):
+    """Two copies of 'the same' channel: True when they clearly have the same shows at the same times, False when they
+    clearly do not (another channel, another country, a +1 feed), None when that can't be told."""
+    x = list(zip(a.get("starts") or (), a.get("heads") or ()))
+    y = list(zip(b.get("starts") or (), b.get("heads") or ()))
+    if len(x) < 4 or len(y) < 4:
+        return None
+    lo, hi = max(min(x)[0], min(y)[0]), min(max(x)[0], max(y)[0])
+    xs = [p for p in x if lo <= p[0] <= hi]
+    if len(xs) < 4 or sum(lo <= p[0] <= hi for p in y) < 4:
+        return None
+    by, times = {}, sorted(s for s, _ in y)
+    for s, h in y:
+        by.setdefault(h, []).append(s)
+
+    def share(shift):
+        return sum(any(abs(s + shift - t) <= 3 for t in by.get(h, ())) for s, h in xs) / len(xs)
+    same = share(0)
+    if same >= 0.5:
+        return True
+    if max(share(-60), share(60)) >= 0.5:
+        return False  # the same shows an hour apart: the +1 channel
+    if same <= 0.2:
+        at_same_time = sum(times[min(bisect.bisect_left(times, s), len(times) - 1)] - s <= 3 and
+                           s - times[max(bisect.bisect_right(times, s) - 1, 0)] <= 3 for s, _ in xs) / len(xs)
+        return None if at_same_time >= 0.8 else False  # same times, other words: maybe just titled differently
+    return None
+
+
+def split_by_schedule(cids, chans, cc, call=""):
+    """One name, different schedules (10 Shake called 'Nickelodeon', ITV +1 called 'ITV 1', VePlus called 'WNEP'):
+    the copies that agree with the most trusted one stay together, every other schedule becomes a group of its own."""
+    have = [k for k in cids if chans[k]["n"] and len(chans[k].get("starts") or ()) >= 4]
+    if len(have) < 2:
+        return [cids]
+    if not cc:  # a call-letters group: the station's own country
+        ccs = [chans[k]["cc"] for k in have if chans[k]["cc"]]
+        cc = max(set(ccs), key=ccs.count) if ccs else ""
+    agree = {}
+    for i, a in enumerate(have):
+        for b in have[i + 1:]:
+            agree[a, b] = agree[b, a] = schedule_agree(chans[a], chans[b])
+
+    def station(k):  # "ABCWSOC.us", "WSOC-DT.us_locals1" - not an app's "WSOC news" stream or the station's DT2 channel
+        return not call or (re.search(call, k, re.I) is not None and is_readable_id(k) and not re.search(
+            rf"{call}-?(?:DT|LD|CD)[2-9]|[+]|xumo|pluto|samsung|plex|roku|tubi", k, re.I))
+
+    def trust(k):
+        c = chans[k]
+        text = k + " " + " ".join(c["names"][:3])
+        return (station(k), sum(agree.get((k, o)) is True for o in have), not PLUS1_RE.search(text),
+                code_country(k) in ("", cc), is_readable_id(k), c["n"])
+    order = sorted(have, key=trust, reverse=True)
+    main, splits = [order[0]], []
+    sure = trust(order[0])[1] >= 1  # another guide has the same shows: this is the real channel
+
+    def odd(k):  # wrong for a reason anyone can see: a +1 feed, another country's code
+        text, top = k + " " + " ".join(chans[k]["names"][:3]), order[0] + " " + " ".join(chans[order[0]]["names"][:3])
+        return bool(PLUS1_RE.search(text)) and not PLUS1_RE.search(top) or code_country(k) not in ("", cc)
+    def plain(k):  # Plex's and Samsung's "Kartoon Channel" are one name (two apps' schedules)
+        return plain_name(chans[k]["names"][0])
+    for k in order[1:]:
+        says = [agree[k, m] for m in main]
+        other = call or odd(k) or plain(k) != plain(order[0])  # a call-letters group: VePlus is not WNEP
+        if (sure or odd(k)) and other and (says[0] is False or (True not in says and False in says)):
+            for g in splits:
+                if agree[k, g[0]] is True:
+                    g.append(k)
+                    break
+            else:
+                splits.append([k])
+        else:
+            main.append(k)
+    if not splits:
+        return [cids]
+    return [main + [k for k in cids if k not in have]] + splits
 
 
 def better_copy(cid, old, new):
@@ -3146,11 +3320,23 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                     continue  # only the channels you picked from it, never its other listings
                 if (x["id"], cid) in CLOCK_OUT and cid not in hand:
                     continue  # its shows are hours off every other guide's copies
+                own = code_country(cid)
+                lang = info.get("tl") or info.get("lang", "")
+                said = LANG_OF.get(xcc, "")
+                if (own in ("us", "uk", "ca") and xcc and xcc != own and said not in ("", "en") and lang == said
+                        and cid not in hand):
+                    continue  # a French guide's copy of CBC Vancouver: the shows translated, the news title garbled
+                cc = own or xcc
+                if (SD_CODE_RE.match(cid) and info.get("tl") and cc in NATIVE_LANGS
+                        and info["tl"] not in NATIVE_LANGS[cc]):  # RDS 2 in French: Canadian; German Disney: none of ours
+                    cc = next((c for c in ("ca", "us") if c in pri_cc and info["tl"] in NATIVE_LANGS[c]), "")
                 if cid in chans and (picks_only(x) or chans[cid]["picks"] or not better_copy(cid, chans[cid], info)):
                     continue
-                chans[cid] = {"src": x["id"], "names": [n for n in info["names"] if n] or [cid],
+                said_cc = lambda n: CC_ALIAS.get((PROVIDER_PREFIX_RE.match(n) or [""] * 2)[1].lower(), (PROVIDER_PREFIX_RE.match(n) or [""] * 2)[1].lower())
+                names = [n for n in info["names"] if n and (cc == (own or xcc) or said_cc(n) in ("", cc))]  # no "UK:" on German Disney
+                chans[cid] = {"src": x["id"], "names": names or [cid],
                               "icon": info.get("icon", ""), "n": info.get("n", 1), "picks": bool(picks_only(x)),
-                              "cc": id_country(cid) or xcc, "lang": info.get("lang", ""),
+                              "cc": cc, "lang": lang,
                               "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", []),
                               "last": info.get("last", 0)}
 
@@ -3168,8 +3354,17 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             west = (w[1] if c["cc"] == "ca" else True) if w else False  # Sportsnet West and Pacific are two feeds
             key = (c["cc"], pkey(raw) or cid, west)
         clusters.setdefault(key, []).append(cid)
+    split_of = {}
+    for key in list(clusters):
+        parts = split_by_schedule(clusters[key], chans, key[0] if key[0] != "call" else "", key[1] if key[0] == "call" else "")
+        if len(parts) > 1:
+            clusters[key] = parts[0]
+            for i, part in enumerate(parts[1:]):
+                clusters[key + ("split", i)] = part
+                split_of[key + ("split", i)] = key
 
     out = {}  # published code -> where its shows come from + its names
+    groups = {}
     for key, cids in clusters.items():
         def rank(k):
             c = chans[k]
@@ -3189,10 +3384,14 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 names.append(n)
         icon = next((chans[k]["icon"] for k in [best] + cids if chans[k]["icon"]), "")
         group = {"names": names, "seen": seen, "icon": icon, "cc": chans[best]["cc"], "best": best, "cids": cids, "call": key[0] == "call"}
+        groups[key] = group
+        group["key"] = key
+        if key in split_of:  # its names belong to the real channel: here they would point players at other shows
+            group["main"] = groups[split_of[key]]
         for k in cids:
             chans[k]["group"] = group
         for k in [k for k in cids if is_readable_id(k)] or [best]:
-            out[k] = {"from": k if chans[k]["n"] else best, "group": group}
+            out[k] = {"from": k if chans[k]["n"] else best if fill_ok(k, best) else None, "group": group}
     for code, (g, names) in learned.items():
         if g not in chans:
             continue
@@ -3203,10 +3402,31 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 group["seen"].add(n.lower())
                 group["names"].append(n)
         if code not in out or (code in prov_ids and (code != g or shifts.get(code))):  # the provider's pick wins
-            out[code] = {"from": g if chans[g]["n"] else group["best"], "group": group,
+            src = g if chans[g]["n"] else group["best"]
+            out[code] = {"from": src if fill_ok(code, src) else None, "group": group,
                          "shift": shifted}
             if shifted:
                 out[code]["names"] = names  # shifted times: only its own names, never the East ones
+    for group in groups.values():
+        if group.get("main"):
+            taken, key = group["main"]["seen"], group["key"]
+            real = plain_name(chans[group["main"]["best"]]["names"][0])
+
+            def theirs(n):  # VePlus's guide calls it "ABC WNEP", ITV +1's calls it "ITV 1": the real channel's names
+                if n.lower() in taken:
+                    return True
+                if key[0] == "call":
+                    return station_name(n, key[1])
+                return plain_name(n) == real
+            for n in group["names"]:  # "KNTV" is the station's name: on the station, not on the news stream
+                if theirs(n) and n.lower() not in taken:
+                    taken.add(n.lower())
+                    group["main"]["names"].append(n)
+            group["names"] = [n for n in group["names"] if not theirs(n)] or [group["best"]]
+            group["cc"] = group["cc"] or group["main"]["cc"]  # WFTV's Samsung news stream: still a US channel
+            group["seen"] = {n.lower() for n in group["names"]}
+            group["taken"] = taken
+
     def is_call(t):
         text = " ".join(chans[t]["names"]) + " " + t
         if re.search(r"(?<![A-Za-z0-9])[KW]\d\d[A-Z]{2}(?:-?(?:D|LD|CD))?\b", text):
@@ -3297,8 +3517,19 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
 
     for code, o in out.items():
         g = o["group"]
-        own = o.get("names") or (chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:16])
-        own = [clean_text(n).strip() for n in own if clean_text(n).strip()] or [code]
+        own = o.get("names") or (chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:40])
+        own = [clean_text(n).strip() for n in own if clean_text(n).strip() and not re.fullmatch(r"[\d.\s-]+", clean_text(n).strip())  # "299", "5", "2.1"
+               and clean_text(n).strip().lower() not in g.get("taken", ())][:24]
+        if g.get("cc") == "uk" and len(g.get("cids") or ()) > 1:  # "BBC 1 East" only on the East code, not on BBC One London
+            here, there = code_words(code).replace(" ", ""), [code_words(c).replace(" ", "") for c in g["cids"] if c != code]
+            shorts = [(r, r.replace(" ", "")[:5]) for r in UK_REGIONS]  # "yorks" in "BBC1YorksLincs", "east" in "BBCOneEast"
+            mine = [r for r, s in shorts if s in here]  # "ITV1CentralE": its "Central (East)" names stay
+
+            def elsewhere(n):  # a region this code isn't, that another code in the group is
+                return not any(re.search(rf"\b{r}\b", n.lower()) for r in mine) and any(
+                    re.search(rf"\b{r}\b", n.lower()) and s not in here and any(s in c for c in there) for r, s in shorts)
+            own = [n for n in own if not elsewhere(n)]
+        own = own or [code]
         own = list(dict.fromkeys([stream_name(n) for n in own] + own))  # "Movies! (480p)": clean names first, tagged after
         text = f"<channel id={quoteattr(code)}>" + "".join(f"<display-name>{escape(n)}</display-name>" for n in own)
         if g["icon"]:
