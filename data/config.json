@@ -29889,9 +29889,7 @@
   "22aec219ba46": {
    "key": "22aec219ba46",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "Degrassi.us@US"
-   },
+   "ov": {},
    "up": {
     "name": "Degrassi",
     "number": "1625",
@@ -33277,9 +33275,7 @@
   "f18e6ed3b50d": {
    "key": "f18e6ed3b50d",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "NFLChannel.us"
-   },
+   "ov": {},
    "up": {
     "name": "NFL Channel",
     "number": "2310",
@@ -37147,9 +37143,7 @@
   "2017cdf61d61": {
    "key": "2017cdf61d61",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "WesternBound.us"
-   },
+   "ov": {},
    "up": {
     "name": "Western Bound",
     "number": "1420",
@@ -81470,9 +81464,7 @@
   "767fead312bf": {
    "key": "767fead312bf",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "Degrassi.us@US"
-   },
+   "ov": {},
    "up": {
     "name": "Degrassi",
     "number": "1625",
@@ -84708,9 +84700,7 @@
   "1b799c95838a": {
    "key": "1b799c95838a",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "NFLChannel.us"
-   },
+   "ov": {},
    "up": {
     "name": "NFL Channel",
     "number": "2310",
@@ -88230,9 +88220,7 @@
   "ca7f6cb8604e": {
    "key": "ca7f6cb8604e",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "WesternBound.us"
-   },
+   "ov": {},
    "up": {
     "name": "Western Bound",
     "number": "1420",
@@ -219741,7 +219729,9 @@
   "30cca30de08b": {
    "key": "30cca30de08b",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "US2400013TO"
+   },
    "up": {
     "name": "Business Insider",
     "number": "",
@@ -220903,7 +220893,9 @@
   "a6ff790b1964": {
    "key": "a6ff790b1964",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "US17000281T"
+   },
    "up": {
     "name": "Donut",
     "number": "",
@@ -221570,9 +221562,9 @@
   "e01b5428": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4624 upcoming shows",
-   "time": 1794214114.026273,
-   "until": 1794252600
+   "msg": "593 guide channels, 4873 upcoming shows",
+   "time": 1794249009.953677,
+   "until": 1794290400
   },
   "cbe16a4b": {
    "fresh": true,
@@ -221585,14 +221577,14 @@
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214114.8384206,
+   "time": 1794216135.6831043,
    "until": 0
   },
   "f0af7d6a": {
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214115.4413505,
+   "time": 1794216176.7742703,
    "until": 0
   },
   "c50299a7": {
@@ -221795,14 +221787,14 @@
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214247.5898244,
+   "time": 1794216218.3296978,
    "until": 0
   },
   "74457e16": {
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214247.628895,
+   "time": 1794222174.6937187,
    "until": 0
   },
   "5d1419db": {
@@ -221884,7 +221876,7 @@
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214264.733652,
+   "time": 1794216259.3303087,
    "until": 0
   },
   "9168b6b9": {
@@ -221904,9 +221896,9 @@
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2299 upcoming shows",
-   "time": 1794214265.9136999,
-   "until": 1794247620
+   "msg": "293 guide channels, 2230 upcoming shows",
+   "time": 1794244028.4127798,
+   "until": 1794272657
   },
   "84d2ba49": {
    "fresh": true,
@@ -222190,10 +222182,10 @@
   },
   "1ca78122": {
    "fresh": true,
-   "ok": false,
-   "msg": "[WinError 10054] An existing connection was forcibly closed by the remote host",
-   "time": 1794214486.1551595,
-   "until": 1794722400
+   "ok": true,
+   "msg": "154 guide channels, 26502 upcoming shows",
+   "time": 1794215366.9908419,
+   "until": 1794808800
   },
   "94dd3029": {
    "fresh": true,
@@ -222422,9 +222414,9 @@
   "e1638530": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4604 upcoming shows",
-   "time": 1794214232.5168004,
-   "until": 1794252600
+   "msg": "593 guide channels, 4873 upcoming shows",
+   "time": 1794249010.1989045,
+   "until": 1794290400
   },
   "9d3f4d1d": {
    "fresh": true,
@@ -222464,9 +222456,9 @@
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2299 upcoming shows",
-   "time": 1794214266.775361,
-   "until": 1794247620
+   "msg": "293 guide channels, 2230 upcoming shows",
+   "time": 1794244028.533259,
+   "until": 1794272657
   },
   "a36755d3": {
    "fresh": true,
@@ -223395,7 +223387,7 @@
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214768.9924755,
+   "time": 1794216300.4091446,
    "until": 0
   },
   "5f054e4d": {
@@ -223409,7 +223401,7 @@
    "fresh": false,
    "ok": false,
    "msg": "not a guide or playlist (error page or empty)",
-   "time": 1794214769.5862076,
+   "time": 1794216341.6783342,
    "until": 0
   },
   "26252717": {
@@ -239356,7 +239348,7 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "SIC.pt",
+   "guide": "sic.pt",
    "how": "code"
   },
   {
@@ -267248,10 +267240,9 @@
    "prov": "Provider 1",
    "picked": "fox.mx",
    "shift": 0,
-   "guide": "",
+   "guide": "fox.mx",
    "how": "manual",
-   "manual": true,
-   "picked_shift": 0
+   "manual": true
   },
   {
    "key": "fox.sports.3.mx",
@@ -267455,10 +267446,9 @@
    "prov": "Provider 1",
    "picked": "211mvstr.ar",
    "shift": 0,
-   "guide": "",
+   "guide": "211mvstr.ar",
    "how": "manual",
-   "manual": true,
-   "picked_shift": 0
+   "manual": true
   },
   {
    "key": "rcn.co",
