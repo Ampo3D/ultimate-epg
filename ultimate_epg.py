@@ -334,6 +334,29 @@ def looks_valid(path, dest):
     return not head.startswith(b"<")
 
 
+class DailyLimit(ValueError):
+    """The site only allows a few downloads of a file a day and this PC used them up."""
+
+
+LIMITED = {}         # url -> time the site's daily download limit resets (this PC only)
+NO_PING_RE = re.compile(r"^https?://(www\.)?open-epg\.com/", re.I)  # every visit counts as one of its 20 downloads a day
+NO_PING_HOSTS = set()  # more sites like that, learned when their limit page shows up
+
+
+def next_utc_midnight():
+    return (int(time.time()) // 86400 + 1) * 86400 + 300
+
+
+def no_ping(url):
+    return bool(NO_PING_RE.match(url)) or (urlparse(url).hostname or "") in NO_PING_HOSTS
+
+
+def limit_page(path):
+    with open(path, "rb") as f:
+        head = f.read(4096).lower()
+    return b"download limit" in head or b"downloads per day" in head or b"times a day" in head
+
+
 def fetch(url, dest, max_bytes=None):
     """Download a URL (or copy a local file) to dest, un-gzipping if needed."""
     tmp = dest + ".part"
@@ -369,6 +392,11 @@ def fetch(url, dest, max_bytes=None):
                     dst.write(chunk)
         final = dest + ".unz" if gz or xz else tmp
         if not looks_valid(final, dest):
+            if limit_page(final):
+                LIMITED[url] = next_utc_midnight()
+                NO_PING_HOSTS.add(urlparse(url).hostname or "")
+                raise DailyLimit("the site's daily download limit for this file is used up - "
+                                 "using the last copy until midnight (UTC)")
             raise ValueError("not a guide or playlist (error page or empty)")
         safe_replace(final, dest)
     finally:  # also removes anything that could hold a provider login
@@ -384,6 +412,10 @@ def download_all(sources, dest_of):
         hosts.setdefault(urlparse(src["url"]).netloc, threading.Semaphore(HOST_DOWNLOADS))
 
     def one(src):
+        if time.time() < LIMITED.get(src["url"], 0):  # asking again would only use up tomorrow's downloads too
+            failed[src["id"]] = DailyLimit("the site's daily download limit for this file is used up - "
+                                           "using the last copy until midnight (UTC)")
+            return
         with hosts[urlparse(src["url"]).netloc]:
             try:
                 fetch(src["url"], dest_of(src))
@@ -1935,12 +1967,25 @@ def mark_health(src, bad, kind="dead", why=""):
         AUTO["bad_since"].pop(src["url"], None)
 
 
+GIT_HOSTS = {"raw.githubusercontent.com", "github.com", "gitlab.com", "bitbucket.org", "codeberg.org"}
+
+
+def site_key(url):
+    """The website - or, on GitHub and the like, the one project - a source comes from."""
+    u = urllib.parse.urlparse(url)
+    host = (u.hostname or "").lower()
+    if host in GIT_HOSTS:
+        return host + "/" + "/".join(u.path.strip("/").split("/")[:2]).lower()
+    return host
+
+
 def outage_hosts():
-    """Websites where most guides fail together: that is an outage (or a block), not dead guides."""
+    """Websites (or GitHub projects) where most guides fail together: that is an outage, a block
+    or files being moved around - not dead guides."""
     per = {}
     for x in all_sources():
         if x.get("enabled", True):
-            host = urllib.parse.urlparse(x["url"]).hostname or ""
+            host = site_key(x["url"])
             rec = per.setdefault(host, [0, 0])
             rec[0] += 1
             rec[1] += AUTO["bad_since"].get(x["url"], {}).get("kind") == "dead"
@@ -1948,7 +1993,10 @@ def outage_hosts():
 
 
 def on_outage(src, hosts):
-    return (urllib.parse.urlparse(src["url"]).hostname or "") in hosts
+    return site_key(src["url"]) in hosts
+
+
+OUTAGE_HOURS = 72  # a whole site/project down that long is gone for real
 
 
 def mass_failure():
@@ -1969,14 +2017,15 @@ def remove_dead_sources():
     hosts = outage_hosts()
     for src in list(all_sources()):
         rec = AUTO["bad_since"].get(src["url"])
-        if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]) or on_outage(src, hosts):
+        if not rec or src["url"] in CFG["keep_urls"] or not limits.get(rec["kind"]):
             continue
+        limit = max(limits[rec["kind"]], OUTAGE_HOURS) if on_outage(src, hosts) else limits[rec["kind"]]
         hours = (time.time() - rec["t"]) / 3600
-        if hours >= limits[rec["kind"]] and rec.get("count", 1) >= 3:
+        if hours >= limit and rec.get("count", 1) >= 3:
             what = "dead" if rec["kind"] == "dead" else "out of date"
             AUTO["removed"][src["url"]] = {"t": time.time(), "name": src["name"], "type": src["type"],
                                            "why": f"{what} for {int(hours)} hours: {rec['why']}",
-                                           "retry": time.time() + 3 * 86400}
+                                           "kind": rec["kind"], "retry": time.time() + 3 * 86400}
             text = f"'{src['name']}' was removed automatically - {what} for {int(hours)} hours"
             HEALTH_EVENTS.append({"t": time.time(), "id": src["id"], "name": src["name"],
                                   "state": "removed", "text": text})
@@ -1984,22 +2033,37 @@ def remove_dead_sources():
             log(text)
 
 
+def removed_retry_due(rec):
+    """Dead sources often come back within hours (a project moving its files): they are asked again
+    after 1 hour, then 2, 4, 8... up to every 3 days. Out-of-date guides are looked at every 3 days."""
+    if rec.get("kind", "dead" if rec.get("why", "").startswith("dead") else "stale") != "dead":
+        return rec.get("retry", 0)
+    return rec.get("last_try", rec.get("t", 0)) + min(3600 * 2 ** rec.get("tries", 0), 3 * 86400)
+
+
 def retry_removed_sources():
-    """Every 3 days, removed sources get another chance: if they answer again they come back."""
+    """Removed sources get another chance: if they answer again they come back. Returns the urls put back."""
+    back = []
     for url in list(AUTO["removed"]):
-        rec = AUTO["removed"][url]
-        if url in CFG["keep_urls"]:
-            AUTO["removed"].pop(url)
+        rec = AUTO["removed"].get(url)
+        if rec is None:
             continue
-        if time.time() < rec.get("retry", 0):
+        if url in CFG["keep_urls"]:
+            AUTO["removed"].pop(url, None)
+            continue
+        if time.time() < removed_retry_due(rec) or (no_ping(url) and time.time() < LIMITED.get(url, 0)):
             continue
         ok, why, _ = ping(url)
         if ok:
-            AUTO["removed"].pop(url)
+            AUTO["removed"].pop(url, None)
             AUTO["bad_since"].pop(url, None)
+            back.append(url)
             log(f"'{rec['name']}' answers again - put back into use")
         else:
+            rec["tries"] = rec.get("tries", 0) + 1
+            rec["last_try"] = time.time()
             rec["retry"] = time.time() + 3 * 86400
+    return back
 
 
 def drop_dead_auto_sources():
@@ -3393,8 +3457,14 @@ def refresh(only=None):
                     fresh = index_xmltv_source(src)[2]
                 except Exception:
                     pass
-            st.update(ok=False, fresh=fresh, msg=str(ex)[:300], time=time.time())
-            log(f"  FAILED: {ex}" + (" - using the last good copy" if fresh else ""))
+            if isinstance(ex, DailyLimit) and os.path.exists(dest):  # not broken: the site said "come back tomorrow"
+                if src["type"] == "xmltv":
+                    st["fresh"] = fresh
+                st.update(ok=True, msg=str(ex))
+                log(f"  WAITING: {ex}")
+            else:
+                st.update(ok=False, fresh=fresh, msg=str(ex)[:300], time=time.time())
+                log(f"  FAILED: {ex}" + (" - using the last good copy" if fresh else ""))
         if src.get("auto"):
             src["fails"] = 0 if st.get("ok") and st.get("fresh") else src.get("fails", 0) + 1
         if not st.get("ok"):
@@ -3572,8 +3642,13 @@ def update_health(src, ping_ok, ping_msg, ms=None):
 def check_all_sources():
     from concurrent.futures import ThreadPoolExecutor
     srcs = [s for s in all_sources() if s.get("enabled", True)]
+
+    def check(s):
+        if no_ping(s["url"]):  # judged by its last download instead
+            return True, "not pinged (the site counts every visit as a download)", None
+        return ping(s["url"])
     with ThreadPoolExecutor(8) as ex:
-        results = list(ex.map(lambda s: ping(s["url"]), srcs))
+        results = list(ex.map(check, srcs))
     for src, (ok, msg, ms) in zip(srcs, results):
         if not ok:
             mark_health(src, True, "dead", msg)
@@ -3586,6 +3661,9 @@ def check_all_sources():
         with LOCK:
             load_epg_index()
         run_job()  # rebuild without the removed source
+    back = set(retry_removed_sources())
+    if back:  # download them again now, not at the next full update
+        run_job(refresh, {s["id"] for s in all_sources() if s["url"] in back})
     checked = {s["id"] for s in srcs}
     for sid in list(HEALTH):  # forget removed sources, and switched-off ones (they are not checked any more)
         if sid not in checked or not source_by_id(sid):
@@ -3766,6 +3844,13 @@ def sync_from_github():
         if clash:  # an autostashed file clashed: git still says "ok", the stash keeps your copy
             raise RuntimeError(f"GitHub's copy clashes with your changes in {clash} - your changes are in 'git stash list'")
         fresh, config = load_auto(), load_config()
+        mine = {s["id"]: s for s in AUTO["sources"]}
+        for s in fresh["sources"]:  # the lights show this PC's downloads, not GitHub's
+            if s["id"] in mine:
+                for k in ("st", "fails"):
+                    if k in mine[s["id"]]:
+                        s[k] = mine[s["id"]][k]
+        fresh["bad_since"] = dict(AUTO["bad_since"])
         adopt(AUTO, fresh)  # same objects: running jobs keep working on them
         with LOCK:  # or an older copy in memory would undo the fixes just pulled
             adopt(CFG, config)
