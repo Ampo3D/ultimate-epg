@@ -175305,9 +175305,7 @@
   "582fc3405768": {
    "key": "582fc3405768",
    "source": "ed8db8ff",
-   "ov": {
-    "epg_id": "Sky.News.HD.uk"
-   },
+   "ov": {},
    "up": {
     "name": "Sky News",
     "number": "4004",
@@ -203482,9 +203480,7 @@
   "1df6a565912a": {
    "key": "1df6a565912a",
    "source": "29d1a082",
-   "ov": {
-    "epg_id": "TheWeatherNetwork.ca"
-   },
+   "ov": {},
    "up": {
     "name": "The Weather Network",
     "number": "1138",
@@ -221934,9 +221930,9 @@
   "440d664a": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2270 upcoming shows",
-   "time": 1794306209.4297342,
-   "until": 1794340260
+   "msg": "278 guide channels, 2352 upcoming shows",
+   "time": 1794336710.4881103,
+   "until": 1794376800
   },
   "ee63f468": {
    "ok": true,
@@ -222016,9 +222012,9 @@
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2150 upcoming shows",
-   "time": 1794306228.0242012,
-   "until": 1794337215
+   "msg": "293 guide channels, 2228 upcoming shows",
+   "time": 1794333649.4573982,
+   "until": 1794366031
   },
   "84d2ba49": {
    "fresh": true,
@@ -222562,9 +222558,9 @@
   "39d58f19": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2269 upcoming shows",
-   "time": 1794306215.5187736,
-   "until": 1794340260
+   "msg": "278 guide channels, 2352 upcoming shows",
+   "time": 1794336710.780214,
+   "until": 1794376800
   },
   "8496682f": {
    "fresh": true,
@@ -222576,9 +222572,9 @@
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2150 upcoming shows",
-   "time": 1794306229.5028422,
-   "until": 1794337215
+   "msg": "293 guide channels, 2228 upcoming shows",
+   "time": 1794333649.7599533,
+   "until": 1794366031
   },
   "a36755d3": {
    "fresh": true,
