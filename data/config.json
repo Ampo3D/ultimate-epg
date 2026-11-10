@@ -27393,7 +27393,9 @@
   "3d95adcb2e09": {
    "key": "3d95adcb2e09",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "ACC.Digital.Network.us2"
+   },
    "up": {
     "name": "ACC Digital Network",
     "number": "2396",
@@ -31049,9 +31051,7 @@
   "cab0b1edce11": {
    "key": "cab0b1edce11",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "GravitasMovies.us"
-   },
+   "ov": {},
    "up": {
     "name": "Gravitas Movies",
     "number": "1260",
@@ -35911,9 +35911,7 @@
   "fd6557aa022a": {
    "key": "fd6557aa022a",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "TheJimRomeShow.us"
-   },
+   "ov": {},
    "up": {
     "name": "The Jim Rome Show",
     "number": "2346",
@@ -37337,7 +37335,9 @@
   "257000845478": {
    "key": "257000845478",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "WorldPokerTour.us"
+   },
    "up": {
     "name": "World Poker Tour",
     "number": "2448",
@@ -79212,7 +79212,9 @@
   "f1dfb4ed4e5c": {
    "key": "f1dfb4ed4e5c",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "ACC.Digital.Network.us2"
+   },
    "up": {
     "name": "ACC Digital Network",
     "number": "2396",
@@ -82572,9 +82574,7 @@
   "c1948b62135d": {
    "key": "c1948b62135d",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "GravitasMovies.us"
-   },
+   "ov": {},
    "up": {
     "name": "Gravitas Movies",
     "number": "1260",
@@ -87194,9 +87194,7 @@
   "042df4221fac": {
    "key": "042df4221fac",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "TheJimRomeShow.us"
-   },
+   "ov": {},
    "up": {
     "name": "The Jim Rome Show",
     "number": "2346",
@@ -88428,7 +88426,9 @@
   "5374e662e22a": {
    "key": "5374e662e22a",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "WorldPokerTour.us"
+   },
    "up": {
     "name": "World Poker Tour",
     "number": "2448",
@@ -170110,7 +170110,7 @@
    "key": "d1a4f3f206e1",
    "source": "d7968fcb",
    "ov": {
-    "epg_id": "Qello Concerts By Stingray.uk"
+    "epg_id": "USBD3500024YB"
    },
    "up": {
     "name": "Qello Concerts by Stingray",
@@ -199456,7 +199456,9 @@
   "0c32c5595b0a": {
    "key": "0c32c5595b0a",
    "source": "29d1a082",
-   "ov": {},
+   "ov": {
+    "epg_id": "CBCNews.ca"
+   },
    "up": {
     "name": "CBC News",
     "number": "1060",
@@ -221678,9 +221680,9 @@
   "e01b5428": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4325 upcoming shows",
-   "time": 1794306078.9064062,
-   "until": 1794343920
+   "msg": "593 guide channels, 4633 upcoming shows",
+   "time": 1794340356.4484105,
+   "until": 1794380400
   },
   "cbe16a4b": {
    "fresh": true,
@@ -221909,9 +221911,9 @@
   "74457e16": {
    "fresh": true,
    "ok": true,
-   "msg": "272 guide channels, 240 upcoming shows",
-   "time": 1794306208.4163928,
-   "until": 1794346500
+   "msg": "272 guide channels, 46 upcoming shows",
+   "time": 1794342937.586447,
+   "until": 0
   },
   "5d1419db": {
    "fresh": true,
@@ -222530,9 +222532,9 @@
   "e1638530": {
    "fresh": true,
    "ok": true,
-   "msg": "593 guide channels, 4310 upcoming shows",
-   "time": 1794306191.9706066,
-   "until": 1794343920
+   "msg": "593 guide channels, 4633 upcoming shows",
+   "time": 1794340357.1108806,
+   "until": 1794380400
   },
   "9d3f4d1d": {
    "fresh": true,
@@ -223746,9 +223748,9 @@
   "873b0170": {
    "fresh": true,
    "ok": true,
-   "msg": "2665 guide channels, 19291 upcoming shows",
-   "time": 1794306849.9349782,
-   "until": 1794343920
+   "msg": "2665 guide channels, 21288 upcoming shows",
+   "time": 1794340360.107251,
+   "until": 1794380400
   },
   "099d2f20": {
    "fresh": true,
@@ -226882,9 +226884,11 @@
     "CNBCAfrica.ng"
    ],
    "shift": 0,
-   "guide": "CNBCAfrica.ug",
+   "guide": "CNBCAfrica.ng",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "CNBCAfrica.ug"
   },
   {
    "key": "cnbc.uk",
@@ -226954,9 +226958,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "CNNInternational.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "CNNInternational.ug"
   },
   {
    "key": "cnn.international.co",
@@ -227776,9 +227782,11 @@
     "SABCNews.ng"
    ],
    "shift": 0,
-   "guide": "SABCNews.ug",
+   "guide": "SABCNews.ng",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "SABCNews.ug"
   },
   {
    "key": "sic.noticias.pt",
@@ -231351,9 +231359,11 @@
     "AfricaMagicFamily.ng"
    ],
    "shift": 0,
-   "guide": "AfricaMagicFamily.ug",
+   "guide": "AfricaMagicFamily.ng",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "AfricaMagicFamily.ug"
   },
   {
    "key": "africa.magic.lgbo.ze",
@@ -231362,9 +231372,11 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "AfricaMagicIgbo.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "AfricaMagicIgbo.ug"
   },
   {
    "key": "427.ge",
@@ -241878,9 +241890,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "NationalGeographicChannel.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "NationalGeographicChannel.ug"
   },
   {
    "key": "national.geographic.pt",
@@ -242456,9 +242470,11 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "AfricaMagicHausa.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "AfricaMagicHausa.ug"
   },
   {
    "key": "ale.kino.pl",
@@ -244457,9 +244473,11 @@
     "TNTAfrica.ng"
    ],
    "shift": 0,
-   "guide": "TNTAfrica.ug",
+   "guide": "TNTAfrica.ng",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "TNTAfrica.ug"
   },
   {
    "key": "tnt.feva.car",
@@ -244832,9 +244850,11 @@
    "group": "Series",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "AfricaMagicEpic.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "AfricaMagicEpic.ug"
   },
   {
    "key": "africa.magic.showcase.ze",
@@ -245292,9 +245312,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "StarLife.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "StarLife.ug"
   },
   {
    "key": "tnt.es",
@@ -245533,8 +245555,8 @@
    "group": "Music",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Clubland.uk",
-   "how": "code"
+   "guide": "Clubland.TV.uk",
+   "how": "name"
   },
   {
    "key": "delux.music.de",
@@ -246159,9 +246181,11 @@
    "group": "Music",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TraceGospel.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "TraceGospel.ug"
   },
   {
    "key": "trace.jama.ze",
@@ -246170,9 +246194,11 @@
    "group": "Music",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TraceJama.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "TraceJama.ug"
   },
   {
    "key": "trace.urban.ze",
@@ -256092,7 +256118,7 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TNT Sports 1 HD.uk",
+   "guide": "TNT.Sports.1.HD.uk",
    "how": "name"
   },
   {
@@ -256408,9 +256434,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "SuperSportVariety1Africa.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "SuperSportVariety1Africa.ug"
   },
   {
    "key": "1593.ua",
@@ -264477,9 +264505,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "ComedyCentral.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "ComedyCentral.ug"
   },
   {
    "key": "daystar.ze",
@@ -264536,9 +264566,11 @@
    "group": "Africa",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "FAITH.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "FAITH.ug"
   },
   {
    "key": "food.network.ze",
@@ -264548,9 +264580,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "FoodNetwork.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "FoodNetwork.ug"
   },
   {
    "key": "hgtv.ze",
@@ -264584,9 +264618,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "Nickelodeon.ug",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "Nickelodeon.ug"
   },
   {
    "key": "pbs.kids.ze",
@@ -264610,9 +264646,11 @@
     "SpiceTV.ng"
    ],
    "shift": 0,
-   "guide": "SpiceTV.ug",
+   "guide": "SpiceTV.ng",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "SpiceTV.ug"
   },
   {
    "key": "bang.kids.al",
