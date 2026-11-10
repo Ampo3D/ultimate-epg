@@ -2814,11 +2814,9 @@ def build():
     wanted = {}
     for e in rows:
         wanted.setdefault(e["tvg_id"], e)
-    real = {cid for cid in wanted if cid in EPG_INDEX}
-    owner = channel_owners(xml_sources)
     tmp = os.path.join(OUT, "epg.xml.tmp")
-    count = 0
-    with open(tmp, "w", encoding="utf-8") as f:
+
+    def head(f):
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG">\n')
         for cid, e in wanted.items():
             shown = clean_text(e["name"])  # the clean name first; the playlist's tvg-name (with its stream notes) after it
@@ -2828,58 +2826,30 @@ def build():
             if logo:
                 f.write(f"<icon src={quoteattr(logo)}/>")
             f.write("</channel>\n")
-        claimed, clean = set(), ShowCleaner()
-        needed = {owner[cid] for cid in real if cid in owner}
-        for src in xml_sources:
-            path = os.path.join(CACHE, src["id"] + ".xml")
-            if src["id"] not in needed or not os.path.exists(path):
-                continue
-            here = set()
-            try:
-                for el in iter_xmltv(path, ("programme",)):
-                    cid = el.get("channel", "")
-                    if cid not in real or cid in claimed or owner.get(cid) != src["id"] or is_junk(el):
-                        continue
-                    st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
-                    fix = st and show_fix(src, cid, el.get("start"))
-                    if fix:
-                        st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
-                    if nhl_hour_off(cid, el, st):
-                        continue  # the league's schedule has this game an hour away: empty, not wrong
-                    if not st or (sp or st) < start_cut or st > end_cut:
-                        if st and sp and sp < start_cut:
-                            clean.remember(cid, el, st, sp)  # the episode before a stretched one
-                        continue
-                    tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
-                    times = clean.check(cid, el, st, sp)
-                    if not times:
-                        continue
-                    el.set("start", fmt_xmltv_time(times[0]))  # always a full time with its zone
-                    if sp:
-                        el.set("stop", fmt_xmltv_time(times[1]))
-                    else:
-                        el.attrib.pop("stop", None)  # "20261104176000": players reject it
-                    el.tail = "\n"
-                    f.write(ET.tostring(el, encoding="unicode"))
-                    here.add(cid)
-                    count += 1
-            except Exception as ex:
-                log(f"Guide '{src['name']}' could not be fully read ({ex}); kept what was readable")
-            claimed |= here
-        if settings["dummy_epg"]:
-            for cid, e in wanted.items():
-                if cid not in claimed:
-                    count += write_placeholder(f, cid, e["name"], e["desc"] or placeholder_desc(e["name"]), now, end_cut)
-        f.write("</tv>\n")
+
+    failed = None
+    if settings.get("full_guide"):
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                head(f)
+                count, claimed = build_universal(xml_sources, wanted, now, start_cut,
+                                                 now + timedelta(days=float(settings.get("full_guide_days") or 2)),
+                                                 playlist=(f, end_cut))
+                f.write("</tv>\n")
+        except Exception as ex:  # the playlist's own guide still gets made the simple way
+            failed = ex
+    if failed or not settings.get("full_guide"):
+        with open(tmp, "w", encoding="utf-8") as f:
+            head(f)
+            count, claimed = playlist_guide_alone(f, xml_sources, wanted, now, start_cut, end_cut, settings)
+            f.write("</tv>\n")
     safe_replace(tmp, os.path.join(OUT, "epg.xml"))
     with open(os.path.join(OUT, "epg.xml"), "rb") as src, gzip.open(os.path.join(OUT, "epg.xml.gz.tmp"), "wb") as dst:
         shutil.copyfileobj(src, dst, 1 << 20)
     safe_replace(os.path.join(OUT, "epg.xml.gz.tmp"), os.path.join(OUT, "epg.xml.gz"))
     log(f"Playlist guide: {len(rows)} channels, {count} guide entries ({len(claimed)} channels with real guide)")
-
-    if settings.get("full_guide"):
-        build_universal(xml_sources, wanted, now, start_cut,
-                        now + timedelta(days=float(settings.get("full_guide_days") or 2)))
+    if failed:
+        raise failed
     old = os.path.join(OUT, "epg-provider.xml.gz")  # replaced by the universal guide
     if os.path.exists(old):
         os.remove(old)
@@ -2887,16 +2857,69 @@ def build():
     log("Done")
 
 
+def playlist_guide_alone(f, xml_sources, wanted, now, start_cut, end_cut, settings):
+    """The playlist's guide without the universal guide: each code from the best guide that lists it."""
+    real = {cid for cid in wanted if cid in EPG_INDEX}
+    owner = channel_owners(xml_sources)
+    count = 0
+    claimed, clean = set(), ShowCleaner()
+    needed = {owner[cid] for cid in real if cid in owner}
+    for src in xml_sources:
+        path = os.path.join(CACHE, src["id"] + ".xml")
+        if src["id"] not in needed or not os.path.exists(path):
+            continue
+        here = set()
+        try:
+            for el in iter_xmltv(path, ("programme",)):
+                cid = el.get("channel", "")
+                if cid not in real or cid in claimed or owner.get(cid) != src["id"] or is_junk(el):
+                    continue
+                st, sp = parse_xmltv_time(el.get("start")), parse_xmltv_time(el.get("stop"))
+                fix = st and show_fix(src, cid, el.get("start"))
+                if fix:
+                    st, sp = st + timedelta(minutes=fix), sp and sp + timedelta(minutes=fix)
+                if nhl_hour_off(cid, el, st):
+                    continue  # the league's schedule has this game an hour away: empty, not wrong
+                if not st or (sp or st) < start_cut or st > end_cut:
+                    if st and sp and sp < start_cut:
+                        clean.remember(cid, el, st, sp)  # the episode before a stretched one
+                    continue
+                tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
+                times = clean.check(cid, el, st, sp)
+                if not times:
+                    continue
+                el.set("start", fmt_xmltv_time(times[0]))  # always a full time with its zone
+                if sp:
+                    el.set("stop", fmt_xmltv_time(times[1]))
+                else:
+                    el.attrib.pop("stop", None)  # "20261104176000": players reject it
+                el.tail = "\n"
+                f.write(ET.tostring(el, encoding="unicode"))
+                here.add(cid)
+                count += 1
+        except Exception as ex:
+            log(f"Guide '{src['name']}' could not be fully read ({ex}); kept what was readable")
+        claimed |= here
+    if settings["dummy_epg"]:
+        for cid, e in wanted.items():
+            if cid not in claimed:
+                count += write_placeholder(f, cid, e["name"], e["desc"] or placeholder_desc(e["name"]), now, end_cut)
+    return count, claimed
+
+
 def channel_owners(xml_sources):
-    """Which guide site each channel code belongs to (codes like "172" mean different channels on different sites)."""
-    owner = {}
+    """Which guide site each channel code belongs to (codes like "172" mean different channels on different sites):
+    the first guide that lists it, unless a later one has the same shows and runs at least a day longer."""
+    owner, best = {}, {}
     for x in sorted(xml_sources, key=lambda x: bool(picks_only(x))):
         path = os.path.join(CACHE, x["id"] + ".channels.json")
         if os.path.exists(path):
             with open(path, encoding="utf-8") as fh:
                 for cid, info in json.load(fh).items():
-                    if cid not in owner and info.get("n", 1) and (x["id"], cid) not in CLOCK_OUT:
-                        owner[cid] = x["id"]
+                    if not info.get("n", 1) or (x["id"], cid) in CLOCK_OUT:
+                        continue
+                    if cid not in owner or (not picks_only(x) and not best[cid][1] and better_copy(cid, best[cid][0], info)):
+                        owner[cid], best[cid] = x["id"], (info, bool(picks_only(x)))
     return owner
 
 
@@ -3017,6 +3040,9 @@ def guide_health(path, base_url):
             report["wrong_language"].append(name)
     with open(os.path.join(OUT, "playlist.m3u"), encoding="utf-8") as fh:
         playlist = report["playlist"] = sum(line.startswith("#EXTINF") for line in fh)
+    pg = os.path.join(OUT, "epg.xml.gz")
+    if os.path.exists(pg):
+        report["playlist_guide"] = playlist_guide_health(pg, soon)
     try:
         for attempt in range(3):
             try:
@@ -3031,6 +3057,9 @@ def guide_health(path, base_url):
         report["new"] = {k: [n for n in report[k] if n not in old.get(k, [])]
                          for k in ("picks_waiting", "blank", "wrong_network", "wrong_language", "wrong_time")}
         report["playlist_lost"] = old.get("playlist", playlist) - playlist
+        if "playlist_guide" in report:
+            mine = report["playlist_guide"]["with_shows"]
+            report["playlist_guide"]["lost"] = (old.get("playlist_guide") or {}).get("with_shows", mine) - mine
         week = [r for r in old.get("recent") or AUTO.get("health_recent", []) if report["time"] - r[0] < 7 * 86400]
         report["recent"] = week + [[report["time"], report["with_shows"]]]
         report["lost_this_week"] = max(r[1] for r in report["recent"]) - report["with_shows"]
@@ -3045,6 +3074,31 @@ def guide_health(path, base_url):
         report["new"] = {}
         report["no_comparison"] = not (isinstance(ex, urllib.error.HTTPError) and ex.code == 404)  # a brand-new site has none yet
     return report
+
+
+def playlist_guide_health(path, soon):
+    """The playlist's own guide: how many of its channels have real shows, and whose shows run out within 12 hours."""
+    names, real, last, labels = {}, set(), {}, set()
+    with gzip.open(path, "rb") as fh:
+        for _, el in ET.iterparse(fh, events=("end",)):
+            if el.tag == "channel":
+                names[el.get("id")] = [(d.text or "").strip() for d in el.findall("display-name")]
+                el.clear()
+            elif el.tag == "programme":
+                cid, desc, title = el.get("channel"), el.findtext("desc") or "", (el.findtext("title") or "").strip()
+                if NOT_YET in desc:
+                    pass
+                elif (NO_SCHEDULE in desc or EVENT_DESC in desc or desc.endswith("- no schedule published for this channel")
+                      or title.lower() in (n.lower() for n in names.get(cid, ()))):
+                    labels.add(cid)
+                else:
+                    real.add(cid)
+                    last[cid] = max(last.get(cid, ""), (el.get("stop") or el.get("start") or "")[:14])
+                el.clear()
+    name = lambda cid: (names.get(cid) or [cid])[0] or cid
+    return {"channels": len(names), "with_shows": len(real), "labels": len(labels - real),
+            "blank": sorted(name(c) for c in names if c not in real and c not in labels),
+            "runs_out": sorted(name(c) for c in real if last.get(c, "") < soon)}
 
 
 def health_alert(r):
@@ -3063,6 +3117,8 @@ def health_alert(r):
         lines.insert(0, f"- {r['lost_this_week']} channels lost their listings over the last few days")
     if r.get("playlist_lost", 0) >= 100:
         lines.insert(0, f"- The public playlist lost {r['playlist_lost']} channels since the last update")
+    if (r.get("playlist_guide") or {}).get("lost", 0) >= 100:
+        lines.insert(0, f"- The playlist's guide lost listings on {r['playlist_guide']['lost']} channels since the last update")
     if r.get("no_comparison"):
         lines.append("- The health report couldn't compare with the last update")
     return chr(10).join(lines)
@@ -3074,6 +3130,12 @@ def health_page(r):
                     ("No shows and no label", "blank"), ("Local station without its network's shows", "wrong_network"),
                     ("Mostly Spanish listings on an English channel", "wrong_language"), ("Morning show at the wrong hour", "wrong_time"),
                     ("One title all day", "name_only"), ("Listings run out within 12 hours", "runs_out")))
+    p = r.get("playlist_guide")
+    if p:
+        rows += (f"<h2>Playlist guide (epg.xml.gz)</h2><p>{p['with_shows']} of {p['channels']} playlist channels have listings, "
+                 f"{p['labels']} show a label, {len(p['blank'])} have nothing.</p>"
+                 + "".join(f"<h3>{escape(title)} ({len(p[key])})</h3><p>{escape(', '.join(p[key])) or 'None'}</p>"
+                           for title, key in (("No shows and no label", "blank"), ("Listings run out within 12 hours", "runs_out"))))
     return (f'<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Guide health</title>'
             f'<body style="font:16px system-ui;max-width:760px;margin:40px auto;padding:0 16px"><h1>Guide health</h1>'
             f'<p>{r["with_shows"]} of {r["channels"]} channels have listings, {r["labels"]} show a label. '
@@ -3267,7 +3329,7 @@ def better_copy(cid, old, new):
     return same and (lo == ln or not lo or not ln) and new.get("end", 0) >= old.get("end", 0) + 86400
 
 
-def build_universal(xml_sources, wanted, now, start_cut, end_cut):
+def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None):
     rytec_prepare(xml_sources)
     """ONE guide for any provider and any player.
     Every copy of a real channel (ESPN on five guide sites under five codes) is grouped together.
@@ -3276,6 +3338,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
     are filled from the best copy in the group. Also split per priority country."""
     pri = priority_list()
     n_pri = len(pri)
+    pl_file, pl_end = playlist or (None, None)  # the playlist's own guide: its codes, its number of days
+    pl_codes = set(wanted) if pl_file else set()
+    pl_count, pl_real = 0, set()
     # codes and names learned from your providers and playlists
     learned = {}  # their code -> (matched guide code, [their channel names])
     shifts, events = {}, []
@@ -3324,7 +3389,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 lang = info.get("tl") or info.get("lang", "")
                 said = LANG_OF.get(xcc, "")
                 if (own in ("us", "uk", "ca") and xcc and xcc != own and said not in ("", "en") and lang == said
-                        and cid not in hand):
+                        and cid not in hand and not (own == "ca" and said == "fr")):
                     continue  # a French guide's copy of CBC Vancouver: the shows translated, the news title garbled
                 cc = own or xcc
                 if (SD_CODE_RE.match(cid) and info.get("tl") and cc in NATIVE_LANGS
@@ -3403,7 +3468,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                 group["names"].append(n)
         if code not in out or (code in prov_ids and (code != g or shifts.get(code))):  # the provider's pick wins
             src = g if chans[g]["n"] else group["best"]
-            out[code] = {"from": src if fill_ok(code, src) else None, "group": group,
+            if not fill_ok(code, src):
+                src = code if code in chans and chans[code]["n"] and not shifted else None
+            out[code] = {"from": src, "group": group,
                          "shift": shifted}
             if shifted:
                 out[code]["names"] = names  # shifted times: only its own names, never the East ones
@@ -3563,7 +3630,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                     if st and sp and sp < start_cut:
                         clean.remember(cid, el, st, sp)  # the episode before a stretched one
                     continue
-                for child in list(el):
+                kids = list(el)  # the playlist's guide keeps the pictures, cast and ratings
+                for child in kids:
                     if child.tag in SLIM_TAGS:
                         el.remove(child)
                 tidy_show(el, rytec_vocab(path))  # first: a title that tidying empties is no show
@@ -3585,6 +3653,14 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                         if sp:
                             el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
                     write(code, ET.tostring(el, encoding="unicode"), st > end_cut)
+                    if code in pl_codes and st <= pl_end:
+                        slim = list(el)
+                        el[:] = [k for k in kids if k.tag in SLIM_TAGS or any(k is s for s in slim)] + [
+                            s for s in slim if not any(s is k for k in kids)]
+                        pl_file.write(ET.tostring(el, encoding="unicode"))
+                        el[:] = slim
+                        pl_count += 1
+                        pl_real.add(code)
                     if shift:
                         el.set("start", fmt_xmltv_time(st))
                         if sp:
@@ -3603,7 +3679,20 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
             log(f"Guide '{x['name']}' could not be fully read ({ex}); kept what was readable")
     for code, o in out.items():  # placeholders so nothing shows "No information"
         e = o.get("placeholder")
+        pe = (e or wanted[code]) if code in pl_codes else None  # the playlist's guide labels every code it has no shows for
         mine = [k for k in (o["from"], (o.get("ext") or (None,))[0]) if k]
+        if pe and CFG["settings"]["dummy_epg"]:
+            later = min((nxt[k] for k in mine if k in live_from and k in nxt), default=None)
+            done = max((ended[k] for k in mine if k in ended), default=None)
+            done = done and done + timedelta(minutes=o.get("shift") or 0)
+            later = later and later + timedelta(minutes=o.get("shift") or 0)
+            if not any(k in live_soon for k in mine):
+                pl_count += write_placeholder(pl_file, code, pe["name"], pe["desc"] or placeholder_desc(pe["name"]), now, pl_end,
+                                              later, done)
+            if any(k in last_stop and k in nxt for k in mine):
+                gap = max(last_stop[k] for k in mine if k in last_stop) + timedelta(minutes=o.get("shift") or 0)
+                if gap < pl_end - timedelta(hours=1):
+                    pl_count += write_placeholder(pl_file, code, pe["name"], NOT_YET, now, pl_end, None, gap)
         if e and CFG["settings"]["dummy_epg"] and not any(k in live_soon for k in mine):  # a match day next week
             text = []
 
@@ -3644,6 +3733,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut):
                           "real_channels": len(live_from)}
     log(f"Universal guide: {len(clusters)} real channels answering to {len(out)} codes "
         f"({len(learned)} learned from your providers/playlists), {shows} shows - " + ", ".join(sizes))
+    return pl_count, pl_real
 
 # ---------------------------------------------------------------- refresh
 
