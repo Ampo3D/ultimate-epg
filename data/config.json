@@ -221933,16 +221933,16 @@
   },
   "b2fb127b": {
    "fresh": true,
-   "ok": false,
-   "msg": "[WinError 10054] An existing connection was forcibly closed by the remote host",
-   "time": 1794261491.0264578,
+   "ok": true,
+   "msg": "253 guide channels, 44348 upcoming shows",
+   "time": 1794262647.5375586,
    "until": 1794808800
   },
   "96673aad": {
    "fresh": true,
-   "ok": false,
-   "msg": "[WinError 10054] An existing connection was forcibly closed by the remote host",
-   "time": 1794261491.2653666,
+   "ok": true,
+   "msg": "53 guide channels, 5644 upcoming shows",
+   "time": 1794262708.137046,
    "until": 1794808800
   },
   "ea13cd93": {
@@ -222025,9 +222025,9 @@
   "ea06e7bc": {
    "fresh": true,
    "ok": true,
-   "msg": "185 guide channels, 369 upcoming shows",
-   "time": 1794261713.07727,
-   "until": 1794276900
+   "msg": "185 guide channels, 12 upcoming shows",
+   "time": 1794273325.5057738,
+   "until": 0
   },
   "bc33dd4d": {
    "fresh": true,
@@ -222073,9 +222073,9 @@
   },
   "0b922a38": {
    "fresh": true,
-   "ok": false,
-   "msg": "[WinError 10054] An existing connection was forcibly closed by the remote host",
-   "time": 1794261721.9021323,
+   "ok": true,
+   "msg": "89 guide channels, 17718 upcoming shows",
+   "time": 1794262771.3794613,
    "until": 1794880800
   },
   "7648131c": {
@@ -226347,7 +226347,7 @@
    "group": "News",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "A24.ar",
+   "guide": "A24.ar@SD",
    "how": "name without tags"
   },
   {
@@ -226637,8 +226637,8 @@
    "group": "News",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Bloomberg.ar",
-   "how": "code"
+   "guide": "167-bloomberg",
+   "how": "name without tags"
   },
   {
    "key": "bnn.bloomberg.ca",
@@ -226677,8 +226677,8 @@
    "group": "News",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "C5N.ar",
-   "how": "code"
+   "guide": "g.mi.tv.c5n.ar",
+   "how": "name without tags"
   },
   {
    "key": "canal.24.hs.espana.cl",
@@ -252534,8 +252534,8 @@
    "group": "Sports",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "AmericaSports.ar",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "arena.sport.1.rs",
@@ -267024,8 +267024,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "CanalDeLaCiudad.ar",
-   "how": "name without tags"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "canal.19.nacional.sv",
@@ -267322,9 +267322,11 @@
     "Canal.13.de.Argentina.(El.Trece).ar"
    ],
    "shift": 0,
-   "guide": "ELTrece.ar",
+   "guide": "Canal.13.de.Argentina.(El.Trece).ar",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "ELTrece.ar"
   },
   {
    "key": "espn.2.mx",
@@ -267475,8 +267477,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "MasChic.ar",
-   "how": "same code"
+   "guide": "MAS.CHIC.HD.uy",
+   "how": "call letters"
   },
   {
    "key": "max.ar",
@@ -267505,8 +267507,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "MTV.ar",
-   "how": "code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "mtv.mx",
@@ -267641,7 +267643,7 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "Telefe.ar",
+   "guide": "telefe.ar",
    "how": "code"
   },
   {
@@ -267953,8 +267955,8 @@
    "group": "Latino",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "TVNCHILE.ar",
-   "how": "same code"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "tvn.cl",
