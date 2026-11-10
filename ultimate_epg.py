@@ -485,7 +485,7 @@ def parse_m3u(path):
         if line.upper().startswith("#EXTINF"):
             line = NEWLINE_RE.sub(" ", clean_text(line))
             m = re.match(r'((?:[^,"]|"[^"]*")*),(.*)$', line)
-            head, title = (m[1], m[2]) if m else (line, "")
+            head, title = (m[1], m[2]) if m else (line.rpartition(",")[0], line.rpartition(",")[2]) if "," in line else (line, "")  # a quote never closed
             attrs = {k: NEWLINE_RE.sub(" ", unescape_all(v)) for k, v in ATTR_RE.findall(head)}
             cur = {"attrs": attrs, "title": NEWLINE_RE.sub(" ", unescape_all(title.strip()))}
             extra = []
@@ -600,7 +600,7 @@ ESCAPED_TWICE_RE = re.compile(r"&amp;(?=(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F
 ESCAPED_RE = re.compile(r"&([a-zA-Z]{2,8}|#\d+|#x[0-9a-fA-F]+);")  # "&eacute;" too
 
 
-LOST_U_RE = re.compile(r"(?<!\\)u00([c-fC-F][0-9a-fA-F])")  # "Notu00edcias": a \u escape that lost its backslash
+LOST_U_RE = re.compile(r"(?i:https?://[^\s\"'<>]+)|(?<!\\)u00([c-fC-F][0-9a-fA-F])")  # "Notu00edcias": a \u escape that lost its backslash (not in an address: "menu00cf.png")
 MOJIBAKE_RE = re.compile("(?:[\u00c2\u00c3][\u0080-\u00bf\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u02c6\u02dc\u2013-\u2122]|\u00e2\u20ac.)+")  # UTF-8 read as Windows-1252: "Â£", "â€™"
 TAG_RE = re.compile(r"<!--.*?(?:-->|$)|<style\b.*?(?:</style>|$)|</?(?:a|b|i|u|s|br|hr|p|em|strong|small|big|sup|sub|span|div|font|center|meta|link|"
                     r"img|button|li|ul|ol|dl|dt|dd|h[1-6]|table|thead|tbody|tr|td|th|blockquote|section|article|header|footer|nav|"
@@ -643,11 +643,12 @@ def tidy_text(t):
         t = JSON_ESC_RE.sub(lambda m: chr(int(m[1], 16)), t)
         t = CTRL_RE.sub("", t.encode("utf-16", "surrogatepass").decode("utf-16", "ignore"))
     t = C1_RE.sub(lambda m: bytes([ord(m[0])]).decode("cp1252", "ignore") or m[0], t)
+    t = t.replace("\u00e2\u20acTM", "\u2019").replace("\u00e2\u20ac`", "\u2018").replace('\u00e2\u20ac"', "\u2013")  # "it\u00e2\u20acTMs": the \u2122 of a garbled \u2019 spelled out; a dash's quote mark
     for _ in range(2):  # run by run: one real em dash must not stop the rest; twice for text garbled twice
         t = MOJIBAKE_RE.sub(fix_mojibake, t)
     t = C1_RE.sub("", t)  # control bytes nothing could repair
     t = re.sub("(?<=[.,!?:;])Â ", " ", t)  # a garbled non-breaking space: "Richmond.Â Tiger fans"
-    t = LOST_U_RE.sub(lambda m: chr(int(m[1], 16)), t)
+    t = LOST_U_RE.sub(lambda m: chr(int(m[1], 16)) if m[1] else m[0], t)
     t = GARBLED_TAIL_RE.sub("", re.sub("(?<= )\u00d0(?= )", "\u2013", t))  # a Mac dash read as "\u00d0"
     t = ARABIC_FORMS_RE.sub(lambda m: unicodedata.normalize("NFKC", m[0]), t)
     if "[" in t:
@@ -718,6 +719,24 @@ def unglue_url(u):
     return u[glued[-1]:] if glued else u
 
 
+WEB_URL_RE = re.compile(r"https?://[^\s\"<>]+", re.I)
+URL_JUNK_RE = re.compile(r"[\"<>]|\s+\d+(?:\.\d+)?[xw]\s*(?:,|$)")  # '">&#xA; <img src=...' or a srcset's " 1x, /img/b.webp 2x"
+
+
+def web_url(u, home_ok=False):
+    """A picture address a player can load, or "": web-page code after it cut off, spaces written as %20
+    ("logos/TV Jadran.png"), and no address on someone's home network (home_ok: your own playlist's logos)."""
+    u = URL_JUNK_RE.split(unglue_url((u or "").strip()), 1)[0].strip()
+    u = re.sub(r"\s+", "%20", u)
+    return u if WEB_URL_RE.fullmatch(u) and (home_ok or not PRIVATE_URL_RE.match(u)) else ""
+
+
+def stream_url(u):
+    """Spaces in a stream address ("...genre=Reality Shows&...") cut it short in some players; Kodi's "|headers" stay as they are."""
+    addr, bar, rest = (u or "").partition("|")
+    return re.sub(r"\s", "%20", addr.strip()) + bar + rest
+
+
 def tidy_show(el, vocab=(frozenset(), frozenset())):
     """Guides that escaped their text twice would show "&amp;" and diamonds on screen."""
     for node in el.iter():  # every text: credits, ratings and attributes too, not only the title
@@ -742,8 +761,10 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             t = child.text = tidy_text(t)
         elif child.tag == "icon" and "&amp;" in child.get("src", ""):
             child.set("src", tidy_text(child.get("src")))
-        if child.tag == "icon" and child.get("src"):
-            child.set("src", unglue_url(child.get("src")))
+        if child.tag == "icon":
+            child.set("src", web_url(child.get("src")))
+        elif child.tag == "image":  # <image>https://...</image>: a picture too, the same rules
+            child.text = web_url(child.text)
         if child.tag in ("title", "sub-title") and t and NEWLINE_RE.search(t):  # "Anderson Cooper 360\nEn Vivo": one line
             child.text = re.sub(r"\s+", " ", NEWLINE_RE.sub(" ", t)).strip()
     for child in el:
@@ -761,13 +782,17 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
             el.remove(r)  # an empty rating says nothing
     el[:] = sorted((c for c in el if c.tag in DTD_ORDER and not (  # strict players reject other tags and orders
         c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
-        c.tag == "icon" and (not re.match(r"https?://", c.get("src", ""), re.I) or PRIVATE_URL_RE.match(c.get("src", ""))))),
-        key=lambda c: DTD_ORDER[c.tag])  # "/imgs/717.png" and a stranger's home server can't load
+        c.tag == "icon" and not c.get("src") or c.tag == "image" and not c.text)),
+        key=lambda c: DTD_ORDER[c.tag])  # "/imgs/717.png", web-page code and a stranger's home server can't load
 
 
 def full_details(kids, slim):
     """The playlist guide's show: the slim show plus the cast, pictures and ratings - only tags strict players take."""
     extra = [k for k in kids if k.tag in SLIM_TAGS and k.tag in DTD_ORDER]
+    for k in [k for k in extra if k.tag == "image"]:  # "http://192.168.254.18:8409/...": a stranger's home server
+        k.text = web_url(k.text)
+        if not k.text:
+            extra.remove(k)
     for r in [c for c in extra if c.tag in ("rating", "star-rating") and c.find("value") is None]:
         if (r.text or "").strip():  # "<rating>TV14</rating>": players read only <rating><value>
             ET.SubElement(r, "value").text, r.text = r.text.strip(), None
@@ -924,7 +949,7 @@ def scan_xmltv(path, src=None):
                 names = [d.text or "" for d in el.findall("display-name")]
                 icon = el.find("icon")
                 logo = unglue_url(icon.get("src", "")) if icon is not None else ""  # not "src": that is the guide itself
-                idx[el.get("id", "")] = {"names": names, "icon": logo if re.match(r"https?://", logo, re.I) and not PRIVATE_URL_RE.match(logo) else ""}
+                idx[el.get("id", "")] = {"names": names, "icon": web_url(logo)}
             else:
                 end = parse_xmltv_time(el.get("stop") or el.get("start"))
                 st1 = parse_xmltv_time(el.get("start"))
@@ -2213,8 +2238,8 @@ def plain(text):
 def name_prefix(name):
     """The country a guide writes in front of a name: 'DK - TV 2', '[CA] Citytv', 'CA EN: CTV', 'BH: Nova'."""
     m = ANY_PREFIX_RE.match(name.lower())
-    if not m:
-        return "", name
+    if not m or re.fullmatch(r"\s*(?:hd|sd|fhd|uhd|4k|tv)?\s*", name[m.end():], re.I):
+        return "", name  # "ID-HD", "CI-HD": the channel's own short name, not a country in front of one
     word = m[1].split()[0]
     if word == "ar":  # Arabic or Argentina: strip it, but it says nothing about the country
         return "", name[m.end():]
@@ -2824,27 +2849,41 @@ def full_name(key):
     return "epg-full.xml.gz" if k == "full" else f"epg-{'uk' if k in ('gb', 'uk') else k}.xml.gz"
 
 
+def playlist_lines(rows):
+    """The playlist; {EPG_URL} is swapped for the real address when served. A channel number is given once: numbers
+    you typed (or your own channels') first, then a source's in playlist order - players clash on repeats."""
+    mine = {e["number"] for e in rows if e["number"] and e.get("own_number")}
+    used = set()
+    m3u = ['#EXTM3U url-tvg="{EPG_URL}" x-tvg-url="{EPG_URL}"']
+    for e in rows:
+        attrs = f'tvg-id={m3u_attr(e["tvg_id"])} tvg-name={m3u_attr(e["name"])}'
+        n = (e["number"] or "").strip()
+        if n and n not in used and (e.get("own_number") or n not in mine):
+            used.add(n)
+            attrs += f' tvg-chno={m3u_attr(n)}'
+        logo = web_url(e["logo"], home_ok=True)
+        if logo:
+            attrs += f' tvg-logo={m3u_attr(logo)}'
+        attrs += f' group-title={m3u_attr(e["group"] or "Other")}'
+        m3u.append(f"#EXTINF:-1 {attrs},{NEWLINE_RE.sub(' ', e['name'])}")
+        m3u.extend(e["extra"])
+        m3u.append(stream_url(e["url"]))
+    return m3u
+
+
 def build():
     with LOCK:
         rows = output_channels()
+        for e in rows:
+            ch = CFG["channels"].get(e.get("key")) or {}
+            e["own_number"] = ch.get("source") == "custom" or "number" in ch.get("ov", {})
         settings = dict(CFG["settings"])
         xml_sources = guide_sources()
         rytec_prepare(xml_sources)
         nhl_check(xml_sources, datetime.now(timezone.utc))
     log(f"Building output for {len(rows)} channels")
 
-    # playlist; {EPG_URL} is swapped for the real address when served
-    m3u = ['#EXTM3U url-tvg="{EPG_URL}" x-tvg-url="{EPG_URL}"']
-    for e in rows:
-        attrs = f'tvg-id={m3u_attr(e["tvg_id"])} tvg-name={m3u_attr(e["name"])}'
-        if e["number"]:
-            attrs += f' tvg-chno={m3u_attr(e["number"])}'
-        if e["logo"]:
-            attrs += f' tvg-logo={m3u_attr(e["logo"])}'
-        attrs += f' group-title={m3u_attr(e["group"] or "Other")}'
-        m3u.append(f"#EXTINF:-1 {attrs},{NEWLINE_RE.sub(' ', e['name'])}")
-        m3u.extend(e["extra"])
-        m3u.append(e["url"])
+    m3u = playlist_lines(rows)
     tmp = os.path.join(OUT, "playlist.m3u.tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         f.write("\n".join(m3u) + "\n")
@@ -2865,7 +2904,7 @@ def build():
             shown = clean_text(e["name"])  # the clean name first; the playlist's tvg-name (with its stream notes) after it
             f.write(f"<channel id={quoteattr(cid)}>" + "".join(f"<display-name>{escape(n)}</display-name>"
                                                                 for n in dict.fromkeys((stream_name(shown).strip(), shown))))
-            logo = e["logo"] or EPG_INDEX.get(cid, {}).get("icon", "")
+            logo = web_url(e["logo"]) or web_url(EPG_INDEX.get(cid, {}).get("icon", ""))
             if logo:
                 f.write(f"<icon src={quoteattr(logo)}/>")
             f.write("</channel>\n")
@@ -3627,6 +3666,10 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
         if k in files and k != "full":
             files[k].write(text)
 
+    for code in [c for c, o in out.items() if c not in pl_codes and not o.get("ext") and not o.get("placeholder") and (
+            not o["from"] or o["from"] not in chans or
+            chans[o["from"]].get("end", 0) + 60 * (o.get("shift") or 0) <= now.timestamp())]:
+        del out[code]  # its guide has nothing left to show (or none at all): an empty or ended channel helps no player
     for code, o in out.items():
         g = o["group"]
         own = o.get("names") or (chans[code]["names"][:8] if code in chans and code != g["best"] else g["names"][:40])
@@ -3644,8 +3687,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
         own = own or [code]
         own = list(dict.fromkeys([stream_name(n) for n in own] + own))  # "Movies! (480p)": clean names first, tagged after
         text = f"<channel id={quoteattr(code)}>" + "".join(f"<display-name>{escape(n)}</display-name>" for n in own)
-        if g["icon"]:
-            text += f"<icon src={quoteattr(g['icon'])}/>"
+        icon = web_url(g["icon"])  # saved channel lists can hold an older, unchecked address
+        if icon:
+            text += f"<icon src={quoteattr(icon)}/>"
         write(code, text + "</channel>\n")
     fill, ext = {}, {}
     for code, o in out.items():
