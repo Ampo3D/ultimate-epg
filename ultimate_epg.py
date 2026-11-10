@@ -88,12 +88,43 @@ def safe_replace(tmp, path):
         try:
             return os.replace(tmp, path)
         except PermissionError:
-            if attempt == 4:
-                raise
-            time.sleep(1)
+            try:  # a player downloading it from this app: move its copy aside (it keeps reading that), then swap
+                aside = f"{path}.{uuid.uuid4().hex[:8]}.old"
+                os.replace(path, aside)
+            except OSError:
+                if attempt == 4:
+                    raise
+                time.sleep(1)
+                continue
+            os.replace(tmp, path)
+            try:
+                os.remove(aside)  # gone once the player finishes
+            except OSError:
+                pass
+            return
+
+
+def open_shared(path):
+    """Open for reading without locking the file: the next build can still swap in a new copy meanwhile."""
+    if os.name != "nt":
+        return open(path, "rb")
+    import ctypes, msvcrt
+    from ctypes import wintypes
+    k = ctypes.WinDLL("kernel32", use_last_error=True)
+    k.CreateFileW.restype = wintypes.HANDLE
+    k.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD, wintypes.LPVOID,
+                              wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE]
+    h = k.CreateFileW(os.path.abspath(path), 0x80000000, 7, None, 3, 0x80, None)  # read; share read, write, delete
+    if h in (None, ctypes.c_void_p(-1).value):
+        err = ctypes.get_last_error()
+        if err in (2, 3):
+            raise FileNotFoundError(2, "No such file", path)
+        raise ctypes.WinError(err)
+    return os.fdopen(msvcrt.open_osfhandle(h, os.O_RDONLY | os.O_BINARY), "rb")
 
 
 def load_config():
+    damaged = False
     if os.path.exists(CONFIG_PATH):
         try:
             with open(CONFIG_PATH, encoding="utf-8") as f:
@@ -105,6 +136,7 @@ def load_config():
             print("config.json was damaged - using config.json.bak")
             with open(CONFIG_PATH + ".bak", encoding="utf-8") as f:
                 cfg = json.load(f)
+            damaged = True
     else:
         cfg = {}
     config_defaults(cfg)
@@ -116,7 +148,7 @@ def load_config():
                                   for c in json.load(f) if c.get("default")]
         except (OSError, ValueError):
             pass
-    CFG_SEEN.update(stamp=config_stamp(), base=json.dumps(cfg, ensure_ascii=False))
+    CFG_SEEN.update(stamp=config_stamp(), base=json.dumps(cfg, ensure_ascii=False), damaged=damaged)
     return cfg
 
 
@@ -200,7 +232,7 @@ def adopt(old, new):
 
 
 def save_config():
-    readable = True
+    readable = not CFG_SEEN.get("damaged")  # the file on disk is the damaged one the app couldn't read at start
     if CFG_SEEN.get("stamp") and config_stamp() != CFG_SEEN["stamp"]:
         disk = read_config_file()
         readable = disk is not None
@@ -222,7 +254,7 @@ def save_config():
     elif os.path.exists(CONFIG_PATH):
         shutil.copyfile(CONFIG_PATH, CONFIG_PATH + ".bak")
     safe_replace(tmp, CONFIG_PATH)
-    CFG_SEEN.update(stamp=config_stamp(), base=text)
+    CFG_SEEN.update(stamp=config_stamp(), base=text, damaged=False)
 
 
 MAX_UNPACKED = 4 << 30
@@ -731,6 +763,17 @@ def tidy_show(el, vocab=(frozenset(), frozenset())):
         c.tag in ("sub-title", "desc", "category") and not (c.text or "").strip() or  # left empty by tidying
         c.tag == "icon" and (not re.match(r"https?://", c.get("src", ""), re.I) or PRIVATE_URL_RE.match(c.get("src", ""))))),
         key=lambda c: DTD_ORDER[c.tag])  # "/imgs/717.png" and a stranger's home server can't load
+
+
+def full_details(kids, slim):
+    """The playlist guide's show: the slim show plus the cast, pictures and ratings - only tags strict players take."""
+    extra = [k for k in kids if k.tag in SLIM_TAGS and k.tag in DTD_ORDER]
+    for r in [c for c in extra if c.tag in ("rating", "star-rating") and c.find("value") is None]:
+        if (r.text or "").strip():  # "<rating>TV14</rating>": players read only <rating><value>
+            ET.SubElement(r, "value").text, r.text = r.text.strip(), None
+        else:
+            extra.remove(r)
+    return sorted(extra + slim, key=lambda c: DTD_ORDER.get(c.tag, 99))
 
 
 DTD_ORDER = {t: i for i, t in enumerate("title sub-title desc credits date category keyword language orig-language length icon "
@@ -1356,10 +1399,10 @@ def find_clock_outliers(read):
         for c, info in data.items():
             if isinstance(info, dict) and len(info.get("heads") or []) >= 4 and len(info.get("starts") or []) >= 4:
                 same.setdefault((tuple(info["heads"][:8]), tuple(info["starts"][:8])), []).append(c)
-        for key, codes in same.items():
+        for sched, codes in same.items():
             stations = sum(bool(STATION_CODE_RE.match(c)) for c in codes)
-            if len(codes) >= SMEAR_MIN and len(set(key[0])) >= 3 and stations * 2 < len(codes):
-                filler.add(key)
+            if len(codes) >= SMEAR_MIN and len(set(sched[0])) >= 3 and stations * 2 < len(codes):
+                filler.add(sched)
     for src, data in read:  # and every guide's copy of that filler: CTVU's "AR: Al Horreya TV" too
         for c, info in data.items():
             if filler and isinstance(info, dict) and len(info.get("heads") or []) >= 4 and len(info.get("starts") or []) >= 4 and (
@@ -3344,26 +3387,28 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
     # codes and names learned from your providers and playlists
     learned = {}  # their code -> (matched guide code, [their channel names])
     shifts, events = {}, []
-    prov_ids = {c["id"] for c in CFG.get("provider_channels") or [] if c.get("guide")}
-    for c in CFG.get("provider_channels") or []:
+    with LOCK:  # the editor may add or remove channels meanwhile
+        provs = [dict(c) for c in CFG.get("provider_channels") or []]
+        mine = [(ch, effective(ch)) for ch in CFG["channels"].values()]
+    prov_ids = {c["id"] for c in provs if c.get("guide")}
+    for c in provs:
         if c.get("guide"):
             learned.setdefault(c["id"], (c["guide"], []))[1].append(c["name"])
             if c.get("shift"):
                 shifts[c["id"]] = c["shift"]
         elif c.get("how") == "event":
             events.append(c)
-    for ch in CFG["channels"].values():
+    for ch, e in mine:
         if ch.get("missing"):
             continue  # gone from its playlist: its code may belong to another channel now
-        up, e = ch["up"], effective(ch)
+        up = ch["up"]
         if up.get("epg_id") and e.get("epg_id") and up["epg_id"] != e["epg_id"]:
             learned.setdefault(up["epg_id"], (e["epg_id"], []))[1].append(e["name"])
-    hand = {c["guide"] for c in CFG.get("provider_channels") or [] if c.get("manual") and c.get("guide")}
-    spare = {b for c in CFG.get("provider_channels") or [] if c.get("manual") for b in c.get("backups") or []}
-    hand |= {effective(ch)["epg_id"] for ch in CFG["channels"].values()
-                                               if ch.get("epg_mine") and effective(ch)["epg_id"]}
+    hand = {c["guide"] for c in provs if c.get("manual") and c.get("guide")}
+    spare = {b for c in provs if c.get("manual") for b in c.get("backups") or []}
+    hand |= {e["epg_id"] for ch, e in mine if ch.get("epg_mine") and e["epg_id"]}
     targets = hand | spare | {g for g, _ in learned.values()} | set(wanted)  # your own playlist's guides come along too
-    prov = [c for c in CFG.get("provider_channels") or [] if c.get("id")]
+    prov = [c for c in provs if c.get("id")]
     lite_codes = {c["id"] for c in prov} | set(learned)  # light guide: just the channels your providers carry
     prov_cc = {c["id"]: entry_country(c["name"], c.get("group", ""), c["id"]) or  # "Sky Sports Main Event" in "Sports": its guide says UK
                (lambda g: g if g in ("us", "uk", "ca") else "")(code_country(c.get("guide") or "")) for c in prov}
@@ -3655,8 +3700,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                     write(code, ET.tostring(el, encoding="unicode"), st > end_cut)
                     if code in pl_codes and st <= pl_end:
                         slim = list(el)
-                        el[:] = [k for k in kids if k.tag in SLIM_TAGS or any(k is s for s in slim)] + [
-                            s for s in slim if not any(s is k for k in kids)]
+                        el[:] = full_details(kids, slim)
                         pl_file.write(ET.tostring(el, encoding="unicode"))
                         el[:] = slim
                         pl_count += 1
@@ -3727,8 +3771,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
         fh.close()
         safe_replace(os.path.join(OUT, full_name(k) + ".tmp"), os.path.join(OUT, full_name(k)))
         sizes.append(f"{full_name(k)} {os.path.getsize(os.path.join(OUT, full_name(k))) >> 20} MB")
-    prov = CFG.get("provider_channels") or []
-    STATE["provider_live"] = sum(1 for c in prov if c.get("guide") and out.get(c["id"], {}).get("from") in live_from)
+    STATE["provider_live"] = sum(1 for c in provs if c.get("guide") and out.get(c["id"], {}).get("from") in live_from)
     STATE["universal"] = {"channels": len(clusters), "codes": len(out), "learned": len(learned), "shows": shows,
                           "real_channels": len(live_from)}
     log(f"Universal guide: {len(clusters)} real channels answering to {len(out)} codes "
@@ -3881,10 +3924,20 @@ def run_job(fn=None, *args):
                     return
             try:
                 job[0](*job[1])
+            except SystemExit as ex:  # the worker must keep running: or every later job waits forever
+                log(f"Stopped: {ex.code}")
             except Exception:
                 log("Error: " + traceback.format_exc().strip().splitlines()[-1])
                 traceback.print_exc()
-    threading.Thread(target=work, daemon=True).start()
+
+    def guarded():
+        try:
+            work()
+        except BaseException:
+            with JOB_LOCK:  # never stay "busy" with nobody working
+                STATE["busy"] = False
+            raise
+    threading.Thread(target=guarded, daemon=True).start()
 
 
 # ---------------------------------------------------------------- source health
@@ -4007,10 +4060,11 @@ def health_loop():
 
 
 def health_payload():
+    health = dict(HEALTH)  # a copy: the health check changes it from its own thread
     counts = {}
-    for h in HEALTH.values():
+    for h in health.values():
         counts[h["state"]] = counts.get(h["state"], 0) + 1
-    return {"health": HEALTH, "health_counts": counts, "health_events": HEALTH_EVENTS[-30:]}
+    return {"health": health, "health_counts": counts, "health_events": HEALTH_EVENTS[-30:]}
 
 
 def scheduler():
@@ -4188,8 +4242,15 @@ def publish():
     git("add", "data/config.json")
     if git("status", "--porcelain", "data/config.json"):
         git("commit", "-m", "Update channels and sources")
-    sync_from_github()
-    git("push", "-q", "origin", "refs/heads/main:refs/heads/main")
+    for attempt in range(3):
+        sync_from_github()
+        try:
+            git("push", "-q", "origin", "refs/heads/main:refs/heads/main")
+            break
+        except RuntimeError as ex:
+            if attempt == 2 or not re.search(r"rejected|fetch first|non-fast-forward", str(ex)):
+                raise
+            log("GitHub saved a newer copy meanwhile - getting it and publishing again")
     log("Published to GitHub - online links update in about 1-2 hours (GitHub rebuilds the whole guide)")
 
 
@@ -4304,7 +4365,7 @@ def api_state():
             "auto": AUTO["sources"], "auto_info": {
                 "known": AUTO["known"], "checked": len(AUTO["checked"]), "blocked": len(AUTO["blocked"]),
                 "last": AUTO["last_discovery"],
-                "recent": sorted(({"url": u, **c} for u, c in AUTO["checked"].items()),
+                "recent": sorted(({"url": u, **c} for u, c in list(AUTO["checked"].items())),
                                  key=lambda c: -c["t"])[:40]},
             "channels": chans, "busy": STATE["busy"], "log": STATE["log"][-40:],
             "last_refresh": CFG["last_refresh"], "last_build": STATE["last_build"],
@@ -4406,34 +4467,65 @@ def api_save_sources(sources):
     return [s["id"] for s in clean if s["id"] not in old]
 
 
+class Server(ThreadingHTTPServer):
+    allow_reuse_address = False  # a second copy must fail, not share the port
+
+    def handle_error(self, request, client_address):
+        if isinstance(sys.exc_info()[1], (ConnectionError, TimeoutError)):
+            return  # a player or browser closed the connection mid-download
+        super().handle_error(request, client_address)
+
+
+def port_owner(port=None, timeout=3):
+    """Who has the port: "ours" (Ultimate EPG answers), "starting" (takes calls, no answer yet), "other", or "none"."""
+    try:
+        with urllib.request.urlopen(f"http://127.0.0.1:{port or PORT}/", timeout=timeout) as r:
+            return "ours" if b"<title>Ultimate EPG</title>" in r.read(4096) else "other"
+    except urllib.error.HTTPError:
+        return "other"
+    except (TimeoutError, socket.timeout):
+        return "starting"
+    except urllib.error.URLError as ex:
+        return "starting" if isinstance(ex.reason, (TimeoutError, socket.timeout)) else "none"
+    except (OSError, ValueError):
+        return "none"
+
+
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
     def log_message(self, fmt, *args):
         pass
 
-    def send(self, code, body, ctype="application/json; charset=utf-8", extra=None):
-        if isinstance(body, (dict, list)):
-            body = json.dumps(body, ensure_ascii=False)
-        if isinstance(body, str):
-            body = body.encode("utf-8")
+    def head(self, code, ctype, length, extra=None):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
-        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Content-Length", str(length))
         if not self.path.startswith("/api"):
             self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Cache-Control", "no-cache")
         for k, v in (extra or {}).items():
             self.send_header(k, v)
         self.end_headers()
+
+    def send(self, code, body, ctype="application/json; charset=utf-8", extra=None):
+        if isinstance(body, (dict, list)):
+            body = json.dumps(body, ensure_ascii=False)
+        if isinstance(body, str):
+            body = body.encode("utf-8")
+        self.head(code, ctype, len(body), extra)
         if self.command != "HEAD":
             self.wfile.write(body)
 
     def send_file(self, path, ctype):
-        if not os.path.exists(path):
+        try:
+            f = open_shared(path)
+        except FileNotFoundError:
             return self.send(404, "Not built yet - add sources and press Refresh.", "text/plain")
-        with open(path, "rb") as f:
-            self.send(200, f.read(), ctype)
+        with f:
+            self.head(200, ctype, os.fstat(f.fileno()).st_size)
+            if self.command != "HEAD":
+                shutil.copyfileobj(f, self.wfile, 1 << 20)
 
     def base_url(self):
         return "http://" + (self.headers.get("Host") or f"{lan_ip()}:{PORT}")
@@ -4654,9 +4746,11 @@ def main():
         base = os.environ.get("PUBLIC_URL") or CFG["settings"]["public_url"] or "http://localhost"
         return build_site(args[0] if args else "site", base)
     try:  # before anything else: a second copy must stop here
-        ThreadingHTTPServer.allow_reuse_address = False  # a second copy must fail, not share the port
-        srv = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    except OSError:
+        srv = Server(("0.0.0.0", PORT), Handler)
+    except OSError as ex:
+        if port_owner() not in ("ours", "starting"):
+            raise SystemExit(f"Port {PORT} can't be used ({ex.strerror or ex}).\n\nAnother program is using it, or Windows "
+                             f"keeps it for itself. Close that program, or set EPG_PORT to another number (for example 8788).")
         print(f"Port {PORT} is busy - Ultimate EPG is probably already running.")
         print(f"Open http://localhost:{PORT} in your browser.")
         if "--open" in sys.argv:

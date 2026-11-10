@@ -98,9 +98,34 @@ jobs:
       - id: deploy1   # GitHub sometimes takes over 10 min to publish the site, and 10 min is this action's maximum wait
         uses: actions/deploy-pages@v5
         continue-on-error: true
-      - id: deploy2   # so a timed-out try is tried once more
+      - id: deploy2   # so a timed-out try is tried once more, waiting up to 25 min
         if: steps.deploy1.outcome == 'failure'
-        uses: actions/deploy-pages@v5
+        uses: actions/github-script@v8
+        with:
+          script: |
+            // GitHub cancels the timed-out try. A new try needs its own version name: with the same one
+            // GitHub hands back the cancelled try, so a second deploy-pages step never worked.
+            const {owner, repo} = context.repo;
+            const arts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts,
+                                               {owner, repo, run_id: context.runId, per_page: 100});
+            const art = arts.find(a => a.name === 'github-pages');
+            if (!art) throw new Error('The site upload (github-pages) was not found');
+            const version = `${context.sha}-retry-${process.env.GITHUB_RUN_ATTEMPT || 1}`;
+            const {data: dep} = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              owner, repo, artifact_id: art.id, pages_build_version: version, oidc_token: await core.getIDToken()});
+            const id = dep.id || (dep.status_url || '').split('/').pop() || version;  // as deploy-pages does
+            core.info(`Second try started: ${id}`);
+            const failed = ['deployment_failed', 'deployment_content_failed', 'deployment_cancelled', 'deployment_lost'];
+            const end = Date.now() + 25 * 60 * 1000;
+            while (Date.now() < end) {
+              await new Promise(r => setTimeout(r, 15000));
+              const {data: st} = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{id}', {owner, repo, id});
+              core.info(`Status: ${st.status}`);
+              if (st.status === 'succeed') { core.setOutput('page_url', dep.page_url); return; }
+              if (failed.includes(st.status)) throw new Error(`Publishing failed: ${st.status}`);
+            }
+            await github.request('POST /repos/{owner}/{repo}/pages/deployments/{id}/cancel', {owner, repo, id}).catch(() => {});
+            throw new Error('Publishing took over 25 minutes');
       - id: deploy
         name: Published?
         env:
