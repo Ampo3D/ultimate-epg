@@ -4334,7 +4334,9 @@ def lan_ip():
 
 def api_state():
     with LOCK:
-        output_channels()  # refreshes which channels are duplicates
+        lineup = output_channels()  # also refreshes which channels are duplicates
+        active = {s["id"] for s in all_sources() if s.get("enabled", True)} | {"custom"}
+        removed = {s["id"] for s in CFG["sources"] if is_removed(s)}
         names = {s["id"]: s["name"] for s in CFG["sources"]}
         names["custom"] = "Custom"
         chans = []
@@ -4343,18 +4345,20 @@ def api_state():
             e.update(key=ch["key"], source=ch["source"], source_name=names.get(ch["source"], "?"),
                      missing=bool(ch.get("missing")), order=ch["order"],
                      edited=sorted(ch.get("ov", {}).keys()), duplicate=ch["key"] in DUPES,
+                     inactive="removed" if ch["source"] in removed else "" if ch["source"] in active else "off",
                      guide="real" if e["epg_id"] in EPG_INDEX else
                            ("dummy" if CFG["settings"]["dummy_epg"] else "none"))
             chans.append(e)
         chans.sort(key=lambda c: c["order"])
         return {
-            "settings": CFG["settings"], "status": CFG["status"],
+            "settings": CFG["settings"], "status": CFG["status"], "lineup": len(lineup), "countries": priority_list(),
             "sources": [{**x, "country": guess_country(x["url"], x["name"])} for x in CFG["sources"]],
             **health_payload(),
             "universal": STATE.get("universal"),
             "provider": {
                 "names": [x.get("name", "Provider") for x in PRIVATE.get("providers", [])],
-                "per": {x.get("name", "Provider"): sum(1 for c in CFG["provider_channels"] if c.get("prov") == x.get("label"))
+                "per": {x.get("name", "Provider"): sum(1 for c in CFG["provider_channels"]
+                                                       if c.get("prov") == x.get("label") and c.get("how") != "event")
                         for x in PRIVATE.get("providers", [])},
                 "count": sum(1 for c in CFG["provider_channels"] if c.get("how") != "event"),
                 "events": sum(1 for c in CFG["provider_channels"] if c.get("how") == "event"),
@@ -4432,7 +4436,9 @@ def api_delete_channels(keys):
         save_config()
 
 
-def api_save_sources(sources):
+def api_save_sources(sources, base=None):
+    """base: the source ids the page started from. Sources added since (a scheduled refresh adds priority-country
+    sources, Keep adds an auto-found guide) were never shown to the user, so leaving them out is not deleting them."""
     with LOCK:
         old = {s["id"] for s in CFG["sources"]}
         before = {s["id"]: s for s in CFG["sources"]}
@@ -4446,6 +4452,9 @@ def api_save_sources(sources):
                           "type": "xmltv" if s.get("type") == "xmltv" else "m3u",
                           "name": s.get("name") or "Source", "url": s["url"].strip(),
                           "enabled": bool(s.get("enabled", True))})
+        if base is not None:
+            sent = {s["id"] for s in clean}
+            clean += [dict(s) for s in CFG["sources"] if s["id"] not in base and s["id"] not in sent]
         removed = {s["url"] for s in CFG["sources"]} - {s["url"] for s in clean}
         CFG["dismissed"] = sorted(set(CFG["dismissed"]) | {u for u in removed if u in CATALOG_COUNTRY})
         CFG["sources"] = clean
@@ -4571,6 +4580,18 @@ class Handler(BaseHTTPRequestHandler):
         self.send(404, {"error": "not found"})
 
     def do_POST(self):
+        try:
+            self.post()
+        except (ConnectionError, TimeoutError):
+            raise
+        except Exception as ex:
+            log("Error: " + traceback.format_exc().strip().splitlines()[-1])
+            try:
+                self.send(500, {"ok": False, "error": f"Ultimate EPG hit an error: {ex}"})
+            except OSError:
+                pass
+
+    def post(self):
         p = urlparse(self.path).path
         if not self.from_this_pc():
             return self.send(403, {"error": "only available on this PC"})
@@ -4586,13 +4607,15 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(200, {"ok": False, "error": "A source link holds a login. config.json is public, so it can't be "
                                                          "stored here - add it under My providers instead."})
         if p == "/api/sources":
-            new = api_save_sources(body.get("sources", []))
+            base = body.get("base")
+            new = api_save_sources(body.get("sources", []), {str(x) for x in base} if isinstance(base, list) else None)
             if new:  # download freshly added sources straight away
                 run_job(refresh, set(new))
             else:
                 run_job()
             return self.send(200, {"ok": True})
         if p == "/api/settings":
+            rejected, lowered = [], []
             with LOCK:
                 for k, v in body.items():
                     if k not in DEFAULT_SETTINGS:
@@ -4603,18 +4626,31 @@ class Handler(BaseHTTPRequestHandler):
                     if kind is bool:
                         v = v.lower() in ("true", "1", "yes", "on") if isinstance(v, str) else bool(v)
                     else:
+                        why = ""
                         try:
-                            v = kind(v)
+                            n = float(v) if kind in (int, float) else kind(v)
+                            if kind is int and n == n and abs(n) != float("inf") and n != int(n):
+                                why = "must be a whole number"
+                            v = kind(n) if kind is int and not why else n
                         except (TypeError, ValueError, OverflowError):
+                            why = "must be a number" if kind in (int, float) else "is not valid"
+                        if not why and kind in (int, float):
+                            if v != v or v == float("inf"):
+                                why = "must be a number"
+                            elif v < 0:
+                                why = "can't be below 0"
+                            elif v == 0 and k in MUST_BE_POSITIVE:
+                                why = "must be 1 or more"
+                        if why:
+                            rejected.append({"key": k, "value": str(body[k]), "why": why})
                             continue
-                        if kind in (int, float):
-                            if v != v or v < 0 or v == float("inf") or (v == 0 and k in MUST_BE_POSITIVE):
-                                continue
-                            v = min(v, SETTING_MAX.get(k, v))
+                        if kind in (int, float) and v > SETTING_MAX.get(k, v):
+                            v = SETTING_MAX[k]
+                            lowered.append({"key": k, "value": str(body[k]), "to": v})
                     CFG["settings"][k] = v
                 save_config()
             run_job()
-            return self.send(200, {"ok": True})
+            return self.send(200, {"ok": True, "rejected": rejected, "lowered": lowered})
         if p in ("/api/channels", "/api/channels/add") and any(
                 LOGIN_URL_RE.search(it.get("url") or "") for it in (body.get("channels") or [body])):
             return self.send(200, {"ok": False, "error": "This link holds a login. config.json is public, so it can't be "

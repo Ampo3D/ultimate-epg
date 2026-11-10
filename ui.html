@@ -75,7 +75,23 @@ dialog h2{margin:0 0 14px;font-size:16px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--dim)}
 .hide{display:none!important}
 .quick{display:flex;gap:6px;flex-wrap:wrap}
-@media(max-width:800px){.src-row{grid-template-columns:1fr 1fr}.src-row .url{grid-column:1/-1}th{top:0}}
+.src-row>*,.res div,.banner{overflow-wrap:anywhere;min-width:0}
+button.b:disabled{opacity:.5;cursor:default}button.b:disabled:hover{border-color:var(--line)}
+th.w-sel{width:28px}th.w-on{width:34px}th.w-num{width:70px}th.w-logo{width:44px}th.w-grp{width:18%}th.w-epg{width:24%}th.w-src{width:120px}th.w-ed{width:50px}
+tr.inactive td:not(:first-child){opacity:.45}
+@media(max-width:800px){
+  .src-row{grid-template-columns:1fr 1fr}.src-row .url{grid-column:1/-1}
+  header{position:static;padding:10px 12px;gap:8px}  /* a sticky header took a quarter of a phone screen and hid the table headings */
+  th{top:0}
+  main{padding:12px}
+  .links .row{flex-wrap:wrap}.links .row>span{width:100%!important}.links input{flex:1 1 180px}
+}
+@media(max-width:640px){
+  .tw{overflow-x:auto}  /* the table scrolls sideways by itself; the page keeps the screen width */
+  .tw table{min-width:640px}
+  .c-logo,.c-src{display:none}
+  th.w-grp{width:22%}th.w-epg{width:30%}
+}
 </style>
 </head>
 <body>
@@ -106,6 +122,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
       <option value="noguide">No real guide</option>
       <option value="edited">Edited by me</option>
       <option value="missing">Gone from source</option>
+      <option value="inactive">Not in playlist (source removed or off)</option>
       <option value="dupes">Duplicates (hidden)</option>
     </select>
     <button class="b" onclick="openAdd()">+ Add 24/7 / custom channel</button>
@@ -126,15 +143,15 @@ dialog h2{margin:0 0 14px;font-size:16px}
       <button class="b" onclick="sel.clear();renderTable()">Clear</button>
     </span>
   </div>
-  <table>
+  <div class="tw"><table>
     <thead><tr>
-      <th style="width:28px"><input type="checkbox" id="selAll" title="Select all shown"></th>
-      <th style="width:34px">On</th><th style="width:70px">#</th><th style="width:44px"></th>
-      <th>Name</th><th style="width:18%">Group</th><th style="width:24%">Guide (EPG id)</th>
-      <th style="width:120px">Source</th><th style="width:50px"></th>
+      <th class="w-sel"><input type="checkbox" id="selAll" title="Select all shown"></th>
+      <th class="w-on">On</th><th class="w-num">#</th><th class="w-logo c-logo"></th>
+      <th>Name</th><th class="w-grp">Group</th><th class="w-epg">Guide (EPG id)</th>
+      <th class="w-src c-src">Source</th><th class="w-ed"></th>
     </tr></thead>
     <tbody id="rows"></tbody>
-  </table>
+  </table></div>
   <div class="bar" style="justify-content:center;margin-top:10px"><button class="b hide" id="more" onclick="shown+=300;renderTable()">Show more</button></div>
 </section>
 
@@ -150,7 +167,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
       <input id="provName" placeholder="Name (e.g. Provider A)" style="width:180px">
       <input id="provUrl" type="password" placeholder="Provider M3U link (http://…/get.php?username=…)" style="flex:1;min-width:220px" autocomplete="off">
       <button class="b" onclick="const u=$('provUrl');u.type=u.type==='password'?'text':'password'">👁</button>
-      <button class="b p" onclick="saveProvider()">+ Add provider</button>
+      <button class="b p" id="provAddBtn" onclick="saveProvider()">+ Add provider</button>
     </div>
     <div id="provInfo" class="muted small"></div>
     <div id="provLinks" class="links"></div>
@@ -162,7 +179,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
     <h2>Source health</h2>
     <div class="bar"><span id="healthSummary" class="muted small"></span><span style="flex:1"></span>
       <button class="b" id="notifyBtn" onclick="enableAlerts()">🔔 Pop-up alerts</button>
-      <button class="b" onclick="checkNow()">Check all now</button></div>
+      <button class="b" onclick="act(this, checkNow)">Check all now</button></div>
     <p class="muted small" style="margin:0 0 8px">
       <span class="hl healthy">Working</span> answers and has data ·
       <span class="hl stale">Out of date</span> answers but its guide has no upcoming shows ·
@@ -183,14 +200,14 @@ dialog h2{margin:0 0 14px;font-size:16px}
       <button class="b" onclick="addSource('m3u')">+ Playlist (M3U)</button>
       <button class="b" onclick="addSource('xmltv')">+ Guide (XMLTV)</button>
       <span style="flex:1"></span>
-      <button class="b p" onclick="saveSources()">Save sources</button>
+      <button class="b p" id="saveSrcBtn" onclick="act(this, saveSources)">Save sources</button>
     </div>
   </div>
   <div class="card">
     <h2>🔎 Auto-found guides</h2>
     <p class="muted small" style="margin-top:0">Every time the sources update, Ultimate EPG searches the internet (guide websites and GitHub) for guides covering any channel that still has no guide, tests them, and adds the ones that work. Guides that stop working are removed automatically.</p>
     <div class="bar"><span class="muted small" id="autoInfo"></span><span style="flex:1"></span>
-      <button class="b" onclick="post('/api/discover',{}).then(poll)">Search for guides now</button></div>
+      <button class="b" onclick="act(this, () => post('/api/discover', {}).then(poll))">Search for guides now</button></div>
     <div id="autoList"></div>
     <details style="margin-top:10px"><summary class="muted small" style="cursor:pointer">Recently checked guides</summary><div id="autoRecent" class="res"></div></details>
   </div>
@@ -212,7 +229,7 @@ dialog h2{margin:0 0 14px;font-size:16px}
     <h2>☁ Online links — work even when this PC is off</h2>
     <div id="onlineRows"></div>
     <p class="muted small" id="onlineHelp"></p>
-    <button class="b p hide" id="setupBtn" onclick="post('/api/setup-github',{});alert('A setup window opened. Follow the steps there (it asks you to sign in to GitHub). When it says Done, come back and refresh this page.')">☁ Put it online (free GitHub account)</button>
+    <button class="b p hide" id="setupBtn" onclick="act(this, () => post('/api/setup-github', {}).then(() => alert('A setup window opened. Follow the steps there (it asks you to sign in to GitHub). When it says Done, come back and refresh this page.')))">☁ Put it online (free GitHub account)</button>
   </div>
   <div class="card links">
     <h2>Home links — paste these into any IPTV player</h2>
@@ -223,14 +240,14 @@ dialog h2{margin:0 0 14px;font-size:16px}
     <h2>Settings</h2>
     <div class="grid2">
       <label class="f">Re-download sources every (hours, 0 = never)<input type="number" min="0" id="s_refresh_hours"></label>
-      <label class="f">Priority countries, most important first (their sources are added automatically)<input id="s_priority_countries" placeholder="US,GB,CA"></label>
+      <label class="f">Priority countries, most important first (their sources are added automatically)<input id="s_priority_countries" placeholder="US,UK,CA"></label>
       <label class="f">Days of guide to keep<input type="number" min="1" max="14" id="s_days"></label>
       <label class="f">Days in the any-provider guides<input type="number" min="1" max="7" id="s_full_guide_days"></label>
       <label class="f">Remove a dead source automatically after (hours, 0 = never)<input type="number" min="0" id="s_dead_remove_hours"></label>
       <label class="f">Remove an out-of-date guide automatically after (hours, 0 = never)<input type="number" min="0" id="s_stale_remove_hours"></label>
       <label class="f">Placeholder guide block length (hours)<input type="number" min="1" max="24" id="s_dummy_hours"></label>
-      <label class="f">Guides to test per search<input type="number" min="1" max="200" id="s_discover_per_run"></label>
-      <label class="f">Skip guides bigger than (MB download)<input type="number" min="5" max="500" id="s_discover_max_mb"></label>
+      <label class="f">Guides to test per search<input type="number" min="1" max="500" id="s_discover_per_run"></label>
+      <label class="f">Skip guides bigger than (MB download)<input type="number" min="1" id="s_discover_max_mb"></label>
       <div style="display:flex;flex-direction:column;gap:8px;justify-content:center">
         <label class="c"><input type="checkbox" id="s_dummy_epg"> Placeholder guide for channels without one (24/7)</label>
         <label class="c"><input type="checkbox" id="s_new_enabled"> Newly found channels start enabled</label>
@@ -241,11 +258,11 @@ dialog h2{margin:0 0 14px;font-size:16px}
       </div>
     </div>
     <div class="bar" style="margin-top:14px">
-      <button class="b p" onclick="saveSettings()">Save settings</button>
-      <button class="b" onclick="refreshAll()">Re-download all sources now</button>
-      <button class="b" onclick="post('/api/build',{}).then(poll)">Rebuild output</button>
+      <button class="b p" id="saveSetBtn" onclick="saveSettings()">Save settings</button>
+      <button class="b" onclick="act(this, refreshAll)">Re-download all sources now</button>
+      <button class="b" onclick="act(this, () => post('/api/build', {}).then(poll))">Rebuild output</button>
       <span style="flex:1"></span>
-      <button class="b d" onclick="if(confirm('Stop Ultimate EPG? Your home links stop working until you open it again from the desktop icon.')){post('/api/quit',{});document.body.innerHTML='<p style=&quot;padding:40px&quot;>Ultimate EPG is stopped. Open it again from the Ultimate EPG icon on your desktop.</p>'}">Stop Ultimate EPG</button>
+      <button class="b d" onclick="if(confirm('Stop Ultimate EPG? Your home links stop working until you open it again from the desktop icon.'))act(this, () => post('/api/quit', {}).then(() => document.body.innerHTML='<p style=&quot;padding:40px&quot;>Ultimate EPG is stopped. Open it again from the Ultimate EPG icon on your desktop.</p>'))">Stop Ultimate EPG</button>
     </div>
   </div>
   <div class="card">
@@ -291,14 +308,34 @@ dialog h2{margin:0 0 14px;font-size:16px}
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let S = null, byKey = {}, dirty = {}, sel = new Set(), shown = 300, srcDraft = null, srcBase = '', filtered = [];
+let S = null, byKey = {}, dirty = {}, sel = new Set(), shown = 300, srcDraft = null, srcBase = '', filtered = [], saving = false;
+const clone = x => JSON.parse(JSON.stringify(x));
 
+/* Every request to the app: an error answer, ok:false or no answer at all becomes an exception with a readable message. */
 async function post(path, body) {
-  const r = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
-  return r.json();
+  let r;
+  try {
+    r = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  } catch (e) {
+    throw new Error('Ultimate EPG did not answer - is it still running? (' + e.message + ')');
+  }
+  let j = {};
+  try { j = await r.json(); } catch (e) { /* no JSON in the answer */ }
+  if (!r.ok || j.ok === false) throw new Error(j.error || `Ultimate EPG answered with an error (${r.status})`);
+  return j;
 }
+/* A button action: the button is off until it finishes (no double clicks), and any error is shown. */
+async function act(btn, fn) {
+  if (btn) { if (btn.dataset.busy) return; btn.dataset.busy = 1; btn.disabled = true; }
+  try { return await fn(); }
+  catch (e) { alert(e.message); }
+  finally { if (btn) { delete btn.dataset.busy; btn.disabled = false; } }
+}
+window.addEventListener('unhandledrejection', e => alert('Something went wrong: ' + (e.reason?.message || e.reason)));
+const srcDirty = () => !!srcDraft && JSON.stringify(srcDraft) !== srcBase;
 async function load() {
-  S = await (await fetch('/api/state')).json();
+  const s = await (await fetch('/api/state')).json();
+  S = s;
   byKey = {};
   for (const c of S.channels) {
     if (dirty[c.key]) Object.assign(c, dirty[c.key]);
@@ -306,7 +343,12 @@ async function load() {
   }
   for (const k of [...sel]) if (!byKey[k]) sel.delete(k);
   for (const k of Object.keys(dirty)) if (!byKey[k]) delete dirty[k];
-  if (!srcDraft) { srcDraft = JSON.parse(JSON.stringify(S.sources)); srcBase = JSON.stringify(S.sources); }
+  if (!srcDraft) { srcDraft = clone(S.sources); srcBase = JSON.stringify(S.sources); }
+  else {  // unsaved source edits: take in sources the app added meanwhile (a kept guide, a scheduled refresh)
+    const base = JSON.parse(srcBase), known = new Set([...base, ...srcDraft].map(x => x.id));
+    const added = S.sources.filter(x => !known.has(x.id));
+    if (added.length) { srcDraft.push(...clone(added)); srcBase = JSON.stringify([...base, ...clone(added)]); }
+  }
   renderAll();
 }
 let pollT = null;
@@ -315,7 +357,7 @@ const H_WORD = {healthy: 'Working', stale: 'Out of date', dead: 'Dead', checking
 function renderProvider() {
   const pv = S.provider || {count: 0, names: [], unmatched: [], per: {}};
   $('provList').innerHTML = pv.names.map((n, i) => `<div class="src-row" style="grid-template-columns:1fr auto">
-      <span><b>${esc(n)}</b> <span class="hdetail">${(pv.per || {})[n] || 0} live channels · link saved privately on this PC</span></span>
+      <span><b>${esc(n)}</b> <span class="hdetail">${(pv.per || {})[n] || 0} channels · link saved privately on this PC</span></span>
       <button class="b d" data-prem="${i}">Remove</button></div>`).join('');
   const pct = pv.count ? Math.round(100 * pv.matched / pv.count) : 0;
   const u = S.universal;
@@ -325,7 +367,7 @@ function renderProvider() {
     : (pv.names.length ? 'Reading your provider lists…' : 'No providers added yet — the universal guide still works; adding providers makes it match them even better.')) +
     (u ? `<br>Universal guide: <b>${u.channels.toLocaleString()}</b> real channels answering to <b>${u.codes.toLocaleString()}</b> channel codes (${u.learned.toLocaleString()} learned from your providers and playlists)` : '');
   const pu = S.settings.public_url;
-  $('provLinks').innerHTML = [[pu ? 'Universal guide — any player, any provider' : 'Universal guide (this PC)', (pu || location.origin) + '/epg-full.xml.gz']]
+  $('provLinks').innerHTML = !S.settings.full_guide ? '' : [[pu ? 'Universal guide — any player, any provider' : 'Universal guide (this PC)', (pu || location.origin) + '/epg-full.xml.gz']]
     .map(([l, x]) => `<div class="row"><span style="width:200px" class="small"><b>${l}</b></span><input readonly value="${x}"><button class="b" onclick="navigator.clipboard.writeText('${x}');this.textContent='Copied'">Copy</button></div>`).join('');
   $('provMissDetails').classList.toggle('hide', !pv.count);
   $('provMissTitle').textContent = `Provider channels without a guide (${pv.count - pv.matched}) — press Find to pick one`;
@@ -342,15 +384,17 @@ $('provMiss').addEventListener('click', e => {
 $('provList').addEventListener('click', async e => {
   const i = e.target.dataset.prem; if (i == null) return;
   if (!confirm('Remove this provider? Its private link is deleted from this PC.')) return;
-  await post('/api/provider', {remove: +i}); poll();
+  act(e.target, () => post('/api/provider', {remove: +i}).then(poll));
 });
-async function saveProvider() {
-  const url = $('provUrl').value.trim();
-  if (!url) return alert('Paste a provider M3U link first.');
-  await post('/api/provider', {name: $('provName').value.trim(), url});
-  $('provUrl').value = ''; $('provName').value = '';
-  $('provInfo').textContent = 'Reading your provider lists and teaching the universal guide… (a minute or two)';
-  poll();
+function saveProvider() {
+  return act($('provAddBtn'), async () => {
+    const url = $('provUrl').value.trim();
+    if (!url) return alert('Paste a provider M3U link first.');
+    await post('/api/provider', {name: $('provName').value.trim(), url});
+    $('provUrl').value = ''; $('provName').value = '';
+    $('provInfo').textContent = 'Reading your provider lists and teaching the universal guide… (a minute or two)';
+    poll();
+  });
 }
 function renderRemoved() {
   const r = S.removed || [];
@@ -362,14 +406,14 @@ function renderRemoved() {
 }
 $('removedList').addEventListener('click', async e => {
   const u = e.target.dataset.restore;
-  if (u) { await post('/api/restore', {url: u}); srcDraft = null; poll(); }
+  if (u) act(e.target, () => post('/api/restore', {url: u}).then(poll));  // unsaved source edits stay
 });
 function ago(t) {
   const m = Math.round((Date.now() / 1000 - t) / 60);
   return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`;
 }
 function renderHealth() {
-  const H = S.health || {}, all = [...S.sources, ...S.auto];
+  const H = S.health || {}, all = [...new Map([...S.sources, ...S.auto].map(s => [s.id, s])).values()];  // a kept guide is in both
   document.querySelectorAll('[data-h]').forEach(el => {
     const h = H[el.dataset.h];
     if (!h) { el.innerHTML = '<span class="hl checking">Checking…</span>'; return; }
@@ -413,34 +457,47 @@ async function checkNow() {
   $('healthChip').className = 'hl checking'; $('healthChip').textContent = 'Checking sources…';
   setTimeout(live, 4000);
 }
+function notRunning() {
+  if (!$('healthChip')) return;
+  $('healthChip').className = 'hl dead'; $('healthChip').textContent = 'Ultimate EPG is not running';
+}
 async function live() {
-  try {
-    const r = await (await fetch('/api/state?lite=1')).json();
-    Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events, status: r.status});
-    renderHealth();
-    if (r.busy && !S.busy) poll();
-  } catch (e) {
-    if (!$('healthChip')) return;
-    $('healthChip').className = 'hl dead'; $('healthChip').textContent = 'Ultimate EPG is not running';
-  }
+  if (!S) return;  // the page is still loading (the app can be busy for minutes): nothing to update yet
+  let r;
+  try { r = await (await fetch('/api/state?lite=1')).json(); } catch (e) { return notRunning(); }
+  Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events, status: r.status});
+  renderHealth();
+  if (r.busy && !S.busy) poll();
 }
 setInterval(live, 10000);
 $('healthChip').onclick = () => document.querySelector('[data-tab=sources]').click();
 
 async function poll() {
   clearTimeout(pollT);
-  const r = await (await fetch('/api/state?lite=1')).json();
-  S.busy = r.busy; S.log = r.log; S.status = r.status; S.last_build = r.last_build;
-  Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events});
-  renderStatus(); renderLog(); renderHealth();
-  if (r.busy) pollT = setTimeout(poll, 1500);
-  else { if (srcDraft && JSON.stringify(srcDraft) === srcBase) srcDraft = null; await load(); }  // keep unsaved source edits
+  if (!S) return;
+  try {
+    const r = await (await fetch('/api/state?lite=1')).json();
+    S.busy = r.busy; S.log = r.log; S.status = r.status; S.last_build = r.last_build;
+    Object.assign(S, {health: r.health, health_counts: r.health_counts, health_events: r.health_events});
+    renderStatus(); renderLog(); renderHealth();
+    if (r.busy) pollT = setTimeout(poll, 1500);
+    else { if (!srcDirty()) srcDraft = null; await load(); }  // keep unsaved source edits
+  } catch (e) {
+    notRunning(); pollT = setTimeout(poll, 5000);
+  }
 }
 
-function renderAll() { renderStatus(); renderFilters(); renderTable(); renderSources(); renderAuto(); renderRemoved(); renderProvider(); renderLinks(); renderLog(); renderHealth(); }
+/* A refresh never redraws a list while you are typing in it (that threw the text away): it waits until you leave it. */
+const pending = {};
+function typingIn(id) { const a = document.activeElement; return a && $(id).contains(a) && a.matches('input:not([type=checkbox]),select,textarea'); }
+function later(id, fn) { if (typingIn(id)) pending[id] = fn; else { delete pending[id]; fn(); } }
+['rows', 'srcList'].forEach(id => $(id).addEventListener('focusout', e => {
+  if (pending[id] && !$(id).contains(e.relatedTarget)) setTimeout(() => { const f = pending[id]; if (f && !typingIn(id)) { delete pending[id]; f(); } });
+}));
+function renderAll() { renderStatus(); renderFilters(); later('rows', renderTable); later('srcList', renderSources); renderAuto(); renderRemoved(); renderProvider(); renderLinks(); renderLog(); renderHealth(); }
 
 function renderStatus() {
-  const n = S.channels.filter(c => c.enabled && !c.missing && !c.duplicate).length;
+  const n = S.lineup ?? S.channels.filter(c => c.enabled && !c.missing && !c.duplicate && !c.inactive).length;
   $('status').innerHTML = S.busy
     ? '<span class="spin"></span> ' + esc((S.log.at(-1) || 'Working…').slice(9))
     : `${n} channels in your lineup · ${S.epg_count} guide channels available` +
@@ -462,7 +519,8 @@ function matches(c) {
   if (q && !(c.name + ' ' + c.epg_id + ' ' + c.group).toLowerCase().includes(q)) return false;
   if (g !== '*' && (c.group || '') !== g) return false;
   if (s !== '*' && c.source !== s) return false;
-  if (v === 'on' && (!c.enabled || c.missing)) return false;
+  if (v === 'on' && (!c.enabled || c.missing || c.inactive)) return false;
+  if (v === 'inactive' && !c.inactive) return false;
   if (v === 'off' && c.enabled) return false;
   if (v === 'noguide' && c.guide === 'real') return false;
   if (v === 'edited' && !c.edited.length && !dirty[c.key]) return false;
@@ -476,27 +534,33 @@ function renderTable() {
   filtered = S.channels.filter(matches);
   const list = filtered.slice(0, shown);
   $('rows').innerHTML = list.map(c => `
-    <tr data-k="${c.key}" class="${c.enabled ? '' : 'off'} ${dirty[c.key] ? 'dirty' : ''}">
+    <tr data-k="${c.key}" class="${c.enabled ? '' : 'off'} ${c.inactive ? 'inactive' : ''} ${dirty[c.key] ? 'dirty' : ''}">
       <td><input type="checkbox" class="sel" ${sel.has(c.key) ? 'checked' : ''}></td>
       <td><input type="checkbox" data-f="enabled" ${c.enabled ? 'checked' : ''}></td>
       <td class="num"><input data-f="number" value="${esc(c.number)}"></td>
-      <td>${c.logo ? `<img class="logo" loading="lazy" src="${esc(c.logo)}" onerror="this.style.visibility='hidden'">` : ''}</td>
+      <td class="c-logo">${c.logo ? `<img class="logo" loading="lazy" src="${esc(c.logo)}" onerror="this.style.visibility='hidden'">` : ''}</td>
       <td><input data-f="name" value="${esc(c.name)}"></td>
       <td><input data-f="group" list="groupList" value="${esc(c.group)}"></td>
       <td><span class="epg"><i class="dot ${c.guide}" title="${c.guide === 'real' ? 'Real guide found' : c.guide === 'dummy' ? 'Placeholder guide' : c.guide === 'pending' ? 'Guide picked - press Save' : 'No guide'}"></i>
         <input data-f="epg_id" value="${esc(c.epg_id)}" placeholder="—"><button class="b" data-find title="Find guide">🔍</button></span></td>
-      <td><span class="tag ${c.missing ? 'bad' : ''}" title="${c.missing ? 'No longer in this source' : ''}">${esc(c.source_name)}${c.missing ? ' (gone)' : ''}</span>${c.duplicate ? '<br><span class="tag" title="Same channel exists in a higher-priority source, so this copy is left out of your playlist">duplicate</span>' : ''}</td>
+      <td class="c-src"><span class="tag ${c.missing ? 'bad' : ''}" title="${c.missing ? 'No longer in this source' : ''}">${esc(c.source_name)}${c.missing ? ' (gone)' : ''}</span>${c.duplicate ? '<br><span class="tag" title="Same channel exists in a higher-priority source, so this copy is left out of your playlist">duplicate</span>' : ''}${
+        c.inactive === 'removed' ? '<br><span class="tag bad" title="This source was taken out of use automatically (see Sources), so the channel is not in your playlist now">source removed</span>'
+        : c.inactive ? '<br><span class="tag" title="You switched this source off (see Sources), so the channel is not in your playlist">source off</span>' : ''}</td>
       <td><button class="b" data-edit title="All fields">✎</button></td>
     </tr>`).join('');
   $('more').classList.toggle('hide', filtered.length <= shown);
   $('count').textContent = `Showing ${list.length} of ${filtered.length}` + (filtered.length !== S.channels.length ? ` (filtered from ${S.channels.length})` : '');
-  const nd = Object.keys(dirty).length;
-  $('saveBtn').disabled = !nd; $('saveBtn').textContent = nd ? `Save ${nd} change${nd > 1 ? 's' : ''}` : 'Save changes';
+  saveBtnState();
   $('selTools').classList.toggle('hide', !sel.size);
   $('selCount').textContent = `${sel.size} selected`;
   $('selAll').checked = list.length && list.every(c => sel.has(c.key));
 }
 
+function saveBtnState() {
+  const nd = Object.keys(dirty).length;
+  $('saveBtn').disabled = !nd || saving;
+  $('saveBtn').textContent = saving ? 'Saving…' : nd ? `Save ${nd} change${nd > 1 ? 's' : ''}` : 'Save changes';
+}
 function setField(key, f, v) {
   const c = byKey[key];
   if (c[f] === v) return;
@@ -505,11 +569,17 @@ function setField(key, f, v) {
   if (f === 'epg_id') c.guide = v ? 'pending' : (S.settings.dummy_epg ? 'dummy' : 'none');
 }
 
+$('rows').addEventListener('input', e => {  // every key press counts, so a refresh or Save can't lose half-typed text
+  const tr = e.target.closest('tr'), f = e.target.dataset.f;
+  if (!tr || !f || e.target.type === 'checkbox') return;
+  setField(tr.dataset.k, f, e.target.value.trim());
+  tr.classList.toggle('dirty', !!dirty[tr.dataset.k]); saveBtnState();
+});
 $('rows').addEventListener('change', e => {
   const tr = e.target.closest('tr'), k = tr.dataset.k, f = e.target.dataset.f;
   if (e.target.classList.contains('sel')) { e.target.checked ? sel.add(k) : sel.delete(k); }
   else if (f) setField(k, f, e.target.type === 'checkbox' ? e.target.checked : e.target.value.trim());
-  renderTable();
+  later('rows', renderTable);
 });
 $('rows').addEventListener('click', e => {
   const tr = e.target.closest('tr'); if (!tr) return;
@@ -534,18 +604,38 @@ async function bulkDelete() {
   const keys = [...sel].filter(k => byKey[k].source === 'custom' || byKey[k].missing);
   if (!keys.length) return alert('Only custom channels or channels gone from their source can be deleted. To hide a playlist channel, disable it instead.');
   if (!confirm(`Delete ${keys.length} channel(s)?`)) return;
-  await post('/api/channels/delete', {keys}); keys.forEach(k => { sel.delete(k); delete dirty[k]; }); poll();
+  await act(null, async () => { await post('/api/channels/delete', {keys}); keys.forEach(k => { sel.delete(k); delete dirty[k]; }); poll(); });
 }
 
+/* Sends the changes made so far. Changes made while it is sending stay marked and go with the next Save.
+   Returns true when saved; on failure the changes stay and the reason is shown. */
 async function saveChanges() {
-  const r = await post('/api/channels', {channels: Object.values(dirty)});
-  if (r.ok === false) return alert(r.error);
-  dirty = {}; poll();
+  if (saving) return false;
+  const sent = clone(dirty);
+  if (!Object.keys(sent).length) return true;
+  saving = true; saveBtnState();
+  try {
+    await post('/api/channels', {channels: Object.values(sent)});
+  } catch (e) {
+    alert('Your channel changes were not saved: ' + e.message);
+    return false;
+  } finally {
+    saving = false; saveBtnState();
+  }
+  for (const [k, d] of Object.entries(sent)) {
+    const now = dirty[k]; if (!now) continue;
+    for (const f of Object.keys(d)) if (f !== 'key' && now[f] === d[f]) delete now[f];
+    if (Object.keys(now).length <= 1) delete dirty[k];
+  }
+  later('rows', renderTable); poll();
+  return true;
 }
-async function autoMatch() {
-  if (Object.keys(dirty).length) await saveChanges();
-  const r = await post('/api/automatch', {only_unmatched: true});
-  alert(`Matched ${r.matched} channel(s) to a guide by name.`); poll();
+function autoMatch() {
+  return act(null, async () => {
+    if (Object.keys(dirty).length && !(await saveChanges())) return;
+    const r = await post('/api/automatch', {only_unmatched: true});
+    alert(`Matched ${r.matched} channel(s) to a guide by name.`); poll();
+  });
 }
 
 /* edit dialog */
@@ -565,18 +655,19 @@ function openAdd() {
   EF.forEach(f => $('e_' + f).value = '');
   $('e_group').value = '24/7';
   $('e_reset').classList.add('hide');
-  $('e_ok').onclick = async () => {
+  $('e_ok').onclick = () => act($('e_ok'), async () => {
     const it = {}; EF.forEach(f => it[f] = $('e_' + f).value.trim());
     if (!it.name || !it.url) return alert('Name and stream URL are required.');
-    const r = await post('/api/channels/add', it);
-    if (r.ok === false) return alert(r.error);
+    await post('/api/channels/add', it);
     dlg.close(); poll();
-  };
+  });
   dlg.showModal();
 }
-async function resetChannel() {
-  await post('/api/channels', {channels: [{key: editKey, reset: true}]});
-  delete dirty[editKey]; dlg.close(); poll();
+function resetChannel() {
+  return act($('e_reset'), async () => {
+    await post('/api/channels', {channels: [{key: editKey, reset: true}]});
+    delete dirty[editKey]; dlg.close(); poll();
+  });
 }
 
 /* guide search */
@@ -596,7 +687,7 @@ async function doSearch() {
 $('srchQ').addEventListener('input', () => { clearTimeout(sT); sT = setTimeout(doSearch, 200); });
 $('srchRes').addEventListener('click', e => { const d = e.target.closest('[data-id]'); if (d) pickEpg(d.dataset.id); });
 function pickEpg(id) {
-  if (searchTarget.provider) { post('/api/provider/map', {key: searchTarget.provider, guide: id}).then(() => { srch.close(); poll(); }); return; }
+  if (searchTarget.provider) { act(null, () => post('/api/provider/map', {key: searchTarget.provider, guide: id}).then(() => { srch.close(); poll(); })); return; }
   if (searchTarget.input) $(searchTarget.input).value = id;
   else { setField(searchTarget.key, 'epg_id', id); renderTable(); }
   srch.close();
@@ -629,7 +720,7 @@ $('srcList').addEventListener('click', async e => {
   const mv = e.target.dataset.mv;
   if (mv) { const j = i + +mv; if (j >= 0 && j < srcDraft.length) [srcDraft[i], srcDraft[j]] = [srcDraft[j], srcDraft[i]]; renderSources(); }
   if (e.target.hasAttribute('data-del') && confirm('Remove this source? Its channels and your edits to them are removed too.')) { srcDraft.splice(i, 1); renderSources(); }
-  if (e.target.hasAttribute('data-rf')) { await post('/api/refresh', {source: srcDraft[i].id}); poll(); }
+  if (e.target.hasAttribute('data-rf')) act(e.target, () => post('/api/refresh', {source: srcDraft[i].id}).then(poll));
 });
 let LIB = [];
 fetch('/api/catalog').then(r => r.ok ? r.json() : []).then(j => {
@@ -658,11 +749,20 @@ $('lib').addEventListener('click', e => {
   srcDraft.push({type: x.type, name: x.name, url: x.url, enabled: true}); renderSources();
 });
 function addSource(type) { srcDraft.push({type, name: type === 'm3u' ? 'My playlist' : 'My guide', url: '', enabled: true}); renderSources(); }
+/* Returns true when saved. The ids the page started from go along, so the app keeps sources it added meanwhile. */
 async function saveSources() {
-  if (Object.keys(dirty).length) await saveChanges();
-  const r = await post('/api/sources', {sources: srcDraft});
-  if (r.ok === false) return alert(r.error);  // the draft stays, so you can fix it
-  srcDraft = null; poll();
+  if (Object.keys(dirty).length && !(await saveChanges())) return false;
+  const sent = JSON.stringify(srcDraft);
+  try {
+    await post('/api/sources', {sources: srcDraft, base: JSON.parse(srcBase).map(x => x.id)});
+  } catch (e) {
+    alert('Your sources were not saved: ' + e.message);  // the draft stays, so you can fix it
+    return false;
+  }
+  if (JSON.stringify(srcDraft) === sent) srcDraft = null;  // edited again while saving: keep those edits
+  else srcBase = sent;
+  poll();
+  return true;
 }
 
 function renderAuto() {
@@ -678,18 +778,24 @@ function renderAuto() {
   $('autoRecent').innerHTML = ai.recent.map(c => `<div style="cursor:default"><span class="tag ${c.why === 'added' ? '' : 'bad'}">${esc(c.why || '')}</span>
       <span style="flex:1">${esc(c.name)}<br><code>${esc(c.url)}</code></span></div>`).join('') || '<p class="muted small">Nothing checked yet.</p>';
 }
-$('autoList').addEventListener('click', async e => {
+$('autoList').addEventListener('click', e => {
   const k = e.target.dataset.keep, d = e.target.dataset.drop;
-  if (k) await post('/api/auto/keep', {id: k});
-  if (d && confirm('Remove this guide? It will not be added again.')) await post('/api/auto/remove', {id: d});
-  if (k || d) { srcDraft = null; poll(); }
+  if (d && !confirm('Remove this guide? It will not be added again.')) return;
+  if (k || d) act(e.target, async () => {  // unsaved source edits stay; a kept guide joins them
+    try { await post(k ? '/api/auto/keep' : '/api/auto/remove', {id: k || d}); }
+    catch (ex) { throw new Error(ex.message.includes('(200)') ? 'That guide is no longer in the list - the page is updated now.' : ex.message); }
+    finally { poll(); }
+  });
 });
 
 /* links & settings */
 function renderLinks() {
   const pu = S.settings.public_url;
   $('pubBtn').classList.toggle('hide', !pu);
-  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'], ['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Light guide — your providers’ channels only (Firestick, Smarters, Kodi)', pu + '/epg-lite.xml.gz'], ['Week guide — your providers’ channels, up to 7 days (TiviMate, OTT Navigator)', pu + '/epg-week.xml.gz'], ['Universal guide — US only', pu + '/epg-us.xml.gz'], ['Universal guide — UK only', pu + '/epg-uk.xml.gz'], ['Universal guide — Canada only', pu + '/epg-ca.xml.gz']]
+  const NAMES = {US: 'US', GB: 'UK', CA: 'Canada'}, full = !!S.settings.full_guide;  // country files follow the priority countries setting
+  const countries = (S.countries || []).map(c => [`Universal guide — ${NAMES[c] || c} only`, pu + `/epg-${c === 'GB' ? 'uk' : c.toLowerCase()}.xml.gz`]);
+  $('onlineRows').innerHTML = pu ? [['Playlist (M3U)', pu + '/playlist.m3u'], ['Guide for this playlist', pu + '/epg.xml.gz'],
+      ...(full ? [['Universal guide — any player, any provider', pu + '/epg-full.xml.gz'], ['Light guide — your providers’ channels only (Firestick, Smarters, Kodi)', pu + '/epg-lite.xml.gz'], ['Week guide — your providers’ channels, up to 7 days (TiviMate, OTT Navigator)', pu + '/epg-week.xml.gz'], ...countries] : [])]
     .map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('') : '';
   $('onlineHelp').textContent = pu
     ? 'GitHub rebuilds these every 3 hours on its own servers. After you edit channels or sources here, press ☁ Publish online; the links update about 1-2 hours later (GitHub rebuilds the whole guide).'
@@ -699,7 +805,7 @@ function renderLinks() {
   const rows = [];
   for (const b of bases) {
     const label = b.includes('localhost') || b.includes('127.0.0.1') ? ' (this PC only)' : '';
-    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide for this playlist' + label, b + '/epg.xml.gz'], ['Universal guide' + label, b + '/epg-full.xml.gz']);
+    rows.push(['Playlist (M3U)' + label, b + '/playlist.m3u'], ['Guide for this playlist' + label, b + '/epg.xml.gz'], ...(full ? [['Universal guide' + label, b + '/epg-full.xml.gz']] : []));
   }
   $('linkRows').innerHTML = rows.map(([l, u]) => `<div class="row"><span style="width:200px" class="muted small">${l}</span><input readonly value="${u}"><button class="b" onclick="navigator.clipboard.writeText('${u}');this.textContent='Copied'">Copy</button></div>`).join('');
   for (const k of Object.keys(S.settings)) {
@@ -711,18 +817,38 @@ function renderLinks() {
   }
 }
 function renderLog() { $('log').textContent = (S.log || []).join('\n') || 'Nothing yet.'; $('log').scrollTop = 1e9; }
-async function saveSettings() {
-  const body = {};
-  for (const k of Object.keys(S.settings)) { const el = $('s_' + k); if (el) delete el.dataset.shown; if (el) body[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? el.value : el.value.trim(); }
-  await post('/api/settings', body); poll();
+/* Settings the app refuses (for example 1.5 hours) stay in their box and are named, instead of quietly switching back. */
+function saveSettings() {
+  return act($('saveSetBtn'), async () => {
+    const body = {}, els = {};
+    for (const k of Object.keys(S.settings)) {
+      const el = $('s_' + k); if (!el) continue;
+      els[k] = el; body[k] = el.type === 'checkbox' ? el.checked : el.value.trim();
+    }
+    const r = await post('/api/settings', body);
+    const no = new Set((r.rejected || []).map(x => x.key));
+    for (const [k, el] of Object.entries(els)) if (!no.has(k)) delete el.dataset.shown;
+    const name = k => (els[k]?.closest('label')?.firstChild?.textContent || k).trim();
+    const msg = [...(r.rejected || []).map(x => `• ${name(x.key)}: ${x.why} (you typed ${x.value}) - not saved`),
+                 ...(r.lowered || []).map(x => `• ${name(x.key)}: ${x.value} is more than allowed - saved as ${x.to}`)];
+    if (msg.length) alert('Some settings were not saved as typed:\n' + msg.join('\n'));
+    poll();
+  });
 }
 async function publishOnline() {
-  if (Object.keys(dirty).length) await saveChanges();
-  if (srcDraft && JSON.stringify(srcDraft) !== JSON.stringify(S.sources) && confirm('Save your source changes first?')) await saveSources();
-  $('pubBtn').textContent = 'Publishing…';
-  const r = await post('/api/publish', {});
-  $('pubBtn').textContent = '☁ Publish online';
-  alert(r.ok ? 'Published! Your online links update in about 1-2 hours (GitHub rebuilds the whole guide).' : 'Could not publish: ' + r.error);
+  const b = $('pubBtn');
+  if (b.dataset.busy) return;
+  if (Object.keys(dirty).length && !(await saveChanges())) return;  // never publish without the edits you made
+  if (srcDirty() && confirm('Save your source changes first?') && !(await saveSources())) return;
+  b.dataset.busy = 1; b.disabled = true; b.textContent = 'Publishing…';
+  try {
+    await post('/api/publish', {});
+    alert('Published! Your online links update in about 1-2 hours (GitHub rebuilds the whole guide).');
+  } catch (e) {
+    alert('Could not publish: ' + e.message);
+  } finally {
+    delete b.dataset.busy; b.disabled = false; b.textContent = '☁ Publish online';
+  }
   poll();
 }
 async function refreshAll() { await post('/api/refresh', {}); poll(); }
@@ -734,7 +860,10 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
 window.addEventListener('beforeunload', e => { if (Object.keys(dirty).length) e.preventDefault(); });
 const setHH = () => document.documentElement.style.setProperty('--hh', document.querySelector('header').offsetHeight + 'px');
 window.addEventListener('resize', setHH); setHH();
-load().then(() => { if (S.busy) poll(); if (!S.sources.length) document.querySelector('[data-tab=sources]').click(); });
+(function start() {
+  load().then(() => { if (S.busy) poll(); if (!S.sources.length) document.querySelector('[data-tab=sources]').click(); })
+    .catch(() => { notRunning(); setTimeout(start, 5000); });
+})();
 </script>
 </body>
 </html>
