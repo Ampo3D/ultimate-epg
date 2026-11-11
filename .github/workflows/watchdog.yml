@@ -1,21 +1,9 @@
-# Replacement for .github/workflows/watchdog.yml
-#
-# Why: GitHub's cron is not reliable on this repo. Since the repo was created
-# (2026-11-05 02:34 UTC) the "7,37 * * * *" watchdog fired ONCE in ~9 hours (run
-# 42005706389) and the 3-hourly build cron fired ONCE (run 42014067978, the 09:17 slot,
-# 93 min late). Every other build came from the owner's own pushes, i.e. from the PC.
-# A watchdog that only runs when cron fires cannot rescue a cron that doesn't fire.
-#
-# What changes:
-# 1. Relay: each watchdog run keeps watching for ~5.5 h (one check every 20 min), then
-#    starts the next watchdog itself (workflow_dispatch with GITHUB_TOKEN is allowed to
-#    start runs). The cron stays only as a backstop that restarts the relay if it breaks.
-#    The concurrency group keeps at most one running + one waiting watchdog.
-#    (Public repo: standard runners are free. If you prefer not to keep a runner busy,
-#    use an outside pinger such as cron-job.org calling the workflow_dispatch API with a
-#    fine-grained token limited to "Actions: write" on this one repo.)
-# 2. It also reads the LIVE site's health.json, so a build that "succeeded" but did not
-#    change what players download (Pages hiccup, deploy skipped) is noticed too.
+# Keeps the online guide fresh when GitHub's own timer skips the 3-hourly build (it often does).
+# Each run checks every 20 minutes for about 5.5 hours, then starts the next watchdog itself (a relay);
+# the timer below only restarts the relay if it ever breaks. It starts a build when none has worked for
+# 3 hours, and tells you on the "Guide needs attention" issue after 8. It also reads the published
+# health.json, so a build that "worked" but never reached the site is noticed too.
+# Public repos run this for free. To stop it, disable this workflow in the Actions tab.
 name: Watchdog
 
 on:
@@ -47,8 +35,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           FORCE: ${{ inputs.force }}
-          SITE: https://ampo3d.github.io/ultimate-epg
+          OWNER: ${{ github.repository_owner }}
         run: |
+          owner=${GITHUB_REPOSITORY_OWNER,,}; name=${GITHUB_REPOSITORY#*/}
+          if [ "${name,,}" = "$owner.github.io" ]; then site="https://$owner.github.io"; else site="https://$owner.github.io/$name"; fi
+          SITE=$site
           check() {
             # a GitHub hiccup anywhere here must never stop the rebuild at the end
             q() { gh run list -R "$REPO" -w build.yml --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""'; }
@@ -67,7 +58,7 @@ jobs:
                 if [ -n "$n" ]; then told=$(gh issue view "$n" -R "$REPO" --json body,createdAt,comments --jq '[(if (.body | contains("No good guide update")) then .createdAt else empty end), (.comments[] | select(.body | contains("No good guide update")) | .createdAt)] | last // ""' || true); fi
                 if [ -z "$told" ] || [ $(( $(date +%s) - $(date -d "$told" +%s) )) -gt 43200 ]; then
                   if [ -n "$last" ]; then since="for $((age / 3600)) hours"; else since="found"; fi
-                  body="@Ampo3D No good guide update $since (the published guide is $((site_age / 3600)) hours old). Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
+                  body="@$OWNER No good guide update $since (the published guide is $((site_age / 3600)) hours old). Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
                   if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body" || true; else gh issue create -R "$REPO" --title "Guide needs attention" --body "$body" || true; fi
                 fi
               fi

@@ -1,23 +1,15 @@
-# Replacement for .github/workflows/build.yml
-#
-# Changes against the current file (everything else is identical):
-# 1. Step timeout 80 -> 150 min, job timeout 90 -> 170 min. Measured "Download sources,
-#    find new guides, build" step: 29-60 min over the 10 completed runs of 2026-11-05
-#    (60 min in run 41971060255 = 75% of the old limit). The source list grows by itself
-#    (auto-discovery), so the old limit is one slow guide host away from killing a build.
-# 2. Cron line unchanged; its comment now says the truth: GitHub fired it once in 8.5 h
-#    on 2026-11-05, and the watchdog relay (fix_1) is what starts builds when the PC is off.
-# 4. Old 1.3 GB guide-copy caches are deleted (8 copies = 10.26 GB, the repo limit), which
-#    needs actions: write.
-# 3. "Save newly found guides": if all three push attempts fail, say so in alert.md
-#    instead of silently losing the discovered guides.
+# Builds the playlist and guides on GitHub's servers and publishes them on GitHub Pages.
+# Runs on every push of the app or your sources, every 3 hours (when GitHub's timer fires; watchdog.yml
+# starts the runs it skips), and by hand. Guides it finds by itself are saved back to the repo.
+# Anything that needs your attention is posted on the "Guide needs attention" issue, which GitHub emails you.
 name: Build EPG
 
 on:
   push:
     branches: [main]
-    paths-ignore:
+    paths-ignore:   # text-only changes don't need a 1-2 hour rebuild
       - .github/workflows/watchdog.yml
+      - "**.md"
   schedule:
     - cron: "17 */3 * * *"   # asked for every 3 hours; GitHub skips many - watchdog.yml starts the missing ones
   workflow_dispatch:
@@ -147,9 +139,13 @@ jobs:
           GH_REPO: ${{ github.repository }}
           STATUS: ${{ job.status }}
           TEST: ${{ inputs.test_alert }}
-          PAGE: https://ampo3d.github.io/ultimate-epg/health.html
+          PAGE: ${{ steps.deploy.outputs.page_url }}
+          OWNER: ${{ github.repository_owner }}
           RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          owner=${GITHUB_REPOSITORY_OWNER,,}; name=${GITHUB_REPOSITORY#*/}
+          if [ "${name,,}" = "$owner.github.io" ]; then site="https://$owner.github.io"; else site="https://$owner.github.io/$name"; fi
+          PAGE="${PAGE:-$site}"; PAGE="${PAGE%/}/health.html"   # the published address, or the usual one when publishing failed
           if [ "$STATUS" != "success" ]; then echo "- The guide update failed, so your links still show the last good guide: $RUN" >> alert.md; fi
           if [ "$TEST" = "true" ]; then echo "- This is a test. Nothing is wrong." >> alert.md; fi
           [ -f alert.md ] || exit 0
@@ -164,6 +160,6 @@ jobs:
             done
             [ -s alert.md ] || exit 0
           fi
-          body="@Ampo3D your guide needs a look: $(cat alert.md) Full report: $PAGE"
+          body="@$OWNER your guide needs a look: $(cat alert.md) Full report: $PAGE"
           if [ -n "$n" ] && gh issue comment "$n" --body "$body"; then exit 0; fi
           gh issue create --title "Guide needs attention" --body "$body"   # no open issue, or it can't take comments
