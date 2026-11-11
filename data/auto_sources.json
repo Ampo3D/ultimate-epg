@@ -13,9 +13,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348850.573881,
-    "msg": "2882 guide channels, 87113 upcoming shows",
-    "until": 1794547445
+    "time": 1794354145.4371707,
+    "msg": "2882 guide channels, 109363 upcoming shows",
+    "until": 1794546000
    }
   },
   {
@@ -31,8 +31,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348852.539522,
-    "msg": "266 guide channels, 20860 upcoming shows",
+    "time": 1794354147.2506304,
+    "msg": "266 guide channels, 20473 upcoming shows",
     "until": 1794646800
    }
   },
@@ -45,11 +45,11 @@
    "auto": true,
    "added": 1793325935.3313715,
    "gain": 2,
-   "fails": 14,
+   "fails": 15,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794348853.6421027,
+    "time": 1794354148.3229346,
     "msg": "256 guide channels, 0 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
@@ -67,8 +67,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348854.183757,
-    "msg": "178 guide channels, 7679 upcoming shows",
+    "time": 1794354148.8545632,
+    "msg": "178 guide channels, 7486 upcoming shows",
     "until": 1794553200
    }
   },
@@ -85,8 +85,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348855.3715603,
-    "msg": "144 guide channels, 10597 upcoming shows",
+    "time": 1794354150.0176644,
+    "msg": "144 guide channels, 10344 upcoming shows",
     "until": 1794571200
    }
   },
@@ -103,8 +103,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348858.0506017,
-    "msg": "345 guide channels, 30174 upcoming shows",
+    "time": 1794354152.5747743,
+    "msg": "345 guide channels, 29563 upcoming shows",
     "until": 1794812400
    }
   },
@@ -121,8 +121,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348859.7271771,
-    "msg": "254 guide channels, 21261 upcoming shows",
+    "time": 1794354154.1937232,
+    "msg": "254 guide channels, 20787 upcoming shows",
     "until": 1794578340
    }
   },
@@ -139,8 +139,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348865.362063,
-    "msg": "601 guide channels, 42928 upcoming shows",
+    "time": 1794354159.1994994,
+    "msg": "601 guide channels, 41865 upcoming shows",
     "until": 1794571200
    }
   },
@@ -157,8 +157,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348870.080873,
-    "msg": "751 guide channels, 48148 upcoming shows",
+    "time": 1794354163.6403465,
+    "msg": "751 guide channels, 46922 upcoming shows",
     "until": 1794564000
    }
   },
@@ -175,8 +175,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348870.5887017,
-    "msg": "138 guide channels, 6329 upcoming shows",
+    "time": 1794354164.1410854,
+    "msg": "138 guide channels, 6164 upcoming shows",
     "until": 1794535200
    }
   },
@@ -193,8 +193,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348871.2285576,
-    "msg": "94 guide channels, 10506 upcoming shows",
+    "time": 1794354164.7451262,
+    "msg": "94 guide channels, 10305 upcoming shows",
     "until": 1794621600
    }
   },
@@ -211,8 +211,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348874.4681811,
-    "msg": "1087 guide channels, 31612 upcoming shows",
+    "time": 1794354167.8590763,
+    "msg": "1087 guide channels, 30743 upcoming shows",
     "until": 1794541680
    }
   },
@@ -229,8 +229,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348875.2735326,
-    "msg": "217 guide channels, 10902 upcoming shows",
+    "time": 1794354168.6384084,
+    "msg": "217 guide channels, 10711 upcoming shows",
     "until": 1794652200
    }
   },
@@ -247,8 +247,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348875.8805864,
-    "msg": "166 guide channels, 8300 upcoming shows",
+    "time": 1794354169.2415025,
+    "msg": "166 guide channels, 8134 upcoming shows",
     "until": 0
    }
   },
@@ -265,8 +265,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348876.4557064,
-    "msg": "110 guide channels, 8033 upcoming shows",
+    "time": 1794354169.7997565,
+    "msg": "110 guide channels, 7894 upcoming shows",
     "until": 1794610800
    }
   },
@@ -283,8 +283,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348877.909349,
-    "msg": "321 guide channels, 15930 upcoming shows",
+    "time": 1794354171.217136,
+    "msg": "321 guide channels, 15615 upcoming shows",
     "until": 1794627900
    }
   },
@@ -301,8 +301,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348878.6631985,
-    "msg": "143 guide channels, 11065 upcoming shows",
+    "time": 1794354171.9547868,
+    "msg": "143 guide channels, 10850 upcoming shows",
     "until": 1794614400
    }
   },
@@ -319,8 +319,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348879.9781709,
-    "msg": "213 guide channels, 13215 upcoming shows",
+    "time": 1794354173.2218487,
+    "msg": "213 guide channels, 12851 upcoming shows",
     "until": 1794545940
    }
   },
@@ -337,8 +337,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348881.4133394,
-    "msg": "193 guide channels, 19339 upcoming shows",
+    "time": 1794354174.6066287,
+    "msg": "193 guide channels, 18977 upcoming shows",
     "until": 1794627900
    }
   },
@@ -355,8 +355,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348882.0733027,
-    "msg": "283 guide channels, 11132 upcoming shows",
+    "time": 1794354175.2640142,
+    "msg": "283 guide channels, 10844 upcoming shows",
     "until": 1794621600
    }
   },
@@ -373,8 +373,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348882.6600132,
-    "msg": "119 guide channels, 7798 upcoming shows",
+    "time": 1794354175.842158,
+    "msg": "119 guide channels, 7572 upcoming shows",
     "until": 1794549480
    }
   },
@@ -391,8 +391,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348888.2404919,
-    "msg": "946 guide channels, 72141 upcoming shows",
+    "time": 1794354181.1970744,
+    "msg": "946 guide channels, 70572 upcoming shows",
     "until": 1794594599
    }
   },
@@ -409,8 +409,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348889.6233618,
-    "msg": "557 guide channels, 16875 upcoming shows",
+    "time": 1794354182.570192,
+    "msg": "557 guide channels, 15763 upcoming shows",
     "until": 1794594599
    }
   },
@@ -427,8 +427,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348890.736108,
-    "msg": "195 guide channels, 11691 upcoming shows",
+    "time": 1794354183.6442153,
+    "msg": "195 guide channels, 11356 upcoming shows",
     "until": 1794611100
    }
   },
@@ -445,8 +445,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348890.8571045,
-    "msg": "25 guide channels, 1485 upcoming shows",
+    "time": 1794354183.7633011,
+    "msg": "25 guide channels, 1435 upcoming shows",
     "until": 1794565800
    }
   },
@@ -463,8 +463,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348891.423224,
-    "msg": "123 guide channels, 8395 upcoming shows",
+    "time": 1794354184.3042185,
+    "msg": "123 guide channels, 8322 upcoming shows",
     "until": 1794680100
    }
   },
@@ -481,8 +481,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348891.5128586,
-    "msg": "258 guide channels, 452 upcoming shows",
+    "time": 1794354184.372504,
+    "msg": "258 guide channels, 440 upcoming shows",
     "until": 1794582000
    }
   },
@@ -499,8 +499,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348892.04197,
-    "msg": "89 guide channels, 6469 upcoming shows",
+    "time": 1794354184.8824723,
+    "msg": "89 guide channels, 6368 upcoming shows",
     "until": 1794626400
    }
   },
@@ -517,8 +517,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348892.7248018,
-    "msg": "105 guide channels, 8147 upcoming shows",
+    "time": 1794354185.5274165,
+    "msg": "105 guide channels, 7948 upcoming shows",
     "until": 1794566100
    }
   },
@@ -535,8 +535,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348893.7383249,
-    "msg": "192 guide channels, 14066 upcoming shows",
+    "time": 1794354186.5189836,
+    "msg": "192 guide channels, 13784 upcoming shows",
     "until": 1794639600
    }
   },
@@ -553,8 +553,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348894.4244008,
-    "msg": "163 guide channels, 8458 upcoming shows",
+    "time": 1794354187.1898339,
+    "msg": "163 guide channels, 8256 upcoming shows",
     "until": 1794628800
    }
   },
@@ -571,8 +571,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348895.4767835,
-    "msg": "146 guide channels, 11488 upcoming shows",
+    "time": 1794354188.2042809,
+    "msg": "146 guide channels, 11219 upcoming shows",
     "until": 1794625200
    }
   },
@@ -589,8 +589,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348895.6489987,
-    "msg": "164 guide channels, 2431 upcoming shows",
+    "time": 1794354188.373013,
+    "msg": "164 guide channels, 2383 upcoming shows",
     "until": 1794619200
    }
   },
@@ -607,8 +607,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348895.906099,
-    "msg": "111 guide channels, 4342 upcoming shows",
+    "time": 1794354188.63288,
+    "msg": "111 guide channels, 4247 upcoming shows",
     "until": 1794628800
    }
   },
@@ -625,8 +625,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348901.993557,
-    "msg": "636 guide channels, 93278 upcoming shows",
+    "time": 1794354194.481315,
+    "msg": "636 guide channels, 92058 upcoming shows",
     "until": 1794780000
    }
   },
@@ -643,8 +643,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348903.4295893,
-    "msg": "178 guide channels, 11387 upcoming shows",
+    "time": 1794354195.6671112,
+    "msg": "178 guide channels, 11056 upcoming shows",
     "until": 1794559980
    }
   },
@@ -661,8 +661,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348905.803814,
-    "msg": "370 guide channels, 27093 upcoming shows",
+    "time": 1794354197.9639187,
+    "msg": "370 guide channels, 26475 upcoming shows",
     "until": 1794565499
    }
   },
@@ -679,8 +679,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348910.7184205,
-    "msg": "721 guide channels, 63336 upcoming shows",
+    "time": 1794354202.6447723,
+    "msg": "721 guide channels, 62081 upcoming shows",
     "until": 1794645000
    }
   },
@@ -697,8 +697,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348911.4282565,
-    "msg": "165 guide channels, 10619 upcoming shows",
+    "time": 1794354203.3237996,
+    "msg": "165 guide channels, 10406 upcoming shows",
     "until": 1794585420
    }
   },
@@ -715,8 +715,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348912.5015504,
-    "msg": "217 guide channels, 9722 upcoming shows",
+    "time": 1794354204.3589246,
+    "msg": "217 guide channels, 9436 upcoming shows",
     "until": 1794537600
    }
   },
@@ -733,8 +733,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348914.6146564,
-    "msg": "476 guide channels, 28083 upcoming shows",
+    "time": 1794354206.4012108,
+    "msg": "476 guide channels, 27416 upcoming shows",
     "until": 1794638400
    }
   },
@@ -751,8 +751,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348915.2425878,
-    "msg": "178 guide channels, 10087 upcoming shows",
+    "time": 1794354207.021737,
+    "msg": "178 guide channels, 9818 upcoming shows",
     "until": 1794607200
    }
   },
@@ -769,8 +769,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348916.600112,
-    "msg": "287 guide channels, 6390 upcoming shows",
+    "time": 1794354208.3014805,
+    "msg": "287 guide channels, 6052 upcoming shows",
     "until": 1794459600
    }
   },
@@ -787,8 +787,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348918.9842076,
-    "msg": "521 guide channels, 19096 upcoming shows",
+    "time": 1794354210.6541245,
+    "msg": "521 guide channels, 18631 upcoming shows",
     "until": 1794567600
    }
   },
@@ -805,8 +805,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348919.3827724,
-    "msg": "151 guide channels, 1978 upcoming shows",
+    "time": 1794354211.0119042,
+    "msg": "151 guide channels, 1595 upcoming shows",
     "until": 1794376740
    }
   },
@@ -823,8 +823,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348919.9847379,
-    "msg": "145 guide channels, 8388 upcoming shows",
+    "time": 1794354211.5814903,
+    "msg": "145 guide channels, 8204 upcoming shows",
     "until": 1794628800
    }
   },
@@ -841,8 +841,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348924.1740704,
-    "msg": "438 guide channels, 58978 upcoming shows",
+    "time": 1794354215.532607,
+    "msg": "438 guide channels, 58382 upcoming shows",
     "until": 1794891600
    }
   },
@@ -859,8 +859,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348924.198019,
-    "msg": "182 guide channels, 303 upcoming shows",
+    "time": 1794354215.5562649,
+    "msg": "182 guide channels, 290 upcoming shows",
     "until": 1794463200
    }
   },
@@ -877,8 +877,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348925.249312,
-    "msg": "175 guide channels, 13719 upcoming shows",
+    "time": 1794354216.5312,
+    "msg": "175 guide channels, 13498 upcoming shows",
     "until": 1794786420
    }
   },
@@ -895,8 +895,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348925.4329643,
-    "msg": "121 guide channels, 1921 upcoming shows",
+    "time": 1794354216.7073464,
+    "msg": "121 guide channels, 1790 upcoming shows",
     "until": 1794498600
    }
   },
@@ -913,8 +913,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348926.1965857,
-    "msg": "173 guide channels, 13820 upcoming shows",
+    "time": 1794354217.467134,
+    "msg": "173 guide channels, 13711 upcoming shows",
     "until": 1795996800
    }
   },
@@ -931,8 +931,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348929.8707905,
-    "msg": "490 guide channels, 50757 upcoming shows",
+    "time": 1794354221.0439076,
+    "msg": "490 guide channels, 52252 upcoming shows",
     "until": 1796544000
    }
   },
@@ -949,8 +949,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348930.006914,
-    "msg": "66 guide channels, 2146 upcoming shows",
+    "time": 1794354221.187819,
+    "msg": "66 guide channels, 2054 upcoming shows",
     "until": 1794459600
    }
   },
@@ -967,8 +967,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348931.0073442,
-    "msg": "197 guide channels, 14778 upcoming shows",
+    "time": 1794354222.169053,
+    "msg": "197 guide channels, 14390 upcoming shows",
     "until": 1794614400
    }
   },
@@ -985,8 +985,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348932.5214787,
-    "msg": "182 guide channels, 21400 upcoming shows",
+    "time": 1794354223.5505447,
+    "msg": "182 guide channels, 21142 upcoming shows",
     "until": 1794805500
    }
   },
@@ -1003,8 +1003,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348933.6357377,
-    "msg": "801 guide channels, 10764 upcoming shows",
+    "time": 1794354224.5601332,
+    "msg": "801 guide channels, 9698 upcoming shows",
     "until": 1794481200
    }
   },
@@ -1021,8 +1021,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348934.1026132,
-    "msg": "241 guide channels, 5018 upcoming shows",
+    "time": 1794354225.058189,
+    "msg": "241 guide channels, 5605 upcoming shows",
     "until": 1794427200
    }
   },
@@ -1039,8 +1039,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348936.4605448,
-    "msg": "300 guide channels, 28028 upcoming shows",
+    "time": 1794354227.0390792,
+    "msg": "300 guide channels, 27752 upcoming shows",
     "until": 1795593600
    }
   },
@@ -1057,8 +1057,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348936.7769015,
-    "msg": "152 guide channels, 3019 upcoming shows",
+    "time": 1794354227.3782415,
+    "msg": "152 guide channels, 3360 upcoming shows",
     "until": 1794427200
    }
   },
@@ -1075,8 +1075,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348938.903566,
-    "msg": "514 guide channels, 28042 upcoming shows",
+    "time": 1794354229.4417124,
+    "msg": "514 guide channels, 27117 upcoming shows",
     "until": 1794633900
    }
   },
@@ -1093,8 +1093,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348941.471661,
-    "msg": "485 guide channels, 32165 upcoming shows",
+    "time": 1794354231.769849,
+    "msg": "485 guide channels, 31558 upcoming shows",
     "until": 1794697200
    }
   },
@@ -1111,8 +1111,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348942.2746205,
-    "msg": "325 guide channels, 10368 upcoming shows",
+    "time": 1794354232.5336618,
+    "msg": "325 guide channels, 9814 upcoming shows",
     "until": 1794513600
    }
   },
@@ -1129,8 +1129,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348954.7543952,
-    "msg": "782 guide channels, 166949 upcoming shows",
+    "time": 1794354244.201863,
+    "msg": "782 guide channels, 165590 upcoming shows",
     "until": 1795075200
    }
   },
@@ -1147,8 +1147,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348956.7032874,
-    "msg": "306 guide channels, 32002 upcoming shows",
+    "time": 1794354246.1200352,
+    "msg": "306 guide channels, 31720 upcoming shows",
     "until": 1794902400
    }
   },
@@ -1161,11 +1161,11 @@
    "auto": true,
    "added": 1793364918.7090821,
    "gain": 5,
-   "fails": 4,
+   "fails": 5,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794348956.7073667,
+    "time": 1794354246.124275,
     "msg": "145 guide channels, 0 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
@@ -1183,8 +1183,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348959.1439552,
-    "msg": "184 guide channels, 33204 upcoming shows",
+    "time": 1794354248.4734187,
+    "msg": "184 guide channels, 32868 upcoming shows",
     "until": 1794873540
    }
   },
@@ -1201,8 +1201,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348959.3817124,
-    "msg": "38 guide channels, 4150 upcoming shows",
+    "time": 1794354248.706059,
+    "msg": "38 guide channels, 4101 upcoming shows",
     "until": 1794873600
    }
   },
@@ -1219,8 +1219,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348967.2328417,
-    "msg": "1173 guide channels, 85895 upcoming shows",
+    "time": 1794354256.2578485,
+    "msg": "1173 guide channels, 83925 upcoming shows",
     "until": 1794606060
    }
   },
@@ -1237,8 +1237,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348968.3818545,
-    "msg": "158 guide channels, 19844 upcoming shows",
+    "time": 1794354257.2875824,
+    "msg": "158 guide channels, 19491 upcoming shows",
     "until": 1794942048
    }
   },
@@ -1255,8 +1255,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348970.963877,
-    "msg": "225 guide channels, 35006 upcoming shows",
+    "time": 1794354259.284491,
+    "msg": "225 guide channels, 34634 upcoming shows",
     "until": 1795471200
    }
   },
@@ -1273,8 +1273,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348974.8455675,
-    "msg": "293 guide channels, 45398 upcoming shows",
+    "time": 1794354262.197262,
+    "msg": "293 guide channels, 44909 upcoming shows",
     "until": 1794902400
    }
   },
@@ -1291,8 +1291,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348978.7412572,
-    "msg": "223 guide channels, 35400 upcoming shows",
+    "time": 1794354265.8523512,
+    "msg": "223 guide channels, 35010 upcoming shows",
     "until": 1794872700
    }
   },
@@ -1309,8 +1309,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794348998.956038,
-    "msg": "4165 guide channels, 304341 upcoming shows",
+    "time": 1794354285.1496513,
+    "msg": "4165 guide channels, 298379 upcoming shows",
     "until": 1794873600
    }
   },
@@ -1327,8 +1327,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349000.1467938,
-    "msg": "108 guide channels, 17794 upcoming shows",
+    "time": 1794354286.293601,
+    "msg": "108 guide channels, 17634 upcoming shows",
     "until": 1794886200
    }
   },
@@ -1345,8 +1345,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349002.3881097,
-    "msg": "1219 guide channels, 11248 upcoming shows",
+    "time": 1794354288.3670633,
+    "msg": "1219 guide channels, 11011 upcoming shows",
     "until": 1794538740
    }
   },
@@ -1363,8 +1363,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349003.2732515,
-    "msg": "95 guide channels, 13831 upcoming shows",
+    "time": 1794354289.2242355,
+    "msg": "95 guide channels, 13709 upcoming shows",
     "until": 1794891600
    }
   },
@@ -1381,8 +1381,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349004.2537496,
-    "msg": "177 guide channels, 12177 upcoming shows",
+    "time": 1794354290.1418898,
+    "msg": "177 guide channels, 12021 upcoming shows",
     "until": 1794873600
    }
   },
@@ -1399,8 +1399,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349006.3375278,
-    "msg": "312 guide channels, 28154 upcoming shows",
+    "time": 1794354292.0685701,
+    "msg": "312 guide channels, 27731 upcoming shows",
     "until": 1794657600
    }
   },
@@ -1417,8 +1417,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349007.0980482,
-    "msg": "139 guide channels, 10989 upcoming shows",
+    "time": 1794354292.7729707,
+    "msg": "139 guide channels, 10716 upcoming shows",
     "until": 1794646260
    }
   },
@@ -1435,8 +1435,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349012.064127,
-    "msg": "912 guide channels, 71252 upcoming shows",
+    "time": 1794354297.4924822,
+    "msg": "912 guide channels, 69993 upcoming shows",
     "until": 1794661200
    }
   },
@@ -1453,8 +1453,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349012.1571865,
-    "msg": "71 guide channels, 1106 upcoming shows",
+    "time": 1794354297.5813165,
+    "msg": "71 guide channels, 1074 upcoming shows",
     "until": 1794551340
    }
   },
@@ -1471,8 +1471,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349012.570995,
-    "msg": "97 guide channels, 6394 upcoming shows",
+    "time": 1794354297.999139,
+    "msg": "97 guide channels, 6227 upcoming shows",
     "until": 1794549600
    }
   },
@@ -1489,8 +1489,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349014.7013364,
-    "msg": "195 guide channels, 26310 upcoming shows",
+    "time": 1794354300.0007765,
+    "msg": "195 guide channels, 25995 upcoming shows",
     "until": 1794819180
    }
   },
@@ -1503,11 +1503,11 @@
    "auto": true,
    "added": 1793370973.4416943,
    "gain": 1,
-   "fails": 2,
+   "fails": 3,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794349014.9072359,
+    "time": 1794354300.1587927,
     "msg": "154 guide channels, 0 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
@@ -1525,8 +1525,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349015.70445,
-    "msg": "127 guide channels, 10774 upcoming shows",
+    "time": 1794354300.9224982,
+    "msg": "127 guide channels, 10627 upcoming shows",
     "until": 1794715200
    }
   },
@@ -1543,8 +1543,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349018.4974215,
-    "msg": "212 guide channels, 34722 upcoming shows",
+    "time": 1794354303.5093355,
+    "msg": "212 guide channels, 34320 upcoming shows",
     "until": 1794873600
    }
   },
@@ -1561,8 +1561,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349024.1140823,
-    "msg": "447 guide channels, 75379 upcoming shows",
+    "time": 1794354308.758592,
+    "msg": "447 guide channels, 74553 upcoming shows",
     "until": 1794804420
    }
   },
@@ -1579,8 +1579,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349025.4756858,
-    "msg": "265 guide channels, 20593 upcoming shows",
+    "time": 1794354310.0831234,
+    "msg": "265 guide channels, 20137 upcoming shows",
     "until": 1794804900
    }
   },
@@ -1597,8 +1597,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349027.234696,
-    "msg": "152 guide channels, 25083 upcoming shows",
+    "time": 1794354311.7430441,
+    "msg": "152 guide channels, 24778 upcoming shows",
     "until": 1794805200
    }
   },
@@ -1615,8 +1615,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349029.6364174,
-    "msg": "282 guide channels, 27919 upcoming shows",
+    "time": 1794354314.0600095,
+    "msg": "282 guide channels, 27626 upcoming shows",
     "until": 1794885300
    }
   },
@@ -1633,8 +1633,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349030.8882108,
-    "msg": "150 guide channels, 18035 upcoming shows",
+    "time": 1794354315.2176397,
+    "msg": "150 guide channels, 17832 upcoming shows",
     "until": 1794799800
    }
   },
@@ -1651,8 +1651,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349032.4378903,
-    "msg": "154 guide channels, 20833 upcoming shows",
+    "time": 1794354316.6230073,
+    "msg": "154 guide channels, 20569 upcoming shows",
     "until": 1794790800
    }
   },
@@ -1669,8 +1669,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349033.7196107,
-    "msg": "176 guide channels, 18901 upcoming shows",
+    "time": 1794354317.8421993,
+    "msg": "176 guide channels, 18691 upcoming shows",
     "until": 1794797820
    }
   },
@@ -1683,13 +1683,13 @@
    "auto": true,
    "added": 1793372190.0755427,
    "gain": 4,
-   "fails": 1,
+   "fails": 2,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794349033.971497,
-    "msg": "157 guide channels, 77 upcoming shows - OUT OF DATE, not used",
-    "until": 1794351540
+    "time": 1794354318.0176232,
+    "msg": "157 guide channels, 0 upcoming shows - OUT OF DATE, not used",
+    "until": 0
    }
   },
   {
@@ -1705,8 +1705,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349034.7005951,
-    "msg": "87 guide channels, 8790 upcoming shows",
+    "time": 1794354318.6099925,
+    "msg": "87 guide channels, 8672 upcoming shows",
     "until": 1794715200
    }
   },
@@ -1723,8 +1723,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349040.4458628,
-    "msg": "705 guide channels, 74349 upcoming shows",
+    "time": 1794354323.960722,
+    "msg": "705 guide channels, 73496 upcoming shows",
     "until": 1794813600
    }
   },
@@ -1741,8 +1741,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349041.7121067,
-    "msg": "174 guide channels, 17389 upcoming shows",
+    "time": 1794354325.2520401,
+    "msg": "174 guide channels, 17174 upcoming shows",
     "until": 1794880800
    }
   },
@@ -1759,8 +1759,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349043.8835392,
-    "msg": "248 guide channels, 31269 upcoming shows",
+    "time": 1794354327.2439244,
+    "msg": "248 guide channels, 30884 upcoming shows",
     "until": 1794802500
    }
   },
@@ -1777,8 +1777,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349044.136636,
-    "msg": "142 guide channels, 384 upcoming shows",
+    "time": 1794354327.4090707,
+    "msg": "142 guide channels, 193 upcoming shows",
     "until": 1794783600
    }
   },
@@ -1795,8 +1795,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349080.8688245,
-    "msg": "6573 guide channels, 414081 upcoming shows",
+    "time": 1794354361.6568289,
+    "msg": "6573 guide channels, 404038 upcoming shows",
     "until": 1794934800
    }
   },
@@ -1813,8 +1813,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349091.8239803,
-    "msg": "738 guide channels, 112933 upcoming shows",
+    "time": 1794354371.6281605,
+    "msg": "738 guide channels, 111916 upcoming shows",
     "until": 1794934800
    }
   },
@@ -1831,8 +1831,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349102.9545195,
-    "msg": "1315 guide channels, 125773 upcoming shows",
+    "time": 1794354381.8682916,
+    "msg": "1315 guide channels, 123725 upcoming shows",
     "until": 1794916500
    }
   },
@@ -1849,8 +1849,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349104.5794945,
-    "msg": "260 guide channels, 34012 upcoming shows",
+    "time": 1794354383.438011,
+    "msg": "260 guide channels, 33610 upcoming shows",
     "until": 1795028400
    }
   },
@@ -1867,8 +1867,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349112.498175,
-    "msg": "560 guide channels, 90561 upcoming shows",
+    "time": 1794354390.9966583,
+    "msg": "560 guide channels, 89789 upcoming shows",
     "until": 1794916500
    }
   },
@@ -1885,8 +1885,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349115.6832528,
-    "msg": "696 guide channels, 46001 upcoming shows",
+    "time": 1794354394.0800598,
+    "msg": "696 guide channels, 44890 upcoming shows",
     "until": 1794614400
    }
   },
@@ -1903,8 +1903,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349119.840887,
-    "msg": "533 guide channels, 38076 upcoming shows",
+    "time": 1794354398.0096176,
+    "msg": "533 guide channels, 37282 upcoming shows",
     "until": 1794790800
    }
   },
@@ -1921,8 +1921,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349120.902884,
-    "msg": "197 guide channels, 21679 upcoming shows",
+    "time": 1794354399.0071292,
+    "msg": "197 guide channels, 21235 upcoming shows",
     "until": 1794625500
    }
   },
@@ -1939,8 +1939,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349125.2329295,
-    "msg": "371 guide channels, 66617 upcoming shows",
+    "time": 1794354403.141808,
+    "msg": "371 guide channels, 66027 upcoming shows",
     "until": 1794900600
    }
   },
@@ -1957,8 +1957,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349177.4809377,
-    "msg": "9110 guide channels, 587871 upcoming shows",
+    "time": 1794354451.1304178,
+    "msg": "9110 guide channels, 574593 upcoming shows",
     "until": 1794939300
    }
   },
@@ -1975,8 +1975,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349193.370555,
-    "msg": "2964 guide channels, 173552 upcoming shows",
+    "time": 1794354465.3177917,
+    "msg": "2964 guide channels, 170527 upcoming shows",
     "until": 1794934800
    }
   },
@@ -1993,9 +1993,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349193.522466,
-    "msg": "39 guide channels, 2366 upcoming shows",
-    "until": 1794771300
+    "time": 1794354465.4620473,
+    "msg": "39 guide channels, 2426 upcoming shows",
+    "until": 1794840600
    }
   },
   {
@@ -2011,8 +2011,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349196.47874,
-    "msg": "759 guide channels, 38818 upcoming shows",
+    "time": 1794354468.2987833,
+    "msg": "759 guide channels, 37156 upcoming shows",
     "until": 1794490140
    }
   },
@@ -2029,8 +2029,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349205.4375105,
-    "msg": "595 guide channels, 93035 upcoming shows",
+    "time": 1794354476.373716,
+    "msg": "595 guide channels, 92177 upcoming shows",
     "until": 1794934800
    }
   },
@@ -2047,8 +2047,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349238.2689052,
-    "msg": "45792 guide channels, 506494 upcoming shows",
+    "time": 1794354507.7692044,
+    "msg": "45794 guide channels, 497912 upcoming shows",
     "until": 1794574800
    }
   },
@@ -2065,8 +2065,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349244.7344189,
-    "msg": "1917 guide channels, 78598 upcoming shows",
+    "time": 1794354513.9277952,
+    "msg": "1917 guide channels, 75106 upcoming shows",
     "until": 1794544200
    }
   },
@@ -2083,8 +2083,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349245.753712,
-    "msg": "397 guide channels, 15224 upcoming shows",
+    "time": 1794354514.9000735,
+    "msg": "397 guide channels, 14867 upcoming shows",
     "until": 1794583800
    }
   },
@@ -2101,8 +2101,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349247.1636808,
-    "msg": "243 guide channels, 15023 upcoming shows",
+    "time": 1794354516.0731676,
+    "msg": "243 guide channels, 14597 upcoming shows",
     "until": 1794583800
    }
   },
@@ -2119,8 +2119,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349248.2392547,
-    "msg": "227 guide channels, 12179 upcoming shows",
+    "time": 1794354517.0866456,
+    "msg": "227 guide channels, 11774 upcoming shows",
     "until": 1794538800
    }
   },
@@ -2137,8 +2137,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349248.4996707,
-    "msg": "130 guide channels, 3616 upcoming shows",
+    "time": 1794354517.3355086,
+    "msg": "130 guide channels, 3503 upcoming shows",
     "until": 1794517200
    }
   },
@@ -2155,8 +2155,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349264.0568047,
-    "msg": "3312 guide channels, 286522 upcoming shows",
+    "time": 1794354531.6593513,
+    "msg": "3312 guide channels, 284759 upcoming shows",
     "until": 1807322400
    }
   },
@@ -2173,8 +2173,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349268.0099268,
-    "msg": "1280 guide channels, 37716 upcoming shows",
+    "time": 1794354535.5118873,
+    "msg": "1280 guide channels, 40807 upcoming shows",
     "until": 1795607100
    }
   },
@@ -2191,8 +2191,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349270.3939192,
-    "msg": "433 guide channels, 21681 upcoming shows",
+    "time": 1794354537.7615116,
+    "msg": "433 guide channels, 22382 upcoming shows",
     "until": 1794508800
    }
   },
@@ -2209,8 +2209,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349274.1008198,
-    "msg": "691 guide channels, 2193 upcoming shows",
+    "time": 1794354540.6015427,
+    "msg": "691 guide channels, 2164 upcoming shows",
     "until": 1794873600
    }
   },
@@ -2227,8 +2227,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349294.6884787,
-    "msg": "1616 guide channels, 185391 upcoming shows",
+    "time": 1794354557.9747713,
+    "msg": "1616 guide channels, 182787 upcoming shows",
     "until": 1796160114
    }
   },
@@ -2245,8 +2245,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349298.529482,
-    "msg": "728 guide channels, 48731 upcoming shows",
+    "time": 1794354561.0211327,
+    "msg": "728 guide channels, 47767 upcoming shows",
     "until": 1794934800
    }
   },
@@ -2263,8 +2263,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349300.8808599,
-    "msg": "492 guide channels, 31389 upcoming shows",
+    "time": 1794354563.2232554,
+    "msg": "492 guide channels, 30578 upcoming shows",
     "until": 1794682800
    }
   },
@@ -2277,12 +2277,12 @@
    "auto": true,
    "added": 1793703798.4627178,
    "gain": 48,
-   "fails": 0,
+   "fails": 1,
    "st": {
     "ok": true,
-    "fresh": true,
-    "time": 1794349301.0346794,
-    "msg": "700 guide channels, 49 upcoming shows",
+    "fresh": false,
+    "time": 1794354563.2437174,
+    "msg": "700 guide channels, 49 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
   },
@@ -2299,9 +2299,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349302.4182506,
-    "msg": "387 guide channels, 10755 upcoming shows",
-    "until": 1794539100
+    "time": 1794354564.4276166,
+    "msg": "387 guide channels, 18345 upcoming shows",
+    "until": 1794622800
    }
   },
   {
@@ -2317,8 +2317,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349310.5293145,
-    "msg": "1406 guide channels, 112185 upcoming shows",
+    "time": 1794354571.5497954,
+    "msg": "1406 guide channels, 110155 upcoming shows",
     "until": 1794887940
    }
   },
@@ -2335,8 +2335,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349314.270254,
-    "msg": "504 guide channels, 51895 upcoming shows",
+    "time": 1794354574.7970781,
+    "msg": "504 guide channels, 50980 upcoming shows",
     "until": 1794855600
    }
   },
@@ -2353,8 +2353,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349346.9573095,
-    "msg": "2652 guide channels, 235130 upcoming shows",
+    "time": 1794354600.321382,
+    "msg": "2652 guide channels, 230109 upcoming shows",
     "until": 1794632400
    }
   },
@@ -2371,8 +2371,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349351.283476,
-    "msg": "719 guide channels, 53334 upcoming shows",
+    "time": 1794354603.6358476,
+    "msg": "719 guide channels, 52296 upcoming shows",
     "until": 1794805500
    }
   },
@@ -2389,8 +2389,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349351.8340518,
-    "msg": "96 guide channels, 5615 upcoming shows",
+    "time": 1794354604.0755827,
+    "msg": "96 guide channels, 5161 upcoming shows",
     "until": 1794497400
    }
   },
@@ -2407,8 +2407,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349353.6617415,
-    "msg": "828 guide channels, 21736 upcoming shows",
+    "time": 1794354605.448114,
+    "msg": "828 guide channels, 21006 upcoming shows",
     "until": 1794927600
    }
   },
@@ -2425,8 +2425,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349353.8155274,
-    "msg": "27 guide channels, 1456 upcoming shows",
+    "time": 1794354605.5984273,
+    "msg": "27 guide channels, 1430 upcoming shows",
     "until": 1794610800
    }
   },
@@ -2443,8 +2443,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349360.3480732,
-    "msg": "630 guide channels, 68942 upcoming shows",
+    "time": 1794354611.3888521,
+    "msg": "630 guide channels, 68073 upcoming shows",
     "until": 1795471200
    }
   },
@@ -2461,8 +2461,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349361.1132634,
-    "msg": "386 guide channels, 8381 upcoming shows",
+    "time": 1794354612.019039,
+    "msg": "386 guide channels, 7791 upcoming shows",
     "until": 1794582000
    }
   },
@@ -2479,8 +2479,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349365.6168892,
-    "msg": "259 guide channels, 58132 upcoming shows",
+    "time": 1794354616.0461235,
+    "msg": "259 guide channels, 57599 upcoming shows",
     "until": 1794891600
    }
   },
@@ -2497,8 +2497,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349368.970536,
-    "msg": "256 guide channels, 42935 upcoming shows",
+    "time": 1794354619.0953999,
+    "msg": "256 guide channels, 42528 upcoming shows",
     "until": 1794884580
    }
   },
@@ -2515,8 +2515,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349373.2790594,
-    "msg": "314 guide channels, 61904 upcoming shows",
+    "time": 1794354623.2807448,
+    "msg": "314 guide channels, 61288 upcoming shows",
     "until": 1794891600
    }
   },
@@ -2533,8 +2533,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349375.7387748,
-    "msg": "221 guide channels, 30916 upcoming shows",
+    "time": 1794354625.4330006,
+    "msg": "221 guide channels, 30605 upcoming shows",
     "until": 1794886200
    }
   },
@@ -2551,8 +2551,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349376.55469,
-    "msg": "109 guide channels, 11437 upcoming shows",
+    "time": 1794354626.180098,
+    "msg": "109 guide channels, 11298 upcoming shows",
     "until": 1794812400
    }
   },
@@ -2569,8 +2569,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349377.227487,
-    "msg": "457 guide channels, 5931 upcoming shows",
+    "time": 1794354626.8025758,
+    "msg": "457 guide channels, 5179 upcoming shows",
     "until": 1794416400
    }
   },
@@ -2587,8 +2587,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349377.618552,
-    "msg": "118 guide channels, 5271 upcoming shows",
+    "time": 1794354627.136134,
+    "msg": "118 guide channels, 5094 upcoming shows",
     "until": 1794519360
    }
   },
@@ -2605,8 +2605,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349377.8702514,
-    "msg": "193 guide channels, 3656 upcoming shows",
+    "time": 1794354627.3714988,
+    "msg": "193 guide channels, 3323 upcoming shows",
     "until": 1794589200
    }
   },
@@ -2623,8 +2623,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349437.4692216,
-    "msg": "5563 guide channels, 491379 upcoming shows",
+    "time": 1794354680.8120866,
+    "msg": "5563 guide channels, 480128 upcoming shows",
     "until": 1807336800
    }
   },
@@ -2641,8 +2641,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349448.244184,
-    "msg": "1908 guide channels, 115942 upcoming shows",
+    "time": 1794354690.1333919,
+    "msg": "1908 guide channels, 113681 upcoming shows",
     "until": 1797804000
    }
   },
@@ -2659,9 +2659,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349449.5751662,
-    "msg": "358 guide channels, 20336 upcoming shows",
-    "until": 1794682800
+    "time": 1794354691.5281885,
+    "msg": "365 guide channels, 21938 upcoming shows",
+    "until": 1794699000
    }
   },
   {
@@ -2677,8 +2677,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349453.759867,
-    "msg": "430 guide channels, 61061 upcoming shows",
+    "time": 1794354695.4915063,
+    "msg": "430 guide channels, 60511 upcoming shows",
     "until": 1794961500
    }
   },
@@ -2695,9 +2695,77 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794349453.8677092,
-    "msg": "11 guide channels, 976 upcoming shows",
+    "time": 1794354695.592121,
+    "msg": "11 guide channels, 951 upcoming shows",
     "until": 1794594957
+   }
+  },
+  {
+   "id": "ae2e661f",
+   "type": "xmltv",
+   "name": "BS (iptv-epg.org)",
+   "url": "https://iptv-epg.org/files/epg-bs.xml.gz",
+   "enabled": true,
+   "auto": true,
+   "added": 1794354789.5490224,
+   "gain": 5,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1794354789.7652261,
+    "msg": "26 guide channels, 3024 upcoming shows"
+   }
+  },
+  {
+   "id": "ab247cd8",
+   "type": "xmltv",
+   "name": "IPTV-and-EPG: guide.xml (GitHub)",
+   "url": "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/guide.xml",
+   "enabled": true,
+   "auto": true,
+   "added": 1794354791.048037,
+   "gain": 6,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1794354791.1581583,
+    "msg": "48 guide channels, 1342 upcoming shows"
+   }
+  },
+  {
+   "id": "afd11949",
+   "type": "xmltv",
+   "name": "japanterebi-xmltv: guide@skyperfectv.xml (GitHub)",
+   "url": "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40skyperfectv.xml",
+   "enabled": true,
+   "auto": true,
+   "added": 1794354793.0307288,
+   "gain": 6,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1794354793.7953877,
+    "msg": "125 guide channels, 16958 upcoming shows"
+   }
+  },
+  {
+   "id": "a033ed43",
+   "type": "xmltv",
+   "name": "japanterebi-xmltv: guide@jcom.xml (GitHub)",
+   "url": "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40jcom.xml",
+   "enabled": true,
+   "auto": true,
+   "added": 1794354794.4506528,
+   "gain": 2,
+   "fails": 0,
+   "st": {
+    "ok": true,
+    "fresh": true,
+    "time": 1794354794.7249048,
+    "msg": "105 guide channels, 2262 upcoming shows"
    }
   }
  ],
@@ -3257,12 +3325,12 @@
    "why": "added as backup"
   },
   "https://epgshare01.online/epgshare01/epg_ripper_KE1.xml.gz": {
-   "t": 1793332831.9328887,
-   "fresh": true,
+   "t": 1794354786.9519308,
+   "fresh": false,
    "gain": 0,
    "name": "guide linked by 'Free-TV Usa'",
    "channels": 157,
-   "why": "covers nothing new"
+   "why": "out of date"
   },
   "https://epgshare01.online/epgshare01/epg_ripper_KR1.xml.gz": {
    "t": 1793332832.1688259,
@@ -5846,23 +5914,23 @@
    "why": "added"
   },
   "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40skyperfectv.xml": {
-   "t": 1793521140.9823804,
+   "t": 1794354791.7876296,
    "fresh": true,
-   "gain": 0,
+   "gain": 6,
    "name": "japanterebi-xmltv: guide@skyperfectv.xml (GitHub)",
    "channels": 125,
-   "why": "covers nothing new"
+   "why": "added"
   },
   "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40jcom.xml": {
-   "t": 1793521141.780523,
+   "t": 1794354793.8007228,
    "fresh": true,
-   "gain": 0,
+   "gain": 2,
    "name": "japanterebi-xmltv: guide@jcom.xml (GitHub)",
    "channels": 105,
-   "why": "covers nothing new"
+   "why": "added"
   },
   "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40nhk.xml": {
-   "t": 1793521142.539664,
+   "t": 1794354794.7302275,
    "fresh": true,
    "gain": 0,
    "name": "japanterebi-xmltv: guide@nhk.xml (GitHub)",
@@ -5870,7 +5938,7 @@
    "why": "covers nothing new"
   },
   "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40nhkworldpremium.xml": {
-   "t": 1793521142.8055303,
+   "t": 1794354794.99235,
    "fresh": true,
    "gain": 0,
    "name": "japanterebi-xmltv: guide@nhkworldpremium.xml (GitHub)",
@@ -5878,12 +5946,12 @@
    "why": "covers nothing new"
   },
   "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40mxtv.xml": {
-   "t": 1793521143.084741,
-   "fresh": true,
+   "t": 1794354795.2882822,
+   "fresh": false,
    "gain": 0,
    "name": "japanterebi-xmltv: guide@mxtv.xml (GitHub)",
    "channels": 2,
-   "why": "covers nothing new"
+   "why": "out of date"
   },
   "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-10-31/46.xml": {
    "t": 1794127205.6409404,
@@ -6541,6 +6609,95 @@
    "name": "tunein-xmltv: xmltv.xml (GitHub)",
    "channels": 10,
    "why": "added"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_US_LOCALS2.channels.xml": {
+   "t": 1794354785.8088663,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_US_LOCALS2.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/tvtv.us/tvtv.us.channels.xml": {
+   "t": 1794354786.1822534,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: tvtv.us.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_US1.channels.xml": {
+   "t": 1794354786.4291477,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_US1.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_CA1.channels.xml": {
+   "t": 1794354786.6740484,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_CA1.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://iptv-epg.org/files/epg-tt.xml.gz": {
+   "t": 1794354787.112992,
+   "fresh": true,
+   "gain": 0,
+   "name": "TT (iptv-epg.org)",
+   "channels": 8,
+   "why": "covers nothing new"
+  },
+  "https://iptv-epg.org/files/epg-bs.xml.gz": {
+   "t": 1794354788.030504,
+   "fresh": true,
+   "gain": 5,
+   "name": "BS (iptv-epg.org)",
+   "channels": 26,
+   "why": "added"
+  },
+  "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-10/50.xml": {
+   "t": 1794354789.7704144,
+   "fresh": true,
+   "gain": 0,
+   "name": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
+   "channels": 1,
+   "why": "covers nothing new"
+  },
+  "https://raw.githubusercontent.com/djrenzo/EPG/main/guide.xml": {
+   "t": 1794354790.0938504,
+   "fresh": true,
+   "gain": 0,
+   "name": "EPG: guide.xml (GitHub)",
+   "channels": 3,
+   "why": "covers nothing new"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/guide.xml": {
+   "t": 1794354790.4073832,
+   "fresh": true,
+   "gain": 6,
+   "name": "IPTV-and-EPG: guide.xml (GitHub)",
+   "channels": 48,
+   "why": "added"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_CH1.channels.xml": {
+   "t": 1794354791.163563,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_CH1.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_IN4.channels.xml": {
+   "t": 1794354791.3529952,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_IN4.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
+  },
+  "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_PLEX1.channels.xml": {
+   "t": 1794354791.5317934,
+   "fresh": false,
+   "gain": 0,
+   "name": "IPTV-and-EPG: epgshare01.online_PLEX1.channels.xml (GitHub)",
+   "why": "not a guide or playlist (error page or empty)"
   }
  },
  "blocked": [
@@ -6699,11 +6856,11 @@
   "https://xmltv.net/xml_files/Perth.xml",
   "https://xmltv.net/xml_files/Sydney.xml"
  ],
- "last_discovery": 1794349502.906281,
- "known": 411,
+ "last_discovery": 1794354795.566015,
+ "known": 426,
  "cache": {
   "i.mjh.nz": {
-   "time": 1794263430.1205757,
+   "time": 1794354748.6800725,
    "found": {
     "https://i.mjh.nz/Binge/epg.xml.gz": "Binge epg (i.mjh.nz)",
     "https://i.mjh.nz/DStv/za.xml.gz": "DStv za (i.mjh.nz)",
@@ -6768,185 +6925,186 @@
    }
   },
   "epgshare01": {
-   "time": 1794263430.305878,
+   "time": 1794354748.8352711,
    "found": {
-    "https://epgshare01.online/epgshare01/epg_ripper_DRAFTKINGS1.xml.gz": "DRAFTKINGS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PL1.xml.gz": "PL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz": "PLEX1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz": "RO1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz": "TR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BR2.xml.gz": "BR2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CH1.xml.gz": "CH1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_NZ1.xml.gz": "NZ1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz": "CO1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz": "TR3 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_RALLY_TV1.xml.gz": "RALLY TV1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CL1.xml.gz": "CL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_THESPORTPLUS1.xml.gz": "THESPORTPLUS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_LV1.xml.gz": "LV1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IE1.xml.gz": "IE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz": "HU1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_LT1.xml.gz": "LT1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_UA1.xml.gz": "UA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz": "US2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BEIN1.xml.gz": "BEIN1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz": "TR3 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_NO1.xml.gz": "NO1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_MY1.xml.gz": "MY1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz": "TR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PH1.xml.gz": "PH1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IN4.xml.gz": "IN4 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DO1.xml.gz": "DO1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz": "DE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz": "RO1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DK1.xml.gz": "DK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_KZ1.xml.gz": "KZ1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_AMCCHANNELS1.xml.gz": "AMCCHANNELS1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_NG1.xml.gz": "NG1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_NO1.xml.gz": "NO1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DUMMY_CHANNELS.xml.gz": "DUMMY CHANNELS (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_AT1.xml.gz": "AT1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_NL1.xml.gz": "NL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz": "ES1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_MX1.xml.gz": "MX1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_FANDUEL1.xml.gz": "FANDUEL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PK1.xml.gz": "PK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BG1.xml.gz": "BG1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DK1.xml.gz": "DK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BEIN1.xml.gz": "BEIN1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz": "CA2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_AUDACY1.xml.gz": "AUDACY1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_KZ1.xml.gz": "KZ1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz": "UK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_AE1.xml.gz": "AE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IT1.xml.gz": "IT1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz": "AR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DISTROTV1.xml.gz": "DISTROTV1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ID1.xml.gz": "ID1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PH1.xml.gz": "PH1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz": "IL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_WHALETVPLUS1.xml.gz": "WHALETVPLUS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SA1.xml.gz": "SA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SK1.xml.gz": "SK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PE1.xml.gz": "PE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_EG1.xml.gz": "EG1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_TBNPLUS1.xml.gz": "TBNPLUS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SA2.xml.gz": "SA2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_JP1.xml.gz": "JP1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SV1.xml.gz": "SV1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DIRECTVSPORTS1.xml.gz": "DIRECTVSPORTS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ASIANTELEVISION1.xml.gz": "ASIANTELEVISION1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_VN1.xml.gz": "VN1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_GR1.xml.gz": "GR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IN1.xml.gz": "IN1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_KR1.xml.gz": "KR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SE1.xml.gz": "SE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_RS1.xml.gz": "RS1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_AL1.xml.gz": "AL1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BA1.xml.gz": "BA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SSPORTPLUS1.xml.gz": "SSPORTPLUS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_VOA1.xml.gz": "VOA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_FI1.xml.gz": "FI1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PEACOCK1.xml.gz": "PEACOCK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IN4.xml.gz": "IN4 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_LU1.xml.gz": "LU1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_EC1.xml.gz": "EC1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CZ1.xml.gz": "CZ1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz": "PT1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_US_SPORTS1.xml.gz": "US SPORTS1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ZA1.xml.gz": "ZA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_UY1.xml.gz": "UY1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_JP2.xml.gz": "JP2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PH2.xml.gz": "PH2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_KE1.xml.gz": "KE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz": "ALL SOURCES1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_MT1.xml.gz": "MT1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_HR1.xml.gz": "HR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz": "DE1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_ALJAZEERA1.xml.gz": "ALJAZEERA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_TH1.xml.gz": "TH1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_PA1.xml.gz": "PA1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz": "AU1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CR1.xml.gz": "CR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_MN1.xml.gz": "MN1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_JM1.xml.gz": "JM1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DO1.xml.gz": "DO1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BB1.xml.gz": "BB1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_IN2.xml.gz": "IN2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz": "FR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz": "RAKUTEN1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz": "US2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SPORTKLUB1.xml.gz": "SPORTKLUB1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_CY1.xml.gz": "CY1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_RO2.xml.gz": "RO2 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_SG1.xml.gz": "SG1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_DELUXEMUSIC1.xml.gz": "DELUXEMUSIC1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_HK1.xml.gz": "HK1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz": "US LOCALS1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz": "BR1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_BE2.xml.gz": "BE2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz": "PT1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz": "US LOCALS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz": "AR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_RS1.xml.gz": "RS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_HK1.xml.gz": "HK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_AT1.xml.gz": "AT1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_MX1.xml.gz": "MX1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_NL1.xml.gz": "NL1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_KE1.xml.gz": "KE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CR1.xml.gz": "CR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BB1.xml.gz": "BB1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_US_SPORTS1.xml.gz": "US SPORTS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_TBNPLUS1.xml.gz": "TBNPLUS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CY1.xml.gz": "CY1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_FI1.xml.gz": "FI1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_KR1.xml.gz": "KR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BG1.xml.gz": "BG1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_HU1.xml.gz": "HU1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BR2.xml.gz": "BR2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_VOA1.xml.gz": "VOA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PH2.xml.gz": "PH2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_FANDUEL1.xml.gz": "FANDUEL1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_UA1.xml.gz": "UA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_GR1.xml.gz": "GR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ASIANTELEVISION1.xml.gz": "ASIANTELEVISION1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_LV1.xml.gz": "LV1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_AUDACY1.xml.gz": "AUDACY1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_HR1.xml.gz": "HR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_MN1.xml.gz": "MN1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PA1.xml.gz": "PA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DRAFTKINGS1.xml.gz": "DRAFTKINGS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IN2.xml.gz": "IN2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PE1.xml.gz": "PE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DISTROTV1.xml.gz": "DISTROTV1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PL1.xml.gz": "PL1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_EC1.xml.gz": "EC1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz": "FR1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PK1.xml.gz": "PK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_WHALETVPLUS1.xml.gz": "WHALETVPLUS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_AE1.xml.gz": "AE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_EG1.xml.gz": "EG1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SA2.xml.gz": "SA2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DIRECTVSPORTS1.xml.gz": "DIRECTVSPORTS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz": "ALL SOURCES1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_NZ1.xml.gz": "NZ1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CH1.xml.gz": "CH1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_TH1.xml.gz": "TH1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CL1.xml.gz": "CL1 (epgshare01)",
     "https://epgshare01.online/epgshare01/epg_ripper_MUSICBOX1.xml.gz": "MUSICBOX1 (epgshare01)",
-    "https://epgshare01.online/epgshare01/epg_ripper_MY1.xml.gz": "MY1 (epgshare01)"
+    "https://epgshare01.online/epgshare01/epg_ripper_PEACOCK1.xml.gz": "PEACOCK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SSPORTPLUS1.xml.gz": "SSPORTPLUS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_RO2.xml.gz": "RO2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IT1.xml.gz": "IT1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SPORTKLUB1.xml.gz": "SPORTKLUB1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_MT1.xml.gz": "MT1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz": "UK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_JP1.xml.gz": "JP1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz": "RAKUTEN1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ALJAZEERA1.xml.gz": "ALJAZEERA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SA1.xml.gz": "SA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_UY1.xml.gz": "UY1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz": "CO1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz": "PLEX1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz": "IL1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IN1.xml.gz": "IN1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_THESPORTPLUS1.xml.gz": "THESPORTPLUS1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz": "ES1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SV1.xml.gz": "SV1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_JP2.xml.gz": "JP2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ID1.xml.gz": "ID1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DELUXEMUSIC1.xml.gz": "DELUXEMUSIC1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz": "AU1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BE2.xml.gz": "BE2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SG1.xml.gz": "SG1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CZ1.xml.gz": "CZ1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_IE1.xml.gz": "IE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_JM1.xml.gz": "JM1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SK1.xml.gz": "SK1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_LU1.xml.gz": "LU1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz": "CA2 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_ZA1.xml.gz": "ZA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_DUMMY_CHANNELS.xml.gz": "DUMMY CHANNELS (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_RALLY_TV1.xml.gz": "RALLY TV1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_BA1.xml.gz": "BA1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_SE1.xml.gz": "SE1 (epgshare01)",
+    "https://epgshare01.online/epgshare01/epg_ripper_VN1.xml.gz": "VN1 (epgshare01)"
    }
   },
   "iptv-epg.org": {
-   "time": 1794263431.847988,
+   "time": 1794354749.9524171,
    "found": {
-    "https://iptv-epg.org/files/epg-al.xml.gz": "AL (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-by.xml.gz": "BY (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-gh.xml.gz": "GH (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-mt.xml.gz": "MT (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-fr.xml.gz": "FR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-lu.xml.gz": "LU (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-fi.xml.gz": "FI (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ge.xml.gz": "GE (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ba.xml.gz": "BA (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-gr.xml.gz": "GR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-at.xml.gz": "AT (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-rs.xml.gz": "RS (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-lt.xml.gz": "LT (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-hu.xml.gz": "HU (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-jm.xml.gz": "JM (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ca.xml.gz": "CA (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-de.xml.gz": "DE (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-sv.xml.gz": "SV (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ru.xml.gz": "RU (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-id.xml.gz": "ID (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-dk.xml.gz": "DK (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-nl.xml.gz": "NL (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-me.xml.gz": "ME (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-se.xml.gz": "SE (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-hk.xml.gz": "HK (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-nz.xml.gz": "NZ (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-au.xml.gz": "AU (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ve.xml.gz": "VE (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-do.xml.gz": "DO (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-pa.xml.gz": "PA (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-hr.xml.gz": "HR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-is.xml.gz": "IS (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-tr.xml.gz": "TR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-bg.xml.gz": "BG (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-hn.xml.gz": "HN (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-br.xml.gz": "BR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-es.xml.gz": "ES (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-cz.xml.gz": "CZ (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-gb.xml.gz": "GB (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-mx.xml.gz": "MX (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-gt.xml.gz": "GT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-nl.xml.gz": "NL (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ni.xml.gz": "NI (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-il.xml.gz": "IL (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ch.xml.gz": "CH (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-mk.xml.gz": "MK (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-pl.xml.gz": "PL (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ar.xml.gz": "AR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-zw.xml.gz": "ZW (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-za.xml.gz": "ZA (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ro.xml.gz": "RO (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ca.xml.gz": "CA (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-gh.xml.gz": "GH (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-lt.xml.gz": "LT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-id.xml.gz": "ID (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-pa.xml.gz": "PA (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-sg.xml.gz": "SG (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-jp.xml.gz": "JP (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ba.xml.gz": "BA (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-hn.xml.gz": "HN (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-tt.xml.gz": "TT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-my.xml.gz": "MY (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-es.xml.gz": "ES (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-th.xml.gz": "TH (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-be.xml.gz": "BE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-hu.xml.gz": "HU (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-me.xml.gz": "ME (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-am.xml.gz": "AM (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-dk.xml.gz": "DK (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-fr.xml.gz": "FR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-de.xml.gz": "DE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-zw.xml.gz": "ZW (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-tw.xml.gz": "TW (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-pt.xml.gz": "PT (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ug.xml.gz": "UG (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-br.xml.gz": "BR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-za.xml.gz": "ZA (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-bg.xml.gz": "BG (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ng.xml.gz": "NG (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ru.xml.gz": "RU (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-nz.xml.gz": "NZ (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-cr.xml.gz": "CR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-mt.xml.gz": "MT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ve.xml.gz": "VE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-in.xml.gz": "IN (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-it.xml.gz": "IT (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-lv.xml.gz": "LV (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-no.xml.gz": "NO (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-in.xml.gz": "IN (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ni.xml.gz": "NI (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-py.xml.gz": "PY (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-us.xml.gz": "US (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-be.xml.gz": "BE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-pt.xml.gz": "PT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-rs.xml.gz": "RS (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-bs.xml.gz": "BS (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-no.xml.gz": "NO (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-lu.xml.gz": "LU (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-se.xml.gz": "SE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-sv.xml.gz": "SV (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-tr.xml.gz": "TR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-jm.xml.gz": "JM (iptv-epg.org)",
     "https://iptv-epg.org/files/epg-bo.xml.gz": "BO (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-my.xml.gz": "MY (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ro.xml.gz": "RO (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-cr.xml.gz": "CR (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-ng.xml.gz": "NG (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-am.xml.gz": "AM (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-th.xml.gz": "TH (iptv-epg.org)",
-    "https://iptv-epg.org/files/epg-cz.xml.gz": "CZ (iptv-epg.org)"
+    "https://iptv-epg.org/files/epg-at.xml.gz": "AT (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-by.xml.gz": "BY (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-mx.xml.gz": "MX (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-al.xml.gz": "AL (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ch.xml.gz": "CH (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-us.xml.gz": "US (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-fi.xml.gz": "FI (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ug.xml.gz": "UG (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-jp.xml.gz": "JP (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-is.xml.gz": "IS (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-hk.xml.gz": "HK (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-gr.xml.gz": "GR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-pl.xml.gz": "PL (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-au.xml.gz": "AU (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-ge.xml.gz": "GE (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-do.xml.gz": "DO (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-hr.xml.gz": "HR (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-mk.xml.gz": "MK (iptv-epg.org)",
+    "https://iptv-epg.org/files/epg-gt.xml.gz": "GT (iptv-epg.org)"
    }
   },
   "epg.pw": {
@@ -6978,90 +7136,8 @@
    }
   },
   "GitHub": {
-   "time": 1794263458.6659386,
+   "time": 1794354785.800129,
    "found": {
-    "https://raw.githubusercontent.com/juanfadev/streamvault-epg-es/main/guide.xml.gz": "streamvault-epg-es: guide.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/bryanhs21/movistar-epg-peru/main/epg.xml": "movistar-epg-peru: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/jiotv.xml": "iptv-epg: jiotv.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/airtel.xml": "iptv-epg: airtel.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml": "iptv-epg: dishtv.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/tataplay.xml": "iptv-epg: tataplay.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/sundirectgo.xml": "iptv-epg: sundirectgo.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml": "iptv-epg: zee5.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/yupptv.xml": "iptv-epg: yupptv.xml (GitHub)",
-    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/jiotv.xml.gz": "iptv-epg: jiotv.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SkyGo/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/all.xml": "i.mjh.nz: all.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/all/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nzau/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/au/all/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/all.xml": "i.mjh.nz: all.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nz/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Singtel/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/furey/freetvarr/main/test/fixtures/tvh-setup/mjh-sydney-channels.xml": "freetvarr: mjh-sydney-channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/Xfinity_Chicago_IL_US_xmltv_10271.xml": "get_xmltvlisting: Xfinity_Chicago_IL_US_xmltv_10271.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/Rogers_Toronto_ON_CA_xmltv_10270.xml": "get_xmltvlisting: Rogers_Toronto_ON_CA_xmltv_10270.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/.archive/Bell_Fibe%5BCA%5D-xmltv-9331.xml": "get_xmltvlisting: Bell_Fibe[CA]-xmltv-9331.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/Verizon_FIOS_NewYork_NY_US_xmltv_10273.xml": "get_xmltvlisting: Verizon_FIOS_NewYork_NY_US_xmltv_10273.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/Telus_Optik_Vancouver_BC_CA_xmltv_10269.xml": "get_xmltvlisting: Telus_Optik_Vancouver_BC_CA_xmltv_10269.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/IPTV/.archive/Spectrum_NY%5BUS%5D-xmltv-9330.xml": "get_xmltvlisting: Spectrum_NY[US]-xmltv-9330.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/sample_download_XML.TV.Listings/xmltv-9330.xml": "get_xmltvlisting: xmltv-9330.xml (GitHub)",
-    "https://raw.githubusercontent.com/AJPnKW/get_xmltvlisting/main/sample_download_XML.TV.Listings/xmltv-9329.xml": "get_xmltvlisting: xmltv-9329.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml": "Sri-Lanka-IPTV-EPG: Epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-09/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-08/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml.gz": "Sri-Lanka-IPTV-EPG: Epg.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-07/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-09/46.xml": "Sri-Lanka-IPTV-EPG: 46.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-08/46.xml": "Sri-Lanka-IPTV-EPG: 46.xml (GitHub)",
-    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-07/46.xml": "Sri-Lanka-IPTV-EPG: 46.xml (GitHub)",
-    "https://raw.githubusercontent.com/joelachiana/tunein-xmltv/main/xmltv.xml": "tunein-xmltv: xmltv.xml (GitHub)",
-    "https://raw.githubusercontent.com/mingram751-afk/epg-atlanta/main/docs/guide.xml": "epg-atlanta: guide.xml (GitHub)",
-    "https://raw.githubusercontent.com/913AycltFM/91.3-Ayclt-FM-TV/main/91.3_Ayclt_FM_radio_guide.xml": "91.3-Ayclt-FM-TV: 91.3_Ayclt_FM_radio_guide.xml (GitHub)",
-    "https://raw.githubusercontent.com/xyzs996/iptv-doctor/main/apps/worldcup-tv-guide/public/sitemap.xml": "iptv-doctor: sitemap.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/pluto-tv/epg.xml": "IPTV_Master: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/freelivesports-tv/epg.xml": "IPTV_Master: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/epg.xml": "IPTV_Master: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Networks/tvguide.com_providers_byCountry.xml": "IPTV_Master: tvguide.com_providers_byCountry.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Networks/directv.com.channels.xml": "IPTV_Master: directv.com.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Denmark/dk.timefor.tv.channels.xml": "IPTV_Master: dk.timefor.tv.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Sweden/se.timefor.tv.channels.xml": "IPTV_Master: se.timefor.tv.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Brazil/tvmagazine.com.br.channels.xml": "IPTV_Master: tvmagazine.com.br.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/ccm789/epg/main/epg.xml": "epg: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/ccm789/epg/main/epg_sgmy.xml": "epg: epg_sgmy.xml (GitHub)",
-    "https://raw.githubusercontent.com/ccm789/epg/main/epg_yang.xml": "epg: epg_yang.xml (GitHub)",
-    "https://raw.githubusercontent.com/ccm789/epg/main/epg_sgmy.xml.gz": "epg: epg_sgmy.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/saeidrahmanbd/BDIX-IPTV/main/epg/epg.xml": "BDIX-IPTV: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/guide.xml": "epg-us: guide.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/epg.112114.xyz/__data__/content.xml": "epg-us: content.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/tvpassport.com/tvpassport.com.channels.xml": "epg-us: tvpassport.com.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/sat.tv/sat.tv_ar.channels.xml": "epg-us: sat.tv_ar.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/ontvtonight.com/ontvtonight.com_us.channels.xml": "epg-us: ontvtonight.com_us.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/sat.tv/sat.tv_en.channels.xml": "epg-us: sat.tv_en.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/tvprofil.com/tvprofil.com.channels.xml": "epg-us: tvprofil.com.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/jacobpscott16/epg-us/master/sites/epgshare01.online/epgshare01.online_US_LOCALS2.channels.xml": "epg-us: epgshare01.online_US_LOCALS2.channels.xml (GitHub)",
-    "https://raw.githubusercontent.com/tv1973/xmltv_uk/master/epg.xml": "xmltv_uk: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/epg.xml.gz": "CTVU-EPG-OWN: epg.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/guide.xml.gz": "CTVU-EPG-OWN: guide.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/web.magentatv.de.xml.gz": "CTVU-EPG-OWN: web.magentatv.de.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.blue.ch.xml.gz": "CTVU-EPG-OWN: tv.blue.ch.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/mi.tv.xml.gz": "CTVU-EPG-OWN: mi.tv.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.sfr.fr.xml.gz": "CTVU-EPG-OWN: tv.sfr.fr.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/programtv.onet.pl.xml.gz": "CTVU-EPG-OWN: programtv.onet.pl.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/orangetv.orange.es.xml.gz": "CTVU-EPG-OWN: orangetv.orange.es.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_US.xml.gz": "nm-now-feed: epg_US.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_RU.xml.gz": "nm-now-feed: epg_RU.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_CA.xml.gz": "nm-now-feed: epg_CA.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_GB.xml.gz": "nm-now-feed: epg_GB.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_FR.xml.gz": "nm-now-feed: epg_FR.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_DE.xml.gz": "nm-now-feed: epg_DE.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_AU.xml.gz": "nm-now-feed: epg_AU.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_BR.xml.gz": "nm-now-feed: epg_BR.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/heberjeur/tvora/master/app/src/main/assets/epg_tnt.xml.gz": "tvora: epg_tnt.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/heberjeur/tvora/master/app/src/main/assets/epg_tnt_en.xml.gz": "tvora: epg_tnt_en.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/matrix3x65/tivimate-epg/main/guide.xml.gz": "tivimate-epg: guide.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/913AycltFM/The-Mid-West-Plainsman-TV-Guide/main/The-Mid-West-Plainsman-TV-Guide.xml": "The-Mid-West-Plainsman-TV-Guide: The-Mid-West-Plainsman-TV-Guide.xml (GitHub)",
-    "https://raw.githubusercontent.com/kem0sab3/my-epg/main/epg.xml.gz": "my-epg: epg.xml.gz (GitHub)",
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/docs/guide.xml": "EPGTalk: guide.xml (GitHub)",
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/guide.xml": "EPGTalk: guide.xml (GitHub)",
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/US_guide.xml.gz": "EPGTalk: US_guide.xml.gz (GitHub)",
@@ -7070,12 +7146,110 @@
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/docs/UK_guide.xml.gz": "EPGTalk: UK_guide.xml.gz (GitHub)",
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz": "EPGTalk: Latino_guide.xml.gz (GitHub)",
     "https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/docs/Latino_guide.xml.gz": "EPGTalk: Latino_guide.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SkyGo/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/all.xml": "i.mjh.nz: all.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/all/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nzau/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/au/all/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/all.xml": "i.mjh.nz: all.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/nz/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Singtel/epg.xml": "i.mjh.nz: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_init7_epg.xml.gz": "TV7_EPG_Data: tv7_init7_epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_epg.xml.gz": "TV7_EPG_Data: tv7_epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/mathewmeconry/TV7_EPG_Data/master/tv7_teleboy_epg.xml.gz": "TV7_EPG_Data: tv7_teleboy_epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Shadow-GR-Official/magentatv-epg/main/data/epg.xml": "magentatv-epg: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/pluto-tv/epg.xml": "IPTV_Master: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/freelivesports-tv/epg.xml": "IPTV_Master: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/epg.xml": "IPTV_Master: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Networks/tvguide.com_providers_byCountry.xml": "IPTV_Master: tvguide.com_providers_byCountry.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Networks/directv.com.channels.xml": "IPTV_Master: directv.com.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Denmark/dk.timefor.tv.channels.xml": "IPTV_Master: dk.timefor.tv.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Sweden/se.timefor.tv.channels.xml": "IPTV_Master: se.timefor.tv.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/sulthanpamenan/IPTV_Master/main/WebGrabPlus-Master/config/siteini.pack/Brazil/tvmagazine.com.br.channels.xml": "IPTV_Master: tvmagazine.com.br.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/jiotv.xml": "iptv-epg: jiotv.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/airtel.xml": "iptv-epg: airtel.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/dishtv.xml": "iptv-epg: dishtv.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/tataplay.xml": "iptv-epg: tataplay.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/sundirectgo.xml": "iptv-epg: sundirectgo.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/zee5.xml": "iptv-epg: zee5.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/yupptv.xml": "iptv-epg: yupptv.xml (GitHub)",
+    "https://raw.githubusercontent.com/jasonramg/iptv-epg/main/epg/jiotv.xml.gz": "iptv-epg: jiotv.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/al7omed/bein-epg/main/docs/guide.xml": "bein-epg: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/ronaldoribeirosm/epg-tv-scraper/main/output/guide.xml": "epg-tv-scraper: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/zacmorgan/tivimate-epg/main/all-channels-epg.xml.gz": "tivimate-epg: all-channels-epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/guide.xml": "japanterebi-xmltv: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40skyperfectv.xml": "japanterebi-xmltv: guide@skyperfectv.xml (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40jcom.xml": "japanterebi-xmltv: guide@jcom.xml (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40nhk.xml": "japanterebi-xmltv: guide@nhk.xml (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40nhkworldpremium.xml": "japanterebi-xmltv: guide@nhkworldpremium.xml (GitHub)",
+    "https://raw.githubusercontent.com/Animenosekai/japanterebi-xmltv/main/partial/guide%40mxtv.xml": "japanterebi-xmltv: guide@mxtv.xml (GitHub)",
+    "https://raw.githubusercontent.com/JulioCesarXY/EPG-TracePlus/main/epg_final.xml": "EPG-TracePlus: epg_final.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/us.xml": "tv-guide-mirror: us.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/pt.xml": "tv-guide-mirror: pt.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/ca.xml": "tv-guide-mirror: ca.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/uk.xml": "tv-guide-mirror: uk.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/es.xml": "tv-guide-mirror: es.xml (GitHub)",
+    "https://raw.githubusercontent.com/elevidallc/tv-guide-mirror/main/guides/br.xml": "tv-guide-mirror: br.xml (GitHub)",
+    "https://raw.githubusercontent.com/JulioCesarXY/EPG-Plex-Brazil/main/plex_epg_brasil.xml": "EPG-Plex-Brazil: plex_epg_brasil.xml (GitHub)",
+    "https://raw.githubusercontent.com/22bw/fctv-epg/main/epg.xml": "fctv-epg: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/joelachiana/tunein-xmltv/main/xmltv.xml": "tunein-xmltv: xmltv.xml (GitHub)",
+    "https://raw.githubusercontent.com/xyzs996/iptv-doctor/main/apps/worldcup-tv-guide/public/sitemap.xml": "iptv-doctor: sitemap.xml (GitHub)",
+    "https://raw.githubusercontent.com/pfk2027/tv-epg/main/epg.xml.gz": "tv-epg: epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml": "Sri-Lanka-IPTV-EPG: Epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-10/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-09/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-08/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/Epg.xml.gz": "Sri-Lanka-IPTV-EPG: Epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-07/50.xml": "Sri-Lanka-IPTV-EPG: 50.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-09/46.xml": "Sri-Lanka-IPTV-EPG: 46.xml (GitHub)",
+    "https://raw.githubusercontent.com/KAWDHITHA-NIRMAL/Sri-Lanka-IPTV-EPG/main/DialogTv/Channels/2026-11-08/46.xml": "Sri-Lanka-IPTV-EPG: 46.xml (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/all.xml.gz": "tivimate-epg: all.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/layerseven.xml.gz": "tivimate-epg: layerseven.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/us.xml.gz": "tivimate-epg: us.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/ca.xml": "tivimate-epg: ca.xml (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/gb.xml.gz": "tivimate-epg: gb.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/layerseven-custom.xml.gz": "tivimate-epg: layerseven-custom.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/ca.xml.gz": "tivimate-epg: ca.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/quique48/tivimate-epg/main/guides/sports.xml": "tivimate-epg: sports.xml (GitHub)",
     "https://raw.githubusercontent.com/satashi2012/epg/main/light-epg.xml.gz": "epg: light-epg.xml.gz (GitHub)",
     "https://raw.githubusercontent.com/satashi2012/epg/main/epg.xml.gz": "epg: epg.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/ariel-figue/my-epg/main/docs/guide.xml": "my-epg: guide.xml (GitHub)",
-    "https://raw.githubusercontent.com/ariel-figue/my-epg/main/docs/guide.xml.gz": "my-epg: guide.xml.gz (GitHub)",
-    "https://raw.githubusercontent.com/22bw/fctv-epg/main/epg.xml": "fctv-epg: epg.xml (GitHub)",
-    "https://raw.githubusercontent.com/doms9/iptv/default/M3U8/TV.xml": "iptv: TV.xml (GitHub)"
+    "https://raw.githubusercontent.com/nt74/epglist/main/guide.xml": "epglist: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/runntv.xml": "epg: runntv.xml (GitHub)",
+    "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml": "epg: neotv.xml (GitHub)",
+    "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/runntv.xml.gz": "epg: runntv.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/kableone.xml": "epg: kableone.xml (GitHub)",
+    "https://raw.githubusercontent.com/amazeyourself/epg/main/epg/neotv.xml.gz": "epg: neotv.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/BuddyChewChew/multi-epg-light/main/epgs/light-epg.xml.gz": "multi-epg-light: light-epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_US.xml.gz": "nm-now-feed: epg_US.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_RU.xml.gz": "nm-now-feed: epg_RU.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_CA.xml.gz": "nm-now-feed: epg_CA.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_GB.xml.gz": "nm-now-feed: epg_GB.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_FR.xml.gz": "nm-now-feed: epg_FR.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_DE.xml.gz": "nm-now-feed: epg_DE.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_AU.xml.gz": "nm-now-feed: epg_AU.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Kainkle/nm-now-feed/main/feed/.epg/epg_BR.xml.gz": "nm-now-feed: epg_BR.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/epg.xml.gz": "CTVU-EPG-OWN: epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/guide.xml.gz": "CTVU-EPG-OWN: guide.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/web.magentatv.de.xml.gz": "CTVU-EPG-OWN: web.magentatv.de.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.blue.ch.xml.gz": "CTVU-EPG-OWN: tv.blue.ch.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/mi.tv.xml.gz": "CTVU-EPG-OWN: mi.tv.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/tv.sfr.fr.xml.gz": "CTVU-EPG-OWN: tv.sfr.fr.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/programtv.onet.pl.xml.gz": "CTVU-EPG-OWN: programtv.onet.pl.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Cabletvunleashed/CTVU-EPG-OWN/main/grab/ext/orangetv.orange.es.xml.gz": "CTVU-EPG-OWN: orangetv.orange.es.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/913AycltFM/The-Mid-West-Plainsman-TV-Guide/main/The-Mid-West-Plainsman-TV-Guide.xml": "The-Mid-West-Plainsman-TV-Guide: The-Mid-West-Plainsman-TV-Guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/djrenzo/EPG/main/guide.xml": "EPG: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/kem0sab3/my-epg/main/epg.xml.gz": "my-epg: epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/Robync27/personal-epg/main/public/epg.xml": "personal-epg: epg.xml (GitHub)",
+    "https://raw.githubusercontent.com/Robync27/personal-epg/main/public/epg.xml.gz": "personal-epg: epg.xml.gz (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/guide.xml": "IPTV-and-EPG: guide.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_US_LOCALS2.channels.xml": "IPTV-and-EPG: epgshare01.online_US_LOCALS2.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/tvtv.us/tvtv.us.channels.xml": "IPTV-and-EPG: tvtv.us.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_CA1.channels.xml": "IPTV-and-EPG: epgshare01.online_CA1.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_CH1.channels.xml": "IPTV-and-EPG: epgshare01.online_CH1.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_US1.channels.xml": "IPTV-and-EPG: epgshare01.online_US1.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_IN4.channels.xml": "IPTV-and-EPG: epgshare01.online_IN4.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/koboprincess/IPTV-and-EPG/main/sites/epgshare01.online/epgshare01.online_PLEX1.channels.xml": "IPTV-and-EPG: epgshare01.online_PLEX1.channels.xml (GitHub)",
+    "https://raw.githubusercontent.com/karenda-jp/etc/main/guides.xml": "etc: guides.xml (GitHub)"
    }
   }
  },
@@ -7108,52 +7282,64 @@
    "t": 1794181485.0893621,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 23
+   "count": 24
   },
   "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz": {
    "t": 1794262656.268797,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 14
+   "count": 15
   },
   "https://iptv-epg.org/files/epg-pe.xml.gz": {
    "t": 1794288918.603428,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 10
+   "count": 11
   },
   "https://iptv-epg.org/files/epg-ar.xml.gz": {
    "t": 1794288919.9869852,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 10
+   "count": 11
   },
   "https://raw.githubusercontent.com/JulioCesarXY/EPG-SOULTV/main/soul_tv_guia.xml": {
    "t": 1794288972.6810398,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 10
+   "count": 11
   },
   "https://www.open-epg.com/files/italy1.xml.gz": {
    "t": 1794326831.153515,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 4
+   "count": 5
   },
   "https://iptv-epg.org/files/epg-ug.xml.gz": {
    "t": 1794340178.2812603,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 2
+   "count": 3
   },
   "https://epg.pw/xmltv/epg_VN.xml.gz": {
    "t": 1794348680.6576622,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 1
+   "count": 2
   },
   "https://iptv-epg.org/files/epg-ng.xml.gz": {
    "t": 1794349033.9715297,
+   "kind": "stale",
+   "why": "guide has no upcoming shows",
+   "count": 2
+  },
+  "https://raw.githubusercontent.com/mitthu786/tvepg/main/epg.xml.gz": {
+   "t": 1794353942.8717406,
+   "kind": "stale",
+   "why": "guide has no upcoming shows",
+   "count": 1
+  },
+  "https://raw.githubusercontent.com/JulioCesarXY/EPG-Plex-Brazil/main/plex_epg_brasil.xml": {
+   "t": 1794354563.2437432,
    "kind": "stale",
    "why": "guide has no upcoming shows",
    "count": 1
@@ -7177,26 +7363,30 @@
    "retry": 1794568692.8682723,
    "tries": 4,
    "last_try": 1794309492.8682718
+  },
+  "https://epgshare01.online/epgshare01/epg_ripper_KE1.xml.gz": {
+   "t": 1794354695.599066,
+   "name": "guide linked by 'Free-TV Usa'",
+   "type": "xmltv",
+   "why": "out of date for 48 hours: guide has no upcoming shows",
+   "kind": "stale",
+   "retry": 1794613895.5990682
   }
  },
  "last_good_shows": 1958377,
  "guard_trips": 0,
  "good_sizes": {
-  "epg-uk.xml.gz": 10229316,
-  "epg-full.xml.gz": 141597733,
-  "epg-us.xml.gz": 61442077,
-  "playlist.m3u": 4139012,
-  "epg-lite.xml.gz": 21152261,
-  "epg-week.xml.gz": 46191263,
-  "epg-ca.xml.gz": 11136108,
-  "epg.xml.gz": 17845957
+  "epg-uk.xml.gz": 10609234,
+  "epg-full.xml.gz": 141903142,
+  "epg-us.xml.gz": 61475214,
+  "playlist.m3u": 4162210,
+  "epg-lite.xml.gz": 21037460,
+  "epg-week.xml.gz": 45723085,
+  "epg-ca.xml.gz": 11346072,
+  "epg.xml.gz": 18260122
  },
  "guard_since": 0,
  "health_recent": [
-  [
-   1793748325,
-   2565
-  ],
   [
    1793753686,
    2574
@@ -7512,253 +7702,257 @@
   [
    1794350560,
    2542
+  ],
+  [
+   1794355841,
+   2540
   ]
  ],
- "health_lost_week": 53,
+ "health_lost_week": 55,
  "nhl_fix": {
   "1ebcf8d2 Sportsnet.West.HD.ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "1ebcf8d2 Sportsnet.East.ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "1ebcf8d2 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "1ebcf8d2 Sportsnet.(Pacific).ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "1ebcf8d2 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "1ebcf8d2 Sportsnet.East.HD.ca2": [
    0,
-   1794349530
+   1794354844
   ],
   "78306880 SportsnetEast.ca": [
    0,
-   1794349530
+   1794354844
   ],
   "78306880 SportsnetOntario.ca": [
    0,
-   1794349530
+   1794354844
   ],
   "78306880 SportsnetPacific.ca": [
    0,
-   1794349530
+   1794354844
   ],
   "78306880 SportsnetWest.ca": [
    0,
-   1794349530
+   1794354844
   ],
   "736dd003 sportsnetontario.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.ontario.hd.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnetontario": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 SportsnetOntario.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnetpacific.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.(pacific).hd.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnetpacific": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.(Pacific).ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.(pacific).ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 SportsnetPacific.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsneteast.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.East.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.east.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsneteast": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.East.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.east.hd.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 SportsnetEast.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnetwest.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 Sportsnet.West.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnet.west.hd.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 sportsnetwest": [
    0,
-   1794349531
+   1794354844
   ],
   "736dd003 SportsnetWest.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "45074959 SportsnetOntario.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "45074959 SportsnetEast.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "45074959 SportsnetPacific.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "45074959 SportsnetWest.ca": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.West.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.East.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.(Pacific).ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "2c074dc1 Sportsnet.East.HD.ca2": [
    0,
-   1794349531
+   1794354844
   ],
   "a5704018 SportsnetEast.ca": [
    0,
-   1794349532
+   1794354845
   ],
   "a5704018 SportsnetOntario.ca": [
    0,
-   1794349532
+   1794354845
   ],
   "a5704018 SportsnetPacific.ca": [
    0,
-   1794349532
+   1794354845
   ],
   "a5704018 SportsnetWest.ca": [
    0,
-   1794349532
+   1794354845
   ],
   "acd701e9 SportsnetEast.ca": [
    0,
-   1794349532
+   1794354846
   ],
   "acd701e9 SportsnetOntario.ca": [
    0,
-   1794349532
+   1794354846
   ],
   "acd701e9 SportsnetWest.ca": [
    0,
-   1794349532
+   1794354846
   ],
   "acd701e9 Sportsnet.West.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.West.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.East.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.(Pacific).ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "aa4fd840 Sportsnet.East.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "a19ff40e Sportsnet.Ontario.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "a19ff40e Sportsnet.West.HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "a19ff40e Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794349532
+   1794354846
   ],
   "acd701e9 SportsnetPacific.ca": [
    0,
