@@ -13,8 +13,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507154.7252934,
-    "msg": "2890 guide channels, 93840 upcoming shows",
+    "time": 1794518293.932986,
+    "msg": "2890 guide channels, 82697 upcoming shows",
     "until": 1794720812
    }
   },
@@ -31,8 +31,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507157.554605,
-    "msg": "266 guide channels, 21684 upcoming shows",
+    "time": 1794518296.786733,
+    "msg": "266 guide channels, 20794 upcoming shows",
     "until": 1794820308
    }
   },
@@ -49,8 +49,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507158.4593065,
-    "msg": "178 guide channels, 8583 upcoming shows",
+    "time": 1794518297.7196894,
+    "msg": "178 guide channels, 8116 upcoming shows",
     "until": 1794726000
    }
   },
@@ -67,8 +67,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507160.2335596,
-    "msg": "144 guide channels, 11140 upcoming shows",
+    "time": 1794518299.5227656,
+    "msg": "144 guide channels, 10534 upcoming shows",
     "until": 1794740400
    }
   },
@@ -85,8 +85,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507164.366295,
-    "msg": "345 guide channels, 33044 upcoming shows",
+    "time": 1794518303.7545037,
+    "msg": "345 guide channels, 31774 upcoming shows",
     "until": 1794967200
    }
   },
@@ -103,8 +103,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507166.891275,
-    "msg": "254 guide channels, 21969 upcoming shows",
+    "time": 1794518306.3133445,
+    "msg": "254 guide channels, 20925 upcoming shows",
     "until": 1794751140
    }
   },
@@ -121,8 +121,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507174.576857,
-    "msg": "601 guide channels, 45789 upcoming shows",
+    "time": 1794518314.191595,
+    "msg": "601 guide channels, 43270 upcoming shows",
     "until": 1794747600
    }
   },
@@ -139,8 +139,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507181.574483,
-    "msg": "751 guide channels, 51641 upcoming shows",
+    "time": 1794518321.270058,
+    "msg": "751 guide channels, 48750 upcoming shows",
     "until": 1794749400
    }
   },
@@ -153,12 +153,12 @@
    "auto": true,
    "added": 1793327801.7590704,
    "gain": 0,
-   "fails": 1,
+   "fails": 0,
    "st": {
-    "ok": false,
+    "ok": true,
     "fresh": true,
-    "time": 1794507182.3679874,
-    "msg": "Remote end closed connection without response",
+    "time": 1794518322.0425212,
+    "msg": "138 guide channels, 6388 upcoming shows",
     "until": 1794715200
    }
   },
@@ -175,8 +175,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507183.3661199,
-    "msg": "94 guide channels, 11299 upcoming shows",
+    "time": 1794518323.010388,
+    "msg": "94 guide channels, 10848 upcoming shows",
     "until": 1794801600
    }
   },
@@ -193,8 +193,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507188.2863317,
-    "msg": "1087 guide channels, 34024 upcoming shows",
+    "time": 1794518327.819302,
+    "msg": "1087 guide channels, 32048 upcoming shows",
     "until": 1794714120
    }
   },
@@ -211,8 +211,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507189.5165906,
-    "msg": "217 guide channels, 11248 upcoming shows",
+    "time": 1794518329.02627,
+    "msg": "217 guide channels, 10766 upcoming shows",
     "until": 1794826800
    }
   },
@@ -229,8 +229,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507190.5048037,
-    "msg": "166 guide channels, 8964 upcoming shows",
+    "time": 1794518330.012906,
+    "msg": "166 guide channels, 8466 upcoming shows",
     "until": 0
    }
   },
@@ -247,8 +247,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507191.3961225,
-    "msg": "110 guide channels, 8351 upcoming shows",
+    "time": 1794518330.893714,
+    "msg": "110 guide channels, 8057 upcoming shows",
     "until": 1794783600
    }
   },
@@ -265,8 +265,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507193.6576018,
-    "msg": "321 guide channels, 17156 upcoming shows",
+    "time": 1794518333.122314,
+    "msg": "321 guide channels, 16388 upcoming shows",
     "until": 1794801600
    }
   },
@@ -283,8 +283,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507194.8494346,
-    "msg": "143 guide channels, 11781 upcoming shows",
+    "time": 1794518334.304849,
+    "msg": "143 guide channels, 11294 upcoming shows",
     "until": 1794778200
    }
   },
@@ -301,8 +301,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507196.8430629,
-    "msg": "213 guide channels, 13743 upcoming shows",
+    "time": 1794518336.24166,
+    "msg": "213 guide channels, 12893 upcoming shows",
     "until": 1794718740
    }
   },
@@ -319,8 +319,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507199.0329535,
-    "msg": "193 guide channels, 20290 upcoming shows",
+    "time": 1794518338.402862,
+    "msg": "193 guide channels, 19493 upcoming shows",
     "until": 1794801600
    }
   },
@@ -337,8 +337,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507200.1159616,
-    "msg": "283 guide channels, 11776 upcoming shows",
+    "time": 1794518339.4602985,
+    "msg": "283 guide channels, 11208 upcoming shows",
     "until": 1794794400
    }
   },
@@ -355,8 +355,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507201.042508,
-    "msg": "119 guide channels, 8301 upcoming shows",
+    "time": 1794518340.3654094,
+    "msg": "119 guide channels, 7862 upcoming shows",
     "until": 1794722280
    }
   },
@@ -373,8 +373,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507209.5269837,
-    "msg": "946 guide channels, 74941 upcoming shows",
+    "time": 1794518348.7285745,
+    "msg": "946 guide channels, 71934 upcoming shows",
     "until": 1794767399
    }
   },
@@ -391,8 +391,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507211.7347095,
-    "msg": "557 guide channels, 18767 upcoming shows",
+    "time": 1794518350.8017118,
+    "msg": "557 guide channels, 16647 upcoming shows",
     "until": 1794767399
    }
   },
@@ -409,8 +409,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507213.4079003,
-    "msg": "195 guide channels, 12337 upcoming shows",
+    "time": 1794518352.4662085,
+    "msg": "195 guide channels, 11673 upcoming shows",
     "until": 1794785400
    }
   },
@@ -427,8 +427,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507213.5927615,
-    "msg": "25 guide channels, 1552 upcoming shows",
+    "time": 1794518352.6477325,
+    "msg": "25 guide channels, 1469 upcoming shows",
     "until": 1794738600
    }
   },
@@ -445,8 +445,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507214.4859264,
-    "msg": "123 guide channels, 8927 upcoming shows",
+    "time": 1794518353.5260012,
+    "msg": "123 guide channels, 8682 upcoming shows",
     "until": 1794855600
    }
   },
@@ -463,8 +463,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507214.585751,
-    "msg": "258 guide channels, 449 upcoming shows",
+    "time": 1794518353.626998,
+    "msg": "258 guide channels, 425 upcoming shows",
     "until": 1794754800
    }
   },
@@ -481,8 +481,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507215.3874876,
-    "msg": "89 guide channels, 6781 upcoming shows",
+    "time": 1794518354.4131098,
+    "msg": "89 guide channels, 6506 upcoming shows",
     "until": 1794796200
    }
   },
@@ -499,8 +499,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507216.5262506,
-    "msg": "105 guide channels, 12114 upcoming shows",
+    "time": 1794518355.538069,
+    "msg": "105 guide channels, 11666 upcoming shows",
     "until": 1794818100
    }
   },
@@ -517,8 +517,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507218.0851712,
-    "msg": "192 guide channels, 14373 upcoming shows",
+    "time": 1794518357.05585,
+    "msg": "192 guide channels, 13787 upcoming shows",
     "until": 1794812400
    }
   },
@@ -535,8 +535,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507219.1474366,
-    "msg": "163 guide channels, 8718 upcoming shows",
+    "time": 1794518358.0901365,
+    "msg": "163 guide channels, 8305 upcoming shows",
     "until": 1794798000
    }
   },
@@ -553,8 +553,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507220.6482105,
-    "msg": "146 guide channels, 11400 upcoming shows",
+    "time": 1794518359.5771136,
+    "msg": "146 guide channels, 10910 upcoming shows",
     "until": 1794814200
    }
   },
@@ -571,8 +571,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507220.908915,
-    "msg": "164 guide channels, 2433 upcoming shows",
+    "time": 1794518359.8322356,
+    "msg": "164 guide channels, 2344 upcoming shows",
     "until": 1794794400
    }
   },
@@ -589,8 +589,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507221.3517218,
-    "msg": "111 guide channels, 4930 upcoming shows",
+    "time": 1794518360.2600594,
+    "msg": "111 guide channels, 4725 upcoming shows",
     "until": 1794798000
    }
   },
@@ -607,8 +607,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507230.6029062,
-    "msg": "636 guide channels, 95603 upcoming shows",
+    "time": 1794518369.3724813,
+    "msg": "636 guide channels, 92789 upcoming shows",
     "until": 1794952800
    }
   },
@@ -625,8 +625,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507232.4613142,
-    "msg": "178 guide channels, 12501 upcoming shows",
+    "time": 1794518371.203621,
+    "msg": "178 guide channels, 11787 upcoming shows",
     "until": 1794732780
    }
   },
@@ -643,8 +643,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507236.02946,
-    "msg": "370 guide channels, 28227 upcoming shows",
+    "time": 1794518374.7472467,
+    "msg": "370 guide channels, 26801 upcoming shows",
     "until": 1794747599
    }
   },
@@ -661,8 +661,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507243.4887552,
-    "msg": "721 guide channels, 65225 upcoming shows",
+    "time": 1794518382.103066,
+    "msg": "721 guide channels, 62180 upcoming shows",
     "until": 1794826860
    }
   },
@@ -679,8 +679,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507244.602821,
-    "msg": "165 guide channels, 11076 upcoming shows",
+    "time": 1794518383.192681,
+    "msg": "165 guide channels, 10613 upcoming shows",
     "until": 1794758280
    }
   },
@@ -697,8 +697,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507246.2208102,
-    "msg": "217 guide channels, 10359 upcoming shows",
+    "time": 1794518384.7941864,
+    "msg": "217 guide channels, 9767 upcoming shows",
     "until": 1794709800
    }
   },
@@ -715,8 +715,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507249.371115,
-    "msg": "476 guide channels, 27179 upcoming shows",
+    "time": 1794518387.8655725,
+    "msg": "476 guide channels, 25578 upcoming shows",
     "until": 1794810060
    }
   },
@@ -733,8 +733,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507250.347502,
-    "msg": "178 guide channels, 10812 upcoming shows",
+    "time": 1794518388.8153455,
+    "msg": "178 guide channels, 10210 upcoming shows",
     "until": 1794785400
    }
   },
@@ -751,8 +751,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507251.3925524,
-    "msg": "287 guide channels, 9214 upcoming shows",
+    "time": 1794518389.8764465,
+    "msg": "287 guide channels, 8834 upcoming shows",
     "until": 1794793500
    }
   },
@@ -769,8 +769,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507254.9082723,
-    "msg": "521 guide channels, 20198 upcoming shows",
+    "time": 1794518393.4901896,
+    "msg": "521 guide channels, 19134 upcoming shows",
     "until": 1794744000
    }
   },
@@ -787,8 +787,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507255.6159637,
-    "msg": "151 guide channels, 3072 upcoming shows",
+    "time": 1794518394.1406827,
+    "msg": "151 guide channels, 2298 upcoming shows",
     "until": 1794549540
    }
   },
@@ -805,8 +805,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507256.6113133,
-    "msg": "145 guide channels, 9623 upcoming shows",
+    "time": 1794518395.1770573,
+    "msg": "145 guide channels, 9144 upcoming shows",
     "until": 1794787200
    }
   },
@@ -823,8 +823,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507262.9920743,
-    "msg": "438 guide channels, 60857 upcoming shows",
+    "time": 1794518401.688598,
+    "msg": "438 guide channels, 59509 upcoming shows",
     "until": 1795064400
    }
   },
@@ -841,8 +841,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507263.0311022,
-    "msg": "182 guide channels, 353 upcoming shows",
+    "time": 1794518401.7297862,
+    "msg": "182 guide channels, 322 upcoming shows",
     "until": 1794636000
    }
   },
@@ -859,8 +859,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507264.6622052,
-    "msg": "175 guide channels, 14502 upcoming shows",
+    "time": 1794518403.4233944,
+    "msg": "175 guide channels, 14021 upcoming shows",
     "until": 1794956640
    }
   },
@@ -877,8 +877,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507264.9388034,
-    "msg": "121 guide channels, 1945 upcoming shows",
+    "time": 1794518403.6904519,
+    "msg": "121 guide channels, 1657 upcoming shows",
     "until": 1794655800
    }
   },
@@ -895,8 +895,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507266.1675508,
-    "msg": "174 guide channels, 14147 upcoming shows",
+    "time": 1794518404.9076486,
+    "msg": "174 guide channels, 13761 upcoming shows",
     "until": 1795996800
    }
   },
@@ -913,8 +913,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507271.6824937,
-    "msg": "490 guide channels, 52387 upcoming shows",
+    "time": 1794518410.5520546,
+    "msg": "490 guide channels, 50900 upcoming shows",
     "until": 1797148800
    }
   },
@@ -931,8 +931,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507271.9325588,
-    "msg": "66 guide channels, 2448 upcoming shows",
+    "time": 1794518410.7844868,
+    "msg": "66 guide channels, 2209 upcoming shows",
     "until": 1794632400
    }
   },
@@ -949,8 +949,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507273.5621107,
-    "msg": "194 guide channels, 16463 upcoming shows",
+    "time": 1794518412.4912608,
+    "msg": "194 guide channels, 15481 upcoming shows",
     "until": 1794787200
    }
   },
@@ -967,8 +967,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507275.8266873,
-    "msg": "182 guide channels, 22011 upcoming shows",
+    "time": 1794518414.7843456,
+    "msg": "182 guide channels, 21529 upcoming shows",
     "until": 1794969600
    }
   },
@@ -985,8 +985,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507277.656974,
-    "msg": "801 guide channels, 14451 upcoming shows",
+    "time": 1794518416.5570323,
+    "msg": "801 guide channels, 12349 upcoming shows",
     "until": 1794654000
    }
   },
@@ -1003,9 +1003,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507278.3841274,
-    "msg": "241 guide channels, 4987 upcoming shows",
-    "until": 1794573000
+    "time": 1794518417.3021634,
+    "msg": "241 guide channels, 4955 upcoming shows",
+    "until": 1794600000
    }
   },
   {
@@ -1021,8 +1021,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507281.6831563,
-    "msg": "300 guide channels, 29688 upcoming shows",
+    "time": 1794518420.6479316,
+    "msg": "300 guide channels, 28733 upcoming shows",
     "until": 1795766400
    }
   },
@@ -1039,9 +1039,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507282.163924,
-    "msg": "152 guide channels, 3021 upcoming shows",
-    "until": 1794573000
+    "time": 1794518421.139113,
+    "msg": "152 guide channels, 3008 upcoming shows",
+    "until": 1794600000
    }
   },
   {
@@ -1057,8 +1057,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507285.431856,
-    "msg": "514 guide channels, 29867 upcoming shows",
+    "time": 1794518424.5154943,
+    "msg": "514 guide channels, 27698 upcoming shows",
     "until": 1794787200
    }
   },
@@ -1075,8 +1075,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507289.311899,
-    "msg": "485 guide channels, 33359 upcoming shows",
+    "time": 1794518428.4441707,
+    "msg": "485 guide channels, 31995 upcoming shows",
     "until": 1794870000
    }
   },
@@ -1093,8 +1093,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507292.5309823,
-    "msg": "325 guide channels, 35552 upcoming shows",
+    "time": 1794518431.7943404,
+    "msg": "325 guide channels, 32856 upcoming shows",
     "until": 1794687600
    }
   },
@@ -1111,8 +1111,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507311.211641,
-    "msg": "782 guide channels, 174651 upcoming shows",
+    "time": 1794518450.9026153,
+    "msg": "782 guide channels, 171619 upcoming shows",
     "until": 1795258800
    }
   },
@@ -1129,8 +1129,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507314.2389147,
-    "msg": "306 guide channels, 32690 upcoming shows",
+    "time": 1794518454.039757,
+    "msg": "306 guide channels, 31961 upcoming shows",
     "until": 1795075200
    }
   },
@@ -1143,12 +1143,12 @@
    "auto": true,
    "added": 1793364918.7090821,
    "gain": 5,
-   "fails": 0,
+   "fails": 1,
    "st": {
     "ok": true,
-    "fresh": true,
-    "time": 1794507314.2443767,
-    "msg": "145 guide channels, 1 upcoming shows",
+    "fresh": false,
+    "time": 1794518454.0464883,
+    "msg": "145 guide channels, 1 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
   },
@@ -1165,8 +1165,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507317.9793859,
-    "msg": "184 guide channels, 34578 upcoming shows",
+    "time": 1794518457.8186646,
+    "msg": "184 guide channels, 33823 upcoming shows",
     "until": 1795046340
    }
   },
@@ -1183,8 +1183,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507318.365438,
-    "msg": "37 guide channels, 4298 upcoming shows",
+    "time": 1794518458.204006,
+    "msg": "37 guide channels, 4178 upcoming shows",
     "until": 1795046400
    }
   },
@@ -1201,8 +1201,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507329.8042223,
-    "msg": "1173 guide channels, 90472 upcoming shows",
+    "time": 1794518470.421981,
+    "msg": "1173 guide channels, 86322 upcoming shows",
     "until": 1794785400
    }
   },
@@ -1219,8 +1219,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507331.3573778,
-    "msg": "158 guide channels, 18330 upcoming shows",
+    "time": 1794518472.0344143,
+    "msg": "158 guide channels, 17655 upcoming shows",
     "until": 1795028422
    }
   },
@@ -1237,9 +1237,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507334.5523014,
-    "msg": "225 guide channels, 35922 upcoming shows",
-    "until": 1795644000
+    "time": 1794518475.4249246,
+    "msg": "225 guide channels, 37872 upcoming shows",
+    "until": 1795730400
    }
   },
   {
@@ -1255,8 +1255,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507338.9607372,
-    "msg": "293 guide channels, 46283 upcoming shows",
+    "time": 1794518479.930639,
+    "msg": "293 guide channels, 45218 upcoming shows",
     "until": 1795075200
    }
   },
@@ -1273,8 +1273,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507344.7706811,
-    "msg": "223 guide channels, 39604 upcoming shows",
+    "time": 1794518485.9038517,
+    "msg": "223 guide channels, 38720 upcoming shows",
     "until": 1795053600
    }
   },
@@ -1291,8 +1291,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507379.6533854,
-    "msg": "4169 guide channels, 352637 upcoming shows",
+    "time": 1794518520.62831,
+    "msg": "4169 guide channels, 336876 upcoming shows",
     "until": 1794873600
    }
   },
@@ -1309,8 +1309,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507381.426521,
-    "msg": "108 guide channels, 17997 upcoming shows",
+    "time": 1794518522.3770983,
+    "msg": "108 guide channels, 17611 upcoming shows",
     "until": 1795059000
    }
   },
@@ -1327,8 +1327,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507391.6752024,
-    "msg": "1219 guide channels, 102153 upcoming shows",
+    "time": 1794518532.6706717,
+    "msg": "1219 guide channels, 97321 upcoming shows",
     "until": 1794797700
    }
   },
@@ -1345,8 +1345,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507393.0306993,
-    "msg": "95 guide channels, 14218 upcoming shows",
+    "time": 1794518534.055909,
+    "msg": "95 guide channels, 13924 upcoming shows",
     "until": 1795064400
    }
   },
@@ -1363,8 +1363,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507394.5518003,
-    "msg": "176 guide channels, 13142 upcoming shows",
+    "time": 1794518535.6030333,
+    "msg": "176 guide channels, 12736 upcoming shows",
     "until": 1795050000
    }
   },
@@ -1381,8 +1381,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507397.633472,
-    "msg": "312 guide channels, 29332 upcoming shows",
+    "time": 1794518538.7324934,
+    "msg": "312 guide channels, 28026 upcoming shows",
     "until": 1794840300
    }
   },
@@ -1399,8 +1399,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507398.6804545,
-    "msg": "139 guide channels, 7697 upcoming shows",
+    "time": 1794518539.832045,
+    "msg": "139 guide channels, 7185 upcoming shows",
     "until": 1794732600
    }
   },
@@ -1417,8 +1417,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507406.258609,
-    "msg": "912 guide channels, 74750 upcoming shows",
+    "time": 1794518547.5879893,
+    "msg": "912 guide channels, 71351 upcoming shows",
     "until": 1794837600
    }
   },
@@ -1435,8 +1435,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507406.4045403,
-    "msg": "71 guide channels, 1195 upcoming shows",
+    "time": 1794518547.7414484,
+    "msg": "71 guide channels, 1130 upcoming shows",
     "until": 1794720540
    }
   },
@@ -1453,8 +1453,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507407.0707498,
-    "msg": "97 guide channels, 6787 upcoming shows",
+    "time": 1794518548.490252,
+    "msg": "97 guide channels, 6464 upcoming shows",
     "until": 1794726000
    }
   },
@@ -1471,27 +1471,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507410.2415411,
-    "msg": "195 guide channels, 26995 upcoming shows",
+    "time": 1794518551.7256198,
+    "msg": "195 guide channels, 26322 upcoming shows",
     "until": 1794991980
-   }
-  },
-  {
-   "id": "a1e10531",
-   "type": "xmltv",
-   "name": "UG (iptv-epg.org)",
-   "url": "https://iptv-epg.org/files/epg-ug.xml.gz",
-   "enabled": true,
-   "auto": true,
-   "added": 1793370973.4416943,
-   "gain": 1,
-   "fails": 21,
-   "st": {
-    "ok": true,
-    "fresh": false,
-    "time": 1794507410.69105,
-    "msg": "154 guide channels, 0 upcoming shows - OUT OF DATE, not used",
-    "until": 0
    }
   },
   {
@@ -1507,8 +1489,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507411.8880928,
-    "msg": "127 guide channels, 10891 upcoming shows",
+    "time": 1794518553.4016943,
+    "msg": "127 guide channels, 10558 upcoming shows",
     "until": 1794888000
    }
   },
@@ -1525,8 +1507,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507415.8248305,
-    "msg": "212 guide channels, 34779 upcoming shows",
+    "time": 1794518557.3829226,
+    "msg": "212 guide channels, 33841 upcoming shows",
     "until": 1795046400
    }
   },
@@ -1539,12 +1521,12 @@
    "auto": true,
    "added": 1793370993.836948,
    "gain": 3,
-   "fails": 1,
+   "fails": 0,
    "st": {
-    "ok": false,
+    "ok": true,
     "fresh": true,
-    "time": 1794507424.180983,
-    "msg": "IncompleteRead(261442 bytes read)",
+    "time": 1794518565.843436,
+    "msg": "447 guide channels, 74920 upcoming shows",
     "until": 1794977100
    }
   },
@@ -1561,8 +1543,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507426.3665051,
-    "msg": "265 guide channels, 21716 upcoming shows",
+    "time": 1794518568.0724208,
+    "msg": "265 guide channels, 20690 upcoming shows",
     "until": 1794891900
    }
   },
@@ -1579,8 +1561,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507429.0441961,
-    "msg": "152 guide channels, 26123 upcoming shows",
+    "time": 1794518570.88962,
+    "msg": "152 guide channels, 25475 upcoming shows",
     "until": 1794978000
    }
   },
@@ -1593,12 +1575,12 @@
    "auto": true,
    "added": 1793371008.422368,
    "gain": 3,
-   "fails": 1,
+   "fails": 0,
    "st": {
-    "ok": false,
+    "ok": true,
     "fresh": true,
-    "time": 1794507432.6424057,
-    "msg": "IncompleteRead(147417 bytes read)",
+    "time": 1794518574.4318953,
+    "msg": "282 guide channels, 28309 upcoming shows",
     "until": 1795048320
    }
   },
@@ -1615,8 +1597,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507434.542271,
-    "msg": "150 guide channels, 18577 upcoming shows",
+    "time": 1794518576.3188834,
+    "msg": "150 guide channels, 18159 upcoming shows",
     "until": 1794972600
    }
   },
@@ -1633,8 +1615,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507436.7994094,
-    "msg": "154 guide channels, 20806 upcoming shows",
+    "time": 1794518578.5374415,
+    "msg": "154 guide channels, 20224 upcoming shows",
     "until": 1794963000
    }
   },
@@ -1651,8 +1633,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507438.7699325,
-    "msg": "176 guide channels, 19545 upcoming shows",
+    "time": 1794518580.4964657,
+    "msg": "176 guide channels, 19084 upcoming shows",
     "until": 1795016700
    }
   },
@@ -1665,11 +1647,11 @@
    "auto": true,
    "added": 1793372190.0755427,
    "gain": 4,
-   "fails": 20,
+   "fails": 21,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794507439.2249763,
+    "time": 1794518580.938426,
     "msg": "157 guide channels, 0 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
@@ -1687,8 +1669,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507440.1952922,
-    "msg": "87 guide channels, 9041 upcoming shows",
+    "time": 1794518581.8981519,
+    "msg": "87 guide channels, 8774 upcoming shows",
     "until": 1794888000
    }
   },
@@ -1705,8 +1687,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507448.860195,
-    "msg": "705 guide channels, 77412 upcoming shows",
+    "time": 1794518590.4652946,
+    "msg": "705 guide channels, 75407 upcoming shows",
     "until": 1794987600
    }
   },
@@ -1723,8 +1705,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507451.3738306,
-    "msg": "174 guide channels, 25536 upcoming shows",
+    "time": 1794518592.9682858,
+    "msg": "174 guide channels, 25010 upcoming shows",
     "until": 1795066200
    }
   },
@@ -1741,8 +1723,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507454.616057,
-    "msg": "248 guide channels, 31517 upcoming shows",
+    "time": 1794518596.1581564,
+    "msg": "248 guide channels, 30645 upcoming shows",
     "until": 1794975300
    }
   },
@@ -1759,8 +1741,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507455.041507,
-    "msg": "142 guide channels, 177 upcoming shows",
+    "time": 1794518596.5730076,
+    "msg": "142 guide channels, 171 upcoming shows",
     "until": 1794956400
    }
   },
@@ -1777,8 +1759,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507509.6068072,
-    "msg": "6575 guide channels, 447049 upcoming shows",
+    "time": 1794518652.9805672,
+    "msg": "6575 guide channels, 421443 upcoming shows",
     "until": 1795107600
    }
   },
@@ -1795,8 +1777,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507524.756531,
-    "msg": "738 guide channels, 115898 upcoming shows",
+    "time": 1794518668.0419729,
+    "msg": "738 guide channels, 113611 upcoming shows",
     "until": 1795107600
    }
   },
@@ -1813,8 +1795,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507540.566588,
-    "msg": "1312 guide channels, 131123 upcoming shows",
+    "time": 1794518683.789422,
+    "msg": "1312 guide channels, 126726 upcoming shows",
     "until": 1795089600
    }
   },
@@ -1831,8 +1813,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507543.142774,
-    "msg": "260 guide channels, 35374 upcoming shows",
+    "time": 1794518686.3427331,
+    "msg": "260 guide channels, 34330 upcoming shows",
     "until": 1795201200
    }
   },
@@ -1849,8 +1831,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507554.4067135,
-    "msg": "560 guide channels, 92698 upcoming shows",
+    "time": 1794518697.8072252,
+    "msg": "560 guide channels, 90944 upcoming shows",
     "until": 1795089600
    }
   },
@@ -1867,8 +1849,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507559.3172162,
-    "msg": "696 guide channels, 48525 upcoming shows",
+    "time": 1794518702.977984,
+    "msg": "696 guide channels, 45931 upcoming shows",
     "until": 1794787200
    }
   },
@@ -1885,8 +1867,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507565.2320254,
-    "msg": "533 guide channels, 40212 upcoming shows",
+    "time": 1794518709.1893466,
+    "msg": "533 guide channels, 38394 upcoming shows",
     "until": 1794960540
    }
   },
@@ -1903,9 +1885,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507566.8128276,
-    "msg": "197 guide channels, 19090 upcoming shows",
-    "until": 1794772800
+    "time": 1794518710.8914917,
+    "msg": "197 guide channels, 21623 upcoming shows",
+    "until": 1794799500
    }
   },
   {
@@ -1921,8 +1903,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507573.2075536,
-    "msg": "371 guide channels, 68109 upcoming shows",
+    "time": 1794518717.4900389,
+    "msg": "371 guide channels, 66671 upcoming shows",
     "until": 1795073400
    }
   },
@@ -1939,9 +1921,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507649.1396508,
-    "msg": "9108 guide channels, 627888 upcoming shows",
-    "until": 1795107600
+    "time": 1794518796.075274,
+    "msg": "9108 guide channels, 596112 upcoming shows",
+    "until": 1795132800
    }
   },
   {
@@ -1957,9 +1939,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507671.634115,
-    "msg": "2964 guide channels, 183762 upcoming shows",
-    "until": 1795093200
+    "time": 1794518818.3238401,
+    "msg": "2964 guide channels, 175536 upcoming shows",
+    "until": 1795107600
    }
   },
   {
@@ -1975,9 +1957,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507671.8606267,
-    "msg": "39 guide channels, 2292 upcoming shows",
-    "until": 1794919800
+    "time": 1794518818.5533879,
+    "msg": "39 guide channels, 2415 upcoming shows",
+    "until": 1794944100
    }
   },
   {
@@ -1993,8 +1975,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507676.682973,
-    "msg": "759 guide channels, 44513 upcoming shows",
+    "time": 1794518823.2066085,
+    "msg": "759 guide channels, 41096 upcoming shows",
     "until": 1794655740
    }
   },
@@ -2011,8 +1993,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507688.7208967,
-    "msg": "595 guide channels, 95543 upcoming shows",
+    "time": 1794518835.193236,
+    "msg": "595 guide channels, 93660 upcoming shows",
     "until": 1795107600
    }
   },
@@ -2029,9 +2011,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507740.9609482,
-    "msg": "46182 guide channels, 531781 upcoming shows",
-    "until": 1794722400
+    "time": 1794518888.3231733,
+    "msg": "46253 guide channels, 523276 upcoming shows",
+    "until": 1794726000
    }
   },
   {
@@ -2047,8 +2029,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507753.6065366,
-    "msg": "2346 guide channels, 110852 upcoming shows",
+    "time": 1794518900.9994688,
+    "msg": "2346 guide channels, 102522 upcoming shows",
     "until": 1794717000
    }
   },
@@ -2065,8 +2047,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507755.2493773,
-    "msg": "397 guide channels, 18060 upcoming shows",
+    "time": 1794518902.639708,
+    "msg": "397 guide channels, 17351 upcoming shows",
     "until": 1794776400
    }
   },
@@ -2083,8 +2065,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507757.177552,
-    "msg": "243 guide channels, 16671 upcoming shows",
+    "time": 1794518904.574594,
+    "msg": "243 guide channels, 15736 upcoming shows",
     "until": 1794772500
    }
   },
@@ -2101,8 +2083,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507758.7952652,
-    "msg": "227 guide channels, 12996 upcoming shows",
+    "time": 1794518906.2270188,
+    "msg": "227 guide channels, 12281 upcoming shows",
     "until": 1794711600
    }
   },
@@ -2119,8 +2101,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507759.166072,
-    "msg": "130 guide channels, 3799 upcoming shows",
+    "time": 1794518906.6035085,
+    "msg": "130 guide channels, 3551 upcoming shows",
     "until": 1794690000
    }
   },
@@ -2137,8 +2119,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507782.7788832,
-    "msg": "3311 guide channels, 294237 upcoming shows",
+    "time": 1794518931.2112465,
+    "msg": "3311 guide channels, 285039 upcoming shows",
     "until": 1807322400
    }
   },
@@ -2155,8 +2137,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507788.582527,
-    "msg": "1280 guide channels, 40275 upcoming shows",
+    "time": 1794518937.1682155,
+    "msg": "1280 guide channels, 37196 upcoming shows",
     "until": 1795779000
    }
   },
@@ -2173,8 +2155,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507792.1370196,
-    "msg": "433 guide channels, 23541 upcoming shows",
+    "time": 1794518940.7321374,
+    "msg": "433 guide channels, 22001 upcoming shows",
     "until": 1794686400
    }
   },
@@ -2191,8 +2173,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507796.2193978,
-    "msg": "691 guide channels, 2275 upcoming shows",
+    "time": 1794518944.7921445,
+    "msg": "691 guide channels, 2223 upcoming shows",
     "until": 1795046400
    }
   },
@@ -2209,8 +2191,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507820.8020117,
-    "msg": "1614 guide channels, 145392 upcoming shows",
+    "time": 1794518969.1542208,
+    "msg": "1626 guide channels, 142832 upcoming shows",
     "until": 1796332512
    }
   },
@@ -2227,8 +2209,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507825.563592,
-    "msg": "756 guide channels, 47415 upcoming shows",
+    "time": 1794518973.7728536,
+    "msg": "756 guide channels, 45192 upcoming shows",
     "until": 1795104000
    }
   },
@@ -2245,8 +2227,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507830.325448,
-    "msg": "763 guide channels, 44923 upcoming shows",
+    "time": 1794518978.3941596,
+    "msg": "763 guide channels, 42355 upcoming shows",
     "until": 1794852000
    }
   },
@@ -2259,11 +2241,11 @@
    "auto": true,
    "added": 1793703798.4627178,
    "gain": 48,
-   "fails": 2,
+   "fails": 3,
    "st": {
     "ok": true,
     "fresh": false,
-    "time": 1794507830.3515368,
+    "time": 1794518978.4224486,
     "msg": "704 guide channels, 0 upcoming shows - OUT OF DATE, not used",
     "until": 0
    }
@@ -2281,8 +2263,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507832.0874033,
-    "msg": "387 guide channels, 13084 upcoming shows",
+    "time": 1794518980.2177927,
+    "msg": "387 guide channels, 11772 upcoming shows",
     "until": 1794712800
    }
   },
@@ -2299,8 +2281,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507843.3964913,
-    "msg": "1406 guide channels, 117365 upcoming shows",
+    "time": 1794518992.0495276,
+    "msg": "1406 guide channels, 112691 upcoming shows",
     "until": 1795060740
    }
   },
@@ -2317,8 +2299,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507848.399696,
-    "msg": "504 guide channels, 50757 upcoming shows",
+    "time": 1794518997.219439,
+    "msg": "504 guide channels, 49020 upcoming shows",
     "until": 1795028400
    }
   },
@@ -2335,8 +2317,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507888.8587813,
-    "msg": "2647 guide channels, 244248 upcoming shows",
+    "time": 1794519037.8489218,
+    "msg": "2647 guide channels, 233189 upcoming shows",
     "until": 1794808800
    }
   },
@@ -2353,8 +2335,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507894.3363523,
-    "msg": "716 guide channels, 56881 upcoming shows",
+    "time": 1794519043.202003,
+    "msg": "716 guide channels, 54643 upcoming shows",
     "until": 1794969600
    }
   },
@@ -2371,8 +2353,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507895.1753135,
-    "msg": "96 guide channels, 7912 upcoming shows",
+    "time": 1794519044.0160823,
+    "msg": "96 guide channels, 7139 upcoming shows",
     "until": 1794670200
    }
   },
@@ -2389,8 +2371,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507897.316011,
-    "msg": "828 guide channels, 22639 upcoming shows",
+    "time": 1794519046.0724053,
+    "msg": "828 guide channels, 21416 upcoming shows",
     "until": 1795100400
    }
   },
@@ -2407,8 +2389,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507897.5426874,
-    "msg": "27 guide channels, 1514 upcoming shows",
+    "time": 1794519046.29525,
+    "msg": "27 guide channels, 1448 upcoming shows",
     "until": 1794783600
    }
   },
@@ -2425,8 +2407,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507906.5290005,
-    "msg": "630 guide channels, 72645 upcoming shows",
+    "time": 1794519055.2280595,
+    "msg": "630 guide channels, 70653 upcoming shows",
     "until": 1795643100
    }
   },
@@ -2443,8 +2425,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507907.76764,
-    "msg": "386 guide channels, 11461 upcoming shows",
+    "time": 1794519056.3830152,
+    "msg": "386 guide channels, 10037 upcoming shows",
     "until": 1794764859
    }
   },
@@ -2461,9 +2443,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507913.7859056,
-    "msg": "259 guide channels, 50084 upcoming shows",
-    "until": 1794978000
+    "time": 1794519062.5767007,
+    "msg": "259 guide channels, 58428 upcoming shows",
+    "until": 1795064400
    }
   },
   {
@@ -2479,9 +2461,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507918.3256164,
-    "msg": "256 guide channels, 36998 upcoming shows",
-    "until": 1794970140
+    "time": 1794519067.4155445,
+    "msg": "256 guide channels, 43115 upcoming shows",
+    "until": 1795056300
    }
   },
   {
@@ -2497,9 +2479,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507924.5383883,
-    "msg": "314 guide channels, 53561 upcoming shows",
-    "until": 1794978000
+    "time": 1794519074.0765343,
+    "msg": "314 guide channels, 62703 upcoming shows",
+    "until": 1795064400
    }
   },
   {
@@ -2515,9 +2497,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507927.7333357,
-    "msg": "221 guide channels, 26665 upcoming shows",
-    "until": 1794972600
+    "time": 1794519077.5401902,
+    "msg": "221 guide channels, 31161 upcoming shows",
+    "until": 1795057200
    }
   },
   {
@@ -2533,8 +2515,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507928.9463027,
-    "msg": "109 guide channels, 11385 upcoming shows",
+    "time": 1794519078.7602243,
+    "msg": "109 guide channels, 11049 upcoming shows",
     "until": 1794985200
    }
   },
@@ -2551,8 +2533,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507930.0618398,
-    "msg": "457 guide channels, 7567 upcoming shows",
+    "time": 1794519079.7953525,
+    "msg": "457 guide channels, 5805 upcoming shows",
     "until": 1794589200
    }
   },
@@ -2569,8 +2551,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507930.6085052,
-    "msg": "120 guide channels, 5712 upcoming shows",
+    "time": 1794519080.348995,
+    "msg": "120 guide channels, 5309 upcoming shows",
     "until": 1794684300
    }
   },
@@ -2587,8 +2569,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794507931.043091,
-    "msg": "189 guide channels, 4369 upcoming shows",
+    "time": 1794519080.761866,
+    "msg": "189 guide channels, 3696 upcoming shows",
     "until": 1794762000
    }
   },
@@ -2605,8 +2587,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508007.4719145,
-    "msg": "5562 guide channels, 350680 upcoming shows",
+    "time": 1794519161.7660875,
+    "msg": "5562 guide channels, 479631 upcoming shows",
     "until": 1807336800
    }
   },
@@ -2623,8 +2605,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508022.2685142,
-    "msg": "1908 guide channels, 120878 upcoming shows",
+    "time": 1794519176.9578955,
+    "msg": "1908 guide channels, 115763 upcoming shows",
     "until": 1797804000
    }
   },
@@ -2641,8 +2623,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508025.3302522,
-    "msg": "592 guide channels, 30872 upcoming shows",
+    "time": 1794519180.1577306,
+    "msg": "592 guide channels, 28961 upcoming shows",
     "until": 1794908700
    }
   },
@@ -2659,9 +2641,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508031.2327662,
-    "msg": "431 guide channels, 53546 upcoming shows",
-    "until": 1795042800
+    "time": 1794519186.5388994,
+    "msg": "431 guide channels, 62286 upcoming shows",
+    "until": 1795129530
    }
   },
   {
@@ -2677,8 +2659,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508031.414366,
-    "msg": "12 guide channels, 1178 upcoming shows",
+    "time": 1794519186.7266874,
+    "msg": "12 guide channels, 1120 upcoming shows",
     "until": 1794748574
    }
   },
@@ -2695,8 +2677,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508031.7077153,
-    "msg": "26 guide channels, 3184 upcoming shows",
+    "time": 1794519187.0286143,
+    "msg": "26 guide channels, 3111 upcoming shows",
     "until": 1795050240
    }
   },
@@ -2713,8 +2695,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508031.8626974,
-    "msg": "48 guide channels, 1187 upcoming shows",
+    "time": 1794519187.1881132,
+    "msg": "48 guide channels, 1067 upcoming shows",
     "until": 1794745359
    }
   },
@@ -2731,8 +2713,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508032.9899576,
-    "msg": "125 guide channels, 15126 upcoming shows",
+    "time": 1794519188.3387675,
+    "msg": "125 guide channels, 14728 upcoming shows",
     "until": 1795028422
    }
   },
@@ -2749,8 +2731,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508033.45683,
-    "msg": "105 guide channels, 3111 upcoming shows",
+    "time": 1794519188.795427,
+    "msg": "105 guide channels, 2509 upcoming shows",
     "until": 1794609600
    }
   },
@@ -2767,8 +2749,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508044.3657916,
-    "msg": "807 guide channels, 146641 upcoming shows",
+    "time": 1794519200.2915106,
+    "msg": "807 guide channels, 145352 upcoming shows",
     "until": 1795154100
    }
   },
@@ -2785,8 +2767,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508046.0408416,
-    "msg": "195 guide channels, 12287 upcoming shows",
+    "time": 1794519202.0408556,
+    "msg": "195 guide channels, 11631 upcoming shows",
     "until": 1794785400
    }
   },
@@ -2803,8 +2785,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508047.0627134,
-    "msg": "116 guide channels, 10493 upcoming shows",
+    "time": 1794519203.0776668,
+    "msg": "116 guide channels, 10008 upcoming shows",
     "until": 1794765600
    }
   },
@@ -2821,8 +2803,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508047.4054096,
-    "msg": "129 guide channels, 1919 upcoming shows",
+    "time": 1794519203.384866,
+    "msg": "129 guide channels, 1332 upcoming shows",
     "until": 1794548781
    }
   },
@@ -2839,9 +2821,9 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508047.5417597,
-    "msg": "191 guide channels, 653 upcoming shows",
-    "until": 1794535200
+    "time": 1794519203.4857798,
+    "msg": "191 guide channels, 37 upcoming shows",
+    "until": 0
    }
   },
   {
@@ -2857,8 +2839,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508047.794326,
-    "msg": "53 guide channels, 2244 upcoming shows",
+    "time": 1794519203.7425177,
+    "msg": "53 guide channels, 2059 upcoming shows",
     "until": 1794664800
    }
   },
@@ -2875,8 +2857,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508047.9761384,
-    "msg": "32 guide channels, 1327 upcoming shows",
+    "time": 1794519203.9277253,
+    "msg": "32 guide channels, 1220 upcoming shows",
     "until": 1794637799
    }
   },
@@ -2893,8 +2875,8 @@
    "st": {
     "ok": true,
     "fresh": true,
-    "time": 1794508050.77977,
-    "msg": "460 guide channels, 24340 upcoming shows",
+    "time": 1794519206.8302987,
+    "msg": "460 guide channels, 23345 upcoming shows",
     "until": 1795103100
    }
   }
@@ -4668,12 +4650,11 @@
    "why": "added"
   },
   "https://iptv-epg.org/files/epg-ug.xml.gz": {
-   "t": 1793370970.5132093,
-   "fresh": true,
-   "gain": 1,
+   "t": 1793568806.8368824,
+   "fresh": false,
+   "gain": 0,
    "name": "UG (iptv-epg.org)",
-   "channels": 154,
-   "why": "added"
+   "why": "stopped working"
   },
   "https://iptv-epg.org/files/epg-hn.xml.gz": {
    "t": 1793370974.0479875,
@@ -7081,7 +7062,7 @@
   "https://xmltv.net/xml_files/Perth.xml",
   "https://xmltv.net/xml_files/Sydney.xml"
  ],
- "last_discovery": 1794508108.8387678,
+ "last_discovery": 1794519273.2500741,
  "known": 408,
  "cache": {
   "i.mjh.nz": {
@@ -7503,52 +7484,28 @@
    "why": "guide has no upcoming shows",
    "count": 24
   },
-  "https://iptv-epg.org/files/epg-ug.xml.gz": {
-   "t": 1794340178.2812603,
-   "kind": "stale",
-   "why": "guide has no upcoming shows",
-   "count": 21
-  },
   "https://iptv-epg.org/files/epg-ng.xml.gz": {
    "t": 1794349033.9715297,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 20
+   "count": 21
   },
   "https://raw.githubusercontent.com/GhalebAldoboni/EPG-Guide/master/ArabicEPG.xml": {
    "t": 1794432420.5974262,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 10
+   "count": 11
   },
   "https://raw.githubusercontent.com/JulioCesarXY/EPG-Plex-Brazil/main/plex_epg_brasil.xml": {
    "t": 1794503362.4186773,
    "kind": "stale",
    "why": "guide has no upcoming shows",
-   "count": 2
+   "count": 3
   },
-  "https://epgshare01.online/epgshare01/epg_ripper_EC1.xml.gz": {
-   "t": 1794505743.824408,
-   "kind": "dead",
-   "why": "[Errno 32] Broken pipe",
-   "count": 1
-  },
-  "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz": {
-   "t": 1794507182.368022,
-   "kind": "dead",
-   "why": "Remote end closed connection without response",
-   "count": 1
-  },
-  "https://iptv-epg.org/files/epg-pl.xml.gz": {
-   "t": 1794507424.1810184,
-   "kind": "dead",
-   "why": "IncompleteRead(261442 bytes read)",
-   "count": 1
-  },
-  "https://iptv-epg.org/files/epg-be.xml.gz": {
-   "t": 1794507432.6424453,
-   "kind": "dead",
-   "why": "IncompleteRead(147417 bytes read)",
+  "https://www.open-epg.com/files/italy1.xml.gz": {
+   "t": 1794518454.0465379,
+   "kind": "stale",
+   "why": "guide has no upcoming shows",
    "count": 1
   }
  },
@@ -7599,25 +7556,17 @@
  "last_good_shows": 1958377,
  "guard_trips": 0,
  "good_sizes": {
-  "epg-uk.xml.gz": 10059685,
-  "epg-full.xml.gz": 149600031,
-  "epg-us.xml.gz": 66662579,
-  "playlist.m3u": 4146639,
-  "epg-lite.xml.gz": 22812419,
-  "epg-week.xml.gz": 47823758,
-  "epg-ca.xml.gz": 11642853,
-  "epg.xml.gz": 18299682
+  "epg-uk.xml.gz": 9966298,
+  "epg-full.xml.gz": 150070338,
+  "epg-us.xml.gz": 67013616,
+  "playlist.m3u": 4113092,
+  "epg-lite.xml.gz": 22968099,
+  "epg-week.xml.gz": 47138086,
+  "epg-ca.xml.gz": 11677352,
+  "epg.xml.gz": 17880200
  },
  "guard_since": 0,
  "health_recent": [
-  [
-   1793905972,
-   2590
-  ],
-  [
-   1793912724,
-   2589
-  ],
   [
    1793923743,
    2583
@@ -7893,201 +7842,205 @@
   [
    1794509531,
    2534
+  ],
+  [
+   1794520989,
+   2533
   ]
  ],
- "health_lost_week": 61,
+ "health_lost_week": 62,
  "nhl_fix": {
   "1ebcf8d2 Sportsnet.West.HD.ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "1ebcf8d2 Sportsnet.East.ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "1ebcf8d2 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "1ebcf8d2 Sportsnet.(Pacific).ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "1ebcf8d2 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "1ebcf8d2 Sportsnet.East.HD.ca2": [
    0,
-   1794508144
+   1794519309
   ],
   "78306880 SportsnetEast.ca": [
    0,
-   1794508144
+   1794519309
   ],
   "78306880 SportsnetOntario.ca": [
    0,
-   1794508144
+   1794519309
   ],
   "78306880 SportsnetPacific.ca": [
    0,
-   1794508144
+   1794519309
   ],
   "78306880 SportsnetWest.ca": [
    0,
-   1794508144
+   1794519309
   ],
   "736dd003 sportsnetontario.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.ontario.hd.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnetontario": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 SportsnetOntario.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnetpacific.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.(pacific).hd.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnetpacific": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.(Pacific).ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.(pacific).ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 SportsnetPacific.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsneteast.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.East.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.east.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsneteast": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.East.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.east.hd.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 SportsnetEast.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnetwest.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 Sportsnet.West.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnet.west.hd.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 sportsnetwest": [
    0,
-   1794508144
+   1794519310
   ],
   "736dd003 SportsnetWest.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "45074959 SportsnetOntario.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "45074959 SportsnetEast.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "45074959 SportsnetPacific.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "45074959 SportsnetWest.ca": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.West.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.East.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.(Pacific).ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "2c074dc1 Sportsnet.East.HD.ca2": [
    0,
-   1794508144
+   1794519310
   ],
   "a5704018 SportsnetEast.ca": [
    0,
-   1794508146
+   1794519311
   ],
   "a5704018 SportsnetOntario.ca": [
    0,
-   1794508146
+   1794519311
   ],
   "a5704018 SportsnetPacific.ca": [
    0,
-   1794508146
+   1794519311
   ],
   "a5704018 SportsnetWest.ca": [
    0,
-   1794508146
+   1794519311
   ],
   "acd701e9 SportsnetEast.ca": [
    0,
@@ -8095,11 +8048,11 @@
   ],
   "acd701e9 SportsnetOntario.ca": [
    0,
-   1794508146
+   1794519312
   ],
   "acd701e9 SportsnetWest.ca": [
    0,
-   1794508146
+   1794519312
   ],
   "acd701e9 Sportsnet.West.HD.ca2": [
    0,
@@ -8107,39 +8060,39 @@
   ],
   "aa4fd840 Sportsnet.West.HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "aa4fd840 Sportsnet.East.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "aa4fd840 Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "aa4fd840 Sportsnet.(Pacific).ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "aa4fd840 Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "aa4fd840 Sportsnet.East.HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "a19ff40e Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "a19ff40e Sportsnet.West.HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "a19ff40e Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508146
+   1794519312
   ],
   "acd701e9 SportsnetPacific.ca": [
    0,
@@ -8147,23 +8100,23 @@
   ],
   "d8da3ac4 SportsnetWest.ca": [
    0,
-   1794508145
+   1794519311
   ],
   "a89d5e9e Sportsnet.West.HD.ca2": [
    0,
-   1794508147
+   1794519312
   ],
   "a89d5e9e Sportsnet.East.HD.ca2": [
    0,
-   1794508147
+   1794519312
   ],
   "a89d5e9e Sportsnet.(Pacific).HD.ca2": [
    0,
-   1794508147
+   1794519312
   ],
   "a89d5e9e Sportsnet.Ontario.HD.ca2": [
    0,
-   1794508147
+   1794519312
   ]
  }
 }
