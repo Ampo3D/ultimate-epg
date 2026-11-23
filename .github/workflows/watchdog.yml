@@ -1,8 +1,8 @@
 # Keeps the online guide fresh when GitHub's own timer skips the 3-hourly build (it often does).
 # Each run checks every 20 minutes for about 5.5 hours, then starts the next watchdog itself (a relay);
 # the timer below only restarts the relay if it ever breaks. It starts a build when none has worked for
-# 3 hours, and tells you on the "Guide needs attention" issue after 8. It also reads the published
-# health.json, so a build that "worked" but never reached the site is noticed too.
+# 3 hours. It also reads the published health.json, so a build that "worked" but never reached the
+# site is noticed too. It sends no emails.
 # Public repos run this for free. To stop it, disable this workflow in the Actions tab.
 name: Watchdog
 
@@ -19,7 +19,6 @@ on:
 permissions:
   actions: write
   contents: read
-  issues: write   # the email: a mention on the "Guide needs attention" issue
 
 concurrency:
   group: watchdog
@@ -35,7 +34,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           FORCE: ${{ inputs.force }}
-          OWNER: ${{ github.repository_owner }}
         run: |
           owner=${GITHUB_REPOSITORY_OWNER,,}; name=${GITHUB_REPOSITORY#*/}
           if [ "${name,,}" = "$owner.github.io" ]; then site="https://$owner.github.io"; else site="https://$owner.github.io/$name"; fi
@@ -51,18 +49,6 @@ jobs:
             if [ -n "$site" ]; then site_age=$(( $(date +%s) - ${site%.*} )); else site_age=$age; fi
             [ "$site_age" -gt "$age" ] && [ "$last" != unknown ] && age=$site_age
             echo "$(date -u +%H:%M) last good build: $last; published guide age: ${site_age}s; using ${age}s"
-            if [ "$age" -gt 28800 ] && [ "$last" != unknown ]; then   # 8 hours: tell the owner (at most once every 12 hours)
-              n=$(gh issue list -R "$REPO" --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') || n=SKIP
-              if [ "$n" = SKIP ]; then echo "Couldn't check the alert issue; trying again next time"; else
-                told=""
-                if [ -n "$n" ]; then told=$(gh issue view "$n" -R "$REPO" --json body,createdAt,comments --jq '[(if (.body | contains("No good guide update")) then .createdAt else empty end), (.comments[] | select(.body | contains("No good guide update")) | .createdAt)] | last // ""' || true); fi
-                if [ -z "$told" ] || [ $(( $(date +%s) - $(date -d "$told" +%s) )) -gt 43200 ]; then
-                  if [ -n "$last" ]; then since="for $((age / 3600)) hours"; else since="found"; fi
-                  body="@$OWNER No good guide update $since (the published guide is $((site_age / 3600)) hours old). Your links still show the last good guide. Most channels in it run out about 2 days after it was made, some free channels within hours. Builds: https://github.com/$REPO/actions/workflows/build.yml"
-                  if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body" || true; else gh issue create -R "$REPO" --title "Guide needs attention" --body "$body" || true; fi
-                fi
-              fi
-            fi
             active=$(gh run list -R "$REPO" -w build.yml --limit 10 --json status --jq '[.[] | select(.status != "completed")] | length') || active=0
             if [ "$active" != "0" ]; then echo "A build is already running or waiting"; return 0; fi
             if [ "$age" -gt 10800 ] || [ "$FORCE" = "true" ]; then

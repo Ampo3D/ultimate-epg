@@ -111,8 +111,8 @@ The online links update about 1-2 hours later (GitHub rebuilds the whole guide; 
   (the editor refuses them); paid providers go under **My providers**, which stays on this PC.
 - GitHub also searches for new guides on every run and saves what it finds, so your guide keeps
   improving while your PC is off. When you start the editor, it downloads what GitHub found.
-- If the guide stops updating, or a build fails, GitHub mentions you on an issue called **Guide needs attention**
-  (the same warning at most once every 12 hours), which GitHub emails to you. `health.html` shows the details.
+- Ultimate EPG sends no emails. `health.html` shows how the last update went and anything worth a look.
+  GitHub itself may email you when a build fails; turn that off at github.com/settings/notifications (**Actions**).
 - A watchdog workflow starts a build whenever none has worked for 3 hours (GitHub's own timer often skips runs).
   To stop it, disable the **Watchdog** workflow in the **Actions** tab.
 - If GitHub ever emails you that a scheduled workflow was paused (it does this for repos that

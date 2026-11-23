@@ -1,7 +1,7 @@
 # Builds the playlist and guides on GitHub's servers and publishes them on GitHub Pages.
 # Runs on every push of the app or your sources, every 3 hours (when GitHub's timer fires; watchdog.yml
 # starts the runs it skips), and by hand. Guides it finds by itself are saved back to the repo.
-# Anything that needs your attention is posted on the "Guide needs attention" issue, which GitHub emails you.
+# It sends no emails: anything worth a look is listed on health.html and on the run's summary page.
 name: Build EPG
 
 on:
@@ -13,15 +13,9 @@ on:
   schedule:
     - cron: "17 */3 * * *"   # asked for every 3 hours; GitHub skips many - watchdog.yml starts the missing ones
   workflow_dispatch:
-    inputs:
-      test_alert:
-        description: Send a test email
-        type: boolean
-        default: false
 
 permissions:
   contents: write     # to save newly found guides back to the repo
-  issues: write       # the email: a mention on a GitHub issue
   pages: write
   id-token: write
   actions: write      # only to delete old guide-copy caches (each 1.3 GB, repo limit 10 GB)
@@ -100,7 +94,12 @@ jobs:
             const {owner, repo} = context.repo;
             const arts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts,
                                                {owner, repo, run_id: context.runId, per_page: 100});
-            const art = arts.find(a => a.name === 'github-pages');
+            let art = arts.find(a => a.name === 'github-pages');
+            for (let i = 0; !art && i < 12; i++) {  // GitHub can take a few minutes to list a new upload
+              await new Promise(r => setTimeout(r, 15000));
+              art = (await github.paginate(github.rest.actions.listWorkflowRunArtifacts,
+                                           {owner, repo, run_id: context.runId, per_page: 100})).find(a => a.name === 'github-pages');
+            }
             if (!art) throw new Error('The site upload (github-pages) was not found');
             const version = `${context.sha}-retry-${process.env.GITHUB_RUN_ATTEMPT || 1}`;
             const {data: dep} = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
@@ -131,35 +130,13 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |   # this run's own copy is saved after this step; keep the 2 newest older ones as spares
           gh cache list --key epg-cache- --sort created_at --order desc --limit 100 --json id --jq '.[2:][].id' | xargs -r -n1 gh cache delete || true
-      - name: Email you if something went wrong
+      - name: Problems worth a look   # shown on this run's summary page; no email, no issue
         if: always()
         continue-on-error: true
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
           STATUS: ${{ job.status }}
-          TEST: ${{ inputs.test_alert }}
-          PAGE: ${{ steps.deploy.outputs.page_url }}
-          OWNER: ${{ github.repository_owner }}
-          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          owner=${GITHUB_REPOSITORY_OWNER,,}; name=${GITHUB_REPOSITORY#*/}
-          if [ "${name,,}" = "$owner.github.io" ]; then site="https://$owner.github.io"; else site="https://$owner.github.io/$name"; fi
-          PAGE="${PAGE:-$site}"; PAGE="${PAGE%/}/health.html"   # the published address, or the usual one when publishing failed
-          if [ "$STATUS" != "success" ]; then echo "- The guide update failed, so your links still show the last good guide: $RUN" >> alert.md; fi
-          if [ "$TEST" = "true" ]; then echo "- This is a test. Nothing is wrong." >> alert.md; fi
+          if [ "$STATUS" != "success" ]; then echo "- This update failed, so your links still show the last good guide" >> alert.md; fi
           [ -f alert.md ] || exit 0
-          for i in 1 2 3; do   # a GitHub hiccup must not swallow the email
-            n=$(gh issue list --state open --search "Guide needs attention in:title author:app/github-actions" --json number --jq '.[0].number // ""') && break
-            n=""; sleep 15
-          done
-          if [ -n "$n" ]; then   # failed builds and a full disk repeat every run: tell you once every 12 hours, not every time
-            told=$(gh issue view "$n" --json body,createdAt,comments --jq '[(select(now - (.createdAt | fromdateiso8601) < 43200) | .body), (.comments[] | select(now - (.createdAt | fromdateiso8601) < 43200) | .body)] | join(" ")' || true)
-            for k in "The guide update failed" "GB of disk left"; do
-              if printf '%s' "$told" | grep -qF "$k"; then grep -vF "$k" alert.md > alert.tmp || true; mv alert.tmp alert.md; fi
-            done
-            [ -s alert.md ] || exit 0
-          fi
-          body="@$OWNER your guide needs a look: $(cat alert.md) Full report: $PAGE"
-          if [ -n "$n" ] && gh issue comment "$n" --body "$body"; then exit 0; fi
-          gh issue create --title "Guide needs attention" --body "$body"   # no open issue, or it can't take comments
+          cat alert.md
+          { echo "### Worth a look (details on health.html)"; cat alert.md; } >> "$GITHUB_STEP_SUMMARY"
