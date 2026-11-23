@@ -646,6 +646,8 @@ def tidy_text(t):
     t = t.replace("\u00e2\u20acTM", "\u2019").replace("\u00e2\u20ac`", "\u2018").replace('\u00e2\u20ac"', "\u2013")  # "it\u00e2\u20acTMs": the \u2122 of a garbled \u2019 spelled out; a dash's quote mark
     for _ in range(2):  # run by run: one real em dash must not stop the rest; twice for text garbled twice
         t = MOJIBAKE_RE.sub(fix_mojibake, t)
+    if "\u00e2\u20ac" in t:  # a garbled quote mark that lost its last byte: "Allen\u00e2\u20acs", "dorado\u00e2\u20ac,"
+        t = re.sub("\u00e2\u20ac(?=[A-Za-z])", "\u2019", t).replace("\u00e2\u20ac", "\u201d")
     t = C1_RE.sub("", t)  # control bytes nothing could repair
     t = re.sub("(?<=[.,!?:;])Â ", " ", t)  # a garbled non-breaking space: "Richmond.Â Tiger fans"
     t = LOST_U_RE.sub(lambda m: chr(int(m[1], 16)) if m[1] else m[0], t)
@@ -939,7 +941,7 @@ def text_language(words):
 
 def scan_xmltv(path, src=None):
     """Read a guide's channel list and check it actually has upcoming shows (times as published, clock fixes applied)."""
-    idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}
+    idx, upcoming, last, per, langs, seen, parts, ends, starts, heads, lasts, firsts = {}, 0, None, {}, {}, {}, {}, {}, {}, {}, {}, {}
     rytec, plain, clocks, words = set(), {}, {}, {}
     window_done = set()
     now = datetime.now(timezone.utc)
@@ -967,6 +969,7 @@ def scan_xmltv(path, src=None):
                     st0 = parse_xmltv_time(el.get("start"))
                     if st0:
                         lasts[cid] = max(lasts.get(cid, 0), int((st0 + (fix or timedelta(0))).timestamp()))
+                        firsts[cid] = min(firsts.get(cid, lasts[cid]), int((st0 + (fix or timedelta(0))).timestamp()))
                     if len(starts.setdefault(cid, [])) < 48 and cid not in window_done:  # the next day's start times,
                         st = parse_xmltv_time(el.get("start"))                              # compared with other copies
                         st = st and fix and st + fix or st
@@ -1012,6 +1015,7 @@ def scan_xmltv(path, src=None):
         if cid in ends:
             info["end"], info["starts"], info["heads"] = int(ends[cid].timestamp()), starts.get(cid, []), heads.get(cid, [])
             info["last"] = lasts.get(cid, 0)
+            info["first"] = firsts.get(cid, 0)
         if cid in langs:
             info["lang"] = max(langs[cid], key=langs[cid].get)  # upcoming shows - channels listed with no shows are skipped when matching
         tl = text_language(words.get(cid, [0, {}])[1])
@@ -3487,7 +3491,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                               "icon": info.get("icon", ""), "n": info.get("n", 1), "picks": bool(picks_only(x)),
                               "cc": cc, "lang": lang,
                               "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", []),
-                              "last": info.get("last", 0)}
+                              "last": info.get("last", 0), "first": info.get("first", 0)}
 
     # group the copies of each real-world channel
     clusters = {}
@@ -3690,7 +3694,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
         icon = web_url(g["icon"])  # saved channel lists can hold an older, unchecked address
         if icon:
             text += f"<icon src={quoteattr(icon)}/>"
-        write(code, text + "</channel>\n")
+        k0 = o["from"] if code not in pl_codes and not o.get("ext") and not o.get("placeholder") else None
+        later = k0 in chans and chans[k0].get("first", 0) + 60 * (o.get("shift") or 0) > end_cut.timestamp()
+        write(code, text + "</channel>\n", later)  # its first show is after this guide's last day: the week guide only
     fill, ext = {}, {}
     for code, o in out.items():
         if o["from"]:
@@ -4219,7 +4225,7 @@ def build_site(outdir, base_url):
                      ("Full guide - use with any provider", "epg-full.xml.gz"),
                      ("Light guide - your providers' channels only (Firestick, Smarters, Kodi)", "epg-lite.xml.gz"),
                      ("Week guide - your providers' channels, up to 7 days (TiviMate, OTT Navigator)", "epg-week.xml.gz")] +
-                    [(f"{c} guide (any provider)", full_name(c)) for c in priority_list()] +
+                    [(f"{'UK' if c.upper() == 'GB' else c} guide (any provider)", full_name(c)) for c in priority_list()] +
                     ([("Guide made for your provider (TiviMate etc.)", "epg-provider.xml.gz")]
                      if os.path.exists(os.path.join(OUT, "epg-provider.xml.gz")) else []))
     with open(os.path.join(outdir, "index.html"), "w", encoding="utf-8") as f:
