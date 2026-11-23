@@ -27427,9 +27427,7 @@
   "5b2b124e40c0": {
    "key": "5b2b124e40c0",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "accuweathernow.us"
-   },
+   "ov": {},
    "up": {
     "name": "AccuWeather NOW",
     "number": "1133",
@@ -28473,7 +28471,9 @@
   "0c0a425d2b13": {
    "key": "0c0a425d2b13",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "BloombergOriginals.us"
+   },
    "up": {
     "name": "Bloomberg Originals",
     "number": "1160",
@@ -30183,9 +30183,7 @@
   "958b85aaffa0": {
    "key": "958b85aaffa0",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "DuckDynasty.us"
-   },
+   "ov": {},
    "up": {
     "name": "Duck Dynasty",
     "number": "1976",
@@ -32887,9 +32885,7 @@
   "d498b5ac5b4c": {
    "key": "d498b5ac5b4c",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "MSG.SportsZone.us2"
-   },
+   "ov": {},
    "up": {
     "name": "MSG SportsZone",
     "number": "2424",
@@ -33807,7 +33803,9 @@
   "6a6fc24ec364": {
    "key": "6a6fc24ec364",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "PickleballTV.us"
+   },
    "up": {
     "name": "PickleballTV",
     "number": "2444",
@@ -34059,9 +34057,7 @@
   "67e59760a97c": {
    "key": "67e59760a97c",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "RacerSelect.us@SD"
-   },
+   "ov": {},
    "up": {
     "name": "RACER Select",
     "number": "2530",
@@ -36201,9 +36197,7 @@
   "8f3654a15cfa": {
    "key": "8f3654a15cfa",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "TMZ.us"
-   },
+   "ov": {},
    "up": {
     "name": "TMZ",
     "number": "2974",
@@ -36923,9 +36917,7 @@
   "cd00df445bd6": {
    "key": "cd00df445bd6",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "Vice.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "VICE",
     "number": "2938",
@@ -37339,9 +37331,7 @@
   "257000845478": {
    "key": "257000845478",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "WorldPokerTour.us"
-   },
+   "ov": {},
    "up": {
     "name": "World Poker Tour",
     "number": "2448",
@@ -52172,7 +52162,9 @@
   "cb0c19d0c5ae": {
    "key": "cb0c19d0c5ae",
    "source": "f25236e4",
-   "ov": {},
+   "ov": {
+    "epg_id": "BBCDrama.es"
+   },
    "up": {
     "name": "BBC Drama",
     "number": "",
@@ -56021,7 +56013,7 @@
    "key": "c35039d50265",
    "source": "f25236e4",
    "ov": {
-    "epg_id": "6a1610bebdf296985fd95603-61aa9e73784a2161d3caf7f9"
+    "epg_id": "StingrayHotCountry.ca@SD"
    },
    "up": {
     "name": "Stingray Hot Country",
@@ -60260,7 +60252,9 @@
   "9e3ec2a60e59": {
    "key": "9e3ec2a60e59",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "BBCDrama.es"
+   },
    "up": {
     "name": "BBC Drama",
     "number": "",
@@ -62650,7 +62644,9 @@
   "7ea42c41af8a": {
    "key": "7ea42c41af8a",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "TravelAndAdventure.ru"
+   },
    "up": {
     "name": "Travel and Adventure",
     "number": "",
@@ -64745,7 +64741,7 @@
    "key": "352bf0ba76f6",
    "source": "514536fe",
    "ov": {
-    "epg_id": "6a1610bebdf296985fd95603-61aa9e73784a2161d3caf7f9"
+    "epg_id": "StingrayHotCountry.ca@SD"
    },
    "up": {
     "name": "Stingray Hot Country",
@@ -64958,7 +64954,9 @@
   "56bc95a88752": {
    "key": "56bc95a88752",
    "source": "514536fe",
-   "ov": {},
+   "ov": {
+    "epg_id": "StingrayStarGaze.ca"
+   },
    "up": {
     "name": "Stingray Stargaze",
     "number": "",
@@ -76716,7 +76714,9 @@
   "f583625a2793": {
    "key": "f583625a2793",
    "source": "553c22cb",
-   "ov": {},
+   "ov": {
+    "epg_id": "TravelAndAdventure.ru"
+   },
    "up": {
     "name": "Travel and Adventure",
     "number": "",
@@ -80522,7 +80522,9 @@
   "f9102afa9e82": {
    "key": "f9102afa9e82",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "BloombergOriginals.us"
+   },
    "up": {
     "name": "Bloomberg Originals",
     "number": "1160",
@@ -82040,9 +82042,7 @@
   "c45e512ea32a": {
    "key": "c45e512ea32a",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "DuckDynasty.us"
-   },
+   "ov": {},
    "up": {
     "name": "Duck Dynasty",
     "number": "1976",
@@ -84608,9 +84608,7 @@
   "f466378e79a9": {
    "key": "f466378e79a9",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "MSG.SportsZone.us2"
-   },
+   "ov": {},
    "up": {
     "name": "MSG SportsZone",
     "number": "2424",
@@ -85546,7 +85544,9 @@
   "7a6dfade3d4d": {
    "key": "7a6dfade3d4d",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "PickleballTV.us"
+   },
    "up": {
     "name": "PickleballTV",
     "number": "2444",
@@ -85780,9 +85780,7 @@
   "242bd00ab6b1": {
    "key": "242bd00ab6b1",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "RacerSelect.us@SD"
-   },
+   "ov": {},
    "up": {
     "name": "RACER Select",
     "number": "2530",
@@ -87714,9 +87712,7 @@
   "c2c0ee417079": {
    "key": "c2c0ee417079",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "TMZ.us"
-   },
+   "ov": {},
    "up": {
     "name": "TMZ",
     "number": "2974",
@@ -88292,9 +88288,7 @@
   "eea8149acdac": {
    "key": "eea8149acdac",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "Vice.HD.us2"
-   },
+   "ov": {},
    "up": {
     "name": "VICE",
     "number": "2938",
@@ -88696,9 +88690,7 @@
   "5374e662e22a": {
    "key": "5374e662e22a",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "WorldPokerTour.us"
-   },
+   "ov": {},
    "up": {
     "name": "World Poker Tour",
     "number": "2448",
@@ -89722,7 +89714,9 @@
   "3e6dff9a414b": {
    "key": "3e6dff9a414b",
    "source": "bd8e573f",
-   "ov": {},
+   "ov": {
+    "epg_id": "EuronewsEnglish.fr"
+   },
    "up": {
     "name": "Euronews English",
     "number": "",
@@ -136164,7 +136158,9 @@
   "1cf4fc51ffa4": {
    "key": "1cf4fc51ffa4",
    "source": "ce8577df",
-   "ov": {},
+   "ov": {
+    "epg_id": "DFB.Play.de"
+   },
    "up": {
     "name": "DFB Play",
     "number": "",
@@ -199821,9 +199817,7 @@
   "0c32c5595b0a": {
    "key": "0c32c5595b0a",
    "source": "29d1a082",
-   "ov": {
-    "epg_id": "CBCNews.ca"
-   },
+   "ov": {},
    "up": {
     "name": "CBC News",
     "number": "1060",
@@ -203849,7 +203843,9 @@
   "1df6a565912a": {
    "key": "1df6a565912a",
    "source": "29d1a082",
-   "ov": {},
+   "ov": {
+    "epg_id": "TheWeatherNetwork.ca"
+   },
    "up": {
     "name": "The Weather Network",
     "number": "1138",
@@ -208183,7 +208179,9 @@
   "3fd0bd4b7f55": {
    "key": "3fd0bd4b7f55",
    "source": "49cfa410",
-   "ov": {},
+   "ov": {
+    "epg_id": "Bollywood.Classic.ro"
+   },
    "up": {
     "name": "Bollywood Classic",
     "number": "",
@@ -209845,7 +209843,9 @@
   "784e0e4b4f9d": {
    "key": "784e0e4b4f9d",
    "source": "49cfa410",
-   "ov": {},
+   "ov": {
+    "epg_id": "ITBC11000108G"
+   },
    "up": {
     "name": "HIP HOP TV",
     "number": "",
@@ -212248,7 +212248,7 @@
    "key": "daf07f97753c",
    "source": "49cfa410",
    "ov": {
-    "epg_id": "Bollywood.TV.us"
+    "epg_id": "BollywoodTV.ro"
    },
    "up": {
     "name": "BOLLYWOOD TV",
@@ -217461,7 +217461,9 @@
   "4bdbefe29441": {
    "key": "4bdbefe29441",
    "source": "938bb238",
-   "ov": {},
+   "ov": {
+    "epg_id": "LOL.rs"
+   },
    "up": {
     "name": "LOL!",
     "number": "",
@@ -226713,16 +226715,16 @@
   "e01b5428": {
    "fresh": true,
    "ok": true,
-   "msg": "594 guide channels, 4354 upcoming shows",
-   "time": 1795403027.3535206,
-   "until": 1795438500
+   "msg": "594 guide channels, 4374 upcoming shows",
+   "time": 1795435936.1550436,
+   "until": 1795467600
   },
   "cbe16a4b": {
    "fresh": true,
    "ok": true,
-   "msg": "146 guide channels, 897 upcoming shows",
-   "time": 1795403027.751513,
-   "until": 1795428000
+   "msg": "146 guide channels, 5044 upcoming shows",
+   "time": 1795424411.4560022,
+   "until": 1795514400
   },
   "7ab24a94": {
    "fresh": true,
@@ -226977,9 +226979,9 @@
   "440d664a": {
    "fresh": true,
    "ok": true,
-   "msg": "280 guide channels, 2262 upcoming shows",
-   "time": 1795403340.3624785,
-   "until": 1795442580
+   "msg": "280 guide channels, 2157 upcoming shows",
+   "time": 1795438996.8752708,
+   "until": 1795476480
   },
   "ee63f468": {
    "ok": true,
@@ -227060,9 +227062,9 @@
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2159 upcoming shows",
-   "time": 1795403379.367006,
-   "until": 1795435200
+   "msg": "293 guide channels, 2252 upcoming shows",
+   "time": 1795431614.494118,
+   "until": 1795461300
   },
   "84d2ba49": {
    "fresh": true,
@@ -227578,9 +227580,9 @@
   "e1638530": {
    "fresh": true,
    "ok": true,
-   "msg": "594 guide channels, 4318 upcoming shows",
-   "time": 1795403302.5971375,
-   "until": 1795438500
+   "msg": "594 guide channels, 4374 upcoming shows",
+   "time": 1795435936.8146236,
+   "until": 1795467600
   },
   "9d3f4d1d": {
    "fresh": true,
@@ -227606,9 +227608,9 @@
   "39d58f19": {
    "fresh": true,
    "ok": true,
-   "msg": "280 guide channels, 2261 upcoming shows",
-   "time": 1795403353.3164384,
-   "until": 1795442580
+   "msg": "280 guide channels, 2157 upcoming shows",
+   "time": 1795438997.1772945,
+   "until": 1795476480
   },
   "8496682f": {
    "fresh": true,
@@ -227620,9 +227622,9 @@
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2158 upcoming shows",
-   "time": 1795403381.9831343,
-   "until": 1795435200
+   "msg": "293 guide channels, 2252 upcoming shows",
+   "time": 1795431614.8118663,
+   "until": 1795461300
   },
   "a36755d3": {
    "fresh": true,
@@ -228794,9 +228796,9 @@
   "873b0170": {
    "fresh": true,
    "ok": true,
-   "msg": "2676 guide channels, 19285 upcoming shows",
-   "time": 1795404745.4180684,
-   "until": 1795442580
+   "msg": "2676 guide channels, 20777 upcoming shows",
+   "time": 1795439000.0708756,
+   "until": 1795478400
   },
   "099d2f20": {
    "fresh": true,
@@ -229288,11 +229290,13 @@
    "group": "US",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "",
+   "guide": "3008.stations.xmltv.tvmedia.ca",
    "how": "manual",
    "manual": true,
-   "picked_shift": 0,
-   "picked": "ca.CNN International North America"
+   "picked": "3008.stations.xmltv.tvmedia.ca",
+   "backups": [
+    "CNN.International.us2"
+   ]
   },
   {
    "key": "the.cooking.channel.us",
@@ -231937,13 +231941,12 @@
    "name": "CNBC Africa",
    "group": "News",
    "prov": "Provider 1",
-   "picked": "CNBCAfrica.ug",
+   "picked": "CNBCAfrica.za",
    "backups": [
-    "CNBCAfrica.ng"
+    "CNBC.Africa.za"
    ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "CNBCAfrica.za",
    "how": "manual",
    "manual": true
   },
@@ -232023,11 +232026,12 @@
    "name": "CNN International",
    "group": "News",
    "prov": "Provider 1",
-   "picked": "CNNInternational.ug",
-   "backups": [],
+   "picked": "CNNInternational.za",
+   "backups": [
+    "CNN.International.HD.za"
+   ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "CNNInternational.za",
    "how": "manual",
    "manual": true
   },
@@ -232805,13 +232809,12 @@
    "name": "SABC News",
    "group": "News",
    "prov": "Provider 1",
-   "picked": "SABCNews.ug",
+   "picked": "SABCNews.za",
    "backups": [
-    "SABCNews.ng"
+    "SABC.News.za"
    ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "SABCNews.za",
    "how": "manual",
    "manual": true
   },
@@ -236383,7 +236386,7 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "adult-swim",
+   "guide": "AdultSwim.us",
    "how": "name"
   },
   {
@@ -236392,13 +236395,12 @@
    "name": "Africa Magic Family",
    "group": "Entertainment",
    "prov": "Provider 1",
-   "picked": "AfricaMagicFamily.ug",
+   "picked": "AfricaMagicFamily.za",
    "backups": [
-    "AfricaMagicFamily.ng"
+    "Africa.Magic.Family.za"
    ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "AfricaMagicFamily.za",
    "how": "manual",
    "manual": true
   },
@@ -240938,11 +240940,10 @@
    "name": "Jordan TV",
    "group": "Entertainment",
    "prov": "Provider 1",
-   "picked": "JordanTV.jo",
+   "picked": "Jordan.TV.HD.ae",
    "backups": [],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "Jordan.TV.HD.ae",
    "how": "manual",
    "manual": true
   },
@@ -245707,14 +245708,13 @@
    "group": "US Local",
    "prov": "Provider 1",
    "backups": [
-    "CWKQCW_OTAFeed.us"
+    "KQCW.us"
    ],
    "shift": 0,
-   "guide": "",
+   "guide": "KQCW-DT.us_locals1",
    "how": "manual",
    "manual": true,
-   "picked_shift": 0,
-   "picked": "CWKQCW_DTVFeed.us"
+   "picked": "KQCW-DT.us_locals1"
   },
   {
    "key": "week.tv.nbc.25.us",
@@ -246664,11 +246664,12 @@
    "name": "National Geographic",
    "group": "Documentary",
    "prov": "Provider 1",
-   "picked": "NationalGeographicChannel.ug",
-   "backups": [],
+   "picked": "NationalGeographicChannel.za",
+   "backups": [
+    "National.Geographic.Channel.za"
+   ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "NationalGeographicChannel.za",
    "how": "manual",
    "manual": true
   },
@@ -248289,7 +248290,7 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "showtime",
+   "guide": "Showtime.us",
    "how": "name"
   },
   {
@@ -248999,13 +249000,12 @@
    "name": "TNT Africa",
    "group": "Movies",
    "prov": "Provider 1",
-   "picked": "TNTAfrica.ug",
+   "picked": "TNTAfrica.za",
    "backups": [
-    "TNTAfrica.ng"
+    "TNT.Africa.HD.za"
    ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "TNTAfrica.za",
    "how": "manual",
    "manual": true
   },
@@ -249379,12 +249379,12 @@
    "name": "Africa Magic Epic",
    "group": "Series",
    "prov": "Provider 1",
-   "picked": "AfricaMagicEpic.ug",
+   "picked": "AfricaMagicEpic.za",
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "AfricaMagicEpic.za",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "backups": []
   },
   {
    "key": "africa.magic.showcase.ze",
@@ -249796,11 +249796,10 @@
    "name": "Star Life",
    "group": "Series",
    "prov": "Provider 1",
-   "picked": "StarLife.ug",
+   "picked": "StarLife.za",
    "backups": [],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "StarLife.za",
    "how": "manual",
    "manual": true
   },
@@ -250546,12 +250545,14 @@
    "name": "TRACE Gospel",
    "group": "Music",
    "prov": "Provider 1",
-   "picked": "TraceGospel.ug",
+   "picked": "TraceGospel.za",
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "TraceGospel.za",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "backups": [
+    "Trace.Gospel.za"
+   ]
   },
   {
    "key": "trace.jama.ze",
@@ -269924,11 +269925,10 @@
    "name": "Comedy Central",
    "group": "Africa",
    "prov": "Provider 1",
-   "picked": "ComedyCentral.ug",
+   "picked": "ComedyCentral.za",
    "backups": [],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "ComedyCentral.za",
    "how": "manual",
    "manual": true
   },
@@ -269986,12 +269986,12 @@
    "name": "Faith",
    "group": "Africa",
    "prov": "Provider 1",
-   "picked": "FAITH.ug",
+   "picked": "FAITH.za",
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "FAITH.za",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "backups": []
   },
   {
    "key": "food.network.ze",
@@ -269999,11 +269999,12 @@
    "name": "Food Network ZE",
    "group": "Africa",
    "prov": "Provider 1",
-   "picked": "FoodNetwork.ug",
-   "backups": [],
+   "picked": "FoodNetwork.za",
+   "backups": [
+    "Food.Network.HD.za"
+   ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "FoodNetwork.za",
    "how": "manual",
    "manual": true
   },
@@ -270037,11 +270038,10 @@
    "name": "Nickelodeon",
    "group": "Africa",
    "prov": "Provider 1",
-   "picked": "Nickelodeon.ug",
+   "picked": "Nickelodeon.za",
    "backups": [],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "Nickelodeon.za",
    "how": "manual",
    "manual": true
   },
@@ -270063,13 +270063,12 @@
    "name": "Spice TV",
    "group": "Africa",
    "prov": "Provider 1",
-   "picked": "SpiceTV.ug",
+   "picked": "SpiceTV.za",
    "backups": [
-    "SpiceTV.ng"
+    "Spice.TV.za"
    ],
    "shift": 0,
-   "picked_shift": 0,
-   "guide": "",
+   "guide": "SpiceTV.za",
    "how": "manual",
    "manual": true
   },
@@ -272634,10 +272633,9 @@
    "prov": "Provider 1",
    "picked": "fox.mx",
    "shift": 0,
-   "guide": "",
+   "guide": "fox.mx",
    "how": "manual",
-   "manual": true,
-   "picked_shift": 0
+   "manual": true
   },
   {
    "key": "fox.sports.2.co",
@@ -272851,10 +272849,9 @@
    "prov": "Provider 1",
    "picked": "211mvstr.ar",
    "shift": 0,
-   "guide": "",
+   "guide": "211mvstr.ar",
    "how": "manual",
-   "manual": true,
-   "picked_shift": 0
+   "manual": true
   },
   {
    "key": "rcn.co",
