@@ -245707,9 +245707,7 @@
    "name": "Tulsa CW Channel US",
    "group": "US Local",
    "prov": "Provider 1",
-   "backups": [
-    "KQCW.us"
-   ],
+   "backups": [],
    "shift": 0,
    "guide": "KQCW-DT.us_locals1",
    "how": "manual",
