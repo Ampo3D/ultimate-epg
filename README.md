@@ -50,7 +50,7 @@ at home at `http://<this-PC-IP>:8787/<file>`.
 |---|---|
 | `playlist.m3u` | Your playlist: every channel that is switched on (the guide link is built in) |
 | `epg.xml.gz` | The guide made for that playlist – the one most players should use |
-| `epg-full.xml.gz` | Universal guide: all channels of your priority countries, for any provider (big: about 130 MB, 1 GB unpacked) |
+| `epg-full.xml.gz` | Universal guide: all channels of your priority countries, for any provider (big: about 150 MB, 1.2 GB unpacked) |
 | `epg-lite.xml.gz` | Your providers' channels only (much smaller than the universal guide, for weaker devices) |
 | `epg-week.xml.gz` | Your providers' channels, up to 7 days |
 | `epg-us.xml.gz`, `epg-uk.xml.gz`, `epg-ca.xml.gz` | Universal guide per country – one file for each of your **priority countries** (Settings) |

@@ -1126,7 +1126,9 @@ def sync_priority_sources():
     return added
 
 
-BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|piizitv-epg/|epg_ripper_NG|epg_ripper_BEIN1|open-epg\.com/files/(germany1|spain1)|/Robync27/personal-epg/|/aurtkn1/open-epg-turkey/|/Shincyann128/iptv-epg/", re.I)  # times hours off, in both directions
+BAD_CLOCK_RE = re.compile(r"epg\.pw/|/tivimate-epg/|/MyEPG/|/iptv-epg-builder/|piizitv-epg/|epg_ripper_NG|epg_ripper_BEIN1|open-epg\.com/files/(germany1|spain1)|/Robync27/personal-epg/|/aurtkn1/open-epg-turkey/|/Shincyann128/iptv-epg/|/norti/EPG/.*tvinsider_us", re.I)  # times hours off, in both directions
+# norti's tvinsider_us: 238 of 281 channels an hour early since Nov 1 2026 (Food Network's Tournament of Champions at
+# 04:00 UTC, every other guide 05:00; TLC, Discovery, CNN, TNT, Lifetime, Hallmark the same).
 # Shincyann128: all shows stamped +0800, the US ones in Eastern wall-clock time - KDFW, ESPN, Golf Channel 13 h late.
 # guides whose clock is off for some channels: (guide link, channel code, time zone stamp, minutes to add).
 # epgshare's Serbian codes stamped +0100 are an hour late (93 of 94 checked against iptv-epg.org RS; the +0000 ones are right).
@@ -1380,7 +1382,8 @@ def clock_outliers(copies):
         names = [n for n in info.get("names") or () if n]
         feed = k[1].split("@", 1)[1].lower() if "@" in k[1] else ""
         zoned = bool(ZONE_FEED_RE.search(" ".join(names) + " " + re.sub(r"[._]", " ", k[1]))) or feed not in PLAIN_FEEDS
-        cand = id_country(k[1]) in ("us", "ca") and not zoned and national(k[1], names)
+        own = id_country(k[1])  # tvinsider's "food-network": no country in the code, the guide's own country instead
+        cand = (own in ("us", "ca") or not own and is_readable_id(k[1])) and not zoned and national(k[1], names)
         pool[k] = (list(zip(info["starts"], info.get("heads") or ())), zoned, cand, pkey_loose((names or [k[1]])[0]))
         for s, h in pool[k][0]:
             if h:
@@ -2480,6 +2483,10 @@ def callsigns(text):
 
 RADIO_NAME_RE = re.compile(r"(?<![^\W\d_])[KWC][A-Z]{2,3}-(?:FM|AM)\b|(?<![\d.])(?:\d{2,3}(?:\.\d)?\s?FM|\d{3,4}\s?AM)\b")  # "WCBS-FM", "106.9FM", "740 AM"
 NET_RE = re.compile(r"\b(abc|cbs|nbc|fox|pbs|cw|mnt|myn|ion|telemundo|univision|unimas|cbc|ctv|global|citytv)\b")
+# a radio station's logo or code: mediaportal-uk-logos' "/Radio/Gold-Radio.png", Audacy's "/logos/WWLAM.jpg", "GoldRadio.uk"
+# (not ICI Radio-Canada Tele, a TV network; not Fox Weather, whose logo is only stored on radioimg.audacy.com)
+RADIO_LOGO_RE = re.compile(r"/Radio/|/logos/[A-Z0-9]{3,5}(?:AM|FM)\.(?:jpg|png)$")
+RADIO_ID_RE = re.compile(r"radio(?![\W_]?canada)", re.I)
 LOOSE_STOP = {"music", "happy", "movies", "movie", "sports", "sport", "news", "kids", "comedy", "drama", "action",
               "classic", "classics", "family", "life", "style", "food", "church", "faith", "local", "world"}
 
@@ -3401,6 +3408,22 @@ def split_by_schedule(cids, chans, cc, call=""):
     return [main + [k for k in cids if k not in have]] + splits
 
 
+def agreed_copy(cur, alt, voters=()):
+    """The same code in 3+ guides: cur (the copy the guide order picked) unless more guides agree on a schedule with
+    other shows altogether. Two tvpassport guides had Yes TV's Christian shows under CBCNews.ca, four others CBC News
+    Network's The National: the first guide in the list had the wrong one. voters: copies in guides used only for
+    hand-picked channels - never used, but they help tell which schedule is the real one. The same shows at other
+    hours (an East or West feed, a guide with its clock off) are left to the clock checks."""
+    votes = [sum(schedule_agree(a, b) is True for b in list(alt) + list(voters) if b is not a) for a in alt]
+    mine = next((v for a, v in zip(alt, votes) if a is cur), 0)
+    best = max(range(len(alt)), key=lambda i: (votes[i], alt[i]["n"]))
+    hc, hb = set(cur.get("heads") or ()), set(alt[best].get("heads") or ())
+    if (alt[best] is not cur and votes[best] >= 1 and votes[best] > mine and schedule_agree(cur, alt[best]) is False
+            and hc and len(hc & hb) <= 0.2 * len(hc)):
+        return alt[best]
+    return cur
+
+
 def better_copy(cid, old, new):
     """The same code in two guides: the first guide wins, unless it is in another country's language and the other
     copy (really a different schedule) is in the right one - RTL.hr in German - or the other copy has the same shows
@@ -3457,7 +3480,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                (lambda g: g if g in ("us", "uk", "ca") else "")(code_country(c.get("guide") or "")) for c in prov}
 
     pri_cc = {"uk" if c.lower() in ("gb", "uk") else c.lower() for c in priority_list()}
-    chans = {}
+    chans, alts, voters = {}, {}, {}
     for x in sorted(xml_sources, key=lambda x: bool(picks_only(x))):  # the same code in a reliable guide wins
         in_pri = priority_rank(x) < n_pri or x.get("name", "").startswith("guide linked by")  # the universal guide keeps them
         xcc = guess_country(x["url"], x["name"]).lower()
@@ -3470,6 +3493,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                 if not info.get("n", 1) or not (in_pri or cid in targets or (not xcc and "epgshare01" in x["url"] and id_country(cid) in pri_cc)):
                     continue
                 if picks_only(x) and cid not in hand:
+                    if info.get("starts"):  # never used, but it can still say which schedule is the real one
+                        voters.setdefault(cid, []).append(info)
                     continue  # only the channels you picked from it, never its other listings
                 if (x["id"], cid) in CLOCK_OUT and cid not in hand:
                     continue  # its shows are hours off every other guide's copies
@@ -3483,15 +3508,21 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                 if (SD_CODE_RE.match(cid) and info.get("tl") and cc in NATIVE_LANGS
                         and info["tl"] not in NATIVE_LANGS[cc]):  # RDS 2 in French: Canadian; German Disney: none of ours
                     cc = next((c for c in ("ca", "us") if c in pri_cc and info["tl"] in NATIVE_LANGS[c]), "")
-                if cid in chans and (picks_only(x) or chans[cid]["picks"] or not better_copy(cid, chans[cid], info)):
-                    continue
                 said_cc = lambda n: CC_ALIAS.get((PROVIDER_PREFIX_RE.match(n) or [""] * 2)[1].lower(), (PROVIDER_PREFIX_RE.match(n) or [""] * 2)[1].lower())
                 names = [n for n in info["names"] if n and (cc == (own or xcc) or said_cc(n) in ("", cc))]  # no "UK:" on German Disney
-                chans[cid] = {"src": x["id"], "names": names or [cid],
-                              "icon": info.get("icon", ""), "n": info.get("n", 1), "picks": bool(picks_only(x)),
-                              "cc": cc, "lang": lang,
-                              "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", []),
-                              "last": info.get("last", 0), "first": info.get("first", 0)}
+                entry = {"src": x["id"], "names": names or [cid],
+                         "icon": info.get("icon", ""), "n": info.get("n", 1), "picks": bool(picks_only(x)),
+                         "cc": cc, "lang": lang,
+                         "end": info.get("end", 0), "starts": info.get("starts", []), "heads": info.get("heads", []),
+                         "last": info.get("last", 0), "first": info.get("first", 0)}
+                if not entry["picks"]:
+                    alts.setdefault(cid, []).append(entry)
+                if cid in chans and (picks_only(x) or chans[cid]["picks"] or not better_copy(cid, chans[cid], info)):
+                    continue
+                chans[cid] = entry
+    for cid, alt in alts.items():  # the same code, other schedules: the one most guides agree on (CBCNews.ca)
+        if len(alt) >= 2 and len(alt) + len(voters.get(cid, ())) >= 3 and cid in chans and not chans[cid]["picks"] and cid not in hand:
+            chans[cid] = agreed_copy(chans[cid], alt, voters.get(cid, ()))
 
     # group the copies of each real-world channel
     clusters = {}
@@ -3531,7 +3562,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                 if n.lower() not in seen and (radio or not RADIO_NAME_RE.search(n)):  # no "WCBS-FM" on CBS
                     seen.add(n.lower())
                     names.append(n)
-        for n in name_variants(chans[best]["names"][0], chans[best]["cc"]):
+        on_air = radio or any(RADIO_LOGO_RE.search(chans[k]["icon"] or "") or RADIO_ID_RE.search(k) for k in cids)
+        for n in [] if on_air else name_variants(chans[best]["names"][0], chans[best]["cc"]):  # "UK: Gold HD" is U&Gold TV, not Gold Radio
             if n.lower() not in seen:
                 seen.add(n.lower())
                 names.append(n)
@@ -3652,9 +3684,12 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
     for fh in files.values():
         fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<tv generator-info-name="Ultimate EPG (universal)">\n')
 
+    week_only = set()  # codes whose channel entry is in the week guide only: so are all their shows
+
     def write(code, text, far=False):
         if code in lite_codes:
             files["week"].write(text)
+        far = far or code in week_only  # a show that already ran, of a channel the 2-day files do not list
         if far:  # past the normal guide's last day: the week guide only
             return
         files["full"].write(text)
@@ -3696,6 +3731,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
             text += f"<icon src={quoteattr(icon)}/>"
         k0 = o["from"] if code not in pl_codes and not o.get("ext") and not o.get("placeholder") else None
         later = k0 in chans and chans[k0].get("first", 0) + 60 * (o.get("shift") or 0) > end_cut.timestamp()
+        if later:  # SiriusXM's 40s Junction: its show that ended at 05:00 went in epg-full with no channel entry
+            week_only.add(code)
         write(code, text + "</channel>\n", later)  # its first show is after this guide's last day: the week guide only
     fill, ext = {}, {}
     for code, o in out.items():
