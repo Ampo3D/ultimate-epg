@@ -167422,7 +167422,7 @@
    "key": "a128e10465ac",
    "source": "2ddbef2d",
    "ov": {
-    "epg_id": "en:.That’s.80s.ae"
+    "epg_id": "GBBC900003B2"
    },
    "up": {
     "name": "That's 80s",
@@ -167442,7 +167442,7 @@
    "key": "fccc5678a2a1",
    "source": "2ddbef2d",
    "ov": {
-    "epg_id": "Thats90s00s.au"
+    "epg_id": "GB300033HI"
    },
    "up": {
     "name": "That's 90s00s",
@@ -171030,7 +171030,7 @@
    "key": "93c965cc7cab",
    "source": "d7968fcb",
    "ov": {
-    "epg_id": "en:.That’s.80s.ae"
+    "epg_id": "GBBC900003B2"
    },
    "up": {
     "name": "That's 80s",
@@ -171050,7 +171050,7 @@
    "key": "382d3a218997",
    "source": "d7968fcb",
    "ov": {
-    "epg_id": "Thats90s00s.au"
+    "epg_id": "GB300033HI"
    },
    "up": {
     "name": "That's 90s00s",
@@ -222468,9 +222468,9 @@
   "440d664a": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2584 upcoming shows",
-   "time": 1794397564.3705492,
-   "until": 1794437280
+   "msg": "278 guide channels, 2264 upcoming shows",
+   "time": 1794433729.3453128,
+   "until": 1794467991
   },
   "ee63f468": {
    "ok": true,
@@ -222550,9 +222550,9 @@
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2407 upcoming shows",
-   "time": 1794397583.413984,
-   "until": 1794430800
+   "msg": "293 guide channels, 2252 upcoming shows",
+   "time": 1794427246.173735,
+   "until": 1794463200
   },
   "84d2ba49": {
    "fresh": true,
@@ -223096,9 +223096,9 @@
   "39d58f19": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2584 upcoming shows",
-   "time": 1794397570.5206006,
-   "until": 1794437280
+   "msg": "278 guide channels, 2264 upcoming shows",
+   "time": 1794433729.6418405,
+   "until": 1794467991
   },
   "8496682f": {
    "fresh": true,
@@ -223110,9 +223110,9 @@
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2407 upcoming shows",
-   "time": 1794397584.8347156,
-   "until": 1794430800
+   "msg": "293 guide channels, 2251 upcoming shows",
+   "time": 1794427246.4857402,
+   "until": 1794463200
   },
   "a36755d3": {
    "fresh": true,
@@ -223912,11 +223912,11 @@
    "until": 1794969900
   },
   "1bde316e": {
-   "fresh": true,
+   "fresh": false,
    "ok": true,
-   "msg": "163 guide channels, 1074 upcoming shows",
-   "time": 1794398110.995464,
-   "until": 1794434400
+   "msg": "163 guide channels, 14 upcoming shows - OUT OF DATE, not used",
+   "time": 1794430847.8851335,
+   "until": 0
   },
   "36a66b74": {
    "fresh": true,
@@ -236470,9 +236470,11 @@
    "prov": "Provider 1",
    "backups": [],
    "shift": 0,
-   "guide": "JordanTV.jo",
+   "guide": "",
    "how": "manual",
-   "manual": true
+   "manual": true,
+   "picked_shift": 0,
+   "picked": "JordanTV.jo"
   },
   {
    "key": "kabel.eins.de",
@@ -236906,8 +236908,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "MBC5.ae",
-   "how": "name without tags"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "MBCAction.sa",
@@ -236916,8 +236918,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "MBCAction.sa",
-   "how": "code"
+   "guide": "EN:.MBC.Action.sa",
+   "how": "name"
   },
   {
    "key": "mbc.drama.ae",
@@ -239569,8 +239571,8 @@
    "group": "Entertainment",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "AlRoyaTV.jo",
-   "how": "name"
+   "guide": "",
+   "how": ""
   },
   {
    "key": "rte.2.uk",
@@ -243830,8 +243832,8 @@
    "group": "Movies",
    "prov": "Provider 1",
    "shift": 0,
-   "guide": "MBCMax.ae",
-   "how": "same code"
+   "guide": "MBCMaxEn.ae",
+   "how": "name"
   },
   {
    "key": "megapix.br",
