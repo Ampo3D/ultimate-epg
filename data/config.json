@@ -52284,9 +52284,7 @@
   "cb0c19d0c5ae": {
    "key": "cb0c19d0c5ae",
    "source": "f25236e4",
-   "ov": {
-    "epg_id": "BBCDrama.es"
-   },
+   "ov": {},
    "up": {
     "name": "BBC Drama",
     "number": "",
@@ -56136,9 +56134,7 @@
   "c35039d50265": {
    "key": "c35039d50265",
    "source": "f25236e4",
-   "ov": {
-    "epg_id": "StingrayHotCountry.ca@SD"
-   },
+   "ov": {},
    "up": {
     "name": "Stingray Hot Country",
     "number": "",
@@ -60380,9 +60376,7 @@
   "9e3ec2a60e59": {
    "key": "9e3ec2a60e59",
    "source": "514536fe",
-   "ov": {
-    "epg_id": "BBCDrama.es"
-   },
+   "ov": {},
    "up": {
     "name": "BBC Drama",
     "number": "",
@@ -62215,7 +62209,7 @@
    "key": "b322caf3341d",
    "source": "514536fe",
    "ov": {
-    "epg_id": "mjh-10-shockwave"
+    "epg_id": "68b784d03e17b7676a0378f7"
    },
    "up": {
     "name": "Shockwave",
@@ -62773,7 +62767,7 @@
    "key": "7ea42c41af8a",
    "source": "514536fe",
    "ov": {
-    "epg_id": "TravelAndAdventure.ru"
+    "epg_id": "travel-and-adventure"
    },
    "up": {
     "name": "Travel and Adventure",
@@ -64095,7 +64089,7 @@
    "key": "0a64dd7c092d",
    "source": "514536fe",
    "ov": {
-    "epg_id": "BBC.Top.Gear.es"
+    "epg_id": "BBGEA"
    },
    "up": {
     "name": "BBC Top Gear",
@@ -64868,9 +64862,7 @@
   "352bf0ba76f6": {
    "key": "352bf0ba76f6",
    "source": "514536fe",
-   "ov": {
-    "epg_id": "StingrayHotCountry.ca@SD"
-   },
+   "ov": {},
    "up": {
     "name": "Stingray Hot Country",
     "number": "",
@@ -65082,9 +65074,7 @@
   "56bc95a88752": {
    "key": "56bc95a88752",
    "source": "514536fe",
-   "ov": {
-    "epg_id": "StingrayStarGaze.ca"
-   },
+   "ov": {},
    "up": {
     "name": "Stingray Stargaze",
     "number": "",
@@ -89856,9 +89846,7 @@
   "3e6dff9a414b": {
    "key": "3e6dff9a414b",
    "source": "bd8e573f",
-   "ov": {
-    "epg_id": "EuronewsEnglish.fr"
-   },
+   "ov": {},
    "up": {
     "name": "Euronews English",
     "number": "",
@@ -90760,9 +90748,7 @@
   "62823bd31b69": {
    "key": "62823bd31b69",
    "source": "bd8e573f",
-   "ov": {
-    "epg_id": "HistoryandWarfareNow.au"
-   },
+   "ov": {},
    "up": {
     "name": "History & Warfare Now",
     "number": "",
@@ -92501,7 +92487,7 @@
    "key": "44d32a537573",
    "source": "bd8e573f",
    "ov": {
-    "epg_id": "GB3800010LT"
+    "epg_id": "realmadridtv.us"
    },
    "up": {
     "name": "Real Madrid TV",
@@ -135139,7 +135125,7 @@
    "key": "812da1363738",
    "source": "ce8577df",
    "ov": {
-    "epg_id": "free-live-sports"
+    "epg_id": "UK:.Free.Live.Sports.be"
    },
    "up": {
     "name": "Free Live Sports",
@@ -136308,9 +136294,7 @@
   "1cf4fc51ffa4": {
    "key": "1cf4fc51ffa4",
    "source": "ce8577df",
-   "ov": {
-    "epg_id": "DFB.Play.de"
-   },
+   "ov": {},
    "up": {
     "name": "DFB Play",
     "number": "",
@@ -168460,9 +168444,7 @@
   "7f8526e21a45": {
    "key": "7f8526e21a45",
    "source": "d7968fcb",
-   "ov": {
-    "epg_id": "NO:.Aftershock.Homicide.Hunter.be"
-   },
+   "ov": {},
    "up": {
     "name": "Aftershock Homicide Hunter",
     "number": "",
@@ -170079,7 +170061,7 @@
    "key": "7e063846c38c",
    "source": "d7968fcb",
    "ov": {
-    "epg_id": "ATAJ700009X4"
+    "epg_id": "5ce40f42ba7f7f5ea9518fe1"
    },
    "up": {
     "name": "Ice Pilots",
@@ -170739,7 +170721,7 @@
    "key": "d1a4f3f206e1",
    "source": "d7968fcb",
    "ov": {
-    "epg_id": "USBD3500024YB"
+    "epg_id": "Qello Concerts By Stingray.uk"
    },
    "up": {
     "name": "Qello Concerts by Stingray",
@@ -217767,9 +217749,7 @@
   "4bdbefe29441": {
    "key": "4bdbefe29441",
    "source": "938bb238",
-   "ov": {
-    "epg_id": "LOL.rs"
-   },
+   "ov": {},
    "up": {
     "name": "LOL!",
     "number": "",
@@ -217806,7 +217786,7 @@
    "key": "86164887c1c2",
    "source": "938bb238",
    "ov": {
-    "epg_id": "mjh-10-shockwave"
+    "epg_id": "68b784d03e17b7676a0378f7"
    },
    "up": {
     "name": "Shockwave",
@@ -227271,7 +227251,7 @@
   "e1a90831": {
    "ok": true,
    "msg": "179 channels (0 new)",
-   "time": 1795588266.561878
+   "time": 1795589776.358002
   },
   "6d1c64a5": {
    "ok": true,
@@ -227407,13 +227387,13 @@
   "f25236e4": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.22124,
+   "time": 1795594485.5878084,
    "fresh": false
   },
   "514536fe": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.2213275,
+   "time": 1795594485.587876,
    "fresh": false
   },
   "2108517c": {
@@ -227437,13 +227417,13 @@
   "bd8e573f": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.221468,
+   "time": 1795594485.5879116,
    "fresh": false
   },
   "e554360c": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.221499,
+   "time": 1795594485.587943,
    "fresh": false
   },
   "da8f796a": {
@@ -227459,7 +227439,7 @@
   "ce8577df": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.316267,
+   "time": 1795594485.5879743,
    "fresh": false
   },
   "49cfa410": {
@@ -227471,7 +227451,7 @@
   "938bb238": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403278.3163402,
+   "time": 1795594485.5880034,
    "fresh": false
   },
   "ad8c9d97": {
@@ -227494,7 +227474,7 @@
   "94b82bd9": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403302.6248326,
+   "time": 1795594485.588032,
    "fresh": false
   },
   "a9a0358c": {
@@ -227512,7 +227492,7 @@
   "d7968fcb": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403302.6818786,
+   "time": 1795594485.5880606,
    "fresh": false
   },
   "ed8db8ff": {
@@ -227604,7 +227584,7 @@
   "ccd44578": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795403353.33895,
+   "time": 1795594485.5881815,
    "fresh": false
   },
   "93f106ed": {
@@ -235213,8 +235193,7 @@
    "shift": 0,
    "guide": "YTV.ca",
    "how": "manual",
-   "manual": true,
-   "picked_shift": 0
+   "manual": true
   },
   {
    "key": "sp2.latin.telexitos.wnju.us",
