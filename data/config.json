@@ -28565,9 +28565,7 @@
   "509f8eb6fd89": {
    "key": "509f8eb6fd89",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "BratTV.us"
-   },
+   "ov": {},
    "up": {
     "name": "Brat TV",
     "number": "1630",
@@ -28909,9 +28907,7 @@
   "5c4725a2f2f5": {
    "key": "5c4725a2f2f5",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "bbcnews.us"
-   },
+   "ov": {},
    "up": {
     "name": "CBC News",
     "number": "1150",
@@ -28965,9 +28961,7 @@
   "cf1aa323a7d4": {
    "key": "cf1aa323a7d4",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "CBS.Sports.HQ.us2"
-   },
+   "ov": {},
    "up": {
     "name": "CBS Sports HQ",
     "number": "2330",
@@ -34063,7 +34057,9 @@
   "67e59760a97c": {
    "key": "67e59760a97c",
    "source": "78afd227",
-   "ov": {},
+   "ov": {
+    "epg_id": "RacerSelect.us@SD"
+   },
    "up": {
     "name": "RACER Select",
     "number": "2530",
@@ -35915,9 +35911,7 @@
   "fd6557aa022a": {
    "key": "fd6557aa022a",
    "source": "78afd227",
-   "ov": {
-    "epg_id": "TheJimRomeShow.us"
-   },
+   "ov": {},
    "up": {
     "name": "The Jim Rome Show",
     "number": "2346",
@@ -80758,9 +80752,7 @@
   "2c9089550991": {
    "key": "2c9089550991",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "BratTV.us"
-   },
+   "ov": {},
    "up": {
     "name": "Brat TV",
     "number": "1630",
@@ -81048,9 +81040,7 @@
   "1d9c008b34e8": {
    "key": "1d9c008b34e8",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "bbcnews.us"
-   },
+   "ov": {},
    "up": {
     "name": "CBC News",
     "number": "1150",
@@ -81086,9 +81076,7 @@
   "110d4fb330b8": {
    "key": "110d4fb330b8",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "CBS.Sports.HQ.us2"
-   },
+   "ov": {},
    "up": {
     "name": "CBS Sports HQ",
     "number": "2330",
@@ -85908,7 +85896,9 @@
   "242bd00ab6b1": {
    "key": "242bd00ab6b1",
    "source": "899a75f3",
-   "ov": {},
+   "ov": {
+    "epg_id": "RacerSelect.us@SD"
+   },
    "up": {
     "name": "RACER Select",
     "number": "2530",
@@ -87588,9 +87578,7 @@
   "042df4221fac": {
    "key": "042df4221fac",
    "source": "899a75f3",
-   "ov": {
-    "epg_id": "TheJimRomeShow.us"
-   },
+   "ov": {},
    "up": {
     "name": "The Jim Rome Show",
     "number": "2346",
@@ -90748,7 +90736,9 @@
   "62823bd31b69": {
    "key": "62823bd31b69",
    "source": "bd8e573f",
-   "ov": {},
+   "ov": {
+    "epg_id": "USBD1200009JI"
+   },
    "up": {
     "name": "History & Warfare Now",
     "number": "",
@@ -167677,7 +167667,7 @@
    "key": "c9195b1c4693",
    "source": "2ddbef2d",
    "ov": {
-    "epg_id": "UK:.Tennis.Channel.be"
+    "epg_id": "GBBA33000529G"
    },
    "up": {
     "name": "Tennis Channel",
@@ -174784,9 +174774,7 @@
   "7ed38f04a0eb": {
    "key": "7ed38f04a0eb",
    "source": "ed8db8ff",
-   "ov": {
-    "epg_id": "MrBeanAnimated.uk@English"
-   },
+   "ov": {},
    "up": {
     "name": "Mr Bean Animated",
     "number": "4260",
@@ -175400,9 +175388,7 @@
   "6c0f10fa37d5": {
    "key": "6c0f10fa37d5",
    "source": "ed8db8ff",
-   "ov": {
-    "epg_id": "Pop.uk"
-   },
+   "ov": {},
    "up": {
     "name": "POP",
     "number": "4799",
@@ -200105,9 +200091,7 @@
   "0c32c5595b0a": {
    "key": "0c32c5595b0a",
    "source": "29d1a082",
-   "ov": {
-    "epg_id": "CBCNews.ca"
-   },
+   "ov": {},
    "up": {
     "name": "CBC News",
     "number": "1060",
@@ -227251,7 +227235,7 @@
   "e1a90831": {
    "ok": true,
    "msg": "179 channels (0 new)",
-   "time": 1795589776.358002
+   "time": 1795596398.8153272
   },
   "6d1c64a5": {
    "ok": true,
@@ -227303,16 +227287,16 @@
   "e01b5428": {
    "fresh": true,
    "ok": true,
-   "msg": "594 guide channels, 4578 upcoming shows",
-   "time": 1795582711.6623387,
-   "until": 1795611720
+   "msg": "594 guide channels, 4452 upcoming shows",
+   "time": 1795608399.6497564,
+   "until": 1795640400
   },
   "cbe16a4b": {
    "fresh": true,
    "ok": true,
-   "msg": "146 guide channels, 772 upcoming shows",
-   "time": 1795582712.0441668,
-   "until": 1795600800
+   "msg": "146 guide channels, 5075 upcoming shows",
+   "time": 1795597834.2418065,
+   "until": 1795690800
   },
   "7ab24a94": {
    "fresh": true,
@@ -227387,13 +227371,13 @@
   "f25236e4": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5878084,
+   "time": 1795596398.8154263,
    "fresh": false
   },
   "514536fe": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.587876,
+   "time": 1795596398.8154688,
    "fresh": false
   },
   "2108517c": {
@@ -227417,13 +227401,13 @@
   "bd8e573f": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5879116,
+   "time": 1795596398.815503,
    "fresh": false
   },
   "e554360c": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.587943,
+   "time": 1795596398.8155334,
    "fresh": false
   },
   "da8f796a": {
@@ -227439,7 +227423,7 @@
   "ce8577df": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5879743,
+   "time": 1795596398.8155637,
    "fresh": false
   },
   "49cfa410": {
@@ -227451,7 +227435,7 @@
   "938bb238": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5880034,
+   "time": 1795596398.8155928,
    "fresh": false
   },
   "ad8c9d97": {
@@ -227474,7 +227458,7 @@
   "94b82bd9": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.588032,
+   "time": 1795596398.8156958,
    "fresh": false
   },
   "a9a0358c": {
@@ -227492,7 +227476,7 @@
   "d7968fcb": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5880606,
+   "time": 1795596398.815726,
    "fresh": false
   },
   "ed8db8ff": {
@@ -227567,9 +227551,9 @@
   "440d664a": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2134 upcoming shows",
-   "time": 1795583009.9430828,
-   "until": 1795611600
+   "msg": "278 guide channels, 2140 upcoming shows",
+   "time": 1795608400.6073215,
+   "until": 1795640400
   },
   "ee63f468": {
    "ok": true,
@@ -227584,7 +227568,7 @@
   "ccd44578": {
    "ok": false,
    "msg": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>",
-   "time": 1795594485.5881815,
+   "time": 1795596398.8157542,
    "fresh": false
   },
   "93f106ed": {
@@ -227650,9 +227634,9 @@
   "81306b48": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2169 upcoming shows",
-   "time": 1795583050.2490666,
-   "until": 1795610511
+   "msg": "293 guide channels, 2433 upcoming shows",
+   "time": 1795606959.001206,
+   "until": 1795640400
   },
   "84d2ba49": {
    "fresh": true,
@@ -227741,8 +227725,8 @@
   "51a402b5": {
    "fresh": false,
    "ok": true,
-   "msg": "128 guide channels, 0 upcoming shows - OUT OF DATE, not used",
-   "time": 1794397811.2948964,
+   "msg": "125 guide channels, 0 upcoming shows - OUT OF DATE, not used",
+   "time": 1795609823.0648906,
    "until": 0
   },
   "1b7f4b60": {
@@ -227755,8 +227739,8 @@
   "ea06e7bc": {
    "fresh": false,
    "ok": true,
-   "msg": "185 guide channels, 0 upcoming shows - OUT OF DATE, not used",
-   "time": 1794397812.2649646,
+   "msg": "183 guide channels, 0 upcoming shows - OUT OF DATE, not used",
+   "time": 1795609823.7074215,
    "until": 0
   },
   "bc33dd4d": {
@@ -228168,9 +228152,9 @@
   "e1638530": {
    "fresh": true,
    "ok": true,
-   "msg": "594 guide channels, 4309 upcoming shows",
-   "time": 1795582970.7050889,
-   "until": 1795611720
+   "msg": "594 guide channels, 4452 upcoming shows",
+   "time": 1795608400.308782,
+   "until": 1795640400
   },
   "9d3f4d1d": {
    "fresh": true,
@@ -228196,9 +228180,9 @@
   "39d58f19": {
    "fresh": true,
    "ok": true,
-   "msg": "278 guide channels, 2132 upcoming shows",
-   "time": 1795583023.4922156,
-   "until": 1795611600
+   "msg": "278 guide channels, 2140 upcoming shows",
+   "time": 1795608400.9026122,
+   "until": 1795640400
   },
   "8496682f": {
    "fresh": true,
@@ -228210,9 +228194,9 @@
   "ff1d3114": {
    "fresh": true,
    "ok": true,
-   "msg": "293 guide channels, 2169 upcoming shows",
-   "time": 1795583054.03984,
-   "until": 1795610511
+   "msg": "293 guide channels, 2433 upcoming shows",
+   "time": 1795606959.3351562,
+   "until": 1795640400
   },
   "a36755d3": {
    "fresh": true,
@@ -229384,9 +229368,9 @@
   "873b0170": {
    "fresh": true,
    "ok": true,
-   "msg": "2669 guide channels, 19320 upcoming shows",
-   "time": 1795584470.4758193,
-   "until": 1795622400
+   "msg": "2669 guide channels, 20722 upcoming shows",
+   "time": 1795618846.530468,
+   "until": 1795658460
   },
   "099d2f20": {
    "fresh": true,
