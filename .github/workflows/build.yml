@@ -101,9 +101,18 @@ jobs:
                                            {owner, repo, run_id: context.runId, per_page: 100})).find(a => a.name === 'github-pages');
             }
             if (!art) throw new Error('The site upload (github-pages) was not found');
-            const version = `${context.sha}-retry-${process.env.GITHUB_RUN_ATTEMPT || 1}`;
-            const {data: dep} = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
-              owner, repo, artifact_id: art.id, pages_build_version: version, oidc_token: await core.getIDToken()});
+            let dep, version;
+            for (let i = 1; !dep; i++) {  // Nov 25: Pages answered "Not Found" for a just-uploaded site 5 runs in a row
+              version = `${context.sha}-retry-${process.env.GITHUB_RUN_ATTEMPT || 1}-${i}`;
+              try {
+                dep = (await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+                  owner, repo, artifact_id: art.id, pages_build_version: version, oidc_token: await core.getIDToken()})).data;
+              } catch (e) {
+                if (e.status !== 404 || i >= 20) throw e;
+                core.info(`Pages can't see the upload yet (try ${i}), waiting 30 s`);
+                await new Promise(r => setTimeout(r, 30000));
+              }
+            }
             const id = dep.id || (dep.status_url || '').split('/').pop() || version;  // as deploy-pages does
             core.info(`Second try started: ${id}`);
             const failed = ['deployment_failed', 'deployment_content_failed', 'deployment_cancelled', 'deployment_lost'];
