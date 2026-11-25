@@ -3448,6 +3448,31 @@ def split_by_schedule(cids, chans, cc, call=""):
     return [main + [k for k in cids if k not in have]] + splits
 
 
+AGREED_LOG = []  # (code, guide id it was, guide id it is now, only thanks to its other spellings): the copies majority voting changed
+
+
+def code_family(cid):
+    """'JBS.us', 'JBS.us2', 'JBS.us@SD', 'JBSHD.us' -> ('jbs', 'us'): one channel's codes in different guides.
+    Only US, UK and Canadian codes; '@East', '@KTTV', '@4K' are other feeds ('@SD' only names the guide); AMC+ is not
+    AMC. None for anything else."""
+    cc = id_country(cid)
+    if cc not in ("us", "uk", "ca"):
+        return None
+    code, _, feed = cid.lower().partition("@")
+    base = re.sub(r"hd$", "", re.sub(r"[^a-z0-9+]", "", re.sub(r"\.[a-z]{2}\d?$", "", code)))
+    if not base.isascii() or len(base) < 2 or feed not in ("", "sd"):
+        return None
+    return base, cc
+
+
+def shared_words(a, b):
+    """Do two copies' titles (their first 8 letters) share words? 'Derby City Classic' vs '2024 Derby City': yes -
+    the same shows, titled differently. 'Cops Reloaded' vs "L'Chayim": no."""
+    grams = lambda hs: {h[i:i + 4] for h in hs for i in range(len(h) - 3)}
+    gb = grams(b)
+    return sum(bool(grams([h]) & gb) for h in a) > 0.2 * len(a)
+
+
 def agreed_copy(cur, alt, voters=()):
     """The same code in 3+ guides: cur (the copy the guide order picked) unless more guides agree on a schedule with
     other shows altogether. Two tvpassport guides had Yes TV's Christian shows under CBCNews.ca, four others CBC News
@@ -3458,7 +3483,8 @@ def agreed_copy(cur, alt, voters=()):
     mine = next((v for a, v in zip(alt, votes) if a is cur), 0)
     best = max(range(len(alt)), key=lambda i: (votes[i], alt[i]["n"]))
     hc, hb = set(cur.get("heads") or ()), set(alt[best].get("heads") or ())
-    if (alt[best] is not cur and votes[best] >= 1 and votes[best] > mine and schedule_agree(cur, alt[best]) is False
+    says = schedule_agree(cur, alt[best])  # None: the same times, other titles - wrong too when 2+ others agree and no one with it
+    if (alt[best] is not cur and votes[best] >= 1 and votes[best] > mine and (says is False or (says is None and mine == 0 and votes[best] >= 2 and not shared_words(hc, hb)))
             and hc and len(hc & hb) <= 0.2 * len(hc)):
         return alt[best]
     return cur
@@ -3560,9 +3586,26 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                 if cid in chans and (picks_only(x) or chans[cid]["picks"] or not better_copy(cid, chans[cid], info)):
                     continue
                 chans[cid] = entry
+    family = {}  # JBS.us2, JBS.us@SD: the same channel under the code's other spellings - they vote too
+    for c2 in set(alts) | set(voters):
+        f = code_family(c2)
+        if f:
+            family.setdefault(f, []).append(c2)
+    del AGREED_LOG[:]
     for cid, alt in alts.items():  # the same code, other schedules: the one most guides agree on (CBCNews.ca)
-        if len(alt) >= 2 and len(alt) + len(voters.get(cid, ())) >= 3 and cid in chans and not chans[cid]["picks"] and cid not in hand:
-            chans[cid] = agreed_copy(chans[cid], alt, voters.get(cid, ()))
+        if not alt or cid not in chans or chans[cid]["picks"] or cid in hand:
+            continue
+        kin = [e for c2 in family.get(code_family(cid), ()) if c2 != cid
+               for e in alts.get(c2, []) + voters.get(c2, []) if e.get("starts")]
+        if (len(alt) >= 2 or len(kin) >= 2) and len(alt) + len(kin) + len(voters.get(cid, ())) >= 3:  # JBS.us: two guides disagree, its JBS.us2 and JBS.us@SD copies say which is right
+            was = chans[cid]
+            own = voters.get(cid, ())
+            new = agreed_copy(was, alt + kin, own)  # JBS.us's other copy was 8 hours off: JBS.us2's schedule then
+            if not any(new is a for a in alt):  # no copy of this code is right: no shows of its own, it joins the
+                new = dict(new, n=0, names=new["names"] + [n for n in was["names"] if n not in new["names"]])  # JBS group
+            chans[cid] = new                                                   # and is filled from the agreed copy
+            if chans[cid] is not was:
+                AGREED_LOG.append((cid, was["src"], chans[cid]["src"], len(alt) + len(own) < 3 or agreed_copy(was, alt, own) is was))
 
     # group the copies of each real-world channel
     clusters = {}
