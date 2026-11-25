@@ -3817,6 +3817,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
         if later:  # SiriusXM's 40s Junction: its show that ended at 05:00 went in epg-full with no channel entry
             week_only.add(code)
         write(code, text + "</channel>\n", later)  # its first show is after this guide's last day: the week guide only
+        o["label"] = own[0]
     fill, ext = {}, {}
     for code, o in out.items():
         if o["from"]:
@@ -3825,6 +3826,7 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
             ext.setdefault(o["ext"][0], []).append((code, o["ext"][1]))
 
     shows, live_from, live_soon, nxt, clean, ended, last_stop = 0, set(), set(), {}, ShowCleaner(), {}, {}
+    got = set()  # codes that got a show in the 2-day files
     needed = {chans[cid]["src"] for cid in list(fill) + list(ext) if cid in chans}
     for x in xml_sources:
         path = os.path.join(CACHE, x["id"] + ".xml")
@@ -3868,6 +3870,8 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
                         if sp:
                             el.set("stop", fmt_xmltv_time(sp + timedelta(minutes=shift)))
                     write(code, ET.tostring(el, encoding="unicode"), st > end_cut)
+                    if st <= end_cut and code not in week_only:
+                        got.add(code)
                     if code in pl_codes and st <= pl_end:
                         slim = list(el)
                         el[:] = full_details(kids, slim)
@@ -3894,6 +3898,9 @@ def build_universal(xml_sources, wanted, now, start_cut, end_cut, playlist=None)
     for code, o in out.items():  # placeholders so nothing shows "No information"
         e = o.get("placeholder")
         pe = (e or wanted[code]) if code in pl_codes else None  # the playlist's guide labels every code it has no shows for
+        if not e and code not in got:  # every show its guide has was dropped (Tubi's Real Madrid TV: matches already played
+            e = (wanted[code] if code in pl_codes else  # and 24-hour "Next match" blocks): the playlist guide's own label,
+                 {"name": o.get("label") or code, "desc": NOT_YET})  # not an empty row
         mine = [k for k in (o["from"], (o.get("ext") or (None,))[0]) if k]
         if pe and CFG["settings"]["dummy_epg"]:
             later = min((nxt[k] for k in mine if k in live_from and k in nxt), default=None)
