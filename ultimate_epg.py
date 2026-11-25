@@ -2109,6 +2109,39 @@ def on_outage(src, hosts):
 
 
 OUTAGE_HOURS = 72  # a whole site/project down that long is gone for real
+PLAYS_SHARE = 0.7  # a playlist whose website is down stays in use while this share of its last streams still play
+
+
+def last_copy_plays(src):
+    """A playlist whose website stopped answering: its last copy is still worth using while most of its streams
+    play - the website only lists them, the streams come from the channels' own servers (apsattv.com, Nov 2026:
+    LG Channels, Local Now and Vizio still played; DistroTV's expiring links did not). A spread-out sample of 20
+    is tried at most once a day, remembered in auto_sources.json."""
+    if src.get("type") != "m3u":
+        return False
+    rec = AUTO.setdefault("plays", {}).get(src["url"])
+    if rec and time.time() - rec.get("t", 0) < 86400:
+        return rec.get("ok", False)
+    try:
+        urls = [e["url"] for e in parse_m3u(os.path.join(CACHE, src["id"] + ".m3u")) if re.match(r"https?://", e.get("url", ""), re.I)]
+    except (OSError, ValueError):
+        urls = []
+    sample = urls[::max(1, len(urls) // 20)][:20]  # spread over the whole list, the same ones each day
+
+    def plays(url):
+        try:  # "[DEVICE_TYPE]" and the like are ad fields a player fills in
+            req = urllib.request.Request(re.sub(r"\[[A-Z_]+\]", "", url), headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return r.read(512).lstrip(b"\xef\xbb\xbf \r\n\t").startswith(b"#EXTM3U")
+        except Exception:
+            return False
+    with ThreadPoolExecutor(8) as ex:
+        good = sum(ex.map(plays, sample))
+    ok = len(sample) >= 5 and good >= PLAYS_SHARE * len(sample)
+    AUTO["plays"][src["url"]] = {"t": time.time(), "ok": ok, "n": f"{good}/{len(sample)}"}
+    log(f"'{src['name']}' is not answering; {good} of {len(sample)} streams in its last copy play"
+        + (" - still in use" if ok else ""))
+    return ok
 
 
 def mass_failure():
@@ -2134,6 +2167,8 @@ def remove_dead_sources():
         limit = max(limits[rec["kind"]], OUTAGE_HOURS) if on_outage(src, hosts) else limits[rec["kind"]]
         hours = (time.time() - rec["t"]) / 3600
         if hours >= limit and rec.get("count", 1) >= 3:
+            if rec["kind"] == "dead" and last_copy_plays(src):
+                continue  # its website is gone, its streams are not: the last copy stays in use
             what = "dead" if rec["kind"] == "dead" else "out of date"
             AUTO["removed"][src["url"]] = {"t": time.time(), "name": src["name"], "type": src["type"],
                                            "why": f"{what} for {int(hours)} hours: {rec['why']}",
@@ -2166,11 +2201,16 @@ def retry_removed_sources():
         if time.time() < removed_retry_due(rec) or (no_ping(url) and time.time() < LIMITED.get(url, 0)):
             continue
         ok, why, _ = ping(url)
+        src = next((x for x in CFG["sources"] + AUTO["sources"] if x["url"] == url), None)
         if ok:
             AUTO["removed"].pop(url, None)
             AUTO["bad_since"].pop(url, None)
             back.append(url)
             log(f"'{rec['name']}' answers again - put back into use")
+        elif src and rec.get("kind") == "dead" and last_copy_plays(src):
+            AUTO["removed"].pop(url, None)  # still counted as failing: removed again once its streams stop
+            back.append(url)
+            log(f"'{rec['name']}' is still down, but the streams in its last copy play - put back into use")
         else:
             rec["tries"] = rec.get("tries", 0) + 1
             rec["last_try"] = time.time()
